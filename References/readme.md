@@ -26,7 +26,7 @@
 
 - [Hunger Map World Food Programme](https://hungermap.wfp.org)
 
-## Datasets
+## Datasets of Interest
 
 - A new, long-term and global dataset of soil moisture measurements from space has been released to help us better understand the water cycle and climate, monitor agriculture and manage our water resources. Scientists working under the soil moisture project of ESA’s Climate Change Initiative have harmonised data on soil moisture from different satellites dating back to 1978 to give us a long-term view of global soil moisture, as well as variations and trends in the water cycle. Developed by the Vienna University of Technology (TU Wien), Dutch company VanderSat BV and the Austrian Earth Observation Data Centre, the dataset  is based on 11 satellite sensors, including the one on ESA’s SMOS satellite and ESA’s historical ERS missions. Starting next year, it will be made available in near-real time through the Copernicus Climate Change Service. Scientists worldwide can now download, use and validate the dataset by visiting http://www.esa-soilmoisture-cci.org/
 

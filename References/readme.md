@@ -2,6 +2,8 @@
 
 - [Digital Public Good Alliance](https://digitalpublicgoods.net)
 - [Digital Public Good Standards](https://digitalpublicgoods.net/standard/)
+- [Digital Public Goods Candidates - Github Repository](https://github.com/unicef/publicgoods-candidates)
+- [Digital Impact Alliance Catalogue of Digital Solutions](https://solutions.dial.community/products)
 
 ## Postitive Deviance
 

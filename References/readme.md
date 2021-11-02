@@ -34,5 +34,5 @@
 
 - **WorldPop** produces different types of gridded population count datasets. More details available at the following link - https://www.worldpop.org/project/categories?id=3
 
-- **datagovin** [Open Government Data Portal - India](https://data.gov.in)includes historic and near-realtime proces of commodities at different markets throughout India. There is also a Python API-wrapper for accessing this data. More details about this is available at the following link - [Python wrapper for data.gov.in](https://pypi.org/project/datagovindia/)
+- **[Open Government Data Portal - India]**(https://data.gov.in) includes historic and near-realtime proces of commodities at different markets throughout India. There is also a Python API-wrapper for accessing this data. More details about this is available at the following link - [Python wrapper for data.gov.in](https://pypi.org/project/datagovindia/)
 

@@ -17,7 +17,7 @@
 
 - [Using a positive deviance approach to inform farming systems redesign: A case study from Bihar, India](https://edepot.wur.nl/531854)
 - [Data-Powered Positive Deviance during the SARS-CoV-2 Pandemic—An Ecological Pilot Study of German Districts](https://www.mdpi.com/1660-4601/18/18/9765)
-- [https://www.researchgate.net/publication/328636960_Positive_deviance_big_data_and_development_A_systematic_literature_review](https://www.researchgate.net/publication/328636960_Positive_deviance_big_data_and_development_A_systematic_literature_review)
+- [Positive deviance, big data, and development: A systematic literature review](https://www.researchgate.net/publication/328636960_Positive_deviance_big_data_and_development_A_systematic_literature_review)
 - [Legacy data-based national-scale digital mapping of key soil properties in India](https://www.sciencedirect.com/science/article/abs/pii/S0016706120309861)
 
 ## Climate Resilience in Agriculture

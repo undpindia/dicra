@@ -49,7 +49,7 @@
 
 - [Relative Wealth Index](https://dataforgood.facebook.com/dfg/tools/relative-wealth-index) - The Relative Wealth Index predicts the **relative standard of living** within countries using privacy protecting connectivity data, satellite imagery, and other novel data sources.
 
-- [NATURAL HAZARDS][GLOBAL DATASETS]
+##[NATURAL HAZARDS][GLOBAL DATASETS]
 - **Drought** (Epule et al., 2014) (Sall et al., 2015) (USAID, 2017) 
 Global Aridity Index:  https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448/3
 - **Soil erosion** (Sow et al., 2016) 

@@ -22,6 +22,7 @@
 
 ## Climate Resilience in Agriculture
 
+- [SOURCEBOOK FOR CLIMATE VULNERABILITY ASSESSMENT, GIZ 2017] https://www.adaptationcommunity.net/download/va/vulnerability-guides-manuals-reports/vuln_source_2017_EN.pdf
 - [How Can Climate Resilience Be Measured and Visualized?](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi84pXJ_dnzAhWTq6QKHfUhD5oQFnoECAQQAQ&url=https%3A%2F%2Fwww.mdpi.com%2F2071-1050%2F12%2F2%2F635%2Fpdf&usg=AOvVaw0iQ3w9lKDK_f7isG_qUPZC)
 - [Monitoring and evaluation of climate resilience for agricultural development – A review of currently available tools](https://www.sciencedirect.com/science/article/pii/S2452292917300176)
 - [High-resolution spatial distribution and associated uncertainties of greenhouse gas emissions from the agricultural sector](https://link.springer.com/article/10.1007/s11027-017-9779-3)

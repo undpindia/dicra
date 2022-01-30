@@ -49,20 +49,6 @@
 
 - [Relative Wealth Index](https://dataforgood.facebook.com/dfg/tools/relative-wealth-index) - The Relative Wealth Index predicts the **relative standard of living** within countries using privacy protecting connectivity data, satellite imagery, and other novel data sources.
 
-## NATURAL HAZARDS (GLOBAL DATASETS)
-- **Drought** (Epule et al., 2014) (Sall et al., 2015) (USAID, 2017) 
-Global Aridity Index:  https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448/3
-- **Soil erosion** (Sow et al., 2016) 
-Global Soil Erosion https://esdac.jrc.ec.europa.eu/content/global-soil-erosion 
-- **Flooding** (USAID, 2017) (WFP, 2013) 
-Global Risk Platfrom https://preview.grid.unep.ch/index.php?preview=data&events=floods&evcat=1&lang=eng 
-- **Fires** (Mbow et al., 2000) (Frederiksen et al., 1990) (Nielsen et al., 2003) 
-https://go.nasa.gov/3200nPc 
-- **Salinization** (Sow et al., 2016) (Thiam et al., 2019) (Diack et al., 2019) (Wopereis et al., 1998) 
-http://www.fao.org/soils-portal/ data-hub/soil-maps-and-databases/ harmonized-world-soil-database-v12/ soil-qualities-data/en/
-- **Waterlogging** (Komivi et al., 2018) (Diack et al., 2017) 
-http://www.fao.org/soils-portal/ data-hub/soil-maps-and-databases/ harmonized-world-soil-database-v12/ soil-qualities-data/en/
-
 - [ESRI 2020 Land Cover Map](https://www.arcgis.com/apps/instant/media/index.html?appid=fc92d38533d440078f17678ebc20e8e2)
 
 This layer includes a global map of land use/land cover (LULC). The map is derived from ESA Sentinel-2 imagery at 10m resolution. It is a composite of LULC predictions for 10 classes throughout the year in order to generate a representative snapshot of 2020.
@@ -98,3 +84,17 @@ Large homogenous areas of permanent snow or ice, typically only in mountain area
  
 10. Clouds
 No land cover information due to persistent cloud cover.
+
+## NATURAL HAZARDS (GLOBAL DATASETS)
+- **Drought** (Epule et al., 2014) (Sall et al., 2015) (USAID, 2017) 
+Global Aridity Index:  https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448/3
+- **Soil erosion** (Sow et al., 2016) 
+Global Soil Erosion https://esdac.jrc.ec.europa.eu/content/global-soil-erosion 
+- **Flooding** (USAID, 2017) (WFP, 2013) 
+Global Risk Platfrom https://preview.grid.unep.ch/index.php?preview=data&events=floods&evcat=1&lang=eng 
+- **Fires** (Mbow et al., 2000) (Frederiksen et al., 1990) (Nielsen et al., 2003) 
+https://go.nasa.gov/3200nPc 
+- **Salinization** (Sow et al., 2016) (Thiam et al., 2019) (Diack et al., 2019) (Wopereis et al., 1998) 
+http://www.fao.org/soils-portal/ data-hub/soil-maps-and-databases/ harmonized-world-soil-database-v12/ soil-qualities-data/en/
+- **Waterlogging** (Komivi et al., 2018) (Diack et al., 2017) 
+http://www.fao.org/soils-portal/ data-hub/soil-maps-and-databases/ harmonized-world-soil-database-v12/ soil-qualities-data/en/

@@ -49,7 +49,7 @@
 
 - [Relative Wealth Index](https://dataforgood.facebook.com/dfg/tools/relative-wealth-index) - The Relative Wealth Index predicts the **relative standard of living** within countries using privacy protecting connectivity data, satellite imagery, and other novel data sources.
 
-##[NATURAL HAZARDS][GLOBAL DATASETS]
+## NATURAL HAZARDS (GLOBAL DATASETS)
 - **Drought** (Epule et al., 2014) (Sall et al., 2015) (USAID, 2017) 
 Global Aridity Index:  https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448/3
 - **Soil erosion** (Sow et al., 2016) 
@@ -63,4 +63,38 @@ http://www.fao.org/soils-portal/ data-hub/soil-maps-and-databases/ harmonized-wo
 - **Waterlogging** (Komivi et al., 2018) (Diack et al., 2017) 
 http://www.fao.org/soils-portal/ data-hub/soil-maps-and-databases/ harmonized-world-soil-database-v12/ soil-qualities-data/en/
 
-- 
+- [ESRI 2020 Land Cover Map](https://www.arcgis.com/apps/instant/media/index.html?appid=fc92d38533d440078f17678ebc20e8e2)
+
+This layer includes a global map of land use/land cover (LULC). The map is derived from ESA Sentinel-2 imagery at 10m resolution. It is a composite of LULC predictions for 10 classes throughout the year in order to generate a representative snapshot of 2020.
+
+**Class definitions**
+
+1. Water
+Areas where water was predominantly present throughout the year; may not cover areas with sporadic or ephemeral water; contains little to no sparse vegetation, no rock outcrop nor built up features like docks; examples: rivers, ponds, lakes, oceans, flooded salt plains.
+
+2. Trees
+Any significant clustering of tall (~15-m or higher) dense vegetation, typically with a closed or dense canopy; examples: wooded vegetation,  clusters of dense tall vegetation within savannas, plantations, swamp or mangroves (dense/tall vegetation with ephemeral water or canopy too thick to detect water underneath).
+
+3. Grass
+Open areas covered in homogenous grasses with little to no taller vegetation; wild cereals and grasses with no obvious human plotting (i.e., not a plotted field); examples: natural meadows and fields with sparse to no tree cover, open savanna with few to no trees, parks/golf courses/lawns, pastures.
+
+4. Flooded vegetation
+Areas of any type of vegetation with obvious intermixing of water throughout a majority of the year; seasonally flooded area that is a mix of grass/shrub/trees/bare ground; examples: flooded mangroves, emergent vegetation, rice paddies and other heavily irrigated and inundated agriculture.
+
+5. Crops
+Human planted/plotted cereals, grasses, and crops not at tree height; examples: corn, wheat, soy, fallow plots of structured land.
+
+6. Scrub/shrub
+Mix of small clusters of plants or single plants dispersed on a landscape that shows exposed soil or rock; scrub-filled clearings within dense forests that are clearly not taller than trees; examples: moderate to sparse cover of bushes, shrubs and tufts of grass, savannas with very sparse grasses, trees or other plants
+
+7. Built Area
+Human made structures; major road and rail networks; large homogenous impervious surfaces including parking structures, office buildings and residential housing; examples: houses, dense villages / towns / cities, paved roads, asphalt.
+
+8. Bare ground
+Areas of rock or soil with very sparse to no vegetation for the entire year; large areas of sand and deserts with no to little vegetation; examples: exposed rock or soil, desert and sand dunes, dry salt flats/pans, dried lake beds, mines.
+
+9. Snow/Ice
+Large homogenous areas of permanent snow or ice, typically only in mountain areas or highest latitudes; examples: glaciers, permanent snowpack, snow fields.
+ 
+10. Clouds
+No land cover information due to persistent cloud cover.

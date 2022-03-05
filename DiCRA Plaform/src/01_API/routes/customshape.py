@@ -26,6 +26,8 @@ config = configparser.ConfigParser()
 config.read('config/config.ini')
 AWS_ACCESS_KEY = config['AWS']['ACCESSKEY']
 AWS_SECRET_KEY = config['AWS']['SECRETKEY']
+AZURE_BLOB_PATH= config['azureblob']['Blobpath']
+
 
 custom=APIRouter()
 
@@ -46,7 +48,7 @@ def getcentroid(polygon_feature):
 @custom.post('/getzstat', status_code=200)
 async def get_zstat(details:Customstat,db:Session=Depends(get_db)):
     filedate = datetime.strptime(details.date, '%Y-%m-%d').strftime('%d-%m-%Y')
-    file_path='https://undpdataforpolicy.blob.core.windows.net/undp-data-for-policy/parameters/'+details.parameter+'/RASTER/'+str(filedate)+'.tif'
+    file_path=AZURE_BLOB_PATH+details.parameter+'/RASTER/'+str(filedate)+'.tif'
     stats = zonal_stats(details.geojson,
     file_path,
     stats=['min','max','mean','count'])

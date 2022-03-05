@@ -27,6 +27,7 @@ config = configparser.ConfigParser()
 config.read('config/config.ini')
 AWS_ACCESS_KEY = config['AWS']['ACCESSKEY']
 AWS_SECRET_KEY = config['AWS']['SECRETKEY']
+AZURE_BLOB_PATH= config['azureblob']['Blobpath']
 
 trend=APIRouter()
 
@@ -69,7 +70,7 @@ async def get_trend(details:Gettrend,db:Session=Depends(get_db)):
     zstats=[]
     for i in availabledates:
       filedate = datetime.strptime(str(i.available_date), '%Y-%m-%d').strftime('%d-%m-%Y')
-      file_path='https://undpdataforpolicy.blob.core.windows.net/undp-data-for-policy/parameters/'+details.parameter+'/RASTER/'+str(filedate)+'.tif'
+      file_path=AZURE_BLOB_PATH+details.parameter+'/RASTER/'+str(filedate)+'.tif'
       stats = zonal_stats(details.geojson,
         file_path,
         stats=['mean','count'])

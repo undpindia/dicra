@@ -15,10 +15,6 @@ from schemas.index import Getweather,Returnweather
 from fastapi_pagination import LimitOffsetPage, Page, add_pagination,paginate
 
 
-
-
-
-
 from pydantic import BaseModel
 
 
@@ -30,6 +26,7 @@ async def get_weathertrend(details:Getweather,db:Session=Depends(get_db)):
         query="SELECT extract(epoch from data_date)*1000 as unix,"+details.parameter+"::FLOAT FROM tbl_weather WHERE data_date BETWEEN '"+details.start_date+"' AND '"+details.end_date+"' AND district='"+details.district+"' AND mandal='"+details.mandal+"'"
         data=db.execute(query)
         results = [list(row) for row in data]
+        db.close()
         return{
             'code':200,
             'trend':results
@@ -44,6 +41,7 @@ async def get_weathertrend(details:Getweather,db:Session=Depends(get_db)):
         query="SELECT data_date,"+details.parameter+"::FLOAT FROM tbl_weather WHERE data_date BETWEEN '"+details.start_date+"' AND '"+details.end_date+"' AND district='"+details.district+"' AND mandal='"+details.mandal+"'"
         data=db.execute(query)
         results = [list(row) for row in data]
+        db.close()
         return{
             'code':200,
             'trend':results

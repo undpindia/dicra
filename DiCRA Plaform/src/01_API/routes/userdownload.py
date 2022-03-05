@@ -20,6 +20,8 @@ S3_BUCKET = config['s3bucket']['BucketName']
 TEMP_FILE_PATH = config['paths']['Temporaryfiles']
 AZURE_ACCOUNT_URL=config['azureblob']['Accounturl']
 CONTAINER_NAME=config['azureblob']['Containername']
+AZURE_BLOB_PATH= config['azureblob']['Blobpath']
+
 
 download = APIRouter()
 

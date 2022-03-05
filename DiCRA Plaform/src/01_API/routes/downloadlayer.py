@@ -20,7 +20,7 @@ def all(parameter:str=None):
 
     s3 = session.resource('s3')
 
-    bucket = s3.Bucket('undp-dataforpolicy')
+    bucket = s3.Bucket(S3_BUCKET)
 
     objects = bucket.objects.filter(Prefix='parameters/NDVI/RASTER')
 

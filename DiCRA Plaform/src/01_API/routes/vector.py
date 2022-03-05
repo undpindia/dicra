@@ -19,11 +19,11 @@ vector=APIRouter()
 @vector.get('/getvector',response_class=ORJSONResponse, status_code=200)
 async def get_vector(Administrative_boundary:str=None):
     if Administrative_boundary == "District":
-        BUCKET = 'undp-dataforpolicy'
+        BUCKET = S3_BUCKET
         FILE_TO_READ = 'parameters/NDVI/VECTOR/DISTRICT/NDVI_2021_01_01.geojson'
         client = boto3.client('s3',
-                       aws_access_key_id='AKIAZAOT6GLFI3MXS6YP',
-                       aws_secret_access_key='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'
+                       aws_access_key_id=AWS_ACCESS_KEY,
+                       aws_secret_access_key=AWS_SECRET_KEY
                      )
         result = client.get_object(Bucket=BUCKET, Key=FILE_TO_READ)
         text = result["Body"].read().decode()
@@ -32,11 +32,11 @@ async def get_vector(Administrative_boundary:str=None):
         'data':jsonobj}
 
     elif Administrative_boundary == "Mandal":
-        BUCKET = 'undp-dataforpolicy'
+        BUCKET = S3_BUCKET
         FILE_TO_READ = 'parameters/NDVI/VECTOR/MANDAL/NDVI_2021_02_02.geojson'
         client = boto3.client('s3',
-                       aws_access_key_id='AKIAZAOT6GLFI3MXS6YP',
-                       aws_secret_access_key='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'
+                       aws_access_key_id=AWS_ACCESS_KEY,
+                       aws_secret_access_key=AWS_SECRET_KEY
                      )
         result = client.get_object(Bucket=BUCKET, Key=FILE_TO_READ)
         text = result["Body"].read().decode()

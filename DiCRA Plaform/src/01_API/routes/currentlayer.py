@@ -16,8 +16,6 @@ from fastapi.responses import FileResponse
 from fastapi.responses import ORJSONResponse
 from fastapi import APIRouter,File, UploadFile, Depends
 
-
-
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 AWS_ACCESS_KEY = config['AWS']['ACCESSKEY']
@@ -58,7 +56,6 @@ async def current_raster(parameter:str,db: Session = Depends(get_db)):
             'message':"No file found"
         }
 
-
 @current.get('/currentvector', status_code=200)
 async def current_vector(parameter:str,admbound:str,db: Session = Depends(get_db)):
     availabledates=db.query(Parameter.available_date).filter(Parameter.parameter_name==parameter).order_by(desc(Parameter.available_date)).first()
@@ -86,13 +83,3 @@ async def current_vector(parameter:str,admbound:str,db: Session = Depends(get_db
             'code':404,
             'message':"No file found"
         }
-   
-
-    
-
-
-    
-   
-
-
-    

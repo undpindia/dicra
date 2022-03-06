@@ -18,5 +18,3 @@ class CreateLayer(BaseModel):
     category:str
     class Config:
         orm_mode = True
-
-    

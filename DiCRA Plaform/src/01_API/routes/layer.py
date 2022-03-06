@@ -9,12 +9,8 @@ from fastapi import FastAPI, Depends
 from schemas.index import CreateLayer
 from sqlalchemy.sql.expression import true
 from fastapi_pagination import LimitOffsetPage, Page, add_pagination,paginate
-
 from operator import itemgetter
-
-
 from pydantic import BaseModel
-
 
 layer= APIRouter()
 
@@ -35,7 +31,6 @@ def create(details:CreateLayer, db: Session = Depends(get_db)):
         multiple_files=details.multiple_files,
         display_name=details.display_name,
         category=details.category
-
     )
     db.add(to_create)
     db.commit()
@@ -54,9 +49,3 @@ async def get_layers(db:Session=Depends(get_db)):
 async def get_layers(db: Session = Depends(get_db)):
     return paginate(db.query(Layer).all())
 add_pagination(layer)
-
-
-
-
-
-

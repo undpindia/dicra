@@ -4,7 +4,6 @@ from boto3.session import Session
 from fastapi.responses import FileResponse
 from fastapi import APIRouter,File, UploadFile
 
-
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 AWS_ACCESS_KEY = config['AWS']['ACCESSKEY']

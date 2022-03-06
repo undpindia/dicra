@@ -9,7 +9,6 @@ from schemas.index import CreateUsecase,OutputUsecase
 from fastapi_pagination import LimitOffsetPage, Page, add_pagination,paginate
 from fastapi import FastAPI, Depends,File, UploadFile,Form,status,HTTPException
 
-
 usecase=APIRouter()
 
 @usecase.post("/addusecase")
@@ -65,10 +64,3 @@ async def get_usecase_id(id,db:Session=Depends(get_db)):
         "code":200,
         "usecase":usecases
     }
-
-
-
-
- 
-
-

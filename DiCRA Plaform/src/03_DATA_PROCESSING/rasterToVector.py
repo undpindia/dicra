@@ -6,7 +6,6 @@ from rasterstats import zonal_stats,point_query
 from s3_file_management import writeJson
 import os
 
-
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
@@ -23,6 +22,7 @@ def getcentroid(polygon_feature):
     polygon_shape=shape(polygon_feature)
     centrod_of_polygon=polygon_shape.centroid
     return(centrod_of_polygon)
+
 def createstat(point_value):
     """
     Function for creating stat object 
@@ -38,9 +38,6 @@ def createstat(point_value):
         'min':point_value[0],'mean':point_value[0],
         'max':point_value[0],'median':point_value[0]})
 
-
-
-
 def createvector(geojson_path,tif_path,s3file_name):
     """
     Function for generating vector data based on raster
@@ -49,10 +46,12 @@ def createvector(geojson_path,tif_path,s3file_name):
     tif_path - Path of the tif file
     s3file_name - Name of the json file we need to store in s3 bucket
     """
+    
     # Open geojson file for zonal statistics calculation
     with open(str(geojson_path)) as f:
         data = json.load(f)
     f.close()
+    
     for i in data['features']:
         # Calculating zonal statistics for the given geojson feature
         stat=zonal_stats(i['geometry'], str(tif_path),
@@ -74,4 +73,3 @@ for i in arr:
     without_ext=os.path.splitext(i)[0]
     print(without_ext)
     createvector('geojson/boundary/path','output/vector/path/'+str(i),str(without_ext)+'.geojson')
-    

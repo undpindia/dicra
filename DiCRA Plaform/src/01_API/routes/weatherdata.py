@@ -13,10 +13,7 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.sql.expression import true
 from schemas.index import Getweather,Returnweather
 from fastapi_pagination import LimitOffsetPage, Page, add_pagination,paginate
-
-
 from pydantic import BaseModel
-
 
 weather= APIRouter()
 
@@ -86,4 +83,3 @@ async def get_weather_parameter():
             
         ]
     }
-    

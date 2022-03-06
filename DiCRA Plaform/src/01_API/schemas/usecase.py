@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 
-
-
 class CreateUsecase(BaseModel):
     project_name: str
     project_type: str

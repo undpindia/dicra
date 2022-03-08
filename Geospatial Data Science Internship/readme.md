@@ -37,7 +37,7 @@ We have created a subset of the Fires Dataset and extracted it only for Telangan
 
 ### TASK - 1
 
-**Expected Deliverable - Code (TASK1.ipynb) + JSON File Output (output1.json) **
+**Expected Deliverable - Code (TASK1.ipynb) + JSON File Output (output1.json)**
 
 ### TASK - 2
 

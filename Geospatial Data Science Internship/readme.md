@@ -7,11 +7,9 @@ The DiCRA platform is envisioned as a Digital Public Good that will strategicall
 ## Crop Residue Burning in India
 India is ranked at the top in emissions related to crop burning, accounting for 13% of total global emissions for the 2015-2020 period, according to a new report released by climate tech startup Blue Sky Analytics. An Indian Agricultural Research Institute study estimates that in 2008-09, the particulate released by crop residue burning is more than 17 times the total annual particulate pollution in Delhi from all sources—vehicles, industries, garbage burning, etc. Similarly, the total national annual emission for CO2 from crop residue burning is more than 64 times the total annual CO2 pollution emission in Delhi. India is the second-largest producer of rice worldwide. Paddy and wheat cropping are a widespread farming practice in northwestern parts of India; however, the burning of paddy and wheat straw and stubble by farmers after the harvesting season is quite common.
 
-## Assessment Information
-
 Currently DiCRA Platform is focusing on Telangana, and hence for the assessment you will be provided with datasets pertaining to Telangana.
 
-### Datasets
+## DATA
 
 **(1) NASA Fire Information for Resource Management Systems**
 
@@ -33,7 +31,7 @@ See: https://earthdata.nasa.gov/earth-observation-data/near-real-time/citation#e
 
 **(2) ESRI have made available a ten class global land use/land cover (LULC) map for the year 2020 at 10 meter resolution available at this [link](https://www.arcgis.com/home/item.html?id=d6642f8a4f6d4685a24ae2dc0c73d4ac).**
 
-### Assessment Task
+## TASKS
 
 We have created a subset of the Fires Dataset and extracted it only for Telangana using the shapefile downloaded from [GADM](https://gadm.org). Please see the visualization of the dataset [here](https://public.flourish.studio/visualisation/8561801/). The data is provided to you as a CSV file (telangana_fires.csv) in the Datasets folder. NASA Fire Information dataset includes categories of fires that are not a result of agricultural practices as well. But for our analysis, we want to create a subset of this which gives the probability of a fire being caused by agricultural practices. The task for you is to use the ESRI LULC Map to propose a methodology and implementation for creating this subset. As this is an unsupervised model, we will not specificially be testing your code for evaluation metrics but on your approach and implementation. **The coding needs to be in PYTHON ONLY.**
 
@@ -41,7 +39,7 @@ Along with this implementation, we want you to create a **short medium blog post
 
 **Expected Deliverable - Code + Medium Blog Draft/Published Link**
 
-## How to submit your deliverables to our GitHub Repository
+### How to submit your deliverables to our GitHub Repository
 
 - Fork the project Data4Policy & clone locally.
 - Create an upstream remote and sync your local copy before you branch.

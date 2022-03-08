@@ -7,17 +7,6 @@ The DiCRA platform is envisioned as a Digital Public Good that will strategicall
 ## Crop Residue Burning in India
 India is ranked at the top in emissions related to crop burning, accounting for 13% of total global emissions for the 2015-2020 period, according to a new report released by climate tech startup Blue Sky Analytics. An Indian Agricultural Research Institute study estimates that in 2008-09, the particulate released by crop residue burning is more than 17 times the total annual particulate pollution in Delhi from all sources—vehicles, industries, garbage burning, etc. Similarly, the total national annual emission for CO2 from crop residue burning is more than 64 times the total annual CO2 pollution emission in Delhi. India is the second-largest producer of rice worldwide. Paddy and wheat cropping are a widespread farming practice in northwestern parts of India; however, the burning of paddy and wheat straw and stubble by farmers after the harvesting season is quite common.
 
-## Problem Statement
-
-- How can we identify farming communities that are over time reducing the impact on the environment and health by curbing crop residue burning?
-- Can non-traditional data sources help in identifying what they are doing or what changes have happened in their economic or social situation compared to communities that are still practicing crop/stubble burning?
-- Identify datasets that can help quantify the practice of crop burning among rice farmers in India? This also calls for identifying areas under rice, cropping patterns, air quality indicators, etc.
-- Identify positive deviant rice farms in India practicing Climate Smart Agriculture using non-traditional data sources such as mobile phone records, satellite imagery, social media, online data, or financial data.
-- Identify changes in socio-economic or policy aspects in regions that are showing positive deviance.
-- Diversifying crops, using crop residue for alternate purposes, in-situ management of crop residue, policy measures, etc. are recommended by officials to reduce crop burning. Can data sources help identify such practices and adaptations by communities?
-
-**Ofcourse as part of this assessment we do not expect you to address all the problems, but we wanted to give you an overview of our goals with this project for better context** 
-
 ## Assessment Information
 
 Currently DiCRA Platform is focusing on Telangana, and hence for the assessment you will be provided with datasets pertaining to Telangana.

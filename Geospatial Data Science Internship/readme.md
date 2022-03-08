@@ -46,7 +46,7 @@ See: https://earthdata.nasa.gov/earth-observation-data/near-real-time/citation#e
 
 ### Assessment Task
 
-We have created a subset of the Fires Dataset and extracted it only for Telangana using the shapefile downloaded from [GADM](https://gadm.org). Please see the visualization of the dataset [here](https://public.flourish.studio/visualisation/8561801/). The data is provided to you as a CSV file (telangana_fires.csv) in the Datasets folder. NASA Fire Information dataset includes categories of fires that are not a result of agricultural practices as well. But for our analysis, we want to create a subset of this which gives the probability of a fire being caused by agricultural practices. The task for you is to use the ESRI LULC Map to propose a methodology and implementation for creating this subset. As this is an unsupervised model, we will not specificially be testing your code for evaluation metrics but on your approach and implementation. **The coding needs to be in Python.**
+We have created a subset of the Fires Dataset and extracted it only for Telangana using the shapefile downloaded from [GADM](https://gadm.org). Please see the visualization of the dataset [here](https://public.flourish.studio/visualisation/8561801/). The data is provided to you as a CSV file (telangana_fires.csv) in the Datasets folder. NASA Fire Information dataset includes categories of fires that are not a result of agricultural practices as well. But for our analysis, we want to create a subset of this which gives the probability of a fire being caused by agricultural practices. The task for you is to use the ESRI LULC Map to propose a methodology and implementation for creating this subset. As this is an unsupervised model, we will not specificially be testing your code for evaluation metrics but on your approach and implementation. **The coding needs to be in PYTHON ONLY.**
 
 Along with this implementation, we want you to create a **short medium blog post** (maximum 600 words - include plots/any other visualizations if you have them) on your analysis, methodology, results, and conclusions from this exercise. If you are new to Medium, please use this resource to know [how to write your first blog post](https://help.medium.com/hc/en-us/articles/225168768-Writing-and-publishing-your-first-story)
 
@@ -56,13 +56,13 @@ Along with this implementation, we want you to create a **short medium blog post
 
 - Fork the project Data4Policy & clone locally.
 - Create an upstream remote and sync your local copy before you branch.
-- **Create a folder with name in the same template as follows - FirstnameLastnameApplicationnumber** inside the folder **Geospatial Data Science Internship**
-- Do the work **only** within your folder and make sure that you write good commit messages.
+- **Create a folder with name in the same template as follows - FirstnameLastname** inside the folder **Geospatial Data Science Internship**
+- Do the work **ONLY** within your folder and make sure that you write good commit messages.
 - **Include an md file with the link to your medium blog post.**
 - Push to the origin repository.
 - Create a new Pull Request in GitHub.
 
-## The Pull Request have to be submitted befor the DEADLINE - March 11th FRIDAY (11:59 PM EST)
+## The Pull Request has to be submitted before the DEADLINE - March 11th FRIDAY (11:59 PM EST)
 
 Check out this link for detailed information on [How to Contribute to a GitHub Project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
 

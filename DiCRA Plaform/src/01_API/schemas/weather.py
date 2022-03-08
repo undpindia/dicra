@@ -1,7 +1,6 @@
 from datetime import date, datetime
 from pydantic import BaseModel
 
-
 class Getweather(BaseModel):
     district: str
     mandal: str
@@ -11,5 +10,4 @@ class Getweather(BaseModel):
 
 class Returnweather(BaseModel):
     district:str
-    mandal:str
-    
+    mandal:str    

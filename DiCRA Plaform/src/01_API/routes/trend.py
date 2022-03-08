@@ -1,4 +1,3 @@
-
 import os
 import time
 import json
@@ -21,7 +20,6 @@ from fastapi.responses import FileResponse
 from sqlalchemy.sql.expression import null
 from rasterstats import zonal_stats, point_query
 from fastapi import APIRouter,File, UploadFile,Request,Depends
-
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')

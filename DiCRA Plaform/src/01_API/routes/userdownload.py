@@ -11,7 +11,6 @@ from fastapi import APIRouter, Depends
 from azure.storage.blob import BlobClient
 from fastapi.responses import FileResponse
 
-
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 AWS_ACCESS_KEY = config['AWS']['ACCESSKEY']
@@ -22,9 +21,7 @@ AZURE_ACCOUNT_URL=config['azureblob']['Accounturl']
 CONTAINER_NAME=config['azureblob']['Containername']
 AZURE_BLOB_PATH= config['azureblob']['Blobpath']
 
-
 download = APIRouter()
-
 
 @download.get('/downloadraster', status_code=200)
 async def download_rasterdata(
@@ -70,8 +67,6 @@ async def download_rasterdata(
             'message':"No file found"
         }
     
-
-
 @download.get('/downloadvector', status_code=200)
 async def download_vectordata(
     parameter: str,
@@ -118,4 +113,3 @@ async def download_vectordata(
             'code':404,
             'message':"No file found"
         }
-

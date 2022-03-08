@@ -51,11 +51,11 @@ Along with this implementation, we want you to create a **short medium blog post
 
 **Expected Deliverable - Code (TASK2.ipynb) + JSON File Output  (output2.json) + Medium Blog Draft/Published Link**
 
-### How to submit your deliverables to our GitHub Repository
+### How to submit your deliverables to our GitHub Repository [PLEASE FOLLOW ALL THE STEPS DILIGENTLY. THIS IS MOST IMPORTANT TO EVALUATE YOUR SUBMISSION]
 
 - Fork the project Data4Policy & clone locally.
 - Create an upstream remote and sync your local copy before you branch.
-- **Create a folder with name in the same template as follows - FirstnameLastname** inside the folder **Geospatial Data Science Internship**. PLEASE NOTE: THIS STEP IS VERY IMPORTANT FOR EVALUATION OF YOUR SUBMISSION. 
+- **Create a folder with name in the same template as follows - FirstnameLastname** inside the folder **Geospatial Data Science Internship**. 
 - Do the work **ONLY** within your folder and make sure that you write good commit messages.
 - **Include an md file with the link to your medium blog post.**
 - Push to the origin repository.

@@ -19,5 +19,7 @@ Following is a depiction of the dataflow proposed under the project -
 
 <img width="347" alt="image" src="https://user-images.githubusercontent.com/42402451/138163914-85322590-f0ea-44f4-88e6-4452f49d7057.png">
 
+## Disclaimer
 
+## Terms of Use
 

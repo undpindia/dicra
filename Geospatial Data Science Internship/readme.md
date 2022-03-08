@@ -55,13 +55,13 @@ Along with this implementation, we want you to create a **short medium blog post
 
 - Fork the project Data4Policy & clone locally.
 - Create an upstream remote and sync your local copy before you branch.
-- **Create a folder with name in the same template as follows - FirstnameLastname** inside the folder **Geospatial Data Science Internship**. PLEASE NOTE, THIS STEP IS VERY IMPORTANT FOR EVALUATION. 
+- **Create a folder with name in the same template as follows - FirstnameLastname** inside the folder **Geospatial Data Science Internship**. PLEASE NOTE: THIS STEP IS VERY IMPORTANT FOR EVALUATION OF YOUR SUBMISSION. 
 - Do the work **ONLY** within your folder and make sure that you write good commit messages.
 - **Include an md file with the link to your medium blog post.**
 - Push to the origin repository.
 - Create a new Pull Request in GitHub.
 
-## The Pull Request has to be submitted before the DEADLINE - March 12th FRIDAY (11:59 PM EST)
+## The Pull Request has to be submitted before the DEADLINE - March 12th SATURDAY (11:59 PM EST)
 
 Check out this link for detailed information on [How to Contribute to a GitHub Project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
 

@@ -1,4 +1,4 @@
-# Crop Residue Burning in Telangana
+# UNDP Geospatial Data Science Internship Assessment
 
 ## Background
 UNDP has partnered with the Government of Telangana to jointly initiate the NextGenGov ‘Data for Policy’ initiative on Food Systems. The aim is to incorporate anticipatory governance models for future-fit food systems in Telangana using data-driven policymaking tools and ecosystem-driven approaches. UNDP is keen on augmenting learning capabilities, increasing the predictive or anticipatory capacity to feed into evidence-driven policies in the state, and create r radical traceability and transparency across the system from producers to consumers by building provenance documentation around food that can help build trust in the system at the same time nurture sustainable and healthy practices. The goal is to design, develop and demonstrate anticipatory governance models for food systems in Telangana using digital public goods and community-centric approaches to strengthen data-driven policymaking in the state.
@@ -18,19 +18,52 @@ India is ranked at the top in emissions related to crop burning, accounting for 
 
 **Ofcourse as part of this assessment we do not expect you to address all the problems, but we wanted to give you an overview of our goals with this project for better context** 
 
-## DELIVERABLES
+## Assessment Information
+
+Currently DiCRA Platform is focusing on Telangana, and hence for the assessment you will be provided with datasets pertaining to Telangana.
+
+### Datasets
+
+**(1) NASA Fire Information for Resource Management Systems**
+
+- Data Information
+
+MODIS standard quality Thermal Anomalies / Fire locations processed by the University of Maryland with a 3-month lag and distributed by FIRMS. These standard data (MCD14ML) replace the NRT (MCD14DL) files when available.
+Data is available from 01-01-2015 until 31-08-2021 (downloaded on Jan 28, 2022)
+
+For more details please visit - [NASA FIRMS MODIS or VIIRS Fire/Hotspot Data Download](https://firms.modaps.eosdis.nasa.gov/download/Readme.txt)
+
+- Data Citation and Disclaimer
+
+NASA promotes the full and open sharing of all data with the research and applications
+communities, private industry, academia, and the general public. Read the NASA Data and
+Information Policy. 
+
+- Citation
+See: https://earthdata.nasa.gov/earth-observation-data/near-real-time/citation#ed-firms-citation 
+
+**(2) ESRI have made available a ten class global land use/land cover (LULC) map for the year 2020 at 10 meter resolution available at this [link](https://www.arcgis.com/home/item.html?id=d6642f8a4f6d4685a24ae2dc0c73d4ac).**
+
+### Assessment Task
+
+We have created a subset of the Fires Dataset and extracted it only for Telangana using the shapefile downloaded from [GADM](https://gadm.org). Please see the visualization of the dataset [here](https://public.flourish.studio/visualisation/8561801/). The data is provided to you as a CSV file (telangana_fires.csv) in the Datasets folder. NASA Fire Information dataset includes categories of fires that are not a result of agricultural practices as well. But for our analysis, we want to create a subset of this which gives the probability of a fire being caused by agricultural practices. The task for you is to use the ESRI LULC Map to propose a methodology and implementation for creating this subset. As this is an unsupervised model, we will not specificially be testing your code for evaluation metrics but on your approach and implementation. 
+
+Along with this implementation, we want you to create a short medium blog post on your analysis, methodology, results, and conclusions from this exercise. If you are new to Medium, please use this resource to know [how to write your first blog post](https://help.medium.com/hc/en-us/articles/225168768-Writing-and-publishing-your-first-story)
+
+**Expected Deliverable - Code + Medium Blog Draft/Published Link**
 
 ## How to submit your deliverables to our GitHub Repository
 
 - Fork the project Data4Policy & clone locally.
 - Create an upstream remote and sync your local copy before you branch.
-- Create a folder with name in the same template as follows - FirstnameLastnameApplicationnumber
-- Do the work only within your folder, write good commit messages.
-- Push to your origin repository.
-- Create a new PR in GitHub.
-- Respond to any code review feedback (until the deadline)
+- **Create a folder with name in the same template as follows - FirstnameLastnameApplicationnumber** inside the folder **Geospatial Data Science Internship**
+- Do the work **only** within your folder and make sure that you write good commit messages.
+- **Include an md file with the link to your medium blog post.**
+- Push to the origin repository.
+- Create a new Pull Request in GitHub.
 
 Check out this link for detailed information on [How to Contribute to a GitHub Project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
+
 
 ## References
 

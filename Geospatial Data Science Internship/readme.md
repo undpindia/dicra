@@ -33,11 +33,19 @@ See: https://earthdata.nasa.gov/earth-observation-data/near-real-time/citation#e
 
 ## TASKS
 
-We have created a subset of the Fires Dataset and extracted it only for Telangana using the shapefile downloaded from [GADM](https://gadm.org). Please see the visualization of the dataset [here](https://public.flourish.studio/visualisation/8561801/). The data is provided to you as a CSV file (telangana_fires.csv) in the Datasets folder. NASA Fire Information dataset includes categories of fires that are not a result of agricultural practices as well. But for our analysis, we want to create a subset of this which gives the probability of a fire being caused by agricultural practices. The task for you is to use the ESRI LULC Map to propose a methodology and implementation for creating this subset. As this is an unsupervised model, we will not specificially be testing your code for evaluation metrics but on your approach and implementation. **The coding needs to be in PYTHON ONLY.**
+We have created a subset of the Fires Dataset and extracted it only for Telangana using the shapefile downloaded from [GADM](https://gadm.org). Please see the visualization of the dataset [here](https://public.flourish.studio/visualisation/8561801/). The data is provided to you as a CSV file (telangana_fires.csv) in the Datasets folder.
+
+### TASK - 1
+
+**Expected Deliverable - Code (TASK1.ipynb) + JSON File Output (output1.json) **
+
+### TASK - 2
+
+NASA Fire Information dataset includes categories of fires that are not a result of agricultural practices as well. But for our analysis, we want to create a subset of this which gives the probability of a fire being caused by agricultural practices. The task for you is to use the ESRI LULC Map to propose a methodology and implementation for creating this subset. As this is an unsupervised model, we will not specificially be testing your code for evaluation metrics but on your approach and implementation. **The coding needs to be in PYTHON ONLY.**
 
 Along with this implementation, we want you to create a **short medium blog post** (maximum 600 words - include plots/any other visualizations if you have them) on your analysis, methodology, results, and conclusions from this exercise. If you are new to Medium, please use this resource to know [how to write your first blog post](https://help.medium.com/hc/en-us/articles/225168768-Writing-and-publishing-your-first-story)
 
-**Expected Deliverable - Code + Medium Blog Draft/Published Link**
+**Expected Deliverable - Code (TASK2.ipynb) + JSON File Output  (output2.json) +Medium Blog Draft/Published Link**
 
 ### How to submit your deliverables to our GitHub Repository
 

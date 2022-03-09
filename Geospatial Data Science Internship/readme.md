@@ -61,7 +61,7 @@ Along with this implementation, we want you to create a **short medium blog post
 - Push to the origin repository.
 - Create a new Pull Request in GitHub.
 
-## The Pull Request has to be submitted before the DEADLINE - March 12th SATURDAY (11:59 PM EST)
+## The Pull Request has to be submitted before the DEADLINE - March 13th SUNDAY (11:59 PM EST)
 
 Check out this link for detailed information on [How to Contribute to a GitHub Project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
 

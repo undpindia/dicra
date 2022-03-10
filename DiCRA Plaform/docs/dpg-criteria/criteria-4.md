@@ -1,5 +1,5 @@
 
-## Does the license of libraries/dependencies undermine the openness of the project?
+# Does the license of libraries/dependencies undermine the openness of the project?
 
 The platform is transferable to any cloud service provider or data center, it has no mandatory dependencies. Rebuilding of code will not be required in case it is moved from the current hosting provider to any other hosting provider. DiCRA has no dependencies in terms of use of software also as it is being developed using  open source technologies only.
 

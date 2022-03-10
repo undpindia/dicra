@@ -34,6 +34,12 @@ UNDP has also done User Acceptance Testing for the application.
 
 ## 9.b. Inappropriate & Illegal Content
 
+The content on DiCRA platform are data analysis of open datasets, data modelling and use cases related to - natural resources impacting agriculture (soil, water, land, meteorological conditions etc.), wealth index (of geographies) and markets (price fluctuations of agriculture commodities).  The content that is collected and distributed is majorly geospatial in nature so there is limited scope of illegal content such as child abuse or sexual abuse material.
+
+Users contributing to use cases on DiCRA platform make their submissions in the form of text and image data which is moderated and approved on the back end by UNDP administrators. Show screenshot of Use case entry :
+
+
+UNDP administrators scrutinize the content based on parameters such as: relevance, scientific reliability and accuracy of the content. Content can be published on DiCRA platform only after the scrutiny of the administrator. Hence any inappropriate/abusive content are rejected at the submission stage itself.
 
 
 ## 9.c. Protection from harassment

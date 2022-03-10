@@ -1,0 +1,10 @@
+Relevance to Sustainable Development Goals 
+
+The  objective of the DiCRA platform is to provide free and open access to geospatial datasets through a geospatial digital platform thereby enabling concrete evidence-driven policies and concerted action from all stakeholders involved in sustainable and  climate resilient agriculture. Through geospatial analysis and data powered positive deviance approaches, the platform informs stakeholders in food systems, on which farms are more resilient to extreme weather events. Indigenous knowledge is tapped through field validation and ethnography to suggest good practices on climate resilient farming that are already working well through bottom-up approaches, to feed into large scale agriculture programs and policies and optimize public investments on climate resilient agriculture. 
+
+DiCRA platform contributes to 2 SDG goals namely: Goal 2 to End hunger, achieve food security and improved nutrition and promote sustainable agriculture and Goal 13 to take urgent action to combat climate change and its impacts. The specific targets and indicators that the platform contributes are shown in the table below: 
+
+| SDG Goal | SDG Target | SDG Indicator |
+| :---         |     :---:      |          ---: |
+| 2. End hunger, achieve food security and improved nutrition and promote sustainable agriculture   | 2.4: By 2030, ensure sustainable food production systems and implement resilient agricultural practices that increase productivity and production, that help maintain ecosystems, that strengthen capacity for adaptation to climate change, extreme weather, drought, flooding and other disasters and that progressively improve land and soil quality     | 2.4.1 Proportion of Net Sown Area to Cultivable Land    |
+| git diff     | git diff       | git diff      |

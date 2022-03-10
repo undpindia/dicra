@@ -1,5 +1,5 @@
 
-## Does the project adhere to privacy and other applicable international and domestic laws?
+# Does the project adhere to privacy and other applicable international and domestic laws?
 
 DiCRA platform deals majorly with non-PI data related to geospatial data on natural resources (bio-physical attributes) and economic data parameters in agriculture. Such non-PI data is contributed and consumed by several users through open and free access to the platform, open data, open APIs and open code published on GitHub. 
 

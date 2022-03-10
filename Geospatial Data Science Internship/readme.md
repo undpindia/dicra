@@ -37,7 +37,7 @@ We have created a subset of the Fires Dataset and extracted it only for Telangan
 
 ### TASK - 1
 
-In this task, we want you to provide a JSON output which summarised the number of fires per district per year in Telangana. The json output should include the following keys - district, year, fireCount. Please use the same key names, and the district names as available from [GADM Level 3](https://gadm.org)
+In this task, we want you to provide a JSON output which summarised the number of fires per administrative boundary per year in Telangana. The json output should include the following keys - adm_name, year, fireCount. Please use the same key names, and the boundary names as available from **[GADM Level 3](https://gadm.org)**
 
 **Expected Deliverable - Code (TASK1.ipynb) + JSON File Output (output1.json)**
 
@@ -61,7 +61,7 @@ Along with this implementation, we want you to create a **short medium blog post
 - Push to the origin repository.
 - Create a new Pull Request in GitHub.
 
-## The Pull Request has to be submitted before the DEADLINE - March 12th SATURDAY (11:59 PM EST)
+## The Pull Request has to be submitted before the DEADLINE - March 13th SUNDAY (11:59 PM EST)
 
 Check out this link for detailed information on [How to Contribute to a GitHub Project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
 

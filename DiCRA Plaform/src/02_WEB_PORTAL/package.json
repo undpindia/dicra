@@ -27,7 +27,6 @@
     "i": "^0.3.7",
     "leaflet": "^1.7.1",
     "leaflet-draw": "^1.0.4",
-    "node-sass": "^4.14.1",
     "npm": "^8.2.0",
     "ramda": "^0.27.1",
     "react": "^17.0.2",
@@ -55,6 +54,7 @@
     "reactstrap": "^9.0.1",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
+    "sass": "^1.49.9",
     "start": "^5.1.0",
     "url": "^0.11.0",
     "use-places-autocomplete": "^1.11.0",
@@ -62,7 +62,7 @@
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=8196 start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts --max_old_space_size=8196 build",
+    "build": "react-scripts --max_old_space_size=8196 build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

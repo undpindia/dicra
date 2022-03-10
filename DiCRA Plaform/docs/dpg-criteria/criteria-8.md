@@ -1,5 +1,5 @@
 
-## Does the project adhere to standards and best practices?
+# Does the project adhere to standards and best practices?
 
 DiCRA Platform is designed and developed according to the Principles for Digital Development following a Human-centred design approach.
 

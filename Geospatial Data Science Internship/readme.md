@@ -37,7 +37,7 @@ We have created a subset of the Fires Dataset and extracted it only for Telangan
 
 ### TASK - 1
 
-In this task, we want you to provide a JSON output which summarised the number of fires per district per year in Telangana. The json output should include the following keys - district, year, fireCount. Please use the same key names, and the district names as available from [GADM Level 3](https://gadm.org)
+In this task, we want you to provide a JSON output which summarised the number of fires per administrative boundary per year in Telangana. The json output should include the following keys - adm_name, year, fireCount. Please use the same key names, and the boundary names as available from **[GADM Level 3](https://gadm.org)**
 
 **Expected Deliverable - Code (TASK1.ipynb) + JSON File Output (output1.json)**
 

@@ -3,7 +3,7 @@
 
 # In[2]:
 
-
+#task 1 code
 import pandas as pd
 data = pd.read_csv('testing.csv', usecols=['longitude','latitude','acq_date'])
 

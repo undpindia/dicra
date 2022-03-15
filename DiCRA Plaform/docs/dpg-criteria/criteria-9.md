@@ -44,4 +44,6 @@ UNDP administrators scrutinize the content based on parameters such as: relevanc
 
 ## 9.c. Protection from harassment
 
+Directly there is no interaction between users and contributors though the platform. But there is a moderated interaction between the contributors through our GitHub account. 
+
 

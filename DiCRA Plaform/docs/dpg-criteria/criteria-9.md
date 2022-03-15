@@ -38,6 +38,7 @@ The content on DiCRA platform are data analysis of open datasets, data modelling
 
 Users contributing to use cases on DiCRA platform make their submissions in the form of text and image data which is moderated and approved on the back end by UNDP administrators. Show screenshot of Use case entry :
 
+<img width="1155" alt="image" src="https://user-images.githubusercontent.com/42402451/158346445-aae77906-f8e1-4148-a2b5-5650b974c4fc.png">
 
 UNDP administrators scrutinize the content based on parameters such as: relevance, scientific reliability and accuracy of the content. Content can be published on DiCRA platform only after the scrutiny of the administrator. Hence any inappropriate/abusive content are rejected at the submission stage itself.
 

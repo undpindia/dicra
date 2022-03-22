@@ -49,6 +49,8 @@
 
 - [Relative Wealth Index](https://dataforgood.facebook.com/dfg/tools/relative-wealth-index) - The Relative Wealth Index predicts the **relative standard of living** within countries using privacy protecting connectivity data, satellite imagery, and other novel data sources.
 
+Microestimates of wealth for all low- and middle-income countries Guanghua Chi, Han Fang, Sourav Chatterjee, Joshua E. Blumenstock Proceedings of the National Academy of Sciences Jan 2022, 119 (3) e2113658119; DOI: 10.1073/pnas.2113658119
+
 - [ESRI 2020 Land Cover Map](https://www.arcgis.com/apps/instant/media/index.html?appid=fc92d38533d440078f17678ebc20e8e2)
 
 This layer includes a global map of land use/land cover (LULC). The map is derived from ESA Sentinel-2 imagery at 10m resolution. It is a composite of LULC predictions for 10 classes throughout the year in order to generate a representative snapshot of 2020.

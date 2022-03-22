@@ -11,34 +11,6 @@ The DiCRA platform for Telangana is envisioned as a Digital Public Good that wil
 
 Positive and negative deviance would be particularly interesting to policy makers since they provide valuable intelligence on – which farms are having exceptionally high productivity compared to others? Which farms are most resilient (or most vulnerable) to extreme weather incidents? Such intelligence when combined with farmer-centric ethnographic research on the ground will provide insights and patterns on climate resilient agriculture practices that are already working well on the ground. The combination of data-driven and community-centric approaches when translated into policy insights can generate policy effects for strengthening climate resilient agriculture.    
 
-## Data Flow
-
-Data collaboration and synchronization is vital for implementing this technology solution. This platform aims to incorporate data from Open data platforms, Non-Public Domain datasets through data partnerships and incorporate data from open APIs. 
-
-Following is a depiction of the dataflow proposed under the project -
-
-<img width="347" alt="image" src="https://user-images.githubusercontent.com/42402451/138163914-85322590-f0ea-44f4-88e6-4452f49d7057.png">
-
-## Terms of Service
-
-The DiCRA Platform is an open data platform managed by the United Nations Development Programme. These Terms of Service (hereafter ‘Terms’ or ‘these Terms’) describe how DiCRA is managed and how the platform should be used. UNDP will update these Terms as needed, and will post notice of significant updates on our GitHub Page and through the DiCRA Platform. All organizations and individuals using this platform are bound by these Terms. If you do not agree with the Terms, you should discontinue use of DiCRA. If you have any questions or comments about these Terms or DiCRA, please leave a comment on the Discussions tab of our GitHub repository or send an email to acceleratorlab.in@undp.org
-
-**Disclaimer**
-
-The DiCRA online platform and its content are made available by the UNDP team. The content providers make no warranty, express or implied, nor assume any legal liability or responsibility for the accuracy, completeness, or usefulness of this content or its online services, nor represent that its use may not potentially infringe property rights. UNDP makes no warranty that DiCRA online services and its content will be uninterrupted or error-free, nor that any defects will be corrected, nor that its online services or content will be free of viruses or other harmful components. UNDP assumes no liability for possible damages or implications which occur by direct or indirect use of DiCRA services or content.
-
-Privacy
-
-User contact details are only shared with the administrator of the DiCRA Platform if the user needs to download datasets.
-
-UNDP upholds the highest standard of data protection for the personal data of DiCRA users and organization administrators. In case such personal data is exposed, UNDP will notify all affected individuals and remedy the incident.
-
-UNDP continually seeks to understand the behavior of users on the DiCRA platform in order to make improvements. To do so, UNDP uses third-party analytics services, such as Google Analytics. This service use cookies stored on users’ devices to send encrypted information to Google Analytics about how users arrived at DiCRA, what pages they visited on DiCRA, and their actions within those pages. UNDP does not send identifying information (including names, usernames, or email addresses) to Google Analytics. Google Analytics’ use of the data collected from the DiCRA platform is governed by their respective Terms of Use. If you would like to disable the tracking described above, you can install the Google Analytics Opt-out Browser Add-on to disable Google Analytics tracking. The data collected by these tracking systems will be retained indefinitely in order to understand how user behavior is changing over time.
-
-Data Licensing
-
-Each of the datasets made available through the DiCRA PLatform have their own data use licensing and citation requirement. More information regarding this is made available at the following link. By downloading the data through DiCRA Platform, the user acknowledges the individual data source's data use agreements and have to cite the data source as per the citation format of the dataset.
-
 
 
 

@@ -27,7 +27,7 @@ The DiCRA Platform is an open data platform managed by the United Nations Develo
 
 The DiCRA online platform and its content are made available by the UNDP team. The content providers make no warranty, express or implied, nor assume any legal liability or responsibility for the accuracy, completeness, or usefulness of this content or its online services, nor represent that its use may not potentially infringe property rights. UNDP makes no warranty that DiCRA online services and its content will be uninterrupted or error-free, nor that any defects will be corrected, nor that its online services or content will be free of viruses or other harmful components. UNDP assumes no liability for possible damages or implications which occur by direct or indirect use of DiCRA services or content.
 
-Privacy
+**Privacy**
 
 User contact details are only shared with the administrator of the DiCRA Platform if the user needs to download datasets.
 
@@ -35,7 +35,7 @@ UNDP upholds the highest standard of data protection for the personal data of Di
 
 UNDP continually seeks to understand the behavior of users on the DiCRA platform in order to make improvements. To do so, UNDP uses third-party analytics services, such as Google Analytics. This service use cookies stored on users’ devices to send encrypted information to Google Analytics about how users arrived at DiCRA, what pages they visited on DiCRA, and their actions within those pages. UNDP does not send identifying information (including names, usernames, or email addresses) to Google Analytics. Google Analytics’ use of the data collected from the DiCRA platform is governed by their respective Terms of Use. If you would like to disable the tracking described above, you can install the Google Analytics Opt-out Browser Add-on to disable Google Analytics tracking. The data collected by these tracking systems will be retained indefinitely in order to understand how user behavior is changing over time.
 
-Data Licensing
+**Data Licensing**
 
 Each of the datasets made available through the DiCRA PLatform have their own data use licensing and citation requirement. More information regarding this is made available at the following link. By downloading the data through DiCRA Platform, the user acknowledges the individual data source's data use agreements and have to cite the data source as per the citation format of the dataset.
 

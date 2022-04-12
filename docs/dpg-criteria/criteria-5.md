@@ -1,6 +1,6 @@
 # Is there documentation?
 
-The following documents are made available at https://github.com/undpindia/Data4Policy/tree/main/DiCRA%20Plaform/docs
+The following documents are made available at https://github.com/undpindia/DiCRA/tree/main/docs
 
 - Database Modeling
 - DiCRA Server Requirements

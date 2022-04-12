@@ -12,4 +12,4 @@ FastAPI - MIT License
 PostgreSQL - It is released under the PostgreSQL License, a liberal Open Source license, similar to the BSD or MIT licenses.
 
 **Datasets**
- Each of the datasets made available through the DiCRA PLatform have their own data use licensing and citation requirement, most of it Creative Commons License (with the requirement of Attribution). Details pertaining to individual datasets and their license along with Citation is available here.
+ Each of the datasets made available through the DiCRA PLatform have their own data use licensing and citation requirement, most of it Creative Commons License (with the requirement of Attribution). Details pertaining to individual datasets and their license along with Citation is available [here](https://github.com/undpindia/Data4Policy/blob/main/DiCRA/datasets_metadata.xlsx)

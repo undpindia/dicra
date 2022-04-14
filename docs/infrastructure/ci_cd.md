@@ -27,9 +27,10 @@
 - GitHub Workflows in Github Actions:
 Add a folder .github/workflows to your source code. Inside that folder, create a text file named deploytoserver.yml (file name can be any meaningful name with .yml extension)with the following content:
 
-**name**: Deploy React App to Azure Storage
+**name: Deploy React App to Azure Storage**
 
-<img width="767" alt="image" src="https://user-images.githubusercontent.com/42402451/163324734-008a18d3-313e-4c78-bc4e-70c27a443309.png">
+<img width="792" alt="image" src="https://user-images.githubusercontent.com/42402451/163325139-ca2ca733-cc64-4097-96dd-9a336a8468b0.png">
+
 
 - On every push and pull request to the main Branch the workflow automatically triggers and takes the build of the updated code and deploy on the Azure storage.
 

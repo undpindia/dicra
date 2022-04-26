@@ -1,0 +1,29 @@
+$sidebar-s: 305px;
+$sidebar-m: 390px;
+$sidebar-l: 460px;
+
+$screen-small: 768px;
+$screen-medium: 992px;
+$screen-large: 1200px;
+
+$sidebar-sizes: (
+   small: $sidebar-s,
+   medium: $sidebar-m,
+   large-l: $sidebar-l,
+);
+
+$screen-breakpoints: (
+   small: $screen-small,
+   medium: $screen-medium,
+   large: $screen-large,
+);
+
+:export {
+   sidebarS: 305px;
+   sidebarM: 390px;
+   sidebarL: 460px;
+   screenSmall: 768px;
+   screenMedium: 992px;
+   screenLarge: 1200px;
+};
+

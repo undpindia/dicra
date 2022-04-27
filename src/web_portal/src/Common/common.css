@@ -43,6 +43,9 @@ span.ant-radio-button.ant-radio-button-disabled:hover {
 .leaflet-touch .leaflet-right .leaflet-draw-actions {
     top: 238px !important;
 }
+.btn-home-mobile {
+  display: none;
+}
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .progress-indicator {
        margin-bottom: 50px;
@@ -52,9 +55,19 @@ span.ant-radio-button.ant-radio-button-disabled:hover {
     }
 
     .btn-home-mobile {
-        display: block;
-    }
-
+      display: block;
+      position: absolute;
+      padding: 0 7px 5px 7px;
+      border-radius: 3px;
+      background-color: #282929;
+      color: #90989b;
+      right: 53px;
+      top: 247px;
+      z-index: 9999;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 2px 0 #000;
+  }
     .usecase-mobile {
         text-align: -webkit-center;
     }

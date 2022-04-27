@@ -278,72 +278,73 @@ span.ant-radio-button.ant-radio-button-disabled:hover {
         transform: translate(30%, 0%);
     }
 
+    /* Table */
+     /* Force table to not be like tables anymore */
+      #data-source table,
+      #data-source thead,
+      #data-source tbody,
+      #data-source th,
+      #data-source td,
+      #data-source tr {
+        display: block;
+      }
+
+      /* Hide table headers (but not display: none;, for accessibility) */
+      #data-source thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      #data-source tr {
+        border: 1px solid #ccc;
+      }
+
+      #data-source td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 30%;
+        text-align: justify;
+        word-break: break-word;
+        }
+
+        #data-source td:before {
+          /* Now like a table header */
+          position: absolute;
+          /* Top/left values mimic padding */
+          top: 5px;
+          left: 6px;
+          width: 45%;
+          padding-right: 10px;
+          white-space: nowrap;
+          text-align: left;
+        }
+
+        /*
+        Label the data
+        */
+        #data-source td:nth-of-type(1):before {
+          content: "Name";
+        }
+        #data-source td:nth-of-type(2):before {
+          content: "Dcription";
+        }
+        #data-source td:nth-of-type(3):before {
+          content: "Source";
+        }
+        #data-source td:nth-of-type(4):before {
+          content: "Citation";
+        }
+        #data-source td:nth-of-type(5):before {
+          content: "Standards";
+        }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  /* Force table to not be like tables anymore */
-  #data-source table,
-  #data-source thead,
-  #data-source tbody,
-  #data-source th,
-  #data-source td,
-  #data-source tr {
-    display: block;
-  }
 
-  /* Hide table headers (but not display: none;, for accessibility) */
-  #data-source thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
 
-  #data-source tr {
-    border: 1px solid #ccc;
-  }
-
-  #data-source td {
-    /* Behave  like a "row" */
-    border: none;
-    border-bottom: 1px solid #eee;
-    position: relative;
-    padding-left: 30%;
-    /* font-weight: bold; */
-    text-align: justify;
-  }
-
-  #data-source td:before {
-    /* Now like a table header */
-    position: absolute;
-    /* Top/left values mimic padding */
-    top: 5px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    /* font-weight: bold; */
-    text-align: left;
-  }
-
-  /*
-	Label the data
-	*/
-  #data-source td:nth-of-type(1):before {
-    content: "Name";
-  }
-  #data-source td:nth-of-type(2):before {
-    content: "Dcription";
-  }
-  #data-source td:nth-of-type(3):before {
-    content: "Source";
-  }
-  #data-source td:nth-of-type(4):before {
-    content: "Citation";
-  }
-  #data-source td:nth-of-type(5):before {
-    content: "Standards";
-  }
-}
+ 
 .css-b62m3t-container {
     color: black;
 }

@@ -61,6 +61,7 @@ import {
 } from "@reach/combobox";
 import { GoogleLayer } from "react-leaflet-google";
 import { urlToHttpOptions } from "url";
+import { tsThisType } from "@babel/types";
 const removeLayer = (layer) => {
   map.removeLayer(layer);
   window.tiff = 0;
@@ -548,7 +549,6 @@ class map extends Component {
           weight: 6,
         };
       } else {
-        this.props.hideRaster();
         var scale;
         if (feature.properties.zonalstat.mean <= 1) {
           scale = chroma
@@ -699,11 +699,11 @@ class map extends Component {
       () => {
         ltype = e.target.value;
         // this.getlayer();
-        this.props.setMapKey();
         if (ltype == "Raster") {
           this.props.setLayerType("Raster");
         } else if (ltype == "Vector") {
           this.props.setLayerType("Vector");
+          this.props.hideRaster();
         }
       }
     );
@@ -901,18 +901,20 @@ class map extends Component {
     // this.checkLoaderstatus();
   }
   onMouseOver(e) {
-    if (this.props.CurrentLayer == "POPULATION") {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties.zonalstat.sum / 1000000).toFixed(
-          2
-        )
-      );
-    } else if (this.props.CurrentLayer != "LULC") {
-      if (e.layer.feature.properties.zonalstat != undefined) {
-        if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
-          this.props.setvalue("N/A");
-        } else {
-          if (this.props.currentLayerType == "Vector") {
+    if (this.props.currentLayerType == "Vector") {
+      console.log("VECTOR HOVER");
+      if (this.props.CurrentLayer == "POPULATION") {
+        this.props.setvalue(
+          parseFloat(
+            e.layer.feature.properties.zonalstat.sum / 1000000
+          ).toFixed(2)
+        );
+      } else if (this.props.CurrentLayer != "LULC") {
+        if (e.layer.feature.properties.zonalstat != undefined) {
+          if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
+            this.props.setvalue("N/A");
+          } else {
+            console.log("VECTOR VALUE IN HOVER",e.layer.feature.properties.zonalstat.mean)
             this.props.setvalue(
               parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(2)
             );
@@ -1357,9 +1359,10 @@ class map extends Component {
             data={this.props.CurrentVector.features}
             // onEachFeature={this.onEachrua}
             onMouseOver={
-              this.props.LayerDescription.datafromvector == false
-                ? console.log("NOT APPLICABLE")
-                : this.onMouseOver
+              // this.props.currentLayerType == "Vector"
+              //   ? this.onMouseOver
+              //   : console.log("VECTOR HOVER NOT APPLICABLE")
+              this.onMouseOver
             }
             // onMouseOver={
             //   this.props.CurrentLayer == "WEATHER"
@@ -1367,9 +1370,10 @@ class map extends Component {
             //     : this.onMouseOver
             // }
             onMouseOut={
-              this.props.LayerDescription.datafromvector == false
-                ? console.log("NOT APPLICABLE")
-                : this.onMouseOver
+              // this.props.currentLayerType == "Vector"
+              // ? this.onMouseOver
+              // : console.log("VECTOR HOVER NOT APPLICABLE")
+              this.onMouseOver
             }
             icon={"text"}
             onclick={this.openDrawer}

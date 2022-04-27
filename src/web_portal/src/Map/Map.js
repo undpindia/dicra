@@ -241,6 +241,7 @@ class map extends Component {
     this.searchRegion = this.searchRegion.bind(this);
     this.style = this.style.bind(this);
     this.resetmapzoom = this.resetmapzoom.bind(this);
+    this.resetmapzoommobile = this.resetmapzoommobile.bind(this);
     this.Customlayer = this.Customlayer.bind(this);
     this.openCustomDrawer = this.openCustomDrawer.bind(this);
     this.getlayer = this.getlayer.bind(this);
@@ -590,7 +591,11 @@ class map extends Component {
   toggleClass() {
     const currentState = this.state.activeSearch;
     this.setState({ activeSearch: !currentState });
-    this.resetmapzoom();
+    if(window.innerWidth <= 768){ 
+      this.resetmapzoommobile();
+      }else{
+      this.resetmapzoom();
+      }
   }
   toggleDropdown() {
     const currentState = this.state.active;
@@ -974,8 +979,22 @@ class map extends Component {
       }
     );
   }
+  updateDimensions = () => {
+    if(window.innerWidth <= 480){
+      console.log("mobile")
+      this.setState({
+        mapZoom: 6.5
+      })
+    }else{
+      console.log("desktop")
+      this.setState({
+        mapZoom: 7.5
+      })
+    }
+  };
 
   componentDidMount() {
+    this.updateDimensions();
     this.props.setvalue(0.74);
     this.props.setplace("Siddipet");
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
@@ -986,6 +1005,9 @@ class map extends Component {
   }
   resetmapzoom() {
     this.map.flyTo([18.1124, 79.0193], 7.5);
+  }
+  resetmapzoommobile() {
+    this.map.flyTo([18.1124, 79.0193], 6.5);
   }
   ChangeBasemap(e) {
     if (e.target.value == "Dark") {
@@ -1121,6 +1143,7 @@ class map extends Component {
         <Sidebar
           changeCurrentLayer={this.getlayer}
           resetZoom={this.resetmapzoom}
+          resetZoommobile={this.resetmapzoommobile}
         />
         <div className="legend-mobile">
           <LegendMobile />
@@ -1128,12 +1151,20 @@ class map extends Component {
         <BottomNav
           className="bottom-navigation"
           changeCurrentLayer={this.getlayer}
-          resetZoom={this.resetmapzoom}
+          resetZoom={this.resetmapzoommobile}
+
         />
         <div
           className="btn-home"
           style={{ zIndex: "999" }}
           onClick={this.resetmapzoom}
+        >
+          <BiHomeAlt />
+        </div>
+        <div
+          className="btn-home-mobile"
+          style={{ zIndex: "999" }}
+          onClick={this.resetmapzoommobile}
         >
           <BiHomeAlt />
         </div>

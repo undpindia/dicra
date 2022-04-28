@@ -27,7 +27,7 @@
             # Build the project, then
             # deploy to Azure Web App.
             sudo apt-get install unzip
-            cd ./src/frontend && unzip package-lock.zip
+            cd ./src/web_portal && unzip package-lock.zip
             npm install
             npm run build
             pwd

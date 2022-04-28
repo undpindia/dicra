@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: API CI CD
+=======
+name: Deploy DiCRA to API Server
+>>>>>>> a699acbeeb32e859808b4c1eea35fb77ac6ee5b2
 on:
   push:
     paths:

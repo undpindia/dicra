@@ -15,6 +15,7 @@ jobs:
       env:
         SECRETS: ${{ secrets.API_SECRETS }}
       run: |
+        cd /home/azureuser/actions-runner/undp-api/dicra/dicra/src/api
         mkdir config
         echo -e $SECRETS >> config/config.ini
         sed 's/^sqlalchemy.url =.*/sqlalchemy.url =${{ secrets.CONNECTION_STRING }}/' alembic.ini > updatedalembic.ini

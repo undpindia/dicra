@@ -1,32 +1,32 @@
+
 import os
-import time
-import json
-import rasterio
 import configparser
-from sqlalchemy import and_
-from botocore import UNSIGNED
-from datetime import datetime
-from pydantic import BaseModel
-from db.database import get_db
 from boto3.session import Session
-from shapely.geometry import shape
-from botocore.client import Config
-from models.index import Parameter
+from fastapi.responses import FileResponse
+from fastapi import APIRouter,File, UploadFile,Request,Depends
+from pydantic import BaseModel
+import json
+from sqlalchemy import and_
 from pydantic.types import FilePath
-from schemas.index import Customstat
-from rasterio.session import AWSSession
 from sqlalchemy.sql.elements import Null
 from sqlalchemy.sql.expression import null
-from fastapi.responses import FileResponse
+import rasterio
+from botocore import UNSIGNED
+from botocore.client import Config
+from rasterio.session import AWSSession
 from rasterstats import zonal_stats, point_query
-from fastapi import APIRouter,File, UploadFile,Request,Depends
+from db.database import get_db
+from models.index import Parameter
+from datetime import datetime
+import time
+from shapely.geometry import shape
+from schemas.index import Customstat
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 AWS_ACCESS_KEY = config['AWS']['ACCESSKEY']
 AWS_SECRET_KEY = config['AWS']['SECRETKEY']
-AZURE_BLOB_PATH= config['azureblob']['Blobpath']
-
+PARAMETER_PATH = config['azureblob']['Filepath']
 
 custom=APIRouter()
 
@@ -47,10 +47,10 @@ def getcentroid(polygon_feature):
 @custom.post('/getzstat', status_code=200)
 async def get_zstat(details:Customstat,db:Session=Depends(get_db)):
     filedate = datetime.strptime(details.date, '%Y-%m-%d').strftime('%d-%m-%Y')
-    file_path=AZURE_BLOB_PATH+details.parameter+'/RASTER/'+str(filedate)+'.tif'
+    file_path=PARAMETER_PATH+details.parameter+'/RASTER/'+str(filedate)+'.tif'
     stats = zonal_stats(details.geojson,
     file_path,
-    stats=['min','max','mean','count'])
+    stats=['min','max','mean','count','sum'])
     if(stats[0]['count']==0):
         pointvalue=point_query(getcentroid(details.geojson),file_path)
         if(pointvalue[0] is None):
@@ -59,7 +59,8 @@ async def get_zstat(details:Customstat,db:Session=Depends(get_db)):
                 "stat":{
                     'min':'N/A',
                     'max':'N/A',
-                    'mean':'N/A'
+                    'mean':'N/A',
+                    'sum':'N/A'
                 }
             }
         else:
@@ -68,7 +69,8 @@ async def get_zstat(details:Customstat,db:Session=Depends(get_db)):
                 "stat":{
                     'min':round(pointvalue[0],2),
                     'max':round(pointvalue[0],2),
-                    'mean':round(pointvalue[0],2)
+                    'mean':round(pointvalue[0],2),
+                    'sum':round(pointvalue[0],2)
                 }
             }
       
@@ -77,6 +79,7 @@ async def get_zstat(details:Customstat,db:Session=Depends(get_db)):
         "stat":{
             'min':round(stats[0]['min'],2),
             'max':round(stats[0]['max'],2),
-            'mean':round(stats[0]['mean'],2)
+            'mean':round(stats[0]['mean'],2),
+            'sum':round(stats[0]['sum'],2)
         }
     }

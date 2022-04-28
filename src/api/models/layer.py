@@ -19,3 +19,10 @@ class Layer(Base):
     multiple_files = Column(Boolean)
     display_name=Column(String(255))
     category=Column(String(255))
+    isavailable=Column(Boolean)
+    citation=Column(Text)
+    standards=Column(Text)
+    timerangefilter=Column(Boolean)
+    showcustom=Column(Boolean)
+    datafromvector=Column(Boolean)
+    

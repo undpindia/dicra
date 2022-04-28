@@ -1,10 +1,12 @@
-import os
 import json
-import boto3
+import os
 import configparser
+import boto3
 from boto3.session import Session
 from fastapi.responses import ORJSONResponse
 from fastapi import APIRouter,File, UploadFile
+
+
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
@@ -17,7 +19,7 @@ vector=APIRouter()
 @vector.get('/getvector',response_class=ORJSONResponse, status_code=200)
 async def get_vector(Administrative_boundary:str=None):
     if Administrative_boundary == "District":
-        BUCKET = S3_BUCKET
+        BUCKET = 'undp-dataforpolicy'
         FILE_TO_READ = 'parameters/NDVI/VECTOR/DISTRICT/NDVI_2021_01_01.geojson'
         client = boto3.client('s3',
                        aws_access_key_id=AWS_ACCESS_KEY,
@@ -30,7 +32,7 @@ async def get_vector(Administrative_boundary:str=None):
         'data':jsonobj}
 
     elif Administrative_boundary == "Mandal":
-        BUCKET = S3_BUCKET
+        BUCKET = 'undp-dataforpolicy'
         FILE_TO_READ = 'parameters/NDVI/VECTOR/MANDAL/NDVI_2021_02_02.geojson'
         client = boto3.client('s3',
                        aws_access_key_id=AWS_ACCESS_KEY,

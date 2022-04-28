@@ -28,7 +28,6 @@
             # deploy to Azure Web App.
             sudo apt-get install unzip
             cd ./src/web_portal && unzip package-lock.zip
-            pwd
             npm install
             npm run build
             pwd

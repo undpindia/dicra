@@ -1,0 +1,25 @@
+name: API CI CD
+on:
+  push:
+    paths:
+      - 'src/api/**'
+    branches: 
+      - develop
+jobs:
+  Deploy:
+    runs-on: [self-hosted,Linux,X64,developmentserver]
+    steps:
+    - uses: actions/checkout@v2
+    - run: pwd
+    - name: 'Create alembic.ini and config.ini'
+      env:
+        SECRETS: ${{ secrets.API_SECRETS }}
+      run: |
+        mkdir config
+        echo -e $SECRETS >> config/config.ini
+        sed 's/^sqlalchemy.url =.*/sqlalchemy.url =${{ secrets.CONNECTION_STRING }}/' alembic.ini > updatedalembic.ini
+        sudo rm alembic.ini
+        mv updatedalembic.ini alembic.ini
+        mkdir static
+        mkdir temp_files
+        sudo systemctl restart gunicorn.service

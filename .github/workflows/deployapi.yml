@@ -18,9 +18,9 @@ jobs:
         cd /home/azureuser/actions-runner/undp-api/dicra/dicra/src/api
         mkdir config
         echo -e $SECRETS >> config/config.ini
+        mkdir static
+        mkdir temp_files
         sed 's/^sqlalchemy.url =.*/sqlalchemy.url =${{ secrets.CONNECTION_STRING }}/' alembic.ini > updatedalembic.ini
         sudo rm alembic.ini
         mv updatedalembic.ini alembic.ini
-        mkdir static
-        mkdir temp_files
         sudo systemctl restart gunicorn.service

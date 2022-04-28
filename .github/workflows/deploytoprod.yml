@@ -28,7 +28,7 @@
             # deploy to Azure Web App.
             sudo apt-get install unzip
             cd ./src/frontend && unzip package-lock.zip
-            npm install
+            cd ./src/frontend && npm install
             npm run build
             pwd
           env:

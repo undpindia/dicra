@@ -29,7 +29,7 @@
             sudo apt-get install unzip
             cd ./src/frontend && unzip package-lock.zip
             pwd
-            cd ./src/frontend && npm install
+            npm install
             npm run build
             pwd
           env:

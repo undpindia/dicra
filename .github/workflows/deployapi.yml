@@ -14,13 +14,14 @@ jobs:
     - name: 'Create alembic.ini and config.ini'
       env:
         SECRETS: ${{ secrets.API_SECRETS }}
+        CONNECTIONSTRING: ${{ secrets.CONNECTION_STRING }}
       run: |
         cd /home/azureuser/actions-runner/undp-api/dicra/dicra/src/api
         mkdir config
         echo -e $SECRETS >> config/config.ini
         mkdir static
         mkdir temp_files
-        sed 's/^sqlalchemy.url =.*/sqlalchemy.url =${{ secrets.CONNECTION_STRING }}/' alembic.ini > updatedalembic.ini
+        sed 's/^sqlalchemy.url =.*/sqlalchemy.url =$CONNECTIONSTRING/' alembic.ini > updatedalembic.ini
         sudo rm alembic.ini
         mv updatedalembic.ini alembic.ini
         sudo systemctl restart gunicorn.service

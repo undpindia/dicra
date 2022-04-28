@@ -1,4 +1,4 @@
-name: API CI CD
+name: Deploy DiCRA to API Server
 on:
   push:
     paths:

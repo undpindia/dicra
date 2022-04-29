@@ -8,6 +8,7 @@ import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
 import { geoMercator, geoPath } from "d3-geo";
 import { select } from "d3-selection";
+import Moment from 'moment';
 import {
   Button,
   Modal,
@@ -1006,7 +1007,7 @@ class DrawerModal extends Component {
                 className="alignrignt"
               >
                 <p style={{ fontSize: "18px", marginBottom: "15px" }}>
-                  {this.props.LayerDescription.last_updated.slice(0, 10)}
+                  {Moment(this.props.LayerDescription.last_updated).format('DD-MM-YYYY').slice(0, 10)}
                 </p>
               </Col>
               <Col

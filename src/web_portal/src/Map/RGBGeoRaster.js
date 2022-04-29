@@ -83,44 +83,22 @@ export default function GeoRaster(props) {
     fetch(url).then((response) => {
       const container = layerContainer || map;
       let layer;
-      // if (layerRef.current == undefined) {
-      //   console.log("NO LAYER");
-      // }
+
       if (layerRef.current != undefined) {
         removeLayer(layerRef.current);
         // layerRef.current = null;
         // window.tiff = 0;
       }
-      console.log("INSODE RGBGEORASTER");
+
       response.blob().then((blob) => {
         try {
-          console.log("INSODE RGBGEORASTER 222", blob);
           geoblaze.load(blob).then((georaster) => {
-            // const result=geoblaze.identify(georaster,[150.916672,-31.08333])
-            // console.log("FIRST VALUE", georaster);
-            // var min = georaster.mins[0];
-            // var max = georaster.maxs[0];
             var min = georaster.mins[0];
             var max = georaster.maxs[0];
-            console.log("MIN MAX", min, max);
+
             setLayermin(min);
             setLayermax(max);
-            // if (currentLayer == "NDVI") {
-            //   min = 0;
-            //   max = 1;
-            //   setLayermin(0);
-            //   setLayermax(1);
-            // } else if (currentLayer == "RWI") {
-            //   min = -1;
-            //   max = 1;
-            //   setLayermin(-1);
-            //   setLayermax(1);
-            // } else if (currentLayer == "POPULATION") {
-            //   min = 0;
-            //   max = 16000;
-            //   setLayermin(0);
-            //   setLayermax(16000);
-            // }
+
             if (currentLayer == "LULC") {
               var range = georaster.ranges[0];
               setLayerrange(range);
@@ -176,25 +154,25 @@ export default function GeoRaster(props) {
               //   });
               // }
             });
+
             map.on("mousemove", function (evt) {
-              var latlng = map.mouseEventToLatLng(evt.originalEvent);
-              {
-                // props.currentloc(latlng.lat, latlng.lng);
-              }
-              {
+              if (currentLayerType == "Raster") {
+                console.log("RASTER HOVER ",currentLayerType);
+                var latlng = map.mouseEventToLatLng(evt.originalEvent);
                 // getcurrentvalue(latlng.lng, latlng.lat);
-                if (currentLayerType == "Raster") {
-                  let result = geoblaze.identify(georaster, [
-                    latlng.lng,
-                    latlng.lat,
-                  ]);
-                  if (Number(result) > 0.0) {
-                    result = parseFloat(result).toFixed(2);
-                    dispatch({ type: "SETVALUE", payload: result });
-                  }
+                let result = geoblaze.identify(georaster, [
+                  latlng.lng,
+                  latlng.lat,
+                ]);
+                if (Number(result) > 0.0) {
+                  result = parseFloat(result).toFixed(2);
+                  dispatch({ type: "SETVALUE", payload: result });
+                } else {
+                  dispatch({ type: "SETVALUE", payload: "N/A" });
                 }
               }
             });
+
             map.on("click", async function (evt) {
               var latlng = map.mouseEventToLatLng(evt.originalEvent);
               var loc = [latlng.lng, latlng.lat];

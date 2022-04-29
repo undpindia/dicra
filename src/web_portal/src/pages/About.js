@@ -165,7 +165,7 @@ class About extends React.Component {
                         if (data.isavailable == true) {
                           return (
                             <tr>
-                              <td>{data.layer_name}</td>
+                              <td>{data.display_name}</td>
                               <td>{data.long_description}</td>
                               <td>{data.source}</td>
                               <td>{data.citation}</td>

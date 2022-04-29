@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import ColorScale from "./ColorScale";
 import { useSelector, useDispatch } from "react-redux";
 import ColorPicker from "./ColorPicker";
-
+var valueKey=1
 function Legend() {
-  const setval = useSelector((state) => state.setval);
-  const setplace = useSelector((state) => state.setplace);
-  const currentLayer = useSelector((state) => state.CurrentLayer);
-  const currentLayerDesc = useSelector((state) => state.LayerDescription);
+  let setval = useSelector((state) => state.setval);
+  let setplace = useSelector((state) => state.setplace);
+  let currentLayer = useSelector((state) => state.CurrentLayer);
+  let currentLayerDesc = useSelector((state) => state.LayerDescription);
+  useEffect(() => {
+    valueKey=valueKey+1
+  }, [setval]);
+
   return (
     <div className="legend-section">
       <div className="container">
@@ -17,8 +21,8 @@ function Legend() {
             textAlign: "left",
           }}
         >
-          <div className="col" style={{ fontSize: "24px", color: "#fff" }}>
-            <span style={currentLayer == "LULC" ? { display: "none" } : {}}>
+          <div className="col" style={{ fontSize: "24px", color: "#fff" }} >
+            <span style={currentLayer == "LULC" ? { display: "none" } : {}} key={valueKey}>
               {setval}{" "}{currentLayerDesc.unit}
             </span>
           </div>

@@ -60,6 +60,7 @@ const TabType = PropTypes.shape({
 });
 
 class Sidebar extends React.Component {
+  
   componentDidMount() {
     if (this.props.rehomeControls) {
       const { position } = this.props;
@@ -314,7 +315,7 @@ class Sidebar extends React.Component {
                   className="col"
                   style={{ color: "rgba(215 215 215)", fontWeight: "bold" }}
                 >
-                  Market Prices
+                  Markets
                 </div>
                 <div className="w-100"></div>
                 <div

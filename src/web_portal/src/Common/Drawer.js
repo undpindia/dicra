@@ -471,7 +471,6 @@ class DrawerModal extends Component {
             dashArray: 0,
           },
         },
-   
       });
     } else {
       this.setState({
@@ -486,13 +485,12 @@ class DrawerModal extends Component {
     }
     if (data != null) {
       data.map(function (item, index, data) {
-        if(item[1]!=null){
+        if (item[1] != null) {
           trendData.data.push({
             x: item[0],
             y: parseFloat(item[1]).toFixed(2),
           });
         }
-    
       });
     }
     var trendlength = trendData.data.length;
@@ -1120,17 +1118,17 @@ class DrawerModal extends Component {
                   </Col>
                 </Row>
                 <Row>
-                <ol class="progress-indicator mb-2">
-                  <li class="is-complete" data-step="">
-                  <span>Min</span>
-                  </li>
-                  <li class="is-complete" data-step="">
-                  <span>Avg</span>
-                  </li>
-                  <li class="is-complete" data-step="">
-                  <span>Max</span>
-                  </li>
-                </ol>
+                  <ol class="progress-indicator mb-2">
+                    <li class="is-complete" data-step="">
+                      <span>Min</span>
+                    </li>
+                    <li class="is-complete" data-step="">
+                      <span>Avg</span>
+                    </li>
+                    <li class="is-complete" data-step="">
+                      <span>Max</span>
+                    </li>
+                  </ol>
                 </Row>
               </Col>
             </Row>
@@ -1200,6 +1198,13 @@ class DrawerModal extends Component {
                 </div>
               </div>
             </Col>
+            <Row>
+              <div>
+                <p style={{ fontSize: "18px", display: "inline" }}>
+                  <BiLineChart /> Trend
+                </p>
+              </div>
+            </Row>
             <Row
               style={
                 this.props.LayerDescription.multiple_files
@@ -1207,11 +1212,6 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              <div>
-                <p style={{ fontSize: "18px", display: "inline" }}>
-                  <BiLineChart /> Trend
-                </p>
-              </div>
               {/* =================================WEATHER DATA TREND-START======================================== */}
               <div
                 className="btn-group-sm"
@@ -1223,7 +1223,6 @@ class DrawerModal extends Component {
                     ? {}
                     : { display: "none" }
                 }
-               
               >
                 <input
                   type="radio"

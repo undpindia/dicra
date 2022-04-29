@@ -212,7 +212,7 @@ class map extends Component {
       editableFG: [],
       baseMap:
         "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-      attribution: "dark_matter_lite_rainbow",
+      attribution: "",
       showCustomDraw: false,
       customStatus: false,
       checked: false,
@@ -618,7 +618,7 @@ class map extends Component {
           locpointerltlng: [60.732421875, 80.67555881973475],
           baseMap:
             "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-          attribution: "dark_matter_lite_rainbow",
+          attribution: "",
           baseMapselected: "Dark",
         },
         () => {
@@ -641,7 +641,7 @@ class map extends Component {
           showlayertype: true,
           baseMap:
             "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-          attribution: "dark_matter_lite_rainbow",
+          attribution: "",
           baseMapselected: "Dark",
         },
         () => {
@@ -1014,7 +1014,7 @@ class map extends Component {
       this.setState({
         baseMap:
           "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-        attribution: "dark_matter_lite_rainbow",
+        attribution: "",
         baseMapselected: "Dark",
       });
     }

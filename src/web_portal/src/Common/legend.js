@@ -2,6 +2,7 @@ import React from "react";
 import ColorScale from "./ColorScale";
 import { useSelector, useDispatch } from "react-redux";
 import ColorPicker from "./ColorPicker";
+import Moment from 'moment';
 
 function Legend() {
   const setval = useSelector((state) => state.setval);
@@ -24,7 +25,7 @@ function Legend() {
           </div>
           <div className="w-100"></div>
           <div className="col" style={{ color: "rgba(215 215 215)" }}>
-            {currentLayer} | {currentLayerDesc.last_updated.slice(0, 10)}
+            {currentLayer} | {Moment(currentLayerDesc.last_updated).format('DD-MM-YYYY').slice(0, 10)}
           </div>
           <div className="w-100"></div>
           <div className="col" style={{ color: "rgba(215 215 215)" }}>

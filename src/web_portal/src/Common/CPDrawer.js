@@ -100,7 +100,7 @@ class CPDrawerModal extends Component {
             autoScaleYaxis: true,
           },
           toolbar: {
-            show: true,
+            show: false,
             export: {
               csv: {
                 headerCategory: "Datetime",

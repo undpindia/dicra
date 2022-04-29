@@ -223,7 +223,7 @@ const BottomNav = (props) => {
       <div>
         <BottomNavigation
           items={bottomNavItems}
-          onItemClick={(item) => console.log(item)}
+          // onItemClick={(item) => console.log(item)}
         />
       </div>
       <div>

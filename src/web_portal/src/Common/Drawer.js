@@ -151,7 +151,7 @@ class DrawerModal extends Component {
           curve: "straight",
           lineCap: "butt",
           colors: undefined,
-          width: 2,
+          width: 1,
           dashArray: 0,
         },
       },
@@ -213,7 +213,7 @@ class DrawerModal extends Component {
 
     try {
       const resWeatherData = await axiosConfig.post(`/getweather?`, bodyParams);
-      console.log("RESPONSE ERE", resWeatherData);
+   
       if (resWeatherData.data.trend.length > 0) {
         var last_date = resWeatherData.data.trend.length;
         last_date = last_date - 1;
@@ -277,13 +277,13 @@ class DrawerModal extends Component {
     });
     var shapeparams = this.props.district.selected_shape;
     shapeparams = shapeparams.features[0].geometry;
-    console.log("CUSTOM SHAPE", shapeparams);
+   
     var bodyParams = {
       geojson: shapeparams,
     };
     try {
       const res = await axiosConfig.post(`/getlulcareapercentage?`, bodyParams);
-      console.log("LULC DETAILS", res);
+    
       this.setState(
         {
           customLULC: res.data.data,
@@ -306,13 +306,13 @@ class DrawerModal extends Component {
     });
     var shapeparams = geojson;
     shapeparams = shapeparams.features[0].geometry;
-    console.log("CUSTOM SHAPE", shapeparams);
+  
     var bodyParams = {
       geojson: shapeparams,
     };
     try {
       const res = await axiosConfig.post(`/getlulcareapercentage?`, bodyParams);
-      console.log("LULC DETAILS", res);
+     
       this.setState(
         {
           customLULC: res.data.data,
@@ -467,7 +467,7 @@ class DrawerModal extends Component {
             curve: "straight",
             lineCap: "butt",
             colors: undefined,
-            width: 2,
+            width: 1,
             dashArray: 0,
           },
         },
@@ -496,7 +496,7 @@ class DrawerModal extends Component {
     var trendlength = trendData.data.length;
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
-    console.log("UPDAET VALUE", trendData);
+  
     if (trendData.data == null) {
       chart_values = [trendData];
     }
@@ -567,7 +567,7 @@ class DrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      console.log("FROM DATE & TO DATE", start_date, to_date);
+   
       if (this.props.CurrentLayer == "FIREEV") {
         this.setState(
           {
@@ -754,7 +754,7 @@ class DrawerModal extends Component {
     if (value[date] == undefined) {
       return "0.00";
     } else {
-      console.log("LULC VALUES", value[date][category]);
+    
       // this.setState({
       //   tableKey:this.state.tableKey+1
       // })
@@ -790,7 +790,7 @@ class DrawerModal extends Component {
     );
     var PROJECTION_CONFIG = [];
     var projection = [];
-    console.log("CURRENT REEIOGN IN DRAWER", this.props.CurrentRegion);
+  
     if (this.props.CurrentLayer != "CP") {
       const width = 800;
       const height = width * 0.9;

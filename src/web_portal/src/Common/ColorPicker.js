@@ -57,7 +57,7 @@ class ColorPicker extends Component {
       toggleButtonStyle = { borderColor: "#A2B1C6" };
     }
     const isActive = this.state.isActive;
-    console.log("color", this.state.colorscale)
+    // console.log("color", this.state.colorscale)
     return (
       <div className="App">
       <div>

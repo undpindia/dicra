@@ -335,7 +335,7 @@ class map extends Component {
     }
   }
   getwarehouseDetails(geojson) {
-    console.log("WAREHOUSE POINTS", geojson);
+ 
     this.setState(
       {
         areaValue: geojson.capacity,
@@ -351,10 +351,10 @@ class map extends Component {
     if (this.props.CurrentLayer == "FIREEV") {
       this.getCountEvents(e);
     } else if (this.props.CurrentLayer == "WH") {
-      console.log("TREND NOT AVAILABLE FOR WH");
+    
     } else if (this.props.CurrentLayer == "CP") {
       // this.CPchild.current.showDrawer();
-      console.log("TCPCPCPCPCCPCPCPCPCCPCPP");
+    
     } else if (this.props.CurrentLayer == "WEATHER") {
       var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
@@ -528,7 +528,7 @@ class map extends Component {
     if (this.props.CurrentLayer == "LULC") {
       var area = geojsonArea.geometry(geojson.features[0].geometry);
       area = area / 1000000;
-      console.log("AREA CUSTOM", area);
+    
       if (area > 150) {
         message.info("Maximum query area reached!");
       } else {
@@ -713,7 +713,7 @@ class map extends Component {
     this.props.setplace("");
   }
   async getlayer() {
-    console.log("CURRENT LAYER", this.props.CurrentLayer);
+  
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
     if (this.props.CurrentLayer == "FIREEV") {
       this.setState({
@@ -751,7 +751,7 @@ class map extends Component {
             pointVector: res.data.data,
           },
           () => {
-            console.log("POINT VECTOR DATA", this.state.pointVector);
+        
           }
         );
         this.props.setMapKey();
@@ -769,9 +769,6 @@ class map extends Component {
         this.setState(
           {
             pointVector: res.data.data,
-          },
-          () => {
-            console.log("POINT VECTOR DATA", this.state.pointVector);
           }
         );
         this.props.setMapKey();
@@ -902,7 +899,7 @@ class map extends Component {
   }
   onMouseOver(e) {
     if (this.props.currentLayerType == "Vector") {
-      console.log("VECTOR HOVER");
+  
       if (this.props.CurrentLayer == "POPULATION") {
         this.props.setvalue(
           parseFloat(
@@ -914,7 +911,7 @@ class map extends Component {
           if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
             this.props.setvalue("N/A");
           } else {
-            console.log("VECTOR VALUE IN HOVER",e.layer.feature.properties.zonalstat.mean)
+         
             this.props.setvalue(
               parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(2)
             );
@@ -1084,7 +1081,7 @@ class map extends Component {
     }
   }
   handlePointclick(name) {
-    console.log("HANDLE POINT CLICK", name);
+  
     // e.preventDefault();
     // this.setState({
     //   currentComodity:name
@@ -1094,9 +1091,9 @@ class map extends Component {
     }
   }
   checkRadius(capacity) {
-    console.log("CAPACUTY", capacity);
+  
     var radius = 3000 * Math.log(capacity / 100);
-    console.log("RADIUS", parseInt(radius));
+   
     if (radius > 0) {
       //   this.setState({
       //     keyMAP: this.state.keyMAP + 1,

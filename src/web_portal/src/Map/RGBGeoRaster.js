@@ -157,9 +157,15 @@ export default function GeoRaster(props) {
 
             map.on("mousemove", function (evt) {
               if (currentLayerType == "Raster") {
-                console.log("RASTER HOVER ",currentLayerType);
+                console.log("RASTER HOVER ", currentLayerType);
                 var latlng = map.mouseEventToLatLng(evt.originalEvent);
                 // getcurrentvalue(latlng.lng, latlng.lat);
+                dispatch({
+                  type: "SETLATLON",
+                  payload:
+                    [parseFloat(latlng.lat).toFixed(2),",",
+                    parseFloat(latlng.lng).toFixed(2)]
+                });
                 let result = geoblaze.identify(georaster, [
                   latlng.lng,
                   latlng.lat,

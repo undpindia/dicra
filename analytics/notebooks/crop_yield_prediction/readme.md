@@ -8,3 +8,4 @@
 - [The Accuracy of Self-Reported Crop Yield Estimates and Their Ability to Train Remote Sensing Algorithms](https://www.frontiersin.org/articles/10.3389/fsufs.2020.00025/full)
 - [The impact of agricultural interventions can be doubled by using satellite data](https://www.researchgate.net/profile/Shishpal-Poonia/publication/336319732_The_impact_of_agricultural_interventions_can_be_doubled_by_using_satellite_data/links/5da07f40a6fdcc8fc34782ea/The-impact-of-agricultural-interventions-can-be-doubled-by-using-satellite-data.pdf)
 - [How accurate are yield estimates from crop cuts? Evidence from smallholder maize farms in Ethiopia](https://www.sciencedirect.com/science/article/pii/S0306919221001019)
+- [Neural network for grain yield predicting based multispectral satellite imagery: comparative study](https://www.sciencedirect.com/science/article/pii/S1877050921009625)

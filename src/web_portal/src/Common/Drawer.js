@@ -989,7 +989,7 @@ class DrawerModal extends Component {
               </CardBody>
             </Card>
             {/* <hr /> */}
-            <Row>
+            <Row  style={{ marginBottom:"5px" }}>
               <Col>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>

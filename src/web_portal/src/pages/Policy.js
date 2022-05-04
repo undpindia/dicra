@@ -28,16 +28,12 @@ class Policy extends React.Component {
         </div>
         <div>
           <div>
-            <Row style={{ paddingBottom: "10px" }}>
-              <Col>
+            <div style={{ paddingBottom: "10px" }}>
                 <h6 className="page-heading">Privacy policy</h6>
-              </Col>
-              <Col>
                 <Link to="/">
                   <BiX className="page-close" />
                 </Link>
-              </Col>
-            </Row>
+            </div>
             <hr />
             <div>
               <div class="container about-page">

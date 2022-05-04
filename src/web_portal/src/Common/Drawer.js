@@ -8,6 +8,7 @@ import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
 import { geoMercator, geoPath } from "d3-geo";
 import { select } from "d3-selection";
+import Moment from 'moment';
 import {
   Button,
   Modal,
@@ -98,7 +99,7 @@ class DrawerModal extends Component {
             autoScaleYaxis: true,
           },
           toolbar: {
-            show: true,
+            show: false,
             export: {
               csv: {
                 headerCategory: "Datetime",
@@ -998,7 +999,7 @@ class DrawerModal extends Component {
               </CardBody>
             </Card>
             {/* <hr /> */}
-            <Row>
+            <Row  style={{ marginBottom:"5px" }}>
               <Col>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
@@ -1016,7 +1017,7 @@ class DrawerModal extends Component {
                 className="alignrignt"
               >
                 <p style={{ fontSize: "18px", marginBottom: "15px" }}>
-                  {this.props.LayerDescription.last_updated.slice(0, 10)}
+                  {Moment(this.props.LayerDescription.last_updated).format('DD-MM-YYYY').slice(0, 10)}
                 </p>
               </Col>
               <Col
@@ -1148,9 +1149,18 @@ class DrawerModal extends Component {
               <p style={{ fontSize: "15px", fontWeight: "lighter" }}>
                 {this.props.LayerDescription.long_description}
               </p>
-              <p>Source : {this.props.LayerDescription.source}</p>
-              <p>Citation : {this.props.LayerDescription.citation}</p>
-              <p>Standards : {this.props.LayerDescription.standards}</p>
+              <div style={{marginBottom:"5px"}}>
+                <p style={{marginBottom:"2px", color:"#2867a1"}}>SOURCE</p>
+                <p>{this.props.LayerDescription.source}</p>
+              </div>
+              <div style={{marginBottom:"5px"}}>
+                <p style={{marginBottom:"2px", color:"#2867a1"}}>CITATION</p> 
+                <p>{this.props.LayerDescription.citation}</p>
+              </div>
+              <div>
+              <p style={{marginBottom:"2px", color:"#2867a1"}}>STANDARDS</p>
+              <p>{this.props.LayerDescription.standards}</p>
+              </div>
             </Row>
             <hr />
             <Col

@@ -240,7 +240,7 @@ const BottomNav = (props) => {
               overflowX: "scroll",
               backgroundColor: "#073d6f",
               color: "white",
-              height: "323px",
+              height: "330px",
             }}
           >
             <Collapse
@@ -376,7 +376,7 @@ const BottomNav = (props) => {
               overflowX: "scroll",
               backgroundColor: "#073d6f",
               color: "white",
-              height: "323px",
+              height: "330px",
             }}
           >
             <Multistep
@@ -400,7 +400,7 @@ const BottomNav = (props) => {
               overflowX: "scroll",
               backgroundColor: "#073d6f",
               color: "white",
-              height: "323px",
+              height: "330px",
             }}
           >
             <div style={{ fontSize: "16px" }}>

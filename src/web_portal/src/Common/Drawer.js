@@ -84,6 +84,7 @@ class DrawerModal extends Component {
       currentCharttime: "6mon",
       customLULC: [],
       tableKey: 0,
+      Datanull: false,
       currentWeatherRange: "6months",
       LULCclasses: [],
       options: {
@@ -213,18 +214,22 @@ class DrawerModal extends Component {
 
     try {
       const resWeatherData = await axiosConfig.post(`/getweather?`, bodyParams);
-   
+
       if (resWeatherData.data.trend.length > 0) {
         var last_date = resWeatherData.data.trend.length;
         last_date = last_date - 1;
         last_date = resWeatherData.data.trend[last_date];
         this.timeConverter(last_date[0]);
         this.generatechart(resWeatherData.data.trend);
+        this.setState({
+          Datanull: false,
+        });
       } else {
-        openNotification();
+        // openNotification();
         this.setState({
           series: [],
           loader: false,
+          Datanull: true,
         });
       }
     } catch (err) {
@@ -277,13 +282,13 @@ class DrawerModal extends Component {
     });
     var shapeparams = this.props.district.selected_shape;
     shapeparams = shapeparams.features[0].geometry;
-   
+
     var bodyParams = {
       geojson: shapeparams,
     };
     try {
       const res = await axiosConfig.post(`/getlulcareapercentage?`, bodyParams);
-    
+
       this.setState(
         {
           customLULC: res.data.data,
@@ -306,13 +311,13 @@ class DrawerModal extends Component {
     });
     var shapeparams = geojson;
     shapeparams = shapeparams.features[0].geometry;
-  
+
     var bodyParams = {
       geojson: shapeparams,
     };
     try {
       const res = await axiosConfig.post(`/getlulcareapercentage?`, bodyParams);
-     
+
       this.setState(
         {
           customLULC: res.data.data,
@@ -359,13 +364,17 @@ class DrawerModal extends Component {
     try {
       const res = await axiosConfig.post(`/gettrend?`, bodyParams);
       if (res.data.code == 404) {
-        openNotification();
+        // openNotification();
         this.setState({
           series: [],
           loader: false,
+          Datanull: true,
         });
       } else {
         this.generatechart(res.data.trend);
+        this.setState({
+          Datanull: false,
+        });
       }
     } catch (err) {
       message.error("Failed to connect to server");
@@ -496,7 +505,7 @@ class DrawerModal extends Component {
     var trendlength = trendData.data.length;
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
-  
+
     if (trendData.data == null) {
       chart_values = [trendData];
     }
@@ -538,14 +547,18 @@ class DrawerModal extends Component {
     try {
       const res = await axiosConfig.post(`/getpointstrend?`, bodyParams);
       if (res.data.code == 404) {
-        openNotification();
+        // openNotification();
         this.setState({
           series: [],
           loader: false,
+          Datanull: true,
         });
       } else {
         this.generatechart(res.data.trend);
         this.getPopulation(shapeparams);
+        this.setState({
+          Datanull: false,
+        });
       }
     } catch (err) {
       message.error("Failed to connect to server");
@@ -567,7 +580,7 @@ class DrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-   
+
       if (this.props.CurrentLayer == "FIREEV") {
         this.setState(
           {
@@ -754,7 +767,6 @@ class DrawerModal extends Component {
     if (value[date] == undefined) {
       return "0.00";
     } else {
-    
       // this.setState({
       //   tableKey:this.state.tableKey+1
       // })
@@ -790,7 +802,7 @@ class DrawerModal extends Component {
     );
     var PROJECTION_CONFIG = [];
     var projection = [];
-  
+
     if (this.props.CurrentLayer != "CP") {
       const width = 800;
       const height = width * 0.9;
@@ -1147,6 +1159,13 @@ class DrawerModal extends Component {
                 this.props.CurrentLayer == "LULC" ? {} : { display: "none" }
               }
             >
+              <Row style={{"margin-bottom": "2%"}}>
+                <div>
+                  <p style={{ fontSize: "18px", display: "inline" }}>
+                    <BiLineChart /> Trend
+                  </p>
+                </div>
+              </Row>
               <div style={this.state.loader ? {} : { display: "none" }}>
                 <center>
                   <img
@@ -1160,11 +1179,11 @@ class DrawerModal extends Component {
                 </center>
               </div>
               <div style={this.state.loader ? { display: "none" } : {}}>
-                <div>
+                {/* <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
                     <BiLineChart /> Trend
                   </p>
-                </div>
+                </div> */}
                 <Row>
                   <Col>
                     <span
@@ -1198,12 +1217,24 @@ class DrawerModal extends Component {
                 </div>
               </div>
             </Col>
-            <Row>
-              <div>
+            <Row
+              style={
+                this.props.LayerDescription.multiple_files
+                  ? {}
+                  : { display: "none" }
+              }
+            >
+              <div style={{"margin-bottom": "2%"}}>
                 <p style={{ fontSize: "18px", display: "inline" }}>
                   <BiLineChart /> Trend
                 </p>
               </div>
+            </Row>
+            <Row style={this.state.Datanull ? {} : { display: "none" }}>
+              <p style={{ color: "#cf2e2e", textAlign: "center" }}>
+                {" "}
+                Trend not available !
+              </p>
             </Row>
             <Row
               style={

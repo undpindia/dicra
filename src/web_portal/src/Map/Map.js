@@ -162,6 +162,7 @@ class map extends Component {
       pointData: false,
       selected_shape: [],
       keyMAP: 1,
+      regionkey:1,
       pointVector: {
         type: "FeatureCollection",
         features: [
@@ -335,7 +336,6 @@ class map extends Component {
     }
   }
   getwarehouseDetails(geojson) {
- 
     this.setState(
       {
         areaValue: geojson.capacity,
@@ -351,10 +351,8 @@ class map extends Component {
     if (this.props.CurrentLayer == "FIREEV") {
       this.getCountEvents(e);
     } else if (this.props.CurrentLayer == "WH") {
-    
     } else if (this.props.CurrentLayer == "CP") {
       // this.CPchild.current.showDrawer();
-    
     } else if (this.props.CurrentLayer == "WEATHER") {
       var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
@@ -528,7 +526,7 @@ class map extends Component {
     if (this.props.CurrentLayer == "LULC") {
       var area = geojsonArea.geometry(geojson.features[0].geometry);
       area = area / 1000000;
-    
+
       if (area > 150) {
         message.info("Maximum query area reached!");
       } else {
@@ -597,7 +595,7 @@ class map extends Component {
     this.setState({ active: !currentState });
   }
   onchangeshape(e) {
-    if (e.target.value == "district") {
+    if (e.target.value == "DISTRICT") {
       this.props.showRaster();
       this.props.setRegion("DISTRICT");
       this.map.removeLayer(this.state.editableFG);
@@ -609,6 +607,7 @@ class map extends Component {
           checked: false,
           regionList: districtRegions(),
           customStatus: false,
+          regionkey:this.state.regionkey+1,
           showlayertype: true,
           locpointerltlng: [60.732421875, 80.67555881973475],
           baseMap:
@@ -620,7 +619,7 @@ class map extends Component {
           this.getlayer();
         }
       );
-    } else if (e.target.value == "mandal") {
+    } else if (e.target.value == "MANDAL") {
       this.props.showRaster();
       this.map.removeLayer(this.state.editableFG);
       this.props.setRegion("MANDAL");
@@ -713,7 +712,20 @@ class map extends Component {
     this.props.setplace("");
   }
   async getlayer() {
-  
+    this.setState({
+      baseMap:
+        "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+      attribution: "dark_matter_lite_rainbow",
+      baseMapselected: "Dark",
+    });
+    if (this.props.CurrentRegion == "CUSTOM") {
+      this.props.setRegion("DISTRICT");
+      this.setState({
+        regionkey:this.state.regionkey+1,
+      })
+     
+    }
+
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
     if (this.props.CurrentLayer == "FIREEV") {
       this.setState({
@@ -750,9 +762,7 @@ class map extends Component {
           {
             pointVector: res.data.data,
           },
-          () => {
-        
-          }
+          () => {}
         );
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
@@ -766,11 +776,9 @@ class map extends Component {
       });
       try {
         const res = await axiosConfig.get(`/getmarketyard`);
-        this.setState(
-          {
-            pointVector: res.data.data,
-          }
-        );
+        this.setState({
+          pointVector: res.data.data,
+        });
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -899,7 +907,6 @@ class map extends Component {
   }
   onMouseOver(e) {
     if (this.props.currentLayerType == "Vector") {
-  
       if (this.props.CurrentLayer == "POPULATION") {
         this.props.setvalue(
           parseFloat(
@@ -911,7 +918,6 @@ class map extends Component {
           if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
             this.props.setvalue("N/A");
           } else {
-         
             this.props.setvalue(
               parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(2)
             );
@@ -1081,7 +1087,6 @@ class map extends Component {
     }
   }
   handlePointclick(name) {
-  
     // e.preventDefault();
     // this.setState({
     //   currentComodity:name
@@ -1091,9 +1096,8 @@ class map extends Component {
     }
   }
   checkRadius(capacity) {
-  
     var radius = 3000 * Math.log(capacity / 100);
-   
+
     if (radius > 0) {
       //   this.setState({
       //     keyMAP: this.state.keyMAP + 1,
@@ -1231,10 +1235,12 @@ class map extends Component {
               // defaultChecked={this.props.CurrentLayer == "WEATHER" ?"mandal":"district"}
               // defaultValue={this.props.CurrentLayer == "WEATHER" ?"mandal":"district"}
               // style={}
+              key={this.state.regionkey}
+              value={this.props.CurrentRegion}
               onChange={(e) => this.onchangeshape(e)}
             >
-              <option value="district">District</option>
-              <option value="mandal">Mandal</option>
+              <option value="DISTRICT">District</option>
+              <option value="MANDAL">Mandal</option>
               <option
                 value="custom"
                 disabled={
@@ -1422,7 +1428,7 @@ class map extends Component {
                 >
                   <a
                     style={
-                      this.props.CurrentLayer == "CP" ? { display: "none" } : {}
+                      this.props.CurrentLayer == "CP" ? { display: "none" } : {textAlign:"left"}
                     }
                   >
                     Capacity : {point.properties.capacity} MT

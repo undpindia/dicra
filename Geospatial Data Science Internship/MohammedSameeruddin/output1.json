@@ -1,0 +1,2034 @@
+{
+  "Telangana": {
+    "2015": [
+      {
+        "district": "Venkatapuram",
+        "fireCount": 182
+      },
+      {
+        "district": "Borgampad",
+        "fireCount": 98
+      },
+      {
+        "district": "Yellandu",
+        "fireCount": 210
+      },
+      {
+        "district": "Bhadrachalam",
+        "fireCount": 60
+      },
+      {
+        "district": "Nirmal",
+        "fireCount": 46
+      },
+      {
+        "district": "Sultanabad",
+        "fireCount": 21
+      },
+      {
+        "district": "Madhira",
+        "fireCount": 17
+      },
+      {
+        "district": "Banswada",
+        "fireCount": 24
+      },
+      {
+        "district": "Huzurnagar",
+        "fireCount": 8
+      },
+      {
+        "district": "Achampet",
+        "fireCount": 138
+      },
+      {
+        "district": "Mulug",
+        "fireCount": 218
+      },
+      {
+        "district": "Manthani",
+        "fireCount": 104
+      },
+      {
+        "district": "Siddipet",
+        "fireCount": 7
+      },
+      {
+        "district": "Narsampet",
+        "fireCount": 135
+      },
+      {
+        "district": "Parkal",
+        "fireCount": 30
+      },
+      {
+        "district": "Bodhan",
+        "fireCount": 40
+      },
+      {
+        "district": "Metpalli",
+        "fireCount": 27
+      },
+      {
+        "district": "Mahbubnagar",
+        "fireCount": 7
+      },
+      {
+        "district": "Kottagudem",
+        "fireCount": 95
+      },
+      {
+        "district": "Nizamabad",
+        "fireCount": 38
+      },
+      {
+        "district": "Narsapur",
+        "fireCount": 8
+      },
+      {
+        "district": "Sangareddi",
+        "fireCount": 14
+      },
+      {
+        "district": "Jangaon",
+        "fireCount": 11
+      },
+      {
+        "district": "Medak",
+        "fireCount": 11
+      },
+      {
+        "district": "Kalwakurti",
+        "fireCount": 4
+      },
+      {
+        "district": "Narayankher",
+        "fireCount": 2
+      },
+      {
+        "district": "Khammam",
+        "fireCount": 22
+      },
+      {
+        "district": "Farooq Nagar",
+        "fireCount": 4
+      },
+      {
+        "district": "Madnur",
+        "fireCount": 5
+      },
+      {
+        "district": "Khanapur",
+        "fireCount": 110
+      },
+      {
+        "district": "Jogipet",
+        "fireCount": 15
+      },
+      {
+        "district": "Jagtial",
+        "fireCount": 49
+      },
+      {
+        "district": "Kolhapur",
+        "fireCount": 16
+      },
+      {
+        "district": "Wanparthy",
+        "fireCount": 8
+      },
+      {
+        "district": "n.a. ( 1711)",
+        "fireCount": 5
+      },
+      {
+        "district": "Armur",
+        "fireCount": 43
+      },
+      {
+        "district": "Tandur",
+        "fireCount": 6
+      },
+      {
+        "district": "Kamareddy",
+        "fireCount": 12
+      },
+      {
+        "district": "Utnur",
+        "fireCount": 21
+      },
+      {
+        "district": "Vikarabad",
+        "fireCount": 8
+      },
+      {
+        "district": "Ibrahimpatan",
+        "fireCount": 5
+      },
+      {
+        "district": "Bhongir",
+        "fireCount": 1
+      },
+      {
+        "district": "Chevella",
+        "fireCount": 4
+      },
+      {
+        "district": "Yellareddi",
+        "fireCount": 9
+      },
+      {
+        "district": "Pargi",
+        "fireCount": 6
+      },
+      {
+        "district": "Karimnagar",
+        "fireCount": 5
+      },
+      {
+        "district": "Nalgonda",
+        "fireCount": 2
+      },
+      {
+        "district": "Sirsilla",
+        "fireCount": 25
+      },
+      {
+        "district": "Ramannapet",
+        "fireCount": 6
+      },
+      {
+        "district": "Nagar Karnul",
+        "fireCount": 7
+      },
+      {
+        "district": "Hanmakonda",
+        "fireCount": 9
+      },
+      {
+        "district": "Zahirabad",
+        "fireCount": 5
+      },
+      {
+        "district": "Mudhol",
+        "fireCount": 4
+      },
+      {
+        "district": "Asifabad",
+        "fireCount": 15
+      },
+      {
+        "district": "Laxettipet",
+        "fireCount": 24
+      },
+      {
+        "district": "n.a. ( 1728)",
+        "fireCount": 8
+      },
+      {
+        "district": "Alampur",
+        "fireCount": 6
+      },
+      {
+        "district": "Sirpur",
+        "fireCount": 20
+      },
+      {
+        "district": "Chinnur",
+        "fireCount": 27
+      },
+      {
+        "district": "Boath",
+        "fireCount": 7
+      },
+      {
+        "district": "Makhtal",
+        "fireCount": 3
+      },
+      {
+        "district": "Medchal",
+        "fireCount": 5
+      },
+      {
+        "district": "Suriapet",
+        "fireCount": 3
+      },
+      {
+        "district": "Huzurabad",
+        "fireCount": 8
+      },
+      {
+        "district": "Atamkur",
+        "fireCount": 4
+      },
+      {
+        "district": "Mirialguda",
+        "fireCount": 10
+      },
+      {
+        "district": "Gajwel",
+        "fireCount": 6
+      },
+      {
+        "district": "Devarkonda",
+        "fireCount": 2
+      },
+      {
+        "district": "Hyderabad",
+        "fireCount": 1
+      },
+      {
+        "district": "Adilabad",
+        "fireCount": 2
+      },
+      {
+        "district": "Gadwal",
+        "fireCount": 0
+      },
+      {
+        "district": "Korangal",
+        "fireCount": 0
+      }
+    ],
+    "2016": [
+      {
+        "district": "Venkatapuram",
+        "fireCount": 175
+      },
+      {
+        "district": "Borgampad",
+        "fireCount": 100
+      },
+      {
+        "district": "Yellandu",
+        "fireCount": 265
+      },
+      {
+        "district": "Bhadrachalam",
+        "fireCount": 51
+      },
+      {
+        "district": "Nirmal",
+        "fireCount": 26
+      },
+      {
+        "district": "Sultanabad",
+        "fireCount": 31
+      },
+      {
+        "district": "Madhira",
+        "fireCount": 40
+      },
+      {
+        "district": "Banswada",
+        "fireCount": 12
+      },
+      {
+        "district": "Huzurnagar",
+        "fireCount": 12
+      },
+      {
+        "district": "Achampet",
+        "fireCount": 84
+      },
+      {
+        "district": "Mulug",
+        "fireCount": 215
+      },
+      {
+        "district": "Manthani",
+        "fireCount": 132
+      },
+      {
+        "district": "Siddipet",
+        "fireCount": 17
+      },
+      {
+        "district": "Narsampet",
+        "fireCount": 204
+      },
+      {
+        "district": "Parkal",
+        "fireCount": 31
+      },
+      {
+        "district": "Bodhan",
+        "fireCount": 29
+      },
+      {
+        "district": "Metpalli",
+        "fireCount": 15
+      },
+      {
+        "district": "Mahbubnagar",
+        "fireCount": 9
+      },
+      {
+        "district": "Kottagudem",
+        "fireCount": 97
+      },
+      {
+        "district": "Nizamabad",
+        "fireCount": 31
+      },
+      {
+        "district": "Narsapur",
+        "fireCount": 7
+      },
+      {
+        "district": "Sangareddi",
+        "fireCount": 20
+      },
+      {
+        "district": "Jangaon",
+        "fireCount": 6
+      },
+      {
+        "district": "Medak",
+        "fireCount": 17
+      },
+      {
+        "district": "Kalwakurti",
+        "fireCount": 9
+      },
+      {
+        "district": "Narayankher",
+        "fireCount": 4
+      },
+      {
+        "district": "Khammam",
+        "fireCount": 24
+      },
+      {
+        "district": "Farooq Nagar",
+        "fireCount": 10
+      },
+      {
+        "district": "Madnur",
+        "fireCount": 6
+      },
+      {
+        "district": "Khanapur",
+        "fireCount": 50
+      },
+      {
+        "district": "Jogipet",
+        "fireCount": 29
+      },
+      {
+        "district": "Jagtial",
+        "fireCount": 26
+      },
+      {
+        "district": "Kolhapur",
+        "fireCount": 25
+      },
+      {
+        "district": "Wanparthy",
+        "fireCount": 7
+      },
+      {
+        "district": "n.a. ( 1711)",
+        "fireCount": 2
+      },
+      {
+        "district": "Armur",
+        "fireCount": 24
+      },
+      {
+        "district": "Tandur",
+        "fireCount": 6
+      },
+      {
+        "district": "Kamareddy",
+        "fireCount": 9
+      },
+      {
+        "district": "Utnur",
+        "fireCount": 16
+      },
+      {
+        "district": "Vikarabad",
+        "fireCount": 17
+      },
+      {
+        "district": "Ibrahimpatan",
+        "fireCount": 0
+      },
+      {
+        "district": "Bhongir",
+        "fireCount": 1
+      },
+      {
+        "district": "Chevella",
+        "fireCount": 3
+      },
+      {
+        "district": "Yellareddi",
+        "fireCount": 16
+      },
+      {
+        "district": "Pargi",
+        "fireCount": 2
+      },
+      {
+        "district": "Karimnagar",
+        "fireCount": 26
+      },
+      {
+        "district": "Nalgonda",
+        "fireCount": 4
+      },
+      {
+        "district": "Sirsilla",
+        "fireCount": 18
+      },
+      {
+        "district": "Ramannapet",
+        "fireCount": 6
+      },
+      {
+        "district": "Nagar Karnul",
+        "fireCount": 9
+      },
+      {
+        "district": "Hanmakonda",
+        "fireCount": 12
+      },
+      {
+        "district": "Zahirabad",
+        "fireCount": 9
+      },
+      {
+        "district": "Mudhol",
+        "fireCount": 4
+      },
+      {
+        "district": "Asifabad",
+        "fireCount": 48
+      },
+      {
+        "district": "Laxettipet",
+        "fireCount": 42
+      },
+      {
+        "district": "n.a. ( 1728)",
+        "fireCount": 7
+      },
+      {
+        "district": "Alampur",
+        "fireCount": 5
+      },
+      {
+        "district": "Sirpur",
+        "fireCount": 46
+      },
+      {
+        "district": "Chinnur",
+        "fireCount": 38
+      },
+      {
+        "district": "Boath",
+        "fireCount": 13
+      },
+      {
+        "district": "Makhtal",
+        "fireCount": 12
+      },
+      {
+        "district": "Medchal",
+        "fireCount": 8
+      },
+      {
+        "district": "Suriapet",
+        "fireCount": 5
+      },
+      {
+        "district": "Huzurabad",
+        "fireCount": 18
+      },
+      {
+        "district": "Atamkur",
+        "fireCount": 14
+      },
+      {
+        "district": "Mirialguda",
+        "fireCount": 9
+      },
+      {
+        "district": "Gajwel",
+        "fireCount": 8
+      },
+      {
+        "district": "Devarkonda",
+        "fireCount": 5
+      },
+      {
+        "district": "Hyderabad",
+        "fireCount": 2
+      },
+      {
+        "district": "Adilabad",
+        "fireCount": 10
+      },
+      {
+        "district": "Gadwal",
+        "fireCount": 3
+      },
+      {
+        "district": "Korangal",
+        "fireCount": 4
+      }
+    ],
+    "2017": [
+      {
+        "district": "Venkatapuram",
+        "fireCount": 234
+      },
+      {
+        "district": "Borgampad",
+        "fireCount": 196
+      },
+      {
+        "district": "Yellandu",
+        "fireCount": 258
+      },
+      {
+        "district": "Bhadrachalam",
+        "fireCount": 65
+      },
+      {
+        "district": "Nirmal",
+        "fireCount": 42
+      },
+      {
+        "district": "Sultanabad",
+        "fireCount": 58
+      },
+      {
+        "district": "Madhira",
+        "fireCount": 37
+      },
+      {
+        "district": "Banswada",
+        "fireCount": 64
+      },
+      {
+        "district": "Huzurnagar",
+        "fireCount": 9
+      },
+      {
+        "district": "Achampet",
+        "fireCount": 32
+      },
+      {
+        "district": "Mulug",
+        "fireCount": 332
+      },
+      {
+        "district": "Manthani",
+        "fireCount": 156
+      },
+      {
+        "district": "Siddipet",
+        "fireCount": 9
+      },
+      {
+        "district": "Narsampet",
+        "fireCount": 219
+      },
+      {
+        "district": "Parkal",
+        "fireCount": 39
+      },
+      {
+        "district": "Bodhan",
+        "fireCount": 88
+      },
+      {
+        "district": "Metpalli",
+        "fireCount": 42
+      },
+      {
+        "district": "Mahbubnagar",
+        "fireCount": 7
+      },
+      {
+        "district": "Kottagudem",
+        "fireCount": 72
+      },
+      {
+        "district": "Nizamabad",
+        "fireCount": 83
+      },
+      {
+        "district": "Narsapur",
+        "fireCount": 40
+      },
+      {
+        "district": "Sangareddi",
+        "fireCount": 26
+      },
+      {
+        "district": "Jangaon",
+        "fireCount": 18
+      },
+      {
+        "district": "Medak",
+        "fireCount": 32
+      },
+      {
+        "district": "Kalwakurti",
+        "fireCount": 5
+      },
+      {
+        "district": "Narayankher",
+        "fireCount": 3
+      },
+      {
+        "district": "Khammam",
+        "fireCount": 15
+      },
+      {
+        "district": "Farooq Nagar",
+        "fireCount": 7
+      },
+      {
+        "district": "Madnur",
+        "fireCount": 14
+      },
+      {
+        "district": "Khanapur",
+        "fireCount": 155
+      },
+      {
+        "district": "Jogipet",
+        "fireCount": 40
+      },
+      {
+        "district": "Jagtial",
+        "fireCount": 60
+      },
+      {
+        "district": "Kolhapur",
+        "fireCount": 20
+      },
+      {
+        "district": "Wanparthy",
+        "fireCount": 4
+      },
+      {
+        "district": "n.a. ( 1711)",
+        "fireCount": 1
+      },
+      {
+        "district": "Armur",
+        "fireCount": 69
+      },
+      {
+        "district": "Tandur",
+        "fireCount": 14
+      },
+      {
+        "district": "Kamareddy",
+        "fireCount": 22
+      },
+      {
+        "district": "Utnur",
+        "fireCount": 43
+      },
+      {
+        "district": "Vikarabad",
+        "fireCount": 38
+      },
+      {
+        "district": "Ibrahimpatan",
+        "fireCount": 3
+      },
+      {
+        "district": "Bhongir",
+        "fireCount": 8
+      },
+      {
+        "district": "Chevella",
+        "fireCount": 11
+      },
+      {
+        "district": "Yellareddi",
+        "fireCount": 13
+      },
+      {
+        "district": "Pargi",
+        "fireCount": 13
+      },
+      {
+        "district": "Karimnagar",
+        "fireCount": 24
+      },
+      {
+        "district": "Nalgonda",
+        "fireCount": 5
+      },
+      {
+        "district": "Sirsilla",
+        "fireCount": 37
+      },
+      {
+        "district": "Ramannapet",
+        "fireCount": 13
+      },
+      {
+        "district": "Nagar Karnul",
+        "fireCount": 1
+      },
+      {
+        "district": "Hanmakonda",
+        "fireCount": 23
+      },
+      {
+        "district": "Zahirabad",
+        "fireCount": 15
+      },
+      {
+        "district": "Mudhol",
+        "fireCount": 3
+      },
+      {
+        "district": "Asifabad",
+        "fireCount": 48
+      },
+      {
+        "district": "Laxettipet",
+        "fireCount": 70
+      },
+      {
+        "district": "n.a. ( 1728)",
+        "fireCount": 3
+      },
+      {
+        "district": "Alampur",
+        "fireCount": 6
+      },
+      {
+        "district": "Sirpur",
+        "fireCount": 61
+      },
+      {
+        "district": "Chinnur",
+        "fireCount": 32
+      },
+      {
+        "district": "Boath",
+        "fireCount": 28
+      },
+      {
+        "district": "Makhtal",
+        "fireCount": 23
+      },
+      {
+        "district": "Medchal",
+        "fireCount": 10
+      },
+      {
+        "district": "Suriapet",
+        "fireCount": 10
+      },
+      {
+        "district": "Huzurabad",
+        "fireCount": 40
+      },
+      {
+        "district": "Atamkur",
+        "fireCount": 16
+      },
+      {
+        "district": "Mirialguda",
+        "fireCount": 12
+      },
+      {
+        "district": "Gajwel",
+        "fireCount": 6
+      },
+      {
+        "district": "Devarkonda",
+        "fireCount": 3
+      },
+      {
+        "district": "Hyderabad",
+        "fireCount": 0
+      },
+      {
+        "district": "Adilabad",
+        "fireCount": 17
+      },
+      {
+        "district": "Gadwal",
+        "fireCount": 4
+      },
+      {
+        "district": "Korangal",
+        "fireCount": 5
+      }
+    ],
+    "2018": [
+      {
+        "district": "Venkatapuram",
+        "fireCount": 219
+      },
+      {
+        "district": "Borgampad",
+        "fireCount": 104
+      },
+      {
+        "district": "Yellandu",
+        "fireCount": 271
+      },
+      {
+        "district": "Bhadrachalam",
+        "fireCount": 46
+      },
+      {
+        "district": "Nirmal",
+        "fireCount": 41
+      },
+      {
+        "district": "Sultanabad",
+        "fireCount": 44
+      },
+      {
+        "district": "Madhira",
+        "fireCount": 37
+      },
+      {
+        "district": "Banswada",
+        "fireCount": 60
+      },
+      {
+        "district": "Huzurnagar",
+        "fireCount": 10
+      },
+      {
+        "district": "Achampet",
+        "fireCount": 150
+      },
+      {
+        "district": "Mulug",
+        "fireCount": 333
+      },
+      {
+        "district": "Manthani",
+        "fireCount": 158
+      },
+      {
+        "district": "Siddipet",
+        "fireCount": 10
+      },
+      {
+        "district": "Narsampet",
+        "fireCount": 256
+      },
+      {
+        "district": "Parkal",
+        "fireCount": 41
+      },
+      {
+        "district": "Bodhan",
+        "fireCount": 117
+      },
+      {
+        "district": "Metpalli",
+        "fireCount": 17
+      },
+      {
+        "district": "Mahbubnagar",
+        "fireCount": 6
+      },
+      {
+        "district": "Kottagudem",
+        "fireCount": 136
+      },
+      {
+        "district": "Nizamabad",
+        "fireCount": 86
+      },
+      {
+        "district": "Narsapur",
+        "fireCount": 27
+      },
+      {
+        "district": "Sangareddi",
+        "fireCount": 23
+      },
+      {
+        "district": "Jangaon",
+        "fireCount": 19
+      },
+      {
+        "district": "Medak",
+        "fireCount": 38
+      },
+      {
+        "district": "Kalwakurti",
+        "fireCount": 13
+      },
+      {
+        "district": "Narayankher",
+        "fireCount": 3
+      },
+      {
+        "district": "Khammam",
+        "fireCount": 42
+      },
+      {
+        "district": "Farooq Nagar",
+        "fireCount": 14
+      },
+      {
+        "district": "Madnur",
+        "fireCount": 12
+      },
+      {
+        "district": "Khanapur",
+        "fireCount": 147
+      },
+      {
+        "district": "Jogipet",
+        "fireCount": 33
+      },
+      {
+        "district": "Jagtial",
+        "fireCount": 38
+      },
+      {
+        "district": "Kolhapur",
+        "fireCount": 33
+      },
+      {
+        "district": "Wanparthy",
+        "fireCount": 16
+      },
+      {
+        "district": "n.a. ( 1711)",
+        "fireCount": 6
+      },
+      {
+        "district": "Armur",
+        "fireCount": 84
+      },
+      {
+        "district": "Tandur",
+        "fireCount": 18
+      },
+      {
+        "district": "Kamareddy",
+        "fireCount": 19
+      },
+      {
+        "district": "Utnur",
+        "fireCount": 50
+      },
+      {
+        "district": "Vikarabad",
+        "fireCount": 26
+      },
+      {
+        "district": "Ibrahimpatan",
+        "fireCount": 16
+      },
+      {
+        "district": "Bhongir",
+        "fireCount": 8
+      },
+      {
+        "district": "Chevella",
+        "fireCount": 10
+      },
+      {
+        "district": "Yellareddi",
+        "fireCount": 27
+      },
+      {
+        "district": "Pargi",
+        "fireCount": 7
+      },
+      {
+        "district": "Karimnagar",
+        "fireCount": 15
+      },
+      {
+        "district": "Nalgonda",
+        "fireCount": 15
+      },
+      {
+        "district": "Sirsilla",
+        "fireCount": 41
+      },
+      {
+        "district": "Ramannapet",
+        "fireCount": 9
+      },
+      {
+        "district": "Nagar Karnul",
+        "fireCount": 4
+      },
+      {
+        "district": "Hanmakonda",
+        "fireCount": 10
+      },
+      {
+        "district": "Zahirabad",
+        "fireCount": 25
+      },
+      {
+        "district": "Mudhol",
+        "fireCount": 2
+      },
+      {
+        "district": "Asifabad",
+        "fireCount": 60
+      },
+      {
+        "district": "Laxettipet",
+        "fireCount": 99
+      },
+      {
+        "district": "n.a. ( 1728)",
+        "fireCount": 9
+      },
+      {
+        "district": "Alampur",
+        "fireCount": 6
+      },
+      {
+        "district": "Sirpur",
+        "fireCount": 71
+      },
+      {
+        "district": "Chinnur",
+        "fireCount": 44
+      },
+      {
+        "district": "Boath",
+        "fireCount": 14
+      },
+      {
+        "district": "Makhtal",
+        "fireCount": 17
+      },
+      {
+        "district": "Medchal",
+        "fireCount": 10
+      },
+      {
+        "district": "Suriapet",
+        "fireCount": 6
+      },
+      {
+        "district": "Huzurabad",
+        "fireCount": 34
+      },
+      {
+        "district": "Atamkur",
+        "fireCount": 8
+      },
+      {
+        "district": "Mirialguda",
+        "fireCount": 4
+      },
+      {
+        "district": "Gajwel",
+        "fireCount": 3
+      },
+      {
+        "district": "Devarkonda",
+        "fireCount": 7
+      },
+      {
+        "district": "Hyderabad",
+        "fireCount": 0
+      },
+      {
+        "district": "Adilabad",
+        "fireCount": 21
+      },
+      {
+        "district": "Gadwal",
+        "fireCount": 4
+      },
+      {
+        "district": "Korangal",
+        "fireCount": 4
+      }
+    ],
+    "2019": [
+      {
+        "district": "Venkatapuram",
+        "fireCount": 156
+      },
+      {
+        "district": "Borgampad",
+        "fireCount": 79
+      },
+      {
+        "district": "Yellandu",
+        "fireCount": 124
+      },
+      {
+        "district": "Bhadrachalam",
+        "fireCount": 51
+      },
+      {
+        "district": "Nirmal",
+        "fireCount": 45
+      },
+      {
+        "district": "Sultanabad",
+        "fireCount": 45
+      },
+      {
+        "district": "Madhira",
+        "fireCount": 27
+      },
+      {
+        "district": "Banswada",
+        "fireCount": 24
+      },
+      {
+        "district": "Huzurnagar",
+        "fireCount": 14
+      },
+      {
+        "district": "Achampet",
+        "fireCount": 127
+      },
+      {
+        "district": "Mulug",
+        "fireCount": 179
+      },
+      {
+        "district": "Manthani",
+        "fireCount": 77
+      },
+      {
+        "district": "Siddipet",
+        "fireCount": 5
+      },
+      {
+        "district": "Narsampet",
+        "fireCount": 99
+      },
+      {
+        "district": "Parkal",
+        "fireCount": 17
+      },
+      {
+        "district": "Bodhan",
+        "fireCount": 25
+      },
+      {
+        "district": "Metpalli",
+        "fireCount": 23
+      },
+      {
+        "district": "Mahbubnagar",
+        "fireCount": 2
+      },
+      {
+        "district": "Kottagudem",
+        "fireCount": 120
+      },
+      {
+        "district": "Nizamabad",
+        "fireCount": 51
+      },
+      {
+        "district": "Narsapur",
+        "fireCount": 13
+      },
+      {
+        "district": "Sangareddi",
+        "fireCount": 24
+      },
+      {
+        "district": "Jangaon",
+        "fireCount": 14
+      },
+      {
+        "district": "Medak",
+        "fireCount": 18
+      },
+      {
+        "district": "Kalwakurti",
+        "fireCount": 7
+      },
+      {
+        "district": "Narayankher",
+        "fireCount": 5
+      },
+      {
+        "district": "Khammam",
+        "fireCount": 23
+      },
+      {
+        "district": "Farooq Nagar",
+        "fireCount": 1
+      },
+      {
+        "district": "Madnur",
+        "fireCount": 3
+      },
+      {
+        "district": "Khanapur",
+        "fireCount": 123
+      },
+      {
+        "district": "Jogipet",
+        "fireCount": 18
+      },
+      {
+        "district": "Jagtial",
+        "fireCount": 49
+      },
+      {
+        "district": "Kolhapur",
+        "fireCount": 31
+      },
+      {
+        "district": "Wanparthy",
+        "fireCount": 19
+      },
+      {
+        "district": "n.a. ( 1711)",
+        "fireCount": 0
+      },
+      {
+        "district": "Armur",
+        "fireCount": 51
+      },
+      {
+        "district": "Tandur",
+        "fireCount": 9
+      },
+      {
+        "district": "Kamareddy",
+        "fireCount": 25
+      },
+      {
+        "district": "Utnur",
+        "fireCount": 28
+      },
+      {
+        "district": "Vikarabad",
+        "fireCount": 19
+      },
+      {
+        "district": "Ibrahimpatan",
+        "fireCount": 3
+      },
+      {
+        "district": "Bhongir",
+        "fireCount": 4
+      },
+      {
+        "district": "Chevella",
+        "fireCount": 0
+      },
+      {
+        "district": "Yellareddi",
+        "fireCount": 23
+      },
+      {
+        "district": "Pargi",
+        "fireCount": 2
+      },
+      {
+        "district": "Karimnagar",
+        "fireCount": 6
+      },
+      {
+        "district": "Nalgonda",
+        "fireCount": 15
+      },
+      {
+        "district": "Sirsilla",
+        "fireCount": 22
+      },
+      {
+        "district": "Ramannapet",
+        "fireCount": 10
+      },
+      {
+        "district": "Nagar Karnul",
+        "fireCount": 1
+      },
+      {
+        "district": "Hanmakonda",
+        "fireCount": 5
+      },
+      {
+        "district": "Zahirabad",
+        "fireCount": 14
+      },
+      {
+        "district": "Mudhol",
+        "fireCount": 5
+      },
+      {
+        "district": "Asifabad",
+        "fireCount": 15
+      },
+      {
+        "district": "Laxettipet",
+        "fireCount": 18
+      },
+      {
+        "district": "n.a. ( 1728)",
+        "fireCount": 3
+      },
+      {
+        "district": "Alampur",
+        "fireCount": 9
+      },
+      {
+        "district": "Sirpur",
+        "fireCount": 22
+      },
+      {
+        "district": "Chinnur",
+        "fireCount": 11
+      },
+      {
+        "district": "Boath",
+        "fireCount": 10
+      },
+      {
+        "district": "Makhtal",
+        "fireCount": 13
+      },
+      {
+        "district": "Medchal",
+        "fireCount": 8
+      },
+      {
+        "district": "Suriapet",
+        "fireCount": 3
+      },
+      {
+        "district": "Huzurabad",
+        "fireCount": 29
+      },
+      {
+        "district": "Atamkur",
+        "fireCount": 15
+      },
+      {
+        "district": "Mirialguda",
+        "fireCount": 5
+      },
+      {
+        "district": "Gajwel",
+        "fireCount": 7
+      },
+      {
+        "district": "Devarkonda",
+        "fireCount": 10
+      },
+      {
+        "district": "Hyderabad",
+        "fireCount": 2
+      },
+      {
+        "district": "Adilabad",
+        "fireCount": 13
+      },
+      {
+        "district": "Gadwal",
+        "fireCount": 7
+      },
+      {
+        "district": "Korangal",
+        "fireCount": 3
+      }
+    ],
+    "2020": [
+      {
+        "district": "Venkatapuram",
+        "fireCount": 158
+      },
+      {
+        "district": "Borgampad",
+        "fireCount": 58
+      },
+      {
+        "district": "Yellandu",
+        "fireCount": 123
+      },
+      {
+        "district": "Bhadrachalam",
+        "fireCount": 26
+      },
+      {
+        "district": "Nirmal",
+        "fireCount": 39
+      },
+      {
+        "district": "Sultanabad",
+        "fireCount": 74
+      },
+      {
+        "district": "Madhira",
+        "fireCount": 24
+      },
+      {
+        "district": "Banswada",
+        "fireCount": 61
+      },
+      {
+        "district": "Huzurnagar",
+        "fireCount": 6
+      },
+      {
+        "district": "Achampet",
+        "fireCount": 78
+      },
+      {
+        "district": "Mulug",
+        "fireCount": 173
+      },
+      {
+        "district": "Manthani",
+        "fireCount": 62
+      },
+      {
+        "district": "Siddipet",
+        "fireCount": 14
+      },
+      {
+        "district": "Narsampet",
+        "fireCount": 141
+      },
+      {
+        "district": "Parkal",
+        "fireCount": 18
+      },
+      {
+        "district": "Bodhan",
+        "fireCount": 84
+      },
+      {
+        "district": "Metpalli",
+        "fireCount": 49
+      },
+      {
+        "district": "Mahbubnagar",
+        "fireCount": 8
+      },
+      {
+        "district": "Kottagudem",
+        "fireCount": 64
+      },
+      {
+        "district": "Nizamabad",
+        "fireCount": 89
+      },
+      {
+        "district": "Narsapur",
+        "fireCount": 26
+      },
+      {
+        "district": "Sangareddi",
+        "fireCount": 33
+      },
+      {
+        "district": "Jangaon",
+        "fireCount": 17
+      },
+      {
+        "district": "Medak",
+        "fireCount": 28
+      },
+      {
+        "district": "Kalwakurti",
+        "fireCount": 19
+      },
+      {
+        "district": "Narayankher",
+        "fireCount": 2
+      },
+      {
+        "district": "Khammam",
+        "fireCount": 27
+      },
+      {
+        "district": "Farooq Nagar",
+        "fireCount": 12
+      },
+      {
+        "district": "Madnur",
+        "fireCount": 19
+      },
+      {
+        "district": "Khanapur",
+        "fireCount": 111
+      },
+      {
+        "district": "Jogipet",
+        "fireCount": 26
+      },
+      {
+        "district": "Jagtial",
+        "fireCount": 42
+      },
+      {
+        "district": "Kolhapur",
+        "fireCount": 24
+      },
+      {
+        "district": "Wanparthy",
+        "fireCount": 25
+      },
+      {
+        "district": "n.a. ( 1711)",
+        "fireCount": 12
+      },
+      {
+        "district": "Armur",
+        "fireCount": 57
+      },
+      {
+        "district": "Tandur",
+        "fireCount": 11
+      },
+      {
+        "district": "Kamareddy",
+        "fireCount": 25
+      },
+      {
+        "district": "Utnur",
+        "fireCount": 13
+      },
+      {
+        "district": "Vikarabad",
+        "fireCount": 22
+      },
+      {
+        "district": "Ibrahimpatan",
+        "fireCount": 7
+      },
+      {
+        "district": "Bhongir",
+        "fireCount": 5
+      },
+      {
+        "district": "Chevella",
+        "fireCount": 14
+      },
+      {
+        "district": "Yellareddi",
+        "fireCount": 19
+      },
+      {
+        "district": "Pargi",
+        "fireCount": 6
+      },
+      {
+        "district": "Karimnagar",
+        "fireCount": 31
+      },
+      {
+        "district": "Nalgonda",
+        "fireCount": 11
+      },
+      {
+        "district": "Sirsilla",
+        "fireCount": 24
+      },
+      {
+        "district": "Ramannapet",
+        "fireCount": 17
+      },
+      {
+        "district": "Nagar Karnul",
+        "fireCount": 5
+      },
+      {
+        "district": "Hanmakonda",
+        "fireCount": 22
+      },
+      {
+        "district": "Zahirabad",
+        "fireCount": 19
+      },
+      {
+        "district": "Mudhol",
+        "fireCount": 6
+      },
+      {
+        "district": "Asifabad",
+        "fireCount": 20
+      },
+      {
+        "district": "Laxettipet",
+        "fireCount": 27
+      },
+      {
+        "district": "n.a. ( 1728)",
+        "fireCount": 8
+      },
+      {
+        "district": "Alampur",
+        "fireCount": 7
+      },
+      {
+        "district": "Sirpur",
+        "fireCount": 5
+      },
+      {
+        "district": "Chinnur",
+        "fireCount": 7
+      },
+      {
+        "district": "Boath",
+        "fireCount": 9
+      },
+      {
+        "district": "Makhtal",
+        "fireCount": 21
+      },
+      {
+        "district": "Medchal",
+        "fireCount": 6
+      },
+      {
+        "district": "Suriapet",
+        "fireCount": 7
+      },
+      {
+        "district": "Huzurabad",
+        "fireCount": 76
+      },
+      {
+        "district": "Atamkur",
+        "fireCount": 13
+      },
+      {
+        "district": "Mirialguda",
+        "fireCount": 3
+      },
+      {
+        "district": "Gajwel",
+        "fireCount": 11
+      },
+      {
+        "district": "Devarkonda",
+        "fireCount": 22
+      },
+      {
+        "district": "Hyderabad",
+        "fireCount": 1
+      },
+      {
+        "district": "Adilabad",
+        "fireCount": 2
+      },
+      {
+        "district": "Gadwal",
+        "fireCount": 3
+      },
+      {
+        "district": "Korangal",
+        "fireCount": 10
+      }
+    ],
+    "2021": [
+      {
+        "district": "Venkatapuram",
+        "fireCount": 258
+      },
+      {
+        "district": "Borgampad",
+        "fireCount": 111
+      },
+      {
+        "district": "Yellandu",
+        "fireCount": 239
+      },
+      {
+        "district": "Bhadrachalam",
+        "fireCount": 67
+      },
+      {
+        "district": "Nirmal",
+        "fireCount": 60
+      },
+      {
+        "district": "Sultanabad",
+        "fireCount": 20
+      },
+      {
+        "district": "Madhira",
+        "fireCount": 23
+      },
+      {
+        "district": "Banswada",
+        "fireCount": 14
+      },
+      {
+        "district": "Huzurnagar",
+        "fireCount": 1
+      },
+      {
+        "district": "Achampet",
+        "fireCount": 243
+      },
+      {
+        "district": "Mulug",
+        "fireCount": 237
+      },
+      {
+        "district": "Manthani",
+        "fireCount": 135
+      },
+      {
+        "district": "Siddipet",
+        "fireCount": 17
+      },
+      {
+        "district": "Narsampet",
+        "fireCount": 173
+      },
+      {
+        "district": "Parkal",
+        "fireCount": 42
+      },
+      {
+        "district": "Bodhan",
+        "fireCount": 27
+      },
+      {
+        "district": "Metpalli",
+        "fireCount": 21
+      },
+      {
+        "district": "Mahbubnagar",
+        "fireCount": 4
+      },
+      {
+        "district": "Kottagudem",
+        "fireCount": 118
+      },
+      {
+        "district": "Nizamabad",
+        "fireCount": 42
+      },
+      {
+        "district": "Narsapur",
+        "fireCount": 19
+      },
+      {
+        "district": "Sangareddi",
+        "fireCount": 16
+      },
+      {
+        "district": "Jangaon",
+        "fireCount": 13
+      },
+      {
+        "district": "Medak",
+        "fireCount": 19
+      },
+      {
+        "district": "Kalwakurti",
+        "fireCount": 8
+      },
+      {
+        "district": "Narayankher",
+        "fireCount": 11
+      },
+      {
+        "district": "Khammam",
+        "fireCount": 18
+      },
+      {
+        "district": "Farooq Nagar",
+        "fireCount": 7
+      },
+      {
+        "district": "Madnur",
+        "fireCount": 4
+      },
+      {
+        "district": "Khanapur",
+        "fireCount": 180
+      },
+      {
+        "district": "Jogipet",
+        "fireCount": 13
+      },
+      {
+        "district": "Jagtial",
+        "fireCount": 72
+      },
+      {
+        "district": "Kolhapur",
+        "fireCount": 22
+      },
+      {
+        "district": "Wanparthy",
+        "fireCount": 16
+      },
+      {
+        "district": "n.a. ( 1711)",
+        "fireCount": 11
+      },
+      {
+        "district": "Armur",
+        "fireCount": 43
+      },
+      {
+        "district": "Tandur",
+        "fireCount": 16
+      },
+      {
+        "district": "Kamareddy",
+        "fireCount": 31
+      },
+      {
+        "district": "Utnur",
+        "fireCount": 71
+      },
+      {
+        "district": "Vikarabad",
+        "fireCount": 45
+      },
+      {
+        "district": "Ibrahimpatan",
+        "fireCount": 29
+      },
+      {
+        "district": "Bhongir",
+        "fireCount": 14
+      },
+      {
+        "district": "Chevella",
+        "fireCount": 15
+      },
+      {
+        "district": "Yellareddi",
+        "fireCount": 20
+      },
+      {
+        "district": "Pargi",
+        "fireCount": 10
+      },
+      {
+        "district": "Karimnagar",
+        "fireCount": 19
+      },
+      {
+        "district": "Nalgonda",
+        "fireCount": 11
+      },
+      {
+        "district": "Sirsilla",
+        "fireCount": 33
+      },
+      {
+        "district": "Ramannapet",
+        "fireCount": 19
+      },
+      {
+        "district": "Nagar Karnul",
+        "fireCount": 3
+      },
+      {
+        "district": "Hanmakonda",
+        "fireCount": 8
+      },
+      {
+        "district": "Zahirabad",
+        "fireCount": 29
+      },
+      {
+        "district": "Mudhol",
+        "fireCount": 3
+      },
+      {
+        "district": "Asifabad",
+        "fireCount": 133
+      },
+      {
+        "district": "Laxettipet",
+        "fireCount": 126
+      },
+      {
+        "district": "n.a. ( 1728)",
+        "fireCount": 4
+      },
+      {
+        "district": "Alampur",
+        "fireCount": 5
+      },
+      {
+        "district": "Sirpur",
+        "fireCount": 99
+      },
+      {
+        "district": "Chinnur",
+        "fireCount": 54
+      },
+      {
+        "district": "Boath",
+        "fireCount": 43
+      },
+      {
+        "district": "Makhtal",
+        "fireCount": 8
+      },
+      {
+        "district": "Medchal",
+        "fireCount": 10
+      },
+      {
+        "district": "Suriapet",
+        "fireCount": 2
+      },
+      {
+        "district": "Huzurabad",
+        "fireCount": 26
+      },
+      {
+        "district": "Atamkur",
+        "fireCount": 13
+      },
+      {
+        "district": "Mirialguda",
+        "fireCount": 2
+      },
+      {
+        "district": "Gajwel",
+        "fireCount": 8
+      },
+      {
+        "district": "Devarkonda",
+        "fireCount": 13
+      },
+      {
+        "district": "Hyderabad",
+        "fireCount": 0
+      },
+      {
+        "district": "Adilabad",
+        "fireCount": 50
+      },
+      {
+        "district": "Gadwal",
+        "fireCount": 1
+      },
+      {
+        "district": "Korangal",
+        "fireCount": 2
+      }
+    ]
+  }
+}

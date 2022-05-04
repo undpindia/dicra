@@ -1,16 +1,19 @@
-import itertools
 import configparser
 from fastapi import APIRouter
-from itertools import groupby
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+from sqlalchemy.sql.expression import true
+from schemas.index import CreateLayer
 from db.database import get_db
 from models.index import Layer
-from sqlalchemy.orm import Session
-from fastapi import FastAPI, Depends
-from schemas.index import CreateLayer
-from sqlalchemy.sql.expression import true
+from itertools import groupby
 from fastapi_pagination import LimitOffsetPage, Page, add_pagination,paginate
+import itertools
 from operator import itemgetter
+
+
 from pydantic import BaseModel
+
 
 layer= APIRouter()
 
@@ -30,7 +33,13 @@ def create(details:CreateLayer, db: Session = Depends(get_db)):
         vector_status=details.vector_status,
         multiple_files=details.multiple_files,
         display_name=details.display_name,
-        category=details.category
+        category=details.category,
+        isavailable=details.isavailable,
+        citation=details.citation,
+        standards=details.standards,
+        timerangefilter=details.timerangefilter,
+        showcustom=details.showcustom,
+        datafromvector=details.datafromvector
     )
     db.add(to_create)
     db.commit()
@@ -42,6 +51,7 @@ def create(details:CreateLayer, db: Session = Depends(get_db)):
 @layer.get("/getlayerconfig")
 async def get_layers(db:Session=Depends(get_db)):
     result=db.query(Layer).order_by(Layer.id).all()
+    db.close()
     return result
 
 @layer.get("/layers",response_model=Page[CreateLayer])
@@ -49,3 +59,9 @@ async def get_layers(db:Session=Depends(get_db)):
 async def get_layers(db: Session = Depends(get_db)):
     return paginate(db.query(Layer).all())
 add_pagination(layer)
+
+
+
+
+
+

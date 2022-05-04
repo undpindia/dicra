@@ -4,6 +4,7 @@ from boto3.session import Session
 from fastapi.responses import FileResponse
 from fastapi import APIRouter,File, UploadFile
 
+
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 AWS_ACCESS_KEY = config['AWS']['ACCESSKEY']
@@ -19,7 +20,7 @@ def all(parameter:str=None):
 
     s3 = session.resource('s3')
 
-    bucket = s3.Bucket(S3_BUCKET)
+    bucket = s3.Bucket('undp-dataforpolicy')
 
     objects = bucket.objects.filter(Prefix='parameters/NDVI/RASTER')
 

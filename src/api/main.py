@@ -1,7 +1,8 @@
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Depends, status
-from routes.index import usecase,layer,trend,parameter,download,current,custom,points,weather,customdistrict
+from routes.index import usecase,layer,trend,parameter,download,current,custom,points,weather,customdistrict,market,warehouse\
+    ,lulc
 from fastapi_pagination import add_pagination
 from fastapi.staticfiles import StaticFiles
 
@@ -34,6 +35,18 @@ tags_metadata = [
     {
         "name":"Weather Data",
         "description":"Endpoints to get weather data"
+    },
+    {
+        "name":"Market Yard Data",
+        "description":"Endpoints to get market yard data"
+    },
+    {
+        "name":"Warehouse Details",
+        "description":"Endpoints to get Warehouse Data"
+    },
+    {
+        "name":"LULC",
+        "description":"Endpoints to get LULC Data"
     }
    
 ]
@@ -53,16 +66,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(usecase,tags=["Usecase"])
-app.include_router(layer,tags=['Layerconfig'])
-app.include_router(current,tags=['Layer'])
+app.include_router(usecase,tags=["Usecase"],include_in_schema=False)
+app.include_router(layer,tags=['Layerconfig'],include_in_schema=False)
+app.include_router(current,tags=['Layer'],include_in_schema=False)
 app.include_router(download,tags=['Download'])
-app.include_router(custom,tags=['Custom'])
-app.include_router(points,tags=['Fire events'])
-app.include_router(weather,tags=['Weather Data'])
-app.include_router(trend)
-app.include_router(parameter)
-app.include_router(customdistrict,tags=['Custom'])
+app.include_router(custom,tags=['Custom'],include_in_schema=False)
+app.include_router(points,tags=['Fire events'],include_in_schema=False)
+app.include_router(weather,tags=['Weather Data'],include_in_schema=False)
+app.include_router(trend,include_in_schema=False)
+app.include_router(parameter,include_in_schema=False)
+app.include_router(customdistrict,tags=['Custom'],include_in_schema=False)
+app.include_router(market,tags=['Market Yard Data'],include_in_schema=False)
+app.include_router(warehouse,tags=['Warehouse Details'],include_in_schema=False)
+app.include_router(lulc,tags=['LULC'],include_in_schema=False)
 
 
 

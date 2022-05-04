@@ -8,6 +8,7 @@ import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
 import { geoMercator, geoPath } from "d3-geo";
 import { select } from "d3-selection";
+import Moment from 'moment';
 import {
   Button,
   Modal,
@@ -99,7 +100,7 @@ class CPDrawerModal extends Component {
             autoScaleYaxis: true,
           },
           toolbar: {
-            show: true,
+            show: false,
             export: {
               csv: {
                 headerCategory: "Datetime",
@@ -250,8 +251,6 @@ class CPDrawerModal extends Component {
           //   weatherValue: lst_value,
         });
       }
-
-      console.log("RESPONSE TREND", resTrend);
     } catch (err) {
       message.error("Failed to connect to server");
     }
@@ -296,11 +295,10 @@ class CPDrawerModal extends Component {
     }
   }
   async getvarietylist() {
-    console.log("SELECTED COMMODITY", this.state.selectedCommodity);
     var bodyParams = {
       commodity: this.state.selectedCommodity,
     };
-    console.log("Body Params", bodyParams);
+
     try {
       const resVariety = await axiosConfig.get(
         `/getvarietyname?commodity=` +
@@ -308,7 +306,7 @@ class CPDrawerModal extends Component {
           `&marketname=` +
           String(this.state.currentCM)
       );
-      console.log("VARITEY LIST", resVariety);
+
       this.sortVarietyname(resVariety.data.varity_name);
     } catch (err) {
       message.error("Failed to connect to server");
@@ -328,7 +326,6 @@ class CPDrawerModal extends Component {
         this.getcommoditytrend();
       }
     );
-    console.log("VARIETY LIST", VarietyList);
   }
   generatechart(data) {
     let chart_values = [];
@@ -348,7 +345,7 @@ class CPDrawerModal extends Component {
     var trendlength = trendData.data.length;
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
-    console.log("LAST UPDAET VALUE", trendData);
+
     if (trendData.data == null) {
       chart_values = [trendData];
     }
@@ -384,7 +381,7 @@ class CPDrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      console.log("FROM DATE & TO DATE", start_date, to_date);
+
       if (this.props.CurrentLayer == "FIREEV") {
         this.setState(
           {
@@ -571,7 +568,6 @@ class CPDrawerModal extends Component {
     if (value[date] == undefined) {
       return "0.00";
     } else {
-      console.log("LULC VALUES", value[date][category]);
       // this.setState({
       //   tableKey:this.state.tableKey+1
       // })
@@ -630,7 +626,7 @@ class CPDrawerModal extends Component {
               </Col>
               <Col className="alignrignt">
                 <p style={{ fontSize: "18px", marginBottom: "15px" }}>
-                  {this.props.LayerDescription.last_updated.slice(0, 10)}
+                  {Moment(this.props.LayerDescription.last_updated).format('DD-MM-YYYY').slice(0, 10)}
                 </p>
               </Col>
             </Row>
@@ -681,9 +677,18 @@ class CPDrawerModal extends Component {
               <p style={{ fontSize: "15px", fontWeight: "lighter" }}>
                 {this.props.LayerDescription.long_description}
               </p>
-              <p>Source : {this.props.LayerDescription.source}</p>
-              <p>Citation : {this.props.LayerDescription.citation}</p>
-              <p>Standards : {this.props.LayerDescription.standards}</p>
+              <div style={{marginBottom:"5px"}}>
+                <p style={{marginBottom:"0px", color:"#2867a1"}}>SOURCE</p>
+                <p>{this.props.LayerDescription.source}</p>
+              </div>
+              <div style={{marginBottom:"5px"}}>
+                <p style={{marginBottom:"0px", color:"#2867a1"}}>CITATION</p> 
+                <p>{this.props.LayerDescription.citation}</p>
+              </div>
+              <div>
+              <p style={{marginBottom:"0px", color:"#2867a1"}}>STANDARDS</p>
+              <p>{this.props.LayerDescription.standards}</p>
+              </div>
             </Row>
             <hr />
             <Row

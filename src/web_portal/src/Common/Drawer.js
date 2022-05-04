@@ -8,6 +8,7 @@ import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
 import { geoMercator, geoPath } from "d3-geo";
 import { select } from "d3-selection";
+import Moment from 'moment';
 import {
   Button,
   Modal,
@@ -84,6 +85,7 @@ class DrawerModal extends Component {
       currentCharttime: "6mon",
       customLULC: [],
       tableKey: 0,
+      Datanull: false,
       currentWeatherRange: "6months",
       LULCclasses: [],
       options: {
@@ -97,7 +99,7 @@ class DrawerModal extends Component {
             autoScaleYaxis: true,
           },
           toolbar: {
-            show: true,
+            show: false,
             export: {
               csv: {
                 headerCategory: "Datetime",
@@ -151,7 +153,7 @@ class DrawerModal extends Component {
           curve: "straight",
           lineCap: "butt",
           colors: undefined,
-          width: 2,
+          width: 1,
           dashArray: 0,
         },
       },
@@ -213,18 +215,22 @@ class DrawerModal extends Component {
 
     try {
       const resWeatherData = await axiosConfig.post(`/getweather?`, bodyParams);
-      console.log("RESPONSE ERE", resWeatherData);
+
       if (resWeatherData.data.trend.length > 0) {
         var last_date = resWeatherData.data.trend.length;
         last_date = last_date - 1;
         last_date = resWeatherData.data.trend[last_date];
         this.timeConverter(last_date[0]);
         this.generatechart(resWeatherData.data.trend);
+        this.setState({
+          Datanull: false,
+        });
       } else {
-        openNotification();
+        // openNotification();
         this.setState({
           series: [],
           loader: false,
+          Datanull: true,
         });
       }
     } catch (err) {
@@ -277,13 +283,13 @@ class DrawerModal extends Component {
     });
     var shapeparams = this.props.district.selected_shape;
     shapeparams = shapeparams.features[0].geometry;
-    console.log("CUSTOM SHAPE", shapeparams);
+
     var bodyParams = {
       geojson: shapeparams,
     };
     try {
       const res = await axiosConfig.post(`/getlulcareapercentage?`, bodyParams);
-      console.log("LULC DETAILS", res);
+
       this.setState(
         {
           customLULC: res.data.data,
@@ -306,13 +312,13 @@ class DrawerModal extends Component {
     });
     var shapeparams = geojson;
     shapeparams = shapeparams.features[0].geometry;
-    console.log("CUSTOM SHAPE", shapeparams);
+
     var bodyParams = {
       geojson: shapeparams,
     };
     try {
       const res = await axiosConfig.post(`/getlulcareapercentage?`, bodyParams);
-      console.log("LULC DETAILS", res);
+
       this.setState(
         {
           customLULC: res.data.data,
@@ -359,13 +365,17 @@ class DrawerModal extends Component {
     try {
       const res = await axiosConfig.post(`/gettrend?`, bodyParams);
       if (res.data.code == 404) {
-        openNotification();
+        // openNotification();
         this.setState({
           series: [],
           loader: false,
+          Datanull: true,
         });
       } else {
         this.generatechart(res.data.trend);
+        this.setState({
+          Datanull: false,
+        });
       }
     } catch (err) {
       message.error("Failed to connect to server");
@@ -467,11 +477,10 @@ class DrawerModal extends Component {
             curve: "straight",
             lineCap: "butt",
             colors: undefined,
-            width: 2,
+            width: 1,
             dashArray: 0,
           },
         },
-   
       });
     } else {
       this.setState({
@@ -486,19 +495,18 @@ class DrawerModal extends Component {
     }
     if (data != null) {
       data.map(function (item, index, data) {
-        if(item[1]!=null){
+        if (item[1] != null) {
           trendData.data.push({
             x: item[0],
             y: parseFloat(item[1]).toFixed(2),
           });
         }
-    
       });
     }
     var trendlength = trendData.data.length;
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
-    console.log("UPDAET VALUE", trendData);
+
     if (trendData.data == null) {
       chart_values = [trendData];
     }
@@ -540,14 +548,18 @@ class DrawerModal extends Component {
     try {
       const res = await axiosConfig.post(`/getpointstrend?`, bodyParams);
       if (res.data.code == 404) {
-        openNotification();
+        // openNotification();
         this.setState({
           series: [],
           loader: false,
+          Datanull: true,
         });
       } else {
         this.generatechart(res.data.trend);
         this.getPopulation(shapeparams);
+        this.setState({
+          Datanull: false,
+        });
       }
     } catch (err) {
       message.error("Failed to connect to server");
@@ -569,7 +581,7 @@ class DrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      console.log("FROM DATE & TO DATE", start_date, to_date);
+
       if (this.props.CurrentLayer == "FIREEV") {
         this.setState(
           {
@@ -756,7 +768,6 @@ class DrawerModal extends Component {
     if (value[date] == undefined) {
       return "0.00";
     } else {
-      console.log("LULC VALUES", value[date][category]);
       // this.setState({
       //   tableKey:this.state.tableKey+1
       // })
@@ -792,7 +803,7 @@ class DrawerModal extends Component {
     );
     var PROJECTION_CONFIG = [];
     var projection = [];
-    console.log("CURRENT REEIOGN IN DRAWER", this.props.CurrentRegion);
+
     if (this.props.CurrentLayer != "CP") {
       const width = 800;
       const height = width * 0.9;
@@ -988,7 +999,7 @@ class DrawerModal extends Component {
               </CardBody>
             </Card>
             {/* <hr /> */}
-            <Row>
+            <Row  style={{ marginBottom:"5px" }}>
               <Col>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
@@ -1006,7 +1017,7 @@ class DrawerModal extends Component {
                 className="alignrignt"
               >
                 <p style={{ fontSize: "18px", marginBottom: "15px" }}>
-                  {this.props.LayerDescription.last_updated.slice(0, 10)}
+                  {Moment(this.props.LayerDescription.last_updated).format('DD-MM-YYYY').slice(0, 10)}
                 </p>
               </Col>
               <Col
@@ -1120,17 +1131,17 @@ class DrawerModal extends Component {
                   </Col>
                 </Row>
                 <Row>
-                <ol class="progress-indicator mb-2">
-                  <li class="is-complete" data-step="">
-                  <span>Min</span>
-                  </li>
-                  <li class="is-complete" data-step="">
-                  <span>Avg</span>
-                  </li>
-                  <li class="is-complete" data-step="">
-                  <span>Max</span>
-                  </li>
-                </ol>
+                  <ol class="progress-indicator mb-2">
+                    <li class="is-complete" data-step="">
+                      <span>Min</span>
+                    </li>
+                    <li class="is-complete" data-step="">
+                      <span>Avg</span>
+                    </li>
+                    <li class="is-complete" data-step="">
+                      <span>Max</span>
+                    </li>
+                  </ol>
                 </Row>
               </Col>
             </Row>
@@ -1138,9 +1149,18 @@ class DrawerModal extends Component {
               <p style={{ fontSize: "15px", fontWeight: "lighter" }}>
                 {this.props.LayerDescription.long_description}
               </p>
-              <p>Source : {this.props.LayerDescription.source}</p>
-              <p>Citation : {this.props.LayerDescription.citation}</p>
-              <p>Standards : {this.props.LayerDescription.standards}</p>
+              <div style={{marginBottom:"5px"}}>
+                <p style={{marginBottom:"2px", color:"#2867a1"}}>SOURCE</p>
+                <p>{this.props.LayerDescription.source}</p>
+              </div>
+              <div style={{marginBottom:"5px"}}>
+                <p style={{marginBottom:"2px", color:"#2867a1"}}>CITATION</p> 
+                <p>{this.props.LayerDescription.citation}</p>
+              </div>
+              <div>
+              <p style={{marginBottom:"2px", color:"#2867a1"}}>STANDARDS</p>
+              <p>{this.props.LayerDescription.standards}</p>
+              </div>
             </Row>
             <hr />
             <Col
@@ -1149,6 +1169,13 @@ class DrawerModal extends Component {
                 this.props.CurrentLayer == "LULC" ? {} : { display: "none" }
               }
             >
+              <Row style={{"margin-bottom": "2%"}}>
+                <div>
+                  <p style={{ fontSize: "18px", display: "inline" }}>
+                    <BiLineChart /> Trend
+                  </p>
+                </div>
+              </Row>
               <div style={this.state.loader ? {} : { display: "none" }}>
                 <center>
                   <img
@@ -1162,11 +1189,11 @@ class DrawerModal extends Component {
                 </center>
               </div>
               <div style={this.state.loader ? { display: "none" } : {}}>
-                <div>
+                {/* <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
                     <BiLineChart /> Trend
                   </p>
-                </div>
+                </div> */}
                 <Row>
                   <Col>
                     <span
@@ -1207,11 +1234,25 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              <div>
+              <div style={{"margin-bottom": "2%"}}>
                 <p style={{ fontSize: "18px", display: "inline" }}>
                   <BiLineChart /> Trend
                 </p>
               </div>
+            </Row>
+            <Row style={this.state.Datanull ? {} : { display: "none" }}>
+              <p style={{ color: "#cf2e2e", textAlign: "center" }}>
+                {" "}
+                Trend not available !
+              </p>
+            </Row>
+            <Row
+              style={
+                this.props.LayerDescription.multiple_files
+                  ? {}
+                  : { display: "none" }
+              }
+            >
               {/* =================================WEATHER DATA TREND-START======================================== */}
               <div
                 className="btn-group-sm"
@@ -1223,7 +1264,6 @@ class DrawerModal extends Component {
                     ? {}
                     : { display: "none" }
                 }
-               
               >
                 <input
                   type="radio"

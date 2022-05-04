@@ -60,6 +60,7 @@ const TabType = PropTypes.shape({
 });
 
 class Sidebar extends React.Component {
+  
   componentDidMount() {
     if (this.props.rehomeControls) {
       const { position } = this.props;
@@ -294,6 +295,39 @@ class Sidebar extends React.Component {
         </div>
         <div
           className="tab-legend"
+          style={this.props.CurrentLayer == "WEATHER" ? {} : { display: "none" }}
+        >
+          <div className="legend-section">
+            <div className="container">
+              <div
+                className="row"
+                style={{
+                  textAlign: "left",
+                }}
+              >
+                <div
+                  className="col"
+                  style={{ color: "rgba(215 215 215)", fontWeight: "light", fontSize:"10px" }}
+                >
+                  Click on the shape to get the details
+                </div>
+                <div className="w-100"></div>
+                <div
+                  className="col"
+                  style={{
+                    color: "rgba(215 215 215)",
+                    fontSize: "10px",
+                    marginTop: "10px",
+                  }}
+                >
+                  {/* *FRP : Fire Radiative Power */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="tab-legend"
           style={this.props.CurrentLayer == "CP" ? {} : { display: "none" }}
         >
           <div className="legend-section">
@@ -314,7 +348,7 @@ class Sidebar extends React.Component {
                   className="col"
                   style={{ color: "rgba(215 215 215)", fontWeight: "bold" }}
                 >
-                  Market Prices
+                  Markets
                 </div>
                 <div className="w-100"></div>
                 <div

@@ -61,6 +61,7 @@ import {
 } from "@reach/combobox";
 import { GoogleLayer } from "react-leaflet-google";
 import { urlToHttpOptions } from "url";
+import { tsThisType } from "@babel/types";
 const removeLayer = (layer) => {
   map.removeLayer(layer);
   window.tiff = 0;
@@ -161,6 +162,7 @@ class map extends Component {
       pointData: false,
       selected_shape: [],
       keyMAP: 1,
+      regionkey:1,
       pointVector: {
         type: "FeatureCollection",
         features: [
@@ -212,7 +214,7 @@ class map extends Component {
       editableFG: [],
       baseMap:
         "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-      attribution: "dark_matter_lite_rainbow",
+      attribution: "",
       showCustomDraw: false,
       customStatus: false,
       checked: false,
@@ -241,6 +243,7 @@ class map extends Component {
     this.searchRegion = this.searchRegion.bind(this);
     this.style = this.style.bind(this);
     this.resetmapzoom = this.resetmapzoom.bind(this);
+    this.resetmapzoommobile = this.resetmapzoommobile.bind(this);
     this.Customlayer = this.Customlayer.bind(this);
     this.openCustomDrawer = this.openCustomDrawer.bind(this);
     this.getlayer = this.getlayer.bind(this);
@@ -334,7 +337,6 @@ class map extends Component {
     }
   }
   getwarehouseDetails(geojson) {
-    console.log("WAREHOUSE POINTS", geojson);
     this.setState(
       {
         areaValue: geojson.capacity,
@@ -350,10 +352,8 @@ class map extends Component {
     if (this.props.CurrentLayer == "FIREEV") {
       this.getCountEvents(e);
     } else if (this.props.CurrentLayer == "WH") {
-      console.log("TREND NOT AVAILABLE FOR WH");
     } else if (this.props.CurrentLayer == "CP") {
       // this.CPchild.current.showDrawer();
-      console.log("TCPCPCPCPCCPCPCPCPCCPCPP");
     } else if (this.props.CurrentLayer == "WEATHER") {
       var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
@@ -527,7 +527,7 @@ class map extends Component {
     if (this.props.CurrentLayer == "LULC") {
       var area = geojsonArea.geometry(geojson.features[0].geometry);
       area = area / 1000000;
-      console.log("AREA CUSTOM", area);
+
       if (area > 150) {
         message.info("Maximum query area reached!");
       } else {
@@ -548,7 +548,6 @@ class map extends Component {
           weight: 6,
         };
       } else {
-        this.props.hideRaster();
         var scale;
         if (feature.properties.zonalstat.mean <= 1) {
           scale = chroma
@@ -590,14 +589,18 @@ class map extends Component {
   toggleClass() {
     const currentState = this.state.activeSearch;
     this.setState({ activeSearch: !currentState });
-    this.resetmapzoom();
+    if(window.innerWidth <= 768){ 
+      this.resetmapzoommobile();
+      }else{
+      this.resetmapzoom();
+      }
   }
   toggleDropdown() {
     const currentState = this.state.active;
     this.setState({ active: !currentState });
   }
   onchangeshape(e) {
-    if (e.target.value == "district") {
+    if (e.target.value == "DISTRICT") {
       this.props.showRaster();
       this.props.setRegion("DISTRICT");
       this.map.removeLayer(this.state.editableFG);
@@ -609,18 +612,19 @@ class map extends Component {
           checked: false,
           regionList: districtRegions(),
           customStatus: false,
+          regionkey:this.state.regionkey+1,
           showlayertype: true,
           locpointerltlng: [60.732421875, 80.67555881973475],
           baseMap:
             "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-          attribution: "dark_matter_lite_rainbow",
+          attribution: "",
           baseMapselected: "Dark",
         },
         () => {
           this.getlayer();
         }
       );
-    } else if (e.target.value == "mandal") {
+    } else if (e.target.value == "MANDAL") {
       this.props.showRaster();
       this.map.removeLayer(this.state.editableFG);
       this.props.setRegion("MANDAL");
@@ -636,7 +640,7 @@ class map extends Component {
           showlayertype: true,
           baseMap:
             "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-          attribution: "dark_matter_lite_rainbow",
+          attribution: "",
           baseMapselected: "Dark",
         },
         () => {
@@ -699,11 +703,11 @@ class map extends Component {
       () => {
         ltype = e.target.value;
         // this.getlayer();
-        this.props.setMapKey();
         if (ltype == "Raster") {
           this.props.setLayerType("Raster");
         } else if (ltype == "Vector") {
           this.props.setLayerType("Vector");
+          this.props.hideRaster();
         }
       }
     );
@@ -713,7 +717,20 @@ class map extends Component {
     this.props.setplace("");
   }
   async getlayer() {
-    console.log("CURRENT LAYER", this.props.CurrentLayer);
+    this.setState({
+      baseMap:
+        "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+      attribution: "dark_matter_lite_rainbow",
+      baseMapselected: "Dark",
+    });
+    if (this.props.CurrentRegion == "CUSTOM") {
+      this.props.setRegion("DISTRICT");
+      this.setState({
+        regionkey:this.state.regionkey+1,
+      })
+     
+    }
+
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
     if (this.props.CurrentLayer == "FIREEV") {
       this.setState({
@@ -750,9 +767,7 @@ class map extends Component {
           {
             pointVector: res.data.data,
           },
-          () => {
-            console.log("POINT VECTOR DATA", this.state.pointVector);
-          }
+          () => {}
         );
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
@@ -766,14 +781,9 @@ class map extends Component {
       });
       try {
         const res = await axiosConfig.get(`/getmarketyard`);
-        this.setState(
-          {
-            pointVector: res.data.data,
-          },
-          () => {
-            console.log("POINT VECTOR DATA", this.state.pointVector);
-          }
-        );
+        this.setState({
+          pointVector: res.data.data,
+        });
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -901,18 +911,18 @@ class map extends Component {
     // this.checkLoaderstatus();
   }
   onMouseOver(e) {
-    if (this.props.CurrentLayer == "POPULATION") {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties.zonalstat.sum / 1000000).toFixed(
-          2
-        )
-      );
-    } else if (this.props.CurrentLayer != "LULC") {
-      if (e.layer.feature.properties.zonalstat != undefined) {
-        if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
-          this.props.setvalue("N/A");
-        } else {
-          if (this.props.currentLayerType == "Vector") {
+    if (this.props.currentLayerType == "Vector") {
+      if (this.props.CurrentLayer == "POPULATION") {
+        this.props.setvalue(
+          parseFloat(
+            e.layer.feature.properties.zonalstat.sum / 1000000
+          ).toFixed(2)
+        );
+      } else if (this.props.CurrentLayer != "LULC") {
+        if (e.layer.feature.properties.zonalstat != undefined) {
+          if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
+            this.props.setvalue("N/A");
+          } else {
             this.props.setvalue(
               parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(2)
             );
@@ -974,8 +984,22 @@ class map extends Component {
       }
     );
   }
+  updateDimensions = () => {
+    if(window.innerWidth <= 480){
+      console.log("mobile")
+      this.setState({
+        mapZoom: 6.5
+      })
+    }else{
+      console.log("desktop")
+      this.setState({
+        mapZoom: 7.5
+      })
+    }
+  };
 
   componentDidMount() {
+    this.updateDimensions();
     this.props.setvalue(0.74);
     this.props.setplace("Siddipet");
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
@@ -987,12 +1011,15 @@ class map extends Component {
   resetmapzoom() {
     this.map.flyTo([18.1124, 79.0193], 7.5);
   }
+  resetmapzoommobile() {
+    this.map.flyTo([18.1124, 79.0193], 6.5);
+  }
   ChangeBasemap(e) {
     if (e.target.value == "Dark") {
       this.setState({
         baseMap:
           "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-        attribution: "dark_matter_lite_rainbow",
+        attribution: "",
         baseMapselected: "Dark",
       });
     }
@@ -1082,7 +1109,6 @@ class map extends Component {
     }
   }
   handlePointclick(name) {
-    console.log("HANDLE POINT CLICK", name);
     // e.preventDefault();
     // this.setState({
     //   currentComodity:name
@@ -1092,9 +1118,8 @@ class map extends Component {
     }
   }
   checkRadius(capacity) {
-    console.log("CAPACUTY", capacity);
     var radius = 3000 * Math.log(capacity / 100);
-    console.log("RADIUS", parseInt(radius));
+
     if (radius > 0) {
       //   this.setState({
       //     keyMAP: this.state.keyMAP + 1,
@@ -1121,6 +1146,7 @@ class map extends Component {
         <Sidebar
           changeCurrentLayer={this.getlayer}
           resetZoom={this.resetmapzoom}
+          resetZoommobile={this.resetmapzoommobile}
         />
         <div className="legend-mobile">
           <LegendMobile />
@@ -1128,12 +1154,20 @@ class map extends Component {
         <BottomNav
           className="bottom-navigation"
           changeCurrentLayer={this.getlayer}
-          resetZoom={this.resetmapzoom}
+          resetZoom={this.resetmapzoommobile}
+
         />
         <div
           className="btn-home"
           style={{ zIndex: "999" }}
           onClick={this.resetmapzoom}
+        >
+          <BiHomeAlt />
+        </div>
+        <div
+          className="btn-home-mobile"
+          style={{ zIndex: "999" }}
+          onClick={this.resetmapzoommobile}
         >
           <BiHomeAlt />
         </div>
@@ -1232,10 +1266,12 @@ class map extends Component {
               // defaultChecked={this.props.CurrentLayer == "WEATHER" ?"mandal":"district"}
               // defaultValue={this.props.CurrentLayer == "WEATHER" ?"mandal":"district"}
               // style={}
+              key={this.state.regionkey}
+              value={this.props.CurrentRegion}
               onChange={(e) => this.onchangeshape(e)}
             >
-              <option value="district">District</option>
-              <option value="mandal">Mandal</option>
+              <option value="DISTRICT">District</option>
+              <option value="MANDAL">Mandal</option>
               <option
                 value="custom"
                 disabled={
@@ -1357,9 +1393,10 @@ class map extends Component {
             data={this.props.CurrentVector.features}
             // onEachFeature={this.onEachrua}
             onMouseOver={
-              this.props.LayerDescription.datafromvector == false
-                ? console.log("NOT APPLICABLE")
-                : this.onMouseOver
+              // this.props.currentLayerType == "Vector"
+              //   ? this.onMouseOver
+              //   : console.log("VECTOR HOVER NOT APPLICABLE")
+              this.onMouseOver
             }
             // onMouseOver={
             //   this.props.CurrentLayer == "WEATHER"
@@ -1367,9 +1404,10 @@ class map extends Component {
             //     : this.onMouseOver
             // }
             onMouseOut={
-              this.props.LayerDescription.datafromvector == false
-                ? console.log("NOT APPLICABLE")
-                : this.onMouseOver
+              // this.props.currentLayerType == "Vector"
+              // ? this.onMouseOver
+              // : console.log("VECTOR HOVER NOT APPLICABLE")
+              this.onMouseOver
             }
             icon={"text"}
             onclick={this.openDrawer}
@@ -1421,7 +1459,7 @@ class map extends Component {
                 >
                   <a
                     style={
-                      this.props.CurrentLayer == "CP" ? { display: "none" } : {}
+                      this.props.CurrentLayer == "CP" ? { display: "none" } : {textAlign:"left"}
                     }
                   >
                     Capacity : {point.properties.capacity} MT

@@ -1,11 +1,11 @@
-    name: Deploy DiCRA to Dev Server
+    name: Deploy DiCRA to Production Server
 
     on:
       push:
         paths:
           - 'src/web_portal/**'
         branches:
-          - develop
+          - main
     defaults:
       run:
         working-directory: ./

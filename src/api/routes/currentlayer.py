@@ -1,20 +1,22 @@
+from logging import exception
 import os
 import json
 import boto3
-import rasterio
 import botocore
 import configparser
-from sqlalchemy import desc
-from logging import exception
-from datetime import datetime
-from db.database import get_db
 from boto3.session import Session
+from fastapi.responses import FileResponse
+from fastapi import APIRouter,File, UploadFile, Depends
+from db.database import get_db
 from models.index import Parameter
+from sqlalchemy import desc
+from datetime import datetime
+import rasterio
 from rasterio.session import AWSSession
 from azure.storage.blob import BlobClient
-from fastapi.responses import FileResponse
 from fastapi.responses import ORJSONResponse
-from fastapi import APIRouter,File, UploadFile, Depends
+
+
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
@@ -29,6 +31,7 @@ current=APIRouter()
 @current.get('/currentraster', status_code=200)
 async def current_raster(parameter:str,db: Session = Depends(get_db)):
     availabledates=db.query(Parameter.available_date).filter(Parameter.parameter_name==parameter).order_by(desc(Parameter.available_date)).first()
+    db.close()
     try:
         filedate = datetime.strptime(str(availabledates[0]), '%Y-%m-%d').strftime('%d-%m-%Y')
     except TypeError:
@@ -55,6 +58,7 @@ async def current_raster(parameter:str,db: Session = Depends(get_db)):
             'code':404,
             'message':"No file found"
         }
+
 
 @current.get('/currentvector', status_code=200)
 async def current_vector(parameter:str,admbound:str,db: Session = Depends(get_db)):
@@ -83,3 +87,13 @@ async def current_vector(parameter:str,admbound:str,db: Session = Depends(get_db
             'code':404,
             'message':"No file found"
         }
+   
+
+    
+
+
+    
+   
+
+
+    

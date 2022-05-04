@@ -16,5 +16,13 @@ class CreateLayer(BaseModel):
     multiple_files:bool
     display_name:str
     category:str
+    isavailable:bool
+    citation:str
+    standards:str
+    timerangefilter:bool
+    showcustom:bool
+    datafromvector:bool
     class Config:
         orm_mode = True
+
+    

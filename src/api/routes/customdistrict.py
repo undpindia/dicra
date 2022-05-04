@@ -38,3 +38,6 @@ async def get_pointdistrict(details:Customdistrict):
         "Code":404,
         "Message":"Please Draw the shape Completely Inside Telangana"
     }
+
+
+    

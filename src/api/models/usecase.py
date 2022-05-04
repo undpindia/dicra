@@ -2,6 +2,7 @@ from sqlalchemy import Integer, String,Text,Boolean
 from sqlalchemy.sql.schema import Column
 from db.database import Base
 
+
 class Usecase(Base):
     __tablename__ = 'tbl_usecases'
     id = Column(Integer, primary_key=True)

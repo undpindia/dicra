@@ -1,26 +1,29 @@
-import json
-import itertools
 import configparser
-import decimal, datetime
 from logging import exception
-from itertools import groupby
 from fastapi import APIRouter
-from db.database import get_db
-from operator import itemgetter
-from models.index import Weather
-from sqlalchemy.orm import Session
 from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
 from sqlalchemy.sql.expression import true
 from schemas.index import Getweather,Returnweather
+from db.database import get_db
+from models.index import Weather
+from itertools import groupby
 from fastapi_pagination import LimitOffsetPage, Page, add_pagination,paginate
+import itertools
+from operator import itemgetter
+import json
+import decimal, datetime
+
+
 from pydantic import BaseModel
+
 
 weather= APIRouter()
 
 @weather.post('/getweather', status_code=200)
 async def get_weathertrend(details:Getweather,db:Session=Depends(get_db)):
     try:
-        query="SELECT extract(epoch from data_date)*1000 as unix,"+details.parameter+"::FLOAT FROM tbl_weather WHERE data_date BETWEEN '"+details.start_date+"' AND '"+details.end_date+"' AND district='"+details.district+"' AND mandal='"+details.mandal+"'"
+        query="SELECT DISTINCT extract(epoch from data_date)*1000 as unix,"+details.parameter+"::FLOAT FROM tbl_weather WHERE data_date BETWEEN '"+details.start_date+"' AND '"+details.end_date+"' AND district='"+details.district+"' AND mandal='"+details.mandal+"'"
         data=db.execute(query)
         results = [list(row) for row in data]
         db.close()
@@ -83,3 +86,4 @@ async def get_weather_parameter():
             
         ]
     }
+    

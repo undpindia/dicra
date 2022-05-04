@@ -29,7 +29,7 @@ function Legend() {
               style={currentLayer == "LULC" ? { display: "none" } : {}}
               key={valueKey}
             >
-              {setval} {currentLayerDesc.unit}
+              {setval} <a style={{fontSize:"18px"}}>{currentLayerDesc.unit}</a>
             </span>
           </div>
           <div className="w-100"></div>

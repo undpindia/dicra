@@ -162,7 +162,7 @@ class map extends Component {
       pointData: false,
       selected_shape: [],
       keyMAP: 1,
-      regionkey:1,
+      regionkey: 1,
       pointVector: {
         type: "FeatureCollection",
         features: [
@@ -197,6 +197,7 @@ class map extends Component {
       areaValue: 0.0,
       minVal: 0.0,
       maxVal: 0.0,
+      meanVal:0.0,
       layertransparency: 0.1,
       loaderlatvector: 17.754639747121828,
       loaderlngvector: 79.05833831966801,
@@ -388,13 +389,16 @@ class map extends Component {
       this.setState(
         {
           areaValue: parseFloat(
-            e.sourceTarget.feature.properties.zonalstat.sum / 1000000
+            e.sourceTarget.feature.properties.zonalstat.sum
           ).toFixed(2),
           minVal: parseFloat(
             e.sourceTarget.feature.properties.zonalstat.min
           ).toFixed(2),
           maxVal: parseFloat(
             e.sourceTarget.feature.properties.zonalstat.max
+          ).toFixed(2),
+          meanVal:parseFloat(
+            e.sourceTarget.feature.properties.zonalstat.mean
           ).toFixed(2),
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
         },
@@ -538,6 +542,15 @@ class map extends Component {
     }
   }
   style(feature) {
+    if (this.props.CurrentLayer == "WEATHER") {
+      return {
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.41,
+        fillColor:"#a5a8a8",
+        color: "#d65522",
+      };
+    }
     if (ltype == "Vector") {
       if (this.state.layerUID == feature.properties.uid) {
         return {
@@ -589,11 +602,11 @@ class map extends Component {
   toggleClass() {
     const currentState = this.state.activeSearch;
     this.setState({ activeSearch: !currentState });
-    if(window.innerWidth <= 768){ 
+    if (window.innerWidth <= 768) {
       this.resetmapzoommobile();
-      }else{
+    } else {
       this.resetmapzoom();
-      }
+    }
   }
   toggleDropdown() {
     const currentState = this.state.active;
@@ -612,7 +625,7 @@ class map extends Component {
           checked: false,
           regionList: districtRegions(),
           customStatus: false,
-          regionkey:this.state.regionkey+1,
+          regionkey: this.state.regionkey + 1,
           showlayertype: true,
           locpointerltlng: [60.732421875, 80.67555881973475],
           baseMap:
@@ -726,9 +739,9 @@ class map extends Component {
     if (this.props.CurrentRegion == "CUSTOM") {
       this.props.setRegion("DISTRICT");
       this.setState({
-        regionkey:this.state.regionkey+1,
-      })
-     
+        regionkey: this.state.regionkey + 1,
+        customStatus: false,
+      });
     }
 
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
@@ -985,16 +998,16 @@ class map extends Component {
     );
   }
   updateDimensions = () => {
-    if(window.innerWidth <= 480){
-      console.log("mobile")
+    if (window.innerWidth <= 480) {
+      console.log("mobile");
       this.setState({
-        mapZoom: 6.5
-      })
-    }else{
-      console.log("desktop")
+        mapZoom: 6.5,
+      });
+    } else {
+      console.log("desktop");
       this.setState({
-        mapZoom: 7.5
-      })
+        mapZoom: 7.5,
+      });
     }
   };
 
@@ -1155,7 +1168,6 @@ class map extends Component {
           className="bottom-navigation"
           changeCurrentLayer={this.getlayer}
           resetZoom={this.resetmapzoommobile}
-
         />
         <div
           className="btn-home"
@@ -1459,7 +1471,9 @@ class map extends Component {
                 >
                   <a
                     style={
-                      this.props.CurrentLayer == "CP" ? { display: "none" } : {textAlign:"left"}
+                      this.props.CurrentLayer == "CP"
+                        ? { display: "none" }
+                        : { textAlign: "left" }
                     }
                   >
                     Capacity : {point.properties.capacity} MT

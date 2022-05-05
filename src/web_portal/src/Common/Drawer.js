@@ -8,7 +8,7 @@ import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
 import { geoMercator, geoPath } from "d3-geo";
 import { select } from "d3-selection";
-import Moment from 'moment';
+import Moment from "moment";
 import {
   Button,
   Modal,
@@ -490,6 +490,21 @@ class DrawerModal extends Component {
               format: "dd MMM yyyy",
             },
           },
+          // yaxis:{
+          //   title: {
+          //     text:"NDVI",
+          //     rotate: -90,
+          //     offsetX: 0,
+          //     offsetY: 0,
+          //     style: {
+          //       color: undefined,
+          //       fontSize: "12px",
+          //       fontFamily: "Helvetica, Arial, sans-serif",
+          //       fontWeight: 600,
+          //       cssClass: "apexcharts-yaxis-title",
+          //     },
+          //   },
+          // }
         },
       });
     }
@@ -999,7 +1014,7 @@ class DrawerModal extends Component {
               </CardBody>
             </Card>
             {/* <hr /> */}
-            <Row  style={{ marginBottom:"5px" }}>
+            <Row style={{ marginBottom: "5px" }}>
               <Col>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
@@ -1017,7 +1032,9 @@ class DrawerModal extends Component {
                 className="alignrignt"
               >
                 <p style={{ fontSize: "18px", marginBottom: "15px" }}>
-                  {Moment(this.props.LayerDescription.last_updated).format('DD-MM-YYYY').slice(0, 10)}
+                  {Moment(this.props.LayerDescription.last_updated)
+                    .format("DD-MM-YYYY")
+                    .slice(0, 10)}
                 </p>
               </Col>
               <Col
@@ -1124,7 +1141,9 @@ class DrawerModal extends Component {
                     {this.checkValue(this.props.district.minVal)}
                   </Col>
                   <Col className="steps-avg">
-                    {this.checkValue(this.props.district.areaValue)}
+                    {this.props.CurrentLayer == "POPULATION"
+                      ? this.checkValue(this.props.district.meanVal)
+                      : this.checkValue(this.props.district.areaValue)}
                   </Col>
                   <Col className="steps-max">
                     {this.checkValue(this.props.district.maxVal)}
@@ -1149,17 +1168,21 @@ class DrawerModal extends Component {
               <p style={{ fontSize: "15px", fontWeight: "lighter" }}>
                 {this.props.LayerDescription.long_description}
               </p>
-              <div style={{marginBottom:"5px"}}>
-                <p style={{marginBottom:"2px", color:"#2867a1"}}>SOURCE</p>
+              <div style={{ marginBottom: "5px" }}>
+                <p style={{ marginBottom: "2px", color: "#2867a1" }}>SOURCE</p>
                 <p>{this.props.LayerDescription.source}</p>
               </div>
-              <div style={{marginBottom:"5px"}}>
-                <p style={{marginBottom:"2px", color:"#2867a1"}}>CITATION</p> 
+              <div style={{ marginBottom: "5px" }}>
+                <p style={{ marginBottom: "2px", color: "#2867a1" }}>
+                  CITATION
+                </p>
                 <p>{this.props.LayerDescription.citation}</p>
               </div>
               <div>
-              <p style={{marginBottom:"2px", color:"#2867a1"}}>STANDARDS</p>
-              <p>{this.props.LayerDescription.standards}</p>
+                <p style={{ marginBottom: "2px", color: "#2867a1" }}>
+                  STANDARDS
+                </p>
+                <p>{this.props.LayerDescription.standards}</p>
               </div>
             </Row>
             <hr />
@@ -1169,7 +1192,7 @@ class DrawerModal extends Component {
                 this.props.CurrentLayer == "LULC" ? {} : { display: "none" }
               }
             >
-              <Row style={{"margin-bottom": "2%"}}>
+              <Row style={{ "margin-bottom": "2%" }}>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
                     <BiLineChart /> Trend
@@ -1234,7 +1257,7 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              <div style={{"margin-bottom": "2%"}}>
+              <div style={{ "margin-bottom": "2%" }}>
                 <p style={{ fontSize: "18px", display: "inline" }}>
                   <BiLineChart /> Trend
                 </p>

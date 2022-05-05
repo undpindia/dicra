@@ -197,7 +197,7 @@ class map extends Component {
       areaValue: 0.0,
       minVal: 0.0,
       maxVal: 0.0,
-      meanVal:0.0,
+      meanVal: 0.0,
       layertransparency: 0.1,
       loaderlatvector: 17.754639747121828,
       loaderlngvector: 79.05833831966801,
@@ -397,7 +397,7 @@ class map extends Component {
           maxVal: parseFloat(
             e.sourceTarget.feature.properties.zonalstat.max
           ).toFixed(2),
-          meanVal:parseFloat(
+          meanVal: parseFloat(
             e.sourceTarget.feature.properties.zonalstat.mean
           ).toFixed(2),
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
@@ -547,7 +547,7 @@ class map extends Component {
         weight: 1,
         opacity: 1,
         fillOpacity: 0.41,
-        fillColor:"#a5a8a8",
+        fillColor: "#a5a8a8",
         color: "#d65522",
       };
     }
@@ -718,9 +718,11 @@ class map extends Component {
         // this.getlayer();
         if (ltype == "Raster") {
           this.props.setLayerType("Raster");
+          window.layerType="Raster";
         } else if (ltype == "Vector") {
           this.props.setLayerType("Vector");
           this.props.hideRaster();
+          window.layerType="Vector";
         }
       }
     );
@@ -924,22 +926,21 @@ class map extends Component {
     // this.checkLoaderstatus();
   }
   onMouseOver(e) {
-    if (this.props.currentLayerType == "Vector") {
-      if (this.props.CurrentLayer == "POPULATION") {
-        this.props.setvalue(
-          parseFloat(
-            e.layer.feature.properties.zonalstat.sum / 1000000
-          ).toFixed(2)
-        );
-      } else if (this.props.CurrentLayer != "LULC") {
-        if (e.layer.feature.properties.zonalstat != undefined) {
-          if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
-            this.props.setvalue("N/A");
-          } else {
-            this.props.setvalue(
-              parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(2)
-            );
-          }
+    if (this.props.CurrentLayer == "POPULATION") {
+      this.props.setvalue(
+        parseFloat(e.layer.feature.properties.zonalstat.sum / 1000000).toFixed(
+          2
+        )
+      );
+    } else if (this.props.CurrentLayer != "LULC") {
+      if (e.layer.feature.properties.zonalstat != undefined) {
+        if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
+          this.props.setvalue("N/A");
+        } else {
+          // console.log("VECTOR HOVER VALUE",e.layer.feature.properties.zonalstat.mean)
+          this.props.setvalue(
+            parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(2)
+          );
         }
       }
     }
@@ -1405,10 +1406,10 @@ class map extends Component {
             data={this.props.CurrentVector.features}
             // onEachFeature={this.onEachrua}
             onMouseOver={
-              // this.props.currentLayerType == "Vector"
-              //   ? this.onMouseOver
-              //   : console.log("VECTOR HOVER NOT APPLICABLE")
-              this.onMouseOver
+              this.props.currentLayerType == "Vector"
+                ? this.onMouseOver
+                :console.log()
+              // this.onMouseOver
             }
             // onMouseOver={
             //   this.props.CurrentLayer == "WEATHER"
@@ -1416,10 +1417,10 @@ class map extends Component {
             //     : this.onMouseOver
             // }
             onMouseOut={
-              // this.props.currentLayerType == "Vector"
-              // ? this.onMouseOver
-              // : console.log("VECTOR HOVER NOT APPLICABLE")
-              this.onMouseOver
+              this.props.currentLayerType == "Vector"
+                ? this.onMouseOver
+                : console.log()
+              // this.onMouseOver
             }
             icon={"text"}
             onclick={this.openDrawer}

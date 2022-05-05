@@ -3,6 +3,8 @@ import ColorScale from "./ColorScale";
 import { useSelector, useDispatch } from "react-redux";
 import ColorPicker from "./ColorPicker";
 import Moment from "moment";
+import { BiNavigation } from "react-icons/bi";
+
 var valueKey = 1;
 
 function Legend() {
@@ -29,7 +31,7 @@ function Legend() {
               style={currentLayer == "LULC" ? { display: "none" } : {}}
               key={valueKey}
             >
-              {setval} {currentLayerDesc.unit}
+              {setval} <a style={{fontSize:"18px"}}>{currentLayerDesc.unit}</a>
             </span>
           </div>
           <div className="w-100"></div>
@@ -44,7 +46,11 @@ function Legend() {
           </div> */}
           <div className="w-100"></div>
           <div className="col" style={{ color: "rgba(215 215 215)" }}>
-            {setplace} | {hoverLatLon}
+            {setplace}
+          </div>
+          <div className="w-100"></div>
+          <div className="col" style={{ color: "rgba(215 215 215)" }}>
+          {hoverLatLon} <BiNavigation style={{"transform": "translate(1px, -2px)" }}/>
           </div>
           <div className="w-100"></div>
           <div className="col">

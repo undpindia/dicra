@@ -139,6 +139,19 @@ class DrawerModal extends Component {
         xaxis: {
           type: "datetime",
           tickAmount: 6,
+          title: {
+            text: "Date/Time",
+            rotate: -90,
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              color: undefined,
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 600,
+              cssClass: "apexcharts-yaxis-title",
+            },
+          },
         },
         tooltip: {
           x: {
@@ -462,6 +475,19 @@ class DrawerModal extends Component {
             // tickAmount: 6,
             labels: {
               format: "yyyy",
+            },
+            title: {
+              text: "Date/Time",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: undefined,
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 600,
+                cssClass: "apexcharts-yaxis-title",
+              },
             },
           },
           tooltip: {

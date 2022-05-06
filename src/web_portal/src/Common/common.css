@@ -5,8 +5,7 @@ background-color: #797b7c;box-shadow: none;}.footer-links{position: absolute;z-i
 .download-section-personal{overflow-x:hidden;height:calc(100vh - 230px)}.download-section-personal::-webkit-scrollbar{display:none}.open-api{margin-bottom: 0px;}
 .ant-modal.layer-modal{display: none;}.ant-drawer-right.ant-drawer-open.no-mask {z-index: 1002;}
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {border: none!important;position: relative;right: -9px;
-}span.ant-radio-button.ant-radio-button-disabled:hover {color: #90989b !important;background-color: none !important;border-color: none !important;
-}
+}.ant-radio-button-wrapper-disabled:first-child.ant-radio-button-wrapper-disabled:hover{color:rgba(189,189,189,.97)!important;border-color:none!important}.ant-radio-button-wrapper-disabled:last-child.ant-radio-button-wrapper-disabled:hover{color:#90989b!important;background-color:#282929!important;border-color:none!important}
 
 .legend-mobile {
   display: none;

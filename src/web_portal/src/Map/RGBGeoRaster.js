@@ -156,8 +156,8 @@ export default function GeoRaster(props) {
             });
 
             map.on("mousemove", function (evt) {
-              if (currentLayerType == "Raster") {
-                console.log("RASTER HOVER ", currentLayerType);
+              if (window.layerType == "Raster") {
+                // console.log("RASTER HOVER ", window.layerType);
                 var latlng = map.mouseEventToLatLng(evt.originalEvent);
                 // getcurrentvalue(latlng.lng, latlng.lat);
                 dispatch({

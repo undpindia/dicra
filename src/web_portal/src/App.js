@@ -22,6 +22,7 @@ function App() {
     if (loading) {
       setTimeout(() => {
         setLoading(false);
+        window.layerType = "Raster";
       }, 5000);
     }
   }, [loading]);

@@ -660,7 +660,7 @@ class map extends Component {
           this.getlayer();
         }
       );
-    } else if (e.target.value == "custom") {
+    } else if (e.target.value == "CUSTOM") {
       this.props.setMapKey();
       this.props.setRegion("CUSTOM");
       this.setState({
@@ -1286,7 +1286,7 @@ class map extends Component {
               <option value="DISTRICT">District</option>
               <option value="MANDAL">Mandal</option>
               <option
-                value="custom"
+                value="CUSTOM"
                 disabled={
                   this.props.LayerDescription.showcustom == false ? true : false
                 }

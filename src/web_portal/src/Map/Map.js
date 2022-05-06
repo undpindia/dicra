@@ -718,6 +718,7 @@ class map extends Component {
         // this.getlayer();
         if (ltype == "Raster") {
           this.props.setLayerType("Raster");
+          this.props.showRaster();
           window.layerType="Raster";
         } else if (ltype == "Vector") {
           this.props.setLayerType("Vector");

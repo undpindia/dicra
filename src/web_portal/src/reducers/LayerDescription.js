@@ -22,6 +22,8 @@ function LayerDescription(
     unit: "",
     display_name: "Normalized Difference Vegetation Index (NDVI)",
     category: "SOCIO-ECONOMIC",
+    xaxislabel: "Date/Time",
+    yaxislabel: "NDVI"
   },
   action
 ) {

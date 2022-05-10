@@ -28,16 +28,12 @@ class About extends React.Component {
         </div>
         <div className="about-body">
           <div>
-            <Row style={{ paddingBottom: "10px" }}>
-              <Col>
+            <div style={{ paddingBottom: "10px" }}>
                 <h6 className="page-heading">About DiCRA</h6>
-              </Col>
-              <Col>
                 <Link to="/">
                   <BiX className="page-close" />
                 </Link>
-              </Col>
-            </Row>
+            </div>
             <hr />
             <div>
               <div class="container about-page">
@@ -150,6 +146,7 @@ class About extends React.Component {
                     className="table-source"
                     style={{ textAlign: "left", fontSize: "16px" }}
                     bordered
+                    id="data-source"
                   >
                     <thead>
                       <tr>
@@ -165,7 +162,7 @@ class About extends React.Component {
                         if (data.isavailable == true) {
                           return (
                             <tr>
-                              <td>{data.layer_name}</td>
+                              <td>{data.display_name}</td>
                               <td>{data.long_description}</td>
                               <td>{data.source}</td>
                               <td>{data.citation}</td>

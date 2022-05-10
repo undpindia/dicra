@@ -143,14 +143,16 @@ class LayerDetails extends Component {
                   onChange={(e) => this.changeLayer(e)}
                 >
                   {this.props.layers.map(function (layer) {
-                    return (
-                      <option
-                        value={layer.layer_name}
-                        disabled={layer.isavailable ? false : true}
-                      >
-                        {layer.display_name}
-                      </option>
-                    );
+                    if (layer.isavailable) {
+                      return (
+                        <option
+                          value={layer.layer_name}
+                          disabled={layer.isavailable ? false : true}
+                        >
+                          {layer.display_name}
+                        </option>
+                      );
+                    }
                   })}
                 </Input>
               </FormGroup>
@@ -189,15 +191,21 @@ class LayerDetails extends Component {
           </div>
         </div>
         <p
-        className="open-api"
+          className="open-api"
           style={{
             "font-size": "10px",
             "font-family": "'proxima-nova', sans-serif",
             textAlign: "left",
-            fontStyle: "italic"
+            fontStyle: "italic",
           }}
         >
-          You can also download the data using our open API. <a target="_blank" href={"https://internalapidev.chickenkiller.com/docs#"}>know more</a>
+          You can also download the data using our open API.{" "}
+          <a
+            target="_blank"
+            href={"https://internalapidev.chickenkiller.com/docs#"}
+          >
+            know more
+          </a>
         </p>
       </React.Fragment>
     );

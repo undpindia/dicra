@@ -132,7 +132,7 @@ class LegendMobile extends React.Component {
                   className="col"
                   style={{ color: "rgba(215 215 215)", fontWeight: "bold" }}
                 >
-                  Market Prices
+                  Markets
                 </div>
                 <div className="w-100"></div>
                 <div

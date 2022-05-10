@@ -12,3 +12,4 @@
 - [Changing agricultural stubble burning practices in the Indo-Gangetic plains: is the Happy Seeder a profitable alternative?](https://www.tandfonline.com/doi/full/10.1080/14735903.2020.1834277)
 - [A fuzzy machine learning approach for identification of paddy stubble burnt fields](https://www.researchgate.net/publication/344001377_A_fuzzy_machine_learning_approach_for_identification_of_paddy_stubble_burnt_fields)
 - https://www.frontiersin.org/articles/10.3389/fenrg.2020.614212/full 
+- test

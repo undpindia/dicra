@@ -133,25 +133,12 @@ class DrawerModal extends Component {
           show: false,
         },
         yaxis: {
-          show: false,
+          show: true,
           min: -1.0,
         },
         xaxis: {
           type: "datetime",
           tickAmount: 6,
-          title: {
-            text: "Date/Time",
-            rotate: -90,
-            offsetX: 0,
-            offsetY: 0,
-            style: {
-              color: undefined,
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
-              fontWeight: 600,
-              cssClass: "apexcharts-yaxis-title",
-            },
-          },
         },
         tooltip: {
           x: {
@@ -467,8 +454,21 @@ class DrawerModal extends Component {
             show: false,
           },
           yaxis: {
-            show: false,
+            show: true,
             min: -1.0,
+            title: {
+              text: this.props.LayerDescription.yaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: undefined,
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
           },
           xaxis: {
             type: "datetime",
@@ -477,7 +477,7 @@ class DrawerModal extends Component {
               format: "yyyy",
             },
             title: {
-              text: "Date/Time",
+              text: this.props.LayerDescription.xaxislabel,
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
@@ -485,7 +485,7 @@ class DrawerModal extends Component {
                 color: undefined,
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
-                fontWeight: 600,
+                fontWeight: 400,
                 cssClass: "apexcharts-yaxis-title",
               },
             },
@@ -516,21 +516,42 @@ class DrawerModal extends Component {
               format: "dd MMM yyyy",
             },
           },
-          // yaxis:{
-          //   title: {
-          //     text:"NDVI",
-          //     rotate: -90,
-          //     offsetX: 0,
-          //     offsetY: 0,
-          //     style: {
-          //       color: undefined,
-          //       fontSize: "12px",
-          //       fontFamily: "Helvetica, Arial, sans-serif",
-          //       fontWeight: 600,
-          //       cssClass: "apexcharts-yaxis-title",
-          //     },
-          //   },
-          // }
+          yaxis: {
+            show: true,
+            title: {
+              text: this.props.LayerDescription.yaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: undefined,
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            // tickAmount: 6,
+            labels: {
+              format: "yyyy",
+            },
+            title: {
+              text: this.props.LayerDescription.xaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: undefined,
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
         },
       });
     }

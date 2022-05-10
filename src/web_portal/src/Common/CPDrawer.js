@@ -353,6 +353,49 @@ class CPDrawerModal extends Component {
       series: [trendData],
       loader: false,
       //   weatherValue: lst_value,
+      options: {
+        tooltip: {
+          x: {
+            format: "dd MMM yyyy",
+          },
+        },
+        yaxis: {
+          show: true,
+          title: {
+            text: this.props.LayerDescription.yaxislabel,
+            rotate: -90,
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              color: undefined,
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-title",
+            },
+          },
+        },
+        xaxis: {
+          type: "datetime",
+          // tickAmount: 6,
+          labels: {
+            format: "yyyy",
+          },
+          title: {
+            text: this.props.LayerDescription.xaxislabel,
+            rotate: -90,
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              color: undefined,
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-title",
+            },
+          },
+        },
+      },
     });
 
     // return [trendData];

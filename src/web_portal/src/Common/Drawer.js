@@ -135,10 +135,27 @@ class DrawerModal extends Component {
         yaxis: {
           show: true,
           min: -1.0,
+          labels: {
+            show: true,
+            style: {
+                colors: "#90989b",
+                fontSize: '12px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 400,
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
         },
         xaxis: {
           type: "datetime",
           tickAmount: 6,
+          labels: {
+            format: "yyyy",
+            style: {
+              colors: '#90989b',
+              cssClass: 'apexcharts-xaxis-label',
+          },
+        }
         },
         tooltip: {
           x: {
@@ -456,13 +473,23 @@ class DrawerModal extends Component {
           yaxis: {
             show: true,
             min: -1.0,
+            labels: {
+              show: true,
+              style: {
+                  colors: "#90989b",
+                  fontSize: '12px',
+                  fontFamily: 'Helvetica, Arial, sans-serif',
+                  fontWeight: 400,
+                  cssClass: 'apexcharts-yaxis-label',
+              },
+          },
             title: {
               text: this.props.LayerDescription.yaxislabel,
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
               style: {
-                color: undefined,
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,
@@ -475,6 +502,10 @@ class DrawerModal extends Component {
             // tickAmount: 6,
             labels: {
               format: "yyyy",
+              style: {
+                colors: '#90989b',
+                cssClass: 'apexcharts-xaxis-label',
+            },
             },
             title: {
               text: this.props.LayerDescription.xaxislabel,
@@ -482,7 +513,7 @@ class DrawerModal extends Component {
               offsetX: 0,
               offsetY: 0,
               style: {
-                color: undefined,
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,
@@ -518,13 +549,23 @@ class DrawerModal extends Component {
           },
           yaxis: {
             show: true,
+            labels: {
+              show: true,
+              style: {
+                  colors: "#90989b",
+                  fontSize: '12px',
+                  fontFamily: 'Helvetica, Arial, sans-serif',
+                  fontWeight: 400,
+                  cssClass: 'apexcharts-yaxis-label',
+              },
+          },
             title: {
               text: this.props.LayerDescription.yaxislabel,
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
               style: {
-                color: undefined,
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,
@@ -537,6 +578,10 @@ class DrawerModal extends Component {
             // tickAmount: 6,
             labels: {
               format: "yyyy",
+              style: {
+                colors: '#90989b',
+                cssClass: 'apexcharts-xaxis-label',
+            },
             },
             title: {
               text: this.props.LayerDescription.xaxislabel,
@@ -544,7 +589,7 @@ class DrawerModal extends Component {
               offsetX: 0,
               offsetY: 0,
               style: {
-                color: undefined,
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,

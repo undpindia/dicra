@@ -738,7 +738,7 @@ class map extends Component {
     this.setState({
       baseMap:
         "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-      attribution: "dark_matter_lite_rainbow",
+      attribution: "",
       baseMapselected: "Dark",
     });
     if (this.props.CurrentRegion == "CUSTOM") {

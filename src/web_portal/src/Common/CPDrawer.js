@@ -131,8 +131,21 @@ class CPDrawerModal extends Component {
           style: "hollow",
         },
         grid: {
-          show: false,
-        },
+          show: true,
+          borderColor: '#90A4AE',
+          strokeDashArray: 0,
+          position: 'back',
+          xaxis: {
+              lines: {
+                  show: false
+              }
+          },   
+          yaxis: {
+              lines: {
+                  show: true
+              }
+          }
+      },
         yaxis: {
           show: true,
           min: -1.0,
@@ -376,6 +389,22 @@ class CPDrawerModal extends Component {
             format: "dd MMM yyyy",
           },
         },
+        grid: {
+          show: true,
+          borderColor: '#90A4AE',
+          strokeDashArray: 0,
+          position: 'back',
+          xaxis: {
+              lines: {
+                  show: false
+              }
+          },   
+          yaxis: {
+              lines: {
+                  show: true
+              }
+          }
+      },
         yaxis: {
           show: true,
           labels: {

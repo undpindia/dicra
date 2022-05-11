@@ -139,6 +139,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: currentlayertype }),
     showRaster: () => dispatch({ type: "SHOWRASTER" }),
     hideRaster: () => dispatch({ type: "HIDERASTER" }),
+    showDrawer: (val) => dispatch({ type: "SHOWDRAWER" }),
   };
 };
 class map extends Component {
@@ -536,6 +537,7 @@ class map extends Component {
         message.info("Maximum query area reached!");
       } else {
         this.child.current.getCUSTOMLULC(geojson);
+        this.props.showDrawer();
       }
     } else {
       this.getCustomlayerDetails(geojson);

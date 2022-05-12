@@ -18,7 +18,7 @@ Steps:
 
 Steps:
 1.	Clone the github repo containing the front app
-2.	Run the command _**npm install**_ then it will install the required packages for running the application
+2.	Run the command ```npm install``` then it will install the required packages for running the application
 3.	To create the production build we need to run the command npm run build after the successful execution of the command it will create a folder called build it contain all the build files
 4.	Upload all the build files to nginx website deployment file location
 5.	Make changes to the web server configuration
@@ -27,7 +27,7 @@ Steps:
 
 Steps:
 1.	Clone the github repo containing the front app
-2.	Run the command _**npm install**_ then it will install the required packages for running the application
+2.	Run the command ```npm install``` then it will install the required packages for running the application
 3.	To create the production build we need to run the command npm run build after the successful execution of the command it will create a folder called build it contain all the build files
 4.	To deploy react production build in Azure we need to create a storage account in Azure
 5.	After the successful Deployment of the storage account Goto static website menu and enable static website option and fill index document name as index.html and leave error document path as empty its optional

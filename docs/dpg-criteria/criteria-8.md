@@ -38,9 +38,7 @@ DiCRA  is a result of collaboration and co-creation between multiple national an
 
 ## Build for Sustainability
 
-Accounts for varied definitions and conditions of sustainability and pinpoints them to the specific contexts of the project. These pinpoints are linked to the project's theory of change and clear stakeholder engagements are also identified.
-
-![image](https://user-images.githubusercontent.com/42402451/168051953-9e05a7e8-375c-4726-97a9-faebe925ce02.png)
+The inputs,  pinpoints are linked to the project's theory of change and clear stakeholder engagements are also identified.
 
 ## Be Data Driven
 The website allows the users to download in geospatial data formats any open data layer that is being visualized in the platform. Open APIs? Formats? Interoperable? Metadata

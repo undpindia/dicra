@@ -8,10 +8,10 @@ Technology : ReactJS
 Steps:
 1.	Clone the github repo containing the frontend app 
 ```git clone https://github.com/undpindia/dicra.git```
-2.	Navigate to _**web_portal**_ folder (_**cd dicra/src/web_portal**_)
-3.	Unzip package-lock.zip (_**unzip package-lock.zip**_)
-4.	Run the command _**npm install**_ then it will install the required packages for running the application
-5.	After the installation we can able to run the Web application in Development server using the command _**npm start**_
+2.	Navigate to _**web_portal**_ folder ```cd dicra/src/web_portal```
+3.	Unzip package-lock.zip ```unzip package-lock.zip```
+4.	Run the command ```npm install``` then it will install the required packages for running the application
+5.	After the installation we can able to run the Web application in Development server using the command ```npm start```
 
 ### Running Web App Production Build In a web Server(Nginx)
 

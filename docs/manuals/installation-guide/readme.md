@@ -1,6 +1,7 @@
 ## Front End Installation
 
 Operating System : Ubuntu
+
 Technology : ReactJS
 
 ### Running Web App  using Development server
@@ -76,52 +77,52 @@ Database : PostgreSQL with postgis extension
 
 Steps:
 1.	Clone Github Repo containing Backend API 
-2.	Install all required packages using the command _**pip install -r requirements.txt**_
+2.	Install all required packages using the command ```pip install -r requirements.txt```
 3.	To run all database migrations run alembic upgrade head
 It will create  all the necessary tables
-4.	Finally we can run the uvicorn development server using the command _**python main.py**_ it will start a uvicorn development server http://localhost:5004 
+4.	Finally we can run the uvicorn development server using the command ```python main.py``` it will start a uvicorn development server http://localhost:5004 
 	
 ### Running Backend server using gunicorn systemmd managed unit service and Caddy
 
 Steps:
 1.	Clone Github Repo containing Backend API
-2.	Create conda virtual environment using the command _**conda create -n environmentname python=3 **_
+2.	Create conda virtual environment using the command ```conda create -n environmentname python=3 ```
 3.	Activate the conda virtual environment using the command conda activate envname  
-4.	Install all the required packages using _**pip install -r requirements.txt **_
+4.	Install all the required packages using ```pip install -r requirements.txt ```
 5.	Change User,Group,WorkingDirectory,Environment in the  gunicorn.service file in the repo
 6.	Create a gunicorn service by running 
- _**sudo nano /etc/systemd/system/gunicorn.service**_
+ ```sudo nano /etc/systemd/system/gunicorn.service```
 7.	Register the unit file gunicorn.service with Systemd by executing the following commands.
-_**sudo systemctl daemon-reload
+```sudo systemctl daemon-reload
 sudo systemctl enable gunicorn.service
-sudo systemctl start gunicorn.service**_
+sudo systemctl start gunicorn.service```
 
 The systemctl enable command above will add our gunicorn service to resume running when the VM reboots.
 
 The systemctl start command will quickly start the gunicorn service and invokes the ExecStart command.
 
 To check the status of our gunicorn.service at any point of time, run the following command.
-_**sudo systemctl status gunicorn.service **_
+```sudo systemctl status gunicorn.service ```
 
 8.	Install caddy 2 web server
 We can install caddy web server using the following command
 
-_**echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
+```echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
 sudo apt update
-sudo apt install -y caddy**_
+sudo apt install -y caddy```
 
 We can check the caddy server status by running 
-_**systemctl status caddy**_
+```systemctl status caddy```
 
 9.	Now we will configure our Caddy 2 Web server to serve the FastAPI app running on port 8000 via a reverse proxy. To do so, lets edit the /etc/caddy/Caddyfile by running the following command.
-_**sudo nano /etc/caddy/Caddyfile**_
+```sudo nano /etc/caddy/Caddyfile```
 
 Replace the contents of the Caddyfile and it should look like below
 :80
 reverse_proxy 0.0.0.0:8000
 
 Restart the caddy server by running the following command
-_**sudo systemctl restart caddy**_
+```sudo systemctl restart caddy```
 
 	
 

@@ -769,6 +769,7 @@ class map extends Component {
         this.setState({
           pointVector: res.data,
         });
+     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -787,6 +788,7 @@ class map extends Component {
           },
           () => {}
         );
+     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -802,6 +804,7 @@ class map extends Component {
         this.setState({
           pointVector: res.data.data,
         });
+     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -809,6 +812,7 @@ class map extends Component {
         message.error("Failed to connect to server");
       }
     } else if (this.props.CurrentLayer == "WEATHER") {
+      this.props.setRegion("MANDAL");
       this.props.SetBoundary(MANDALBOUNDS);
       this.props.setMapKey();
       this.changeVectorLoader(60.732421875, 80.67555881973475);
@@ -911,6 +915,7 @@ class map extends Component {
           ],
         },
       });
+  
       try {
         const res = await axiosConfig.get(
           `/currentvector?parameter=` +

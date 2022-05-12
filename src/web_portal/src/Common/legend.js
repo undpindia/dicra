@@ -13,6 +13,7 @@ function Legend() {
   let currentLayer = useSelector((state) => state.CurrentLayer);
   let currentLayerDesc = useSelector((state) => state.LayerDescription);
   let hoverLatLon = useSelector((state) => state.Hoverlatlon);
+  let currentlayerType = useSelector((state) => state.CurrentLayerType);
   useEffect(() => {
     valueKey = valueKey + 1;
   }, [setval]);
@@ -31,7 +32,8 @@ function Legend() {
               style={currentLayer == "LULC" ? { display: "none" } : {}}
               key={valueKey}
             >
-              {setval} <a style={{fontSize:"18px"}}>{currentLayerDesc.unit}</a>
+              {setval}{" "}
+              <a style={{ fontSize: "18px" }}>{currentLayerDesc.unit}</a>
             </span>
           </div>
           <div className="w-100"></div>
@@ -45,13 +47,16 @@ function Legend() {
             44.528 | 55.635
           </div> */}
           <div className="w-100"></div>
-          <div className="col" style={{ color: "rgba(215 215 215)" }}>
-            {setplace}
-          </div>
-          <div className="w-100"></div>
-          <div className="col" style={{ color: "rgba(215 215 215)" }}>
-          {hoverLatLon} <BiNavigation style={{"transform": "translate(1px, -2px)" }}/>
-          </div>
+          {currentlayerType == "Raster" ? (
+            <div className="col" style={{ color: "rgba(215 215 215)" }}>
+              {hoverLatLon}
+              <BiNavigation style={{ transform: "translate(1px, -2px)" }} />
+            </div>
+          ) : (
+            <div className="col" style={{ color: "rgba(215 215 215)" }}>
+              {setplace}
+            </div>
+          )}
           <div className="w-100"></div>
           <div className="col">
             <ColorPicker />

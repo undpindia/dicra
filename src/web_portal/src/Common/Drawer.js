@@ -472,7 +472,7 @@ class DrawerModal extends Component {
           },
           yaxis: {
             show: true,
-            min: -1.0,
+            min: 0,
             labels: {
               show: true,
               style: {

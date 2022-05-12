@@ -38,64 +38,26 @@ DiCRA  is a result of collaboration and co-creation between multiple national an
 
 ## Build for Sustainability
 
-The inputs,  pinpoints are linked to the project's theory of change and clear stakeholder engagements are also identified.
+The inputs, pinpoints are linked to the project's theory of change and clear stakeholder engagements are also identified.
 
 ## Be Data Driven
 The website allows the users to download in geospatial data formats any open data layer that is being visualized in the platform. Open APIs? Formats? Interoperable? Metadata
 
 ## Use Open Standards, Open Data, Open Source, and Open Innovation
 
-Open standards establish protocols and building blocks that can help make digital public goods more functional and interoperable. This not only streamlines product development, it removes vendor-imposed boundaries to read or write data files by improving data exchange. Below are some of the common open standards by category:
+We use the follow the following Open standards to establish protocols to make DiCRA more functional and interoperable. 
 
-### Accessibility
+### Security - HTTPS, SSL, SSH and OWASP
 
-WCAG 2.0/2.1 (Web Content Accessibility Guidelines)
+### Web standards - HTML, CSS, ECMAScript (ES 5/6/7)
 
-### Security
+### Software Architectural Styles - REST architectural style 
 
-**HTTPS**
-**SSH** is used to connect to the VM from external applications
-**SSL**
+### Application Programming Interfaces (APIs) - OpenAPI
 
-### Authentication & Authorization
+### Data Exchange formats- JSON (JavaScript Object Notation), GeoJSON, CSV (Comma Separated Values), GeoTIFF, and COG (Cloud Optimized Geotiff)
 
-OAuth 2
-OIDC (OpenID Connect)
-JWT (JSON Web Tokens)
-SAML (Security Assertion Markup Language)
-XACML 3.0 (eXtensible Access Control Markup Language)
-
-### Web standards
-
-HTML
-CSS
-ECMAScript (ES 5/6/7)
-Latex
-
-### Software Architectural Styles
-
-REST (Representational State Transfer)
-
-### Application Programming Interfaces (APIs)
-
-OpenAPI
-
-### Data Exchange formats
-
-JSON (JavaScript Object Notation)
-XML (Extensible Markup Language)
-CSV (Comma Separated Values)
-COG(Cloud 
-
-### Software Quality Assurance
-
-IEEE
-ISO/IEC
-
-### Software Testing
-
-IEEE829
-ISO/IEC/IEEE29119
+### Multimedia - SVG, PNG (Portable Network Graphics), JPEG (Joint Photographic Experts Group)
 
 ## Reuse and Improve
 

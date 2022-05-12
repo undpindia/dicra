@@ -6,7 +6,8 @@ Technology : ReactJS
 ### Running Web App  using Development server
 
 Steps:
-1.	Clone the github repo containing the frontend app
+1.	Clone the github repo containing the frontend app 
+```git clone https://github.com/undpindia/dicra.git```
 2.	Navigate to _**web_portal**_ folder (_**cd dicra/src/web_portal**_)
 3.	Unzip package-lock.zip (_**unzip package-lock.zip**_)
 4.	Run the command _**npm install**_ then it will install the required packages for running the application

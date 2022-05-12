@@ -17,6 +17,8 @@ Following is a depiction of the dataflow proposed under the project -
 
 The DiCRA Platform is an open data platform managed by the United Nations Development Programme. These Terms of Service (hereafter ‘Terms’ or ‘these Terms’) describe how DiCRA is managed and how the platform should be used. UNDP will update these Terms as needed, and will post notice of significant updates on our GitHub Page and through the DiCRA Platform. All organizations and individuals using this platform are bound by these Terms. If you do not agree with the Terms, you should discontinue use of DiCRA. If you have any questions or comments about these Terms or DiCRA, please leave a comment on the Discussions tab of our GitHub repository or send an email to acceleratorlab.in@undp.org
 
+DiCRA Platform encourages collaborations from the open source community to improve our datasets, analytics, and software. All the contributors have to adhere to the Code of Conduct detailed [here](https://github.com/undpindia/dicra/blob/main/CODE_OF_CONDUCT.md).
+
 **Disclaimer**
 
 The DiCRA online platform and its content are made available by the UNDP team. The content providers make no warranty, express or implied, nor assume any legal liability or responsibility for the accuracy, completeness, or usefulness of this content or its online services, nor represent that its use may not potentially infringe property rights. UNDP makes no warranty that DiCRA online services and its content will be uninterrupted or error-free, nor that any defects will be corrected, nor that its online services or content will be free of viruses or other harmful components. UNDP assumes no liability for possible damages or implications which occur by direct or indirect use of DiCRA services or content.

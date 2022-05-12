@@ -33,4 +33,4 @@ UNDP continually seeks to understand the behavior of users on the DiCRA platform
 
 **Data Licensing**
 
-Each of the datasets made available through the DiCRA PLatform have their own data use licensing and citation requirement. More information regarding this is made available at the following link. By downloading the data through DiCRA Platform, the user acknowledges the individual data source's data use agreements and have to cite the data source as per the citation format of the dataset.
+Each of the datasets made available through the DiCRA PLatform have their own data use licensing and citation requirement. More information regarding this is made available at the following [link](https://github.com/undpindia/dicra/blob/main/analytics/datasets_metadata.pdf). By downloading the data through DiCRA Platform, the user acknowledges the individual data source's data use agreements and have to cite the data source as per the citation format of the dataset.

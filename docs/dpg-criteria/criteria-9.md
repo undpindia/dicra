@@ -45,6 +45,6 @@ UNDP administrators scrutinize the content based on parameters such as: relevanc
 
 ## 9.c. Protection from harassment
 
-Directly there is no interaction between users and contributors though the platform. There is only a moderated interaction between the contributors through our GitHub account. All contributors have to adhere to the [Code of Conduct](https://github.com/undpindia/dicra/blob/main/CODE_OF_CONDUCT.md)
+Directly there is no interaction between users and contributors though the platform. There is only a moderated interaction between the contributors through our GitHub account. All contributors have to adhere to the [Code of Conduct](https://github.com/undpindia/dicra/blob/main/CODE_OF_CONDUCT.md).
 
 

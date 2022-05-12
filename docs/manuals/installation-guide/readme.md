@@ -7,14 +7,14 @@ Technology : ReactJS
 
 Steps:
 1.	Clone the github repo containing the front app 
-2.	Run the command **npm install** then it will install the required packages for running the application
-3.	After the installation we can able to run the Web application in Development server using the command **npm start**
+2.	Run the command _**npm install**_ then it will install the required packages for running the application
+3.	After the installation we can able to run the Web application in Development server using the command _**npm start**_
 
 ### Running Web App Production Build In a web Server(Nginx)
 
 Steps:
 1.	Clone the github repo containing the front app
-2.	Run the command **npm install** then it will install the required packages for running the application
+2.	Run the command _**npm install**_ then it will install the required packages for running the application
 3.	To create the production build we need to run the command npm run build after the successful execution of the command it will create a folder called build it contain all the build files
 4.	Upload all the build files to nginx website deployment file location
 5.	Make changes to the web server configuration
@@ -23,7 +23,7 @@ Steps:
 
 Steps:
 1.	Clone the github repo containing the front app
-2.	Run the command **npm install** then it will install the required packages for running the application
+2.	Run the command _**npm install**_ then it will install the required packages for running the application
 3.	To create the production build we need to run the command npm run build after the successful execution of the command it will create a folder called build it contain all the build files
 4.	To deploy react production build in Azure we need to create a storage account in Azure
 5.	After the successful Deployment of the storage account Goto static website menu and enable static website option and fill index document name as index.html and leave error document path as empty its optional
@@ -73,52 +73,52 @@ Database : PostgreSQL with postgis extension
 
 Steps:
 1.	Clone Github Repo containing Backend API 
-2.	Install all required packages using the command pip install -r requirements.txt
+2.	Install all required packages using the command _**pip install -r requirements.txt**_
 3.	To run all database migrations run alembic upgrade head
 It will create  all the necessary tables
-4.	Finally we can run the uvicorn development server using the command python main.py it will start a uvicorn development server http://localhost:5004 
+4.	Finally we can run the uvicorn development server using the command _**python main.py**_ it will start a uvicorn development server http://localhost:5004 
 	
 ### Running Backend server using gunicorn systemmd managed unit service and Caddy
 
 Steps:
 1.	Clone Github Repo containing Backend API
-2.	Create conda virtual environment using the command conda create -n environmentname python=3 
+2.	Create conda virtual environment using the command _**conda create -n environmentname python=3 **_
 3.	Activate the conda virtual environment using the command conda activate envname  
-4.	Install all the required packages using pip install -r requirements.txt 
+4.	Install all the required packages using _**pip install -r requirements.txt **_
 5.	Change User,Group,WorkingDirectory,Environment in the  gunicorn.service file in the repo
 6.	Create a gunicorn service by running 
- sudo nano /etc/systemd/system/gunicorn.service
+ _**sudo nano /etc/systemd/system/gunicorn.service**_
 7.	Register the unit file gunicorn.service with Systemd by executing the following commands.
-sudo systemctl daemon-reload
+_**sudo systemctl daemon-reload
 sudo systemctl enable gunicorn.service
-sudo systemctl start gunicorn.service
+sudo systemctl start gunicorn.service**_
 
 The systemctl enable command above will add our gunicorn service to resume running when the VM reboots.
 
 The systemctl start command will quickly start the gunicorn service and invokes the ExecStart command.
 
 To check the status of our gunicorn.service at any point of time, run the following command.
-sudo systemctl status gunicorn.service 
+_**sudo systemctl status gunicorn.service **_
 
 8.	Install caddy 2 web server
 We can install caddy web server using the following command
 
-**echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
+_**echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
 sudo apt update
-sudo apt install -y caddy **
+sudo apt install -y caddy **_
 
 We can check the caddy server status by running 
-**systemctl status caddy**
+_**systemctl status caddy**_
 
 9.	Now we will configure our Caddy 2 Web server to serve the FastAPI app running on port 8000 via a reverse proxy. To do so, lets edit the /etc/caddy/Caddyfile by running the following command.
-**sudo nano /etc/caddy/Caddyfile**
+_**sudo nano /etc/caddy/Caddyfile**_
 
 Replace the contents of the Caddyfile and it should look like below
 :80
 reverse_proxy 0.0.0.0:8000
 
 Restart the caddy server by running the following command
-**sudo systemctl restart caddy**
+_**sudo systemctl restart caddy**_
 
 	
 

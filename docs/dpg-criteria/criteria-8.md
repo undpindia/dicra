@@ -47,17 +47,17 @@ The website allows the users to download in geospatial data formats any open dat
 
 We use the follow the following Open standards to establish protocols to make DiCRA more functional and interoperable. 
 
-### Security - HTTPS, SSL, SSH and OWASP
+#### Security - HTTPS, SSL, SSH and OWASP
 
-### Web standards - HTML, CSS, ECMAScript (ES 5/6/7)
+#### Web standards - HTML, CSS, ECMAScript (ES 5/6/7)
 
-### Software Architectural Styles - REST architectural style 
+#### Software Architectural Styles - REST architectural style 
 
-### Application Programming Interfaces (APIs) - OpenAPI
+#### Application Programming Interfaces (APIs) - OpenAPI
 
-### Data Exchange formats- JSON (JavaScript Object Notation), GeoJSON, CSV (Comma Separated Values), GeoTIFF, and COG (Cloud Optimized Geotiff)
+#### Data Exchange formats- JSON (JavaScript Object Notation), GeoJSON, CSV (Comma Separated Values), GeoTIFF, and COG (Cloud Optimized Geotiff)
 
-### Multimedia - SVG, PNG (Portable Network Graphics), JPEG (Joint Photographic Experts Group)
+#### Multimedia - SVG, PNG (Portable Network Graphics), JPEG (Joint Photographic Experts Group)
 
 ## Reuse and Improve
 

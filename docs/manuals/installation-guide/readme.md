@@ -105,7 +105,7 @@ We can install caddy web server using the following command
 
 _**echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
 sudo apt update
-sudo apt install -y caddy **_
+sudo apt install -y caddy**_
 
 We can check the caddy server status by running 
 _**systemctl status caddy**_

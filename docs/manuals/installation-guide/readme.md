@@ -7,14 +7,14 @@ Technology : ReactJS
 
 Steps:
 1.	Clone the github repo containing the front app 
-2.	Run the command npm install then it will install the required packages for running the application
-3.	After the installation we can able to run the Web application in Development server using the command npm start
+2.	Run the command **npm install** then it will install the required packages for running the application
+3.	After the installation we can able to run the Web application in Development server using the command **npm start**
 
 ### Running Web App Production Build In a web Server(Nginx)
 
 Steps:
 1.	Clone the github repo containing the front app
-2.	Run the command npm install then it will install the required packages for running the application
+2.	Run the command **npm install** then it will install the required packages for running the application
 3.	To create the production build we need to run the command npm run build after the successful execution of the command it will create a folder called build it contain all the build files
 4.	Upload all the build files to nginx website deployment file location
 5.	Make changes to the web server configuration
@@ -23,7 +23,7 @@ Steps:
 
 Steps:
 1.	Clone the github repo containing the front app
-2.	Run the command npm install then it will install the required packages for running the application
+2.	Run the command **npm install** then it will install the required packages for running the application
 3.	To create the production build we need to run the command npm run build after the successful execution of the command it will create a folder called build it contain all the build files
 4.	To deploy react production build in Azure we need to create a storage account in Azure
 5.	After the successful Deployment of the storage account Goto static website menu and enable static website option and fill index document name as index.html and leave error document path as empty its optional
@@ -103,22 +103,22 @@ sudo systemctl status gunicorn.service
 8.	Install caddy 2 web server
 We can install caddy web server using the following command
 
-echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
+**echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
 sudo apt update
-sudo apt install -y caddy 
+sudo apt install -y caddy **
 
 We can check the caddy server status by running 
-systemctl status caddy
+**systemctl status caddy**
 
 9.	Now we will configure our Caddy 2 Web server to serve the FastAPI app running on port 8000 via a reverse proxy. To do so, lets edit the /etc/caddy/Caddyfile by running the following command.
-sudo nano /etc/caddy/Caddyfile
+**sudo nano /etc/caddy/Caddyfile**
 
 Replace the contents of the Caddyfile and it should look like below
 :80
 reverse_proxy 0.0.0.0:8000
 
 Restart the caddy server by running the following command
-sudo systemctl restart caddy
+**sudo systemctl restart caddy**
 
 	
 

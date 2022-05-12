@@ -4,23 +4,23 @@ Operating System : Ubuntu
 
 Technology : ReactJS
 
-### Running Web App  using Development server
+### Running Web App  using Development Server
 
 Steps:
 1.	Clone the github repo containing the frontend app 
 ```git clone https://github.com/undpindia/dicra.git```
-2.	Navigate to _**web_portal**_ folder ```cd dicra/src/web_portal```
-3.	Unzip package-lock.zip ```unzip package-lock.zip```
+2.	Navigate to **web_portal** folder ```cd dicra/src/web_portal```
+3.	Unzip **package-lock.zip** ```unzip package-lock.zip```
 4.	Run the command ```npm install``` then it will install the required packages for running the application
 5.	After the installation we can able to run the Web application in Development server using the command ```npm start```
 
 ### Running Web App Production Build In a web Server(Nginx)
 
 Steps:
-1.	Clone the github repo containing the front app
-2.	Run the command ```npm install``` then it will install the required packages for running the application
-3.	To create the production build we need to run the command npm run build after the successful execution of the command it will create a folder called build it contain all the build files
-4.	Upload all the build files to nginx website deployment file location
+1.	Clone the github repo containing the frontend app
+2.	Run the command ```npm install``` then it will install the required packages for running the application.
+3.	To create the production build we need to run the command ```npm run build``` after the successful execution of the command it will create a folder called ```build```, it contain all the build files
+4.	Upload all the build files to nginx website deployment location
 5.	Make changes to the web server configuration
 
 ### Running Web App Production Build in Azure Blob

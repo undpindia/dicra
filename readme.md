@@ -13,7 +13,7 @@ Following is a depiction of the dataflow proposed under the project -
 
 <img width="347" alt="image" src="https://user-images.githubusercontent.com/42402451/138163914-85322590-f0ea-44f4-88e6-4452f49d7057.png">
 
-## Terms of Service
+## Terms of Service and Use
 
 The DiCRA Platform is an open data platform managed by the United Nations Development Programme. These Terms of Service (hereafter ‘Terms’ or ‘these Terms’) describe how DiCRA is managed and how the platform should be used. UNDP will update these Terms as needed, and will post notice of significant updates on our GitHub Page and through the DiCRA Platform. All organizations and individuals using this platform are bound by these Terms. If you do not agree with the Terms, you should discontinue use of DiCRA. If you have any questions or comments about these Terms or DiCRA, please leave a comment on the Discussions tab of our GitHub repository or send an email to acceleratorlab.in@undp.org
 

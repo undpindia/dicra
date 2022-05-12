@@ -75,11 +75,36 @@ Database : PostgreSQL with postgis extension
 ### Running Backend Server using uvicorn (Development server)
 
 Steps:
-1.	Clone Github Repo containing Backend API 
-2.	Install all required packages using the command ```pip install -r requirements.txt```
-3.	To run all database migrations run alembic upgrade head
-It will create  all the necessary tables
-4.	Finally we can run the uvicorn development server using the command ```python main.py``` it will start a uvicorn development server http://localhost:5004 
+1.	Clone Github Repo containing Backend API ```git clone https://github.com/undpindia/dicra.git```
+2.	Navigate to **api** folder ```cd dicra/src/api```
+3.	Install all required packages using the command ```pip install -r requirements.txt```
+4.	Create a file with the name ```config.ini``` inside ```/config/```. The content of the file should be in the given format.
+
+```
+[AWS]
+ACCESSKEY = accesskey
+SECRETKEY = secretkey
+[s3bucket]
+BucketName=bucketname
+Ndvifolder=ndvifolderpath
+[paths]
+Temporaryfiles=temporary file path
+[azureblob]
+Accounturlazure account url
+Containername=azure container name
+Filepath=parameter path in blob
+Lulcpath=lulc raster path
+[boundaries]
+Districtboundary=district_boundarypath
+[database]
+Sqlalchemyurl=postgresql://username:password@host/dbname
+[gunicorn]
+Accesslogpath=accesslogpath
+Errorlogpath=errorlogpath
+```
+
+6.	To run all database migrations run ```alembic upgrade head```. It will create  all the necessary tables
+7.	Finally we can run the uvicorn development server using the command ```python main.py```. It will start a uvicorn development server ```http://localhost:5004```
 	
 ### Running Backend server using gunicorn systemmd managed unit service and Caddy
 
@@ -122,10 +147,3 @@ reverse_proxy 0.0.0.0:8000
 
 Restart the caddy server by running the following command
 ```sudo systemctl restart caddy```
-
-	
-
-
-
-
-

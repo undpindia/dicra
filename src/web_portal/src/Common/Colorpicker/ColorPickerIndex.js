@@ -385,7 +385,17 @@ export class ColorscalePaletteSelector extends Component {
         <div style={{margin: '0 auto'}}>
           <Colorscale
             key="reset"
-            colorscale={colorscaleOnMount}
+            colorscale={[
+              "#fafa6e",
+              "#bdea75",
+              "#86d780",
+              "#54c18a",
+              "#23aa8f",
+              "#00918d",
+              "#007882",
+              "#1f5f70",
+              "#2a4858"
+            ]}
             onClick={onClick}
             label={'RESET'}
             scaleLength={scaleLength || DEFAULT_NPREVIEWCOLORS}

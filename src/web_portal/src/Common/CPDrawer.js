@@ -1,48 +1,23 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "antd/dist/antd.css";
-import { Drawer, Space } from "antd";
+import { Drawer } from "antd";
 import { Menu, Dropdown, notification } from "antd";
 import { DownOutlined, InfoCircleTwoTone } from "@ant-design/icons";
-import { BiLayer, BiLineChart, BiDownload, BiX } from "react-icons/bi";
+import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
-import Captcha from "demos-react-captcha";
-import { geoMercator, geoPath } from "d3-geo";
-import { select } from "d3-selection";
 import Moment from 'moment';
 import {
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Row,
   Col,
-  Label,
-  FormGroup,
-  Card,
-  Table,
-  CardBody,
 } from "reactstrap";
-import {
-  AvForm,
-  AvField,
-  AvGroup,
-  AvInput,
-  AvFeedback,
-  AvRadioGroup,
-  AvRadio,
-  AvCheckboxGroup,
-  AvCheckbox,
-} from "availity-reactstrap-validation";
 import Chart from "react-apexcharts";
-import { Steps, message } from "antd";
-import axios from "axios";
+import {message } from "antd";
 import axiosConfig from "../Common/axios_Config";
 import Loader from "../img/loader.gif";
 import { connect } from "react-redux";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
-const { Step } = Steps;
+
 const mapStateToProps = (ReduxProps) => {
   return {
     CurrentLayer: ReduxProps.CurrentLayer,
@@ -312,10 +287,6 @@ class CPDrawerModal extends Component {
     }
   }
   async getvarietylist() {
-    var bodyParams = {
-      commodity: this.state.selectedCommodity,
-    };
-
     try {
       const resVariety = await axiosConfig.get(
         `/getvarietyname?commodity=` +
@@ -363,7 +334,7 @@ class CPDrawerModal extends Component {
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
 
-    if (trendData.data == null) {
+    if (trendData.data === null) {
       chart_values = [trendData];
     }
     this.setState({
@@ -440,7 +411,7 @@ class CPDrawerModal extends Component {
   }
 
   settimerange(daterange) {
-    if (daterange == "6months") {
+    if (daterange === "6months") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -456,7 +427,7 @@ class CPDrawerModal extends Component {
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -479,7 +450,7 @@ class CPDrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "1Year") {
+    } else if (daterange === "1Year") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -494,7 +465,7 @@ class CPDrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -517,7 +488,7 @@ class CPDrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "3Year") {
+    } else if (daterange === "3Year") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -533,7 +504,7 @@ class CPDrawerModal extends Component {
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -556,7 +527,7 @@ class CPDrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "5Year") {
+    } else if (daterange === "5Year") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -571,7 +542,7 @@ class CPDrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -616,30 +587,30 @@ class CPDrawerModal extends Component {
     });
   }
   spellPerilcheck(peril) {
-    if (peril == "rain") {
+    if (peril === "rain") {
       return "Rainfall";
     }
-    if (peril == "min_temp") {
+    if (peril === "min_temp") {
       return "Minimum Temperature";
     }
-    if (peril == "max_temp") {
+    if (peril === "max_temp") {
       return "Maximum Temperature";
     }
-    if (peril == "min_humidity") {
+    if (peril === "min_humidity") {
       return "Minimum Humidity";
     }
-    if (peril == "max_humidity") {
+    if (peril === "max_humidity") {
       return "Maximum Humidity";
     }
-    if (peril == "min_wind_speed") {
+    if (peril === "min_wind_speed") {
       return "Minimum Wind Speed";
     }
-    if (peril == "max_wind_speed") {
+    if (peril === "max_wind_speed") {
       return "Max Wind Speed";
     }
   }
   checkDefined(value, date, category) {
-    if (value[date] == undefined) {
+    if (value[date] === undefined) {
       return "0.00";
     } else {
       // this.setState({

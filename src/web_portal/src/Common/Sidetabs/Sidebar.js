@@ -156,7 +156,7 @@ class Sidebar extends React.Component {
     const collapsed = this.props.collapsed ? " collapsed" : "";
     const tabs = React.Children.toArray(this.props.children);
     const bottomtabs = tabs.filter((t) => t.props.anchor === "bottom");
-    const toptabs = tabs.filter((t) => t.props.anchor !== "bottom");
+    const toptabs = tabs.filter((t) => t.props.anchor !=="bottom");
 
     return (
       <div
@@ -204,11 +204,11 @@ class Sidebar extends React.Component {
         <div
           className="tab-legend"
           style={
-            this.props.CurrentLayer == "FIREEV" ||
-            this.props.CurrentLayer == "WEATHER" ||
-            this.props.CurrentLayer == "WH" ||
-            this.props.CurrentLayer == "CP" ||
-            this.props.CurrentLayer == "LULC" 
+            this.props.CurrentLayer === "FIREEV" ||
+            this.props.CurrentLayer === "WEATHER" ||
+            this.props.CurrentLayer === "WH" ||
+            this.props.CurrentLayer === "CP" ||
+            this.props.CurrentLayer === "LULC" 
               ? { display: "none" }
               : {}
           }
@@ -217,7 +217,7 @@ class Sidebar extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "FIREEV" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "FIREEV" ? {} : { display: "none" }}
         >
           <div className="legend-section">
             <div className="container">
@@ -256,7 +256,7 @@ class Sidebar extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "WH" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "WH" ? {} : { display: "none" }}
         >
           <div className="legend-section">
             <div className="container">
@@ -295,7 +295,7 @@ class Sidebar extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "WEATHER" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "WEATHER" ? {} : { display: "none" }}
         >
           <div className="legend-section">
             <div className="container">
@@ -328,7 +328,7 @@ class Sidebar extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "CP" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "CP" ? {} : { display: "none" }}
         >
           <div className="legend-section">
             <div className="container">
@@ -367,7 +367,7 @@ class Sidebar extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "LULC" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "LULC" ? {} : { display: "none" }}
         >
           <div className="legend-section-lulc">
             <div className="container">

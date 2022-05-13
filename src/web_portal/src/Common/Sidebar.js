@@ -134,7 +134,7 @@ const SidebarComponent = (props) => {
   }
   useEffect(() => {
     getLayers();
-    if (DownLayerDesc.multiple_files == true) {
+    if (DownLayerDesc.multiple_files === true) {
       if (selectedDowndate != "") {
         setActivebutton(true);
       } else {
@@ -146,7 +146,7 @@ const SidebarComponent = (props) => {
   }, [Layercount, selectedDowndate, isActivebutton, DownLayer]);
 
   function toggleLayer() {
-    if (LayerToggle == true) {
+    if (LayerToggle === true) {
       dispatch({ type: "HIDERASTER" });
     } else {
       dispatch({ type: "SHOWRASTER" });
@@ -213,14 +213,14 @@ const SidebarComponent = (props) => {
                               <div className="tool-tip">
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }
-                                  // style={LayerDesc.raster_status==false?{"pointer-events": "none"}:{}}
-                                  // disabled={LayerDesc.raster_status==false?true:false}
+                                  // style={LayerDesc.raster_status===false?{"pointer-events": "none"}:{}}
+                                  // disabled={LayerDesc.raster_status===false?true:false}
                                 >
-                                  {LayerDesc.raster_status == false ? (
+                                  {LayerDesc.raster_status === false ? (
                                     <BiShow
                                       data-tip
                                       data-for="show-disabledbtn"
@@ -241,7 +241,7 @@ const SidebarComponent = (props) => {
                                       // style={
                                       //   LayerToggle ? { display: "none" } : {}
                                       // }
-                                      // style= { LayerDesc.raster_status == false
+                                      // style= { LayerDesc.raster_status === false
                                       //   ? { cursor: "not-allowed" }
                                       //   : {}}
                                     />)
@@ -260,7 +260,7 @@ const SidebarComponent = (props) => {
                                 &nbsp;&nbsp;
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }

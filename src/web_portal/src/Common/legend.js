@@ -29,7 +29,7 @@ function Legend() {
         >
           <div className="col" style={{ fontSize: "24px", color: "#fff" }}>
             <span
-              style={currentLayer == "LULC" ? { display: "none" } : {}}
+              style={currentLayer === "LULC" ? { display: "none" } : {}}
               key={valueKey}
             >
               {setval}{" "}
@@ -47,7 +47,7 @@ function Legend() {
             44.528 | 55.635
           </div> */}
           <div className="w-100"></div>
-          {currentlayerType == "Raster" ? (
+          {currentlayerType === "Raster" ? (
             <div className="col" style={{ color: "rgba(215 215 215)" }}>
               {hoverLatLon}
               <BiNavigation style={{ transform: "translate(1px, -2px)" }} />

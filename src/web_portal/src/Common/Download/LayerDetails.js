@@ -1,25 +1,14 @@
 import React, { Component } from "react";
 import {
-  Button,
   Form,
   FormGroup,
-  Label,
-  Input,
-  FormText,
-  Row,
-  Col,
+  Input
 } from "reactstrap";
-import { DatePicker, Radio, Space, message } from "antd";
+import { message } from "antd";
 import axiosConfig from "../../Common/axios_Config";
-import { arrayExpression } from "@babel/types";
-import ReactReadMoreReadLess from "react-read-more-read-less";
+
 import { connect } from "react-redux";
-import {
-  setdownloadlayer,
-  setdownloadlayerdate,
-  setdownloadlayerregion,
-  setdownloadlayertype,
-} from "../../actions";
+
 const mapStateToProps = (props) => {
   return {
     layers: props.Layers,
@@ -90,7 +79,7 @@ class LayerDetails extends Component {
     );
   }
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
+    if (prevProps != this.props) {
       this.getavailableFiles();
     }
   }

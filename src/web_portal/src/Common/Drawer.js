@@ -1,13 +1,12 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "antd/dist/antd.css";
-import { Drawer, Space } from "antd";
-import { Menu, Dropdown, notification } from "antd";
-import { DownOutlined, InfoCircleTwoTone } from "@ant-design/icons";
-import { BiLayer, BiLineChart, BiDownload, BiX } from "react-icons/bi";
+import { Drawer } from "antd";
+import { Menu, Dropdown } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
 import { geoMercator, geoPath } from "d3-geo";
-import { select } from "d3-selection";
 import Moment from "moment";
 import {
   Button,
@@ -18,9 +17,7 @@ import {
   Row,
   Col,
   Label,
-  FormGroup,
   Card,
-  Table,
   CardBody,
 } from "reactstrap";
 import {
@@ -31,12 +28,9 @@ import {
   AvFeedback,
   AvRadioGroup,
   AvRadio,
-  AvCheckboxGroup,
-  AvCheckbox,
 } from "availity-reactstrap-validation";
 import Chart from "react-apexcharts";
 import { message } from "antd";
-import axios from "axios";
 import axiosConfig from "../Common/axios_Config";
 import Loader from "../img/loader.gif";
 import { connect } from "react-redux";
@@ -59,14 +53,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 const key = "updatable";
 
-const openNotification = () => {
-  notification.open({
-    key,
-    // message: 'Notification Title',
-    description: "Trend data is not available for given time range !",
-    icon: <InfoCircleTwoTone />,
-  });
-};
+
 class DrawerModal extends Component {
   constructor(props) {
     super(props);
@@ -202,7 +189,7 @@ class DrawerModal extends Component {
   }
   async getWeathertrend(range) {
     var bodyParams = {};
-    if (range == "6months") {
+    if (range === "6months") {
       bodyParams = {
         district: this.props.district.selectedRegion,
         mandal:
@@ -216,7 +203,7 @@ class DrawerModal extends Component {
       });
     }
 
-    if (range == "1Year") {
+    if (range === "1Year") {
       bodyParams = {
         district: this.props.district.selectedRegion,
         mandal:
@@ -243,7 +230,7 @@ class DrawerModal extends Component {
           Datanull: false,
         });
       } else {
-        // openNotification();
+     
         this.setState({
           series: [],
           loader: false,
@@ -359,7 +346,7 @@ class DrawerModal extends Component {
     var shapeparams = this.props.district.selected_shape;
     shapeparams = shapeparams.features[0].geometry;
     var bodyParams = {};
-    if (this.props.CurrentLayer == "POPULATION") {
+    if (this.props.CurrentLayer === "POPULATION") {
       bodyParams = {
         geojson: shapeparams,
         // startdate: this.state.from_date,
@@ -381,8 +368,8 @@ class DrawerModal extends Component {
 
     try {
       const res = await axiosConfig.post(`/gettrend?`, bodyParams);
-      if (res.data.code == 404) {
-        // openNotification();
+      if (res.data.code === 404) {
+        
         this.setState({
           series: [],
           loader: false,
@@ -400,7 +387,7 @@ class DrawerModal extends Component {
     this.getPopulation(shapeparams);
   }
   async getPopulation(shapeparams) {
-    // =====================API FOR POPULATION DATA=================
+    // ===============================API FOR POPULATION DATA=========================
     var bodyParamsPopulation = {
       geojson: shapeparams,
       date: "2020-01-01",
@@ -419,12 +406,12 @@ class DrawerModal extends Component {
     }
   }
   generatechart(data) {
-    let chart_values = [];
     var trendData = {
       name: this.props.CurrentLayer,
       data: [],
     };
-    if (this.props.CurrentLayer == "LULC") {
+    let chart_values=[]
+    if (this.props.CurrentLayer === "LULC") {
       this.setState({
         options: {
           colors: ["#d65522"],
@@ -600,9 +587,9 @@ class DrawerModal extends Component {
         },
       });
     }
-    if (data != null) {
+    if (data !== null) {
       data.map(function (item, index, data) {
-        if (item[1] != null) {
+        if (item[1] !== null) {
           trendData.data.push({
             x: item[0],
             y: parseFloat(item[1]).toFixed(2),
@@ -614,7 +601,7 @@ class DrawerModal extends Component {
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
 
-    if (trendData.data == null) {
+    if (trendData.data === null) {
       chart_values = [trendData];
     }
     this.setState({
@@ -654,8 +641,8 @@ class DrawerModal extends Component {
     };
     try {
       const res = await axiosConfig.post(`/getpointstrend?`, bodyParams);
-      if (res.data.code == 404) {
-        // openNotification();
+      if (res.data.code === 404) {
+    
         this.setState({
           series: [],
           loader: false,
@@ -673,7 +660,7 @@ class DrawerModal extends Component {
     }
   }
   settimerange(daterange) {
-    if (daterange == "6months") {
+    if (daterange === "6months") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -689,7 +676,7 @@ class DrawerModal extends Component {
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -712,7 +699,7 @@ class DrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "1Year") {
+    } else if (daterange === "1Year") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -727,7 +714,7 @@ class DrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -750,7 +737,7 @@ class DrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "3Year") {
+    } else if (daterange === "3Year") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -766,7 +753,7 @@ class DrawerModal extends Component {
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -789,7 +776,7 @@ class DrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "5Year") {
+    } else if (daterange === "5Year") {
       let current_date;
       let from_date;
       current_date = new Date();
@@ -804,7 +791,7 @@ class DrawerModal extends Component {
       var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
       var to_yyyy = current_date.getFullYear();
       var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -849,30 +836,30 @@ class DrawerModal extends Component {
     });
   }
   spellPerilcheck(peril) {
-    if (peril == "rain") {
+    if (peril === "rain") {
       return "Rainfall";
     }
-    if (peril == "min_temp") {
+    if (peril === "min_temp") {
       return "Minimum Temperature";
     }
-    if (peril == "max_temp") {
+    if (peril === "max_temp") {
       return "Maximum Temperature";
     }
-    if (peril == "min_humidity") {
+    if (peril === "min_humidity") {
       return "Minimum Humidity";
     }
-    if (peril == "max_humidity") {
+    if (peril === "max_humidity") {
       return "Maximum Humidity";
     }
-    if (peril == "min_wind_speed") {
+    if (peril === "min_wind_speed") {
       return "Minimum Wind Speed";
     }
-    if (peril == "max_wind_speed") {
+    if (peril === "max_wind_speed") {
       return "Max Wind Speed";
     }
   }
   checkDefined(value, date, category) {
-    if (value[date] == undefined) {
+    if (value[date] === undefined) {
       return "0.00";
     } else {
       // this.setState({
@@ -911,7 +898,7 @@ class DrawerModal extends Component {
     var PROJECTION_CONFIG = [];
     var projection = [];
 
-    if (this.props.CurrentLayer != "CP") {
+    if (this.props.CurrentLayer !== "CP") {
       const width = 800;
       const height = width * 0.9;
       projection = geoMercator().fitExtent(
@@ -1007,7 +994,7 @@ class DrawerModal extends Component {
                 <Row>
                   <Col
                     style={
-                      this.props.CurrentRegion == "CUSTOM"
+                      this.props.CurrentRegion === "CUSTOM"
                         ? { display: "none" }
                         : {}
                     }
@@ -1043,7 +1030,7 @@ class DrawerModal extends Component {
                   {/* custom draw */}
                   <Col
                     style={
-                      this.props.CurrentRegion == "CUSTOM"
+                      this.props.CurrentRegion === "CUSTOM"
                         ? {}
                         : { display: "none" }
                     }
@@ -1116,8 +1103,8 @@ class DrawerModal extends Component {
               </Col>
               <Col
                 style={
-                  this.props.CurrentLayer == "WEATHER" ||
-                  this.props.CurrentLayer == "LULC"
+                  this.props.CurrentLayer === "WEATHER" ||
+                  this.props.CurrentLayer === "LULC"
                     ? { display: "none" }
                     : {}
                 }
@@ -1131,7 +1118,7 @@ class DrawerModal extends Component {
               </Col>
               <Col
                 style={
-                  this.props.CurrentLayer == "WEATHER"
+                  this.props.CurrentLayer === "WEATHER"
                     ? {}
                     : { display: "none" }
                 }
@@ -1147,7 +1134,7 @@ class DrawerModal extends Component {
                 <span
                   style={{ display: "inline", "margin-left": "10px" }}
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? {}
                       : { display: "none" }
                   }
@@ -1167,7 +1154,7 @@ class DrawerModal extends Component {
             <Row>
               <Col
                 style={
-                  this.props.CurrentLayer == "LULC" ? { display: "none" } : {}
+                  this.props.CurrentLayer === "LULC" ? { display: "none" } : {}
                 }
               >
                 <div>
@@ -1179,7 +1166,7 @@ class DrawerModal extends Component {
                         color: "#fff",
                       }}
                     >
-                      {this.props.CurrentLayer == "WEATHER"
+                      {this.props.CurrentLayer === "WEATHER"
                         ? this.state.weatherValue
                         : this.checkValue(this.props.district.areaValue)}
                       <p
@@ -1200,7 +1187,7 @@ class DrawerModal extends Component {
                         color: "#fff",
                       }}
                     >
-                      {this.props.CurrentLayer == "WEATHER"
+                      {this.props.CurrentLayer === "WEATHER"
                         ? this.state.weatherValue
                         : this.checkValue(this.props.district.areaValue)}
                       <p
@@ -1220,9 +1207,9 @@ class DrawerModal extends Component {
               <Col
                 style={{ paddingLeft: "0px", paddingTop: "20px" }}
                 style={
-                  this.props.CurrentLayer == "FIREEV" ||
-                  this.props.CurrentLayer == "WEATHER" ||
-                  this.props.CurrentLayer == "LULC"
+                  this.props.CurrentLayer === "FIREEV" ||
+                  this.props.CurrentLayer === "WEATHER" ||
+                  this.props.CurrentLayer === "LULC"
                     ? { display: "none" }
                     : {}
                 }
@@ -1233,7 +1220,7 @@ class DrawerModal extends Component {
                     {this.checkValue(this.props.district.minVal)}
                   </Col>
                   <Col className="steps-avg">
-                    {this.props.CurrentLayer == "POPULATION"
+                    {this.props.CurrentLayer === "POPULATION"
                       ? this.checkValue(this.props.district.meanVal)
                       : this.checkValue(this.props.district.areaValue)}
                   </Col>
@@ -1281,7 +1268,7 @@ class DrawerModal extends Component {
             <Col
               md={12}
               style={
-                this.props.CurrentLayer == "LULC" ? {} : { display: "none" }
+                this.props.CurrentLayer === "LULC" ? {} : { display: "none" }
               }
             >
               <Row style={{ "margin-bottom": "2%" }}>
@@ -1314,7 +1301,7 @@ class DrawerModal extends Component {
                     <span
                       style={{ display: "inline", "margin-left": "10px" }}
                       style={
-                        this.props.CurrentLayer == "LULC"
+                        this.props.CurrentLayer === "LULC"
                           ? {}
                           : { display: "none" }
                       }
@@ -1368,14 +1355,14 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              {/* =================================WEATHER DATA TREND-START======================================== */}
+              {/* =================================================WEATHER DATA TREND-START============================================================ */}
               <div
                 className="btn-group-sm"
                 role="group"
                 aria-label="Basic radio toggle button group"
                 style={{ fontSize: "10px", marginTop: "10px" }}
                 style={
-                  this.props.CurrentLayer == "WEATHER"
+                  this.props.CurrentLayer === "WEATHER"
                     ? {}
                     : { display: "none" }
                 }
@@ -1388,12 +1375,12 @@ class DrawerModal extends Component {
                   autocomplete="off"
                   defaultChecked
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? {}
                       : { display: "none" }
                   }
                   checked={
-                    this.state.currentWeatherRange == "6months" ? true : false
+                    this.state.currentWeatherRange === "6months" ? true : false
                   }
                 />
                 <label
@@ -1414,12 +1401,12 @@ class DrawerModal extends Component {
                   id="btnradio2"
                   autocomplete="off"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? {}
                       : { display: "none" }
                   }
                   checked={
-                    this.state.currentWeatherRange == "1Year" ? true : false
+                    this.state.currentWeatherRange === "1Year" ? true : false
                   }
                 />
                 <label
@@ -1434,7 +1421,7 @@ class DrawerModal extends Component {
                   1 year
                 </label>
               </div>
-              {/* =================================WEATHER DATA TREND-END======================================== */}
+              {/* =================================================WEATHER DATA TREND-END============================================================ */}
               <div
                 className="btn-group-sm"
                 role="group"
@@ -1453,19 +1440,19 @@ class DrawerModal extends Component {
                   id="btnradio2"
                   autocomplete="off"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
                   checked={
-                    this.state.currentCharttime == "1year" ? true : false
+                    this.state.currentCharttime === "1year" ? true : false
                   }
                 />
                 <label
                   class="btn btn-primary btn-chart"
                   for="btnradio2"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
@@ -1484,19 +1471,19 @@ class DrawerModal extends Component {
                   id="btnradio3"
                   autocomplete="off"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
                   checked={
-                    this.state.currentCharttime == "3year" ? true : false
+                    this.state.currentCharttime === "3year" ? true : false
                   }
                 />
                 <label
                   class="btn btn-primary btn-chart"
                   for="btnradio3"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
@@ -1514,20 +1501,20 @@ class DrawerModal extends Component {
                   name="btnradio"
                   id="btnradio4"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
                   autocomplete="off"
                   checked={
-                    this.state.currentCharttime == "5year" ? true : false
+                    this.state.currentCharttime === "5year" ? true : false
                   }
                 />
                 <label
                   class="btn btn-primary btn-chart"
                   for="btnradio4"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }

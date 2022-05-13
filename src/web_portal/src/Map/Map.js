@@ -885,6 +885,7 @@ class map extends Component {
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
     } else {
+      this.props.setRegion("DISTRICT");
       this.setState({
         pointVector: {
           type: "FeatureCollection",

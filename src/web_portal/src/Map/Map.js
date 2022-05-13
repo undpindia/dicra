@@ -139,6 +139,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: currentlayertype }),
     showRaster: () => dispatch({ type: "SHOWRASTER" }),
     hideRaster: () => dispatch({ type: "HIDERASTER" }),
+    showDrawer: (val) => dispatch({ type: "SHOWDRAWER" }),
   };
 };
 class map extends Component {
@@ -536,6 +537,7 @@ class map extends Component {
         message.info("Maximum query area reached!");
       } else {
         this.child.current.getCUSTOMLULC(geojson);
+        this.props.showDrawer();
       }
     } else {
       this.getCustomlayerDetails(geojson);
@@ -767,6 +769,7 @@ class map extends Component {
         this.setState({
           pointVector: res.data,
         });
+     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -785,6 +788,7 @@ class map extends Component {
           },
           () => {}
         );
+     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -800,6 +804,7 @@ class map extends Component {
         this.setState({
           pointVector: res.data.data,
         });
+     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -807,6 +812,7 @@ class map extends Component {
         message.error("Failed to connect to server");
       }
     } else if (this.props.CurrentLayer == "WEATHER") {
+      this.props.setRegion("MANDAL");
       this.props.SetBoundary(MANDALBOUNDS);
       this.props.setMapKey();
       this.changeVectorLoader(60.732421875, 80.67555881973475);
@@ -909,6 +915,7 @@ class map extends Component {
           ],
         },
       });
+  
       try {
         const res = await axiosConfig.get(
           `/currentvector?parameter=` +

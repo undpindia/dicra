@@ -5,30 +5,14 @@ import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
-import Captcha from "demos-react-captcha";
 import { geoMercator } from "d3-geo";
 import Moment from "moment";
 import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Row,
   Col,
-  Label,
   Card,
   CardBody,
 } from "reactstrap";
-import {
-  AvForm,
-  AvField,
-  AvGroup,
-  AvInput,
-  AvFeedback,
-  AvRadioGroup,
-  AvRadio,
-} from "availity-reactstrap-validation";
 import Chart from "react-apexcharts";
 import { message } from "antd";
 import axiosConfig from "../Common/axios_Config";

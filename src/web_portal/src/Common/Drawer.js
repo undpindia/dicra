@@ -6,7 +6,7 @@ import { DownOutlined } from "@ant-design/icons";
 import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
-import { geoMercator, geoPath } from "d3-geo";
+import { geoMercator } from "d3-geo";
 import Moment from "moment";
 import {
   Button,

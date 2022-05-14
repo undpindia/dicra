@@ -5,7 +5,6 @@ import MenuButton from "./MenuButton";
 import "./sidebar.scss";
 import Legend from "../legend";
 import { connect } from "react-redux";
-import Marker from "../../img/circlemarker.png";
 import locationMarker from "../../img/locationMK.png";
 const mapStateToProps = (props) => {
   return {

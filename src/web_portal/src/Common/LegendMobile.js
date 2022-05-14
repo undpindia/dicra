@@ -1,5 +1,4 @@
 import React from "react";
-import { PropTypes } from "prop-types";
 import Legend from "../Common/legend";
 import { connect } from "react-redux";
 import locationMarker from "../img/locationMK.png";

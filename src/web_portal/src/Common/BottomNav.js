@@ -389,16 +389,16 @@ const BottomNav = (props) => {
             }}
           >
             <div style={{ fontSize: "16px" }}>
-              <div class="row">
-                <div class="col mb-2">
+              <div className="row">
+                <div className="col mb-2">
                   <Link to="/about-project" className="mobile-link">
                     {" "}
                     <BiErrorCircle />
                     &nbsp;About Project
                   </Link>
                 </div>
-                <div class="w-100"></div>
-                <div class="col mb-2">
+                <div className="w-100"></div>
+                <div className="col mb-2">
                   <div className="mobile-link"
                   onClick={(e) => {
                       window
@@ -410,16 +410,16 @@ const BottomNav = (props) => {
                     &nbsp;Help
                   </div>
                 </div>
-                <div class="w-100"></div>
-                <div class="col mb-2">
+                <div className="w-100"></div>
+                <div className="col mb-2">
                   <Link to="/analytics" className="mobile-link">
                     <BiBarChartAlt />
                     &nbsp;Site Analytics
                   </Link>
                 </div>
-                <div class="w-100"></div>
+                <div className="w-100"></div>
                 <div
-                  class="col"
+                  className="col"
                   className="mobile-link"
                   onClick={handleClick}
                 >

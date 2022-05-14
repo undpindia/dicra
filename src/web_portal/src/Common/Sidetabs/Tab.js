@@ -11,7 +11,7 @@ const Tab = props => {
         {props.header}
         <div
           className='sidebar-close'
-          role='btn'
+          role="button"
           onClick={props.onClose}
         >{closeIcon}
         </div>

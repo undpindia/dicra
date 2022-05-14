@@ -209,11 +209,6 @@ export default class ColorscalePicker extends Component {
     this.updateCubehelix(start, rot);
   };
 
-  updateCubehelixStartState = start => {
-    const ch = this.state.cubehelix;
-    ch.start = start;
-    this.setState({cubehelix: ch});
-  };
 
   updateCubehelixRotState = rot => {
     const ch = this.state.cubehelix;

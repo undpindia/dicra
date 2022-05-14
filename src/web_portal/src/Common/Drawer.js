@@ -6,7 +6,7 @@ import { DownOutlined } from "@ant-design/icons";
 import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
 import Captcha from "demos-react-captcha";
-import { geoMercator, geoPath } from "d3-geo";
+import { geoMercator } from "d3-geo";
 import Moment from "moment";
 import {
   Button,
@@ -51,9 +51,6 @@ const mapDispatchToProps = (dispatch) => {
     hideDrawer: (val) => dispatch({ type: "HIDEDRAWER" }),
   };
 };
-const key = "updatable";
-
-
 class DrawerModal extends Component {
   constructor(props) {
     super(props);
@@ -423,7 +420,7 @@ class DrawerModal extends Component {
       name: this.props.CurrentLayer,
       data: [],
     };
-    let chart_values=[]
+  
     if (this.props.CurrentLayer === "LULC") {
       this.setState({
         options: {
@@ -643,9 +640,6 @@ class DrawerModal extends Component {
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
 
-    if (trendData.data === null) {
-      chart_values = [trendData];
-    }
     this.setState({
       series: [trendData],
       loader: false,
@@ -950,7 +944,6 @@ class DrawerModal extends Component {
         ],
         this.state.selected_shape
       );
-      const path = geoPath().projection(projection);
       const centerpoint =
         this.state.selected_shape.features[0].properties.centroid;
       var scaleValue;

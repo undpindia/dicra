@@ -20,7 +20,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { useHistory, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import LayerDetails from "./Download/LayerDetails";
 import PersonalDetails from "./Download/PersonalDetails";

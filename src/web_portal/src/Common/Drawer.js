@@ -1080,7 +1080,7 @@ class DrawerModal extends Component {
                     >
                       <Geographies
                         geography={this.state.selected_shape.features}
-                        disableOptimization
+      
                       >
                         {({ geographies }) =>
                           geographies.map((geo) => (
@@ -1264,14 +1264,14 @@ class DrawerModal extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <ol class="progress-indicator mb-2">
-                    <li class="is-complete" data-step="">
+                  <ol className="progress-indicator mb-2">
+                    <li className="is-complete" data-step="">
                       <span>Min</span>
                     </li>
-                    <li class="is-complete" data-step="">
+                    <li className="is-complete" data-step="">
                       <span>Avg</span>
                     </li>
-                    <li class="is-complete" data-step="">
+                    <li className="is-complete" data-step="">
                       <span>Max</span>
                     </li>
                   </ol>
@@ -1353,7 +1353,7 @@ class DrawerModal extends Component {
                     </span>
                   </Col>
                 </Row>
-                <div class="col-md-12"></div>
+                <div className="col-md-12"></div>
                 <div style={this.state.loader ? { display: "none" } : {}}>
                   <Chart
                     series={this.state.series}
@@ -1404,10 +1404,10 @@ class DrawerModal extends Component {
               >
                 <input
                   type="radio"
-                  class="btn-check"
+                  className="btn-check"
                   name="btnradio"
                   id="btnradio1"
-                  autocomplete="off"
+                  autoComplete="off"
                   defaultChecked
                   style={
                     this.props.CurrentLayer === "WEATHER"
@@ -1419,8 +1419,8 @@ class DrawerModal extends Component {
                   }
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio1"
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio1"
                   onClick={(e) => {
                       this.getWeathertrend("6months");
                   }}
@@ -1432,7 +1432,7 @@ class DrawerModal extends Component {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? {}
@@ -1443,8 +1443,8 @@ class DrawerModal extends Component {
                   }
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio2"
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio2"
                   onClick={(e) => {
                       this.getWeathertrend("1Year");
                   }}
@@ -1469,7 +1469,7 @@ class DrawerModal extends Component {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1480,8 +1480,8 @@ class DrawerModal extends Component {
                   }
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio2"
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio2"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1498,7 +1498,7 @@ class DrawerModal extends Component {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio3"
-                  autocomplete="off"
+                  autoComplete="off"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1509,8 +1509,8 @@ class DrawerModal extends Component {
                   }
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio3"
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio3"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1532,14 +1532,14 @@ class DrawerModal extends Component {
                       ? { display: "none" }
                       : {}
                   }
-                  autocomplete="off"
+                  autoComplete="off"
                   checked={
                     this.state.currentCharttime === "5year" ? true : false
                   }
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio4"
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio4"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }

@@ -160,10 +160,10 @@ class About extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.Layers.map((data) => {
+                      {this.props.Layers.map((data,index) => {
                         if (data.isavailable === true) {
                           return (
-                            <tr>
+                            <tr key={index}>
                               <td>{data.display_name}</td>
                               <td>{data.long_description}</td>
                               <td>{data.source}</td>

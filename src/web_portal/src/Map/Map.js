@@ -25,7 +25,7 @@ import CPDrawerModal from "../Common/CPDrawer";
 import Header from "../Common/Header";
 import Sidebar from "../Common/Sidebar";
 import { BiSearch, BiX, BiHomeAlt } from "react-icons/bi";
-import {FormGroup, Input } from "reactstrap";
+import { FormGroup, Input } from "reactstrap";
 import Circlemarker from "../img/circlemarker.png";
 import MK1 from "../img/locationMK.png";
 import { Radio, Select, message } from "antd";
@@ -686,11 +686,11 @@ class map extends Component {
         if (ltype == "Raster") {
           this.props.setLayerType("Raster");
           this.props.showRaster();
-          window.layerType="Raster";
+          window.layerType = "Raster";
         } else if (ltype == "Vector") {
           this.props.setLayerType("Vector");
           this.props.hideRaster();
-          window.layerType="Vector";
+          window.layerType = "Vector";
         }
       }
     );
@@ -973,7 +973,6 @@ class map extends Component {
         mapZoom: 6.5,
       });
     } else {
-      console.log("desktop");
       this.setState({
         mapZoom: 7.5,
       });
@@ -1377,7 +1376,7 @@ class map extends Component {
             onMouseOver={
               this.props.currentLayerType == "Vector"
                 ? this.onMouseOver
-                :console.log()
+                : console.log()
               // this.onMouseOver
             }
             // onMouseOver={
@@ -1406,7 +1405,7 @@ class map extends Component {
               stroke={false}
               icon={MarkerIcon2}
               // icon={this.checkIcon}
-
+              key={key}
               direction="top"
               onClick={(e) => {
                 {

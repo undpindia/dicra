@@ -166,9 +166,9 @@ class LayerDetails extends Component {
                   value={this.state.selectedFile}
                   onChange={(e) => this.changeFile(e)}
                 >
-                  {this.state.availableFiles.map(function (layer) {
+                  {this.state.availableFiles.map(function (layer,index) {
                     return (
-                      <option value={layer.filename_on_blob}>
+                      <option value={layer.filename_on_blob} key={index}>
                         {layer.filename_on_blob}
                       </option>
                     );

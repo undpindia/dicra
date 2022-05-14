@@ -177,11 +177,12 @@ class Usecases extends React.Component {
           </Row>
           <div className="container usecases-cards">
             <Row>
-              {this.state.usecase.map((data) => {
+              {this.state.usecase.map((data,index) => {
                 return (
                   <Col
                     className="usecase-mobile"
                     style={{ marginBottom: "20px" }}
+                    key={index}
                   >
                     <div className="card" style={{ width: "300px" }}>
                       <img

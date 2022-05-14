@@ -168,9 +168,9 @@ const SidebarComponent = (props) => {
               {Categorylist.map((layers, index) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items,index) => {
+                    {Layers[0][layers].map((items,indexlayers) => {
                       return (
-                        <FormGroup tag="fieldset" className="btn-radio" key={index}>
+                        <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
                           <Row>
                             <Col
                               md={8}

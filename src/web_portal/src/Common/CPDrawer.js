@@ -105,7 +105,7 @@ class CPDrawerModal extends Component {
           style: "hollow",
         },
         grid: {
-          show: true,
+          show: false,
           borderColor: '#90A4AE',
           strokeDashArray: 0,
           position: 'back',
@@ -355,7 +355,7 @@ class CPDrawerModal extends Component {
           },
         },
         grid: {
-          show: true,
+          show: false,
           borderColor: '#90A4AE',
           strokeDashArray: 0,
           position: 'back',

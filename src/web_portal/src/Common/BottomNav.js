@@ -401,11 +401,9 @@ const BottomNav = (props) => {
                 <div class="col mb-2">
                   <div className="mobile-link"
                   onClick={(e) => {
-                    {
                       window
                         .open("https://dev.misteo.co/dicrahelp/", "_blank")
                         .focus();
-                    }
                   }}
                   >
                     <BiHelpCircle />

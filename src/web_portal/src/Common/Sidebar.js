@@ -69,14 +69,14 @@ const SidebarComponent = (props) => {
   };
   const prevStyle = {
     background: "rgb(3, 53, 100)",
-    "border-radius": "3px",
+    borderRadius: "3px",
     border: "none",
     float: "left",
     transform: "translateY(118%)",
   };
   const nextStyle = {
     background: "rgb(3, 53, 100)",
-    "border-radius": "3px",
+    borderRadius: "3px",
     border: "none",
     float: "right",
     transform: "translateY(30%)",
@@ -168,9 +168,9 @@ const SidebarComponent = (props) => {
               {Categorylist.map((layers, index) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items) => {
+                    {Layers[0][layers].map((items,index) => {
                       return (
-                        <FormGroup tag="fieldset" className="btn-radio">
+                        <FormGroup tag="fieldset" className="btn-radio" key={index}>
                           <Row>
                             <Col
                               md={8}

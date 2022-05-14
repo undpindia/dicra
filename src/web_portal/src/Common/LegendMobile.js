@@ -160,42 +160,42 @@ class LegendMobile extends React.Component {
                   textAlign: "left",
                 }}
               >
-                <div class="container" style={{fontSize:"12px"}}>
-                    <div class="row">
-                      <div class="col" style={{marginTop:"10px"}}>
+                <div className="container" style={{fontSize:"12px"}}>
+                    <div className="row">
+                      <div className="col" style={{marginTop:"10px"}}>
                        <span style={{height:"12px", width:"12px",backgroundColor:"#dc0f0f", display:"inline-block" }}></span>  Water
                       </div>
-                      <div class="col" style={{marginTop:"10px"}}>
+                      <div className="col" style={{marginTop:"10px"}}>
                       <span style={{height:"12px", width:"12px",backgroundColor:"#44ce5d", display:"inline-block" }}></span>  Trees
                       </div>
                     </div>
-                    <div class="row">
-                    <div class="col">
+                    <div className="row">
+                    <div className="col">
                       <span style={{height:"12px", width:"12px",backgroundColor:"#de8313", display:"inline-block" }}></span>  Flooded Vegitation
                       </div>
-                      <div class="col">
+                      <div className="col">
                       <span style={{height:"12px", width:"12px",backgroundColor:"#dfef4d", display:"inline-block" }}></span>  Crops
                       </div>
                     </div>
-                    <div class="row">
-                       <div class="col">
+                    <div className="row">
+                       <div className="col">
                       <span style={{height:"12px", width:"12px",backgroundColor:"#bb3cc9", display:"inline-block" }}></span>  Built Area
                       </div>
-                      <div class="col">
+                      <div className="col">
                       <span style={{height:"12px", width:"12px",backgroundColor:"#455dca", display:"inline-block" }}></span>  Bare Ground
                       </div>
                     </div>
-                    <div class="row">
-                    <div class="col">
+                    <div className="row">
+                    <div className="col">
                       <span style={{height:"12px", width:"12px",backgroundColor:"#3feabd", display:"inline-block" }}></span>  Snow / Ice
                       </div>
-                      <div class="col">
+                      <div className="col">
                       <span style={{height:"12px", width:"12px",backgroundColor:"#cf3c8d", display:"inline-block" }}></span>  Clouds
                       </div>
                     </div>
-                    <div class="row">
-                    <div class="col">
-                      <div class="col">
+                    <div className="row">
+                    <div className="col">
+                      <div className="col">
                       <span style={{height:"12px", width:"12px",backgroundColor:"#64caef", display:"inline-block" }}></span>  Rangeland
                       </div>
                     </div>

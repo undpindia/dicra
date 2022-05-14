@@ -28,7 +28,7 @@ class Terms extends React.Component {
             </div>
             <hr />
             <div>
-              <div class="container about-page">
+              <div className="container about-page">
                 <Row>
                   {/* <h3 className="about-heading">About DiCRA</h3> */}
                   <Col className="about-content">

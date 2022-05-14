@@ -27,11 +27,11 @@ class Help extends React.Component {
             <hr />
             <div>
             <div
-                class="container help-page"
+                className="container help-page"
               >
-                <div class="row">
+                <div className="row">
                   <h3 className="about-heading">Heading</h3>
-                  <div class="col about-content">
+                  <div className="col about-content">
                     <a>
                       UNDP has partnered with the Government of Telangana to
                       jointly initiate the NextGenGov 'Data for Policy'
@@ -53,9 +53,9 @@ class Help extends React.Component {
                     </a>
                   </div>
                 </div>
-                <div class="row">
+                <div className="row">
                   <h3 className="about-heading">Heading</h3>
-                  <div class="col about-content">
+                  <div className="col about-content">
                     <a>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -68,9 +68,9 @@ class Help extends React.Component {
                     </a>
                   </div>
                 </div>
-                <div class="row">
+                <div className="row">
                   <h3 className="about-heading">Heading</h3>
-                  <div class="col about-content">
+                  <div className="col about-content">
                     <a>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -83,9 +83,9 @@ class Help extends React.Component {
                     </a>
                   </div>
                 </div>
-                <div class="row">
+                <div className="row">
                   <h3 className="about-heading">Heading</h3>
-                  <div class="col about-content">
+                  <div className="col about-content">
                     <a>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna

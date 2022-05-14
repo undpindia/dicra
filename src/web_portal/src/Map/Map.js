@@ -1173,24 +1173,25 @@ class map extends Component {
                 border: "none",
                 height: "43px",
               }}
+              value={this.state.baseMapselected}
               onChange={this.ChangeBasemap}
             >
               <option
-                selected={this.state.baseMapselected == "Dark" ? true : false}
+                // selected={this.state.baseMapselected == "Dark" ? true : false}
                 value="Dark"
               >
                 Dark
               </option>
               <option
-                selected={
-                  this.state.baseMapselected == "Satellite" ? true : false
-                }
+                // selected={
+                //   this.state.baseMapselected == "Satellite" ? true : false
+                // }
                 value="Satellite"
               >
                 Satellite
               </option>
               <option
-                selected={this.state.baseMapselected == "Grey" ? true : false}
+                // selected={this.state.baseMapselected == "Grey" ? true : false}
                 value="Grey"
               >
                 Grey

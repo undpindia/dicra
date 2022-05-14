@@ -45,8 +45,8 @@ handleIframeLoad = (event) => {
             </div>
             <hr />
             <div>
-              <div class="container analytics-page">
-              <div class="iframe-container">
+              <div className="container analytics-page">
+              <div className="iframe-container">
               <LoadingScreen
               loading={this.state.loader}
               bgColor="#f1f1f1"

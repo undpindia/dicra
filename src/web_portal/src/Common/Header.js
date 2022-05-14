@@ -24,7 +24,7 @@ export default class Header extends Component {
               </div>
 
         </div>
-        <div class="topnav-right">
+        <div className="topnav-right">
           <Row>
             <Col className="telangana-logo">
               <img src={Telangana} width={50} height={50} alt="Telengana"/>

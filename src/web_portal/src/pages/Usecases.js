@@ -189,7 +189,7 @@ class Usecases extends React.Component {
                           "https://internalapidev.chickenkiller.com/static/" +
                           data.image
                         }
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                       />
                       <div className="top-left">{data.project_type}</div>
@@ -202,8 +202,8 @@ class Usecases extends React.Component {
                             <a className="card-link">{data.url}</a>
                           </Col>
                         </Row>
-                        <h5 class="card-title">{data.project_name}</h5>
-                        <p class="card-text">{data.short_description}</p>
+                        <h5 className="card-title">{data.project_name}</h5>
+                        <p className="card-text">{data.short_description}</p>
                         <div className="card-more">
                           <BiChevronRightCircle style={{ fontSize: "22px" }} />{" "}
                           <a

@@ -191,14 +191,14 @@ const BottomNav = (props) => {
   }
   const prevStyle = {
     background: "#195995",
-    "border-radius": "3px",
+    borderRadius: "3px",
     border: "none",
     float: "left",
     transform: "translateY(-60%)",
   };
   const nextStyle = {
     background: "#195995",
-    "border-radius": "3px",
+    "borderRadius": "3px",
     border: "none",
     float: "right",
     transform: "translateY(-60%)",
@@ -238,9 +238,9 @@ const BottomNav = (props) => {
               {Categorylist.map((layers, index) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items) => {
+                    {Layers[0][layers].map((items,indexlayers) => {
                       return (
-                        <FormGroup tag="fieldset" className="btn-radio">
+                        <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
                           <Row>
                             <div className="col-8"
                               style={{

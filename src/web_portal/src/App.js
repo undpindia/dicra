@@ -41,7 +41,9 @@ function App() {
               logoSrc={logo}
               text="DiCRA"
               style={{ fontSize: "30px" }}
-            />
+            >
+              {" "}
+              </LoadingScreen>
 
             <Map />
           </Route>

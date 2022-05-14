@@ -129,11 +129,12 @@ class LayerDetails extends Component {
                   // disabled={this.props.layers.isavailable ? false : true}
                   onChange={(e) => this.changeLayer(e)}
                 >
-                  {this.props.layers.map(function (layer) {
+                  {this.props.layers.map(function (layer,index) {
                     if (layer.isavailable) {
                       return (
                         <option
                           value={layer.layer_name}
+                          key={index}
                           disabled={layer.isavailable ? false : true}
                         >
                           {layer.display_name}
@@ -180,8 +181,8 @@ class LayerDetails extends Component {
         <p
           className="open-api"
           style={{
-            "font-size": "10px",
-            "font-family": "'proxima-nova', sans-serif",
+            "fontSize": "10px",
+            "fontFamily": "'proxima-nova', sans-serif",
             textAlign: "left",
             fontStyle: "italic",
           }}

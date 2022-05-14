@@ -88,16 +88,11 @@ export default class ColorscalePicker extends Component {
     this.updateCubehelixRotations = this.updateCubehelixRotations.bind(this);
     this.updateCubehelix = this.updateCubehelix.bind(this);
     this.toggleLog = this.toggleLog.bind(this);
-    this.handle = this.handle.bind(this);
   }
 
   componentDidMount() {
     this.setState({colorscaleOnMount: this.props.colorscale});
   }
-
-  handle = props => {
-    const {value, dragging, index, ...restProps} = props;
-  };
 
   toggleLog = () => {
     const cs = getColorscale(
@@ -365,17 +360,11 @@ export class ColorscalePaletteSelector extends Component {
   render() {
     const {
       colorscaleType,
-      colorscaleOnMount,
       onClick,
       previousColorscale,
       customBreakpoints,
       nSwatches,
       cubehelix,
-      updateCubehelixStartState,
-      updateCubehelixStart,
-      handle,
-      updateCubehelixRotState,
-      updateCubehelixRotations,
       updateBreakpointArray,
       scaleLength,
     } = this.props;

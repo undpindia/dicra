@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import ColorScale from "./ColorScale";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import ColorPicker from "./ColorPicker";
 import Moment from "moment";
 import { BiNavigation } from "react-icons/bi";
@@ -29,11 +28,11 @@ function Legend() {
         >
           <div className="col" style={{ fontSize: "24px", color: "#fff" }}>
             <span
-              style={currentLayer == "LULC" ? { display: "none" } : {}}
+              style={currentLayer === "LULC" ? { display: "none" } : {}}
               key={valueKey}
             >
               {setval}{" "}
-              <a style={{ fontSize: "18px" }}>{currentLayerDesc.unit}</a>
+              <span style={{ fontSize: "18px" }}>{currentLayerDesc.unit}</span>
             </span>
           </div>
           <div className="w-100"></div>
@@ -47,7 +46,7 @@ function Legend() {
             44.528 | 55.635
           </div> */}
           <div className="w-100"></div>
-          {currentlayerType == "Raster" ? (
+          {currentlayerType === "Raster" ? (
             <div className="col" style={{ color: "rgba(215 215 215)" }}>
               {hoverLatLon}
               <BiNavigation style={{ transform: "translate(1px, -2px)" }} />

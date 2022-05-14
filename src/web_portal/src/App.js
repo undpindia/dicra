@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from "react";
+import React, { useState, useEffect} from "react";
 import logo from "./img/logo.png";
 import "./App.css";
 import Map from "./Map/Map";
@@ -41,7 +41,9 @@ function App() {
               logoSrc={logo}
               text="DiCRA"
               style={{ fontSize: "30px" }}
-            />
+            >
+              {" "}
+              </LoadingScreen>
 
             <Map />
           </Route>

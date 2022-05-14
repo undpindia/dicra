@@ -2,8 +2,8 @@ import React from "react";
 import "../Common/common.css";
 import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
-import { useHistory, Link } from "react-router-dom";
-import { Row, Col, Button, Table } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Row, Col, Table } from "reactstrap";
 import undplogo from "../img/undp-logo.png";
 import telenganalogo from "../img/telengana-logo.png";
 import telenganaagri from "../img/telengana-agri.png";
@@ -36,7 +36,7 @@ class About extends React.Component {
             </div>
             <hr />
             <div>
-              <div class="container about-page">
+              <div className="container about-page">
                 <Row>
                   {/* <h3 className="about-heading">About DiCRA</h3> */}
                   <Col className="about-content">
@@ -75,12 +75,12 @@ class About extends React.Component {
                 <Row>
                   <ul className="org-logo">
                     <li className="org-logo-item">
-                      <a href="https://www.undp.org/" target="_blank">
+                      <a href="https://www.undp.org/" target="_blank" rel="noreferrer">
                         <img src={undplogo} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.telangana.gov.in/" target="_blank">
+                      <a href="https://www.telangana.gov.in/" target="_blank" rel="noreferrer">
                         <img src={telenganalogo} alt="" />
                       </a>
                     </li>
@@ -88,17 +88,18 @@ class About extends React.Component {
                       <a
                         href="https://www.rockefellerfoundation.org/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <img src={rockefeller} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.icrisat.org/" target="_blank">
+                      <a href="https://www.icrisat.org/" target="_blank" rel="noreferrer">
                         <img src={icrisat} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.jads.nl/" target="_blank">
+                      <a href="https://www.jads.nl/" target="_blank" rel="noreferrer">
                         <img src={jads} alt="" />
                       </a>
                     </li>
@@ -106,25 +107,26 @@ class About extends React.Component {
                       <a
                         href="http://www.rich.telangana.gov.in/team.html"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <img src={rich} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.pjtsau.edu.in/" target="_blank">
+                      <a href="https://www.pjtsau.edu.in/" target="_blank" rel="noreferrer">
                         <img src={telenganaagri} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
                       <a
                         href="https://www.tilburguniversity.edu/"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <img src={tilburg} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://misteo.co/" target="_blank">
+                      <a href="https://misteo.co/" target="_blank" rel="noreferrer">
                         <img src={misteo} alt="" />
                       </a>
                     </li>
@@ -158,10 +160,10 @@ class About extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.Layers.map((data) => {
-                        if (data.isavailable == true) {
+                      {this.props.Layers.map((data,index) => {
+                        if (data.isavailable === true) {
                           return (
-                            <tr>
+                            <tr key={index}>
                               <td>{data.display_name}</td>
                               <td>{data.long_description}</td>
                               <td>{data.source}</td>

@@ -4,9 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import allReducers from "./reducers";
-import eventsReducer from "./reducers/EventReducers.js";
 import configureStore from './store/configStore'
 
 const store=configureStore()

@@ -33,7 +33,6 @@ const MenuButton = props => {
 }
 
 MenuButton.propTypes = {
-  id: PropTypes.string.isRequired,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   disabled: PropTypes.bool,
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),

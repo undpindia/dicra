@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setvalue, setplacename } from "../actions";
-import { centroid, multiPolygon, polygon } from "@turf/turf";
-import { getGeocode, getLatLng } from "use-places-autocomplete";
-import ColorPicker from "../Common/ColorPicker";
-import Legend from "../Common/legend";
-import { Switch } from "antd";
-import { scaleQuantize } from "d3-scale";
+import { centroid, polygon } from "@turf/turf";
 import MANDALBOUNDS from "../Shapes/TS_mandal_boundary.json";
 import DISTRICTBOUNDS from "../Shapes/TS_district_boundary.json";
 import chroma from "chroma-js";
@@ -20,11 +14,8 @@ import {
   Marker,
   GeoJSON,
   FeatureGroup,
-  Circle,
   Tooltip,
   LayersControl,
-  CircleMarker,
-  Popup,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -34,46 +25,22 @@ import CPDrawerModal from "../Common/CPDrawer";
 import Header from "../Common/Header";
 import Sidebar from "../Common/Sidebar";
 import { BiSearch, BiX, BiHomeAlt } from "react-icons/bi";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { FormGroup, Input } from "reactstrap";
 import Circlemarker from "../img/circlemarker.png";
 import MK1 from "../img/locationMK.png";
-import MK2 from "../img/locationMK2.png";
-import ToggleButton from "../Common/Toggle";
-import ColorScale from "../Common/ColorScale";
 import { Radio, Select, message } from "antd";
-import axios from "axios";
 import loader from "../img/loader.gif";
 import locIcon from "../img/locationICON.png";
 import mandalRegions from "./Regions/mandalRegions";
 import districtRegions from "./Regions/districtRegions";
 import axiosConfig from "../Common/axios_Config";
-import { GoogleComponent } from "react-google-location";
 import { EditControl } from "react-leaflet-draw";
-import { pointer } from "d3-selection";
-import AutoSearch from "react-leaflet-google-places-searchbox";
 import SearchPlace from "./searchPlaces";
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "@reach/combobox";
-import { GoogleLayer } from "react-leaflet-google";
-import { urlToHttpOptions } from "url";
-import { tsThisType } from "@babel/types";
 const removeLayer = (layer) => {
   map.removeLayer(layer);
   window.tiff = 0;
 };
-const { BaseLayer } = LayersControl;
 // const key = 'AIzaSyD_QaXrN1Qi27IQK1df0nGoqCGX_3vYXd4';
-const sat = "SATELLITE";
-const road = "ROAD";
-const bound = [
-  [13.7004860137528368, 75.6726949418706198],
-  [21.6463408295648208, 82.369461543571731],
-];
 const MAP_STYLES = {
   position: "relative",
   width: "100%",
@@ -139,7 +106,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: currentlayertype }),
     showRaster: () => dispatch({ type: "SHOWRASTER" }),
     hideRaster: () => dispatch({ type: "HIDERASTER" }),
-    showDrawer: (val) => dispatch({ type: "SHOWDRAWER" }),
   };
 };
 class map extends Component {
@@ -537,7 +503,6 @@ class map extends Component {
         message.info("Maximum query area reached!");
       } else {
         this.child.current.getCUSTOMLULC(geojson);
-        this.props.showDrawer();
       }
     } else {
       this.getCustomlayerDetails(geojson);
@@ -721,11 +686,11 @@ class map extends Component {
         if (ltype == "Raster") {
           this.props.setLayerType("Raster");
           this.props.showRaster();
-          window.layerType="Raster";
+          window.layerType = "Raster";
         } else if (ltype == "Vector") {
           this.props.setLayerType("Vector");
           this.props.hideRaster();
-          window.layerType="Vector";
+          window.layerType = "Vector";
         }
       }
     );
@@ -769,7 +734,6 @@ class map extends Component {
         this.setState({
           pointVector: res.data,
         });
-     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -788,7 +752,6 @@ class map extends Component {
           },
           () => {}
         );
-     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -804,7 +767,6 @@ class map extends Component {
         this.setState({
           pointVector: res.data.data,
         });
-     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
@@ -812,7 +774,6 @@ class map extends Component {
         message.error("Failed to connect to server");
       }
     } else if (this.props.CurrentLayer == "WEATHER") {
-      this.props.setRegion("MANDAL");
       this.props.SetBoundary(MANDALBOUNDS);
       this.props.setMapKey();
       this.changeVectorLoader(60.732421875, 80.67555881973475);
@@ -885,7 +846,6 @@ class map extends Component {
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
     } else {
-      this.props.setRegion("DISTRICT");
       this.setState({
         pointVector: {
           type: "FeatureCollection",
@@ -916,7 +876,6 @@ class map extends Component {
           ],
         },
       });
-  
       try {
         const res = await axiosConfig.get(
           `/currentvector?parameter=` +
@@ -1014,7 +973,6 @@ class map extends Component {
         mapZoom: 6.5,
       });
     } else {
-      console.log("desktop");
       this.setState({
         mapZoom: 7.5,
       });
@@ -1214,24 +1172,25 @@ class map extends Component {
                 border: "none",
                 height: "43px",
               }}
+              value={this.state.baseMapselected}
               onChange={this.ChangeBasemap}
             >
               <option
-                selected={this.state.baseMapselected == "Dark" ? true : false}
+                // selected={this.state.baseMapselected == "Dark" ? true : false}
                 value="Dark"
               >
                 Dark
               </option>
               <option
-                selected={
-                  this.state.baseMapselected == "Satellite" ? true : false
-                }
+                // selected={
+                //   this.state.baseMapselected == "Satellite" ? true : false
+                // }
                 value="Satellite"
               >
                 Satellite
               </option>
               <option
-                selected={this.state.baseMapselected == "Grey" ? true : false}
+                // selected={this.state.baseMapselected == "Grey" ? true : false}
                 value="Grey"
               >
                 Grey
@@ -1417,7 +1376,7 @@ class map extends Component {
             onMouseOver={
               this.props.currentLayerType == "Vector"
                 ? this.onMouseOver
-                :console.log()
+                : console.log()
               // this.onMouseOver
             }
             // onMouseOver={
@@ -1446,7 +1405,7 @@ class map extends Component {
               stroke={false}
               icon={MarkerIcon2}
               // icon={this.checkIcon}
-
+              key={key}
               direction="top"
               onClick={(e) => {
                 {

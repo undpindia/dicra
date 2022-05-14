@@ -88,16 +88,11 @@ export default class ColorscalePicker extends Component {
     this.updateCubehelixRotations = this.updateCubehelixRotations.bind(this);
     this.updateCubehelix = this.updateCubehelix.bind(this);
     this.toggleLog = this.toggleLog.bind(this);
-    this.handle = this.handle.bind(this);
   }
 
   componentDidMount() {
     this.setState({colorscaleOnMount: this.props.colorscale});
   }
-
-  handle = props => {
-    const {value, dragging, index, ...restProps} = props;
-  };
 
   toggleLog = () => {
     const cs = getColorscale(
@@ -214,11 +209,6 @@ export default class ColorscalePicker extends Component {
     this.updateCubehelix(start, rot);
   };
 
-  updateCubehelixStartState = start => {
-    const ch = this.state.cubehelix;
-    ch.start = start;
-    this.setState({cubehelix: ch});
-  };
 
   updateCubehelixRotState = rot => {
     const ch = this.state.cubehelix;
@@ -365,17 +355,11 @@ export class ColorscalePaletteSelector extends Component {
   render() {
     const {
       colorscaleType,
-      colorscaleOnMount,
       onClick,
       previousColorscale,
       customBreakpoints,
       nSwatches,
       cubehelix,
-      updateCubehelixStartState,
-      updateCubehelixStart,
-      handle,
-      updateCubehelixRotState,
-      updateCubehelixRotations,
       updateBreakpointArray,
       scaleLength,
     } = this.props;
@@ -385,7 +369,17 @@ export class ColorscalePaletteSelector extends Component {
         <div style={{margin: '0 auto'}}>
           <Colorscale
             key="reset"
-            colorscale={colorscaleOnMount}
+            colorscale={[
+              "#fafa6e",
+              "#bdea75",
+              "#86d780",
+              "#54c18a",
+              "#23aa8f",
+              "#00918d",
+              "#007882",
+              "#1f5f70",
+              "#2a4858"
+            ]}
             onClick={onClick}
             label={'RESET'}
             scaleLength={scaleLength || DEFAULT_NPREVIEWCOLORS}

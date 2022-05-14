@@ -1,25 +1,14 @@
 import React, { Component } from "react";
 import {
-  Button,
   Form,
   FormGroup,
-  Label,
-  Input,
-  FormText,
-  Row,
-  Col,
+  Input
 } from "reactstrap";
-import { DatePicker, Radio, Space, message } from "antd";
+import { message } from "antd";
 import axiosConfig from "../../Common/axios_Config";
-import { arrayExpression } from "@babel/types";
-import ReactReadMoreReadLess from "react-read-more-read-less";
+
 import { connect } from "react-redux";
-import {
-  setdownloadlayer,
-  setdownloadlayerdate,
-  setdownloadlayerregion,
-  setdownloadlayertype,
-} from "../../actions";
+
 const mapStateToProps = (props) => {
   return {
     layers: props.Layers,
@@ -123,8 +112,6 @@ class LayerDetails extends Component {
     this.getavailableFiles();
   }
   render() {
-    const { size } = this.state;
-    const { close } = this.state;
     return (
       <React.Fragment>
         <hr className="horizontal-line" style={{ marginTop: "30px" }} />
@@ -142,11 +129,12 @@ class LayerDetails extends Component {
                   // disabled={this.props.layers.isavailable ? false : true}
                   onChange={(e) => this.changeLayer(e)}
                 >
-                  {this.props.layers.map(function (layer) {
+                  {this.props.layers.map(function (layer,index) {
                     if (layer.isavailable) {
                       return (
                         <option
                           value={layer.layer_name}
+                          key={index}
                           disabled={layer.isavailable ? false : true}
                         >
                           {layer.display_name}
@@ -178,9 +166,9 @@ class LayerDetails extends Component {
                   value={this.state.selectedFile}
                   onChange={(e) => this.changeFile(e)}
                 >
-                  {this.state.availableFiles.map(function (layer) {
+                  {this.state.availableFiles.map(function (layer,index) {
                     return (
-                      <option value={layer.filename_on_blob}>
+                      <option value={layer.filename_on_blob} key={index}>
                         {layer.filename_on_blob}
                       </option>
                     );
@@ -193,8 +181,8 @@ class LayerDetails extends Component {
         <p
           className="open-api"
           style={{
-            "font-size": "10px",
-            "font-family": "'proxima-nova', sans-serif",
+            "fontSize": "10px",
+            "fontFamily": "'proxima-nova', sans-serif",
             textAlign: "left",
             fontStyle: "italic",
           }}
@@ -203,6 +191,7 @@ class LayerDetails extends Component {
           <a
             target="_blank"
             href={"https://internalapidev.chickenkiller.com/docs#"}
+            rel="noreferrer"
           >
             know more
           </a>

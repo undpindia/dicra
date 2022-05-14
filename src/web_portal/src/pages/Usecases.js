@@ -1,19 +1,14 @@
 import React from "react";
-import axios from "axios";
 import "../Common/common.css";
 import { Radio, message } from "antd";
 import {
   Button,
-  Form,
   FormGroup,
   Label,
-  Input,
-  FormText,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Spinner,
   Row,
   Col,
 } from "reactstrap";
@@ -23,17 +18,12 @@ import {
   AvGroup,
   AvInput,
   AvFeedback,
-  AvRadioGroup,
-  AvRadio,
-  AvCheckboxGroup,
-  AvCheckbox,
 } from "availity-reactstrap-validation";
 import Captcha from "demos-react-captcha";
 import { BiChevronRightCircle, BiX } from "react-icons/bi";
 import Header from "../Common/Header";
 import { FiPlus } from "react-icons/fi";
-import paddy from "../img/paddy.jpg";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import AddUsecases from "./AddUsecases";
 import axiosConfig from "../Common/axios_Config";
 
@@ -79,11 +69,11 @@ class Usecases extends React.Component {
       currentUsecase: data,
     });
   }
-  ChangeCaseType = (e) => {  
+  ChangeCaseType = (e) => {
     this.setState({
       selectedType: e.target.value,
     });
-    if (e.target.value == "All") {
+    if (e.target.value === "All") {
       this.setState({
         usecase: this.state.allUsecases,
       });
@@ -93,7 +83,7 @@ class Usecases extends React.Component {
         r[a.project_type] = r[a.project_type] || [];
         r[a.project_type].push(a);
         return r;
-      }, Object.create(null));    
+      }, Object.create(null));
       this.setState({
         usecase: result[e.target.value],
       });
@@ -116,7 +106,7 @@ class Usecases extends React.Component {
   componentDidMount() {
     this.getUsecase();
   }
-  onChange(ev) { 
+  onChange(ev) {
     this.setState({
       [ev.target.name]: ev.target.value,
     });
@@ -130,19 +120,17 @@ class Usecases extends React.Component {
     formData.append("url", this.state.url);
     formData.append("image", this.state.selectedImage);
     formData.append("username", this.state.username);
-    formData.append("email_id", this.state.email_id);  
-    const response = await axiosConfig
-      .post("/addusecase", formData)
-      .then((usecaseres) => {     
-        if (usecaseres.data.success == true) {
-          message.success("UseCase Added");
-        } else {
-          message.error("Something Happened !");
-        }
-      });
+    formData.append("email_id", this.state.email_id);
+    await axiosConfig.post("/addusecase", formData).then((usecaseres) => {
+      if (usecaseres.data.success === true) {
+        message.success("UseCase Added");
+      } else {
+        message.error("Something Happened !");
+      }
+    });
   }
-  onChangeCaptcha(value) {  
-    if (value == true) {
+  onChangeCaptcha(value) {
+    if (value === true) {
       this.setState({
         disableAdd: false,
       });
@@ -157,15 +145,13 @@ class Usecases extends React.Component {
     this.setState({ selectedImage: event.target.files[0] });
   };
   render() {
-    const { value1 } = this.state;
-    const usecaseImage = this.state;
     return (
       <React.Fragment>
         <div className="page-header">
           <Header />
         </div>
 
-        <div style={{'overflow': 'hidden'}}>
+        <div style={{ overflow: "hidden" }}>
           <Row>
             <Col>
               <h6 className="page-heading">Use cases</h6>
@@ -191,16 +177,20 @@ class Usecases extends React.Component {
           </Row>
           <div className="container usecases-cards">
             <Row>
-              {this.state.usecase.map((data) => {
+              {this.state.usecase.map((data,index) => {
                 return (
-                  <Col className="usecase-mobile" style={{ marginBottom: "20px" }}>
+                  <Col
+                    className="usecase-mobile"
+                    style={{ marginBottom: "20px" }}
+                    key={index}
+                  >
                     <div className="card" style={{ width: "300px" }}>
                       <img
                         src={
                           "https://internalapidev.chickenkiller.com/static/" +
                           data.image
                         }
-                        class="card-img-top"
+                        className="card-img-top"
                         alt="..."
                       />
                       <div className="top-left">{data.project_type}</div>
@@ -213,8 +203,8 @@ class Usecases extends React.Component {
                             <a className="card-link">{data.url}</a>
                           </Col>
                         </Row>
-                        <h5 class="card-title">{data.project_name}</h5>
-                        <p class="card-text">{data.short_description}</p>
+                        <h5 className="card-title">{data.project_name}</h5>
+                        <p className="card-text">{data.short_description}</p>
                         <div className="card-more">
                           <BiChevronRightCircle style={{ fontSize: "22px" }} />{" "}
                           <a
@@ -436,15 +426,24 @@ class Usecases extends React.Component {
                     </div>
                     <div className="container">
                       <div className="content-heading">
-                        <h3  style={{padding:"0px", marginBottom:"10px"}}>{this.state.currentUsecase.short_description}</h3>
+                        <h3 style={{ padding: "0px", marginBottom: "10px" }}>
+                          {this.state.currentUsecase.short_description}
+                        </h3>
                       </div>
                       <div className="content-body">
-                        <Row style={{marginBottom:"10px"}}>
-                          <Col md={12} style={{ fontWeight: "bold", textAlign:"left"}}>
-                           <p> Uploaded By : {this.state.currentUsecase.username}</p>
+                        <Row style={{ marginBottom: "10px" }}>
+                          <Col
+                            md={12}
+                            style={{ fontWeight: "bold", textAlign: "left" }}
+                          >
+                            <p>
+                              {" "}
+                              Uploaded By : {this.state.currentUsecase.username}
+                            </p>
                           </Col>
-                          <Col md={12}  style={{ textAlign:"left"}}>
-                            <a style={{fontWeight: "bold"}}>URL : </a> <a
+                          <Col md={12} style={{ textAlign: "left" }}>
+                            <a style={{ fontWeight: "bold" }}>URL : </a>{" "}
+                            <a
                               href={this.state.currentUsecase.url}
                               target="_blank"
                             >

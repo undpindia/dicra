@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
-import { useHistory, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import "../Common/common.css";
 class Help extends React.Component {
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import BottomNavigation from "reactjs-bottom-navigation";
 import "reactjs-bottom-navigation/dist/index.css";
-import { useHistory, Link, Route } from "react-router-dom";
-import { Modal, Button } from "antd";
+import {Link } from "react-router-dom";
+import { Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import axiosConfig from "../Common/axios_Config";
-import { setlayerlist, setcurrentlayer, setdownloadlayer } from "../actions";
+import { setlayerlist, setcurrentlayer } from "../actions";
 import { Collapse, message } from "antd";
 import ReactTooltip from "react-tooltip";
 import Multistep from "react-multistep";
@@ -18,13 +18,12 @@ import {
   BiFolder,
   BiErrorCircle,
   BiHelpCircle,
-  BiX,
   BiHide,
   BiShow,
   BiBarChartAlt,
   BiDotsHorizontalRounded
 } from "react-icons/bi";
-import { Form, FormGroup, Label, Input, FormText, Row, Col } from "reactstrap";
+import {FormGroup, Label, Input,Row } from "reactstrap";
 const steps = [
   { name: "StepOne", component: <LayerDetails /> },
   { name: "StepTwo", component: <PersonalDetails /> },
@@ -37,10 +36,7 @@ const BottomNav = (props) => {
   const LayerToggle = useSelector((state) => state.RasterOpacity);
   const DownLayerDesc = useSelector((state) => state.DownloadLayerDesc);
   const DownLayer = useSelector((state) => state.DownloadLayer);
-  const Keymap = useSelector((state) => state.MapKey);
-  const history = useHistory();
-  const [openTab, setOpenTab] = useState("layer");
-  const [isActive, setlegend] = useState(true);
+
   const [Layers, layerList] = useState([]);
   const [isActivebutton, setActivebutton] = useState(false);
   const [Layercount, setLayercount] = useState(0);
@@ -54,7 +50,7 @@ const BottomNav = (props) => {
     dispatch({ type: "HIDEDRAWER" });
     dispatch({ type: "CHANGELAYERDESC", payload: desc });
     props.resetZoom();
-    if (selectedRegion != "CUSTOM") {
+    if (selectedRegion !== "CUSTOM") {
       setTimeout(function () {
         props.changeCurrentLayer();
       }, 3000);
@@ -129,9 +125,7 @@ const BottomNav = (props) => {
   const [isModalDownload, setIsModalDownload] = useState(false);
   const [isModalOther, setIsModalOther] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+
 
   const handleOk = () => {
     setIsModalVisible(false);
@@ -177,8 +171,8 @@ const BottomNav = (props) => {
   }
   useEffect(() => {
     getLayers();
-    if (DownLayerDesc.multiple_files == true) {
-      if (selectedDowndate != "") {
+    if (DownLayerDesc.multiple_files === true) {
+      if (selectedDowndate !== "") {
         setActivebutton(true);
       } else {
         setActivebutton(false);
@@ -189,7 +183,7 @@ const BottomNav = (props) => {
   }, [Layercount, selectedDowndate, isActivebutton, DownLayer]);
 
   function toggleLayer() {
-    if (LayerToggle == true) {
+    if (LayerToggle === true) {
       dispatch({ type: "HIDERASTER" });
     } else {
       dispatch({ type: "SHOWRASTER" });
@@ -208,15 +202,6 @@ const BottomNav = (props) => {
     border: "none",
     float: "right",
     transform: "translateY(-60%)",
-  };
-  const nextDisabled = {
-    background: "#797B7C",
-    "border-radius": "3px",
-    border: "none",
-    float: "right",
-    transform: "translateY(-60%)",
-    "pointer-events": "none",
-    cursor: "not-allowed",
   };
   return (
     <React.Fragment>
@@ -282,7 +267,7 @@ const BottomNav = (props) => {
                               <div className="tool-tip">
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }
@@ -315,7 +300,7 @@ const BottomNav = (props) => {
                                 &nbsp;&nbsp;
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup } from "reactstrap";
 import {
   AvForm,
   AvField,
@@ -8,19 +8,12 @@ import {
   AvFeedback,
   AvRadioGroup,
   AvRadio,
-  AvCheckboxGroup,
-  AvCheckbox,
 } from "availity-reactstrap-validation";
 
 import Captcha from "demos-react-captcha";
 import { connect } from "react-redux";
-import axiosConfig from "../axios_Config";
 import { saveAs } from "file-saver";
 import { message } from "antd";
-const options = [
-  { label: "Commercial", value: "Commercial" },
-  { label: "Non-Commercial", value: "Non-commercial" },
-];
 const mapStateToProps = (props) => {
   return {
     DownloadLayer: props.DownloadLayer,
@@ -54,7 +47,7 @@ class PersonalDetails extends Component {
     });
   }
   onChangeCaptcha(value) {
-    if (value == true) {
+    if (value === true) {
       this.setState({
         download: false,
       });

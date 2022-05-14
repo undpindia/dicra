@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLeaflet, Popup } from "react-leaflet";
+import { useLeaflet } from "react-leaflet";
 import GeoRasterLayer from "georaster-layer-for-leaflet";
 import chroma from "chroma-js";
 import geoblaze from "geoblaze";
@@ -11,9 +11,6 @@ export default function GeoRaster(props) {
   const dispatch = useDispatch();
   const { map, layerContainer } = useLeaflet();
   const currentLayer = useSelector((state) => state.CurrentLayer);
-  const currentLayerType = useSelector((state) => state.CurrentLayerType);
-  const currentRegionType = useSelector((state) => state.CurrentRegion);
-  const vectorLoader = useSelector((state) => state.VectorLoader);
   const RasterOpacity = useSelector((state) => state.RasterOpacity);
   const ColorscalePicker = useSelector((state) => state.SetColor);
   const [layermin, setLayermin] = useState(0);
@@ -38,7 +35,7 @@ export default function GeoRaster(props) {
     if (layerRef.current != null) {
       layerRef.current.updateColors(function (values) {
         // console.log("PIXEL VALUEs",values)
-        if (RasterOpacity == false) {
+        if (RasterOpacity === false) {
           return null;
         } else {
           if (values < layermin) {
@@ -46,7 +43,7 @@ export default function GeoRaster(props) {
           } else if (values > layermax) {
             return "#757575";
           }
-          if (currentLayer == "LULC") {
+          if (currentLayer === "LULC") {
             var newScale = chroma.scale([
               "#dc0f0f",
               "#44ce5d",
@@ -99,7 +96,7 @@ export default function GeoRaster(props) {
             setLayermin(min);
             setLayermax(max);
 
-            if (currentLayer == "LULC") {
+            if (currentLayer === "LULC") {
               var range = georaster.ranges[0];
               setLayerrange(range);
               //  var scale = chroma.scale("Spectral").domain([0, 1]);
@@ -156,7 +153,7 @@ export default function GeoRaster(props) {
             });
 
             map.on("mousemove", function (evt) {
-              if (window.layerType == "Raster") {
+              if (window.layerType === "Raster") {
                 // console.log("RASTER HOVER ", window.layerType);
                 var latlng = map.mouseEventToLatLng(evt.originalEvent);
                 // getcurrentvalue(latlng.lng, latlng.lat);

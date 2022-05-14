@@ -22,11 +22,11 @@ class LegendMobile extends React.Component {
         <div
           className="tab-legend"
           style={
-            this.props.CurrentLayer == "FIREEV" ||
-            this.props.CurrentLayer == "WEATHER" ||
-            this.props.CurrentLayer == "WH" ||
-            this.props.CurrentLayer == "CP" ||
-            this.props.CurrentLayer == "LULC" 
+            this.props.CurrentLayer === "FIREEV" ||
+            this.props.CurrentLayer === "WEATHER" ||
+            this.props.CurrentLayer === "WH" ||
+            this.props.CurrentLayer === "CP" ||
+            this.props.CurrentLayer === "LULC" 
               ? { display: "none" }
               : {}
           }
@@ -35,7 +35,7 @@ class LegendMobile extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "FIREEV" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "FIREEV" ? {} : { display: "none" }}
         >
           <div className="legend-section">
             <div className="container">
@@ -74,7 +74,7 @@ class LegendMobile extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "WH" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "WH" ? {} : { display: "none" }}
         >
           <div className="legend-section">
             <div className="container">
@@ -112,7 +112,7 @@ class LegendMobile extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "CP" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "CP" ? {} : { display: "none" }}
         >
           <div className="legend-section">
             <div className="container">
@@ -151,7 +151,7 @@ class LegendMobile extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer == "LULC" ? {} : { display: "none" }}
+          style={this.props.CurrentLayer === "LULC" ? {} : { display: "none" }}
         >
           <div className="legend-section-lulc">
             <div className="container">

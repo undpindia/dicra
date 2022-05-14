@@ -1,6 +1,5 @@
 import chroma from "chroma-js";
 import store from "../../store/Store";
-import { useSelector, useDispatch } from "react-redux";
 export const COLORSCALE_TYPES = [
   "Sequential",
   "Divergent",

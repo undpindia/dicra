@@ -1422,9 +1422,7 @@ class DrawerModal extends Component {
                   class="btn btn-primary btn-chart"
                   for="btnradio1"
                   onClick={(e) => {
-                    {
                       this.getWeathertrend("6months");
-                    }
                   }}
                 >
                   6 months
@@ -1448,9 +1446,7 @@ class DrawerModal extends Component {
                   class="btn btn-primary btn-chart"
                   for="btnradio2"
                   onClick={(e) => {
-                    {
                       this.getWeathertrend("1Year");
-                    }
                   }}
                 >
                   1 year
@@ -1492,9 +1488,7 @@ class DrawerModal extends Component {
                       : {}
                   }
                   onClick={(e) => {
-                    {
                       this.settimerange("1Year");
-                    }
                   }}
                 >
                   1 year
@@ -1523,9 +1517,7 @@ class DrawerModal extends Component {
                       : {}
                   }
                   onClick={(e) => {
-                    {
                       this.settimerange("3Year");
-                    }
                   }}
                 >
                   3 year
@@ -1554,9 +1546,7 @@ class DrawerModal extends Component {
                       : {}
                   }
                   onClick={(e) => {
-                    {
                       this.settimerange("5Year");
-                    }
                   }}
                 >
                   5 year

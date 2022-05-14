@@ -32,7 +32,7 @@ function Legend() {
               key={valueKey}
             >
               {setval}{" "}
-              <a style={{ fontSize: "18px" }}>{currentLayerDesc.unit}</a>
+              <a href={() => false} style={{ fontSize: "18px" }}>{currentLayerDesc.unit}</a>
             </span>
           </div>
           <div className="w-100"></div>

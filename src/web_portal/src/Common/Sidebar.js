@@ -346,11 +346,9 @@ const SidebarComponent = (props) => {
                 data-tip
                 data-for="help"
                 onClick={(e) => {
-                  {
                     window
                       .open("https://dev.misteo.co/dicrahelp/", "_blank")
                       .focus();
-                  }
                 }}
               />
               // </Link>

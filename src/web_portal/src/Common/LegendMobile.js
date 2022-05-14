@@ -48,7 +48,7 @@ class LegendMobile extends React.Component {
                   className="col-md-2"
                   style={{ color: "rgba(215 215 215)" }}
                 >
-                  <img src={locationMarker} width="13px" />
+                  <img src={locationMarker} width="13px"  alt="Location Marker"/>
                 </div>
                 <div
                   className="col"
@@ -87,7 +87,7 @@ class LegendMobile extends React.Component {
                   className="col-md-2"
                   style={{ color: "rgba(215 215 215)" }}
                 >
-                  <img src={locationMarker} width="13px" />
+                  <img src={locationMarker} width="13px"  alt="Location Marker"/>
                 </div>
                 <div
                   className="col"
@@ -125,7 +125,7 @@ class LegendMobile extends React.Component {
                   className="col-md-2"
                   style={{ color: "rgba(215 215 215)" }}
                 >
-                  <img src={locationMarker} width="13px" />
+                  <img src={locationMarker} width="13px"  alt="Location Marker"/>
                 </div>
                 <div
                   className="col"

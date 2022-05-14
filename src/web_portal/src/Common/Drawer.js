@@ -1175,7 +1175,7 @@ class DrawerModal extends Component {
                   }
                 >
                   <Dropdown overlay={menu}>
-                    <a
+                    <a href={() => false}
                       className="ant-dropdown-link"
                       onClick={(e) => e.preventDefault()}
                     >
@@ -1342,7 +1342,7 @@ class DrawerModal extends Component {
                       }
                     >
                       <Dropdown overlay={LULCmenu}>
-                        <a
+                        <a href={() => false}
                           className="ant-dropdown-link"
                           onClick={(e) => e.preventDefault()}
                         >

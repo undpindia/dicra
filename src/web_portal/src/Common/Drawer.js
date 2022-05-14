@@ -1175,13 +1175,13 @@ class DrawerModal extends Component {
                   }
                 >
                   <Dropdown overlay={menu}>
-                    <a href={() => false}
+                    <span
                       className="ant-dropdown-link"
                       onClick={(e) => e.preventDefault()}
                     >
                       Select Parameter <DownOutlined /> |{" "}
                       {this.spellPerilcheck(this.state.selectedWeatherparams)}
-                    </a>
+                    </span>
                   </Dropdown>
                 </span>
               </Col>
@@ -1342,13 +1342,13 @@ class DrawerModal extends Component {
                       }
                     >
                       <Dropdown overlay={LULCmenu}>
-                        <a href={() => false}
+                        <span
                           className="ant-dropdown-link"
                           onClick={(e) => e.preventDefault()}
                         >
                           Select Category <DownOutlined /> |{" "}
                           {this.state.selectedLULCcategory}
-                        </a>
+                        </span>
                       </Dropdown>
                     </span>
                   </Col>

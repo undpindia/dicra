@@ -114,7 +114,7 @@ class DrawerModal extends Component {
           style: "hollow",
         },
         grid: {
-          show: true,
+          show: false,
           borderColor: '#90A4AE',
           strokeDashArray: 0,
           position: 'back',
@@ -125,7 +125,7 @@ class DrawerModal extends Component {
           },   
           yaxis: {
               lines: {
-                  show: true
+                  show: false
               }
           }
       },
@@ -476,7 +476,7 @@ class DrawerModal extends Component {
             },   
             yaxis: {
                 lines: {
-                    show: true
+                    show: false
                 }
             }
         },
@@ -569,7 +569,7 @@ class DrawerModal extends Component {
             },   
             yaxis: {
                 lines: {
-                    show: true
+                    show: false
                 }
             }
         },
@@ -1306,7 +1306,7 @@ class DrawerModal extends Component {
                 this.props.CurrentLayer === "LULC" ? {} : { display: "none" }
               }
             >
-              <Row style={{ "margin-bottom": "2%" }}>
+              <Row style={{ "marginBottom": "2%" }}>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
                     <BiLineChart /> Trend
@@ -1371,7 +1371,7 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              <div style={{ "margin-bottom": "2%" }}>
+              <div style={{ "marginBottom": "2%" }}>
                 <p style={{ fontSize: "18px", display: "inline" }}>
                   <BiLineChart /> Trend
                 </p>

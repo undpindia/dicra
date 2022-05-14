@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import { centroid,polygon } from "@turf/turf";
-
+import { centroid, polygon } from "@turf/turf";
 import MANDALBOUNDS from "../Shapes/TS_mandal_boundary.json";
 import DISTRICTBOUNDS from "../Shapes/TS_district_boundary.json";
 import chroma from "chroma-js";
@@ -18,7 +16,6 @@ import {
   FeatureGroup,
   Tooltip,
   LayersControl,
-
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -28,7 +25,7 @@ import CPDrawerModal from "../Common/CPDrawer";
 import Header from "../Common/Header";
 import Sidebar from "../Common/Sidebar";
 import { BiSearch, BiX, BiHomeAlt } from "react-icons/bi";
-import {FormGroup,Input} from "reactstrap";
+import {FormGroup, Input } from "reactstrap";
 import Circlemarker from "../img/circlemarker.png";
 import MK1 from "../img/locationMK.png";
 import { Radio, Select, message } from "antd";
@@ -39,10 +36,11 @@ import districtRegions from "./Regions/districtRegions";
 import axiosConfig from "../Common/axios_Config";
 import { EditControl } from "react-leaflet-draw";
 import SearchPlace from "./searchPlaces";
-
-
+const removeLayer = (layer) => {
+  map.removeLayer(layer);
+  window.tiff = 0;
+};
 // const key = 'AIzaSyD_QaXrN1Qi27IQK1df0nGoqCGX_3vYXd4';
-
 const MAP_STYLES = {
   position: "relative",
   width: "100%",
@@ -53,7 +51,11 @@ const options = [
   { label: "Raster", value: "Raster" },
   { label: "Vector", value: "Vector" },
 ];
-
+const ruaStyle = {
+  color: "#d65522",
+  weight: 0.5,
+  fillOpacity: 0,
+};
 const LoaderIcon = new L.Icon({
   iconUrl: loader,
   iconSize: [150, 150],
@@ -104,7 +106,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: currentlayertype }),
     showRaster: () => dispatch({ type: "SHOWRASTER" }),
     hideRaster: () => dispatch({ type: "HIDERASTER" }),
-    showDrawer: (val) => dispatch({ type: "SHOWDRAWER" }),
   };
 };
 class map extends Component {
@@ -315,14 +316,14 @@ class map extends Component {
     );
   }
   openDrawer(e) {
-    var area=0.00
-    if (this.props.CurrentLayer === "FIREEV") {
+    var selected_district = this.formatgeojson(e.sourceTarget.feature);
+    if (this.props.CurrentLayer == "FIREEV") {
       this.getCountEvents(e);
-    } else if (this.props.CurrentLayer === "WH") {
-    } else if (this.props.CurrentLayer === "CP") {
+    } else if (this.props.CurrentLayer == "WH") {
+    } else if (this.props.CurrentLayer == "CP") {
       // this.CPchild.current.showDrawer();
-    } else if (this.props.CurrentLayer === "WEATHER") {
-       area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+    } else if (this.props.CurrentLayer == "WEATHER") {
+      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -336,8 +337,8 @@ class map extends Component {
           this.child.current.getWeathertrend("6months");
         }
       );
-    } else if (this.props.CurrentLayer === "LULC") {
-      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+    } else if (this.props.CurrentLayer == "LULC") {
+      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -351,7 +352,7 @@ class map extends Component {
           this.child.current.getLULC();
         }
       );
-    } else if (this.props.CurrentLayer === "POPULATION") {
+    } else if (this.props.CurrentLayer == "POPULATION") {
       this.setState(
         {
           areaValue: parseFloat(
@@ -373,14 +374,14 @@ class map extends Component {
         }
       );
 
-     area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
       });
 
       this.child.current.showDrawer();
-    } else if (this.props.CurrentLayer === "RWI") {
+    } else if (this.props.CurrentLayer == "RWI") {
       this.setState({
         areaValue: parseFloat(
           e.sourceTarget.feature.properties.zonalstat.mean
@@ -394,7 +395,7 @@ class map extends Component {
         selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
       });
 
-     area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -420,7 +421,7 @@ class map extends Component {
         }
       );
 
-      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -491,10 +492,10 @@ class map extends Component {
     this.setState({
       selected_shape: geojson,
     });
-    if (this.props.CurrentLayer === "FIREEV") {
+    if (this.props.CurrentLayer == "FIREEV") {
       this.getCustomPointDetails(geojson);
     }
-    if (this.props.CurrentLayer === "LULC") {
+    if (this.props.CurrentLayer == "LULC") {
       var area = geojsonArea.geometry(geojson.features[0].geometry);
       area = area / 1000000;
 
@@ -502,14 +503,13 @@ class map extends Component {
         message.info("Maximum query area reached!");
       } else {
         this.child.current.getCUSTOMLULC(geojson);
-        this.props.showDrawer();
       }
     } else {
       this.getCustomlayerDetails(geojson);
     }
   }
   style(feature) {
-    if (this.props.CurrentLayer === "WEATHER") {
+    if (this.props.CurrentLayer == "WEATHER") {
       return {
         weight: 1,
         opacity: 1,
@@ -518,8 +518,8 @@ class map extends Component {
         color: "#d65522",
       };
     }
-    if (ltype === "Vector") {
-      if (this.state.layerUID === feature.properties.uid) {
+    if (ltype == "Vector") {
+      if (this.state.layerUID == feature.properties.uid) {
         return {
           weight: 1,
           opacity: 1,
@@ -548,7 +548,7 @@ class map extends Component {
         };
       }
     } else {
-      if (this.state.layerUID === feature.properties.uid) {
+      if (this.state.layerUID == feature.properties.uid) {
         return {
           weight: 1,
           opacity: 1,
@@ -580,7 +580,7 @@ class map extends Component {
     this.setState({ active: !currentState });
   }
   onchangeshape(e) {
-    if (e.target.value === "DISTRICT") {
+    if (e.target.value == "DISTRICT") {
       this.props.showRaster();
       this.props.setRegion("DISTRICT");
       this.map.removeLayer(this.state.editableFG);
@@ -604,7 +604,7 @@ class map extends Component {
           this.getlayer();
         }
       );
-    } else if (e.target.value === "MANDAL") {
+    } else if (e.target.value == "MANDAL") {
       this.props.showRaster();
       this.map.removeLayer(this.state.editableFG);
       this.props.setRegion("MANDAL");
@@ -627,7 +627,7 @@ class map extends Component {
           this.getlayer();
         }
       );
-    } else if (e.target.value === "CUSTOM") {
+    } else if (e.target.value == "CUSTOM") {
       this.props.setMapKey();
       this.props.setRegion("CUSTOM");
       this.setState({
@@ -670,7 +670,7 @@ class map extends Component {
       //     ],
       //   },
       // });
-      if (this.props.LayerDescription.raster_status !== false) {
+      if (this.props.LayerDescription.raster_status != false) {
         this.props.hideRaster();
       }
     }
@@ -683,11 +683,11 @@ class map extends Component {
       () => {
         ltype = e.target.value;
         // this.getlayer();
-        if (ltype === "Raster") {
+        if (ltype == "Raster") {
           this.props.setLayerType("Raster");
           this.props.showRaster();
           window.layerType="Raster";
-        } else if (ltype === "Vector") {
+        } else if (ltype == "Vector") {
           this.props.setLayerType("Vector");
           this.props.hideRaster();
           window.layerType="Vector";
@@ -703,10 +703,10 @@ class map extends Component {
     this.setState({
       baseMap:
         "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-      attribution: "",
+      attribution: "dark_matter_lite_rainbow",
       baseMapselected: "Dark",
     });
-    if (this.props.CurrentRegion === "CUSTOM") {
+    if (this.props.CurrentRegion == "CUSTOM") {
       this.props.setRegion("DISTRICT");
       this.setState({
         regionkey: this.state.regionkey + 1,
@@ -715,7 +715,7 @@ class map extends Component {
     }
 
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
-    if (this.props.CurrentLayer === "FIREEV") {
+    if (this.props.CurrentLayer == "FIREEV") {
       this.setState({
         pointData: true,
       });
@@ -734,14 +734,13 @@ class map extends Component {
         this.setState({
           pointVector: res.data,
         });
-     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } else if (this.props.CurrentLayer === "WH") {
+    } else if (this.props.CurrentLayer == "WH") {
       this.setState({
         pointData: true,
       });
@@ -753,14 +752,13 @@ class map extends Component {
           },
           () => {}
         );
-     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } else if (this.props.CurrentLayer === "CP") {
+    } else if (this.props.CurrentLayer == "CP") {
       this.setState({
         pointData: true,
       });
@@ -769,15 +767,13 @@ class map extends Component {
         this.setState({
           pointVector: res.data.data,
         });
-     
         this.props.setMapKey();
         this.changeVectorLoader(60.732421875, 80.67555881973475);
         this.changeRasterLoader(60.732421875, 80.67555881973475);
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } else if (this.props.CurrentLayer === "WEATHER") {
-      this.props.setRegion("MANDAL");
+    } else if (this.props.CurrentLayer == "WEATHER") {
       this.props.SetBoundary(MANDALBOUNDS);
       this.props.setMapKey();
       this.changeVectorLoader(60.732421875, 80.67555881973475);
@@ -812,8 +808,8 @@ class map extends Component {
           ],
         },
       });
-    } else if (this.props.CurrentLayer === "LULC") {
-      if (this.props.CurrentRegion === "MANDAL") {
+    } else if (this.props.CurrentLayer == "LULC") {
+      if (this.props.CurrentRegion == "MANDAL") {
         this.props.SetBoundary(MANDALBOUNDS);
       }
       this.setState({
@@ -850,7 +846,6 @@ class map extends Component {
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
     } else {
-      this.props.setRegion("DISTRICT");
       this.setState({
         pointVector: {
           type: "FeatureCollection",
@@ -881,7 +876,6 @@ class map extends Component {
           ],
         },
       });
-  
       try {
         const res = await axiosConfig.get(
           `/currentvector?parameter=` +
@@ -900,15 +894,15 @@ class map extends Component {
     // this.checkLoaderstatus();
   }
   onMouseOver(e) {
-    if (this.props.CurrentLayer === "POPULATION") {
+    if (this.props.CurrentLayer == "POPULATION") {
       this.props.setvalue(
         parseFloat(e.layer.feature.properties.zonalstat.sum / 1000000).toFixed(
           2
         )
       );
-    } else if (this.props.CurrentLayer !== "LULC") {
-      if (e.layer.feature.properties.zonalstat !== undefined) {
-        if (isNaN(e.layer.feature.properties.zonalstat.mean) === true) {
+    } else if (this.props.CurrentLayer != "LULC") {
+      if (e.layer.feature.properties.zonalstat != undefined) {
+        if (isNaN(e.layer.feature.properties.zonalstat.mean) == true) {
           this.props.setvalue("N/A");
         } else {
           // console.log("VECTOR HOVER VALUE",e.layer.feature.properties.zonalstat.mean)
@@ -919,14 +913,14 @@ class map extends Component {
       }
     }
 
-    if (this.props.CurrentRegion === "MANDAL") {
+    if (this.props.CurrentRegion == "MANDAL") {
       var mandal_name = e.layer.feature.properties.Mandal_Nam;
       if (typeof mandal_name !== "undefined") {
         this.props.setplace(mandal_name);
       } else {
         this.props.setplace("");
       }
-    } else if (this.props.CurrentRegion === "DISTRICT") {
+    } else if (this.props.CurrentRegion == "DISTRICT") {
       var district_name = e.layer.feature.properties.Dist_Name;
       if (typeof district_name !== "undefined") {
         this.props.setplace(district_name);
@@ -946,7 +940,7 @@ class map extends Component {
         layerUID: selected_region.uid,
       },
       () => {
-        if (this.props.CurrentRegion === "MANDAL") {
+        if (this.props.CurrentRegion == "MANDAL") {
           var mandal_name = current_reg.properties.Mandal_Name;
           if (typeof mandal_name !== "undefined") {
             this.props.setplace(mandal_name);
@@ -957,7 +951,7 @@ class map extends Component {
             this.props.setplace("");
             this.props.setvalue(0);
           }
-        } else if (this.props.CurrentRegion === "DISTRICT") {
+        } else if (this.props.CurrentRegion == "DISTRICT") {
           var district_name = current_reg.properties.Dist_Name;
           if (typeof district_name !== "undefined") {
             this.props.setplace(current_reg.properties.Dist_Name);
@@ -1003,7 +997,7 @@ class map extends Component {
     this.map.flyTo([18.1124, 79.0193], 6.5);
   }
   ChangeBasemap(e) {
-    if (e.target.value === "Dark") {
+    if (e.target.value == "Dark") {
       this.setState({
         baseMap:
           "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
@@ -1011,14 +1005,14 @@ class map extends Component {
         baseMapselected: "Dark",
       });
     }
-    if (e.target.value === "Satellite") {
+    if (e.target.value == "Satellite") {
       this.setState({
         baseMap: "http://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}",
         attribution: "",
         baseMapselected: "Satellite",
       });
     }
-    if (e.target.value === "Grey") {
+    if (e.target.value == "Grey") {
       this.setState({
         baseMap:
           "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
@@ -1032,7 +1026,7 @@ class map extends Component {
       // editRef.current.leafletElement._toolbars.edit._modes.edit.handler.enable()
       this.child.current.showDrawer();
     });
-    if (this.state.editableFG === []) {
+    if (this.state.editableFG == []) {
       this.setState({
         editableFG: e.layer,
       });
@@ -1075,11 +1069,11 @@ class map extends Component {
     );
   }
   getcustomlocation(lat, lon) {
-    if (lat !== undefined && lon !== undefined) {
+    if (lat != undefined && lon != undefined) {
       // this.setState({
       //   locpointerltlng: [e.coordinates.lat, e.coordinates.lng],
       // });
-      if (lat !== undefined && lon !== undefined) {
+      if (lat != undefined && lon != undefined) {
         this.setState({
           locpointerltlng: [lat, lon],
           mapZoom: 9,
@@ -1090,7 +1084,7 @@ class map extends Component {
     }
   }
   toggleLayer(e) {
-    if (e.target.value === "show") {
+    if (e.target.value == "show") {
       this.props.showRaster();
     } else {
       this.props.hideRaster();
@@ -1101,7 +1095,7 @@ class map extends Component {
     // this.setState({
     //   currentComodity:name
     // })
-    if (this.props.CurrentLayer === "CP") {
+    if (this.props.CurrentLayer == "CP") {
       this.CPchild.current.showDrawer(name);
     }
   }
@@ -1119,7 +1113,7 @@ class map extends Component {
   }
 
   checkIcon() {
-    if (this.props.CurrentLayer === "FIREEV") {
+    if (this.props.CurrentLayer == "FIREEV") {
       return MarkerIcon;
     } else {
       return MarkerIcon2;
@@ -1158,10 +1152,16 @@ class map extends Component {
         >
           <BiHomeAlt />
         </div>
+        {/* <div
+          className="Layer-remove"
+          style={this.state.customStatus == true ? {} : { display: "none" }}
+        >
+          <Switch size="small"  onChange={(e) => this.toggleLayer(e)}/>
+        </div> */}
 
         <div
           className="btn-toggleBaseMap"
-          // style={this.state.customStatus === true ? {} : { display: "none" }}
+          // style={this.state.customStatus == true ? {} : { display: "none" }}
         >
           <FormGroup>
             <Input
@@ -1176,21 +1176,21 @@ class map extends Component {
               onChange={this.ChangeBasemap}
             >
               <option
-                selected={this.state.baseMapselected === "Dark" ? true : false}
+                selected={this.state.baseMapselected == "Dark" ? true : false}
                 value="Dark"
               >
                 Dark
               </option>
               <option
                 selected={
-                  this.state.baseMapselected === "Satellite" ? true : false
+                  this.state.baseMapselected == "Satellite" ? true : false
                 }
                 value="Satellite"
               >
                 Satellite
               </option>
               <option
-                selected={this.state.baseMapselected === "Grey" ? true : false}
+                selected={this.state.baseMapselected == "Grey" ? true : false}
                 value="Grey"
               >
                 Grey
@@ -1200,7 +1200,7 @@ class map extends Component {
         </div>
         <div
           className="btn-toggle"
-          // style={this.state.showlayertype === true ? {} : { display: "none" }}
+          // style={this.state.showlayertype == true ? {} : { display: "none" }}
         >
           <Radio.Group
             options={options}
@@ -1210,9 +1210,9 @@ class map extends Component {
             buttonStyle="solid"
             disabled={this.state.showlayertype ? false : true}
             disabled={
-              this.props.LayerDescription.vector_status === false
+              this.props.LayerDescription.vector_status == false
                 ? true
-                : false || this.props.LayerDescription.raster_status === false
+                : false || this.props.LayerDescription.raster_status == false
                 ? true
                 : false
             }
@@ -1225,7 +1225,7 @@ class map extends Component {
         >
           <FormGroup
             style={
-              this.state.layerType === "Vector" ? { cursor: "not-allowed" } : {}
+              this.state.layerType == "Vector" ? { cursor: "not-allowed" } : {}
             }
           >
             <Input
@@ -1238,14 +1238,14 @@ class map extends Component {
                 height: "44px",
               }}
               disabled={
-                this.props.CurrentLayer === "WEATHER"
+                this.props.CurrentLayer == "WEATHER"
                   ? true
-                  : false || this.state.layerType === "Vector"
+                  : false || this.state.layerType == "Vector"
                   ? true
                   : false
               }
-              // defaultChecked={this.props.CurrentLayer === "WEATHER" ?"mandal":"district"}
-              // defaultValue={this.props.CurrentLayer === "WEATHER" ?"mandal":"district"}
+              // defaultChecked={this.props.CurrentLayer == "WEATHER" ?"mandal":"district"}
+              // defaultValue={this.props.CurrentLayer == "WEATHER" ?"mandal":"district"}
               // style={}
               key={this.state.regionkey}
               value={this.props.CurrentRegion}
@@ -1256,7 +1256,7 @@ class map extends Component {
               <option
                 value="CUSTOM"
                 disabled={
-                  this.props.LayerDescription.showcustom === false ? true : false
+                  this.props.LayerDescription.showcustom == false ? true : false
                 }
               >
                 Custom
@@ -1275,7 +1275,7 @@ class map extends Component {
             <div className="col search" style={{ paddingLeft: "0px" }}>
               <div
                 style={
-                  this.state.customStatus === true ? { display: "none" } : {}
+                  this.state.customStatus == true ? { display: "none" } : {}
                 }
               >
                 <Select
@@ -1301,7 +1301,7 @@ class map extends Component {
               </div>
               <div
                 style={
-                  this.state.customStatus === true ? {} : { display: "none" }
+                  this.state.customStatus == true ? {} : { display: "none" }
                 }
               >
                 <div style={{ marginLeft: "50px", marginTop: "7px" }}>
@@ -1319,7 +1319,7 @@ class map extends Component {
             </div>
           </div>
         </div>
-        {this.props.CurrentLayer === "CP" ? (
+        {this.props.CurrentLayer == "CP" ? (
           <CPDrawerModal
             // onRef={(ref) => (this.CPchild = ref)}
             ref={this.CPchild}
@@ -1357,7 +1357,7 @@ class map extends Component {
             position={[this.state.loaderlatraster, this.state.loaderlngraster]}
             icon={LoaderIcon}
           ></Marker>
-          {/* <div style={this.state.pointData === true ? { display: "none" } : {}}> */}
+          {/* <div style={this.state.pointData == true ? { display: "none" } : {}}> */}
           {/* {this.state.pointVector.features.map((point, key) => (
             <CircleMarker
               center={[point.properties.latitude, point.properties.longitude]}
@@ -1374,18 +1374,18 @@ class map extends Component {
             data={this.props.CurrentVector.features}
             // onEachFeature={this.onEachrua}
             onMouseOver={
-              this.props.currentLayerType === "Vector"
+              this.props.currentLayerType == "Vector"
                 ? this.onMouseOver
                 :console.log()
               // this.onMouseOver
             }
             // onMouseOver={
-            //   this.props.CurrentLayer ==== "WEATHER"
+            //   this.props.CurrentLayer == "WEATHER"
             //     ? console.log("WEATHER")
             //     : this.onMouseOver
             // }
             onMouseOut={
-              this.props.currentLayerType === "Vector"
+              this.props.currentLayerType == "Vector"
                 ? this.onMouseOver
                 : console.log()
               // this.onMouseOver
@@ -1413,10 +1413,10 @@ class map extends Component {
                 }
               }}
             >
-              {this.props.CurrentLayer === "FIREEV" ? (
+              {this.props.CurrentLayer == "FIREEV" ? (
                 <Tooltip
                   style={
-                    this.props.CurrentLayer === "FIREEV"
+                    this.props.CurrentLayer == "FIREEV"
                       ? {}
                       : { display: "none" }
                   }
@@ -1430,17 +1430,17 @@ class map extends Component {
               ) : (
                 <Tooltip
                   style={
-                    this.props.CurrentLayer === "WH"
+                    this.props.CurrentLayer == "WH"
                       ? {}
                       : { display: "none" } &&
-                        this.props.CurrentLayer === "FIREEV"
+                        this.props.CurrentLayer == "FIREEV"
                       ? { display: "none" }
                       : {}
                   }
                 >
                   <a
                     style={
-                      this.props.CurrentLayer === "CP"
+                      this.props.CurrentLayer == "CP"
                         ? { display: "none" }
                         : { textAlign: "left" }
                     }
@@ -1453,7 +1453,7 @@ class map extends Component {
                   </a>
                   <a
                     style={
-                      this.props.CurrentLayer === "CP" ? {} : { display: "none" }
+                      this.props.CurrentLayer == "CP" ? {} : { display: "none" }
                     }
                   >
                     Market Yard : {point.properties.name}

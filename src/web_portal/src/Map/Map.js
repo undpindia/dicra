@@ -28,7 +28,7 @@ import CPDrawerModal from "../Common/CPDrawer";
 import Header from "../Common/Header";
 import Sidebar from "../Common/Sidebar";
 import { BiSearch, BiX, BiHomeAlt } from "react-icons/bi";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import {FormGroup,Input} from "reactstrap";
 import Circlemarker from "../img/circlemarker.png";
 import MK1 from "../img/locationMK.png";
 import { Radio, Select, message } from "antd";
@@ -39,10 +39,7 @@ import districtRegions from "./Regions/districtRegions";
 import axiosConfig from "../Common/axios_Config";
 import { EditControl } from "react-leaflet-draw";
 import SearchPlace from "./searchPlaces";
-const removeLayer = (layer) => {
-  map.removeLayer(layer);
-  window.tiff = 0;
-};
+
 
 // const key = 'AIzaSyD_QaXrN1Qi27IQK1df0nGoqCGX_3vYXd4';
 
@@ -56,11 +53,7 @@ const options = [
   { label: "Raster", value: "Raster" },
   { label: "Vector", value: "Vector" },
 ];
-const ruaStyle = {
-  color: "#d65522",
-  weight: 0.5,
-  fillOpacity: 0,
-};
+
 const LoaderIcon = new L.Icon({
   iconUrl: loader,
   iconSize: [150, 150],
@@ -322,14 +315,14 @@ class map extends Component {
     );
   }
   openDrawer(e) {
-    var selected_district = this.formatgeojson(e.sourceTarget.feature);
+    var area=0.00
     if (this.props.CurrentLayer === "FIREEV") {
       this.getCountEvents(e);
     } else if (this.props.CurrentLayer === "WH") {
     } else if (this.props.CurrentLayer === "CP") {
       // this.CPchild.current.showDrawer();
     } else if (this.props.CurrentLayer === "WEATHER") {
-      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+       area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -344,7 +337,7 @@ class map extends Component {
         }
       );
     } else if (this.props.CurrentLayer === "LULC") {
-      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -380,7 +373,7 @@ class map extends Component {
         }
       );
 
-      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+     area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -401,7 +394,7 @@ class map extends Component {
         selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
       });
 
-      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+     area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -427,7 +420,7 @@ class map extends Component {
         }
       );
 
-      var area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
       this.setState({
         area: parseFloat(area).toFixed(2),
@@ -677,7 +670,7 @@ class map extends Component {
       //     ],
       //   },
       // });
-      if (this.props.LayerDescription.raster_status != false) {
+      if (this.props.LayerDescription.raster_status !== false) {
         this.props.hideRaster();
       }
     }
@@ -913,8 +906,8 @@ class map extends Component {
           2
         )
       );
-    } else if (this.props.CurrentLayer != "LULC") {
-      if (e.layer.feature.properties.zonalstat != undefined) {
+    } else if (this.props.CurrentLayer !== "LULC") {
+      if (e.layer.feature.properties.zonalstat !== undefined) {
         if (isNaN(e.layer.feature.properties.zonalstat.mean) === true) {
           this.props.setvalue("N/A");
         } else {
@@ -928,14 +921,14 @@ class map extends Component {
 
     if (this.props.CurrentRegion === "MANDAL") {
       var mandal_name = e.layer.feature.properties.Mandal_Nam;
-      if (typeof mandal_name != "undefined") {
+      if (typeof mandal_name !== "undefined") {
         this.props.setplace(mandal_name);
       } else {
         this.props.setplace("");
       }
     } else if (this.props.CurrentRegion === "DISTRICT") {
       var district_name = e.layer.feature.properties.Dist_Name;
-      if (typeof district_name != "undefined") {
+      if (typeof district_name !== "undefined") {
         this.props.setplace(district_name);
       } else {
         this.props.setplace("");
@@ -955,7 +948,7 @@ class map extends Component {
       () => {
         if (this.props.CurrentRegion === "MANDAL") {
           var mandal_name = current_reg.properties.Mandal_Name;
-          if (typeof mandal_name != "undefined") {
+          if (typeof mandal_name !== "undefined") {
             this.props.setplace(mandal_name);
             this.props.setvalue(
               parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
@@ -966,7 +959,7 @@ class map extends Component {
           }
         } else if (this.props.CurrentRegion === "DISTRICT") {
           var district_name = current_reg.properties.Dist_Name;
-          if (typeof district_name != "undefined") {
+          if (typeof district_name !== "undefined") {
             this.props.setplace(current_reg.properties.Dist_Name);
             this.props.setvalue(
               parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
@@ -1082,11 +1075,11 @@ class map extends Component {
     );
   }
   getcustomlocation(lat, lon) {
-    if (lat != undefined && lon != undefined) {
+    if (lat !== undefined && lon !== undefined) {
       // this.setState({
       //   locpointerltlng: [e.coordinates.lat, e.coordinates.lng],
       // });
-      if (lat != undefined && lon != undefined) {
+      if (lat !== undefined && lon !== undefined) {
         this.setState({
           locpointerltlng: [lat, lon],
           mapZoom: 9,

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import ColorScale from "./ColorScale";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import ColorPicker from "./ColorPicker";
 import Moment from "moment";
 import { BiNavigation } from "react-icons/bi";

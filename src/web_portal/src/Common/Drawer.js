@@ -667,14 +667,14 @@ class DrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setMonth(from_date.getMonth() - 6);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
@@ -706,14 +706,14 @@ class DrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 1);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
@@ -744,14 +744,14 @@ class DrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 3);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
@@ -783,14 +783,14 @@ class DrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 5);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
@@ -826,10 +826,10 @@ class DrawerModal extends Component {
     // var min = a.getMinutes();
     // var sec = a.getSeconds();
     // var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    var dd = String(a.getDate()).padStart(2, "0");
-    var mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
-    var yyyy = a.getFullYear();
-    var date = yyyy + "-" + mm + "-" + dd;
+    let dd = String(a.getDate()).padStart(2, "0");
+    let mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
+    let yyyy = a.getFullYear();
+    let date = yyyy + "-" + mm + "-" + dd;
     // return time;
     this.setState({
       last_updated: date,

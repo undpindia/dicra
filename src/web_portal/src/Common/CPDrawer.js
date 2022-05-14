@@ -43,7 +43,6 @@ const openNotification = () => {
     icon: <InfoCircleTwoTone />,
   });
 };
-const menu = {};
 class CPDrawerModal extends Component {
   constructor(props) {
     super(props);
@@ -316,7 +315,7 @@ class CPDrawerModal extends Component {
     );
   }
   generatechart(data) {
-    let chart_values = [];
+
     var trendData = {
       name: this.props.CurrentLayer,
       data: [],
@@ -330,13 +329,8 @@ class CPDrawerModal extends Component {
         });
       });
     }
-    var trendlength = trendData.data.length;
-    var lst_value = trendData.data[trendlength - 1];
-    lst_value = lst_value.y;
 
-    if (trendData.data === null) {
-      chart_values = [trendData];
-    }
+  
     this.setState({
       series: [trendData],
       loader: false,
@@ -411,6 +405,7 @@ class CPDrawerModal extends Component {
   }
 
   settimerange(daterange) {
+  
     if (daterange === "6months") {
       let current_date;
       let from_date;
@@ -418,14 +413,14 @@ class CPDrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setMonth(from_date.getMonth() - 6);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
@@ -457,14 +452,14 @@ class CPDrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 1);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
@@ -495,14 +490,14 @@ class CPDrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 3);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
@@ -534,14 +529,14 @@ class CPDrawerModal extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 5);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
       if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
@@ -577,10 +572,10 @@ class CPDrawerModal extends Component {
     // var min = a.getMinutes();
     // var sec = a.getSeconds();
     // var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    var dd = String(a.getDate()).padStart(2, "0");
-    var mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
-    var yyyy = a.getFullYear();
-    var date = yyyy + "-" + mm + "-" + dd;
+    let dd = String(a.getDate()).padStart(2, "0");
+    let mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
+    let yyyy = a.getFullYear();
+    let date = yyyy + "-" + mm + "-" + dd;
     // return time;
     this.setState({
       last_updated: date,

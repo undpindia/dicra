@@ -79,7 +79,7 @@ class LayerDetails extends Component {
     );
   }
   componentDidUpdate(prevProps) {
-    if (prevProps != this.props) {
+    if (prevProps !== this.props) {
       this.getavailableFiles();
     }
   }
@@ -112,8 +112,6 @@ class LayerDetails extends Component {
     this.getavailableFiles();
   }
   render() {
-    const { size } = this.state;
-    const { close } = this.state;
     return (
       <React.Fragment>
         <hr className="horizontal-line" style={{ marginTop: "30px" }} />
@@ -192,6 +190,7 @@ class LayerDetails extends Component {
           <a
             target="_blank"
             href={"https://internalapidev.chickenkiller.com/docs#"}
+            rel="noreferrer"
           >
             know more
           </a>

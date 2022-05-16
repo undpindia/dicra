@@ -1,6 +1,6 @@
 ## Problem Description
 
-Currently, crop residue burning is frequently taking place in India as farmers often rotate between crops in the harvesting season (April - May & September - November) and want a quick way to prepare the fields for the next crop in a cheap manner.
+Currently, crop residue burning is frequently taking place in India as farmers often rotate between crops in the harvesting season (April - May & October - November) and want a quick way to prepare the fields for the next crop in a cheap manner.
 
 However, crop residue burning causes climate change and deterioration of the air quality leading to health issues among the population of India.
 

@@ -33,11 +33,11 @@ Main Challenge: How can policy makers decrease the amount of crop residue fires 
     - population_deviance.ipynb: Shows change in population over time as raster file at a resolution of 1 km and Population Counts for any selected administraive boundary at Level 1(State), 2(District),or 3(taluk).
 - Sentinel-2 10m Land Use/Land Cover Timeseries = Displays a global map of land use.
 - Daily Prices of Market Yard Commodities in Telangana = This dataset contains information on the daily prices of all the commodities across all the market yards in the state of Telangana: 
-    - list_market_yards_2021.xlsx
-    - day_prices_between_01-12-2021_31-12-2021.csv
-    - market_yard_data.csv
-    - market_yard_list.xlsx
-    - market_yard_prices_01012019_26062019.csv
+    - list_market_yards_2021.xlsx (Attributes: ID, AmcName, YardName, District_x, MarketType, District_y, Capacity, Lat, Lon)
+    - day_prices_between_01-12-2021_31-12-2021.csv (Attributes: DDate, AmcCode, AmcName, YardCode, YardName, CommCode, CommName, VarityCode, VarityName, ProgArrivals, Arrivals, Minimum, Maximum, Model, Valuation, MarketFee)
+    - market_yard_data.csv (Attributes: district, capacity, name, latitude, longitude)
+    - market_yard_list.xlsx (Attributes: market yards list, Unnamed: 1, Unnamed: 2, Unnamed: 3)
+    - market_yard_prices_01012019_26062019.csv (Attributes: DDate, AmcCode, AmcName, YardCode, YardName, CommCode, CommName, VarityCode, VarityName, ProgArrivals, Arrivals, Minimum, Maximum, Model, Valuation, MarketFee)
 - Soil Moisture
 - Active Fire Data:
     - telangana_fires.csv (Attributes: fireID, latitude, longitude, <strong>brightness</strong>, <strong>scan</strong>, <strong>track</strong>, acq_date, <strong>acq_time</strong>, <strong>satellite</strong>, instrument, <strong>confidence</strong>, <strong>version</strong>, <strong>bright_t31</strong>, frp (Fire Radiative Power in Watt), daynight, <strong>type</strong>)

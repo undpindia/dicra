@@ -6,12 +6,12 @@ However, crop residue burning causes climate change and deterioration of the air
 
 Main Challenge: How can policy makers decrease the amount of crop residue fires to protect the environment and human health while also considering (economically vulnerable) farmers.
 
-●	How can we identify farming communities that are over time reducing the impact on the environment and health by curbing crop residue burning?
-●	Can non-traditional data sources help in identifying what they are doing or what changes have happened in their economic or social situation compared to communities that are still practicing crop/stubble burning?
-●	Identify datasets that can help quantify the practice of crop burning among rice farmers in India? This also calls for identifying areas under rice, cropping patterns, air quality indicators, etc.
-●	Identify positive deviant rice farms in India practicing Climate Smart Agriculture using non-traditional data sources such as mobile phone records, satellite imagery, social media, online data, or financial data.
-●	Identify changes in socio-economic or policy aspects in regions that are showing positive deviance.
-●	Diversifying crops, using crop residue for alternate purposes, in-situ management of crop residue, policy measures, etc. are recommended by officials to reduce crop burning. Can data sources help identify such practices and adaptations by communities?
+- How can we identify farming communities that are over time reducing the impact on the environment and health by curbing crop residue burning?
+- Can non-traditional data sources help in identifying what they are doing or what changes have happened in their economic or social situation compared to communities that are still practicing crop/stubble burning?
+- Identify datasets that can help quantify the practice of crop burning among rice farmers in India? This also calls for identifying areas under rice, cropping patterns, air quality indicators, etc.
+- Identify positive deviant rice farms in India practicing Climate Smart Agriculture using non-traditional data sources such as mobile phone records, satellite imagery, social media, online data, or financial data.
+- Identify changes in socio-economic or policy aspects in regions that are showing positive deviance.
+- Diversifying crops, using crop residue for alternate purposes, in-situ management of crop residue, policy measures, etc. are recommended by officials to reduce crop burning. Can data sources help identify such practices and adaptations by communities?
 
 ## Approach:
 

@@ -40,7 +40,7 @@ Main Challenge: How can policy makers decrease the amount of crop residue fires 
     - market_yard_prices_01012019_26062019.csv
 - Soil Moisture
 - Active Fire Data:
-    - telangana_fires.csv (Attributes: fireID, latitude, longitude, <strong>brightness</strong>, <strong>scan</strong>, <strong>track</strong>, acq_date, <strong>acq_time</strong>, <strong>satellite</strong>, instrument, <strong>confidence<strong>, <strong>version</strong>, <strong>bright_t31</strong>, frp (Fire Radiative Power in Watt), daynight, <strong>type </strong>)
+    - telangana_fires.csv (Attributes: fireID, latitude, longitude, <strong>brightness</strong>, <strong>scan</strong>, <strong>track</strong>, acq_date, <strong>acq_time</strong>, <strong>satellite</strong>, instrument, <strong>confidence</strong>, <strong>version</strong>, <strong>bright_t31</strong>, frp (Fire Radiative Power in Watt), daynight, <strong>type</strong>)
 - Telangana Weather Data =  This dataset provides information about the cumulative rainfall, minimum & maximum temperature, humidity & wind speed across all 589 weatherstations in the state of Telangana.
 - Telangana Warehouses Geolocation Data = This dataset contains information about the details of individual warehouses maintained by the State with geo-locations, names, their address, type, capacities and other related information:
     - ts-warehouse-data_march2022.csv (Attributes: s. no, region, wh type, warehouse, district, capacity, occupancy, vacancy, latitude, longitude, address, status)

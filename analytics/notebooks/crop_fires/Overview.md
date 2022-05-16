@@ -24,12 +24,25 @@ Main Challenge: How can policy makers decrease the amount of crop residue fires 
 
 ## Available Data
 - Normalized Difference Vegetation Index = NDVI quantifies vegetation by measuring the difference between nearinfrared (which vegetation strongly reflects) and red light (which vegetation absorbs)
-- Relative Wealth Index =  The Relative Wealth Index predicts the relative standard of living within countries using privacy protecting connectivity data, satellite imagery, and other novel data sources.
-- Population = WorldPop produces different gridded population layers.
+- Relative Wealth Index =  The Relative Wealth Index predicts the relative standard of living within countries using privacy protecting connectivity data, satellite imagery, and other novel data sources:
+    - ind_pak_relative_wealth_index.csv (Attributes: latitude, longitude, <strong>rwi</strong>, <strong>error</strong>)
+    - gadm40_IND_shp files = Shape files of India at the three diffent layers. 
+    - rwi_average.xlsx = Shows rwi averages of India (Attributes: NAME_2, NAME_1, rwi_average, population_count_wp, weighted)
+    - rwi_median.xlsx = Shows rwi median of India (Attributes: NAME_2, NAME_1, rwi_median, population_count_wp, weighted)
+- Population = WorldPop produces different gridded population layers:
+    - population_deviance.ipynb: Shows change in population over time as raster file at a resolution of 1 km and Population Counts for any selected administraive boundary at Level 1(State), 2(District),or 3(taluk).
 - Sentinel-2 10m Land Use/Land Cover Timeseries = Displays a global map of land use.
-- Daily Prices of Market Yard Commodities in Telangana = This dataset contains information on the daily prices of all the commodities across all the market yards in the state of Telangana.
+- Daily Prices of Market Yard Commodities in Telangana = This dataset contains information on the daily prices of all the commodities across all the market yards in the state of Telangana: 
+    - list_market_yards_2021.xlsx
+    - day_prices_between_01-12-2021_31-12-2021.csv
+    - market_yard_data.csv
+    - market_yard_list.xlsx
+    - market_yard_prices_01012019_26062019.csv
 - Soil Moisture
 - Active Fire Data:
-    - Attributes: fireID, latitude, longitude, <strong>brightness</strong>, <strong>scan</strong>, <strong>track</strong>, acq_date, <strong>acq_time</strong>, <strong>satellite</strong>, instrument, <strong>confidence<strong>, <strong>version</strong>, <strong>bright_t31</strong>, frp (Fire Radiative Power in Watt), daynight, <strong>type</strong>
+    - telangana_fires.csv (Attributes: fireID, latitude, longitude, <strong>brightness</strong>, <strong>scan</strong>, <strong>track</strong>, acq_date, <strong>acq_time</strong>, <strong>satellite</strong>, instrument, <strong>confidence<strong>, <strong>version</strong>, <strong>bright_t31</strong>, frp (Fire Radiative Power in Watt), daynight, <strong>type</strong>)
 - Telangana Weather Data =  This dataset provides information about the cumulative rainfall, minimum & maximum temperature, humidity & wind speed across all 589 weatherstations in the state of Telangana.
-- Telangana Warehouses Geolocation Data = This dataset contains information about the details of individual warehouses maintained by the State with geo-locations, names, their address, type, capacities and other related information. 
+- Telangana Warehouses Geolocation Data = This dataset contains information about the details of individual warehouses maintained by the State with geo-locations, names, their address, type, capacities and other related information:
+    - ts-warehouse-data_march2022.csv (Attributes: s. no, region, wh type, warehouse, district, capacity, occupancy, vacancy, latitude, longitude, address, status)
+- Shape of Telangana: 
+    - telangana_shapefile.geojson

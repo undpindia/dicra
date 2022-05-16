@@ -418,6 +418,7 @@ class Usecases extends React.Component {
                           "https://internalapidev.chickenkiller.com/static/" +
                           this.state.currentUsecase.image
                         }
+                        alt="..."
                         className="cover"
                       />
                       <div className="centered">

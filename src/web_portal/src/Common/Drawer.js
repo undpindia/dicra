@@ -1392,7 +1392,7 @@ class DrawerModal extends Component {
                   name="btnradio"
                   id="btnradio1"
                   autoComplete="off"
-                  defaultChecked
+                  
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? {}
@@ -1462,6 +1462,9 @@ class DrawerModal extends Component {
                   checked={
                     this.state.currentCharttime === "1year" ? true : false
                   }
+                  onClick={(e) => {
+                    this.settimerange("1Year");
+                }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
@@ -1471,9 +1474,7 @@ class DrawerModal extends Component {
                       ? { display: "none" }
                       : {}
                   }
-                  onClick={(e) => {
-                      this.settimerange("1Year");
-                  }}
+                 
                 >
                   1 year
                 </label>
@@ -1490,7 +1491,9 @@ class DrawerModal extends Component {
                   }
                   checked={
                     this.state.currentCharttime === "3year" ? true : false
-                  }
+                  }  onClick={(e) => {
+                    this.settimerange("3Year");
+                }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
@@ -1500,9 +1503,7 @@ class DrawerModal extends Component {
                       ? { display: "none" }
                       : {}
                   }
-                  onClick={(e) => {
-                      this.settimerange("3Year");
-                  }}
+                
                 >
                   3 year
                 </label>
@@ -1520,6 +1521,9 @@ class DrawerModal extends Component {
                   checked={
                     this.state.currentCharttime === "5year" ? true : false
                   }
+                  onClick={(e) => {
+                    this.settimerange("5Year");
+                }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
@@ -1529,9 +1533,7 @@ class DrawerModal extends Component {
                       ? { display: "none" }
                       : {}
                   }
-                  onClick={(e) => {
-                      this.settimerange("5Year");
-                  }}
+                 
                 >
                   5 year
                 </label>

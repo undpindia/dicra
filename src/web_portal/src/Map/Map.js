@@ -1039,9 +1039,12 @@ class map extends Component {
     }
     const shapePoints = e.layer._latlngs;
     var newpoints = [];
-    shapePoints[0].map(function (points, index) {
-      newpoints.push([points.lng, points.lat]);
-    });
+    shapePoints[0].map((points, index) =>
+      newpoints.push([points.lng, points.lat])
+    )
+    // shapePoints[0].map(function (points, index) {
+    //   newpoints.push([points.lng, points.lat]);
+    // });
     // console.log("COORDINATES", e.layer);
     newpoints.push([shapePoints[0][0].lng, shapePoints[0][0].lat]);
     var polygon_point = polygon([newpoints]);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BottomNavigation from "reactjs-bottom-navigation";
 import "reactjs-bottom-navigation/dist/index.css";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import axiosConfig from "../Common/axios_Config";
@@ -21,9 +21,9 @@ import {
   BiHide,
   BiShow,
   BiBarChartAlt,
-  BiDotsHorizontalRounded
+  BiDotsHorizontalRounded,
 } from "react-icons/bi";
-import {FormGroup, Label, Input,Row } from "reactstrap";
+import { FormGroup, Label, Input, Row } from "reactstrap";
 const steps = [
   { name: "StepOne", component: <LayerDetails /> },
   { name: "StepTwo", component: <PersonalDetails /> },
@@ -111,9 +111,17 @@ const BottomNav = (props) => {
     {
       title: "Others",
 
-      icon: <BiDotsHorizontalRounded style={{ fontSize: "18px", color: "#90989B" }} />,
+      icon: (
+        <BiDotsHorizontalRounded
+          style={{ fontSize: "18px", color: "#90989B" }}
+        />
+      ),
 
-      activeIcon: <BiDotsHorizontalRounded style={{ fontSize: "18px", color: "#90989B" }} />,
+      activeIcon: (
+        <BiDotsHorizontalRounded
+          style={{ fontSize: "18px", color: "#90989B" }}
+        />
+      ),
       onClick: () => {
         setIsModalOther(true);
         setIsModalDownload(false);
@@ -124,8 +132,6 @@ const BottomNav = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalDownload, setIsModalDownload] = useState(false);
   const [isModalOther, setIsModalOther] = useState(false);
-
-
 
   const handleOk = () => {
     setIsModalVisible(false);
@@ -198,7 +204,7 @@ const BottomNav = (props) => {
   };
   const nextStyle = {
     background: "#195995",
-    "borderRadius": "3px",
+    borderRadius: "3px",
     border: "none",
     float: "right",
     transform: "translateY(-60%)",
@@ -238,11 +244,16 @@ const BottomNav = (props) => {
               {Categorylist.map((layers, index) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items,indexlayers) => {
+                    {Layers[0][layers].map((items, indexlayers) => {
                       return (
-                        <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
+                        <FormGroup
+                          tag="fieldset"
+                          className="btn-radio"
+                          key={indexlayers}
+                        >
                           <Row>
-                            <div className="col-8"
+                            <div
+                              className="col-8"
                               style={{
                                 paddingBottom: "0px",
                                 paddingRight: "0px",
@@ -399,12 +410,13 @@ const BottomNav = (props) => {
                 </div>
                 <div className="w-100"></div>
                 <div className="col mb-2">
-                  <div className="mobile-link"
-                  onClick={(e) => {
+                  <div
+                    className="mobile-link"
+                    onClick={(e) => {
                       window
                         .open("https://dev.misteo.co/dicrahelp/", "_blank")
                         .focus();
-                  }}
+                    }}
                   >
                     <BiHelpCircle />
                     &nbsp;Help
@@ -418,11 +430,7 @@ const BottomNav = (props) => {
                   </Link>
                 </div>
                 <div className="w-100"></div>
-                <div
-                  className="col"
-                  className="mobile-link"
-                  onClick={handleClick}
-                >
+                <div className="col mobile-link" onClick={handleClick}>
                   <AiFillGithub />
                   &nbsp;Github
                 </div>

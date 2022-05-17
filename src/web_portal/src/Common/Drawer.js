@@ -14,7 +14,7 @@ import axiosConfig from "../Common/axios_Config";
 import Loader from "../img/loader.gif";
 import { connect } from "react-redux";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-
+let notavailable=1
 const mapStateToProps = (ReduxProps) => {
   return {
     CurrentLayer: ReduxProps.CurrentLayer,
@@ -604,14 +604,22 @@ class DrawerModal extends Component {
       });
     }
     if (data !== null) {
-      data.map(function (item, index, data) {
-        if (item[1] !== null) {
-          trendData.data.push({
-            x: item[0],
-            y: parseFloat(item[1]).toFixed(2),
-          });
-        }
-      });
+      data.map((item) =>
+        item[1] !== null
+          ? trendData.data.push({
+              x: item[0],
+              y: parseFloat(item[1]).toFixed(2),
+            })
+          : notavailable=notavailable+1
+      );
+      // data.map(function (item, index, data) {
+      //   if (item[1] !== null) {
+      //     trendData.data.push({
+      //       x: item[0],
+      //       y: parseFloat(item[1]).toFixed(2),
+      //     });
+      //   }
+      // });
     }
     var trendlength = trendData.data.length;
     var lst_value = trendData.data[trendlength - 1];
@@ -1135,10 +1143,9 @@ class DrawerModal extends Component {
             <Row>
               <Col>
                 <span
-                  style={{ display: "inline", "margin-left": "10px" }}
                   style={
                     this.props.CurrentLayer === "WEATHER"
-                      ? {}
+                      ? { display: "inline", "margin-left": "10px"}
                       : { display: "none" }
                   }
                 >
@@ -1208,13 +1215,12 @@ class DrawerModal extends Component {
               </Col>
 
               <Col
-                style={{ paddingLeft: "0px", paddingTop: "20px" }}
                 style={
                   this.props.CurrentLayer === "FIREEV" ||
                   this.props.CurrentLayer === "WEATHER" ||
                   this.props.CurrentLayer === "LULC"
                     ? { display: "none" }
-                    : {}
+                    : {paddingLeft: "0px", paddingTop: "20px" }
                 }
               >
                 <Row>
@@ -1302,10 +1308,9 @@ class DrawerModal extends Component {
                 <Row>
                   <Col>
                     <span
-                      style={{ display: "inline", "margin-left": "10px" }}
                       style={
                         this.props.CurrentLayer === "LULC"
-                          ? {}
+                          ? { display: "inline", "margin-left": "10px" }
                           : { display: "none" }
                       }
                     >
@@ -1363,10 +1368,9 @@ class DrawerModal extends Component {
                 className="btn-group-sm"
                 role="group"
                 aria-label="Basic radio toggle button group"
-                style={{ fontSize: "10px", marginTop: "10px" }}
                 style={
                   this.props.CurrentLayer === "WEATHER"
-                    ? {}
+                    ? { fontSize: "10px", marginTop: "10px" }
                     : { display: "none" }
                 }
               >
@@ -1424,10 +1428,9 @@ class DrawerModal extends Component {
                 className="btn-group-sm"
                 role="group"
                 aria-label="Basic radio toggle button group"
-                style={{ fontSize: "10px", marginTop: "10px" }}
                 style={
                   this.props.LayerDescription.timerangefilter
-                    ? {}
+                    ? { fontSize: "10px", marginTop: "10px" }
                     : { display: "none" }
                 }
               >

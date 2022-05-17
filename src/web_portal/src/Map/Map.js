@@ -349,18 +349,18 @@ class map extends Component {
     } else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
-          areaValue: parseFloat(
+          areaValue: parseInt(
             e.sourceTarget.feature.properties.zonalstat.sum
-          ).toFixed(2),
-          minVal: parseFloat(
+          ),
+          minVal: parseInt(
             e.sourceTarget.feature.properties.zonalstat.min
-          ).toFixed(2),
-          maxVal: parseFloat(
+          ),
+          maxVal: parseInt(
             e.sourceTarget.feature.properties.zonalstat.max
-          ).toFixed(2),
-          meanVal: parseFloat(
+          ),
+          meanVal: parseInt(
             e.sourceTarget.feature.properties.zonalstat.mean
-          ).toFixed(2),
+          ),
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
         },
         () => {
@@ -1007,7 +1007,7 @@ class map extends Component {
     if (e.target.value === "Grey") {
       this.setState({
         // baseMap:
-        // "https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=" +
+        // "https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=" +
         // "pk.eyJ1IjoiaG90IiwiYSI6ImNpbmx4bWN6ajAwYTd3OW0ycjh3bTZvc3QifQ.KtikS4sFO95Jm8nyiOR4gQ",
         // attribution:
         // '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',

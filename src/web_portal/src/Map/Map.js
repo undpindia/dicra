@@ -515,7 +515,6 @@ class map extends Component {
     if (ltype === "Vector") {
       if (this.state.layerUID === feature.properties.uid) {
         return {
-          weight: 1,
           opacity: 1,
           color: "#2bf527",
           fillOpacity: 1,
@@ -544,7 +543,6 @@ class map extends Component {
     } else {
       if (this.state.layerUID === feature.properties.uid) {
         return {
-          weight: 1,
           opacity: 1,
           color: "#2bf527",
           fillOpacity: 0,
@@ -1430,7 +1428,7 @@ class map extends Component {
                       : { display: "none" }
                   }
                 >
-                  <a>
+                  <a href={() => false}>
                     FRP : {point.properties.frp}
                     <br />
                     Date : {point.properties.acq_date}
@@ -1447,7 +1445,7 @@ class map extends Component {
                       : {}
                   }
                 >
-                  <a
+                  <a href={() => false}
                     style={
                       this.props.CurrentLayer === "CP"
                         ? { display: "none" }
@@ -1460,7 +1458,7 @@ class map extends Component {
                     <br />
                     District : {point.properties.district}
                   </a>
-                  <a
+                  <a href={() => false}
                     style={
                       this.props.CurrentLayer === "CP"
                         ? {}

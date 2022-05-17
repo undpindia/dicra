@@ -83,7 +83,7 @@ export default function GeoRaster(props) {
       const container = layerContainer || map;
       let layer;
 
-      if (layerRef.current != undefined) {
+      if (layerRef.current !== undefined) {
         removeLayer(layerRef.current);
         // layerRef.current = null;
         // window.tiff = 0;

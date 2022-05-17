@@ -889,6 +889,7 @@ class DrawerModal extends Component {
     }
   }
   render() {
+    console.log("abcd",this.state.currentWeatherRange)
     const menu = (
       <Menu onClick={this.onClickParameter}>
         <Menu.Item key="max_temp">Maximum Temperature</Menu.Item>
@@ -1382,7 +1383,7 @@ class DrawerModal extends Component {
                 <input
                   type="radio"
                   className="btn-check"
-                  name="btnradio"
+                  name="weather-btnradio"
                   id="btnradio1"
                   autoComplete="off"
                   style={
@@ -1406,7 +1407,7 @@ class DrawerModal extends Component {
                 <input
                   type="radio"
                   className="btn-check"
-                  name="btnradio"
+                  name="weather-btnradio"
                   id="btnradio2"
                   autoComplete="off"
                   style={
@@ -1443,7 +1444,7 @@ class DrawerModal extends Component {
                   type="radio"
                   className="btn-check"
                   name="btnradio"
-                  id="btnradio2"
+                  id="btnradio3"
                   autoComplete="off"
                   style={
                     this.props.CurrentLayer === "WEATHER"
@@ -1459,7 +1460,7 @@ class DrawerModal extends Component {
                 />
                 <label
                   className="btn btn-primary btn-chart"
-                  htmlFor="btnradio2"
+                  htmlFor="btnradio3"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1472,7 +1473,7 @@ class DrawerModal extends Component {
                   type="radio"
                   className="btn-check"
                   name="btnradio"
-                  id="btnradio3"
+                  id="btnradio4"
                   autoComplete="off"
                   style={
                     this.props.CurrentLayer === "WEATHER"
@@ -1488,7 +1489,7 @@ class DrawerModal extends Component {
                 />
                 <label
                   className="btn btn-primary btn-chart"
-                  htmlFor="btnradio3"
+                  htmlFor="btnradio4"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1501,7 +1502,7 @@ class DrawerModal extends Component {
                   type="radio"
                   className="btn-check"
                   name="btnradio"
-                  id="btnradio4"
+                  id="btnradio5"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1517,7 +1518,7 @@ class DrawerModal extends Component {
                 />
                 <label
                   className="btn btn-primary btn-chart"
-                  htmlFor="btnradio4"
+                  htmlFor="btnradio5"
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }

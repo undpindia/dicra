@@ -7,12 +7,7 @@ import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
 import { geoMercator } from "d3-geo";
 import Moment from "moment";
-import {
-  Row,
-  Col,
-  Card,
-  CardBody,
-} from "reactstrap";
+import { Row, Col, Card, CardBody } from "reactstrap";
 import Chart from "react-apexcharts";
 import { message } from "antd";
 import axiosConfig from "../Common/axios_Config";
@@ -99,33 +94,33 @@ class DrawerModal extends Component {
         },
         grid: {
           show: false,
-          borderColor: '#90A4AE',
+          borderColor: "#90A4AE",
           strokeDashArray: 0,
-          position: 'back',
+          position: "back",
           xaxis: {
-              lines: {
-                  show: false
-              }
-          },   
+            lines: {
+              show: false,
+            },
+          },
           yaxis: {
-              lines: {
-                  show: false
-              }
-          }
-      },
+            lines: {
+              show: false,
+            },
+          },
+        },
         yaxis: {
           show: true,
           min: -1.0,
           labels: {
             show: true,
             style: {
-                colors: "#90989b",
-                fontSize: '12px',
-                fontFamily: 'Helvetica, Arial, sans-serif',
-                fontWeight: 400,
-                cssClass: 'apexcharts-yaxis-label',
+              colors: "#90989b",
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
             },
-        },
+          },
         },
         xaxis: {
           type: "datetime",
@@ -133,10 +128,10 @@ class DrawerModal extends Component {
           labels: {
             format: "yyyy",
             style: {
-              colors: '#90989b',
-              cssClass: 'apexcharts-xaxis-label',
+              colors: "#90989b",
+              cssClass: "apexcharts-xaxis-label",
+            },
           },
-        }
         },
         tooltip: {
           x: {
@@ -224,7 +219,6 @@ class DrawerModal extends Component {
           Datanull: false,
         });
       } else {
-     
         this.setState({
           series: [],
           loader: false,
@@ -363,7 +357,6 @@ class DrawerModal extends Component {
     try {
       const res = await axiosConfig.post(`/gettrend?`, bodyParams);
       if (res.data.code === 404) {
-        
         this.setState({
           series: [],
           loader: false,
@@ -404,7 +397,7 @@ class DrawerModal extends Component {
       name: this.props.CurrentLayer,
       data: [],
     };
-  
+
     if (this.props.CurrentLayer === "LULC") {
       this.setState({
         options: {
@@ -450,33 +443,33 @@ class DrawerModal extends Component {
           },
           grid: {
             show: true,
-            borderColor: '#90A4AE',
+            borderColor: "#90A4AE",
             strokeDashArray: 0,
-            position: 'back',
+            position: "back",
             xaxis: {
-                lines: {
-                    show: false
-                }
-            },   
+              lines: {
+                show: false,
+              },
+            },
             yaxis: {
-                lines: {
-                    show: false
-                }
-            }
-        },
+              lines: {
+                show: false,
+              },
+            },
+          },
           yaxis: {
             show: true,
             min: 0,
             labels: {
               show: true,
               style: {
-                  colors: "#90989b",
-                  fontSize: '12px',
-                  fontFamily: 'Helvetica, Arial, sans-serif',
-                  fontWeight: 400,
-                  cssClass: 'apexcharts-yaxis-label',
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
               },
-          },
+            },
             title: {
               text: this.props.LayerDescription.yaxislabel,
               rotate: -90,
@@ -497,9 +490,9 @@ class DrawerModal extends Component {
             labels: {
               format: "yyyy",
               style: {
-                colors: '#90989b',
-                cssClass: 'apexcharts-xaxis-label',
-            },
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
             },
             title: {
               text: this.props.LayerDescription.xaxislabel,
@@ -543,32 +536,32 @@ class DrawerModal extends Component {
           },
           grid: {
             show: true,
-            borderColor: '#90A4AE',
+            borderColor: "#90A4AE",
             strokeDashArray: 0,
-            position: 'back',
+            position: "back",
             xaxis: {
-                lines: {
-                    show: false
-                }
-            },   
+              lines: {
+                show: false,
+              },
+            },
             yaxis: {
-                lines: {
-                    show: false
-                }
-            }
-        },
+              lines: {
+                show: false,
+              },
+            },
+          },
           yaxis: {
             show: true,
             labels: {
               show: true,
               style: {
-                  colors: "#90989b",
-                  fontSize: '12px',
-                  fontFamily: 'Helvetica, Arial, sans-serif',
-                  fontWeight: 400,
-                  cssClass: 'apexcharts-yaxis-label',
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
               },
-          },
+            },
             title: {
               text: this.props.LayerDescription.yaxislabel,
               rotate: -90,
@@ -589,9 +582,9 @@ class DrawerModal extends Component {
             labels: {
               format: "yyyy",
               style: {
-                colors: '#90989b',
-                cssClass: 'apexcharts-xaxis-label',
-            },
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
             },
             title: {
               text: this.props.LayerDescription.xaxislabel,
@@ -640,16 +633,9 @@ class DrawerModal extends Component {
     }
   }
   setNewshape() {
-    this.setState(
-      {
-        selected_shape: this.props.district.selected_shape,
-      },
-      () => {
-        {
-          // console.log("SELECTED SHAPE", this.state.selected_shape);
-        }
-      }
-    );
+    this.setState({
+      selected_shape: this.props.district.selected_shape,
+    });
   }
   async setPointsChart() {
     var shapeparams = this.props.district.selected_shape;
@@ -662,7 +648,6 @@ class DrawerModal extends Component {
     try {
       const res = await axiosConfig.post(`/getpointstrend?`, bodyParams);
       if (res.data.code === 404) {
-    
         this.setState({
           series: [],
           loader: false,
@@ -1064,7 +1049,6 @@ class DrawerModal extends Component {
                     >
                       <Geographies
                         geography={this.state.selected_shape.features}
-      
                       >
                         {({ geographies }) =>
                           geographies.map((geo) => (
@@ -1290,7 +1274,7 @@ class DrawerModal extends Component {
                 this.props.CurrentLayer === "LULC" ? {} : { display: "none" }
               }
             >
-              <Row style={{ "marginBottom": "2%" }}>
+              <Row style={{ marginBottom: "2%" }}>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
                     <BiLineChart /> Trend
@@ -1355,7 +1339,7 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              <div style={{ "marginBottom": "2%" }}>
+              <div style={{ marginBottom: "2%" }}>
                 <p style={{ fontSize: "18px", display: "inline" }}>
                   <BiLineChart /> Trend
                 </p>
@@ -1392,7 +1376,6 @@ class DrawerModal extends Component {
                   name="btnradio"
                   id="btnradio1"
                   autoComplete="off"
-                  
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? {}
@@ -1406,7 +1389,7 @@ class DrawerModal extends Component {
                   className="btn btn-primary btn-chart"
                   htmlFor="btnradio1"
                   onClick={(e) => {
-                      this.getWeathertrend("6months");
+                    this.getWeathertrend("6months");
                   }}
                 >
                   6 months
@@ -1430,7 +1413,7 @@ class DrawerModal extends Component {
                   className="btn btn-primary btn-chart"
                   htmlFor="btnradio2"
                   onClick={(e) => {
-                      this.getWeathertrend("1Year");
+                    this.getWeathertrend("1Year");
                   }}
                 >
                   1 year
@@ -1464,7 +1447,7 @@ class DrawerModal extends Component {
                   }
                   onClick={(e) => {
                     this.settimerange("1Year");
-                }}
+                  }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
@@ -1474,7 +1457,6 @@ class DrawerModal extends Component {
                       ? { display: "none" }
                       : {}
                   }
-                 
                 >
                   1 year
                 </label>
@@ -1491,9 +1473,10 @@ class DrawerModal extends Component {
                   }
                   checked={
                     this.state.currentCharttime === "3year" ? true : false
-                  }  onClick={(e) => {
+                  }
+                  onClick={(e) => {
                     this.settimerange("3Year");
-                }}
+                  }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
@@ -1503,7 +1486,6 @@ class DrawerModal extends Component {
                       ? { display: "none" }
                       : {}
                   }
-                
                 >
                   3 year
                 </label>
@@ -1523,7 +1505,7 @@ class DrawerModal extends Component {
                   }
                   onClick={(e) => {
                     this.settimerange("5Year");
-                }}
+                  }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
@@ -1533,7 +1515,6 @@ class DrawerModal extends Component {
                       ? { display: "none" }
                       : {}
                   }
-                 
                 >
                   5 year
                 </label>

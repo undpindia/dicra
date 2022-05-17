@@ -399,6 +399,10 @@ class DrawerModal extends Component {
     };
 
     if (this.props.CurrentLayer === "LULC") {
+      trendData = {
+        name: "Percentage",
+        data: [],
+      };
       this.setState({
         options: {
           colors: ["#d65522"],
@@ -460,6 +464,7 @@ class DrawerModal extends Component {
           yaxis: {
             show: true,
             min: 0,
+            tickAmount: 4,
             labels: {
               show: true,
               style: {

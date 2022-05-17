@@ -178,28 +178,28 @@ export default function GeoRaster(props) {
               }
             });
 
-            map.on("click", async function (evt) {
-              var latlng = map.mouseEventToLatLng(evt.originalEvent);
-              var loc = [latlng.lng, latlng.lat];
+            // map.on("click", async function (evt) {
+            //   var latlng = map.mouseEventToLatLng(evt.originalEvent);
+            //   var loc = [latlng.lng, latlng.lat];
 
             
-              // const stats = await geoblaze.stats(window.tiff, shapegeojson);
-              // const histograms = await geoblaze.histogram(window.tiff, shapegeojson,{ scaleType: "ratio", numClasses: 10, classType: "equal-interval" });
-              // console.log("STATS",histograms)
-              const result = geoblaze.identify(window.tiff, loc);
-              // props.togglechart();
-              if (result != null) {
-                if (result > 1) {
-                  {
-                    // props.update(result);
-                    // console.log("CLICK VALUE", result);
-                  }
-                  {
-                    // props.setloc(latlng.lat, latlng.lng);
-                  }
-                }
-              }
-            });
+            //   const stats = await geoblaze.stats(window.tiff, shapegeojson);
+            //   const histograms = await geoblaze.histogram(window.tiff, shapegeojson,{ scaleType: "ratio", numClasses: 10, classType: "equal-interval" });
+            //   console.log("STATS",histograms)
+            //   const result = geoblaze.identify(window.tiff, loc);
+            //   // props.togglechart();
+            //   if (result != null) {
+            //     if (result > 1) {
+            //       {
+            //         // props.update(result);
+            //         // console.log("CLICK VALUE", result);
+            //       }
+            //       {
+            //         // props.setloc(latlng.lat, latlng.lng);
+            //       }
+            //     }
+            //   }
+            // });
 
             layerRef.current = layer;
             container.addLayer(layer);

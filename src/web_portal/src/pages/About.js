@@ -19,6 +19,7 @@ const mapStateToProps = (ReduxProps) => {
     Layers: ReduxProps.Layers,
   };
 };
+let notavailable=1
 class About extends React.Component {
   render() {
     return (
@@ -29,10 +30,10 @@ class About extends React.Component {
         <div className="about-body">
           <div>
             <div style={{ paddingBottom: "10px" }}>
-                <h6 className="page-heading">About DiCRA</h6>
-                <Link to="/">
-                  <BiX className="page-close" />
-                </Link>
+              <h6 className="page-heading">About DiCRA</h6>
+              <Link to="/">
+                <BiX className="page-close" />
+              </Link>
             </div>
             <hr />
             <div>
@@ -75,12 +76,20 @@ class About extends React.Component {
                 <Row>
                   <ul className="org-logo">
                     <li className="org-logo-item">
-                      <a href="https://www.undp.org/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://www.undp.org/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img src={undplogo} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.telangana.gov.in/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://www.telangana.gov.in/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img src={telenganalogo} alt="" />
                       </a>
                     </li>
@@ -94,12 +103,20 @@ class About extends React.Component {
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.icrisat.org/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://www.icrisat.org/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img src={icrisat} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.jads.nl/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://www.jads.nl/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img src={jads} alt="" />
                       </a>
                     </li>
@@ -113,20 +130,29 @@ class About extends React.Component {
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://www.pjtsau.edu.in/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://www.pjtsau.edu.in/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img src={telenganaagri} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
                       <a
                         href="https://www.tilburguniversity.edu/"
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <img src={tilburg} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
-                      <a href="https://misteo.co/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://misteo.co/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <img src={misteo} alt="" />
                       </a>
                     </li>
@@ -160,39 +186,20 @@ class About extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.Layers.map((data,index) => {
-                        if (data.isavailable === true) {
-                          return (
-                            <tr key={index}>
-                              <td>{data.display_name}</td>
-                              <td>{data.long_description}</td>
-                              <td>{data.source}</td>
-                              <td>{data.citation}</td>
-                              <td>{data.standards}</td>
-                            </tr>
-                          );
-                        }
-                      })}
-                      {/* <tr>
-                          <td>NDVI</td>
-                          <td>
-                            Normalized Difference Vegetation Index (NDVI)
-                            quantifies vegetation by measuring the difference
-                            between near-infrared (which vegetation strongly
-                            reflects) and red light (which vegetation absorbs)
-                          </td>
-                          <td>GLAM NDVIDB</td>
-                        </tr>
-                        <tr>
-                          <td>RWI</td>
-                          <td>
-                            The Relative Wealth Index predicts the relative
-                            standard of living within countries using privacy
-                            protecting connectivity data, satellite imagery, and
-                            other novel data sources.
-                          </td>
-                          <td>dataforgood.facebook.com</td>
-                        </tr> */}
+                      {this.props.Layers.map((data, index) =>
+                        data.isavailable ? (
+                          <tr key={index}>
+                            <td>{data.display_name}</td>
+                            <td>{data.long_description}</td>
+                            <td>{data.source}</td>
+                            <td>{data.citation}</td>
+                            <td>{data.standards}</td>
+                          </tr>
+                        ) : (
+                          notavailable=notavailable+1
+                        )
+                      )}
+                    
                     </tbody>
                   </Table>
                 </div>

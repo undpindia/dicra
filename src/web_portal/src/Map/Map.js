@@ -1210,14 +1210,18 @@ class map extends Component {
             value={this.state.layerType}
             optionType="button"
             buttonStyle="solid"
-            disabled={this.state.showlayertype ? false : true}
-            disabled={
-              this.props.LayerDescription.vector_status === false
-                ? true
-                : false || this.props.LayerDescription.raster_status === false
-                ? true
-                : false
-            }
+            disabled={this.state.showlayertype ? this.props.LayerDescription.vector_status === false
+              ? true
+              : false || this.props.LayerDescription.raster_status === false
+              ? true
+              : false : true}
+            // disabled={
+            //   this.props.LayerDescription.vector_status === false
+            //     ? true
+            //     : false || this.props.LayerDescription.raster_status === false
+            //     ? true
+            //     : false
+            // }
           />
         </div>
         <div
@@ -1412,9 +1416,7 @@ class map extends Component {
               key={key}
               direction="top"
               onClick={(e) => {
-                {
-                  this.handlePointclick(point.properties.name);
-                }
+                this.handlePointclick(point.properties.name);
               }}
             >
               {this.props.CurrentLayer === "FIREEV" ? (

@@ -197,21 +197,19 @@ class Usecases extends React.Component {
                       <div className="card-body">
                         <Row style={{ paddingBottom: "10px" }}>
                           <Col>
-                            <a className="card-calender">20 March 2021</a>
+                            <a href={() => false} className="card-calender">20 March 2021</a>
                           </Col>
                           <Col>
-                            <a className="card-link">{data.url}</a>
+                            <a href={() => false} className="card-link">{data.url}</a>
                           </Col>
                         </Row>
                         <h5 className="card-title">{data.project_name}</h5>
                         <p className="card-text">{data.short_description}</p>
                         <div className="card-more">
                           <BiChevronRightCircle style={{ fontSize: "22px" }} />{" "}
-                          <a
+                          <a href={() => false}
                             onClick={(e) => {
-                              {
                                 this.modalShow(data);
-                              }
                             }}
                           >
                             Find out More
@@ -418,6 +416,7 @@ class Usecases extends React.Component {
                           "https://internalapidev.chickenkiller.com/static/" +
                           this.state.currentUsecase.image
                         }
+                        alt="..."
                         className="cover"
                       />
                       <div className="centered">
@@ -442,10 +441,11 @@ class Usecases extends React.Component {
                             </p>
                           </Col>
                           <Col md={12} style={{ textAlign: "left" }}>
-                            <a style={{ fontWeight: "bold" }}>URL : </a>{" "}
+                            <a href={() => false} style={{ fontWeight: "bold" }}>URL : </a>{" "}
                             <a
                               href={this.state.currentUsecase.url}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               {this.state.currentUsecase.url}
                             </a>

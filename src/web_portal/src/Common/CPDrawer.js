@@ -5,18 +5,13 @@ import { Menu, Dropdown, notification } from "antd";
 import { DownOutlined, InfoCircleTwoTone } from "@ant-design/icons";
 import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
-import Moment from 'moment';
-import {
-  Button,
-  Row,
-  Col,
-} from "reactstrap";
+import Moment from "moment";
+import { Button, Row, Col } from "reactstrap";
 import Chart from "react-apexcharts";
-import {message } from "antd";
+import { message } from "antd";
 import axiosConfig from "../Common/axios_Config";
 import Loader from "../img/loader.gif";
 import { connect } from "react-redux";
-
 
 const mapStateToProps = (ReduxProps) => {
   return {
@@ -106,33 +101,33 @@ class CPDrawerModal extends Component {
         },
         grid: {
           show: false,
-          borderColor: '#90A4AE',
+          borderColor: "#90A4AE",
           strokeDashArray: 0,
-          position: 'back',
+          position: "back",
           xaxis: {
-              lines: {
-                  show: false
-              }
-          },   
+            lines: {
+              show: false,
+            },
+          },
           yaxis: {
-              lines: {
-                  show: true
-              }
-          }
-      },
+            lines: {
+              show: true,
+            },
+          },
+        },
         yaxis: {
           show: true,
           min: -1.0,
           labels: {
             show: true,
             style: {
-                colors: "#90989b",
-                fontSize: '12px',
-                fontFamily: 'Helvetica, Arial, sans-serif',
-                fontWeight: 400,
-                cssClass: 'apexcharts-yaxis-label',
+              colors: "#90989b",
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
             },
-        },
+          },
         },
         xaxis: {
           type: "datetime",
@@ -140,9 +135,9 @@ class CPDrawerModal extends Component {
           labels: {
             format: "yyyy",
             style: {
-              colors: '#90989b',
-              cssClass: 'apexcharts-xaxis-label',
-          },
+              colors: "#90989b",
+              cssClass: "apexcharts-xaxis-label",
+            },
           },
         },
         tooltip: {
@@ -314,9 +309,12 @@ class CPDrawerModal extends Component {
   }
   sortVarietyname(list) {
     var VarietyList = [];
-    list.map(function (item, index, data) {
-      VarietyList.push(item[0]);
-    });
+
+    list.map((item) => VarietyList.push(item[0]));
+
+    // list.map(function (item, index, data) {
+    //   VarietyList.push(item[0]);
+    // });
     this.setState(
       {
         varietyNames: VarietyList,
@@ -328,22 +326,18 @@ class CPDrawerModal extends Component {
     );
   }
   generatechart(data) {
-
     var trendData = {
       name: this.props.CurrentLayer,
       data: [],
     };
 
     if (data != null) {
-      data.map(function (item, index, data) {
-        trendData.data.push({
-          x: item[0],
-          y: item[1],
-        });
-      });
+      data.map((item) =>  trendData.data.push({
+        x: item[0],
+        y: item[1],
+      }));
     }
 
-  
     this.setState({
       series: [trendData],
       loader: false,
@@ -356,32 +350,32 @@ class CPDrawerModal extends Component {
         },
         grid: {
           show: false,
-          borderColor: '#90A4AE',
+          borderColor: "#90A4AE",
           strokeDashArray: 0,
-          position: 'back',
+          position: "back",
           xaxis: {
-              lines: {
-                  show: false
-              }
-          },   
+            lines: {
+              show: false,
+            },
+          },
           yaxis: {
-              lines: {
-                  show: true
-              }
-          }
-      },
+            lines: {
+              show: true,
+            },
+          },
+        },
         yaxis: {
           show: true,
           labels: {
             show: true,
             style: {
-                colors: "#90989b",
-                fontSize: '12px',
-                fontFamily: 'Helvetica, Arial, sans-serif',
-                fontWeight: 400,
-                cssClass: 'apexcharts-yaxis-label',
+              colors: "#90989b",
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
             },
-        },
+          },
           title: {
             text: this.props.LayerDescription.yaxislabel,
             rotate: -90,
@@ -402,9 +396,9 @@ class CPDrawerModal extends Component {
           labels: {
             format: "yyyy",
             style: {
-              colors: '#90989b',
-              cssClass: 'apexcharts-xaxis-label',
-          },
+              colors: "#90989b",
+              cssClass: "apexcharts-xaxis-label",
+            },
           },
           title: {
             text: this.props.LayerDescription.xaxislabel,
@@ -434,7 +428,6 @@ class CPDrawerModal extends Component {
   }
 
   settimerange(daterange) {
-  
     if (daterange === "6months") {
       let current_date;
       let from_date;
@@ -695,7 +688,9 @@ class CPDrawerModal extends Component {
               </Col>
               <Col className="alignrignt">
                 <p style={{ fontSize: "18px", marginBottom: "15px" }}>
-                  {Moment(this.props.LayerDescription.last_updated).format('DD-MM-YYYY').slice(0, 10)}
+                  {Moment(this.props.LayerDescription.last_updated)
+                    .format("DD-MM-YYYY")
+                    .slice(0, 10)}
                 </p>
               </Col>
             </Row>
@@ -746,17 +741,21 @@ class CPDrawerModal extends Component {
               <p style={{ fontSize: "15px", fontWeight: "lighter" }}>
                 {this.props.LayerDescription.long_description}
               </p>
-              <div style={{marginBottom:"5px"}}>
-                <p style={{marginBottom:"0px", color:"#2867a1"}}>SOURCE</p>
+              <div style={{ marginBottom: "5px" }}>
+                <p style={{ marginBottom: "0px", color: "#2867a1" }}>SOURCE</p>
                 <p>{this.props.LayerDescription.source}</p>
               </div>
-              <div style={{marginBottom:"5px"}}>
-                <p style={{marginBottom:"0px", color:"#2867a1"}}>CITATION</p> 
+              <div style={{ marginBottom: "5px" }}>
+                <p style={{ marginBottom: "0px", color: "#2867a1" }}>
+                  CITATION
+                </p>
                 <p>{this.props.LayerDescription.citation}</p>
               </div>
               <div>
-              <p style={{marginBottom:"0px", color:"#2867a1"}}>STANDARDS</p>
-              <p>{this.props.LayerDescription.standards}</p>
+                <p style={{ marginBottom: "0px", color: "#2867a1" }}>
+                  STANDARDS
+                </p>
+                <p>{this.props.LayerDescription.standards}</p>
               </div>
             </Row>
             <hr />

@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  Form,
-  FormGroup,
-  Input
-} from "reactstrap";
+import { Form, FormGroup, Input } from "reactstrap";
 import { message } from "antd";
 import axiosConfig from "../../Common/axios_Config";
 
@@ -129,19 +125,19 @@ class LayerDetails extends Component {
                   // disabled={this.props.layers.isavailable ? false : true}
                   onChange={(e) => this.changeLayer(e)}
                 >
-                  {this.props.layers.map(function (layer,index) {
-                    if (layer.isavailable) {
-                      return (
-                        <option
-                          value={layer.layer_name}
-                          key={index}
-                          disabled={layer.isavailable ? false : true}
-                        >
-                          {layer.display_name}
-                        </option>
-                      );
-                    }
-                  })}
+                  {this.props.layers.map((layer, index) =>
+                    layer.isavailable ? (
+                      <option
+                        value={layer.layer_name}
+                        key={index}
+                        disabled={layer.isavailable ? false : true}
+                      >
+                        {layer.display_name}
+                      </option>
+                    ) : (
+                      console.log("Download layer not available")
+                    )
+                  )}
                 </Input>
               </FormGroup>
 
@@ -166,7 +162,7 @@ class LayerDetails extends Component {
                   value={this.state.selectedFile}
                   onChange={(e) => this.changeFile(e)}
                 >
-                  {this.state.availableFiles.map(function (layer,index) {
+                  {this.state.availableFiles.map(function (layer, index) {
                     return (
                       <option value={layer.filename_on_blob} key={index}>
                         {layer.filename_on_blob}
@@ -181,8 +177,8 @@ class LayerDetails extends Component {
         <p
           className="open-api"
           style={{
-            "fontSize": "10px",
-            "fontFamily": "'proxima-nova', sans-serif",
+            fontSize: "10px",
+            fontFamily: "'proxima-nova', sans-serif",
             textAlign: "left",
             fontStyle: "italic",
           }}

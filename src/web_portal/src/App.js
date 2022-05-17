@@ -4,7 +4,6 @@ import "./App.css";
 import Map from "./Map/Map";
 import Usecases from "./pages/Usecases";
 import About from "./pages/About";
-import Help from "./pages/Help.js";
 import Analytics from "./pages/Analytics";
 import Policy from "./pages/Policy";
 import Terms from "./pages/Terms";
@@ -52,9 +51,6 @@ function App() {
           </Route>
           <Route path="/about-project">
             <About />
-          </Route>
-          <Route path="/help">
-            <Help />
           </Route>
           <Route path="/analytics">
             <Analytics />

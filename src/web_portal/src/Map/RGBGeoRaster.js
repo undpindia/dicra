@@ -16,7 +16,6 @@ export default function GeoRaster(props) {
   const [layermin, setLayermin] = useState(0);
   const [layermax, setLayermax] = useState(0);
   const [layerrange, setLayerrange] = useState(0);
-  const [layerscale, setLayerscale] = useState(null);
   const removeLayer = (layer) => {
     map.removeLayer(layer);
     window.tiff = 0;
@@ -34,6 +33,9 @@ export default function GeoRaster(props) {
   function getColorFromValues() {
     if (layerRef.current != null) {
       layerRef.current.updateColors(function (values) {
+        var newScale=[];
+        var scaledPixelvalue="";
+        var color=""
         // console.log("PIXEL VALUEs",values)
         if (RasterOpacity === false) {
           return null;
@@ -44,7 +46,7 @@ export default function GeoRaster(props) {
             return "#757575";
           }
           if (currentLayer === "LULC") {
-            var newScale = chroma.scale([
+            newScale = chroma.scale([
               "#dc0f0f",
               "#44ce5d",
               "#7533e6",
@@ -57,15 +59,15 @@ export default function GeoRaster(props) {
               "#cf3c8d",
               "#64caef",
             ]);
-            var scaledPixelvalue = (values - layermin) / layerrange;
-            var color = newScale(scaledPixelvalue).hex();
+            scaledPixelvalue = (values - layermin) / layerrange;
+            color = newScale(scaledPixelvalue).hex();
             return color;
           } else {
-            var newScale = chroma
+            newScale = chroma
               .scale(ColorscalePicker)
               .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-            var scaledPixelvalue = (values - layermin) / layerrange;
-            var color = newScale(scaledPixelvalue).hex();
+            scaledPixelvalue = (values - layermin) / layerrange;
+            color = newScale(scaledPixelvalue).hex();
             return color;
           }
         }
@@ -92,12 +94,11 @@ export default function GeoRaster(props) {
           geoblaze.load(blob).then((georaster) => {
             var min = georaster.mins[0];
             var max = georaster.maxs[0];
-
+            var range
             setLayermin(min);
             setLayermax(max);
-
             if (currentLayer === "LULC") {
-              var range = georaster.ranges[0];
+              range = georaster.ranges[0];
               setLayerrange(range);
               //  var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma.scale([
@@ -113,16 +114,16 @@ export default function GeoRaster(props) {
                 "#cf3c8d",
                 "#64caef",
               ]);
-              setLayerscale(scale);
+             
               window.tiff = georaster;
             } else {
-              var range = georaster.ranges[0];
+              range = georaster.ranges[0];
               setLayerrange(range);
               // var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma
                 .scale(ColorscalePicker)
                 .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-              setLayerscale(scale);
+        
             }
             window.tiff = georaster;
             layer = new GeoRasterLayer({
@@ -167,7 +168,7 @@ export default function GeoRaster(props) {
                   latlng.lng,
                   latlng.lat,
                 ]);
-                if (Number(result) > 0.0) {
+                if (Number(result) > min) {
                   result = parseFloat(result).toFixed(2);
                   dispatch({ type: "SETVALUE", payload: result });
                 } else {
@@ -176,38 +177,28 @@ export default function GeoRaster(props) {
               }
             });
 
-            map.on("click", async function (evt) {
-              var latlng = map.mouseEventToLatLng(evt.originalEvent);
-              var loc = [latlng.lng, latlng.lat];
+            // map.on("click", async function (evt) {
+            //   var latlng = map.mouseEventToLatLng(evt.originalEvent);
+            //   var loc = [latlng.lng, latlng.lat];
 
-              const shapegeojson = {
-                type: "Polygon",
-                coordinates: [
-                  [
-                    [78.936767578125, 18.127580917219024],
-                    [78.88458251953125, 18.03358642603099],
-                    [79.16748046874999, 17.981345545819597],
-                    [78.936767578125, 18.127580917219024],
-                  ],
-                ],
-              };
-              // const stats = await geoblaze.stats(window.tiff, shapegeojson);
-              // const histograms = await geoblaze.histogram(window.tiff, shapegeojson,{ scaleType: "ratio", numClasses: 10, classType: "equal-interval" });
-              // console.log("STATS",histograms)
-              const result = geoblaze.identify(window.tiff, loc);
-              // props.togglechart();
-              if (result != null) {
-                if (result > 1) {
-                  {
-                    // props.update(result);
-                    // console.log("CLICK VALUE", result);
-                  }
-                  {
-                    // props.setloc(latlng.lat, latlng.lng);
-                  }
-                }
-              }
-            });
+            
+            //   const stats = await geoblaze.stats(window.tiff, shapegeojson);
+            //   const histograms = await geoblaze.histogram(window.tiff, shapegeojson,{ scaleType: "ratio", numClasses: 10, classType: "equal-interval" });
+            //   console.log("STATS",histograms)
+            //   const result = geoblaze.identify(window.tiff, loc);
+            //   // props.togglechart();
+            //   if (result != null) {
+            //     if (result > 1) {
+            //       {
+            //         // props.update(result);
+            //         // console.log("CLICK VALUE", result);
+            //       }
+            //       {
+            //         // props.setloc(latlng.lat, latlng.lng);
+            //       }
+            //     }
+            //   }
+            // });
 
             layerRef.current = layer;
             container.addLayer(layer);

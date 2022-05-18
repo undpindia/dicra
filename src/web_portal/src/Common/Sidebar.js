@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect,useRef  } from "react";
 import {
   BiLayer,
   BiDownload,
@@ -13,8 +13,14 @@ import {
 import { AiFillGithub } from "react-icons/ai";
 import { Sidebar, Tab } from "./Sidetabs";
 import { useSelector, useDispatch } from "react-redux";
-import { FormGroup, Label, Input, Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import {
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+} from "reactstrap";
+import {Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import LayerDetails from "./Download/LayerDetails";
 import PersonalDetails from "./Download/PersonalDetails";
@@ -103,9 +109,9 @@ const SidebarComponent = (props) => {
     dispatch({ type: "CHANGELAYERDESC", payload: desc });
     props.resetZoom();
     // if (selectedRegion !== "CUSTOM") {
-    setTimeout(function () {
-      props.changeCurrentLayer();
-    }, 3000);
+      setTimeout(function () {
+        props.changeCurrentLayer();
+      }, 3000);
     // }
   }
   function callback(key) {
@@ -165,13 +171,9 @@ const SidebarComponent = (props) => {
               {Categorylist.map((layers, index) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items, indexlayers) => {
+                    {Layers[0][layers].map((items,indexlayers) => {
                       return (
-                        <FormGroup
-                          tag="fieldset"
-                          className="btn-radio"
-                          key={indexlayers}
-                        >
+                        <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
                           <Row>
                             <Col
                               md={8}
@@ -212,17 +214,15 @@ const SidebarComponent = (props) => {
                                       data-for="show-disabledbtn"
                                       style={{ cursor: "not-allowed" }}
                                     />
-                                  ) : LayerToggle ? (
-                                    <BiShow
+                                  ) : (
+                                    LayerToggle ? ( <BiShow
                                       data-tip
                                       data-for="show-btn"
                                       onClick={(e) => toggleLayer()}
                                       // style={
                                       //   LayerToggle ? {} : { display: "none" }
                                       // }
-                                    />
-                                  ) : (
-                                    <BiHide
+                                    />):(<BiHide
                                       data-tip
                                       data-for="show-btn"
                                       onClick={(e) => toggleLayer()}
@@ -232,17 +232,19 @@ const SidebarComponent = (props) => {
                                       // style= { LayerDesc.raster_status === false
                                       //   ? { cursor: "not-allowed" }
                                       //   : {}}
-                                    />
-                                  )}
-                                  <ReactTooltip
-                                    id="show-btn"
-                                    place="bottom"
-                                    effect="solid"
-                                    multiline={true}
-                                  >
-                                    Show/Hide Layer
-                                  </ReactTooltip>
+                                    />)
+                                  )
+                                  }
+                                   <ReactTooltip
+                                  id="show-btn"
+                                  place="bottom"
+                                  effect="solid"
+                                  multiline={true}
+                                >
+                                  Show/Hide Layer
+                                </ReactTooltip>
                                 </div>
+                               
                                 &nbsp;&nbsp;
                                 <div
                                   style={
@@ -347,9 +349,9 @@ const SidebarComponent = (props) => {
                 data-tip
                 data-for="help"
                 onClick={(e) => {
-                  window
-                    .open("https://dev.misteo.co/dicrahelp/", "_blank")
-                    .focus();
+                    window
+                      .open("https://dev.misteo.co/dicrahelp/", "_blank")
+                      .focus();
                 }}
               />
               // </Link>

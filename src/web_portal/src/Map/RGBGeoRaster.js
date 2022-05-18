@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useRef} from "react";
+import React, { useEffect, useState } from "react";
 import { useLeaflet } from "react-leaflet";
 import GeoRasterLayer from "georaster-layer-for-leaflet";
 import chroma from "chroma-js";
@@ -23,23 +23,15 @@ export default function GeoRaster(props) {
   const layerRef = React.useRef(null);
   var scale;
 
-  const changeRasterColor = useRef(() => {
-    setTimeout(function () {
-        getColorFromValues();
-      }, 700);
-  });
-
-  const addNewLayer = useRef(() => {
-    addlayer();
-    props.onRef(undefined);
-  });
-
   useEffect(() => {
-    changeRasterColor.current();
+    // side effect here on change of any of props.x or stateY
+    setTimeout(function () {
+      getColorFromValues();
+    }, 700);
   }, [ColorscalePicker, RasterOpacity]);
 
   function getColorFromValues() {
-    if (layerRef.current) {
+    if (layerRef.current != null) {
       layerRef.current.updateColors(function (values) {
         var newScale=[];
         var scaledPixelvalue="";
@@ -91,7 +83,7 @@ export default function GeoRaster(props) {
       const container = layerContainer || map;
       let layer;
 
-      if (layerRef.current) {
+      if (layerRef.current != undefined) {
         removeLayer(layerRef.current);
         // layerRef.current = null;
         // window.tiff = 0;
@@ -105,6 +97,7 @@ export default function GeoRaster(props) {
             var range
             setLayermin(min);
             setLayermax(max);
+
             if (currentLayer === "LULC") {
               range = georaster.ranges[0];
               setLayerrange(range);
@@ -176,7 +169,7 @@ export default function GeoRaster(props) {
                   latlng.lng,
                   latlng.lat,
                 ]);
-                if (Number(result) > min) {
+                if (Number(result) > 0.0) {
                   result = parseFloat(result).toFixed(2);
                   dispatch({ type: "SETVALUE", payload: result });
                 } else {
@@ -225,7 +218,8 @@ export default function GeoRaster(props) {
   }
 
   useEffect(() => {
-    addNewLayer.current()
+    addlayer();
+    props.onRef(undefined);
   }, [currentLayer]);
 
   return null;

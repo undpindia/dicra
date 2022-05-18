@@ -124,7 +124,7 @@ class DrawerModal extends Component {
         },
         xaxis: {
           type: "datetime",
-          tickAmount: 6,
+          // tickAmount: 6,
           labels: {
             format: "yyyy",
             style: {
@@ -608,12 +608,12 @@ class DrawerModal extends Component {
         },
       });
     }
-    if (data !== null) {
+    if (data) {
       data.map((item) =>
         item[1] !== null
           ? trendData.data.push({
               x: item[0],
-              y: parseFloat(item[1]).toFixed(2),
+              y: this.props.CurrentLayer === "POPULATION"?parseInt(item[1]):parseFloat(item[1]).toFixed(2),
             })
           : notavailable=notavailable+1
       );
@@ -1102,7 +1102,7 @@ class DrawerModal extends Component {
                           fontSize: "18px",
                         }}
                       >
-                        {this.props.district.area} (&#13218;)
+                        {this.props.district.area} (&#13217;)
                       </p>
                     </Row>
                   </Col>

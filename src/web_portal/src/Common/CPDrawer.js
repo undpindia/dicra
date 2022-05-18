@@ -154,7 +154,7 @@ class CPDrawerModal extends Component {
           curve: "straight",
           lineCap: "butt",
           colors: undefined,
-          width: 2,
+          width: 1,
           dashArray: 0,
         },
       },

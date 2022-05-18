@@ -14,7 +14,7 @@ import axiosConfig from "../Common/axios_Config";
 import Loader from "../img/loader.gif";
 import { connect } from "react-redux";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-let notavailable=1
+let notavailable = 1;
 const mapStateToProps = (ReduxProps) => {
   return {
     CurrentLayer: ReduxProps.CurrentLayer,
@@ -392,12 +392,44 @@ class DrawerModal extends Component {
       message.error("Failed to connect to server");
     }
   }
+  getyaxistext() {
+    if (this.props.CurrentLayer === "WEATHER") {
+      if (this.state.selectedWeatherparams == "rain") {
+        return "mm";
+      }
+      if (this.state.selectedWeatherparams === "min_temp") {
+        return "°C";
+      }
+      if (this.state.selectedWeatherparams === "max_temp") {
+        return "°C";
+      }
+      if (this.state.selectedWeatherparams === "min_humidity") {
+        return "%";
+      }
+      if (this.state.selectedWeatherparams === "max_humidity") {
+        return "%";
+      }
+      if (this.state.selectedWeatherparams === "min_wind_speed") {
+        return "m/s";
+      }
+      if (this.state.selectedWeatherparams === "max_wind_speed") {
+        return "m/s";
+      }
+    } else {
+      return this.props.LayerDescription.yaxislabel;
+    }
+  }
   generatechart(data) {
-    var trendData = {
+    let trendData = {
       name: this.props.CurrentLayer,
       data: [],
     };
-
+    if (this.props.CurrentLayer === "WEATHER") {
+      trendData = {
+        name: this.state.selectedWeatherparams,
+        data: [],
+      };
+    }
     if (this.props.CurrentLayer === "LULC") {
       trendData = {
         name: "Percentage",
@@ -568,7 +600,7 @@ class DrawerModal extends Component {
               },
             },
             title: {
-              text: this.props.LayerDescription.yaxislabel,
+              text: this.getyaxistext(),
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
@@ -613,9 +645,12 @@ class DrawerModal extends Component {
         item[1] !== null
           ? trendData.data.push({
               x: item[0],
-              y: this.props.CurrentLayer === "POPULATION"?parseInt(item[1]):parseFloat(item[1]).toFixed(2),
+              y:
+                this.props.CurrentLayer === "POPULATION"
+                  ? parseInt(item[1])
+                  : parseFloat(item[1]).toFixed(2),
             })
-          : notavailable=notavailable+1
+          : (notavailable = notavailable + 1)
       );
       // data.map(function (item, index, data) {
       //   if (item[1] !== null) {
@@ -889,7 +924,6 @@ class DrawerModal extends Component {
     }
   }
   render() {
-    console.log("abcd",this.state.currentWeatherRange)
     const menu = (
       <Menu onClick={this.onClickParameter}>
         <Menu.Item key="max_temp">Maximum Temperature</Menu.Item>
@@ -1151,7 +1185,7 @@ class DrawerModal extends Component {
                 <span
                   style={
                     this.props.CurrentLayer === "WEATHER"
-                      ? { display: "inline", "margin-left": "10px"}
+                      ? { display: "inline", "margin-left": "10px" }
                       : { display: "none" }
                   }
                 >
@@ -1226,7 +1260,7 @@ class DrawerModal extends Component {
                   this.props.CurrentLayer === "WEATHER" ||
                   this.props.CurrentLayer === "LULC"
                     ? { display: "none" }
-                    : {paddingLeft: "0px", paddingTop: "20px" }
+                    : { paddingLeft: "0px", paddingTop: "20px" }
                 }
               >
                 <Row>

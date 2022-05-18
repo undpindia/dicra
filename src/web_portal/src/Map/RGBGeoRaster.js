@@ -169,7 +169,7 @@ export default function GeoRaster(props) {
                   latlng.lng,
                   latlng.lat,
                 ]);
-                if (Number(result) > 0.0) {
+                if (Number(result) > min) {
                   result = parseFloat(result).toFixed(2);
                   dispatch({ type: "SETVALUE", payload: result });
                 } else {

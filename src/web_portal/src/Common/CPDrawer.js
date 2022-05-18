@@ -117,6 +117,7 @@ class CPDrawerModal extends Component {
         },
         yaxis: {
           show: true,
+          tickAmount:3,
           min: -1.0,
           labels: {
             show: true,
@@ -366,6 +367,7 @@ class CPDrawerModal extends Component {
         },
         yaxis: {
           show: true,
+          tickAmount:3,
           labels: {
             show: true,
             style: {

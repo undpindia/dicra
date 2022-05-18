@@ -1541,7 +1541,7 @@ class DrawerModal extends Component {
                   series={this.state.series}
                   options={this.state.options}
                   type="line"
-                  height="140"
+                  height="180"
                 />
               </div>
             </Row>

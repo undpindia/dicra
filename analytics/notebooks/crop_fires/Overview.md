@@ -16,7 +16,7 @@ Main Challenge: How can policy makers decrease the amount of crop residue fires 
 ## Approach:
 
 1) Overview of all available data
-2) Distinguish between crop fires and natural fires
+2) Distinguish between agricultural fires and other events
 3) Identify datasets that can quantify the practice of crop burning (areas under rice, cropping patterns, air quality indicators)
 4) Literature Research about Positive Deviance Modelling 
 5) Modeling Positive Deviance 

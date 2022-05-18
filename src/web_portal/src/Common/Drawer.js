@@ -889,7 +889,6 @@ class DrawerModal extends Component {
     }
   }
   render() {
-    console.log("abcd",this.state.currentWeatherRange)
     const menu = (
       <Menu onClick={this.onClickParameter}>
         <Menu.Item key="max_temp">Maximum Temperature</Menu.Item>

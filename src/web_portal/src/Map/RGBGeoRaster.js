@@ -97,6 +97,7 @@ export default function GeoRaster(props) {
             var range
             setLayermin(min);
             setLayermax(max);
+
             if (currentLayer === "LULC") {
               range = georaster.ranges[0];
               setLayerrange(range);
@@ -168,7 +169,7 @@ export default function GeoRaster(props) {
                   latlng.lng,
                   latlng.lat,
                 ]);
-                if (Number(result) > min) {
+                if (Number(result) > 0.0) {
                   result = parseFloat(result).toFixed(2);
                   dispatch({ type: "SETVALUE", payload: result });
                 } else {

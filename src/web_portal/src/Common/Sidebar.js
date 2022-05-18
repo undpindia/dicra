@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef  } from "react";
 import {
   BiLayer,
   BiDownload,
@@ -117,7 +117,7 @@ const SidebarComponent = (props) => {
   function callback(key) {
     // console.log(key);
   }
-  useEffect(() => {
+  const changeLayer = useRef(() => {
     getLayers();
     if (DownLayerDesc.multiple_files === true) {
       if (selectedDowndate !== "") {
@@ -128,6 +128,9 @@ const SidebarComponent = (props) => {
     } else {
       setActivebutton(true);
     }
+  });
+  useEffect(() => {
+    changeLayer.current();
   }, [Layercount, selectedDowndate, isActivebutton, DownLayer]);
 
   function toggleLayer() {

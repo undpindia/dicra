@@ -349,9 +349,9 @@ class map extends Component {
     } else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
-          areaValue: parseFloat(
+          areaValue: parseInt(
             e.sourceTarget.feature.properties.zonalstat.sum
-          ).toFixed(2),
+          ),
           minVal: parseFloat(
             e.sourceTarget.feature.properties.zonalstat.min
           ).toFixed(2),

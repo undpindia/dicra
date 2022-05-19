@@ -1,3 +1,4 @@
+
 fireID,latitude,longitude,brightness,scan,track,acq_date,acq_time,satellite,instrument,confidence,version,bright_t31,frp,daynight,type
 0,18.3777,80.5314,318.6,1,1,02/01/15,802,Aqua,MODIS,69,6.03,302.6,7.7,D,0
 1,17.5898,80.9893,315.4,1.2,1.1,04/01/15,750,Aqua,MODIS,59,6.03,299.5,8.8,D,0

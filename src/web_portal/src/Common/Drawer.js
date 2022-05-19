@@ -110,7 +110,7 @@ class DrawerModal extends Component {
         },
         yaxis: {
           show: true,
-          tickAmount:3,
+          tickAmount: 3,
           min: -1.0,
           tickAmount: 4,
           labels: {
@@ -497,7 +497,7 @@ class DrawerModal extends Component {
           },
           yaxis: {
             show: true,
-            tickAmount:3,
+            tickAmount: 3,
             min: 0,
             tickAmount: 4,
             labels: {
@@ -510,19 +510,19 @@ class DrawerModal extends Component {
                 cssClass: "apexcharts-yaxis-label",
               },
             },
-            // title: {
-            //   text: this.props.LayerDescription.yaxislabel,
-            //   rotate: -90,
-            //   offsetX: 0,
-            //   offsetY: 0,
-            //   style: {
-            //     color: "#90989b",
-            //     fontSize: "12px",
-            //     fontFamily: "Helvetica, Arial, sans-serif",
-            //     fontWeight: 400,
-            //     cssClass: "apexcharts-yaxis-title",
-            //   },
-            // },
+            title: {
+              text: this.props.LayerDescription.yaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
           },
           xaxis: {
             type: "datetime",
@@ -592,7 +592,7 @@ class DrawerModal extends Component {
           },
           yaxis: {
             show: true,
-            tickAmount:3,
+            tickAmount: 3,
             labels: {
               show: true,
               style: {
@@ -620,7 +620,7 @@ class DrawerModal extends Component {
           xaxis: {
             type: "datetime",
             // tickAmount: 6,
-           
+
             labels: {
               format: "MMM yyyy",
               style: {
@@ -1181,7 +1181,9 @@ class DrawerModal extends Component {
                 className="alignrignt"
               >
                 <p style={{ fontSize: "18px", marginBottom: "0px" }}>
-                  {this.state.last_updated}
+                  {Moment(this.props.LayerDescription.last_updated)
+                    .format("DD-MM-YYYY")
+                    .slice(0, 10)}
                 </p>
               </Col>
             </Row>

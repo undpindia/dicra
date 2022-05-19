@@ -537,7 +537,7 @@ class DrawerModal extends Component {
               text: this.props.LayerDescription.xaxislabel,
               rotate: -90,
               offsetX: 0,
-              offsetY: 0,
+              offsetY: 5,
               style: {
                 color: "#90989b",
                 fontSize: "12px",
@@ -710,7 +710,7 @@ class DrawerModal extends Component {
               text: this.props.LayerDescription.xaxislabel,
               rotate: -90,
               offsetX: 0,
-              offsetY: 0,
+              offsetY: 5,
               style: {
                 color: "#90989b",
                 fontSize: "12px",

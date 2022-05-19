@@ -111,6 +111,7 @@ class DrawerModal extends Component {
         yaxis: {
           show: true,
           min: -1.0,
+          tickAmount: 4,
           labels: {
             show: true,
             style: {
@@ -589,6 +590,7 @@ class DrawerModal extends Component {
           },
           yaxis: {
             show: true,
+            tickAmount: 4,
             labels: {
               show: true,
               style: {

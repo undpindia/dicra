@@ -117,6 +117,8 @@ class CPDrawerModal extends Component {
         },
         yaxis: {
           show: true,
+          tickAmount:3,
+          format: "dd MMM yyyy",
           min: -1.0,
           labels: {
             show: true,
@@ -153,7 +155,7 @@ class CPDrawerModal extends Component {
           curve: "straight",
           lineCap: "butt",
           colors: undefined,
-          width: 2,
+          width: 1,
           dashArray: 0,
         },
       },
@@ -366,6 +368,8 @@ class CPDrawerModal extends Component {
         },
         yaxis: {
           show: true,
+          tickAmount:3,
+          format: "dd MMM yyyy",
           labels: {
             show: true,
             style: {
@@ -789,7 +793,7 @@ class CPDrawerModal extends Component {
                   series={this.state.series}
                   options={this.state.options}
                   type="line"
-                  height="140"
+                  height="180"
                 />
               </div>
             </Row>

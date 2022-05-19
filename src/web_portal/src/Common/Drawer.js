@@ -112,7 +112,6 @@ class DrawerModal extends Component {
           show: true,
           tickAmount: 3,
           min: -1.0,
-          tickAmount: 4,
           labels: {
             show: true,
             style: {
@@ -538,7 +537,7 @@ class DrawerModal extends Component {
               text: this.props.LayerDescription.xaxislabel,
               rotate: -90,
               offsetX: 0,
-              offsetY: 0,
+              offsetY: 5,
               style: {
                 color: "#90989b",
                 fontSize: "12px",
@@ -563,6 +562,85 @@ class DrawerModal extends Component {
             colors: undefined,
             width: 1,
             dashArray: 0,
+          },
+        },
+      });
+    }
+    if (this.props.CurrentLayer === "POPULATION") {
+      this.setState({
+        options: {
+          tooltip: {
+            x: {
+              format: "dd MMM yyyy",
+            },
+          },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
+          yaxis: {
+            show: true,
+            tickAmount: 3,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
+            title: {
+              text: this.getyaxistext(),
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            // tickAmount: 6,
+
+            labels: {
+              format: "yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
+            },
+            title: {
+              text: this.props.LayerDescription.xaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
           },
         },
       });
@@ -632,7 +710,7 @@ class DrawerModal extends Component {
               text: this.props.LayerDescription.xaxislabel,
               rotate: -90,
               offsetX: 0,
-              offsetY: 0,
+              offsetY: 5,
               style: {
                 color: "#90989b",
                 fontSize: "12px",
@@ -1233,7 +1311,9 @@ class DrawerModal extends Component {
                           color: "#fff",
                         }}
                       >
-                        {this.props.LayerDescription.unit}
+                       {this.props.CurrentLayer === "WEATHER"
+                          ? this.getyaxistext()
+                          : this.props.LayerDescription.unit}
                       </p>
                     </p>
                   ) : (
@@ -1254,7 +1334,9 @@ class DrawerModal extends Component {
                           color: "#fff",
                         }}
                       >
-                        {this.props.LayerDescription.unit}
+                        {this.props.CurrentLayer === "WEATHER"
+                          ? this.getyaxistext()
+                          : this.props.LayerDescription.unit}
                       </p>
                     </p>
                   )}
@@ -1265,6 +1347,7 @@ class DrawerModal extends Component {
                 style={
                   this.props.CurrentLayer === "FIREEV" ||
                   this.props.CurrentLayer === "WEATHER" ||
+                  this.props.CurrentLayer === "POPULATION" ||
                   this.props.CurrentLayer === "LULC"
                     ? { display: "none" }
                     : { paddingLeft: "0px", paddingTop: "20px" }
@@ -1347,11 +1430,6 @@ class DrawerModal extends Component {
                 </center>
               </div>
               <div style={this.state.loader ? { display: "none" } : {}}>
-                {/* <div>
-                  <p style={{ fontSize: "18px", display: "inline" }}>
-                    <BiLineChart /> Trend
-                  </p>
-                </div> */}
                 <Row>
                   <Col>
                     <span

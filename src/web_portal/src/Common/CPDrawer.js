@@ -135,7 +135,10 @@ class CPDrawerModal extends Component {
           type: "datetime",
           tickAmount: 6,
           labels: {
-            format: "yyyy",
+            datetimeFormatter: {
+              year: 'yyyy',
+              month: 'dd MMM',
+            },
             style: {
               colors: "#90989b",
               cssClass: "apexcharts-xaxis-label",
@@ -398,7 +401,12 @@ class CPDrawerModal extends Component {
           type: "datetime",
           // tickAmount: 6,
           labels: {
-            format: "yyyy",
+            datetimeFormatter: {
+              year: 'yyyy',
+              month: 'dd MMM',
+              day: 'dd MMM',
+              hour: 'HH:mm'
+            },
             style: {
               colors: "#90989b",
               cssClass: "apexcharts-xaxis-label",

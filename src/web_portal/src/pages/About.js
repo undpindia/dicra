@@ -19,7 +19,6 @@ const mapStateToProps = (ReduxProps) => {
     Layers: ReduxProps.Layers,
   };
 };
-let notavailable = 1;
 class About extends React.Component {
   render() {
     return (
@@ -186,19 +185,19 @@ class About extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.Layers.map((data, index) => {
-                        if (data.isavailable) {
-                          return (
-                            <tr key={index}>
-                              <td>{data.display_name}</td>
-                              <td>{data.long_description}</td>
-                              <td>{data.source}</td>
-                              <td>{data.citation}</td>
-                              <td>{data.standards}</td>
-                            </tr>
-                          );
-                        }
-                      })}
+                      {this.props.Layers.map((data, index) =>
+                        data.isavailable ? (
+                          <tr key={index}>
+                            <td>{data.display_name}</td>
+                            <td>{data.long_description}</td>
+                            <td>{data.source}</td>
+                            <td>{data.citation}</td>
+                            <td>{data.standards}</td>
+                          </tr>
+                        ) : (
+                          console.log("About layer not available")
+                        )
+                      )}
                     </tbody>
                   </Table>
                 </div>

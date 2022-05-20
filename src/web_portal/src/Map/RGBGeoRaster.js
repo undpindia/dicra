@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { useLeaflet } from "react-leaflet";
 import GeoRasterLayer from "georaster-layer-for-leaflet";
 import chroma from "chroma-js";
@@ -22,16 +22,22 @@ export default function GeoRaster(props) {
   };
   const layerRef = React.useRef(null);
   var scale;
-
-  useEffect(() => {
-    // side effect here on change of any of props.x or stateY
+  const changeLayer = useRef(() => {
     setTimeout(function () {
       getColorFromValues();
     }, 700);
+  });
+  const addLayerRef = useRef(() => {
+    addlayer();
+    props.onRef(undefined);
+  });
+  useEffect(() => {
+    // side effect here on change of any of props.x or stateY
+    changeLayer.current();
   }, [ColorscalePicker, RasterOpacity]);
 
   function getColorFromValues() {
-    if (layerRef.current != null) {
+    if (layerRef.current !== null) {
       layerRef.current.updateColors(function (values) {
         var newScale=[];
         var scaledPixelvalue="";
@@ -218,8 +224,7 @@ export default function GeoRaster(props) {
   }
 
   useEffect(() => {
-    addlayer();
-    props.onRef(undefined);
+    addLayerRef.current()
   }, [currentLayer]);
 
   return null;

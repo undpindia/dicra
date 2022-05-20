@@ -395,7 +395,7 @@ class DrawerModal extends Component {
   }
   getyaxistext() {
     if (this.props.CurrentLayer === "WEATHER") {
-      if (this.state.selectedWeatherparams == "rain") {
+      if (this.state.selectedWeatherparams === "rain") {
         return "mm";
       }
       if (this.state.selectedWeatherparams === "min_temp") {
@@ -498,7 +498,6 @@ class DrawerModal extends Component {
             show: true,
             tickAmount: 3,
             min: 0,
-            tickAmount: 4,
             labels: {
               show: true,
               style: {

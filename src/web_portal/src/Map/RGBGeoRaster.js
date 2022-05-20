@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useLeaflet } from "react-leaflet";
 import GeoRasterLayer from "georaster-layer-for-leaflet";
 import chroma from "chroma-js";
@@ -22,27 +22,23 @@ export default function GeoRaster(props) {
   };
   const layerRef = React.useRef(null);
   var scale;
-  const changeLayer = useRef(() => {
+
+  useEffect(() => {
+    // side effect here on change of any of props.x or stateY
     setTimeout(function () {
       getColorFromValues();
     }, 700);
-  });
-  const addLayerRef = useRef(() => {
-    addlayer();
-    props.onRef(undefined);
-  });
-  useEffect(() => {
-    // side effect here on change of any of props.x or stateY
-    changeLayer.current();
   }, [ColorscalePicker, RasterOpacity]);
 
   function getColorFromValues() {
-    if (layerRef.current !== null) {
+    if (layerRef.current != null) {
+
+   
       layerRef.current.updateColors(function (values) {
-        var newScale=[];
-        var scaledPixelvalue="";
-        var color=""
         // console.log("PIXEL VALUEs",values)
+        var newScale
+        var scaledPixelvalue
+        var color
         if (RasterOpacity === false) {
           return null;
         } else {
@@ -121,7 +117,7 @@ export default function GeoRaster(props) {
                 "#cf3c8d",
                 "#64caef",
               ]);
-             
+            
               window.tiff = georaster;
             } else {
               range = georaster.ranges[0];
@@ -130,7 +126,7 @@ export default function GeoRaster(props) {
               scale = chroma
                 .scale(ColorscalePicker)
                 .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-        
+            
             }
             window.tiff = georaster;
             layer = new GeoRasterLayer({
@@ -175,7 +171,7 @@ export default function GeoRaster(props) {
                   latlng.lng,
                   latlng.lat,
                 ]);
-                if (Number(result) > min) {
+                if (Number(result) > 0.0) {
                   result = parseFloat(result).toFixed(2);
                   dispatch({ type: "SETVALUE", payload: result });
                 } else {
@@ -184,28 +180,6 @@ export default function GeoRaster(props) {
               }
             });
 
-            // map.on("click", async function (evt) {
-            //   var latlng = map.mouseEventToLatLng(evt.originalEvent);
-            //   var loc = [latlng.lng, latlng.lat];
-
-            
-            //   const stats = await geoblaze.stats(window.tiff, shapegeojson);
-            //   const histograms = await geoblaze.histogram(window.tiff, shapegeojson,{ scaleType: "ratio", numClasses: 10, classType: "equal-interval" });
-            //   console.log("STATS",histograms)
-            //   const result = geoblaze.identify(window.tiff, loc);
-            //   // props.togglechart();
-            //   if (result != null) {
-            //     if (result > 1) {
-            //       {
-            //         // props.update(result);
-            //         // console.log("CLICK VALUE", result);
-            //       }
-            //       {
-            //         // props.setloc(latlng.lat, latlng.lng);
-            //       }
-            //     }
-            //   }
-            // });
 
             layerRef.current = layer;
             container.addLayer(layer);
@@ -224,7 +198,8 @@ export default function GeoRaster(props) {
   }
 
   useEffect(() => {
-    addLayerRef.current()
+    addlayer();
+    props.onRef(undefined);
   }, [currentLayer]);
 
   return null;

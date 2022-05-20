@@ -17,7 +17,9 @@ import LoadingScreen from "react-loading-screen";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  console.clear() 
   useEffect(() => {
+    console.clear()
     if (loading) {
       setTimeout(() => {
         setLoading(false);

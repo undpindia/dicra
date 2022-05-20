@@ -1258,9 +1258,10 @@ class map extends Component {
               value={this.props.CurrentRegion}
               onChange={(e) => this.onchangeshape(e)}
             >
-              <option value="DISTRICT">District</option>
-              <option value="MANDAL">Mandal</option>
+              <option value="DISTRICT" key="DISTRICT">District</option>
+              <option value="MANDAL" key="MANDAL">Mandal</option>
               <option
+                key="CUSTOM"
                 value="CUSTOM"
                 disabled={
                   this.props.LayerDescription.showcustom === false
@@ -1300,6 +1301,7 @@ class map extends Component {
                       <option
                         className="search-list"
                         value={index}
+                        key={index}
                         // key={item.centerPoint}
                         // attr={item.uid}
                       >
@@ -1405,7 +1407,7 @@ class map extends Component {
             zIndex={999}
           />
 
-          {this.state.pointVector.features.map((point, key) => (
+          {this.state.pointVector.features.map((point, index) => (
             <Marker
               position={[point.properties.latitude, point.properties.longitude]}
               radius={4}
@@ -1414,7 +1416,7 @@ class map extends Component {
               stroke={false}
               icon={MarkerIcon2}
               // icon={this.checkIcon}
-              key={key}
+              key={index}
               direction="top"
               onClick={(e) => {
                 this.handlePointclick(point.properties.name);

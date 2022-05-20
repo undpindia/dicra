@@ -167,9 +167,9 @@ class Sidebar extends React.Component {
       >
         <div className="sidebar-tabs">
           <ul role="tablist">
-            {toptabs.map((t) => (
+            {toptabs.map((t,index) => (
               <MenuButton
-                key={t.props.id}
+                key={index}
                 id={t.props.id}
                 icon={t.props.icon}
                 disabled={t.props.disabled}
@@ -182,9 +182,9 @@ class Sidebar extends React.Component {
             ))}
           </ul>
           <ul role="tablist">
-            {bottomtabs.map((t) => (
+            {bottomtabs.map((t,index) => (
               <MenuButton
-                key={t.props.id}
+                key={index}
                 id={t.props.id}
                 icon={t.props.icon}
                 disabled={t.props.disabled}

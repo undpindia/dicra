@@ -14,10 +14,11 @@ import LoadingScreen from "react-loading-screen";
 // const About = React.lazy(() => import('./pages/About.js'));
 // const Help = React.lazy(() => import('./pages/Help.js'));
 // const Analytics = React.lazy(() => import('./pages/Analytics.js'));
-
+import { GlobalDebug } from "./GlobalDebug"
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    GlobalDebug(false);
     if (loading) {
       setTimeout(() => {
         setLoading(false);

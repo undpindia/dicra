@@ -168,10 +168,10 @@ const SidebarComponent = (props) => {
               onChange={callback}
               classname="collapse"
             >
-              {Categorylist.map((layers, index) => {
+              {Categorylist.map((layers, index,datacategory) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items,indexlayers) => {
+                    {Layers[0][layers].map((items,indexlayers,datalayers) => {
                       return (
                         <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
                           <Row>

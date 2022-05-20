@@ -1294,7 +1294,7 @@ class DrawerModal extends Component {
               >
                 <div>
                   {this.checkValue(this.props.district.areaValue) > 200 ? (
-                    <p
+                    <span
                       style={{
                         fontSize: "27px",
                         fontWeight: "lighter",
@@ -1315,9 +1315,9 @@ class DrawerModal extends Component {
                           ? this.getyaxistext()
                           : this.props.LayerDescription.unit}
                       </p>
-                    </p>
+                    </span>
                   ) : (
-                    <p
+                    <span
                       style={{
                         fontSize: "35px",
                         fontWeight: "lighter",
@@ -1338,7 +1338,7 @@ class DrawerModal extends Component {
                           ? this.getyaxistext()
                           : this.props.LayerDescription.unit}
                       </p>
-                    </p>
+                    </span>
                   )}
                 </div>
               </Col>
@@ -1513,13 +1513,17 @@ class DrawerModal extends Component {
                   checked={
                     this.state.currentWeatherRange === "6months" ? true : false
                   }
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
+                  onClick={(e) => {
+                    this.getWeathertrend("6months");
+                  }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
                   htmlFor="btnradio1"
-                  onClick={(e) => {
-                    this.getWeathertrend("6months");
-                  }}
+                 
                 >
                   6 months
                 </label>
@@ -1534,16 +1538,20 @@ class DrawerModal extends Component {
                       ? {}
                       : { display: "none" }
                   }
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   checked={
                     this.state.currentWeatherRange === "1Year" ? true : false
                   }
+                  onClick={(e) => {
+                    this.getWeathertrend("1Year");
+                  }}
                 />
                 <label
                   className="btn btn-primary btn-chart"
                   htmlFor="btnradio2"
-                  onClick={(e) => {
-                    this.getWeathertrend("1Year");
-                  }}
+                 
                 >
                   1 year
                 </label>
@@ -1565,6 +1573,9 @@ class DrawerModal extends Component {
                   name="btnradio"
                   id="btnradio3"
                   autoComplete="off"
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1594,6 +1605,9 @@ class DrawerModal extends Component {
                   name="btnradio"
                   id="btnradio4"
                   autoComplete="off"
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
@@ -1622,6 +1636,9 @@ class DrawerModal extends Component {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio5"
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   style={
                     this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }

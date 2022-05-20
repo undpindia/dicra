@@ -31,7 +31,8 @@ function Legend() {
               style={currentLayer === "LULC" ? { display: "none" } : {}}
               key={valueKey}
             >
-              {setval}{" "}
+              {currentLayer === "POPULATION" ?
+              parseInt(setval):setval}{" "}
               <span style={{ fontSize: "18px" }}>{currentLayerDesc.unit}</span>
             </span>
           </div>

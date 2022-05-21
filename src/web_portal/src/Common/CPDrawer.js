@@ -1,48 +1,18 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "antd/dist/antd.css";
-import { Drawer, Space } from "antd";
+import { Drawer } from "antd";
 import { Menu, Dropdown, notification } from "antd";
 import { DownOutlined, InfoCircleTwoTone } from "@ant-design/icons";
-import { BiLayer, BiLineChart, BiDownload, BiX } from "react-icons/bi";
+import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
-import Captcha from "demos-react-captcha";
-import { geoMercator, geoPath } from "d3-geo";
-import { select } from "d3-selection";
-import Moment from 'moment';
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Row,
-  Col,
-  Label,
-  FormGroup,
-  Card,
-  Table,
-  CardBody,
-} from "reactstrap";
-import {
-  AvForm,
-  AvField,
-  AvGroup,
-  AvInput,
-  AvFeedback,
-  AvRadioGroup,
-  AvRadio,
-  AvCheckboxGroup,
-  AvCheckbox,
-} from "availity-reactstrap-validation";
+import Moment from "moment";
+import { Button, Row, Col } from "reactstrap";
 import Chart from "react-apexcharts";
-import { Steps, message } from "antd";
-import axios from "axios";
+import { message } from "antd";
 import axiosConfig from "../Common/axios_Config";
 import Loader from "../img/loader.gif";
 import { connect } from "react-redux";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
-const { Step } = Steps;
 const mapStateToProps = (ReduxProps) => {
   return {
     CurrentLayer: ReduxProps.CurrentLayer,
@@ -68,7 +38,6 @@ const openNotification = () => {
     icon: <InfoCircleTwoTone />,
   });
 };
-const menu = {};
 class CPDrawerModal extends Component {
   constructor(props) {
     super(props);
@@ -132,14 +101,49 @@ class CPDrawerModal extends Component {
         },
         grid: {
           show: false,
+          borderColor: "#90A4AE",
+          strokeDashArray: 0,
+          position: "back",
+          xaxis: {
+            lines: {
+              show: false,
+            },
+          },
+          yaxis: {
+            lines: {
+              show: true,
+            },
+          },
         },
         yaxis: {
-          show: false,
+          show: true,
+          tickAmount:3,
+          format: "dd MMM yyyy",
           min: -1.0,
+          labels: {
+            show: true,
+            style: {
+              colors: "#90989b",
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
+            },
+          },
         },
         xaxis: {
           type: "datetime",
           tickAmount: 6,
+          labels: {
+            datetimeFormatter: {
+              year: 'yyyy',
+              month: 'dd MMM',
+            },
+            style: {
+              colors: "#90989b",
+              cssClass: "apexcharts-xaxis-label",
+            },
+          },
         },
         tooltip: {
           x: {
@@ -154,7 +158,7 @@ class CPDrawerModal extends Component {
           curve: "straight",
           lineCap: "butt",
           colors: undefined,
-          width: 2,
+          width: 1,
           dashArray: 0,
         },
       },
@@ -295,10 +299,6 @@ class CPDrawerModal extends Component {
     }
   }
   async getvarietylist() {
-    var bodyParams = {
-      commodity: this.state.selectedCommodity,
-    };
-
     try {
       const resVariety = await axiosConfig.get(
         `/getvarietyname?commodity=` +
@@ -314,9 +314,12 @@ class CPDrawerModal extends Component {
   }
   sortVarietyname(list) {
     var VarietyList = [];
-    list.map(function (item, index, data) {
-      VarietyList.push(item[0]);
-    });
+
+    list.map((item) => VarietyList.push(item[0]));
+
+    // list.map(function (item, index, data) {
+    //   VarietyList.push(item[0]);
+    // });
     this.setState(
       {
         varietyNames: VarietyList,
@@ -328,27 +331,18 @@ class CPDrawerModal extends Component {
     );
   }
   generatechart(data) {
-    let chart_values = [];
     var trendData = {
       name: this.props.CurrentLayer,
       data: [],
     };
 
     if (data != null) {
-      data.map(function (item, index, data) {
-        trendData.data.push({
-          x: item[0],
-          y: item[1],
-        });
-      });
+      data.map((item) =>  trendData.data.push({
+        x: item[0],
+        y: item[1],
+      }));
     }
-    var trendlength = trendData.data.length;
-    var lst_value = trendData.data[trendlength - 1];
-    lst_value = lst_value.y;
 
-    if (trendData.data == null) {
-      chart_values = [trendData];
-    }
     this.setState({
       series: [trendData],
       loader: false,
@@ -359,15 +353,43 @@ class CPDrawerModal extends Component {
             format: "dd MMM yyyy",
           },
         },
+        grid: {
+          show: false,
+          borderColor: "#90A4AE",
+          strokeDashArray: 0,
+          position: "back",
+          xaxis: {
+            lines: {
+              show: false,
+            },
+          },
+          yaxis: {
+            lines: {
+              show: true,
+            },
+          },
+        },
         yaxis: {
           show: true,
+          tickAmount:3,
+          format: "dd MMM yyyy",
+          labels: {
+            show: true,
+            style: {
+              colors: "#90989b",
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
+            },
+          },
           title: {
             text: this.props.LayerDescription.yaxislabel,
             rotate: -90,
             offsetX: 0,
             offsetY: 0,
             style: {
-              color: undefined,
+              color: "#90989b",
               fontSize: "12px",
               fontFamily: "Helvetica, Arial, sans-serif",
               fontWeight: 400,
@@ -379,15 +401,24 @@ class CPDrawerModal extends Component {
           type: "datetime",
           // tickAmount: 6,
           labels: {
-            format: "yyyy",
+            datetimeFormatter: {
+              year: 'yyyy',
+              month: 'dd MMM',
+              day: 'dd MMM',
+              hour: 'HH:mm'
+            },
+            style: {
+              colors: "#90989b",
+              cssClass: "apexcharts-xaxis-label",
+            },
           },
           title: {
             text: this.props.LayerDescription.xaxislabel,
             rotate: -90,
             offsetX: 0,
-            offsetY: 0,
+            offsetY: 5,
             style: {
-              color: undefined,
+              color: "#90989b",
               fontSize: "12px",
               fontFamily: "Helvetica, Arial, sans-serif",
               fontWeight: 400,
@@ -409,23 +440,23 @@ class CPDrawerModal extends Component {
   }
 
   settimerange(daterange) {
-    if (daterange == "6months") {
+    if (daterange === "6months") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setMonth(from_date.getMonth() - 6);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -448,22 +479,22 @@ class CPDrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "1Year") {
+    } else if (daterange === "1Year") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 1);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -486,23 +517,23 @@ class CPDrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "3Year") {
+    } else if (daterange === "3Year") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 3);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -525,22 +556,22 @@ class CPDrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "5Year") {
+    } else if (daterange === "5Year") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 5);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -575,40 +606,40 @@ class CPDrawerModal extends Component {
     // var min = a.getMinutes();
     // var sec = a.getSeconds();
     // var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    var dd = String(a.getDate()).padStart(2, "0");
-    var mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
-    var yyyy = a.getFullYear();
-    var date = yyyy + "-" + mm + "-" + dd;
+    let dd = String(a.getDate()).padStart(2, "0");
+    let mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
+    let yyyy = a.getFullYear();
+    let date = yyyy + "-" + mm + "-" + dd;
     // return time;
     this.setState({
       last_updated: date,
     });
   }
   spellPerilcheck(peril) {
-    if (peril == "rain") {
+    if (peril === "rain") {
       return "Rainfall";
     }
-    if (peril == "min_temp") {
+    if (peril === "min_temp") {
       return "Minimum Temperature";
     }
-    if (peril == "max_temp") {
+    if (peril === "max_temp") {
       return "Maximum Temperature";
     }
-    if (peril == "min_humidity") {
+    if (peril === "min_humidity") {
       return "Minimum Humidity";
     }
-    if (peril == "max_humidity") {
+    if (peril === "max_humidity") {
       return "Maximum Humidity";
     }
-    if (peril == "min_wind_speed") {
+    if (peril === "min_wind_speed") {
       return "Minimum Wind Speed";
     }
-    if (peril == "max_wind_speed") {
+    if (peril === "max_wind_speed") {
       return "Max Wind Speed";
     }
   }
   checkDefined(value, date, category) {
-    if (value[date] == undefined) {
+    if (value[date] === undefined) {
       return "0.00";
     } else {
       // this.setState({
@@ -669,7 +700,9 @@ class CPDrawerModal extends Component {
               </Col>
               <Col className="alignrignt">
                 <p style={{ fontSize: "18px", marginBottom: "15px" }}>
-                  {Moment(this.props.LayerDescription.last_updated).format('DD-MM-YYYY').slice(0, 10)}
+                  {Moment(this.props.LayerDescription.last_updated)
+                    .format("DD-MM-YYYY")
+                    .slice(0, 10)}
                 </p>
               </Col>
             </Row>
@@ -720,17 +753,21 @@ class CPDrawerModal extends Component {
               <p style={{ fontSize: "15px", fontWeight: "lighter" }}>
                 {this.props.LayerDescription.long_description}
               </p>
-              <div style={{marginBottom:"5px"}}>
-                <p style={{marginBottom:"0px", color:"#2867a1"}}>SOURCE</p>
+              <div style={{ marginBottom: "5px" }}>
+                <p style={{ marginBottom: "0px", color: "#2867a1" }}>SOURCE</p>
                 <p>{this.props.LayerDescription.source}</p>
               </div>
-              <div style={{marginBottom:"5px"}}>
-                <p style={{marginBottom:"0px", color:"#2867a1"}}>CITATION</p> 
+              <div style={{ marginBottom: "5px" }}>
+                <p style={{ marginBottom: "0px", color: "#2867a1" }}>
+                  CITATION
+                </p>
                 <p>{this.props.LayerDescription.citation}</p>
               </div>
               <div>
-              <p style={{marginBottom:"0px", color:"#2867a1"}}>STANDARDS</p>
-              <p>{this.props.LayerDescription.standards}</p>
+                <p style={{ marginBottom: "0px", color: "#2867a1" }}>
+                  STANDARDS
+                </p>
+                <p>{this.props.LayerDescription.standards}</p>
               </div>
             </Row>
             <hr />
@@ -764,7 +801,7 @@ class CPDrawerModal extends Component {
                   series={this.state.series}
                   options={this.state.options}
                   type="line"
-                  height="140"
+                  height="180"
                 />
               </div>
             </Row>

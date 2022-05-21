@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef  } from "react";
 import {
   BiLayer,
   BiDownload,
@@ -14,24 +14,20 @@ import { AiFillGithub } from "react-icons/ai";
 import { Sidebar, Tab } from "./Sidetabs";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  Button,
-  Form,
   FormGroup,
   Label,
   Input,
-  FormText,
   Row,
   Col,
 } from "reactstrap";
-import { useHistory, Link, Route } from "react-router-dom";
+import {Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import LayerDetails from "./Download/LayerDetails";
 import PersonalDetails from "./Download/PersonalDetails";
 import Multistep from "react-multistep";
 import axiosConfig from "../Common/axios_Config";
-import { setlayerlist, setcurrentlayer, setdownloadlayer } from "../actions";
+import { setlayerlist, setcurrentlayer } from "../actions";
 import { Collapse, message } from "antd";
-import { Layer } from "leaflet";
 
 const steps = [
   { name: "StepOne", component: <LayerDetails /> },
@@ -40,14 +36,11 @@ const steps = [
 const { Panel } = Collapse;
 const SidebarComponent = (props) => {
   const selectedLayer = useSelector((state) => state.CurrentLayer);
-  const selectedRegion = useSelector((state) => state.CurrentRegion);
   const selectedDowndate = useSelector((state) => state.DownloadLayerDate);
   const LayerToggle = useSelector((state) => state.RasterOpacity);
   const DownLayerDesc = useSelector((state) => state.DownloadLayerDesc);
   const DownLayer = useSelector((state) => state.DownloadLayer);
   const LayerDesc = useSelector((state) => state.LayerDescription);
-  const Keymap = useSelector((state) => state.MapKey);
-  const history = useHistory();
   const [openTab, setOpenTab] = useState("layer");
   const [isActive, setlegend] = useState(true);
   const [Layers, layerList] = useState([]);
@@ -76,27 +69,19 @@ const SidebarComponent = (props) => {
   };
   const prevStyle = {
     background: "rgb(3, 53, 100)",
-    "border-radius": "3px",
+    borderRadius: "3px",
     border: "none",
     float: "left",
     transform: "translateY(118%)",
   };
   const nextStyle = {
     background: "rgb(3, 53, 100)",
-    "border-radius": "3px",
+    borderRadius: "3px",
     border: "none",
     float: "right",
     transform: "translateY(30%)",
   };
-  const nextDisabled = {
-    background: "#797B7C",
-    "border-radius": "3px",
-    border: "none",
-    float: "right",
-    transform: "translateY(30%)",
-    "pointer-events": "none",
-    cursor: "not-allowed",
-  };
+
   const getLayers = async () => {
     try {
       const layers = await axiosConfig.get(`/getlayerconfig?`);
@@ -123,7 +108,7 @@ const SidebarComponent = (props) => {
     // dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
     dispatch({ type: "CHANGELAYERDESC", payload: desc });
     props.resetZoom();
-    // if (selectedRegion != "CUSTOM") {
+    // if (selectedRegion !== "CUSTOM") {
       setTimeout(function () {
         props.changeCurrentLayer();
       }, 3000);
@@ -132,10 +117,10 @@ const SidebarComponent = (props) => {
   function callback(key) {
     // console.log(key);
   }
-  useEffect(() => {
+  const changeLayer = useRef(() => {
     getLayers();
-    if (DownLayerDesc.multiple_files == true) {
-      if (selectedDowndate != "") {
+    if (DownLayerDesc.multiple_files === true) {
+      if (selectedDowndate !== "") {
         setActivebutton(true);
       } else {
         setActivebutton(false);
@@ -143,10 +128,13 @@ const SidebarComponent = (props) => {
     } else {
       setActivebutton(true);
     }
+  });
+  useEffect(() => {
+    changeLayer.current();
   }, [Layercount, selectedDowndate, isActivebutton, DownLayer]);
 
   function toggleLayer() {
-    if (LayerToggle == true) {
+    if (LayerToggle === true) {
       dispatch({ type: "HIDERASTER" });
     } else {
       dispatch({ type: "SHOWRASTER" });
@@ -180,12 +168,12 @@ const SidebarComponent = (props) => {
               onChange={callback}
               classname="collapse"
             >
-              {Categorylist.map((layers, index) => {
+              {Categorylist.map((layers, index,datacategory) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items) => {
+                    {Layers[0][layers].map((items,indexlayers,datalayers) => {
                       return (
-                        <FormGroup tag="fieldset" className="btn-radio">
+                        <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
                           <Row>
                             <Col
                               md={8}
@@ -213,14 +201,14 @@ const SidebarComponent = (props) => {
                               <div className="tool-tip">
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }
-                                  // style={LayerDesc.raster_status==false?{"pointer-events": "none"}:{}}
-                                  // disabled={LayerDesc.raster_status==false?true:false}
+                                  // style={LayerDesc.raster_status===false?{"pointer-events": "none"}:{}}
+                                  // disabled={LayerDesc.raster_status===false?true:false}
                                 >
-                                  {LayerDesc.raster_status == false ? (
+                                  {LayerDesc.raster_status === false ? (
                                     <BiShow
                                       data-tip
                                       data-for="show-disabledbtn"
@@ -241,7 +229,7 @@ const SidebarComponent = (props) => {
                                       // style={
                                       //   LayerToggle ? { display: "none" } : {}
                                       // }
-                                      // style= { LayerDesc.raster_status == false
+                                      // style= { LayerDesc.raster_status === false
                                       //   ? { cursor: "not-allowed" }
                                       //   : {}}
                                     />)
@@ -260,7 +248,7 @@ const SidebarComponent = (props) => {
                                 &nbsp;&nbsp;
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }
@@ -330,7 +318,6 @@ const SidebarComponent = (props) => {
             />
           </Tab>
           <Tab
-            // onClick={(e) => history.push("/use-cases")}
             icon={
               <Link to="/use-cases">
                 <BiFolder
@@ -361,11 +348,9 @@ const SidebarComponent = (props) => {
                 data-tip
                 data-for="help"
                 onClick={(e) => {
-                  {
                     window
                       .open("https://dev.misteo.co/dicrahelp/", "_blank")
                       .focus();
-                  }
                 }}
               />
               // </Link>

@@ -2,17 +2,9 @@ import React from "react";
 import "../Common/common.css";
 import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
-import { useHistory, Link } from "react-router-dom";
-import { Row, Col, Button, Table } from "reactstrap";
-import undplogo from "../img/undp-logo.png";
-import telenganalogo from "../img/telengana-logo.png";
-import telenganaagri from "../img/telengana-agri.png";
-import icrisat from "../img/icrisat.png";
-import jads from "../img/jads.png";
-import rich from "../img/rich.jpg";
-import rockefeller from "../img/rockefeller.png";
-import tilburg from "../img/tilburg.png";
-import misteo from "../img/MistEO_Logo_Square.png";
+import { Link } from "react-router-dom";
+import { Row, Col} from "reactstrap";
+
 import { connect } from "react-redux";
 const mapStateToProps = (ReduxProps) => {
   return {
@@ -36,7 +28,7 @@ class Terms extends React.Component {
             </div>
             <hr />
             <div>
-              <div class="container about-page">
+              <div className="container about-page">
                 <Row>
                   {/* <h3 className="about-heading">About DiCRA</h3> */}
                   <Col className="about-content">

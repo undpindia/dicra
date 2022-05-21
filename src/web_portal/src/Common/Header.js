@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./common.css";
 import Undp from "../img/undp-logo-blue.svg";
 import Telangana from "../img/telangana.png";
-import Logo from "../img/planet.svg";
-import { Row, Col, Button } from "reactstrap";
-import { divIcon } from "leaflet";
+
+import { Row, Col } from "reactstrap";
+
 export default class Header extends Component {
   render() {
     return (
@@ -24,7 +24,7 @@ export default class Header extends Component {
               </div>
 
         </div>
-        <div class="topnav-right">
+        <div className="topnav-right">
           <Row>
             <Col className="telangana-logo">
               <img src={Telangana} width={50} height={50} alt="Telengana"/>

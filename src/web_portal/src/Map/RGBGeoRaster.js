@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useLeaflet, Popup } from "react-leaflet";
+import React, { useEffect, useRef } from "react";
+import { useLeaflet } from "react-leaflet";
 import GeoRasterLayer from "georaster-layer-for-leaflet";
 import chroma from "chroma-js";
 import geoblaze from "geoblaze";
@@ -8,83 +8,55 @@ import { useSelector, useDispatch } from "react-redux";
 import { message } from "antd";
 export default function GeoRaster(props) {
   // const { changeRasterLoader } = props;
-  const dispatch = useDispatch();
-  const { map, layerContainer } = useLeaflet();
-  const currentLayer = useSelector((state) => state.CurrentLayer);
-  const currentLayerType = useSelector((state) => state.CurrentLayerType);
-  const currentRegionType = useSelector((state) => state.CurrentRegion);
-  const vectorLoader = useSelector((state) => state.VectorLoader);
-  const RasterOpacity = useSelector((state) => state.RasterOpacity);
-  const ColorscalePicker = useSelector((state) => state.SetColor);
-  const [layermin, setLayermin] = useState(0);
-  const [layermax, setLayermax] = useState(0);
-  const [layerrange, setLayerrange] = useState(0);
-  const [layerscale, setLayerscale] = useState(null);
-  const removeLayer = (layer) => {
+  let dispatch = useDispatch();
+  let { map, layerContainer } = useLeaflet();
+  let currentLayer = useSelector((state) => state.CurrentLayer);
+  let RasterOpacity = useSelector((state) => state.RasterOpacity);
+  let ColorscalePicker = useSelector((state) => state.SetColor);
+  // let [layerrange, setLayerrange] = useState(0);
+  let removeLayer = (layer) => {
     map.removeLayer(layer);
     window.tiff = 0;
   };
-  const layerRef = React.useRef(null);
+  let colorscalepickerRef=React.useRef(null)
+  colorscalepickerRef.current=ColorscalePicker
+  let layerRef = React.useRef(null);
+  let layermin =  React.useRef(null);
+  let layermax =  React.useRef(null);
+  let layerrange =  React.useRef(null);
   var scale;
-
-  useEffect(() => {
-    // side effect here on change of any of props.x or stateY
+  let currentLayerNow = useRef();
+  const changeLayer = useRef(() => {
     setTimeout(function () {
       getColorFromValues();
     }, 700);
-  }, [ColorscalePicker, RasterOpacity]);
+  });
 
-  function getColorFromValues() {
-    if (layerRef.current != null) {
-      layerRef.current.updateColors(function (values) {
-        // console.log("PIXEL VALUEs",values)
-        if (RasterOpacity == false) {
-          return null;
-        } else {
-          if (values < layermin) {
-            return null;
-          } else if (values > layermax) {
-            return "#757575";
-          }
-          if (currentLayer == "LULC") {
-            var newScale = chroma.scale([
-              "#dc0f0f",
-              "#44ce5d",
-              "#7533e6",
-              "#de8313",
-              "#dfef4d",
-              "#98e16e",
-              "#bb3cc9",
-              "#455dca",
-              "#3feabd",
-              "#cf3c8d",
-              "#64caef",
-            ]);
-            var scaledPixelvalue = (values - layermin) / layerrange;
-            var color = newScale(scaledPixelvalue).hex();
-            return color;
-          } else {
-            var newScale = chroma
-              .scale(ColorscalePicker)
-              .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-            var scaledPixelvalue = (values - layermin) / layerrange;
-            var color = newScale(scaledPixelvalue).hex();
-            return color;
-          }
-        }
-      });
-    }
-  }
+  const addLayerRef = useRef(() => {
+    addlayer();
+    // props.onRef(undefined);
+  });
+
+  useEffect(() => {
+    colorscalepickerRef.current=ColorscalePicker
+    changeLayer.current();
+  }, [ColorscalePicker, RasterOpacity]);
+  useEffect(() => {
+    // addlayer();
+    currentLayerNow.current = currentLayer;
+    addLayerRef.current();
+    // props.onRef(undefined);
+  }, [currentLayer]);
+
   async function addlayer() {
     props.changeLoader(17.754639747121828, 79.05833831966801);
     var url =
       "https://internalapidev.chickenkiller.com/currentraster?parameter=" +
-      currentLayer;
+      currentLayerNow.current;
     fetch(url).then((response) => {
       const container = layerContainer || map;
       let layer;
-
-      if (layerRef.current != undefined) {
+      if (layerRef.current) {
         removeLayer(layerRef.current);
         // layerRef.current = null;
         // window.tiff = 0;
@@ -95,13 +67,16 @@ export default function GeoRaster(props) {
           geoblaze.load(blob).then((georaster) => {
             var min = georaster.mins[0];
             var max = georaster.maxs[0];
+            var range;
+            layermin.current=min
+            layermax.current=max
+            // setLayermin(min);
+            // setLayermax(max);
 
-            setLayermin(min);
-            setLayermax(max);
-
-            if (currentLayer == "LULC") {
-              var range = georaster.ranges[0];
-              setLayerrange(range);
+            if (currentLayerNow.current === "LULC") {
+              range = georaster.ranges[0];
+              layerrange.current=range
+              // setLayerrange(range);
               //  var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma.scale([
                 "#dc0f0f",
@@ -116,16 +91,16 @@ export default function GeoRaster(props) {
                 "#cf3c8d",
                 "#64caef",
               ]);
-              setLayerscale(scale);
+
               window.tiff = georaster;
             } else {
-              var range = georaster.ranges[0];
-              setLayerrange(range);
+              range = georaster.ranges[0];
+              layerrange.current=range
+              // setLayerrange(range);
               // var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma
-                .scale(ColorscalePicker)
+                .scale(colorscalepickerRef.current)
                 .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-              setLayerscale(scale);
             }
             window.tiff = georaster;
             layer = new GeoRasterLayer({
@@ -150,21 +125,23 @@ export default function GeoRaster(props) {
               },
               // onEachFeature : (feature, layer) => {
               //   layer.on('mouseover', function (e) {
-              //     console.log("HOBER")
+
               //   });
               // }
             });
 
             map.on("mousemove", function (evt) {
-              if (window.layerType == "Raster") {
+              if (window.layerType === "Raster") {
                 // console.log("RASTER HOVER ", window.layerType);
                 var latlng = map.mouseEventToLatLng(evt.originalEvent);
                 // getcurrentvalue(latlng.lng, latlng.lat);
                 dispatch({
                   type: "SETLATLON",
-                  payload:
-                    [parseFloat(latlng.lat).toFixed(2),",",
-                    parseFloat(latlng.lng).toFixed(2)]
+                  payload: [
+                    parseFloat(latlng.lat).toFixed(2),
+                    ",",
+                    parseFloat(latlng.lng).toFixed(2),
+                  ],
                 });
                 let result = geoblaze.identify(georaster, [
                   latlng.lng,
@@ -175,39 +152,6 @@ export default function GeoRaster(props) {
                   dispatch({ type: "SETVALUE", payload: result });
                 } else {
                   dispatch({ type: "SETVALUE", payload: "N/A" });
-                }
-              }
-            });
-
-            map.on("click", async function (evt) {
-              var latlng = map.mouseEventToLatLng(evt.originalEvent);
-              var loc = [latlng.lng, latlng.lat];
-
-              const shapegeojson = {
-                type: "Polygon",
-                coordinates: [
-                  [
-                    [78.936767578125, 18.127580917219024],
-                    [78.88458251953125, 18.03358642603099],
-                    [79.16748046874999, 17.981345545819597],
-                    [78.936767578125, 18.127580917219024],
-                  ],
-                ],
-              };
-              // const stats = await geoblaze.stats(window.tiff, shapegeojson);
-              // const histograms = await geoblaze.histogram(window.tiff, shapegeojson,{ scaleType: "ratio", numClasses: 10, classType: "equal-interval" });
-              // console.log("STATS",histograms)
-              const result = geoblaze.identify(window.tiff, loc);
-              // props.togglechart();
-              if (result != null) {
-                if (result > 1) {
-                  {
-                    // props.update(result);
-                    // console.log("CLICK VALUE", result);
-                  }
-                  {
-                    // props.setloc(latlng.lat, latlng.lng);
-                  }
                 }
               }
             });
@@ -228,10 +172,52 @@ export default function GeoRaster(props) {
     });
   }
 
-  useEffect(() => {
-    addlayer();
-    props.onRef(undefined);
-  }, [currentLayer]);
+  function getColorFromValues() {
+   
+    if (layerRef.current) {
+      layerRef.current.updateColors(function (values) {
+        // break;
+        var newScale;
+        var scaledPixelvalue;
+        var color;
+        if (RasterOpacity === false) {
+          return null;
+        } else {
+          if (values[0] < layermin.current) {
+            return null;
+          } else if (values[0] > layermax.current) {
+            return "#757575";
+          }
+          if (currentLayerNow.current === "LULC") {
+            newScale = chroma.scale([
+              "#dc0f0f",
+              "#44ce5d",
+              "#7533e6",
+              "#de8313",
+              "#dfef4d",
+              "#98e16e",
+              "#bb3cc9",
+              "#455dca",
+              "#3feabd",
+              "#cf3c8d",
+              "#64caef",
+            ]);
+            scaledPixelvalue = (values[0] - layermin.current) / layerrange.current;
+            color = newScale(scaledPixelvalue).hex();
+            return color;
+          } else {
+            newScale = chroma
+              .scale(colorscalepickerRef.current)
+              .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+            scaledPixelvalue = (values[0] - layermin.current) / layerrange.current;
+            color = newScale(scaledPixelvalue).hex();
+            // console.log("COLOR",colorscalepickerRef.current)
+            return color;
+          }
+        }
+      });
+    }
+  }
 
   return null;
 }

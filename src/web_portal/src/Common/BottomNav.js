@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import BottomNavigation from "reactjs-bottom-navigation";
 import "reactjs-bottom-navigation/dist/index.css";
-import { useHistory, Link, Route } from "react-router-dom";
-import { Modal, Button } from "antd";
+import {Link } from "react-router-dom";
+import { Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import axiosConfig from "../Common/axios_Config";
-import { setlayerlist, setcurrentlayer, setdownloadlayer } from "../actions";
+import { setlayerlist, setcurrentlayer } from "../actions";
 import { Collapse, message } from "antd";
 import ReactTooltip from "react-tooltip";
 import Multistep from "react-multistep";
@@ -18,13 +18,12 @@ import {
   BiFolder,
   BiErrorCircle,
   BiHelpCircle,
-  BiX,
   BiHide,
   BiShow,
   BiBarChartAlt,
   BiDotsHorizontalRounded
 } from "react-icons/bi";
-import { Form, FormGroup, Label, Input, FormText, Row, Col } from "reactstrap";
+import {FormGroup, Label, Input,Row } from "reactstrap";
 const steps = [
   { name: "StepOne", component: <LayerDetails /> },
   { name: "StepTwo", component: <PersonalDetails /> },
@@ -37,10 +36,7 @@ const BottomNav = (props) => {
   const LayerToggle = useSelector((state) => state.RasterOpacity);
   const DownLayerDesc = useSelector((state) => state.DownloadLayerDesc);
   const DownLayer = useSelector((state) => state.DownloadLayer);
-  const Keymap = useSelector((state) => state.MapKey);
-  const history = useHistory();
-  const [openTab, setOpenTab] = useState("layer");
-  const [isActive, setlegend] = useState(true);
+
   const [Layers, layerList] = useState([]);
   const [isActivebutton, setActivebutton] = useState(false);
   const [Layercount, setLayercount] = useState(0);
@@ -54,7 +50,7 @@ const BottomNav = (props) => {
     dispatch({ type: "HIDEDRAWER" });
     dispatch({ type: "CHANGELAYERDESC", payload: desc });
     props.resetZoom();
-    if (selectedRegion != "CUSTOM") {
+    if (selectedRegion !== "CUSTOM") {
       setTimeout(function () {
         props.changeCurrentLayer();
       }, 3000);
@@ -129,9 +125,7 @@ const BottomNav = (props) => {
   const [isModalDownload, setIsModalDownload] = useState(false);
   const [isModalOther, setIsModalOther] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+
 
   const handleOk = () => {
     setIsModalVisible(false);
@@ -175,10 +169,10 @@ const BottomNav = (props) => {
   function callback(key) {
     // console.log(key);
   }
-  useEffect(() => {
+  const changeLayer = useRef(() => {
     getLayers();
-    if (DownLayerDesc.multiple_files == true) {
-      if (selectedDowndate != "") {
+    if (DownLayerDesc.multiple_files === true) {
+      if (selectedDowndate !== "") {
         setActivebutton(true);
       } else {
         setActivebutton(false);
@@ -186,10 +180,13 @@ const BottomNav = (props) => {
     } else {
       setActivebutton(true);
     }
+  });
+  useEffect(() => {
+    changeLayer.current();
   }, [Layercount, selectedDowndate, isActivebutton, DownLayer]);
 
   function toggleLayer() {
-    if (LayerToggle == true) {
+    if (LayerToggle === true) {
       dispatch({ type: "HIDERASTER" });
     } else {
       dispatch({ type: "SHOWRASTER" });
@@ -197,26 +194,17 @@ const BottomNav = (props) => {
   }
   const prevStyle = {
     background: "#195995",
-    "border-radius": "3px",
+    borderRadius: "3px",
     border: "none",
     float: "left",
     transform: "translateY(-60%)",
   };
   const nextStyle = {
     background: "#195995",
-    "border-radius": "3px",
+    "borderRadius": "3px",
     border: "none",
     float: "right",
     transform: "translateY(-60%)",
-  };
-  const nextDisabled = {
-    background: "#797B7C",
-    "border-radius": "3px",
-    border: "none",
-    float: "right",
-    transform: "translateY(-60%)",
-    "pointer-events": "none",
-    cursor: "not-allowed",
   };
   return (
     <React.Fragment>
@@ -253,9 +241,9 @@ const BottomNav = (props) => {
               {Categorylist.map((layers, index) => {
                 return (
                   <Panel header={layers} key={index} className="layer-header">
-                    {Layers[0][layers].map((items) => {
+                    {Layers[0][layers].map((items,indexlayers) => {
                       return (
-                        <FormGroup tag="fieldset" className="btn-radio">
+                        <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
                           <Row>
                             <div className="col-8"
                               style={{
@@ -282,7 +270,7 @@ const BottomNav = (props) => {
                               <div className="tool-tip">
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }
@@ -315,7 +303,7 @@ const BottomNav = (props) => {
                                 &nbsp;&nbsp;
                                 <div
                                   style={
-                                    selectedLayer == items.layer_name
+                                    selectedLayer === items.layer_name
                                       ? {}
                                       : { display: "none" }
                                   }
@@ -404,40 +392,37 @@ const BottomNav = (props) => {
             }}
           >
             <div style={{ fontSize: "16px" }}>
-              <div class="row">
-                <div class="col mb-2">
+              <div className="row">
+                <div className="col mb-2">
                   <Link to="/about-project" className="mobile-link">
                     {" "}
                     <BiErrorCircle />
                     &nbsp;About Project
                   </Link>
                 </div>
-                <div class="w-100"></div>
-                <div class="col mb-2">
+                <div className="w-100"></div>
+                <div className="col mb-2">
                   <div className="mobile-link"
                   onClick={(e) => {
-                    {
                       window
                         .open("https://dev.misteo.co/dicrahelp/", "_blank")
                         .focus();
-                    }
                   }}
                   >
                     <BiHelpCircle />
                     &nbsp;Help
                   </div>
                 </div>
-                <div class="w-100"></div>
-                <div class="col mb-2">
+                <div className="w-100"></div>
+                <div className="col mb-2">
                   <Link to="/analytics" className="mobile-link">
                     <BiBarChartAlt />
                     &nbsp;Site Analytics
                   </Link>
                 </div>
-                <div class="w-100"></div>
+                <div className="w-100"></div>
                 <div
-                  class="col"
-                  className="mobile-link"
+                  className="col mobile-link"
                   onClick={handleClick}
                 >
                   <AiFillGithub />

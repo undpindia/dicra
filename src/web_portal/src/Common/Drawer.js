@@ -1,47 +1,20 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "antd/dist/antd.css";
-import { Drawer, Space } from "antd";
-import { Menu, Dropdown, notification } from "antd";
-import { DownOutlined, InfoCircleTwoTone } from "@ant-design/icons";
-import { BiLayer, BiLineChart, BiDownload, BiX } from "react-icons/bi";
+import { Drawer } from "antd";
+import { Menu, Dropdown } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import { BiLayer, BiLineChart, BiX } from "react-icons/bi";
 import geojson from "../Shapes/Telangana.json";
-import Captcha from "demos-react-captcha";
-import { geoMercator, geoPath } from "d3-geo";
-import { select } from "d3-selection";
+import { geoMercator } from "d3-geo";
 import Moment from "moment";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Row,
-  Col,
-  Label,
-  FormGroup,
-  Card,
-  Table,
-  CardBody,
-} from "reactstrap";
-import {
-  AvForm,
-  AvField,
-  AvGroup,
-  AvInput,
-  AvFeedback,
-  AvRadioGroup,
-  AvRadio,
-  AvCheckboxGroup,
-  AvCheckbox,
-} from "availity-reactstrap-validation";
+import { Row, Col, Card, CardBody } from "reactstrap";
 import Chart from "react-apexcharts";
 import { message } from "antd";
-import axios from "axios";
 import axiosConfig from "../Common/axios_Config";
 import Loader from "../img/loader.gif";
 import { connect } from "react-redux";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-
+let notavailable = 1;
 const mapStateToProps = (ReduxProps) => {
   return {
     CurrentLayer: ReduxProps.CurrentLayer,
@@ -56,16 +29,6 @@ const mapDispatchToProps = (dispatch) => {
     showDrawer: (val) => dispatch({ type: "SHOWDRAWER" }),
     hideDrawer: (val) => dispatch({ type: "HIDEDRAWER" }),
   };
-};
-const key = "updatable";
-
-const openNotification = () => {
-  notification.open({
-    key,
-    // message: 'Notification Title',
-    description: "Trend data is not available for given time range !",
-    icon: <InfoCircleTwoTone />,
-  });
 };
 class DrawerModal extends Component {
   constructor(props) {
@@ -131,14 +94,45 @@ class DrawerModal extends Component {
         },
         grid: {
           show: false,
+          borderColor: "#90A4AE",
+          strokeDashArray: 0,
+          position: "back",
+          xaxis: {
+            lines: {
+              show: false,
+            },
+          },
+          yaxis: {
+            lines: {
+              show: false,
+            },
+          },
         },
         yaxis: {
           show: true,
+          tickAmount: 3,
           min: -1.0,
+          labels: {
+            show: true,
+            style: {
+              colors: "#90989b",
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
+            },
+          },
         },
         xaxis: {
           type: "datetime",
-          tickAmount: 6,
+          // tickAmount: 6,
+          labels: {
+            format: "yyyy",
+            style: {
+              colors: "#90989b",
+              cssClass: "apexcharts-xaxis-label",
+            },
+          },
         },
         tooltip: {
           x: {
@@ -185,7 +179,7 @@ class DrawerModal extends Component {
   }
   async getWeathertrend(range) {
     var bodyParams = {};
-    if (range == "6months") {
+    if (range === "6months") {
       bodyParams = {
         district: this.props.district.selectedRegion,
         mandal:
@@ -199,7 +193,7 @@ class DrawerModal extends Component {
       });
     }
 
-    if (range == "1Year") {
+    if (range === "1Year") {
       bodyParams = {
         district: this.props.district.selectedRegion,
         mandal:
@@ -226,7 +220,6 @@ class DrawerModal extends Component {
           Datanull: false,
         });
       } else {
-        // openNotification();
         this.setState({
           series: [],
           loader: false,
@@ -342,7 +335,7 @@ class DrawerModal extends Component {
     var shapeparams = this.props.district.selected_shape;
     shapeparams = shapeparams.features[0].geometry;
     var bodyParams = {};
-    if (this.props.CurrentLayer == "POPULATION") {
+    if (this.props.CurrentLayer === "POPULATION") {
       bodyParams = {
         geojson: shapeparams,
         // startdate: this.state.from_date,
@@ -364,8 +357,7 @@ class DrawerModal extends Component {
 
     try {
       const res = await axiosConfig.post(`/gettrend?`, bodyParams);
-      if (res.data.code == 404) {
-        // openNotification();
+      if (res.data.code === 404) {
         this.setState({
           series: [],
           loader: false,
@@ -383,7 +375,7 @@ class DrawerModal extends Component {
     this.getPopulation(shapeparams);
   }
   async getPopulation(shapeparams) {
-    // =====================API FOR POPULATION DATA=================
+    // ===============================API FOR POPULATION DATA=========================
     var bodyParamsPopulation = {
       geojson: shapeparams,
       date: "2020-01-01",
@@ -401,13 +393,49 @@ class DrawerModal extends Component {
       message.error("Failed to connect to server");
     }
   }
+  getyaxistext() {
+    if (this.props.CurrentLayer === "WEATHER") {
+      if (this.state.selectedWeatherparams === "rain") {
+        return "mm";
+      }
+      if (this.state.selectedWeatherparams === "min_temp") {
+        return "°C";
+      }
+      if (this.state.selectedWeatherparams === "max_temp") {
+        return "°C";
+      }
+      if (this.state.selectedWeatherparams === "min_humidity") {
+        return "%";
+      }
+      if (this.state.selectedWeatherparams === "max_humidity") {
+        return "%";
+      }
+      if (this.state.selectedWeatherparams === "min_wind_speed") {
+        return "m/s";
+      }
+      if (this.state.selectedWeatherparams === "max_wind_speed") {
+        return "m/s";
+      }
+    } else {
+      return this.props.LayerDescription.yaxislabel;
+    }
+  }
   generatechart(data) {
-    let chart_values = [];
-    var trendData = {
+    let trendData = {
       name: this.props.CurrentLayer,
       data: [],
     };
-    if (this.props.CurrentLayer == "LULC") {
+    if (this.props.CurrentLayer === "WEATHER") {
+      trendData = {
+        name: this.state.selectedWeatherparams,
+        data: [],
+      };
+    }
+    if (this.props.CurrentLayer === "LULC") {
+      trendData = {
+        name: "Percentage",
+        data: [],
+      };
       this.setState({
         options: {
           colors: ["#d65522"],
@@ -451,18 +479,42 @@ class DrawerModal extends Component {
             style: "hollow",
           },
           grid: {
-            show: false,
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
           },
           yaxis: {
             show: true,
-            min: -1.0,
+            tickAmount: 3,
+            min: 0,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
             title: {
               text: this.props.LayerDescription.yaxislabel,
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
               style: {
-                color: undefined,
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,
@@ -475,14 +527,18 @@ class DrawerModal extends Component {
             // tickAmount: 6,
             labels: {
               format: "yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
             },
             title: {
               text: this.props.LayerDescription.xaxislabel,
               rotate: -90,
               offsetX: 0,
-              offsetY: 0,
+              offsetY: 5,
               style: {
-                color: undefined,
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,
@@ -508,7 +564,8 @@ class DrawerModal extends Component {
           },
         },
       });
-    } else {
+    }
+    if (this.props.CurrentLayer === "POPULATION") {
       this.setState({
         options: {
           tooltip: {
@@ -516,15 +573,42 @@ class DrawerModal extends Component {
               format: "dd MMM yyyy",
             },
           },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
           yaxis: {
             show: true,
+            tickAmount: 3,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
             title: {
-              text: this.props.LayerDescription.yaxislabel,
+              text: this.getyaxistext(),
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
               style: {
-                color: undefined,
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,
@@ -535,8 +619,13 @@ class DrawerModal extends Component {
           xaxis: {
             type: "datetime",
             // tickAmount: 6,
+
             labels: {
               format: "yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
             },
             title: {
               text: this.props.LayerDescription.xaxislabel,
@@ -544,7 +633,85 @@ class DrawerModal extends Component {
               offsetX: 0,
               offsetY: 0,
               style: {
-                color: undefined,
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+        },
+      });
+    } else {
+      this.setState({
+        options: {
+          tooltip: {
+            x: {
+              format: "dd MMM yyyy",
+            },
+          },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
+          yaxis: {
+            show: true,
+            tickAmount: 3,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
+            title: {
+              text: this.getyaxistext(),
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            // tickAmount: 6,
+
+            labels: {
+              format: "MMM yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
+            },
+            title: {
+              text: this.props.LayerDescription.xaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 5,
+              style: {
+                color: "#90989b",
                 fontSize: "12px",
                 fontFamily: "Helvetica, Arial, sans-serif",
                 fontWeight: 400,
@@ -555,23 +722,31 @@ class DrawerModal extends Component {
         },
       });
     }
-    if (data != null) {
-      data.map(function (item, index, data) {
-        if (item[1] != null) {
-          trendData.data.push({
-            x: item[0],
-            y: parseFloat(item[1]).toFixed(2),
-          });
-        }
-      });
+    if (data) {
+      data.map((item) =>
+        item[1] !== null
+          ? trendData.data.push({
+              x: item[0],
+              y:
+                this.props.CurrentLayer === "POPULATION"
+                  ? parseInt(item[1])
+                  : parseFloat(item[1]).toFixed(2),
+            })
+          : (notavailable = notavailable + 1)
+      );
+      // data.map(function (item, index, data) {
+      //   if (item[1] !== null) {
+      //     trendData.data.push({
+      //       x: item[0],
+      //       y: parseFloat(item[1]).toFixed(2),
+      //     });
+      //   }
+      // });
     }
     var trendlength = trendData.data.length;
     var lst_value = trendData.data[trendlength - 1];
     lst_value = lst_value.y;
 
-    if (trendData.data == null) {
-      chart_values = [trendData];
-    }
     this.setState({
       series: [trendData],
       loader: false,
@@ -588,16 +763,9 @@ class DrawerModal extends Component {
     }
   }
   setNewshape() {
-    this.setState(
-      {
-        selected_shape: this.props.district.selected_shape,
-      },
-      () => {
-        {
-          // console.log("SELECTED SHAPE", this.state.selected_shape);
-        }
-      }
-    );
+    this.setState({
+      selected_shape: this.props.district.selected_shape,
+    });
   }
   async setPointsChart() {
     var shapeparams = this.props.district.selected_shape;
@@ -609,8 +777,7 @@ class DrawerModal extends Component {
     };
     try {
       const res = await axiosConfig.post(`/getpointstrend?`, bodyParams);
-      if (res.data.code == 404) {
-        // openNotification();
+      if (res.data.code === 404) {
         this.setState({
           series: [],
           loader: false,
@@ -628,23 +795,23 @@ class DrawerModal extends Component {
     }
   }
   settimerange(daterange) {
-    if (daterange == "6months") {
+    if (daterange === "6months") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setMonth(from_date.getMonth() - 6);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -667,22 +834,22 @@ class DrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "1Year") {
+    } else if (daterange === "1Year") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 1);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -705,23 +872,23 @@ class DrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "3Year") {
+    } else if (daterange === "3Year") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 3);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
 
-      if (this.props.CurrentLayer == "FIREEV") {
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -744,22 +911,22 @@ class DrawerModal extends Component {
           }
         );
       }
-    } else if (daterange == "5Year") {
+    } else if (daterange === "5Year") {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 5);
       from_date = new Date(from_date);
-      var from_dd = String(from_date.getDate()).padStart(2, "0");
-      var from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var from_yyyy = from_date.getFullYear();
-      var start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      var to_dd = String(current_date.getDate()).padStart(2, "0");
-      var to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var to_yyyy = current_date.getFullYear();
-      var to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentLayer == "FIREEV") {
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      if (this.props.CurrentLayer === "FIREEV") {
         this.setState(
           {
             from_date: start_date,
@@ -794,40 +961,40 @@ class DrawerModal extends Component {
     // var min = a.getMinutes();
     // var sec = a.getSeconds();
     // var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    var dd = String(a.getDate()).padStart(2, "0");
-    var mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
-    var yyyy = a.getFullYear();
-    var date = yyyy + "-" + mm + "-" + dd;
+    let dd = String(a.getDate()).padStart(2, "0");
+    let mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
+    let yyyy = a.getFullYear();
+    let date = yyyy + "-" + mm + "-" + dd;
     // return time;
     this.setState({
       last_updated: date,
     });
   }
   spellPerilcheck(peril) {
-    if (peril == "rain") {
+    if (peril === "rain") {
       return "Rainfall";
     }
-    if (peril == "min_temp") {
+    if (peril === "min_temp") {
       return "Minimum Temperature";
     }
-    if (peril == "max_temp") {
+    if (peril === "max_temp") {
       return "Maximum Temperature";
     }
-    if (peril == "min_humidity") {
+    if (peril === "min_humidity") {
       return "Minimum Humidity";
     }
-    if (peril == "max_humidity") {
+    if (peril === "max_humidity") {
       return "Maximum Humidity";
     }
-    if (peril == "min_wind_speed") {
+    if (peril === "min_wind_speed") {
       return "Minimum Wind Speed";
     }
-    if (peril == "max_wind_speed") {
+    if (peril === "max_wind_speed") {
       return "Max Wind Speed";
     }
   }
   checkDefined(value, date, category) {
-    if (value[date] == undefined) {
+    if (value[date] === undefined) {
       return "0.00";
     } else {
       // this.setState({
@@ -866,7 +1033,7 @@ class DrawerModal extends Component {
     var PROJECTION_CONFIG = [];
     var projection = [];
 
-    if (this.props.CurrentLayer != "CP") {
+    if (this.props.CurrentLayer !== "CP") {
       const width = 800;
       const height = width * 0.9;
       projection = geoMercator().fitExtent(
@@ -876,7 +1043,6 @@ class DrawerModal extends Component {
         ],
         this.state.selected_shape
       );
-      const path = geoPath().projection(projection);
       const centerpoint =
         this.state.selected_shape.features[0].properties.centroid;
       var scaleValue;
@@ -962,7 +1128,7 @@ class DrawerModal extends Component {
                 <Row>
                   <Col
                     style={
-                      this.props.CurrentRegion == "CUSTOM"
+                      this.props.CurrentRegion === "CUSTOM"
                         ? { display: "none" }
                         : {}
                     }
@@ -998,7 +1164,7 @@ class DrawerModal extends Component {
                   {/* custom draw */}
                   <Col
                     style={
-                      this.props.CurrentRegion == "CUSTOM"
+                      this.props.CurrentRegion === "CUSTOM"
                         ? {}
                         : { display: "none" }
                     }
@@ -1013,7 +1179,6 @@ class DrawerModal extends Component {
                     >
                       <Geographies
                         geography={this.state.selected_shape.features}
-                        disableOptimization
                       >
                         {({ geographies }) =>
                           geographies.map((geo) => (
@@ -1071,8 +1236,8 @@ class DrawerModal extends Component {
               </Col>
               <Col
                 style={
-                  this.props.CurrentLayer == "WEATHER" ||
-                  this.props.CurrentLayer == "LULC"
+                  this.props.CurrentLayer === "WEATHER" ||
+                  this.props.CurrentLayer === "LULC"
                     ? { display: "none" }
                     : {}
                 }
@@ -1086,35 +1251,36 @@ class DrawerModal extends Component {
               </Col>
               <Col
                 style={
-                  this.props.CurrentLayer == "WEATHER"
+                  this.props.CurrentLayer === "WEATHER"
                     ? {}
                     : { display: "none" }
                 }
                 className="alignrignt"
               >
                 <p style={{ fontSize: "18px", marginBottom: "0px" }}>
-                  {this.state.last_updated}
+                  {Moment(this.props.LayerDescription.last_updated)
+                    .format("DD-MM-YYYY")
+                    .slice(0, 10)}
                 </p>
               </Col>
             </Row>
             <Row>
               <Col>
                 <span
-                  style={{ display: "inline", "margin-left": "10px" }}
                   style={
-                    this.props.CurrentLayer == "WEATHER"
-                      ? {}
+                    this.props.CurrentLayer === "WEATHER"
+                      ? { display: "inline", "margin-left": "10px" }
                       : { display: "none" }
                   }
                 >
                   <Dropdown overlay={menu}>
-                    <a
+                    <span
                       className="ant-dropdown-link"
                       onClick={(e) => e.preventDefault()}
                     >
                       Select Parameter <DownOutlined /> |{" "}
                       {this.spellPerilcheck(this.state.selectedWeatherparams)}
-                    </a>
+                    </span>
                   </Dropdown>
                 </span>
               </Col>
@@ -1122,19 +1288,19 @@ class DrawerModal extends Component {
             <Row>
               <Col
                 style={
-                  this.props.CurrentLayer == "LULC" ? { display: "none" } : {}
+                  this.props.CurrentLayer === "LULC" ? { display: "none" } : {}
                 }
               >
                 <div>
                   {this.checkValue(this.props.district.areaValue) > 200 ? (
-                    <p
+                    <span
                       style={{
                         fontSize: "27px",
                         fontWeight: "lighter",
                         color: "#fff",
                       }}
                     >
-                      {this.props.CurrentLayer == "WEATHER"
+                      {this.props.CurrentLayer === "WEATHER"
                         ? this.state.weatherValue
                         : this.checkValue(this.props.district.areaValue)}
                       <p
@@ -1144,18 +1310,20 @@ class DrawerModal extends Component {
                           color: "#fff",
                         }}
                       >
-                        {this.props.LayerDescription.unit}
+                       {this.props.CurrentLayer === "WEATHER"
+                          ? this.getyaxistext()
+                          : this.props.LayerDescription.unit}
                       </p>
-                    </p>
+                    </span>
                   ) : (
-                    <p
+                    <span
                       style={{
                         fontSize: "35px",
                         fontWeight: "lighter",
                         color: "#fff",
                       }}
                     >
-                      {this.props.CurrentLayer == "WEATHER"
+                      {this.props.CurrentLayer === "WEATHER"
                         ? this.state.weatherValue
                         : this.checkValue(this.props.district.areaValue)}
                       <p
@@ -1165,21 +1333,23 @@ class DrawerModal extends Component {
                           color: "#fff",
                         }}
                       >
-                        {this.props.LayerDescription.unit}
+                        {this.props.CurrentLayer === "WEATHER"
+                          ? this.getyaxistext()
+                          : this.props.LayerDescription.unit}
                       </p>
-                    </p>
+                    </span>
                   )}
                 </div>
               </Col>
 
               <Col
-                style={{ paddingLeft: "0px", paddingTop: "20px" }}
                 style={
-                  this.props.CurrentLayer == "FIREEV" ||
-                  this.props.CurrentLayer == "WEATHER" ||
-                  this.props.CurrentLayer == "LULC"
+                  this.props.CurrentLayer === "FIREEV" ||
+                  this.props.CurrentLayer === "WEATHER" ||
+                  this.props.CurrentLayer === "POPULATION" ||
+                  this.props.CurrentLayer === "LULC"
                     ? { display: "none" }
-                    : {}
+                    : { paddingLeft: "0px", paddingTop: "20px" }
                 }
               >
                 <Row>
@@ -1188,7 +1358,7 @@ class DrawerModal extends Component {
                     {this.checkValue(this.props.district.minVal)}
                   </Col>
                   <Col className="steps-avg">
-                    {this.props.CurrentLayer == "POPULATION"
+                    {this.props.CurrentLayer === "POPULATION"
                       ? this.checkValue(this.props.district.meanVal)
                       : this.checkValue(this.props.district.areaValue)}
                   </Col>
@@ -1197,14 +1367,14 @@ class DrawerModal extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <ol class="progress-indicator mb-2">
-                    <li class="is-complete" data-step="">
+                  <ol className="progress-indicator mb-2">
+                    <li className="is-complete" data-step="">
                       <span>Min</span>
                     </li>
-                    <li class="is-complete" data-step="">
+                    <li className="is-complete" data-step="">
                       <span>Avg</span>
                     </li>
-                    <li class="is-complete" data-step="">
+                    <li className="is-complete" data-step="">
                       <span>Max</span>
                     </li>
                   </ol>
@@ -1236,10 +1406,10 @@ class DrawerModal extends Component {
             <Col
               md={12}
               style={
-                this.props.CurrentLayer == "LULC" ? {} : { display: "none" }
+                this.props.CurrentLayer === "LULC" ? {} : { display: "none" }
               }
             >
-              <Row style={{ "margin-bottom": "2%" }}>
+              <Row style={{ marginBottom: "2%" }}>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
                     <BiLineChart /> Trend
@@ -1259,40 +1429,34 @@ class DrawerModal extends Component {
                 </center>
               </div>
               <div style={this.state.loader ? { display: "none" } : {}}>
-                {/* <div>
-                  <p style={{ fontSize: "18px", display: "inline" }}>
-                    <BiLineChart /> Trend
-                  </p>
-                </div> */}
                 <Row>
                   <Col>
                     <span
-                      style={{ display: "inline", "margin-left": "10px" }}
                       style={
-                        this.props.CurrentLayer == "LULC"
-                          ? {}
+                        this.props.CurrentLayer === "LULC"
+                          ? { display: "inline", "margin-left": "10px" }
                           : { display: "none" }
                       }
                     >
                       <Dropdown overlay={LULCmenu}>
-                        <a
+                        <span
                           className="ant-dropdown-link"
                           onClick={(e) => e.preventDefault()}
                         >
                           Select Category <DownOutlined /> |{" "}
                           {this.state.selectedLULCcategory}
-                        </a>
+                        </span>
                       </Dropdown>
                     </span>
                   </Col>
                 </Row>
-                <div class="col-md-12"></div>
+                <div className="col-md-12"></div>
                 <div style={this.state.loader ? { display: "none" } : {}}>
                   <Chart
                     series={this.state.series}
                     options={this.state.options}
                     type="line"
-                    height="140"
+                    height="180"
                   />
                 </div>
               </div>
@@ -1304,7 +1468,7 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              <div style={{ "margin-bottom": "2%" }}>
+              <div style={{ marginBottom: "2%" }}>
                 <p style={{ fontSize: "18px", display: "inline" }}>
                   <BiLineChart /> Trend
                 </p>
@@ -1323,81 +1487,82 @@ class DrawerModal extends Component {
                   : { display: "none" }
               }
             >
-              {/* =================================WEATHER DATA TREND-START======================================== */}
+              {/* =================================================WEATHER DATA TREND-START============================================================ */}
               <div
                 className="btn-group-sm"
                 role="group"
                 aria-label="Basic radio toggle button group"
-                style={{ fontSize: "10px", marginTop: "10px" }}
                 style={
-                  this.props.CurrentLayer == "WEATHER"
-                    ? {}
+                  this.props.CurrentLayer === "WEATHER"
+                    ? { fontSize: "10px", marginTop: "10px" }
                     : { display: "none" }
                 }
               >
                 <input
                   type="radio"
-                  class="btn-check"
-                  name="btnradio"
+                  className="btn-check"
+                  name="weather-btnradio"
                   id="btnradio1"
-                  autocomplete="off"
-                  defaultChecked
+                  autoComplete="off"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? {}
                       : { display: "none" }
                   }
                   checked={
-                    this.state.currentWeatherRange == "6months" ? true : false
+                    this.state.currentWeatherRange === "6months" ? true : false
                   }
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
+                  onClick={(e) => {
+                    this.getWeathertrend("6months");
+                  }}
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio1"
-                  onClick={(e) => {
-                    {
-                      this.getWeathertrend("6months");
-                    }
-                  }}
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio1"
+                 
                 >
                   6 months
                 </label>
                 <input
                   type="radio"
                   className="btn-check"
-                  name="btnradio"
+                  name="weather-btnradio"
                   id="btnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? {}
                       : { display: "none" }
                   }
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   checked={
-                    this.state.currentWeatherRange == "1Year" ? true : false
+                    this.state.currentWeatherRange === "1Year" ? true : false
                   }
+                  onClick={(e) => {
+                    this.getWeathertrend("1Year");
+                  }}
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio2"
-                  onClick={(e) => {
-                    {
-                      this.getWeathertrend("1Year");
-                    }
-                  }}
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio2"
+                 
                 >
                   1 year
                 </label>
               </div>
-              {/* =================================WEATHER DATA TREND-END======================================== */}
+              {/* =================================================WEATHER DATA TREND-END============================================================ */}
               <div
                 className="btn-group-sm"
                 role="group"
                 aria-label="Basic radio toggle button group"
-                style={{ fontSize: "10px", marginTop: "10px" }}
                 style={
                   this.props.LayerDescription.timerangefilter
-                    ? {}
+                    ? { fontSize: "10px", marginTop: "10px" }
                     : { display: "none" }
                 }
               >
@@ -1405,30 +1570,31 @@ class DrawerModal extends Component {
                   type="radio"
                   className="btn-check"
                   name="btnradio"
-                  id="btnradio2"
-                  autocomplete="off"
+                  id="btnradio3"
+                  autoComplete="off"
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
                   checked={
-                    this.state.currentCharttime == "1year" ? true : false
+                    this.state.currentCharttime === "1year" ? true : false
                   }
+                  onClick={(e) => {
+                    this.settimerange("1Year");
+                  }}
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio2"
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio3"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
-                  onClick={(e) => {
-                    {
-                      this.settimerange("1Year");
-                    }
-                  }}
                 >
                   1 year
                 </label>
@@ -1436,30 +1602,31 @@ class DrawerModal extends Component {
                   type="radio"
                   className="btn-check"
                   name="btnradio"
-                  id="btnradio3"
-                  autocomplete="off"
+                  id="btnradio4"
+                  autoComplete="off"
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
                   checked={
-                    this.state.currentCharttime == "3year" ? true : false
+                    this.state.currentCharttime === "3year" ? true : false
                   }
+                  onClick={(e) => {
+                    this.settimerange("3Year");
+                  }}
                 />
                 <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio3"
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio4"
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
-                  onClick={(e) => {
-                    {
-                      this.settimerange("3Year");
-                    }
-                  }}
                 >
                   3 year
                 </label>
@@ -1467,30 +1634,31 @@ class DrawerModal extends Component {
                   type="radio"
                   className="btn-check"
                   name="btnradio"
-                  id="btnradio4"
+                  id="btnradio5"
+                  onChange={(e) => {
+                    console.log(" s")
+                  }}
                   style={
-                    this.props.CurrentLayer == "WEATHER"
+                    this.props.CurrentLayer === "WEATHER"
                       ? { display: "none" }
                       : {}
                   }
-                  autocomplete="off"
+                  autoComplete="off"
                   checked={
-                    this.state.currentCharttime == "5year" ? true : false
-                  }
-                />
-                <label
-                  class="btn btn-primary btn-chart"
-                  for="btnradio4"
-                  style={
-                    this.props.CurrentLayer == "WEATHER"
-                      ? { display: "none" }
-                      : {}
+                    this.state.currentCharttime === "5year" ? true : false
                   }
                   onClick={(e) => {
-                    {
-                      this.settimerange("5Year");
-                    }
+                    this.settimerange("5Year");
                   }}
+                />
+                <label
+                  className="btn btn-primary btn-chart"
+                  htmlFor="btnradio5"
+                  style={
+                    this.props.CurrentLayer === "WEATHER"
+                      ? { display: "none" }
+                      : {}
+                  }
                 >
                   5 year
                 </label>
@@ -1513,7 +1681,7 @@ class DrawerModal extends Component {
                   series={this.state.series}
                   options={this.state.options}
                   type="line"
-                  height="140"
+                  height="180"
                 />
               </div>
             </Row>
@@ -1524,74 +1692,6 @@ class DrawerModal extends Component {
             </Row> */}
           </Col>
         </Drawer>
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggleDownload}
-          className={this.props.className}
-          centered
-          backdrop="static"
-        >
-          <ModalHeader toggle={this.toggleDownload}>Download</ModalHeader>
-          <ModalBody className="trend-modal">
-            <AvForm>
-              <div
-                style={{
-                  maxHeight: "calc(100vh - 290px)",
-                  overflowY: "auto",
-                  overflowX: "hidden",
-                }}
-                className="trend-download-content"
-              >
-                <AvGroup>
-                  <Label for="example">Name</Label>
-                  <AvInput name="name" id="name" required />
-                  <AvFeedback>Please enter your name</AvFeedback>
-                </AvGroup>
-                <AvGroup>
-                  <Label for="example">Email</Label>
-                  <AvInput name="email" id="email" required />
-                  <AvFeedback>Please enter your email address</AvFeedback>
-                </AvGroup>
-                <Label>USAGE TYPE</Label>
-                <AvRadioGroup
-                  name="radioExample"
-                  required
-                  errorMessage="Pick one!"
-                >
-                  <Row>
-                    <Col>
-                      <AvRadio label="Commercial" value="commercial" />
-                    </Col>
-                    <Col>
-                      <AvRadio label="Non-commercial" value="non-commercial" />
-                    </Col>
-                  </Row>
-                </AvRadioGroup>
-
-                <AvField type="select" name="select" label="Purpose">
-                  <option value="" selected disabled>
-                    Purpose
-                  </option>
-                  <option>Academia</option>
-                  <option>Business</option>
-                  <option>Government Use</option>
-                  <option>R&D</option>
-                  <option>Journalistic</option>
-                  <option>Others</option>
-                </AvField>
-                <div className="captcha">
-                  <Captcha
-                    onChange={this.onChange}
-                    placeholder="Enter captcha"
-                  />
-                </div>
-              </div>
-              <ModalFooter>
-                <Button color="secondary">Download</Button>
-              </ModalFooter>
-            </AvForm>
-          </ModalBody>
-        </Modal>
       </div>
     );
   }

@@ -318,7 +318,6 @@ const SidebarComponent = (props) => {
             />
           </Tab>
           <Tab
-            // onClick={(e) => history.push("/use-cases")}
             icon={
               <Link to="/use-cases">
                 <BiFolder

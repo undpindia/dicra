@@ -1298,7 +1298,7 @@ class map extends Component {
                 >
                   {this.state.regionList.length > 0 &&
                     this.state.regionList.map((item, index) => (
-                      <option
+                      <Select.OptGroup
                         className="search-list"
                         value={index}
                         key={index}
@@ -1306,7 +1306,7 @@ class map extends Component {
                         // attr={item.uid}
                       >
                         {item.dname}
-                      </option>
+                      </Select.OptGroup>
                     ))}
                 </Select>
               </div>

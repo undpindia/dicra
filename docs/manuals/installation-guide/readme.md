@@ -18,19 +18,25 @@ Steps:
 
 Steps:
 1.	Clone the github repo containing the frontend app ```git clone https://github.com/undpindia/dicra.git```
-2.	Run the command ```npm install``` then it will install the required packages for running the application.
-3.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files
-4.	Upload all the build files to nginx website deployment location
-5.	Make changes to the web server configuration
+2.	Navigate to **web_portal** folder ```cd dicra/src/web_portal```
+3.	Unzip **package-lock.zip** ```unzip package-lock.zip```
+4.	Create .env file and add REACT_APP_API_KEY=google_map_api_key
+5.	Run the command ```npm install``` then it will install the required packages for running the application.
+6.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files
+7.	Upload all the build files to nginx website deployment location
+8.	Make changes to the web server configuration
 
 ### Running Web App Production Build in Azure Blob
 
 Steps:
 1.	Clone the github repo containing the frontend app ```git clone https://github.com/undpindia/dicra.git```
-2.	Run the command ```npm install``` then it will install the required packages for running the application
-3.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files
-4.	To deploy react production build in Azure we need to create a storage account in Azure
-5.	After the successful Deployment of the storage account Goto static website menu and enable static website option and fill index document name as ```index.html``` and leave error document path as empty (its optional). After saving this it will provide us a primary endpoint.
+2.	Navigate to **web_portal** folder ```cd dicra/src/web_portal```
+3.	Unzip **package-lock.zip** ```unzip package-lock.zip```
+4.	Create .env file and add REACT_APP_API_KEY=google_map_api_key
+5.	Run the command ```npm install``` then it will install the required packages for running the application
+6.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files
+7.	To deploy react production build in Azure we need to create a storage account in Azure
+8.	After the successful Deployment of the storage account Goto static website menu and enable static website option and fill index document name as ```index.html``` and leave error document path as empty (its optional). After saving this it will provide us a primary endpoint.
 
 Screenshot of the same is given below. We can use the primary endpoint to test our react production build, deployed in the storage account and same can be done after the completion of step 6.
 

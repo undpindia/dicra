@@ -31,7 +31,8 @@ export default function GeoRaster(props) {
       getColorFromValues();
     }, 700);
   });
-
+  let LayeropacityRef= React.useRef(null);
+  LayeropacityRef.current=useSelector((state) => state.RasterOpacity)
   const addLayerRef = useRef(() => {
     addlayer();
     // props.onRef(undefined);
@@ -180,7 +181,7 @@ export default function GeoRaster(props) {
         var newScale;
         var scaledPixelvalue;
         var color;
-        if (RasterOpacity === false) {
+        if (LayeropacityRef.current === false) {
           return null;
         } else {
           if (values[0] < layermin.current) {

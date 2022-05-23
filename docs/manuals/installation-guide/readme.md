@@ -10,8 +10,9 @@ Steps:
 1.	Clone the github repo containing the frontend app ```git clone https://github.com/undpindia/dicra.git```
 2.	Navigate to **web_portal** folder ```cd dicra/src/web_portal```
 3.	Unzip **package-lock.zip** ```unzip package-lock.zip```
-4.	Run the command ```npm install``` then it will install the required packages for running the application
-5.	After the installation we can able to run the Web application in Development server using the command ```npm start```
+4.	Create .env file and add REACT_APP_API_KEY=google_map_api_key
+5.	Run the command ```npm install``` then it will install the required packages for running the application
+6.	After the installation we can able to run the Web application in Development server using the command ```npm start```
 
 ### Running Web App Production Build In a web Server(Nginx)
 

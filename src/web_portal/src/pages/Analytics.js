@@ -4,8 +4,8 @@ import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
 import {Link } from "react-router-dom";
 import { connect } from "react-redux";
-import LoadingScreen from "react-loading-screen";
-import logo from "../img/logo.png"
+// import LoadingScreen from "react-loading-screen";
+// import logo from "../img/logo.png"
 const mapStateToProps = (ReduxProps) => {
   return {
     Layers: ReduxProps.Layers,
@@ -46,18 +46,8 @@ handleIframeLoad = (event) => {
             <hr />
             <div>
               <div className="container analytics-page">
-              <div className="iframe-container">
-              <LoadingScreen
-              loading={this.state.loader}
-              bgColor="#f1f1f1"
-              spinnerColor="#9ee5f8"
-              textColor="#676767"
-              logoSrc={logo}
-              text="DiCRA"
-              style={{ fontSize: "30px" }}
-            >
-              <iframe className="google-analytics" title="Analytics" width="100%" height={2000} src="https://datastudio.google.com/embed/reporting/2aef4516-1c78-4a08-84d8-00eed13cd07b/page/1M" frameborder={0} style={{border:"0"}} allowfullscreen  ref={ frame => this.page = frame }></iframe>
-              </LoadingScreen>
+              <div className="iframe-container">        
+              <iframe className="google-analytics" title="Analytics" width="100%" height={2000} src="https://datastudio.google.com/embed/reporting/2aef4516-1c78-4a08-84d8-00eed13cd07b/page/1M" frameBorder={0} style={{border:"0"}} allowFullScreen  ref={ frame => this.page = frame }></iframe>
               </div>
               </div>
             </div>

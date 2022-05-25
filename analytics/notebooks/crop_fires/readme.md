@@ -13,3 +13,8 @@
 - [A fuzzy machine learning approach for identification of paddy stubble burnt fields](https://www.researchgate.net/publication/344001377_A_fuzzy_machine_learning_approach_for_identification_of_paddy_stubble_burnt_fields)
 - https://www.frontiersin.org/articles/10.3389/fenrg.2020.614212/full 
 - https://dspace.mit.edu/bitstream/handle/1721.1/138578/1288582516-MIT.pdf?sequence=1&isAllowed=y
+
+
+https://www.cimmyt.org/news/happy-seeder-can-reduce-air-pollution-and-greenhouse-gas-emissions-while-making-profits-for-farmers/
+https://pypi.org/project/folium/
+https://land.copernicus.eu/global/products/ba

@@ -19,6 +19,7 @@
     "apexcharts": "^3.32.0",
     "availity-reactstrap-validation": "^2.7.1",
     "axios": "^0.24.0",
+    "better-react-spinkit": "^2.0.4",
     "chroma-js": "^2.1.2",
     "d3-geo": "^1.12.1",
     "d3-scale": "^4.0.2",

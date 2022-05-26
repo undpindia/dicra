@@ -1122,6 +1122,7 @@ class map extends Component {
     }
   }
   render() {
+    console.log("raster", this.props.CurrentLayer === false)
     return (
       <React.Fragment>
         <div className="header">

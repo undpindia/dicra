@@ -19,6 +19,7 @@ import changeOpacity from "./RasterOpacity";
 import setDownloadFile from "./DownloadFile";
 import currentLayerType from "./currentLayerType";
 import hoverlatlon from "./setlatlon";
+
 import {combineReducers} from 'redux';
 
 const allReducers=combineReducers({
@@ -42,6 +43,7 @@ const allReducers=combineReducers({
     RasterOpacity:changeOpacity,
     DownloadFile:setDownloadFile,
     CurrentLayerType:currentLayerType,
-    Hoverlatlon:hoverlatlon
+    Hoverlatlon:hoverlatlon,
+
 });
 export default allReducers;

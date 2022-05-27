@@ -14,7 +14,23 @@
 - https://www.frontiersin.org/articles/10.3389/fenrg.2020.614212/full 
 - https://dspace.mit.edu/bitstream/handle/1721.1/138578/1288582516-MIT.pdf?sequence=1&isAllowed=y
 
+Data:
+Burnt Area: https://land.copernicus.eu/global/products/ba
+Quantity: https://www.mdpi.com/2072-4292/12/23/3872
 
+Policies:
+- https://www.oecd-ilibrary.org/sites/67f71d34-en/index.html?itemId=/content/component/67f71d34-en
+- https://www.oecd.org/regional/agricultural-policies-in-india-9789264302334-en.htm
+- https://www.rvo.nl/sites/default/files/2019/12/MVO-Nederland-rapport-India.pdf
+- https://agri.telangana.gov.in/open_record_view.php?ID=959
+- https://agricoop.nic.in/sites/default/files/FFH201819_Eng.pdf
+
+Happy Seeders:
 https://www.cimmyt.org/news/happy-seeder-can-reduce-air-pollution-and-greenhouse-gas-emissions-while-making-profits-for-farmers/
+
+Folium:
 https://pypi.org/project/folium/
+
+https://medium.com/indo-data-week/sujit-nayak-d297093c5c33 
+
 https://land.copernicus.eu/global/products/ba

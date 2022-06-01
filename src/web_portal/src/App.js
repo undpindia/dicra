@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import logo from "./img/logo.png";
 import "./App.css";
 import Map from "./Map/Map";
 import Usecases from "./pages/Usecases";

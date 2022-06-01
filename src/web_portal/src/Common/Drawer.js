@@ -1202,7 +1202,9 @@ class DrawerModal extends Component {
                     </Row>
                     <Row style={{ fontSize: "18px", color: "#fff" }}>
                       <p style={{ marginBottom: "20px", textAlign: "right" }}>
-                        {this.props.district.selectedRegion}
+                        {this.props.CurrentLayer === "WEATHER"
+                          ? this.props.district.selectedWeatherMandal
+                          : this.props.district.selectedRegion}
                       </p>
                     </Row>
                     <Row>
@@ -1310,7 +1312,7 @@ class DrawerModal extends Component {
                           color: "#fff",
                         }}
                       >
-                       {this.props.CurrentLayer === "WEATHER"
+                        {this.props.CurrentLayer === "WEATHER"
                           ? this.getyaxistext()
                           : this.props.LayerDescription.unit}
                       </p>
@@ -1513,7 +1515,7 @@ class DrawerModal extends Component {
                     this.state.currentWeatherRange === "6months" ? true : false
                   }
                   onChange={(e) => {
-                    console.log(" s")
+                    console.log(" s");
                   }}
                   onClick={(e) => {
                     this.getWeathertrend("6months");
@@ -1522,7 +1524,6 @@ class DrawerModal extends Component {
                 <label
                   className="btn btn-primary btn-chart"
                   htmlFor="btnradio1"
-                 
                 >
                   6 months
                 </label>
@@ -1538,7 +1539,7 @@ class DrawerModal extends Component {
                       : { display: "none" }
                   }
                   onChange={(e) => {
-                    console.log(" s")
+                    console.log(" s");
                   }}
                   checked={
                     this.state.currentWeatherRange === "1Year" ? true : false
@@ -1550,7 +1551,6 @@ class DrawerModal extends Component {
                 <label
                   className="btn btn-primary btn-chart"
                   htmlFor="btnradio2"
-                 
                 >
                   1 year
                 </label>
@@ -1573,7 +1573,7 @@ class DrawerModal extends Component {
                   id="btnradio3"
                   autoComplete="off"
                   onChange={(e) => {
-                    console.log(" s")
+                    console.log(" s");
                   }}
                   style={
                     this.props.CurrentLayer === "WEATHER"
@@ -1605,7 +1605,7 @@ class DrawerModal extends Component {
                   id="btnradio4"
                   autoComplete="off"
                   onChange={(e) => {
-                    console.log(" s")
+                    console.log(" s");
                   }}
                   style={
                     this.props.CurrentLayer === "WEATHER"
@@ -1636,7 +1636,7 @@ class DrawerModal extends Component {
                   name="btnradio"
                   id="btnradio5"
                   onChange={(e) => {
-                    console.log(" s")
+                    console.log(" s");
                   }}
                   style={
                     this.props.CurrentLayer === "WEATHER"

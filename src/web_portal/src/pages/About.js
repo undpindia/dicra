@@ -1,5 +1,4 @@
 import React from "react";
-import "../Common/common.css";
 import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
@@ -15,6 +14,7 @@ import tilburg from "../img/tilburg.png";
 import misteo from "../img/MistEO_Logo_Square.png";
 import { connect } from "react-redux";
 import axiosConfig from "../Common/axios_Config";
+import "../Common/common.css";
 const mapStateToProps = (ReduxProps) => {
   return {
     Layers: ReduxProps.Layers,

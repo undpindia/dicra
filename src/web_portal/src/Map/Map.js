@@ -83,7 +83,6 @@ const mapStateToProps = (ReduxProps) => {
     currentLayerType: ReduxProps.CurrentLayerType,
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     setVectorColor: (col) => dispatch({ type: "SETCOLOR_SCALE", payload: col }),
@@ -168,6 +167,7 @@ class map extends Component {
       regionList: districtRegions(),
       latnew: 18.1124,
       longnew: 79.0193,
+      selectedWeatherMandal:"",
       mapZoom: 7.5,
       layerUID: "",
       showlayertype: true,
@@ -325,6 +325,7 @@ class map extends Component {
       this.setState(
         {
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+          selectedWeatherMandal:e.sourceTarget.feature.properties.Mandal_Nam
         },
         () => {
           this.child.current.showDrawer();
@@ -1122,7 +1123,6 @@ class map extends Component {
     }
   }
   render() {
-    console.log("raster", this.props.CurrentLayer === false)
     return (
       <React.Fragment>
         <div className="header">

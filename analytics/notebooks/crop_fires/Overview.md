@@ -47,7 +47,7 @@ Main Challenge: How can policy makers decrease the amount of crop residue fires 
 - Soil Moisture:
     - The DiCRA platform contains tiff/geojson files on vector or raster level from the year 2022 about the soil moisture.
 - Active Fire Data:
-    - telangana_fires.csv (2015-2022) (Attributes: fireID, latitude, longitude, <strong>brightness</strong>, <strong>scan</strong>, <strong>track</strong>, acq_date, <strong>acq_time</strong>, <strong>satellite</strong>, instrument, <strong>confidence</strong>, <strong>version</strong>, <strong>bright_t31</strong>, frp (Fire Radiative Power in Watt), daynight, <strong>type</strong>)
+    - telangana_fires.csv (2015-2022) (Attributes: fireID, latitude, longitude, <strong>brightness</strong>, <strong>scan</strong>, <strong>track</strong>, acq_date, <strong>acq_time</strong>, <strong>satellite</strong>, instrument, <strong>confidence</strong>, <strong>version</strong>, <strong>bright_t31</strong>, frp (Fire Radiative Power in Watt), daynight, <strong>type</strong>) (Description: https://www.earthdata.nasa.gov/learn/find-data/near-real-time/firms/viirs-i-band-375-m-active-fire-data)
     -  The DiCRA platform contains a Telangana geojson file on raster level from the year 2021 about the fires.
 - Telangana Weather Data =  This dataset provides information about the cummulative rainfall, minimum & maximum temperature, humidity & wind speed across all 589 weatherstations in the state of Telangana.
     - The DiCRA platform contains csv files about the weather in Telangana per district and taluk per month of the year 2021 (Attributes: District, Mandal, Date, Rain (mm), Min Temp (Â°C), Max Temp (Â°C), Min Humidity (%), Max Humidity (%), Min Wind Speed (Kmph), Max Wind Speed (Kmph))

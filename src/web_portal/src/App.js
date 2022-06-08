@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Analytics from "./pages/Analytics";
 import Policy from "./pages/Policy";
 import Terms from "./pages/Terms";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+  import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // const Map = React.lazy(() => import('./Map/Map.js'));
 // const Usecases = React.lazy(() => import('./pages/Usecases'));

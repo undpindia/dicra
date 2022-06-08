@@ -34,6 +34,7 @@ https://nctoolkit.readthedocs.io/en/latest/
 
 Positive Deviance Analysis:
 - https://reader.elsevier.com/reader/sd/pii/S2352728521000324?token=8C5133EAB5B6DFBFD45BEAC37D2E1B3C17F84B6F61996888E242656094C692205CE6C68ECA0C691A74D81794232AB107&originRegion=eu-west-1&originCreation=20220604115520
+- https://machinelearningmastery.com/decompose-time-series-data-trend-seasonality/
 
 Folium:
 https://pypi.org/project/folium/

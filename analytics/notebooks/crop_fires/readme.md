@@ -14,9 +14,7 @@
 - https://www.frontiersin.org/articles/10.3389/fenrg.2020.614212/full 
 - https://dspace.mit.edu/bitstream/handle/1721.1/138578/1288582516-MIT.pdf?sequence=1&isAllowed=y
 
-Data:
-Burnt Area: https://land.copernicus.eu/global/products/ba, https://developers.google.com/earth-engine/datasets/catalog/ESA_CCI_FireCCI_5_1?hl=en, https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MCD64A1#description
-
+Burnt Area Data: https://land.copernicus.eu/global/products/ba, https://developers.google.com/earth-engine/datasets/catalog/ESA_CCI_FireCCI_5_1?hl=en, https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MCD64A1#description
 
 Quantity: https://www.mdpi.com/2072-4292/12/23/3872
 
@@ -30,7 +28,7 @@ Policies:
 Happy Seeders:
 https://www.cimmyt.org/news/happy-seeder-can-reduce-air-pollution-and-greenhouse-gas-emissions-while-making-profits-for-farmers/
 
-nc toolkit:
+NC toolkit:
 https://nctoolkit.readthedocs.io/en/latest/
 
 
@@ -40,6 +38,7 @@ Positive Deviance Analysis:
 Folium:
 https://pypi.org/project/folium/
 
+Hackathon Blog:
 https://medium.com/indo-data-week/sujit-nayak-d297093c5c33 
 
-https://land.copernicus.eu/global/products/ba
+

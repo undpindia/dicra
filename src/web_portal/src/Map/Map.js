@@ -167,7 +167,7 @@ class map extends Component {
       regionList: districtRegions(),
       latnew: 18.1124,
       longnew: 79.0193,
-      selectedWeatherMandal:"",
+      selectedWeatherMandal: "",
       mapZoom: 7.5,
       layerUID: "",
       showlayertype: true,
@@ -325,7 +325,7 @@ class map extends Component {
       this.setState(
         {
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          selectedWeatherMandal:e.sourceTarget.feature.properties.Mandal_Nam
+          selectedWeatherMandal: e.sourceTarget.feature.properties.Mandal_Nam,
         },
         () => {
           this.child.current.showDrawer();
@@ -350,9 +350,7 @@ class map extends Component {
     } else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
-          areaValue: parseInt(
-            e.sourceTarget.feature.properties.zonalstat.sum
-          ),
+          areaValue: parseInt(e.sourceTarget.feature.properties.zonalstat.sum),
           minVal: parseFloat(
             e.sourceTarget.feature.properties.zonalstat.min
           ).toFixed(2),
@@ -924,8 +922,9 @@ class map extends Component {
     }
   }
   searchRegion(e) {
-    var selected_region = this.state.regionList[e];
-    var current_reg = this.props.CurrentVector.features[e];
+    var selected_region = this.state.regionList[e.target.selectedIndex];
+    var current_reg = this.props.CurrentVector.features[e.target.selectedIndex];
+    console.log("SELETED REGION", selected_region);
     this.setState(
       {
         latnew: selected_region.centerPoint[1],
@@ -1040,7 +1039,7 @@ class map extends Component {
     var newpoints = [];
     shapePoints[0].map((points, index) =>
       newpoints.push([points.lng, points.lat])
-    )
+    );
     // shapePoints[0].map(function (points, index) {
     //   newpoints.push([points.lng, points.lat]);
     // });
@@ -1212,11 +1211,15 @@ class map extends Component {
             value={this.state.layerType}
             optionType="button"
             buttonStyle="solid"
-            disabled={this.state.showlayertype ? this.props.LayerDescription.vector_status === false
-              ? true
-              : false || this.props.LayerDescription.raster_status === false
-              ? true
-              : false : true}
+            disabled={
+              this.state.showlayertype
+                ? this.props.LayerDescription.vector_status === false
+                  ? true
+                  : false || this.props.LayerDescription.raster_status === false
+                  ? true
+                  : false
+                : true
+            }
             // disabled={
             //   this.props.LayerDescription.vector_status === false
             //     ? true
@@ -1259,8 +1262,12 @@ class map extends Component {
               value={this.props.CurrentRegion}
               onChange={(e) => this.onchangeshape(e)}
             >
-              <option value="DISTRICT" key="DISTRICT">District</option>
-              <option value="MANDAL" key="MANDAL">Mandal</option>
+              <option value="DISTRICT" key="DISTRICT">
+                District
+              </option>
+              <option value="MANDAL" key="MANDAL">
+                Mandal
+              </option>
               <option
                 key="CUSTOM"
                 value="CUSTOM"
@@ -1289,27 +1296,24 @@ class map extends Component {
                   this.state.customStatus === true ? { display: "none" } : {}
                 }
               >
-                <Select
+                <select
                   className="search-input"
-                  showSearch
-                  style={{ width: 230 }}
-                  placeholder="Search Region"
-                  optionFilterProp="children"
                   onChange={this.searchRegion}
+                  placeholder="Search Region"
+                  style={{ width: 230, fontSize: "11px" }}
                 >
+                  <option className="search-list">Select Region</option>
                   {this.state.regionList.length > 0 &&
                     this.state.regionList.map((item, index) => (
-                      <Select.OptGroup
+                      <option
                         className="search-list"
-                        value={index}
+                        value={item.dname}
                         key={index}
-                        // key={item.centerPoint}
-                        // attr={item.uid}
                       >
                         {item.dname}
-                      </Select.OptGroup>
+                      </option>
                     ))}
-                </Select>
+                </select>
               </div>
               <div
                 style={
@@ -1448,7 +1452,8 @@ class map extends Component {
                       : {}
                   }
                 >
-                  <a href={() => false}
+                  <a
+                    href={() => false}
                     style={
                       this.props.CurrentLayer === "CP"
                         ? { display: "none" }
@@ -1461,7 +1466,8 @@ class map extends Component {
                     <br />
                     District : {point.properties.district}
                   </a>
-                  <a href={() => false}
+                  <a
+                    href={() => false}
                     style={
                       this.props.CurrentLayer === "CP"
                         ? {}

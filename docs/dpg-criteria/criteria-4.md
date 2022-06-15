@@ -8,8 +8,10 @@ The platform is transferable to any cloud service provider or data center, it ha
 We use the Google API for geocoding addresses for location search. This requires the registration of an API key, and even though there are free credits per month available for use, this could become a ‘paid’ service depending on the traffic on the website.  There are alternatives to this such as the [OSM Geocoder - Nominatim](https://nominatim.org), but we found for our Area of our interest (Telangana, India), the spatial accuracy and match rate for the openly available geocoder was not high enough to be integrated in the platform.
 
 For the basemaps, we use the following sources
-- https://github.com/CartoDB/basemap-styles
-- https://developers.google.com/maps
+- [CARTO Basemap styles for web and mobile](https://github.com/CartoDB/basemap-styles)
+- [Google Maps Platform](https://developers.google.com/maps)
 
 Even though they are available for free and open use, they do come with limitations on the maximum number of available calls. 
-The Open Source alternatives for this are A, and B (give two sources)
+The Open Source alternatives for this are:
+- [Open-source maps made for self-hosting Free OpenStreetMap Vector Tile](https://openmaptiles.org)
+- 

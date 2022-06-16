@@ -14,4 +14,4 @@ For the basemaps, we use the following sources
 Even though they are available for free and open use, they do come with limitations on the maximum number of available calls. 
 The Open Source alternatives for this are:
 - [Open-source maps made for self-hosting Free OpenStreetMap Vector Tile](https://openmaptiles.org)
-- 
+- [Carto Basemap styles](https://github.com/CartoDB/basemap-styles)

@@ -44,6 +44,9 @@ Positive Deviance Analysis:
 Time Series Analysis:
 - https://machinelearningmastery.com/decompose-time-series-data-trend-seasonality/ 
 - https://www.analyticsvidhya.com/blog/2021/06/statistical-tests-to-check-stationarity-in-time-series-part-1/
+- https://towardsdatascience.com/different-types-of-time-series-decomposition-396c09f92693
+- https://www.statsmodels.org/devel/examples/notebooks/generated/stl_decomposition.html
+- STL: https://doc.arcgis.com/en/insights/latest/analyze/stl.htm
 
 
 Folium:

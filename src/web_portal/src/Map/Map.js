@@ -28,7 +28,7 @@ import { BiSearch, BiX, BiHomeAlt } from "react-icons/bi";
 import { FormGroup, Input } from "reactstrap";
 import Circlemarker from "../img/circlemarker.png";
 import MK1 from "../img/locationMK.png";
-import { Radio, Select, message } from "antd";
+import { Radio, message } from "antd";
 import loader from "../img/loader.gif";
 import locIcon from "../img/locationICON.png";
 import mandalRegions from "./Regions/mandalRegions";
@@ -990,34 +990,76 @@ class map extends Component {
   }
   ChangeBasemap(e) {
     if (e.target.value === "Dark") {
+      /*
+      Option 1 - Carto CDN Dark 
+      */
       this.setState({
         baseMap:
           "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
         attribution: "",
         baseMapselected: "Dark",
       });
+      /*
+      Option 2 - StadiaMaps Dark 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+      //   attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      //   baseMapselected: "Dark",
+      // });
     }
     if (e.target.value === "Satellite") {
+      /*
+      Option 1 - Google Maps 
+      */
       this.setState({
         baseMap: "http://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}",
         attribution: "",
         baseMapselected: "Satellite",
       });
+      /*
+      Option 2 - Esri Maps 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      //   attribution:
+      //     "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+      //   baseMapselected: "Satellite",
+      // });
+      /*
+      Option 3 - USGS Imagery 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}",
+      //   attribution:
+      //     'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>',
+      //   baseMapselected: "Satellite",
+      // });
     }
     if (e.target.value === "Grey") {
+      /*
+      Option 1 - ARCGIS Imagery Grey 
+      */
       this.setState({
-        // baseMap:
-        // "https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=" +
-        // "pk.eyJ1IjoiaG90IiwiYSI6ImNpbmx4bWN6ajAwYTd3OW0ycjh3bTZvc3QifQ.KtikS4sFO95Jm8nyiOR4gQ",
-        // attribution:
-        // '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
-        // baseMapselected: "Grey",
         baseMap:
           "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
         attribution:
           '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>',
         baseMapselected: "Grey",
       });
+      /*
+      Option 2 - ARCGIS Imagery Grey 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+      //   attribution:
+      //     '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      //   baseMapselected: "Grey",
+      // });
     }
   }
   Customlayer(e) {
@@ -1103,7 +1145,6 @@ class map extends Component {
   }
   checkRadius(capacity) {
     var radius = 3000 * Math.log(capacity / 100);
-
     if (radius > 0) {
       //   this.setState({
       //     keyMAP: this.state.keyMAP + 1,
@@ -1321,7 +1362,7 @@ class map extends Component {
                 }
               >
                 <div style={{ marginLeft: "50px", marginTop: "7px" }}>
-                  <SearchPlace searchArea={this.getcustomlocation} />
+                   <SearchPlace searchArea={this.getcustomlocation} /> 
                 </div>
               </div>
             </div>

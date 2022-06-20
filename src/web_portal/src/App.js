@@ -1,5 +1,4 @@
-import React, { useState, useEffect} from "react";
-// import logo from "./img/logo.png";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Map from "./Map/Map";
 import Usecases from "./pages/Usecases";
@@ -7,8 +6,8 @@ import About from "./pages/About";
 import Analytics from "./pages/Analytics";
 import Policy from "./pages/Policy";
 import Terms from "./pages/Terms";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import LoadingScreen from "react-loading-screen";
+  import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 // const Map = React.lazy(() => import('./Map/Map.js'));
 // const Usecases = React.lazy(() => import('./pages/Usecases'));
 // const About = React.lazy(() => import('./pages/About.js'));
@@ -17,7 +16,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  // console.clear() 
+ 
+  // console.clear()
   useEffect(() => {
     // console.clear()
     if (loading) {
@@ -31,22 +31,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          {/* <React.Suspense fallback={<p></p>
-          }> */}
           <Route exact path="/">
-            {/* <LoadingScreen
-              loading={loading}
-              bgColor="#f1f1f1"
-              spinnerColor="#9ee5f8"
-              textColor="#676767"
-              logoSrc={logo}
-              text="DiCRA"
-              style={{ fontSize: "30px" }}
-            >
-              {" "}
-              </LoadingScreen> */}
-
-            <Map />
+          <Map />
           </Route>
           <Route path="/use-cases">
             <Usecases />

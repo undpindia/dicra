@@ -11,6 +11,7 @@ export default function GeoRaster(props) {
   let dispatch = useDispatch();
   let { map, layerContainer } = useLeaflet();
   let currentLayer = useSelector((state) => state.CurrentLayer);
+
   let RasterOpacity = useSelector((state) => state.RasterOpacity);
   let ColorscalePicker = useSelector((state) => state.SetColor);
   // let [layerrange, setLayerrange] = useState(0);
@@ -18,12 +19,12 @@ export default function GeoRaster(props) {
     map.removeLayer(layer);
     window.tiff = 0;
   };
-  let colorscalepickerRef=React.useRef(null)
-  colorscalepickerRef.current=ColorscalePicker
+  let colorscalepickerRef = React.useRef(null);
+  colorscalepickerRef.current = ColorscalePicker;
   let layerRef = React.useRef(null);
-  let layermin =  React.useRef(null);
-  let layermax =  React.useRef(null);
-  let layerrange =  React.useRef(null);
+  let layermin = React.useRef(null);
+  let layermax = React.useRef(null);
+  let layerrange = React.useRef(null);
   var scale;
   let currentLayerNow = useRef();
   const changeLayer = useRef(() => {
@@ -31,15 +32,15 @@ export default function GeoRaster(props) {
       getColorFromValues();
     }, 700);
   });
-  let LayeropacityRef= React.useRef(null);
-  LayeropacityRef.current=useSelector((state) => state.RasterOpacity)
+  let LayeropacityRef = React.useRef(null);
+  LayeropacityRef.current = useSelector((state) => state.RasterOpacity);
   const addLayerRef = useRef(() => {
     addlayer();
     // props.onRef(undefined);
   });
 
   useEffect(() => {
-    colorscalepickerRef.current=ColorscalePicker
+    colorscalepickerRef.current = ColorscalePicker;
     changeLayer.current();
   }, [ColorscalePicker, RasterOpacity]);
   useEffect(() => {
@@ -69,14 +70,14 @@ export default function GeoRaster(props) {
             var min = georaster.mins[0];
             var max = georaster.maxs[0];
             var range;
-            layermin.current=min
-            layermax.current=max
+            layermin.current = min;
+            layermax.current = max;
             // setLayermin(min);
             // setLayermax(max);
 
             if (currentLayerNow.current === "LULC") {
               range = georaster.ranges[0];
-              layerrange.current=range
+              layerrange.current = range;
               // setLayerrange(range);
               //  var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma.scale([
@@ -96,7 +97,7 @@ export default function GeoRaster(props) {
               window.tiff = georaster;
             } else {
               range = georaster.ranges[0];
-              layerrange.current=range
+              layerrange.current = range;
               // setLayerrange(range);
               // var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma
@@ -148,7 +149,7 @@ export default function GeoRaster(props) {
                   latlng.lng,
                   latlng.lat,
                 ]);
-                if (Number(result) > 0.0) {
+                if (Number(result) > layermin.current) {
                   result = parseFloat(result).toFixed(2);
                   dispatch({ type: "SETVALUE", payload: result });
                 } else {
@@ -174,7 +175,6 @@ export default function GeoRaster(props) {
   }
 
   function getColorFromValues() {
-   
     if (layerRef.current) {
       layerRef.current.updateColors(function (values) {
         // break;
@@ -203,14 +203,16 @@ export default function GeoRaster(props) {
               "#cf3c8d",
               "#64caef",
             ]);
-            scaledPixelvalue = (values[0] - layermin.current) / layerrange.current;
+            scaledPixelvalue =
+              (values[0] - layermin.current) / layerrange.current;
             color = newScale(scaledPixelvalue).hex();
             return color;
           } else {
             newScale = chroma
               .scale(colorscalepickerRef.current)
               .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-            scaledPixelvalue = (values[0] - layermin.current) / layerrange.current;
+            scaledPixelvalue =
+              (values[0] - layermin.current) / layerrange.current;
             color = newScale(scaledPixelvalue).hex();
             // console.log("COLOR",colorscalepickerRef.current)
             return color;

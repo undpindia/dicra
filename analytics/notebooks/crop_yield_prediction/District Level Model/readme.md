@@ -14,11 +14,11 @@ Other variables/factors which we think are of interest regarding crop yield are 
 - [Leaf Area Index](https://land.copernicus.eu/global/products/lai) (2014-2022)
 - [Normalized Difference Vegetation Index](https://dicra.undp.org.in/) (2016-2022)
 - [Land Surface Temperature](https://land.copernicus.eu/global/products/lst) (2010-2022)
-- [Rainfall]()
-- [Irrigation]()
-- [Soil Type]()
-- [Soil Moisture]()
-- [Crop Disease]()
+- [Rainfall](https://data.telangana.gov.in/search/field_tags/rainfall-384)
+- [Irrigation](https://developers.google.com/earth-engine/datasets/catalog/USGS_GFSAD1000_V1?hl=en#bands)
+- [Soil Type](To be added later)
+- [Soil Moisture](https://dicra.undp.org.in/)
+- [Crop Disease](To be added later)
 - [Land Cover](https://dicra.undp.org.in/) (2017-2021)
 
 ## Extension on Data Sources for field level

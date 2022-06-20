@@ -1036,6 +1036,14 @@ hr.horizontal-line {
   display: none;
 }
 
+.centered-element {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 481px) {
   .btn-home {
     display: none;

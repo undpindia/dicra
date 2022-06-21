@@ -24,7 +24,6 @@ import { BiChevronRightCircle, BiX } from "react-icons/bi";
 import Header from "../Common/Header";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
-// import AddUsecases from "./AddUsecases";
 import axiosConfig from "../Common/axios_Config";
 
 const plainOptions = ["All", "Article", "Analytics", "Project", "News"];
@@ -236,7 +235,6 @@ class Usecases extends React.Component {
                     paddingBottom: "0px",
                   }}
                 >
-                  {/* <AddUsecases /> */}
                   <AvForm style={{ fontSize: "14px" }}>
                     <div
                       style={{

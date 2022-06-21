@@ -54,7 +54,6 @@ export function getColorscale(
 
   let discreteScale = cs.colors(nSwatches);
 
-  // repeat linear categorical ("qualitative") colorscales instead of repeating them
   if (!log && colorscaleType === 'categorical') {
     discreteScale = repeatArray(colorscale, nSwatches).slice(0, nSwatches);
   }

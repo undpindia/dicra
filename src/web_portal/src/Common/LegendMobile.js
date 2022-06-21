@@ -8,16 +8,10 @@ const mapStateToProps = (props) => {
   };
 };
 
-
-
 class LegendMobile extends React.Component {
-
   render() {
-
     return (
-      
-        <React.Fragment>
-
+      <React.Fragment>
         <div
           className="tab-legend"
           style={
@@ -25,7 +19,7 @@ class LegendMobile extends React.Component {
             this.props.CurrentLayer === "WEATHER" ||
             this.props.CurrentLayer === "WH" ||
             this.props.CurrentLayer === "CP" ||
-            this.props.CurrentLayer === "LULC" 
+            this.props.CurrentLayer === "LULC"
               ? { display: "none" }
               : {}
           }
@@ -34,7 +28,9 @@ class LegendMobile extends React.Component {
         </div>
         <div
           className="tab-legend"
-          style={this.props.CurrentLayer === "FIREEV" ? {} : { display: "none" }}
+          style={
+            this.props.CurrentLayer === "FIREEV" ? {} : { display: "none" }
+          }
         >
           <div className="legend-section">
             <div className="container">
@@ -48,7 +44,11 @@ class LegendMobile extends React.Component {
                   className="col-md-2"
                   style={{ color: "rgba(215 215 215)" }}
                 >
-                  <img src={locationMarker} width="13px"  alt="Location Marker"/>
+                  <img
+                    src={locationMarker}
+                    width="13px"
+                    alt="Location Marker"
+                  />
                 </div>
                 <div
                   className="col"
@@ -87,7 +87,11 @@ class LegendMobile extends React.Component {
                   className="col-md-2"
                   style={{ color: "rgba(215 215 215)" }}
                 >
-                  <img src={locationMarker} width="13px"  alt="Location Marker"/>
+                  <img
+                    src={locationMarker}
+                    width="13px"
+                    alt="Location Marker"
+                  />
                 </div>
                 <div
                   className="col"
@@ -103,8 +107,7 @@ class LegendMobile extends React.Component {
                     fontSize: "10px",
                     marginTop: "10px",
                   }}
-                >
-                </div>
+                ></div>
               </div>
             </div>
           </div>
@@ -125,7 +128,11 @@ class LegendMobile extends React.Component {
                   className="col-md-2"
                   style={{ color: "rgba(215 215 215)" }}
                 >
-                  <img src={locationMarker} width="13px"  alt="Location Marker"/>
+                  <img
+                    src={locationMarker}
+                    width="13px"
+                    alt="Location Marker"
+                  />
                 </div>
                 <div
                   className="col"
@@ -141,9 +148,7 @@ class LegendMobile extends React.Component {
                     fontSize: "10px",
                     marginTop: "10px",
                   }}
-                >
-                  {/* *FRP : Fire Radiative Power */}
-                </div>
+                ></div>
               </div>
             </div>
           </div>
@@ -160,55 +165,126 @@ class LegendMobile extends React.Component {
                   textAlign: "left",
                 }}
               >
-                <div className="container" style={{fontSize:"12px"}}>
-                    <div className="row">
-                      <div className="col" style={{marginTop:"10px"}}>
-                       <span style={{height:"12px", width:"12px",backgroundColor:"#dc0f0f", display:"inline-block" }}></span>  Water
-                      </div>
-                      <div className="col" style={{marginTop:"10px"}}>
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#44ce5d", display:"inline-block" }}></span>  Trees
-                      </div>
+                <div className="container" style={{ fontSize: "12px" }}>
+                  <div className="row">
+                    <div className="col" style={{ marginTop: "10px" }}>
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#dc0f0f",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Water
                     </div>
-                    <div className="row">
+                    <div className="col" style={{ marginTop: "10px" }}>
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#44ce5d",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Trees
+                    </div>
+                  </div>
+                  <div className="row">
                     <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#de8313", display:"inline-block" }}></span>  Flooded Vegitation
-                      </div>
-                      <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#dfef4d", display:"inline-block" }}></span>  Crops
-                      </div>
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#de8313",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Flooded Vegitation
                     </div>
-                    <div className="row">
-                       <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#bb3cc9", display:"inline-block" }}></span>  Built Area
-                      </div>
-                      <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#455dca", display:"inline-block" }}></span>  Bare Ground
-                      </div>
-                    </div>
-                    <div className="row">
                     <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#3feabd", display:"inline-block" }}></span>  Snow / Ice
-                      </div>
-                      <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#cf3c8d", display:"inline-block" }}></span>  Clouds
-                      </div>
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#dfef4d",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Crops
                     </div>
-                    <div className="row">
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#bb3cc9",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Built Area
+                    </div>
+                    <div className="col">
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#455dca",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Bare Ground
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#3feabd",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Snow / Ice
+                    </div>
+                    <div className="col">
+                      <span
+                        style={{
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#cf3c8d",
+                          display: "inline-block",
+                        }}
+                      ></span>{" "}
+                      Clouds
+                    </div>
+                  </div>
+                  <div className="row">
                     <div className="col">
                       <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#64caef", display:"inline-block" }}></span>  Rangeland
+                        <span
+                          style={{
+                            height: "12px",
+                            width: "12px",
+                            backgroundColor: "#64caef",
+                            display: "inline-block",
+                          }}
+                        ></span>{" "}
+                        Rangeland
                       </div>
                     </div>
-                    </div>
-                 </div>
+                  </div>
+                </div>
                 <div className="mb-2"></div>
               </div>
             </div>
           </div>
         </div>
-        </React.Fragment>
+      </React.Fragment>
     );
   }
-
-};
+}
 export default connect(mapStateToProps, null)(LegendMobile);

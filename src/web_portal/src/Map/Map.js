@@ -48,7 +48,6 @@ const options = [
   { label: "Raster", value: "Raster" },
   { label: "Vector", value: "Vector" },
 ];
-
 const LoaderIcon = new L.Icon({
   iconUrl: loader,
   iconSize: [150, 150],

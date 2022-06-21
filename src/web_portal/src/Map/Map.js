@@ -108,7 +108,6 @@ export class map extends Component {
     this.state = {
       RGBViewPort: {
         center: [18.1124, 79.0193],
-        // zoom: 8,
       },
       boundary: [],
       activeSearch: true,

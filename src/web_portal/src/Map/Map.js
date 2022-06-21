@@ -1261,10 +1261,10 @@ export class map extends Component {
               >
                 <div style={{ marginLeft: "50px", marginTop: "7px" }}>
                   {/* 
-                  By default google search api is used.Another opensource search provider 
-                  is also written(Nominatim).If needed, uncomment NominatimSearch function
-                  and comment SearchPlace component.While using Nominatim please ensure that line 39
-                  is also uncommented !.
+                  By default, Google Search API is used. Another opensource search option 
+                  is also provided(Nominatim). If needed, uncomment NominatimSearch function
+                  and comment SearchPlace component. While using Nominatim please ensure that line 39
+                  (import function) is also uncommented !.
                   */}
                   <SearchPlace searchArea={this.getcustomlocation} />
                   {/* 

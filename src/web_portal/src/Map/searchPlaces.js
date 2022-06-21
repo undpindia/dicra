@@ -16,7 +16,6 @@ import usePlacesAutocomplete, {
       requestOptions: {
         componentRestrictions: {         
           country: "in",
-          // locality:"Telangana"         
         },
     
       },
@@ -36,17 +35,6 @@ import usePlacesAutocomplete, {
     const handleSelect = ({ description }) => () => {   
       setValue(description, false);
       clearSuggestions();
-      // var data = {
-      //   bounds: {
-      //     west: -25.806884999999966,
-      //     east: 16.380615000000034,
-      //     south: 48.98742739340465,
-      //     north: 60.16884190739975
-      //   }
-      // };
-      // var bounds = new google.maps.LatLngBounds(
-      //                new google.maps.LatLng(77.2389910664845729, 15.8331755181357039), 
-      //                new google.maps.LatLng(81.3253406742049663, 19.9164620207057510));
       getGeocode({ address: description})
         .then((results) => getLatLng(results[0]))
         .then(({ lat, lng }) => {          

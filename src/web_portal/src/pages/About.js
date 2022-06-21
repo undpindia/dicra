@@ -59,7 +59,6 @@ class About extends React.Component {
             <div>
               <div className="container about-page">
                 <Row>
-                  {/* <h3 className="about-heading">About DiCRA</h3> */}
                   <Col className="about-content">
                     <p className="about-data" style={{ fontSize: "16px" }}>
                       Data in Climate Resilient Agriculture (DiCRA) is a
@@ -216,7 +215,7 @@ class About extends React.Component {
                             <td>{data.standards}</td>
                           </tr>
                         ) : (
-                          console.log("About layer not available")
+                          null
                         )
                       )}
                     </tbody>

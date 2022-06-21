@@ -30,32 +30,11 @@ class Terms extends React.Component {
             <div>
               <div className="container about-page">
                 <Row>
-                  {/* <h3 className="about-heading">About DiCRA</h3> */}
                   <Col className="about-content">
                     <p style={{ fontSize: "16px" }}>
                     The DiCRA Platform is an open data platform managed by the United Nations Development Programme. These Terms of Service (hereafter ‘Terms’ or ‘these Terms’) describe how DiCRA is managed and how the platform should be used. UNDP will update these Terms as needed, and will post notice of significant updates on our GitHub Page and through the DiCRA Platform. All organizations and individuals using this platform are bound by these Terms. If you do not agree with the Terms, you should discontinue use of DiCRA. If you have any questions or comments about these Terms or DiCRA, please leave a comment
                      on the Discussions tab of our GitHub repository or send an email to <a href="mailto:acceleratorlab.in@undp.org">acceleratorlab.in@undp.org</a>
                     </p>
-                    <p style={{ fontSize: "16px" }}>
-
-                      </p>
-                    {/* <div
-                      style={{
-                        textAlign: "left",
-                        fontSize: "18px",
-                        paddingBottom: "10px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Partners
-                    </div> */}
-                    {/* <p style={{ fontSize: "16px" }}>
-                      The platform is facilitated by Government of Telangana and
-                      UNDP, in collaboration with Zero Huger Lab (Netherlands),
-                      JADS (Netherlands), ICRISAT, PJTSAU, and RICH. It is part
-                      of UNDP’s ‘Data for Policy’ initiative supported by
-                      Rockefeller Foundation.
-                    </p> */}
                   </Col>
                 </Row>
               </div>

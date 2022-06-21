@@ -4,7 +4,6 @@ import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
-
 import { connect } from "react-redux";
 const mapStateToProps = (ReduxProps) => {
   return {
@@ -30,7 +29,6 @@ class Policy extends React.Component {
             <div>
               <div className="container about-page">
                 <Row>
-                  {/* <h3 className="about-heading">About DiCRA</h3> */}
                   <Col className="about-content">
                     <p style={{ fontSize: "16px" }}>
                       User contact details are only shared with the
@@ -56,24 +54,7 @@ class Policy extends React.Component {
                       Analytics tracking. The data collected by these tracking
                       systems will be retained indefinitely in order to
                       understand how user behavior is changing over time.
-                    </p>
-                    {/* <div
-                      style={{
-                        textAlign: "left",
-                        fontSize: "18px",
-                        paddingBottom: "10px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Partners
-                    </div> */}
-                    {/* <p style={{ fontSize: "16px" }}>
-                      The platform is facilitated by Government of Telangana and
-                      UNDP, in collaboration with Zero Huger Lab (Netherlands),
-                      JADS (Netherlands), ICRISAT, PJTSAU, and RICH. It is part
-                      of UNDP’s ‘Data for Policy’ initiative supported by
-                      Rockefeller Foundation.
-                    </p> */}
+                    </p>                  
                   </Col>
                 </Row>
               </div>

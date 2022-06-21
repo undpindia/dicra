@@ -37,7 +37,6 @@ class DrawerModal extends Component {
       centerpoint: [77.74593740335436, 17.25474880524307],
       properties: [],
       visible: false,
-      // area: props.district.area,
       modal: false,
       selected_shape: geojson,
       loader: false,
@@ -125,7 +124,6 @@ class DrawerModal extends Component {
         },
         xaxis: {
           type: "datetime",
-          // tickAmount: 6,
           labels: {
             format: "yyyy",
             style: {
@@ -257,11 +255,7 @@ class DrawerModal extends Component {
     this.setNewshape();
   }
   onClose() {
-    // this.setState({
-    //   visible: false,
-    // });
     this.props.hideDrawer();
-    // dispatch({ type: "HIDEDRAWER"});
   }
   toggleDownload() {
     this.setState({
@@ -338,8 +332,6 @@ class DrawerModal extends Component {
     if (this.props.CurrentLayer === "POPULATION") {
       bodyParams = {
         geojson: shapeparams,
-        // startdate: this.state.from_date,
-        // enddate: this.state.to_date,
         startdate: "2000-01-01",
         enddate: "2022-04-05",
         parameter: this.props.CurrentLayer,
@@ -349,8 +341,6 @@ class DrawerModal extends Component {
         geojson: shapeparams,
         startdate: this.state.from_date,
         enddate: this.state.to_date,
-        // startdate: "2000-01-01",
-        // enddate: "2022-04-05",
         parameter: this.props.CurrentLayer,
       };
     }
@@ -524,7 +514,6 @@ class DrawerModal extends Component {
           },
           xaxis: {
             type: "datetime",
-            // tickAmount: 6,
             labels: {
               format: "yyyy",
               style: {
@@ -618,8 +607,6 @@ class DrawerModal extends Component {
           },
           xaxis: {
             type: "datetime",
-            // tickAmount: 6,
-
             labels: {
               format: "yyyy",
               style: {
@@ -696,7 +683,6 @@ class DrawerModal extends Component {
           },
           xaxis: {
             type: "datetime",
-            // tickAmount: 6,
 
             labels: {
               format: "MMM yyyy",
@@ -734,14 +720,6 @@ class DrawerModal extends Component {
             })
           : (notavailable = notavailable + 1)
       );
-      // data.map(function (item, index, data) {
-      //   if (item[1] !== null) {
-      //     trendData.data.push({
-      //       x: item[0],
-      //       y: parseFloat(item[1]).toFixed(2),
-      //     });
-      //   }
-      // });
     }
     var trendlength = trendData.data.length;
     var lst_value = trendData.data[trendlength - 1];
@@ -753,7 +731,6 @@ class DrawerModal extends Component {
       weatherValue: lst_value,
     });
 
-    // return [trendData];
   }
   checkValue(value) {
     if (isNaN(value)) {
@@ -953,14 +930,6 @@ class DrawerModal extends Component {
   }
   timeConverter(UNIX_timestamp) {
     var a = new Date(UNIX_timestamp);
-    // var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    // var year = a.getFullYear();
-    // var month = months[a.getMonth()];
-    // var date = a.getDate();
-    // var hour = a.getHours();
-    // var min = a.getMinutes();
-    // var sec = a.getSeconds();
-    // var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
     let dd = String(a.getDate()).padStart(2, "0");
     let mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
     let yyyy = a.getFullYear();
@@ -997,9 +966,6 @@ class DrawerModal extends Component {
     if (value[date] === undefined) {
       return "0.00";
     } else {
-      // this.setState({
-      //   tableKey:this.state.tableKey+1
-      // })
       if (value[date].hasOwnProperty(category)) {
         return parseFloat(value[date][category]).toFixed(2);
       }
@@ -1105,7 +1071,6 @@ class DrawerModal extends Component {
     return (
       <div>
         <Drawer
-          // title={this.props.LayerDescription.layer_name}
           placement="right"
           onClose={this.onClose}
           visible={this.props.DrawerChange}
@@ -1113,11 +1078,6 @@ class DrawerModal extends Component {
           mask={false}
           closable={false}
           width={450}
-          // extra={
-          //   <Space>
-          //     <BiX className="drawer-close" onClick={this.onClose} />
-          //   </Space>
-          // }
         >
           <Col>
             <div className="col" style={{ textAlign: "right" }}>
@@ -1227,7 +1187,6 @@ class DrawerModal extends Component {
                 </Row>
               </CardBody>
             </Card>
-            {/* <hr /> */}
             <Row style={{ marginBottom: "5px" }}>
               <Col>
                 <div>
@@ -1685,11 +1644,6 @@ class DrawerModal extends Component {
                 />
               </div>
             </Row>
-            {/* <Row>
-              <Col md={12}>
-                <Button style={{ float: "right" }}>Download</Button>
-              </Col>
-            </Row> */}
           </Col>
         </Drawer>
       </div>

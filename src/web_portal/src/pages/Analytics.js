@@ -5,8 +5,6 @@ import { BiX } from "react-icons/bi";
 import {Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "../Common/Loader.js"
-// import LoadingScreen from "react-loading-screen";
-// import logo from "../img/logo.png"
 const mapStateToProps = (ReduxProps) => {
   return {
     Layers: ReduxProps.Layers,

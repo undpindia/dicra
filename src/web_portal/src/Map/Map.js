@@ -48,7 +48,6 @@ const options = [
   { label: "Raster", value: "Raster" },
   { label: "Vector", value: "Vector" },
 ];
-
 const LoaderIcon = new L.Icon({
   iconUrl: loader,
   iconSize: [150, 150],
@@ -952,8 +951,19 @@ export class map extends Component {
         attribution: "",
         baseMapselected: "Dark",
       });
+
+       /*
+      Option 2 - OSM Layer with base style 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      //   attribution: "&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors",
+      //   baseMapselected: "Dark",
+      // });
+
       /*
-      Option 2 - StadiaMaps Dark 
+      Option 3 - StadiaMaps Dark 
       */
       // this.setState({
       //   baseMap:
@@ -971,8 +981,19 @@ export class map extends Component {
         attribution: "",
         baseMapselected: "Satellite",
       });
+      
+       /*
+      Option 2 - OSM Layer with base style 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      //   attribution: "&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors",
+      //   baseMapselected: "Dark",
+      // });
+
       /*
-      Option 2 - Esri Maps 
+      Option 3 - Esri Maps 
       */
       // this.setState({
       //   baseMap:
@@ -982,7 +1003,7 @@ export class map extends Component {
       //   baseMapselected: "Satellite",
       // });
       /*
-      Option 3 - USGS Imagery 
+      Option 4 - USGS Imagery 
       */
       // this.setState({
       //   baseMap:
@@ -1003,8 +1024,20 @@ export class map extends Component {
           '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>',
         baseMapselected: "Grey",
       });
+
+      
+       /*
+      Option 2 - OSM Layer with base style 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      //   attribution: "&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors",
+      //   baseMapselected: "Dark",
+      // });
+
       /*
-      Option 2 - Stadia maps Grey 
+      Option 3 - Stadia maps Grey 
       */
       // this.setState({
       //   baseMap:
@@ -1260,7 +1293,7 @@ export class map extends Component {
                 }
               >
                 <div style={{ marginLeft: "50px", marginTop: "7px" }}>
-                  {/* 
+                 {/* 
                   By default, Google Search API is used. Another opensource search option 
                   is also provided(Nominatim). If needed, uncomment NominatimSearch function
                   and comment SearchPlace component. While using Nominatim please ensure that line 39

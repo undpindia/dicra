@@ -56,3 +56,4 @@ Hackathon Blog:
 https://medium.com/indo-data-week/sujit-nayak-d297093c5c33 
 
 
+Alternatives & Reasons: very clearly explained: file:///C:/Users/Jesse/Downloads/129_Bhavana_2021.pdf 

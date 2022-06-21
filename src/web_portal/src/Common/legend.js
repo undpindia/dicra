@@ -31,8 +31,7 @@ function Legend() {
               style={currentLayer === "LULC" ? { display: "none" } : {}}
               key={valueKey}
             >
-              {currentLayer === "POPULATION" ?
-              parseInt(setval):setval}{" "}
+              {currentLayer === "POPULATION" ? parseInt(setval) : setval}{" "}
               <span style={{ fontSize: "18px" }}>{currentLayerDesc.unit}</span>
             </span>
           </div>
@@ -43,9 +42,6 @@ function Legend() {
               .format("DD-MM-YYYY")
               .slice(0, 10)}
           </div>
-          {/* <div className="col" style={{ color: "rgba(215 215 215)" }}>
-            44.528 | 55.635
-          </div> */}
           <div className="w-100"></div>
           {currentlayerType === "Raster" ? (
             <div className="col" style={{ color: "rgba(215 215 215)" }}>
@@ -60,7 +56,6 @@ function Legend() {
           <div className="w-100"></div>
           <div className="col">
             <ColorPicker />
-            {/* <ColorScale /> */}
           </div>
         </div>
       </div>

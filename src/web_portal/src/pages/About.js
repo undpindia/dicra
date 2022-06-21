@@ -1,5 +1,4 @@
 import React from "react";
-import "../Common/common.css";
 import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
@@ -14,12 +13,34 @@ import rockefeller from "../img/rockefeller.png";
 import tilburg from "../img/tilburg.png";
 import misteo from "../img/MistEO_Logo_Square.png";
 import { connect } from "react-redux";
+import axiosConfig from "../Common/axios_Config";
+import "../Common/common.css";
 const mapStateToProps = (ReduxProps) => {
   return {
     Layers: ReduxProps.Layers,
   };
 };
 class About extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      layerData: [],
+    };
+    this.getLayerData = this.getLayerData.bind(this);
+  }
+  async getLayerData() {
+    try {
+      const layers = await axiosConfig.get(`/getlayerconfig?`);
+      this.setState({
+        layerData:layers.data
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  componentDidMount() {
+    this.getLayerData();
+  }
   render() {
     return (
       <React.Fragment>
@@ -38,9 +59,8 @@ class About extends React.Component {
             <div>
               <div className="container about-page">
                 <Row>
-                  {/* <h3 className="about-heading">About DiCRA</h3> */}
                   <Col className="about-content">
-                    <p style={{ fontSize: "16px" }}>
+                    <p className="about-data" style={{ fontSize: "16px" }}>
                       Data in Climate Resilient Agriculture (DiCRA) is a
                       collaborative digital public good which provides open
                       access to key geospatial datasets pertinent to climate
@@ -185,7 +205,7 @@ class About extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.Layers.map((data, index) =>
+                      {this.state.layerData.map((data, index) =>
                         data.isavailable ? (
                           <tr key={index}>
                             <td>{data.display_name}</td>
@@ -195,7 +215,7 @@ class About extends React.Component {
                             <td>{data.standards}</td>
                           </tr>
                         ) : (
-                          console.log("About layer not available")
+                          null
                         )
                       )}
                     </tbody>

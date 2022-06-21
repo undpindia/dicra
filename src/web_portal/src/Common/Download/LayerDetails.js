@@ -122,7 +122,6 @@ class LayerDetails extends Component {
                   id="Nameselect"
                   className="dropdown"
                   value={this.props.DownloadLayer}
-                  // disabled={this.props.layers.isavailable ? false : true}
                   onChange={(e) => this.changeLayer(e)}
                 >
                   {this.props.layers.map((layer, index) =>

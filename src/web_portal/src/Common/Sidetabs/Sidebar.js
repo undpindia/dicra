@@ -286,7 +286,6 @@ class Sidebar extends React.Component {
                     marginTop: "10px",
                   }}
                 >
-                  {/* *FRP : Fire Radiative Power */}
                 </div>
               </div>
             </div>
@@ -319,7 +318,6 @@ class Sidebar extends React.Component {
                     marginTop: "10px",
                   }}
                 >
-                  {/* *FRP : Fire Radiative Power */}
                 </div>
               </div>
             </div>

@@ -53,6 +53,7 @@ const LoaderIcon = new L.Icon({
   iconUrl: loader,
   iconSize: [150, 150],
 });
+
 const LocIcon = new L.Icon({
   iconUrl: locIcon,
   iconSize: [50, 50],

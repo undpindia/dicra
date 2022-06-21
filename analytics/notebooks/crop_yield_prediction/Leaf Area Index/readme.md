@@ -1,6 +1,7 @@
-The aim of this folder is to create a GeoTiff or COG file for Leaf Area Index that can be used to improve the DiCRA platform.
+The aim of this folder is to create GeoTiff files for Leaf Area Index that can be used to improve the DiCRA platform.
 
 We derive LAI 300metres data from: https://land.copernicus.eu/global/products/lai
 
-Then, we convert this data from netCDF to GeoTiff in 'LAI_preprocessing.ipynb'. 
-The result as provided in 'T_LAI.tif' contains the Leaf Area Index for Telangana. 
+This data provides a near real time estimate (RT0) and three consolidated modes. These modes are calculated after 10 days (RT1), 20 days (RT2) and 60 days (RT6). This is included in the filename. Subsequently, the filename includes the date, which is the end date of a 10-daily period. The compositing window ranges from up to 210 days before the date and up to 60 days afterwards (depending on the consolidated mode). For more information on the background and realization of the Sentinel-3/OLCI Collection 300m LAI Version 1.1, we refer to the [LAI Characteristics](https://land.copernicus.eu/global/products/lai). 
+
+The downloaded data contains 493 GeoTIFF files (), where as mentioned before the filename includes the date and the consolidation mode. In 'LAI_Telangana.ipynb', we clip the geoTIFF files such that the newly derived GeoTIFF files () only contain the Leaf Area Index for the state Telangana. 

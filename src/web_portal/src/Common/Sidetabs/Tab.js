@@ -41,18 +41,4 @@ closeIconSelector.propTypes = {
   position: PropTypes.oneOf(['left', 'right'])
 }
 
-// Tab.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   header: PropTypes.string.isRequired,
-//   children: PropTypes.oneOfType([
-//     PropTypes.func, 
-//     PropTypes.element, 
-//     PropTypes.object,
-//     PropTypes.arrayOf(PropTypes.node),
-//     PropTypes.node
-//   ]).isRequired,
-//   onClose: PropTypes.func,
-//   active: PropTypes.bool
-// }
-
 export default Tab

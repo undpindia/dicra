@@ -3,11 +3,6 @@ import store from "../../store/Store";
 export const COLORSCALE_TYPES = [
   "Sequential",
   "Divergent",
-  // "categorical",
-  // "cyclical",
-  // "cubehelix",
-  // "cmocean",
-  // "custom"
 ];
 const state=store.getState();
 export const SCALES_WITHOUT_LOG = ["Divergent", "categorical", "custom"];

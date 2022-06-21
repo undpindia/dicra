@@ -6,20 +6,13 @@ import About from "./pages/About";
 import Analytics from "./pages/Analytics";
 import Policy from "./pages/Policy";
 import Terms from "./pages/Terms";
-  import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-// const Map = React.lazy(() => import('./Map/Map.js'));
-// const Usecases = React.lazy(() => import('./pages/Usecases'));
-// const About = React.lazy(() => import('./pages/About.js'));
-// const Help = React.lazy(() => import('./pages/Help.js'));
-// const Analytics = React.lazy(() => import('./pages/Analytics.js'));
 
 function App() {
   const [loading, setLoading] = useState(true);
  
-  // console.clear()
   useEffect(() => {
-    // console.clear()
     if (loading) {
       setTimeout(() => {
         setLoading(false);
@@ -49,7 +42,6 @@ function App() {
           <Route path="/policy">
             <Policy />
           </Route>
-          {/* </React.Suspense> */}
         </Switch>
       </BrowserRouter>
     </div>

@@ -28,7 +28,7 @@ import { BiSearch, BiX, BiHomeAlt } from "react-icons/bi";
 import { FormGroup, Input } from "reactstrap";
 import Circlemarker from "../img/circlemarker.png";
 import MK1 from "../img/locationMK.png";
-import { Radio, Select, message } from "antd";
+import { Radio, message } from "antd";
 import loader from "../img/loader.gif";
 import locIcon from "../img/locationICON.png";
 import mandalRegions from "./Regions/mandalRegions";
@@ -36,8 +36,8 @@ import districtRegions from "./Regions/districtRegions";
 import axiosConfig from "../Common/axios_Config";
 import { EditControl } from "react-leaflet-draw";
 import SearchPlace from "./searchPlaces";
+// import { NominatimSearch } from "@terrestris/react-geo";
 
-// const key = 'AIzaSyD_QaXrN1Qi27IQK1df0nGoqCGX_3vYXd4';
 const MAP_STYLES = {
   position: "relative",
   width: "100%",
@@ -56,7 +56,6 @@ const LoaderIcon = new L.Icon({
 const LocIcon = new L.Icon({
   iconUrl: locIcon,
   iconSize: [50, 50],
-  // iconAnchor: [17, 46], //[left/right, top/bottom]
 });
 const MarkerIcon = new L.Icon({
   iconUrl: Circlemarker,
@@ -100,7 +99,7 @@ const mapDispatchToProps = (dispatch) => {
     hideRaster: () => dispatch({ type: "HIDERASTER" }),
   };
 };
-class map extends Component {
+export class map extends Component {
   constructor(props) {
     super(props);
     this.child = React.createRef();
@@ -167,7 +166,7 @@ class map extends Component {
       regionList: districtRegions(),
       latnew: 18.1124,
       longnew: 79.0193,
-      selectedWeatherMandal:"",
+      selectedWeatherMandal: "",
       mapZoom: 7.5,
       layerUID: "",
       showlayertype: true,
@@ -213,20 +212,19 @@ class map extends Component {
     this.toggleLayer = this.toggleLayer.bind(this);
     this.ChangeBasemap = this.ChangeBasemap.bind(this);
     this.handlePointclick = this.handlePointclick.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
   onEachrua = (rua, layer) => {
     const ruaname = rua.properties.Dist_Name;
     layer.bindPopup(ruaname);
   };
   changeVectorLoader = (lat, lng) => {
-    // 60.732421875,80.67555881973475
     this.setState({
       loaderlatvector: lat,
       loaderlngvector: lng,
     });
   };
   changeRasterLoader = (lat, lng) => {
-    // 60.732421875,80.67555881973475
     this.setState({
       loaderlatraster: lat,
       loaderlngraster: lng,
@@ -246,30 +244,7 @@ class map extends Component {
       selected_shape: new_json,
     });
   }
-  // async getweatherData(geojson){
-  //   var bodyParams = {
-  //     geojson: geojson.sourceTarget.feature.geometry,
-  //     startdate: "2021-01-01",
-  //     enddate: "2022-01-20",
-  //   };
-  //   try {
-  //     const res = await axiosConfig.post(`/getpoints`, bodyParams);
-  //     console.log("RESPONSE COUNT", res.data[1].count);
-  //     this.setState({
-  //       areaValue: res.data[1].count,
-  //       selectedRegion: geojson.sourceTarget.feature.properties.Dist_Name,
-  //     });
-  //     var area = geojsonArea.geometry(geojson.sourceTarget.feature.geometry);
-  //     area = area / 1000000;
-  //     this.setState({
-  //       area: parseFloat(area).toFixed(2),
-  //     });
-  //     this.child.current.showDrawer();
-  //     this.child.current.setPointsChart();
-  //   } catch (err) {
-  //     message.error("Failed to connect to server");
-  //   }
-  // }
+
   async getCountEvents(geojson) {
     var bodyParams = {
       geojson: geojson.sourceTarget.feature.geometry,
@@ -325,7 +300,7 @@ class map extends Component {
       this.setState(
         {
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          selectedWeatherMandal:e.sourceTarget.feature.properties.Mandal_Nam
+          selectedWeatherMandal: e.sourceTarget.feature.properties.Mandal_Nam,
         },
         () => {
           this.child.current.showDrawer();
@@ -350,9 +325,7 @@ class map extends Component {
     } else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
-          areaValue: parseInt(
-            e.sourceTarget.feature.properties.zonalstat.sum
-          ),
+          areaValue: parseInt(e.sourceTarget.feature.properties.zonalstat.sum),
           minVal: parseFloat(
             e.sourceTarget.feature.properties.zonalstat.min
           ).toFixed(2),
@@ -487,9 +460,6 @@ class map extends Component {
     this.setState({
       selected_shape: geojson,
     });
-    if (this.props.CurrentLayer === "FIREEV") {
-      this.getCustomPointDetails(geojson);
-    }
     if (this.props.CurrentLayer === "LULC") {
       var area = geojsonArea.geometry(geojson.features[0].geometry);
       area = area / 1000000;
@@ -499,6 +469,8 @@ class map extends Component {
       } else {
         this.child.current.getCUSTOMLULC(geojson);
       }
+    } else if (this.props.CurrentLayer === "FIREEV") {
+      this.getCustomPointDetails(geojson);
     } else {
       this.getCustomlayerDetails(geojson);
     }
@@ -633,36 +605,6 @@ class map extends Component {
         showlayertype: false,
       });
       this.props.SetBoundary([]);
-      // this.setState({
-      //   pointVector: {
-      //     type: "FeatureCollection",
-      //     features: [
-      //       {
-      //         type: "Feature",
-      //         geometry: {
-      //           type: "Point",
-      //           coordinates: [55.6761, 12.5683],
-      //         },
-      //         properties: {
-      //           brightness: 330.5,
-      //           scan: 1.16,
-      //           track: 1.07,
-      //           acq_date: "2021-11-02",
-      //           acq_time: 801,
-      //           satellite: "Aqua",
-      //           instrument: "MODIS",
-      //           confidence: 83,
-      //           version: "6.1NRT",
-      //           bright_t31: 296.07,
-      //           frp: 25.58,
-      //           daynight: "D",
-      //           latitude: 12.5683,
-      //           longitude: 55.6761,
-      //         },
-      //       },
-      //     ],
-      //   },
-      // });
       if (this.props.LayerDescription.raster_status !== false) {
         this.props.hideRaster();
       }
@@ -712,8 +654,6 @@ class map extends Component {
       this.setState({
         pointData: true,
       });
-      // this.props.SetBoundary({})
-      // dispatch({ type: "SETCURRENTVECTOR", payload: {} })
       var bodyParams = {
         startdate: "2021-01-01",
         enddate: "2022-01-20",
@@ -723,7 +663,6 @@ class map extends Component {
           `/getpointsindaterange?`,
           bodyParams
         );
-        // this.props.SetBoundary(res.data);
         this.setState({
           pointVector: res.data,
         });
@@ -884,8 +823,6 @@ class map extends Component {
         message.error("Failed to connect to server");
       }
     }
-    // this.props.VectorLoader();
-    // this.checkLoaderstatus();
   }
   onMouseOver(e) {
     if (this.props.CurrentLayer === "POPULATION") {
@@ -899,7 +836,6 @@ class map extends Component {
         if (isNaN(e.layer.feature.properties.zonalstat.mean) === true) {
           this.props.setvalue("N/A");
         } else {
-          // console.log("VECTOR HOVER VALUE",e.layer.feature.properties.zonalstat.mean)
           this.props.setvalue(
             parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(2)
           );
@@ -924,8 +860,9 @@ class map extends Component {
     }
   }
   searchRegion(e) {
-    var selected_region = this.state.regionList[e];
-    var current_reg = this.props.CurrentVector.features[e];
+    var selected_region = this.state.regionList[e.target.selectedIndex];
+    var current_reg = this.props.CurrentVector.features[e.target.selectedIndex];
+    console.log("SELETED REGION", selected_region);
     this.setState(
       {
         latnew: selected_region.centerPoint[1],
@@ -973,13 +910,23 @@ class map extends Component {
     }
   };
 
+  async handleSearchClick(place, map) {
+    var lat_new = place.lat;
+    var lon_new = place.lon;
+    this.setState({
+      locpointerltlng: [lat_new, lon_new],
+      mapZoom: 9,
+      latnew: lat_new,
+      longnew: lon_new,
+    });
+  }
+
   componentDidMount() {
     this.updateDimensions();
     this.props.setvalue(0.74);
     this.props.setplace("Siddipet");
     this.changeVectorLoader(17.754639747121828, 79.05833831966801);
     this.changeRasterLoader(17.754639747121828, 79.05833831966801);
-    // const leafletMap = this.leafletMap.leafletElement;
     this.getlayer();
     this.map = this.mapInstance.leafletElement;
   }
@@ -990,40 +937,86 @@ class map extends Component {
     this.map.flyTo([18.1124, 79.0193], 6.5);
   }
   ChangeBasemap(e) {
+    /*
+     There are multiple basemaps provided here.User can change map styles.
+     Note that only one options can be used at a time.Just uncomment wanted option and you are
+     good to go!.
+      */
     if (e.target.value === "Dark") {
+      /*
+      Option 1 - Carto CDN Dark 
+      */
       this.setState({
         baseMap:
           "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
         attribution: "",
         baseMapselected: "Dark",
       });
+      /*
+      Option 2 - StadiaMaps Dark 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+      //   attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      //   baseMapselected: "Dark",
+      // });
     }
     if (e.target.value === "Satellite") {
+      /*
+      Option 1 - Google Maps 
+      */
       this.setState({
         baseMap: "http://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}",
         attribution: "",
         baseMapselected: "Satellite",
       });
+      /*
+      Option 2 - Esri Maps 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      //   attribution:
+      //     "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+      //   baseMapselected: "Satellite",
+      // });
+      /*
+      Option 3 - USGS Imagery 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}",
+      //   attribution:
+      //     'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>',
+      //   baseMapselected: "Satellite",
+      // });
     }
     if (e.target.value === "Grey") {
+      /*
+      Option 1 - ARCGIS Imagery Grey 
+      */
       this.setState({
-        // baseMap:
-        // "https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=" +
-        // "pk.eyJ1IjoiaG90IiwiYSI6ImNpbmx4bWN6ajAwYTd3OW0ycjh3bTZvc3QifQ.KtikS4sFO95Jm8nyiOR4gQ",
-        // attribution:
-        // '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
-        // baseMapselected: "Grey",
         baseMap:
           "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
         attribution:
           '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>',
         baseMapselected: "Grey",
       });
+      /*
+      Option 2 - Stadia maps Grey 
+      */
+      // this.setState({
+      //   baseMap:
+      //     "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+      //   attribution:
+      //     '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      //   baseMapselected: "Grey",
+      // });
     }
   }
   Customlayer(e) {
     e.layer.on("click", () => {
-      // editRef.current.leafletElement._toolbars.edit._modes.edit.handler.enable()
       this.child.current.showDrawer();
     });
     if (this.state.editableFG === []) {
@@ -1040,11 +1033,7 @@ class map extends Component {
     var newpoints = [];
     shapePoints[0].map((points, index) =>
       newpoints.push([points.lng, points.lat])
-    )
-    // shapePoints[0].map(function (points, index) {
-    //   newpoints.push([points.lng, points.lat]);
-    // });
-    // console.log("COORDINATES", e.layer);
+    );
     newpoints.push([shapePoints[0][0].lng, shapePoints[0][0].lat]);
     var polygon_point = polygon([newpoints]);
     var polygon_centroid = centroid(polygon_point);
@@ -1073,9 +1062,6 @@ class map extends Component {
   }
   getcustomlocation(lat, lon) {
     if (lat !== undefined && lon !== undefined) {
-      // this.setState({
-      //   locpointerltlng: [e.coordinates.lat, e.coordinates.lng],
-      // });
       if (lat !== undefined && lon !== undefined) {
         this.setState({
           locpointerltlng: [lat, lon],
@@ -1094,21 +1080,13 @@ class map extends Component {
     }
   }
   handlePointclick(name) {
-    // e.preventDefault();
-    // this.setState({
-    //   currentComodity:name
-    // })
     if (this.props.CurrentLayer === "CP") {
       this.CPchild.current.showDrawer(name);
     }
   }
   checkRadius(capacity) {
     var radius = 3000 * Math.log(capacity / 100);
-
     if (radius > 0) {
-      //   this.setState({
-      //     keyMAP: this.state.keyMAP + 1,
-      //  })
       return 20 * Math.log(parseInt(radius) / 10000000);
     } else {
       return 5000;
@@ -1155,17 +1133,8 @@ class map extends Component {
         >
           <BiHomeAlt />
         </div>
-        {/* <div
-          className="Layer-remove"
-          style={this.state.customStatus === true ? {} : { display: "none" }}
-        >
-          <Switch size="small"  onChange={(e) => this.toggleLayer(e)}/>
-        </div> */}
 
-        <div
-          className="btn-toggleBaseMap"
-          // style={this.state.customStatus === true ? {} : { display: "none" }}
-        >
+        <div className="btn-toggleBaseMap">
           <FormGroup>
             <Input
               type="select"
@@ -1179,51 +1148,28 @@ class map extends Component {
               value={this.state.baseMapselected}
               onChange={this.ChangeBasemap}
             >
-              <option
-                // selected={this.state.baseMapselected === "Dark" ? true : false}
-                value="Dark"
-              >
-                Dark
-              </option>
-              <option
-                // selected={
-                //   this.state.baseMapselected === "Satellite" ? true : false
-                // }
-                value="Satellite"
-              >
-                Satellite
-              </option>
-              <option
-                // selected={this.state.baseMapselected === "Grey" ? true : false}
-                value="Grey"
-              >
-                Grey
-              </option>
+              <option value="Dark">Dark</option>
+              <option value="Satellite">Satellite</option>
+              <option value="Grey">Grey</option>
             </Input>
           </FormGroup>
         </div>
-        <div
-          className="btn-toggle"
-          // style={this.state.showlayertype === true ? {} : { display: "none" }}
-        >
+        <div className="btn-toggle">
           <Radio.Group
             options={options}
             onChange={this.onChangeLayertype}
             value={this.state.layerType}
             optionType="button"
             buttonStyle="solid"
-            disabled={this.state.showlayertype ? this.props.LayerDescription.vector_status === false
-              ? true
-              : false || this.props.LayerDescription.raster_status === false
-              ? true
-              : false : true}
-            // disabled={
-            //   this.props.LayerDescription.vector_status === false
-            //     ? true
-            //     : false || this.props.LayerDescription.raster_status === false
-            //     ? true
-            //     : false
-            // }
+            disabled={
+              this.state.showlayertype
+                ? this.props.LayerDescription.vector_status === false
+                  ? true
+                  : false || this.props.LayerDescription.raster_status === false
+                  ? true
+                  : false
+                : true
+            }
           />
         </div>
         <div
@@ -1252,15 +1198,16 @@ class map extends Component {
                   ? true
                   : false
               }
-              // defaultChecked={this.props.CurrentLayer === "WEATHER" ?"mandal":"district"}
-              // defaultValue={this.props.CurrentLayer === "WEATHER" ?"mandal":"district"}
-              // style={}
               key={this.state.regionkey}
               value={this.props.CurrentRegion}
               onChange={(e) => this.onchangeshape(e)}
             >
-              <option value="DISTRICT" key="DISTRICT">District</option>
-              <option value="MANDAL" key="MANDAL">Mandal</option>
+              <option value="DISTRICT" key="DISTRICT">
+                District
+              </option>
+              <option value="MANDAL" key="MANDAL">
+                Mandal
+              </option>
               <option
                 key="CUSTOM"
                 value="CUSTOM"
@@ -1272,7 +1219,6 @@ class map extends Component {
               >
                 Custom
               </option>
-              {/* <option value="opacity">opacity</option> */}
             </Input>
           </FormGroup>
         </div>
@@ -1289,27 +1235,24 @@ class map extends Component {
                   this.state.customStatus === true ? { display: "none" } : {}
                 }
               >
-                <Select
+                <select
                   className="search-input"
-                  showSearch
-                  style={{ width: 230 }}
-                  placeholder="Search Region"
-                  optionFilterProp="children"
                   onChange={this.searchRegion}
+                  placeholder="Search Region"
+                  style={{ width: 230, fontSize: "11px" }}
                 >
+                  <option className="search-list">Select Region</option>
                   {this.state.regionList.length > 0 &&
                     this.state.regionList.map((item, index) => (
-                      <Select.OptGroup
+                      <option
                         className="search-list"
-                        value={index}
+                        value={item.dname}
                         key={index}
-                        // key={item.centerPoint}
-                        // attr={item.uid}
                       >
                         {item.dname}
-                      </Select.OptGroup>
+                      </option>
                     ))}
-                </Select>
+                </select>
               </div>
               <div
                 style={
@@ -1317,7 +1260,22 @@ class map extends Component {
                 }
               >
                 <div style={{ marginLeft: "50px", marginTop: "7px" }}>
+                  {/* 
+                  By default, Google Search API is used. Another opensource search option 
+                  is also provided(Nominatim). If needed, uncomment NominatimSearch function
+                  and comment SearchPlace component. While using Nominatim please ensure that line 39
+                  (import function) is also uncommented !.
+                  */}
                   <SearchPlace searchArea={this.getcustomlocation} />
+                  {/* 
+                   <NominatimSearch
+                      className="nominatim-search"
+                      placeholder="Search field location"
+                      type="text"
+                      countryCodes="in"
+                      onSelect={this.handleSearchClick}
+                    ></NominatimSearch> 
+                     */}
                 </div>
               </div>
             </div>
@@ -1332,15 +1290,11 @@ class map extends Component {
           </div>
         </div>
         {this.props.CurrentLayer === "CP" ? (
-          <CPDrawerModal
-            // onRef={(ref) => (this.CPchild = ref)}
-            ref={this.CPchild}
-            district={this.state}
-          />
+          <CPDrawerModal ref={this.CPchild} district={this.state} />
         ) : (
           <DrawerModal ref={this.child} district={this.state} />
         )}
-        {/* <DrawerModal ref={this.child} district={this.state} /> */}
+
         <div className="footer-links">
           <Footer />
         </div>
@@ -1358,7 +1312,6 @@ class map extends Component {
           zoom={this.state.mapZoom}
           center={[this.state.latnew, this.state.longnew]}
           zoomControl={false}
-          // maxBounds={bound}
         >
           <Marker
             position={[this.state.loaderlatvector, this.state.loaderlngvector]}
@@ -1369,38 +1322,19 @@ class map extends Component {
             position={[this.state.loaderlatraster, this.state.loaderlngraster]}
             icon={LoaderIcon}
           ></Marker>
-          {/* <div style={this.state.pointData === true ? { display: "none" } : {}}> */}
-          {/* {this.state.pointVector.features.map((point, key) => (
-            <CircleMarker
-              center={[point.properties.latitude, point.properties.longitude]}
-              radius={4}
-              fillOpacity={1}
-              fillColor={"#d10a25"}
-              stroke={false}
-            >
-              <Tooltip>hkh</Tooltip>
-            </CircleMarker>
-          ))} */}
+
           <GeoJSON
             style={this.style}
             data={this.props.CurrentVector.features}
-            // onEachFeature={this.onEachrua}
             onMouseOver={
               this.props.currentLayerType === "Vector"
                 ? this.onMouseOver
                 : console.log()
-              // this.onMouseOver
             }
-            // onMouseOver={
-            //   this.props.CurrentLayer === "WEATHER"
-            //     ? console.log("WEATHER")
-            //     : this.onMouseOver
-            // }
             onMouseOut={
               this.props.currentLayerType === "Vector"
                 ? this.onMouseOver
                 : console.log()
-              // this.onMouseOver
             }
             icon={"text"}
             onclick={this.openDrawer}
@@ -1416,7 +1350,6 @@ class map extends Component {
               fillColor={"#d10a25"}
               stroke={false}
               icon={MarkerIcon2}
-              // icon={this.checkIcon}
               key={index}
               direction="top"
               onClick={(e) => {
@@ -1448,7 +1381,8 @@ class map extends Component {
                       : {}
                   }
                 >
-                  <a href={() => false}
+                  <a
+                    href={() => false}
                     style={
                       this.props.CurrentLayer === "CP"
                         ? { display: "none" }
@@ -1461,7 +1395,8 @@ class map extends Component {
                     <br />
                     District : {point.properties.district}
                   </a>
-                  <a href={() => false}
+                  <a
+                    href={() => false}
                     style={
                       this.props.CurrentLayer === "CP"
                         ? {}
@@ -1475,42 +1410,23 @@ class map extends Component {
             </Marker>
           ))}
 
-          {/* <div name="georaster" className="georaster-layer"> */}
           <GeoRaster
             onRef={(ref) => (this.rasterChild = ref)}
             changeLoader={this.changeRasterLoader}
           />
-          {/* </div> */}
 
           <ZoomControl position="topright" className="btn-zoomcontrol" />
           <TileLayer
             url={this.state.baseMap}
             attribution={this.state.attribution}
           />
-          <LayersControl position="topright">
-            {/* <BaseLayer checked name='Basemap'> */}
-            {/* <TileLayer url={this.state.baseMap}/> */}
-            {/* <GoogleLayer 
-            googlekey={key}
-             maptype={sat} />
-          </BaseLayer> */}
-            {/* <BaseLayer checked name="Google Maps Satellite">
-            <GoogleLayer 
-            googlekey={key}
-             maptype={sat} />
-          </BaseLayer> */}
-          </LayersControl>
+          <LayersControl position="topright"></LayersControl>
           <div style={{ zIndex: -999 }}>
             <FeatureGroup>
               <EditControl
                 position="topright"
                 onCreated={this.Customlayer}
                 style={{ marginBottom: "179px" }}
-                // eventHandlers={{s
-                //   onClick: () => {
-                //     console.log("ONCLICK CUSTOM");
-                //   },
-                // }}
                 draw={{
                   rectangle: this.state.customStatus,
                   circle: false,
@@ -1526,7 +1442,6 @@ class map extends Component {
               />
             </FeatureGroup>
           </div>
-          {/* </Map> */}
         </Map>
       </React.Fragment>
     );

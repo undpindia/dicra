@@ -33,7 +33,6 @@ const key = "updatable";
 const openNotification = () => {
   notification.open({
     key,
-    // message: 'Notification Title',
     description: "Trend data is not available for given time range !",
     icon: <InfoCircleTwoTone />,
   });
@@ -229,22 +228,13 @@ class CPDrawerModal extends Component {
       varity: this.state.selectedVariety,
       parameter: "Maximum",
     };
-    // {
-    //     startdate: "2021-12-01",
-    //     enddate: "2021-12-30",
-    //     name: "Suryapet",
-    //     commodity: "Paddy",
-    //     parameter: "Maximum",
-    //     varity: "Grade-A",
-    //   };
+
     try {
       const resTrend = await axiosConfig.post(
         `/getmarketyardtrend?`,
         bodyParams
       );
-      //   this.setState({
-      //     populationData: resPopulation.data.stat.mean,
-      //   });
+     
       if (resTrend.data.trend.length > 0) {
         this.generatechart(resTrend.data.trend);
       } else {
@@ -252,7 +242,6 @@ class CPDrawerModal extends Component {
         this.setState({
           series: [],
           loader: false,
-          //   weatherValue: lst_value,
         });
       }
     } catch (err) {
@@ -260,11 +249,8 @@ class CPDrawerModal extends Component {
     }
   }
   onClose() {
-    // this.setState({
-    //   visible: false,
-    // });
+
     this.props.hideDrawer();
-    // dispatch({ type: "HIDEDRAWER"});
   }
   async getcommodities() {
     try {
@@ -317,9 +303,6 @@ class CPDrawerModal extends Component {
 
     list.map((item) => VarietyList.push(item[0]));
 
-    // list.map(function (item, index, data) {
-    //   VarietyList.push(item[0]);
-    // });
     this.setState(
       {
         varietyNames: VarietyList,
@@ -346,7 +329,6 @@ class CPDrawerModal extends Component {
     this.setState({
       series: [trendData],
       loader: false,
-      //   weatherValue: lst_value,
       options: {
         tooltip: {
           x: {
@@ -399,7 +381,6 @@ class CPDrawerModal extends Component {
         },
         xaxis: {
           type: "datetime",
-          // tickAmount: 6,
           labels: {
             datetimeFormatter: {
               year: 'yyyy',
@@ -429,7 +410,6 @@ class CPDrawerModal extends Component {
       },
     });
 
-    // return [trendData];
   }
   checkValue(value) {
     if (isNaN(value)) {
@@ -598,19 +578,10 @@ class CPDrawerModal extends Component {
   }
   timeConverter(UNIX_timestamp) {
     var a = new Date(UNIX_timestamp);
-    // var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    // var year = a.getFullYear();
-    // var month = months[a.getMonth()];
-    // var date = a.getDate();
-    // var hour = a.getHours();
-    // var min = a.getMinutes();
-    // var sec = a.getSeconds();
-    // var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
     let dd = String(a.getDate()).padStart(2, "0");
     let mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
     let yyyy = a.getFullYear();
     let date = yyyy + "-" + mm + "-" + dd;
-    // return time;
     this.setState({
       last_updated: date,
     });
@@ -642,9 +613,6 @@ class CPDrawerModal extends Component {
     if (value[date] === undefined) {
       return "0.00";
     } else {
-      // this.setState({
-      //   tableKey:this.state.tableKey+1
-      // })
       if (value[date].hasOwnProperty(category)) {
         return parseFloat(value[date][category]).toFixed(2);
       }
@@ -668,7 +636,6 @@ class CPDrawerModal extends Component {
     return (
       <div>
         <Drawer
-          // title={this.props.LayerDescription.layer_name}
           placement="right"
           onClose={this.onClose}
           visible={this.props.DrawerChange}
@@ -676,11 +643,6 @@ class CPDrawerModal extends Component {
           mask={false}
           closable={false}
           width={450}
-          // extra={
-          //   <Space>
-          //     <BiX className="drawer-close" onClick={this.onClose} />
-          //   </Space>
-          // }
         >
           <Col>
             <Row>
@@ -772,11 +734,6 @@ class CPDrawerModal extends Component {
             </Row>
             <hr />
             <Row
-            //   style={
-            //     this.props.LayerDescription.multiple_files
-            //       ? {}
-            //       : { display: "none" }
-            //   }
             >
               <div>
                 <p style={{ fontSize: "18px", display: "inline" }}>

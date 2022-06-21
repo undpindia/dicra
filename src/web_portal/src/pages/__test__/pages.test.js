@@ -10,6 +10,7 @@ import enzyme from "enzyme";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 import { shallow, configure } from "enzyme";
+
 const mockStore = configureMockStore();
 const store = mockStore({});
 describe("Test Pages Component", () => {

@@ -7,14 +7,12 @@ import "antd/dist/antd.css";
 import { useSelector, useDispatch } from "react-redux";
 import { message } from "antd";
 export default function GeoRaster(props) {
-  // const { changeRasterLoader } = props;
   let dispatch = useDispatch();
   let { map, layerContainer } = useLeaflet();
   let currentLayer = useSelector((state) => state.CurrentLayer);
 
   let RasterOpacity = useSelector((state) => state.RasterOpacity);
   let ColorscalePicker = useSelector((state) => state.SetColor);
-  // let [layerrange, setLayerrange] = useState(0);
   let removeLayer = (layer) => {
     map.removeLayer(layer);
     window.tiff = 0;
@@ -36,7 +34,6 @@ export default function GeoRaster(props) {
   LayeropacityRef.current = useSelector((state) => state.RasterOpacity);
   const addLayerRef = useRef(() => {
     addlayer();
-    // props.onRef(undefined);
   });
 
   useEffect(() => {
@@ -44,10 +41,8 @@ export default function GeoRaster(props) {
     changeLayer.current();
   }, [ColorscalePicker, RasterOpacity]);
   useEffect(() => {
-    // addlayer();
     currentLayerNow.current = currentLayer;
     addLayerRef.current();
-    // props.onRef(undefined);
   }, [currentLayer]);
 
   async function addlayer() {
@@ -60,8 +55,6 @@ export default function GeoRaster(props) {
       let layer;
       if (layerRef.current) {
         removeLayer(layerRef.current);
-        // layerRef.current = null;
-        // window.tiff = 0;
       }
 
       response.blob().then((blob) => {
@@ -72,14 +65,10 @@ export default function GeoRaster(props) {
             var range;
             layermin.current = min;
             layermax.current = max;
-            // setLayermin(min);
-            // setLayermax(max);
 
             if (currentLayerNow.current === "LULC") {
               range = georaster.ranges[0];
               layerrange.current = range;
-              // setLayerrange(range);
-              //  var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma.scale([
                 "#dc0f0f",
                 "#44ce5d",
@@ -98,23 +87,18 @@ export default function GeoRaster(props) {
             } else {
               range = georaster.ranges[0];
               layerrange.current = range;
-              // setLayerrange(range);
-              // var scale = chroma.scale("Spectral").domain([0, 1]);
               scale = chroma
                 .scale(colorscalepickerRef.current)
                 .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
             }
             window.tiff = georaster;
             layer = new GeoRasterLayer({
-              // attribution: "Planet",
               georaster,
               opacity: 1.0,
               resolution: 128,
               debugLevel: 0,
-              // pane: 'something',
               pixelValuesToColorFn: (values) => {
                 var pixelValue = values[0];
-                // console.log("DATA VALUE",pixelValue)
                 if (pixelValue < min) {
                   return null;
                 } else if (pixelValue > max) {
@@ -125,18 +109,11 @@ export default function GeoRaster(props) {
                   return color;
                 }
               },
-              // onEachFeature : (feature, layer) => {
-              //   layer.on('mouseover', function (e) {
-
-              //   });
-              // }
             });
 
             map.on("mousemove", function (evt) {
               if (window.layerType === "Raster") {
-                // console.log("RASTER HOVER ", window.layerType);
                 var latlng = map.mouseEventToLatLng(evt.originalEvent);
-                // getcurrentvalue(latlng.lng, latlng.lat);
                 dispatch({
                   type: "SETLATLON",
                   payload: [
@@ -177,7 +154,6 @@ export default function GeoRaster(props) {
   function getColorFromValues() {
     if (layerRef.current) {
       layerRef.current.updateColors(function (values) {
-        // break;
         var newScale;
         var scaledPixelvalue;
         var color;
@@ -214,7 +190,6 @@ export default function GeoRaster(props) {
             scaledPixelvalue =
               (values[0] - layermin.current) / layerrange.current;
             color = newScale(scaledPixelvalue).hex();
-            // console.log("COLOR",colorscalepickerRef.current)
             return color;
           }
         }

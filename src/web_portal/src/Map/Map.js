@@ -36,11 +36,8 @@ import districtRegions from "./Regions/districtRegions";
 import axiosConfig from "../Common/axios_Config";
 import { EditControl } from "react-leaflet-draw";
 import SearchPlace from "./searchPlaces";
-// import {
-//   NominatimSearch,
-// } from "@terrestris/react-geo";
+// import { NominatimSearch } from "@terrestris/react-geo";
 
-// const key = 'AIzaSyD_QaXrN1Qi27IQK1df0nGoqCGX_3vYXd4';
 const MAP_STYLES = {
   position: "relative",
   width: "100%",
@@ -103,7 +100,7 @@ const mapDispatchToProps = (dispatch) => {
     hideRaster: () => dispatch({ type: "HIDERASTER" }),
   };
 };
-class map extends Component {
+export class map extends Component {
   constructor(props) {
     super(props);
     this.child = React.createRef();
@@ -982,9 +979,9 @@ class map extends Component {
     var lon_new = place.lon;
     this.setState({
       locpointerltlng: [lat_new, lon_new],
-          mapZoom: 9,
-          latnew: lat_new,
-          longnew: lon_new,
+      mapZoom: 9,
+      latnew: lat_new,
+      longnew: lon_new,
     });
   }
 
@@ -1378,14 +1375,18 @@ class map extends Component {
                 }
               >
                 <div style={{ marginLeft: "50px", marginTop: "7px" }}>
-                   <SearchPlace searchArea={this.getcustomlocation} /> 
-                   {/* <NominatimSearch
+                  <SearchPlace searchArea={this.getcustomlocation} />
+                  {/* 
+                   Open Source library for searching 
+                  
+                   <NominatimSearch
                       className="nominatim-search"
                       placeholder="Search field location"
                       type="text"
                       countryCodes="in"
                       onSelect={this.handleSearchClick}
-                    ></NominatimSearch> */}
+                    ></NominatimSearch> 
+                     */}
                 </div>
               </div>
             </div>

@@ -1,4 +1,3 @@
-
 // // <rootdir>/__tests__/app.test.js
 import React from "react";
 import { assert } from "chai";
@@ -8,13 +7,14 @@ import configureMockStore from "redux-mock-store";
 import { Provider } from "react-redux";
 
 import App from "../src/App"; // Component to Test
-import {render, screen, cleanup} from '@testing-library/react';
+import { render, screen, cleanup } from "@testing-library/react";
 configure({ adapter: new Adapter() });
-const layerDescription={vector_status:false};
+const layerDescription = { vector_status: false };
 const mockStore = configureMockStore();
 const store = mockStore({});
-function renderComponent() {//state: ILoginState
-  const store = mockStore(state)
+function renderComponent() {
+  //state: ILoginState
+  const store = mockStore(state);
   return [
     render(
       <Provider store={store}>
@@ -22,7 +22,7 @@ function renderComponent() {//state: ILoginState
       </Provider>
     ),
     store,
-  ]
+  ];
 }
 
 describe("Test Component", () => {
@@ -43,6 +43,6 @@ describe("Test Component", () => {
     //   loading: false,
     //   error: null,
     // })
-    expect(true).toBe(true)
+    expect(true).toBe(true);
   });
 });

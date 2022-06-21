@@ -1,20 +1,19 @@
 import React from "react";
 import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Common/common.css";
 class Help extends React.Component {
-
   render() {
     return (
       <React.Fragment>
-               <div className="page-header">
+        <div className="page-header">
           <Header />
         </div>
         <div></div>
         <div className="help-body">
           <div>
-            <div className="row" style={{paddingBottom:"10px"}}>
+            <div className="row" style={{ paddingBottom: "10px" }}>
               <div className="col">
                 <h6 className="page-heading">Help</h6>
               </div>
@@ -26,9 +25,7 @@ class Help extends React.Component {
             </div>
             <hr />
             <div>
-            <div
-                className="container help-page"
-              >
+              <div className="container help-page">
                 <div className="row">
                   <h3 className="about-heading">Heading</h3>
                   <div className="col about-content">
@@ -99,7 +96,7 @@ class Help extends React.Component {
                   </div>
                 </div>
               </div>
-              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>

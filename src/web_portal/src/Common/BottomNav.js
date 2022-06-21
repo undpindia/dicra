@@ -59,11 +59,9 @@ const BottomNav = (props) => {
   const onOpenDownloads = (layer, desc) => {
     dispatch({ type: "SETDOWNLOADLAYER", payload: layer });
     dispatch({ type: "DOWNCHANGELAYERDESC", payload: desc });
-    // dispatch(setdownloadlayer(layer));
     setIsModalDownload(true);
     setIsModalVisible(false);
   };
-  // items
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => (document.body.style.overflow = "hidden");
@@ -151,7 +149,6 @@ const BottomNav = (props) => {
   const getLayers = async () => {
     try {
       const layers = await axiosConfig.get(`/getlayerconfig?`);
-      // layerList(layers.data);
       dispatch(setlayerlist(layers.data));
       let result;
       result = layers.data.reduce(function (r, a) {
@@ -167,7 +164,6 @@ const BottomNav = (props) => {
     }
   };
   function callback(key) {
-    // console.log(key);
   }
   const changeLayer = useRef(() => {
     getLayers();
@@ -211,7 +207,6 @@ const BottomNav = (props) => {
       <div>
         <BottomNavigation
           items={bottomNavItems}
-          // onItemClick={(item) => console.log(item)}
         />
       </div>
       <div>
@@ -372,7 +367,6 @@ const BottomNav = (props) => {
               showNavigation={true}
               steps={steps}
               prevStyle={prevStyle}
-              // nextStyle={isActivebutton ? nextStyle : nextDisabled}
               nextStyle={nextStyle}
             />
           </Modal>

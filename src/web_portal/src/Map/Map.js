@@ -486,9 +486,6 @@ export class map extends Component {
     this.setState({
       selected_shape: geojson,
     });
-    if (this.props.CurrentLayer === "FIREEV") {
-      this.getCustomPointDetails(geojson);
-    }
     if (this.props.CurrentLayer === "LULC") {
       var area = geojsonArea.geometry(geojson.features[0].geometry);
       area = area / 1000000;
@@ -498,9 +495,14 @@ export class map extends Component {
       } else {
         this.child.current.getCUSTOMLULC(geojson);
       }
-    } else {
+    }
+    else if (this.props.CurrentLayer === "FIREEV") {
+      this.getCustomPointDetails(geojson);
+    }
+    else {
       this.getCustomlayerDetails(geojson);
     }
+    
   }
   style(feature) {
     if (this.props.CurrentLayer === "WEATHER") {

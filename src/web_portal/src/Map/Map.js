@@ -954,7 +954,7 @@ export class map extends Component {
       });
 
        /*
-      Option 2 - OSM Layer with base style 
+      Option 2 - OSM Layer with base style (NOT DARK THEME)
       */
       // this.setState({
       //   baseMap:
@@ -984,7 +984,7 @@ export class map extends Component {
       });
       
        /*
-      Option 2 - OSM Layer with base style 
+      Option 2 - OSM Layer with base style  (NOT SATELLITE THEME)
       */
       // this.setState({
       //   baseMap:
@@ -1028,7 +1028,7 @@ export class map extends Component {
 
       
        /*
-      Option 2 - OSM Layer with base style 
+      Option 2 - OSM Layer with base style  (NOT GREY THEME)
       */
       // this.setState({
       //   baseMap:

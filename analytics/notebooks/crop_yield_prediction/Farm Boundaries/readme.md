@@ -1,0 +1,1 @@
+The aim of this folder is to identify the boundaries for each farm using satellite imagery. In order to do so, we try to replicate the method provided in the blog post [Parcel boundary detection for CAP](https://medium.com/sentinel-hub/parcel-boundary-detection-for-cap-2a316a77d2f6) with corresponding [GitHub repository](https://github.com/sentinel-hub/field-delineation). 

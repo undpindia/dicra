@@ -6,8 +6,8 @@ This data provides a near real time estimate (RT0) and three consolidated modes.
 
 The downloaded data contains 493 GeoTIFF files (LAI_images.zip), where as mentioned before the filename includes the date and the consolidation mode. In 'LAI_Telangana.ipynb', we clip the geoTIFF files such that the newly derived GeoTIFF files (LAI_Telangana.zip) only contain the Leaf Area Index for the state Telangana. 
 
-For formatting these GeoTIFF files to Cloud Optimized GeoTIFF files, we run the following command in the OSGEOW4 Shell:
+For formatting these GeoTIFF files to Cloud Optimized GeoTIFF files, we run the following command in the OSGeoW4 Shell:
 
 for %N in (C:/Users/mieke/Documents/COG_files/LAI/LAI_geotiff/*.tiff) DO gdal_translate C:/Users/mieke/Documents/trialmap/geotiff/%~nN.tiff  C:/Users/mieke/Documents/COG_files/LAI/LAI_cog/%~nN.tiff -co COMPRESS=LZW -co TILED=YES
 
-Note that we use the OSGEOW4 Shell as we are working on a Windows device. The newly derived Cloud Optimized GeoTIFF files (LAI_Telangana_COG.zip) are available upon request do to size limitations.
+Note that we use the OSGeoW4 Shell as we are working on a Windows device. The newly derived Cloud Optimized GeoTIFF files (LAI_Telangana_COG.zip) are available upon request do to size limitations.

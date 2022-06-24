@@ -59,3 +59,6 @@ https://medium.com/indo-data-week/sujit-nayak-d297093c5c33
 Alternatives & Reasons: very clearly explained: file:///C:/Users/Jesse/Downloads/129_Bhavana_2021.pdf 
 
 Increase crop fires COVID: https://link.springer.com/content/pdf/10.1007/s11356-021-17550-y.pdf 
+
+Data PM2.5: indiaenvironmentportal.org.in (https://pubs.acs.org/doi/abs/10.1021/acs.est.5b05833)
+https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-agricultural-forest-fires/

@@ -34,6 +34,8 @@ https://nctoolkit.readthedocs.io/en/latest/
 Crop Residue Burning Alternatives: 
 - https://www.science.org/doi/pdf/10.1126/science.aaw4085?casa_token=vqQncVmv02AAAAAA:kFlAGkmAV-qCpCwTt8TM2IEx91zsJtFVscGQ-2iZWbML50C_yw8BbjzkUF93n-gbmhoLinjBH22-1Q
 - file:///C:/Users/Jesse/Downloads/ijerph-16-00832.pdf
+- file:///C:/Users/Jesse/Downloads/AlternativeUsesInandOffFieldManagementtoReduceAdverseImpactofCropResidueBurning.pdf
+-  file:///C:/Users/Jesse/Downloads/129_Bhavana_2021.pdf 
 
 Positive Deviance Analysis:
 - https://reader.elsevier.com/reader/sd/pii/S2352728521000324?token=8C5133EAB5B6DFBFD45BEAC37D2E1B3C17F84B6F61996888E242656094C692205CE6C68ECA0C691A74D81794232AB107&originRegion=eu-west-1&originCreation=20220604115520
@@ -54,9 +56,6 @@ https://pypi.org/project/folium/
 
 Hackathon Blog:
 https://medium.com/indo-data-week/sujit-nayak-d297093c5c33 
-
-
-Alternatives & Reasons: very clearly explained: file:///C:/Users/Jesse/Downloads/129_Bhavana_2021.pdf 
 
 Increase crop fires COVID: https://link.springer.com/content/pdf/10.1007/s11356-021-17550-y.pdf 
 

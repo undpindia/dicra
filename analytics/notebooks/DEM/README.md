@@ -1,4 +1,4 @@
-#Digital Elevation Data for Telangana
+# Digital Elevation Data for Telangana
 
 SRTM DEM has been used to get Digital Elevations of Telangana state using Google Earth Engine(GEE). 
 NOTE:- Active GEE account required to getb this data. Result will be saved in google drive which can later be downloaded.

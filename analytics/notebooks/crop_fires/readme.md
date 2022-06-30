@@ -24,7 +24,9 @@ Policies:
 - https://www.rvo.nl/sites/default/files/2019/12/MVO-Nederland-rapport-India.pdf
 - https://agri.telangana.gov.in/open_record_view.php?ID=959
 - https://agricoop.nic.in/sites/default/files/FFH201819_Eng.pdf
-
+- https://agricoop.nic.in/sites/default/files/NPMCR_1.pdf
+- https://www.teriin.org/sites/default/files/2020-01/crop-residue-management.pdf
+- 
 Happy Seeders:
 https://www.cimmyt.org/news/happy-seeder-can-reduce-air-pollution-and-greenhouse-gas-emissions-while-making-profits-for-farmers/
 
@@ -62,7 +64,7 @@ Increase crop fires COVID: https://link.springer.com/content/pdf/10.1007/s11356-
 Data PM2.5: indiaenvironmentportal.org.in (https://pubs.acs.org/doi/abs/10.1021/acs.est.5b05833)
 https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-agricultural-forest-fires/
 
-
+Extra Spatial Data:
 https://giovanni.gsfc.nasa.gov/giovanni/#service=ArAvTs&starttime=2015-03-01T00:00:00Z&endtime=2022-06-28T23:59:59Z&bbox=76.8,28.18,76.87,28.22&data=MOD08_D3_6_1_AOD_550_Dark_Target_Deep_Blue_Combined_Mean&variableFacets=dataFieldMeasurement%3AOrganic%20Carbon%3BdataProductPlatformInstrument%3AMODIS-Aqua%3BdataProductSpatialResolution%3A4%20km%3BdataProductTimeInterval%3Amonthly%3B
 
 https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-reanalysis-eac4?tab=form

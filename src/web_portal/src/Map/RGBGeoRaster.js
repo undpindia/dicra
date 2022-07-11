@@ -48,7 +48,7 @@ export default function GeoRaster(props) {
   async function addlayer() {
     props.changeLoader(17.754639747121828, 79.05833831966801);
     var url =
-      "https://internalapidev.chickenkiller.com/currentraster?parameter=" +
+      "https://api-dicra.misteo.co/currentraster?parameter=" +
       currentLayerNow.current;
     fetch(url).then((response) => {
       const container = layerContainer || map;

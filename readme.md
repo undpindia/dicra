@@ -35,18 +35,18 @@ UNDP continually seeks to understand the behavior of users on the DiCRA platform
 
 Each of the datasets made available through the DiCRA PLatform have their own data use licensing and citation requirement. More information regarding this is made available at the following [link](https://github.com/undpindia/dicra/blob/main/analytics/datasets_metadata.pdf). By downloading the data through DiCRA Platform, the user acknowledges the individual data source's data use agreements and have to cite the data source as per the citation format of the dataset.
 
-**Our Team**
+## Our Team
 
 DiCRA is a collaborative effort of national and International data scienstists, policy experts, researchers and agriculture domain experts 
 
-***Core Team***
+### Core Team
 
-***Data Science Community of Practice***
+### Data Science Community of Practice
 
-***Policy Advisors***
+### Policy Advisors
 
-***UI/UX and Communications Support***
+### UI/UX and Communications Support
 
-***Data Science Advisors***
+### Data Science Advisors
 
-***Peer-Reviewers***
+### Peer-Reviewers

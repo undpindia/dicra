@@ -40,6 +40,8 @@ Each of the datasets made available through the DiCRA PLatform have their own da
 DiCRA is a collaborative effort of national and International data scienstists, policy experts, researchers and agriculture domain experts 
 
 ### Core Team
+- [Swetha Kolluri, Head of Experimentation, UNDP in India](https://www.linkedin.com/in/swetha-kolluri/)
+- [Ambarish Narayanan, CTO, mistEO](https://www.linkedin.com/in/ambarishnarayanan/)
 
 ### Data Science Community of Practice
 

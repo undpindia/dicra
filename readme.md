@@ -44,6 +44,12 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 - [Ambarish Narayanan, CTO, mistEO](https://www.linkedin.com/in/ambarishnarayanan/)
 
 ### Data Science Community of Practice
+- Jesse
+- Mieke 
+- Shivang
+- Shubham 
+- Amit
+- 
 
 ### Policy Advisors
 

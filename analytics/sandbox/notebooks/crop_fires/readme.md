@@ -71,3 +71,6 @@ https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-reanalysis-eac
 
 https://neo.gsfc.nasa.gov/view.php?datasetId=AURA_NO2_M&year=2015 &
 NOX: https://www.earthdata.nasa.gov/learn/articles/find-no2-data
+
+Crop types : https://code.earthengine.google.com/3591b550e5ab9ecdee134544a9d940fa
+

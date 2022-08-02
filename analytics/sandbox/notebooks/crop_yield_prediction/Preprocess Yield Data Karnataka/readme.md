@@ -10,13 +10,11 @@ Next, we move to 'aggregation_rf.ipynb'. For some parameters, we aggregate image
 
 The schedule we use for growing season in India is shown below.
 
-Season |   Sow   | Between | Harvest
-------------------------------------
-Summer | Feb-Mar |   Apr   | May-Jun
-------------------------------------
-Kharif | Jun-Jul |   Aug   | Sept-Oct
-------------------------------------
-Rabi   | Oct-Nov |   Dec   | Jan-Feb
+|Season |   Sow   | Between | Harvest |
+|-------|---------|---------|---------|
+|Summer | Feb-Mar |   Apr   | May-Jun |
+|Kharif | Jun-Jul |   Aug   | Sept-Oct|
+|Rabi   | Oct-Nov |   Dec   | Jan-Feb |
 
 Lastly, in 'dataframe_rf.ipynb', we create a geodataframe including all information needed to run a model. For each of the previous specified parameters, we calculate the average per geometry within the combined yields_geometry geodataframe. For LST, we also calculate the maximum value per geometry. We make sure that each datapoint within the yields_geometry geodataframe includes the average parameter value for the correct year and season. Furthermore, we use aggregation method 2, so we have a parameter per period for each datapoint.  
 

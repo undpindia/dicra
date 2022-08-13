@@ -36,7 +36,7 @@ def fire_class(gdf):
     src = rasterio.open('mosaic.tif')
     # Sample the raster at every point location and store values in GeoDataFrame
     gdf['Class'] = [x[0] for x in src.sample(coords)]
-    classes = list(df.Class.unique())
+    classes = list(gdf.Class.unique())
     crop_class = [4,5]
     non_crop_class = classes - crop_class
     gdf['Class'] = gdf['Class'].replace(non_crop_class,0)

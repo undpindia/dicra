@@ -1,8 +1,7 @@
 import pandas as pd
 import os
 import geopandas as gpd
-import geoplot
-import geoplot.crs as gcrs
+
 import matplotlib.pyplot as plt
 import rasterio
 from statsmodels.tsa.seasonal import STL

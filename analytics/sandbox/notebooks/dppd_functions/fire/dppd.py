@@ -2,7 +2,6 @@ import geopandas as gpd
 import pandas as pd
 import rasterio
 import matplotlib.pyplot as plt
-import rasterio
 from statsmodels.tsa.seasonal import STL
 import numpy as np
 from sklearn.linear_model import LinearRegression
@@ -26,8 +25,7 @@ def regional_fires(adm_name):
 
     fire_mh = fire_pts.clip(adm_name)                   #Clipping fire points with Telangana boundaries
     fire_mh = fire_mh.sort_values(by=["acq_date"])#Sorting points by date
-    fire_mh = fire_pts.clip(adm_name)                   #Clipping fire points with Telangana boundaries
-    fire_mh = fire_mh.sort_values(by=["acq_date"])#Sorting points by date
+
     return fire_mh
 
 
@@ -38,6 +36,9 @@ def fire_class(gdf):
     src = rasterio.open('mosaic.tif')
     # Sample the raster at every point location and store values in GeoDataFrame
     gdf['Class'] = [x[0] for x in src.sample(coords)]
+    classes = list(df.Class.unique())
+    crop_class = [4,5]
+    non_crop_class = classes - crop_class
     gdf['Class'] = gdf['Class'].replace(non_crop_class,0)
     gdf['Class'] = gdf['Class'].replace(crop_class,1)
     gdf = gdf.reset_index()

@@ -1,9 +1,6 @@
 import geopandas as gpd
 import pandas as pd
 import rasterio
-
-
-import os
 import matplotlib.pyplot as plt
 import rasterio
 from statsmodels.tsa.seasonal import STL
@@ -17,21 +14,16 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def regional_fires(adm_name):
-    viirs_files = ['viirs_2012_india','viirs_2013_india','viirs_2014_india','viirs_2015_india','viirs_2016_india','viirs_2017_india','viirs_2018_india',
-                  'viirs_2019_india','viirs_2020_india','viirs_2021_india','viirs_2022_india']
-    dflist = []
-    for i in viirs_files:
 
-        viirs = pd.read_csv('VIIRS/'+str(i)+'.csv')
 
-        df = gpd.GeoDataFrame(viirs,                        #Converting fire points into dataframe
-                             geometry=gpd.points_from_xy(
-                                 viirs.longitude,
-                                 viirs.latitude),
-                             crs=4326)
-        dflist.append(df)
-        
-    fire_pts = pd.concat(dflist)
+    viirs = pd.read_csv('VIIRS.csv')  #ENTER THE CSV FILE NAME AND LOCATION HERE
+
+    fire_pts = gpd.GeoDataFrame(viirs,                        #Converting fire points into dataframe
+                            geometry=gpd.points_from_xy(
+                                viirs.longitude,
+                                viirs.latitude),
+                            crs=4326)
+
     fire_mh = fire_pts.clip(adm_name)                   #Clipping fire points with Telangana boundaries
     fire_mh = fire_mh.sort_values(by=["acq_date"])#Sorting points by date
     fire_mh = fire_pts.clip(adm_name)                   #Clipping fire points with Telangana boundaries

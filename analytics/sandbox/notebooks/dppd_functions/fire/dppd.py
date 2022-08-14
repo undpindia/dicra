@@ -26,32 +26,32 @@ def regional_fires(adm_name):
     fire_mh = fire_pts.clip(adm_name)                   #Clipping fire points with Telangana boundaries
     fire_mh = fire_mh.sort_values(by=["acq_date"])#Sorting points by date
 
-    return fire_mh
+    return fire_mh        #return dataframe of regional fire points here
 
-
+# Create a function to clasify agricultural and non-agriculturakl fire points
 def fire_class(gdf):
     #list of coordinates for all points
     coords = [(x,y) for x, y in zip(gdf.longitude, gdf.latitude)]
     # Open the raster and store metadata
     src = rasterio.open('mosaic.tif')
     # Sample the raster at every point location and store values in GeoDataFrame
-    gdf['Class'] = [x[0] for x in src.sample(coords)]
-    classes = list(gdf.Class.unique())
-    crop_class = [4,5]
-    non_crop_class = classes - crop_class
-    gdf['Class'] = gdf['Class'].replace(non_crop_class,0)
-    gdf['Class'] = gdf['Class'].replace(crop_class,1)
+    gdf['Class'] = [x[0] for x in src.sample(coords)]       #list all pixel values (classes) from LULC raster file
+    classes = list(gdf.Class.unique())                      #list all unique classes
+    crop_class = [4,5]                                      #crop class - 4, flooded vegetation(paddy) -5
+    non_crop_class = classes - crop_class                   #Non agricultural classes
+    gdf['Class'] = gdf['Class'].replace(non_crop_class,0)   # non agri class to 0
+    gdf['Class'] = gdf['Class'].replace(crop_class,1)       # agri class to 1
+    gdf = gdf.reset_index()         
+    del gdf['index']                                        
     gdf = gdf.reset_index()
-    del gdf['index']
-    gdf = gdf.reset_index()
-    gdf.rename(columns = {'index':'fireID'}, inplace = True)
-    return gdf
+    gdf.rename(columns = {'index':'fireID'}, inplace = True)# give eac fire points a unique ID
+    return gdf                                              # return classified dataframe
 
 
 def Trend_Score(df, index:int): 
     """Determines the trend score of a polygon it takes as input a dataframe that counts the fires per region per month and the index of a specific region and returns 
     the deviance score of that particular region"""
-    df_selected = df[df['index'] == index] 
+    df_selected = df[df['index'] == index]  
     df_selected = df_selected.sort_values(by=['ModifiedDateTime'])
     df_selected.index = df_selected['ModifiedDateTime']
 

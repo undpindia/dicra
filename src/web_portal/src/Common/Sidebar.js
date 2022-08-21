@@ -22,6 +22,7 @@ import Multistep from "react-multistep";
 import axiosConfig from "../Common/axios_Config";
 import { setlayerlist, setcurrentlayer } from "../actions";
 import { Collapse, message } from "antd";
+import DISTRICTBOUNDS from "../Shapes/TS_district_boundary.json";
 
 const steps = [
   { name: "StepOne", component: <LayerDetails /> },
@@ -35,6 +36,7 @@ const SidebarComponent = (props) => {
   const DownLayerDesc = useSelector((state) => state.DownloadLayerDesc);
   const DownLayer = useSelector((state) => state.DownloadLayer);
   const LayerDesc = useSelector((state) => state.LayerDescription);
+  let currentlayerType = useSelector((state) => state.CurrentLayerType);
   const [openTab, setOpenTab] = useState("layer");
   const [isActive, setlegend] = useState(true);
   const [Layers, layerList] = useState([]);
@@ -96,11 +98,24 @@ const SidebarComponent = (props) => {
   };
 
   function getVector(layer, desc) {
+    console.log("layer", layer)
     dispatch(setcurrentlayer(layer));
     dispatch({ type: "HIDEDRAWER" });
-    dispatch({ type: "SHOWRASTER" });
-    // dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
+    // dispatch({ type: "HIDERASTER" });
+    dispatch({ type: "SETCURRENTVECTOR", payload: DISTRICTBOUNDS});
+    // dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
+    dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
     dispatch({ type: "CHANGELAYERDESC", payload: desc });
+    if(currentlayerType === "Raster" || window.layerType === "Raster"){
+      dispatch({ type: "SHOWRASTER" });
+    } else {
+      dispatch({ type: "HIDERASTER" });
+    }
+    if(layer === "LULC"){
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
+      window.layerType = "Raster";
+      dispatch({ type: "SHOWRASTER" });
+    } 
     props.resetZoom();
     // if (selectedRegion !== "CUSTOM") {
     setTimeout(function () {

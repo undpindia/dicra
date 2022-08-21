@@ -13,6 +13,7 @@ export default function GeoRaster(props) {
 
   let RasterOpacity = useSelector((state) => state.RasterOpacity);
   let ColorscalePicker = useSelector((state) => state.SetColor);
+  let currentlayerType = useSelector((state) => state.CurrentLayerType);
   let removeLayer = (layer) => {
     map.removeLayer(layer);
     window.tiff = 0;
@@ -42,8 +43,13 @@ export default function GeoRaster(props) {
   }, [ColorscalePicker, RasterOpacity]);
   useEffect(() => {
     currentLayerNow.current = currentLayer;
-    addLayerRef.current();
-  }, [currentLayer]);
+    if(currentlayerType === "Raster" || window.layerType === "Raster"){
+      addLayerRef.current();
+    } else
+    {
+      console.log()
+    }
+  }, [currentLayer, currentlayerType]);
 
   async function addlayer() {
     props.changeLoader(17.754639747121828, 79.05833831966801);
@@ -112,7 +118,7 @@ export default function GeoRaster(props) {
             });
 
             map.on("mousemove", function (evt) {
-              if (window.layerType === "Raster") {
+              if (window.layerType === "Raster" ) {
                 var latlng = map.mouseEventToLatLng(evt.originalEvent);
                 dispatch({
                   type: "SETLATLON",

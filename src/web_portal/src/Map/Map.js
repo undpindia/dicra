@@ -176,6 +176,7 @@ export class map extends Component {
       showCustomDraw: false,
       customStatus: false,
       checked: false,
+      boundColor: "",
       baseMapselected: "Dark",
       customShape: {
         type: "FeatureCollection",
@@ -298,7 +299,7 @@ export class map extends Component {
       this.setState(
         {
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          selectedWeatherMandal: e.sourceTarget.feature.properties.Mandal_Nam,
+          selectedWeatherMandal: e.sourceTarget.feature.properties.Mandal_Name,
         },
         () => {
           this.child.current.showDrawer();
@@ -483,16 +484,37 @@ export class map extends Component {
         color: "#d65522",
       };
     }
+    if (this.props.CurrentLayer === "LULC") {
+      return {
+        opacity: 1,
+          color: "#d65522",
+          fillOpacity: 0,
+          weight: 0.5,
+      };
+    }
+    if (this.props.CurrentLayer === "CP") {
+      return {
+        opacity: 1,
+          color: "#d65522",
+          fillOpacity: 0,
+          weight: 0.5,
+      };
+    }
+  
     if (ltype === "Vector") {
       if (this.state.layerUID === feature.properties.uid) {
         return {
           opacity: 1,
           color: "#2bf527",
           fillOpacity: 1,
-          weight: 6,
+          weight: 1,
         };
       } else {
         var scale;
+        if (feature.properties.zonalstat === undefined){
+          console.log("undefined")
+        }
+        else {
         if (feature.properties.zonalstat.mean <= 1) {
           scale = chroma
             .scale(this.props.vectorColor)
@@ -511,6 +533,7 @@ export class map extends Component {
           fillOpacity: 1,
         };
       }
+      }
     } else {
       if (this.state.layerUID === feature.properties.uid) {
         return {
@@ -522,6 +545,7 @@ export class map extends Component {
       } else {
         // this.props.showRaster();
         return {
+          // opacity: 1,
           color: "#d65522",
           weight: 0.5,
           fillOpacity: 0,
@@ -842,7 +866,7 @@ export class map extends Component {
     }
 
     if (this.props.CurrentRegion === "MANDAL") {
-      var mandal_name = e.layer.feature.properties.Mandal_Nam;
+      var mandal_name = e.layer.feature.properties.Mandal_Name;
       if (typeof mandal_name !== "undefined") {
         this.props.setplace(mandal_name);
       } else {
@@ -1210,9 +1234,9 @@ export class map extends Component {
           }
         >
           <FormGroup
-            style={
-              this.state.layerType === "Vector" ? { cursor: "not-allowed" } : {}
-            }
+            // style={
+            //   this.state.layerType === "Vector" ? { cursor: "not-allowed" } : {}
+            // }
           >
             <Input
               type="select"
@@ -1226,9 +1250,10 @@ export class map extends Component {
               disabled={
                 this.props.CurrentLayer === "WEATHER"
                   ? true
-                  : false || this.state.layerType === "Vector"
-                  ? true
-                  : false
+                  : false 
+                  // || this.state.layerType === "Vector"
+                  // ? true
+                  // : false
               }
               key={this.state.regionkey}
               value={this.props.CurrentRegion}

@@ -98,7 +98,6 @@ const SidebarComponent = (props) => {
   };
 
   function getVector(layer, desc) {
-    console.log("layer", layer)
     dispatch(setcurrentlayer(layer));
     dispatch({ type: "HIDEDRAWER" });
     // dispatch({ type: "HIDERASTER" });
@@ -106,7 +105,8 @@ const SidebarComponent = (props) => {
     // dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
     dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
     dispatch({ type: "CHANGELAYERDESC", payload: desc });
-    if(currentlayerType === "Raster" || window.layerType === "Raster"){
+    // if(currentlayerType === "Raster" || window.layerType === "Raster"){
+      if(currentlayerType === "Raster" || window.layerType === "Raster"){
       dispatch({ type: "SHOWRASTER" });
     } else {
       dispatch({ type: "HIDERASTER" });
@@ -115,7 +115,16 @@ const SidebarComponent = (props) => {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
       window.layerType = "Raster";
       dispatch({ type: "SHOWRASTER" });
-    } 
+    }
+     if(layer === "DPPD"){
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
+      window.layerType = "Vector";
+      dispatch({ type: "HIDERASTER" });
+    } else {
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
+      window.layerType = "Raster";
+      dispatch({ type: "SHOWRASTER" });
+    }
     props.resetZoom();
     // if (selectedRegion !== "CUSTOM") {
     setTimeout(function () {

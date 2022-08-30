@@ -287,7 +287,8 @@ export class map extends Component {
     this.formatgeojson(e.sourceTarget.feature);
     if (this.props.CurrentLayer === "FIREEV") {
       this.getCountEvents(e);
-    } else if (this.props.CurrentLayer === "WH") {
+    }
+    else if (this.props.CurrentLayer === "WH") {
     } else if (this.props.CurrentLayer === "CP") {
       // this.CPchild.current.showDrawer();
     } else if (this.props.CurrentLayer === "WEATHER") {
@@ -299,7 +300,7 @@ export class map extends Component {
       this.setState(
         {
           selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          selectedWeatherMandal: e.sourceTarget.feature.properties.Mandal_Name,
+          selectedWeatherMandal: e.sourceTarget.feature.properties.Mandal_Nam,
         },
         () => {
           this.child.current.showDrawer();
@@ -321,7 +322,28 @@ export class map extends Component {
           this.child.current.getLULC();
         }
       );
-    } else if (this.props.CurrentLayer === "POPULATION") {
+    }
+      else if (this.props.CurrentLayer === "DPPD") {
+        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+        area = area / 1000000;
+        this.setState({
+          area: parseFloat(area).toFixed(2),
+          areaValue: parseFloat(
+            e.sourceTarget.feature.properties["Slope Score"]
+          ).toFixed(5),
+        });
+        this.setState(
+          {
+            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+          },
+          () => {
+            this.child.current.showDrawer();
+            // this.child.current.getLULC();
+            this.child.current.setPointsChart();
+          }
+        );
+      } 
+      else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
           areaValue: parseInt(e.sourceTarget.feature.properties.zonalstat.sum),
@@ -369,7 +391,8 @@ export class map extends Component {
       });
 
       this.child.current.showDrawer();
-    } else {
+    }
+     else {
       this.setState(
         {
           areaValue: parseFloat(
@@ -475,6 +498,7 @@ export class map extends Component {
     }
   }
   style(feature) {
+    var scale;
     if (this.props.CurrentLayer === "WEATHER") {
       return {
         weight: 1,
@@ -492,6 +516,14 @@ export class map extends Component {
           weight: 0.5,
       };
     }
+    if (this.props.CurrentLayer === "FIREEV") {
+      return {
+        opacity: 1,
+          color: "#d65522",
+          fillOpacity: 0,
+          weight: 0.5,
+      };
+    }
     if (this.props.CurrentLayer === "CP") {
       return {
         opacity: 1,
@@ -500,7 +532,34 @@ export class map extends Component {
           weight: 0.5,
       };
     }
-  
+    if (this.props.CurrentLayer === "WH") {
+      return {
+        opacity: 1,
+          color: "#d65522",
+          fillOpacity: 0,
+          weight: 0.5,
+      };
+    }
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "DPPD"){
+      scale = chroma
+        .scale(this.props.vectorColor)
+        .domain([0, 0.010, 0.020, 0.030, 0.040, 0.050, 0.060, 0.070, 0.080, 0.090]);
+        if (feature.properties.zonalstat === undefined){
+          if(this.props.CurrentLayer === "DPPD"){
+            return {
+              // fillColor: this.getColor(feature.properties.zonalstat.mean),
+              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
+              weight: 1,
+              opacity: 1,
+              color: "#d65522",
+              fillOpacity: 1,
+            }; 
+          }
+          else{
+            console.log()
+          }
+        }
+    }
     if (ltype === "Vector") {
       if (this.state.layerUID === feature.properties.uid) {
         return {
@@ -510,11 +569,22 @@ export class map extends Component {
           weight: 1,
         };
       } else {
-        var scale;
         if (feature.properties.zonalstat === undefined){
-          console.log("undefined")
+          // if(this.props.CurrentLayer === "DPPD"){
+          //   return {
+          //     // fillColor: this.getColor(feature.properties.zonalstat.mean),
+          //     fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
+          //     weight: 1,
+          //     opacity: 1,
+          //     color: "#d65522",
+          //     fillOpacity: 1,
+          //   }; 
+          // }
+          // else{
+          //   console.log()
+          // }
         }
-        else {
+        else { 
         if (feature.properties.zonalstat.mean <= 1) {
           scale = chroma
             .scale(this.props.vectorColor)
@@ -526,7 +596,7 @@ export class map extends Component {
         }
         return {
           // fillColor: this.getColor(feature.properties.zonalstat.mean),
-          fillColor: scale(feature.properties.zonalstat.mean),
+          fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
           weight: 1,
           opacity: 1,
           color: "#d65522",
@@ -534,7 +604,8 @@ export class map extends Component {
         };
       }
       }
-    } else {
+    } 
+    else {
       if (this.state.layerUID === feature.properties.uid) {
         return {
           opacity: 1,
@@ -763,7 +834,56 @@ export class map extends Component {
           ],
         },
       });
-    } else if (this.props.CurrentLayer === "LULC") {
+    } 
+    else if (this.props.CurrentLayer === "DPPD") {
+      this.props.hideRaster();
+      this.changeVectorLoader(60.732421875, 80.67555881973475);
+      this.changeRasterLoader(60.732421875, 80.67555881973475);
+      this.setState({
+        pointVector: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [55.6761, 12.5683],
+              },
+              properties: {
+                brightness: 330.5,
+                scan: 1.16,
+                track: 1.07,
+                acq_date: "2021-11-02",
+                acq_time: 801,
+                satellite: "Aqua",
+                instrument: "MODIS",
+                confidence: 83,
+                version: "6.1NRT",
+                bright_t31: 296.07,
+                frp: 25.58,
+                daynight: "D",
+                latitude: 12.5683,
+                longitude: 55.6761,
+              },
+            },
+          ],
+        },
+      });
+      try {
+        const res = await axiosConfig.get(
+          `/currentvector?parameter=` +
+            this.props.CurrentLayer +
+            `&admbound=` +
+            this.props.CurrentRegion
+        );
+        this.props.SetBoundary(res.data.data);
+        this.props.setMapKey();
+        this.changeVectorLoader(60.732421875, 80.67555881973475);
+      } catch (err) {
+        message.error("Failed to connect to server");
+      }
+    } 
+    else if (this.props.CurrentLayer === "LULC") {
       if (this.props.CurrentRegion === "MANDAL") {
         this.props.SetBoundary(MANDALBOUNDS);
       }
@@ -853,7 +973,20 @@ export class map extends Component {
           2
         )
       );
-    } else if (this.props.CurrentLayer !== "LULC") {
+        } 
+    else if (this.props.CurrentLayer === "DPPD") {
+      if (e.layer.feature.properties["Slope Score"] !== undefined) {
+      this.props.setvalue(
+        parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(
+          5
+        )
+      );
+      }
+      else{
+        console.log()
+      }
+    } 
+    else if (this.props.CurrentLayer !== "LULC") {
       if (e.layer.feature.properties.zonalstat !== undefined) {
         if (isNaN(e.layer.feature.properties.zonalstat.mean) === true) {
           this.props.setvalue("N/A");
@@ -866,7 +999,7 @@ export class map extends Component {
     }
 
     if (this.props.CurrentRegion === "MANDAL") {
-      var mandal_name = e.layer.feature.properties.Mandal_Name;
+      var mandal_name = e.layer.feature.properties.Mandal_Nam;
       if (typeof mandal_name !== "undefined") {
         this.props.setplace(mandal_name);
       } else {
@@ -884,7 +1017,7 @@ export class map extends Component {
   searchRegion(e) {
     var selected_region = this.state.regionList[e.target.selectedIndex];
     var current_reg = this.props.CurrentVector.features[e.target.selectedIndex];
-    console.log("SELETED REGION", selected_region);
+    console.log("SELETED REGION", current_reg);
     this.setState(
       {
         latnew: selected_region.centerPoint[1],
@@ -894,7 +1027,7 @@ export class map extends Component {
       },
       () => {
         if (this.props.CurrentRegion === "MANDAL") {
-          var mandal_name = current_reg.properties.Mandal_Name;
+          var mandal_name = current_reg.properties.Mandal_Nam;
           if (typeof mandal_name !== "undefined") {
             this.props.setplace(mandal_name);
             this.props.setvalue(

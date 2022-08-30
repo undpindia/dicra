@@ -406,7 +406,8 @@ class DrawerModal extends Component {
       if (this.state.selectedWeatherparams === "max_wind_speed") {
         return "m/s";
       }
-    } else {
+    } 
+    else {
       return this.props.LayerDescription.yaxislabel;
     }
   }
@@ -630,7 +631,88 @@ class DrawerModal extends Component {
           },
         },
       });
-    } else {
+    }if (this.props.CurrentLayer === "DPPD") {
+      trendData = {
+        name: "Crop Fires",
+        data: [],
+      };
+      this.setState({
+        options: {
+          tooltip: {
+            x: {
+              format: "dd MMM yyyy",
+            },
+          },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
+          yaxis: {
+            show: true,
+            tickAmount: 3,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
+            title: {
+              text: "COUNT",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            labels: {
+              format: "MMM yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
+            },
+            title: {
+              text: this.props.LayerDescription.xaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+        },
+      });
+    } 
+    else {
       this.setState({
         options: {
           tooltip: {
@@ -799,7 +881,8 @@ class DrawerModal extends Component {
             this.setPointsChart();
           }
         );
-      } else {
+      }
+      else {
         this.setState(
           {
             from_date: start_date,
@@ -837,7 +920,8 @@ class DrawerModal extends Component {
             this.setPointsChart();
           }
         );
-      } else {
+      } 
+      else {
         this.setState(
           {
             from_date: start_date,
@@ -876,7 +960,8 @@ class DrawerModal extends Component {
             this.setPointsChart();
           }
         );
-      } else {
+      }  
+      else {
         this.setState(
           {
             from_date: start_date,
@@ -914,7 +999,8 @@ class DrawerModal extends Component {
             this.setPointsChart();
           }
         );
-      } else {
+      } 
+      else {
         this.setState(
           {
             from_date: start_date,
@@ -1065,6 +1151,73 @@ class DrawerModal extends Component {
       PROJECTION_CONFIG = {
         scale: scaleValue,
         center: centerpoint,
+      };
+    } if (this.props.CurrentLayer === "DPPD") {
+      const width = 800;
+      const height = width * 0.9;
+      projection = geoMercator().fitExtent(
+        [
+          [0, 0],
+          [width * 0.7, height * 0.7],
+        ],
+        this.state.selected_shape
+      );
+     const Vectorcenterpoint = this.state.selected_shape.features[0].properties.centroid;
+        
+      var scaleValue1;
+      if (this.props.district.area < 0.001) {
+        scaleValue1 = 20000000;
+      } else if (
+        this.props.district.area >= 0.001 &&
+        this.props.district.area <= 0.1
+      ) {
+        scaleValue1 = 15000000;
+      } else if (
+        this.props.district.area >= 1 &&
+        this.props.district.area <= 50
+      ) {
+        scaleValue1 = 250000;
+      } else if (
+        this.props.district.area >= 50 &&
+        this.props.district.area <= 100
+      ) {
+        scaleValue = 200000;
+      } else if (
+        this.props.district.area >= 100 &&
+        this.props.district.area <= 200
+      ) {
+        scaleValue1 = 100000;
+      } else if (
+        this.props.district.area >= 200 &&
+        this.props.district.area <= 300
+      ) {
+        scaleValue1 = 80000;
+      } else if (
+        this.props.district.area >= 300 &&
+        this.props.district.area <= 400
+      ) {
+        scaleValue1 = 70000;
+      } else if (
+        this.props.district.area >= 400 &&
+        this.props.district.area <= 500
+      ) {
+        scaleValue1 = 60000;
+      } else if (
+        this.props.district.area >= 500 &&
+        this.props.district.area <= 800
+      ) {
+        scaleValue1 = 50000;
+      } else if (
+        this.props.district.area >= 1000 &&
+        this.props.district.area <= 2000
+      ) {
+        scaleValue1 = 40000;
+      } else {
+        scaleValue1 = 25000;
+      }
+      PROJECTION_CONFIG = {
+        scale: scaleValue1,
+        center: Vectorcenterpoint,
       };
     }
 
@@ -1308,7 +1461,8 @@ class DrawerModal extends Component {
                   this.props.CurrentLayer === "FIREEV" ||
                   this.props.CurrentLayer === "WEATHER" ||
                   this.props.CurrentLayer === "POPULATION" ||
-                  this.props.CurrentLayer === "LULC"
+                  this.props.CurrentLayer === "LULC" ||
+                  this.props.CurrentLayer === "DPPD"
                     ? { display: "none" }
                     : { paddingLeft: "0px", paddingTop: "20px" }
                 }
@@ -1424,7 +1578,7 @@ class DrawerModal extends Component {
             </Col>
             <Row
               style={
-                this.props.LayerDescription.multiple_files
+                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD"
                   ? {}
                   : { display: "none" }
               }
@@ -1443,7 +1597,7 @@ class DrawerModal extends Component {
             </Row>
             <Row
               style={
-                this.props.LayerDescription.multiple_files
+                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD"
                   ? {}
                   : { display: "none" }
               }

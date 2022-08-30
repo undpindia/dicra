@@ -37,7 +37,7 @@ function Legend() {
           </div>
           <div className="w-100"></div>
           <div className="col" style={{ color: "rgba(215 215 215)" }}>
-            {currentLayer} |{" "}
+           {currentLayer === "DPPD" ? "CROP FIRES " : currentLayer} |{" "}
             {Moment(currentLayerDesc.last_updated)
               .format("DD-MM-YYYY")
               .slice(0, 10)}

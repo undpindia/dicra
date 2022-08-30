@@ -24,6 +24,8 @@ import {
   BiDotsHorizontalRounded
 } from "react-icons/bi";
 import {FormGroup, Label, Input,Row } from "reactstrap";
+import DISTRICTBOUNDS from "../Shapes/TS_district_boundary.json";
+
 const steps = [
   { name: "StepOne", component: <LayerDetails /> },
   { name: "StepTwo", component: <PersonalDetails /> },
@@ -31,12 +33,12 @@ const steps = [
 const { Panel } = Collapse;
 const BottomNav = (props) => {
   const selectedLayer = useSelector((state) => state.CurrentLayer);
-  const selectedRegion = useSelector((state) => state.CurrentRegion);
   const selectedDowndate = useSelector((state) => state.DownloadLayerDate);
   const LayerToggle = useSelector((state) => state.RasterOpacity);
   const DownLayerDesc = useSelector((state) => state.DownloadLayerDesc);
   const DownLayer = useSelector((state) => state.DownloadLayer);
-
+  const LayerDesc = useSelector((state) => state.LayerDescription);
+  let currentlayerType = useSelector((state) => state.CurrentLayerType);
   const [Layers, layerList] = useState([]);
   const [isActivebutton, setActivebutton] = useState(false);
   const [Layercount, setLayercount] = useState(0);
@@ -45,17 +47,7 @@ const BottomNav = (props) => {
   const handleClick = () => {
     window.open("https://github.com/UNDP-India/Data4Policy/");
   };
-  function getVector(layer, desc) {
-    dispatch(setcurrentlayer(layer));
-    dispatch({ type: "HIDEDRAWER" });
-    dispatch({ type: "CHANGELAYERDESC", payload: desc });
-    props.resetZoom();
-    if (selectedRegion !== "CUSTOM") {
-      setTimeout(function () {
-        props.changeCurrentLayer();
-      }, 3000);
-    }
-  }
+ 
   const onOpenDownloads = (layer, desc) => {
     dispatch({ type: "SETDOWNLOADLAYER", payload: layer });
     dispatch({ type: "DOWNCHANGELAYERDESC", payload: desc });
@@ -149,6 +141,7 @@ const BottomNav = (props) => {
   const getLayers = async () => {
     try {
       const layers = await axiosConfig.get(`/getlayerconfig?`);
+      // layerList(layers.data);
       dispatch(setlayerlist(layers.data));
       let result;
       result = layers.data.reduce(function (r, a) {
@@ -163,7 +156,43 @@ const BottomNav = (props) => {
       message.error("Failed to connect to server");
     }
   };
+
+  function getVector(layer, desc) {
+    dispatch(setcurrentlayer(layer));
+    dispatch({ type: "HIDEDRAWER" });
+    // dispatch({ type: "HIDERASTER" });
+    dispatch({ type: "SETCURRENTVECTOR", payload: DISTRICTBOUNDS});
+    // dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
+    dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
+    dispatch({ type: "CHANGELAYERDESC", payload: desc });
+    if(currentlayerType === "Raster" || window.layerType === "Raster"){
+      dispatch({ type: "SHOWRASTER" });
+    } else {
+      dispatch({ type: "HIDERASTER" });
+    }
+    if(layer === "LULC"){
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
+      window.layerType = "Raster";
+      dispatch({ type: "SHOWRASTER" });
+    } 
+    if(layer === "DPPD"){
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
+      window.layerType = "Vector";
+      dispatch({ type: "HIDERASTER" });
+    } else {
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
+      window.layerType = "Raster";
+      dispatch({ type: "SHOWRASTER" });
+    }
+    props.resetZoom();
+    // if (selectedRegion !== "CUSTOM") {
+    setTimeout(function () {
+      props.changeCurrentLayer();
+    }, 3000);
+    // }
+  }
   function callback(key) {
+    // console.log(key);
   }
   const changeLayer = useRef(() => {
     getLayers();
@@ -270,6 +299,7 @@ const BottomNav = (props) => {
                                       : { display: "none" }
                                   }
                                 >
+                                   {LayerDesc.raster_status === false ? (
                                   <BiShow
                                     data-tip
                                     data-for="show-btn"
@@ -278,6 +308,7 @@ const BottomNav = (props) => {
                                       LayerToggle ? {} : { display: "none" }
                                     }
                                   />
+                                  ) : LayerToggle ? (
                                   <BiHide
                                     data-tip
                                     data-for="show-btn"
@@ -286,6 +317,19 @@ const BottomNav = (props) => {
                                       LayerToggle ? { display: "none" } : {}
                                     }
                                   />
+                                  ) : (
+                                    <BiHide
+                                      data-tip
+                                      data-for="show-btn"
+                                      onClick={(e) => toggleLayer()}
+                                      // style={
+                                      //   LayerToggle ? { display: "none" } : {}
+                                      // }
+                                      // style= { LayerDesc.raster_status === false
+                                      //   ? { cursor: "not-allowed" }
+                                      //   : {}}
+                                    />
+                                  )}
                                 </div>
                                 <ReactTooltip
                                   id="show-btn"

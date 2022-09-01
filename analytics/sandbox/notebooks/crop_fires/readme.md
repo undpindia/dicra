@@ -74,3 +74,5 @@ NOX: https://www.earthdata.nasa.gov/learn/articles/find-no2-data
 
 Crop types : https://code.earthengine.google.com/3591b550e5ab9ecdee134544a9d940fa
 
+Amount of trees in a random forest: file:///C:/Users/Jesse/Downloads/HowManyTreesinaRandomForest.pdf
+

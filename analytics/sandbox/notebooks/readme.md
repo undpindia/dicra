@@ -4,6 +4,6 @@
 | --- | --- | --- | --- | --- | --- | 
 | Crop Fires | Add short description | Done | Done | Done | In progress | 
 | Normalized Difference Vegetation Index | Add short description | Done | Done | Done | In progress | 
-| Leaf Area Index | Description | Done | Positive Negative Deviance | Done | Currently running |
-| Soil Surface Moisture | Description | Done | Positive Negative Deviance | In progress | Currently running |
-| Land Surface Temperature | Description | Done | Positive Negative Deviance | In progress | Currently running |
+| Leaf Area Index | Description | Done | Done | Done | Currently running |
+| Soil Surface Moisture | Description | Done | Done | In progress | Currently running |
+| Land Surface Temperature | Description | Done | Done | In progress | Currently running |

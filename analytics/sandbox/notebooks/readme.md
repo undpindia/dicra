@@ -4,9 +4,9 @@
 | --- | --- | --- | --- | --- | --- | 
 | Crop Fires | Add short description | Done | Done | Done | In progress | 
 | Normalized Difference Vegetation Index | Add short description | Done | Done | Done | In progress | 
-| Leaf Area Index | Add short description | Done | Done | Done | Currently running |
-| Soil Surface Moisture | Add short description | Done | Done | In progress | Currently running |
-| Land Surface Temperature | Add short description | Done | Done | In progress | Currently running |
+| Leaf Area Index | The amount of leaf material in a canopy | Done | Done | Done | In progress |
+| Soil Surface Moisture | The amount of water within the soil | Done | Done | In progress | In progress |
+| Land Surface Temperature | The radiative skin temperature of the land surface during daytime | Done | Done | In progress | In progress |
 | Burnt Area | Add short description | Done | In progress | In progress | In progress |
 | Nitrogen Dioxide | Add short description | Done | Done | In progress | In progress |
 | Soil Organic Carbon | Add short description | Done | Done | In progress | In progress |

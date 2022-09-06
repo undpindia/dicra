@@ -10,3 +10,4 @@
 | Burnt Area | Add short description | Done | In progress | In progress | In progress |
 | Nitrogen Dioxide | Add short description | Done | Done | In progress | In progress |
 | Soil Organic Carbon | Add short description | Done | Done | In progress | In progress |
+| AgroForestry | Add short description | Done | In progress | In progress | In progress |

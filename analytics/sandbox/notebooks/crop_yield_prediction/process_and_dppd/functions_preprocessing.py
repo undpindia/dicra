@@ -22,7 +22,7 @@ import rasterio.mask
 import warnings
 warnings.filterwarnings('ignore')
 
-# We start by rescaling
+# We should use this function to rescale and set nodata value if each file name has the same format
 def rescale(j, file_path, nodata_value, Scaling, Offset, dest_path, new_name):
     tiff_open = gdal.Open(file_path) # open the GeoTIFF we want to rescale
     band = tiff_open.GetRasterBand(1) # Select the band
@@ -57,6 +57,7 @@ def rescale(j, file_path, nodata_value, Scaling, Offset, dest_path, new_name):
     new_raster = None
     del new_raster
 
+# We should use this function to rescale and set nodata value if the format of the filename differs
 def rescale_unstable(j, file_path, nodata_value, Scaling, Offset, dest_path, new_name, date_format):
     date = re.search('.*\_(.\d+?)\_.*', j).group(1)
     date_time = str(date[date_format[0]:date_format[1]]) + '-' + str(date[date_format[2]:date_format[3]]) + '-' + str(date[date_format[4]:date_format[5]]) # YEAR-MONTH-DAY
@@ -94,7 +95,7 @@ def rescale_unstable(j, file_path, nodata_value, Scaling, Offset, dest_path, new
     new_raster = None
     del new_raster
 
-# For each of the NDVI images, we crop the Geotiff file to Leaf Area Index in Telangana
+# We crop the Geotiff file to the area of interest
 def crop_image(j, file_path, boundary, dest_path):
     with rasterio.open(file_path) as src:
         out_image, out_transform = rasterio.mask.mask(src, boundary.geometry, crop=True)
@@ -103,12 +104,7 @@ def crop_image(j, file_path, boundary, dest_path):
     out_meta.update({"driver": "GTiff",
                         "height": out_image.shape[1],
                         "width": out_image.shape[2],
-                        "transform": out_transform})#,
-                        #"nodata": ndv,
-                        #"dtype": rasterio.float64})
-
-    # photometric = 'YCbCr'
-    # photometric = 'RGB', compress = 'JPEG'
-    # Save the Geotiff file to Leaf Area Index in Telangana
+                        "transform": out_transform})
+                        
     with rasterio.open(dest_path + j, "w", **out_meta) as dest:
         dest.write(out_image)

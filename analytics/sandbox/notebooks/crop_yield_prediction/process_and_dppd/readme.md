@@ -3,5 +3,5 @@ This folder contains all functions and files needed to preprocess the data layer
 - <b>functions_time_series.py:</b> this file contains all functions needed to run the DPPD analysis. One of these functions is used to create a dataframe containing the average values for the administrative boundary of interest. The rows represent a calendar date, the columns represent an administrative bound unit. The other functions are used to determine the trend scores, i.e., DPPD scores. They also visualize the results
 - <b>data_download.ipynb:</b> Within this file we download the data available at Google Earth Engine
 - <b>data_preprocess.ipynb:</b> This file runs the preprocessing functions on the downloaded data such that we obtain rescaled, cropped images with a nodata value of -9999
-- <b>create_df:</b> In this file, we create the dataframes on mandal and district level in the previously explained format 
-- <b>dppd_computation:</b> This file calculates the DPPD scores, visualizes the outcome and save it to geojson-files
+- <b>create_df.ipynb:</b> In this file, we create the dataframes on mandal and district level in the previously explained format 
+- <b>dppd_computation.ipynb:</b> This file calculates the DPPD scores, visualizes the outcome and save it to geojson-files

@@ -47,7 +47,7 @@ Data Sources:
 - Burnt Area Data: https://land.copernicus.eu/global/products/ba, https://developers.google.com/earth-engine/datasets/catalog/ESA_CCI_FireCCI_5_1?hl=en, https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MCD64A1#description
 - PM2.5: indiaenvironmentportal.org.in (https://pubs.acs.org/doi/abs/10.1021/acs.est.5b05833)
 https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-agricultural-forest-fires/
-- Crop Types: https://code.earthengine.google.com/3591b550e5ab9ecdee134544a9d940fa
+- Crop Types: https://data.telangana.gov.in/dataset/kamareddy-district-mandal-wise-crop-areas,  https://code.earthengine.google.com/3591b550e5ab9ecdee134544a9d940fa
 - NO2: https://neo.gsfc.nasa.gov/view.php?datasetId=AURA_NO2_M&year=2015 (https://www.earthdata.nasa.gov/learn/articles/find-no2-data)
 - Extra Spatial Data: https://giovanni.gsfc.nasa.gov/giovanni/#service=ArAvTs&starttime=2015-03-01T00:00:00Z&endtime=2022-06-28T23:59:59Z&bbox=76.8,28.18,76.87,28.22&data=MOD08_D3_6_1_AOD_550_Dark_Target_Deep_Blue_Combined_Mean&variableFacets=dataFieldMeasurement%3AOrganic%20Carbon%3BdataProductPlatformInstrument%3AMODIS-Aqua%3BdataProductSpatialResolution%3A4%20km%3BdataProductTimeInterval%3Amonthly%3B & https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-reanalysis-eac4?tab=form
 

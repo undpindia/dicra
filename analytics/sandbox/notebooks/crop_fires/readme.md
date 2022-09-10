@@ -14,10 +14,6 @@
 - https://www.frontiersin.org/articles/10.3389/fenrg.2020.614212/full 
 - https://dspace.mit.edu/bitstream/handle/1721.1/138578/1288582516-MIT.pdf?sequence=1&isAllowed=y
 
-Burnt Area Data: https://land.copernicus.eu/global/products/ba, https://developers.google.com/earth-engine/datasets/catalog/ESA_CCI_FireCCI_5_1?hl=en, https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MCD64A1#description
-
-Quantity: https://www.mdpi.com/2072-4292/12/23/3872
-
 Policies:
 - https://www.oecd-ilibrary.org/sites/67f71d34-en/index.html?itemId=/content/component/67f71d34-en
 - https://www.oecd.org/regional/agricultural-policies-in-india-9789264302334-en.htm
@@ -26,18 +22,13 @@ Policies:
 - https://agricoop.nic.in/sites/default/files/FFH201819_Eng.pdf
 - https://agricoop.nic.in/sites/default/files/NPMCR_1.pdf
 - https://www.teriin.org/sites/default/files/2020-01/crop-residue-management.pdf
-- 
-Happy Seeders:
-https://www.cimmyt.org/news/happy-seeder-can-reduce-air-pollution-and-greenhouse-gas-emissions-while-making-profits-for-farmers/
-
-NC toolkit:
-https://nctoolkit.readthedocs.io/en/latest/
 
 Crop Residue Burning Alternatives: 
 - https://www.science.org/doi/pdf/10.1126/science.aaw4085?casa_token=vqQncVmv02AAAAAA:kFlAGkmAV-qCpCwTt8TM2IEx91zsJtFVscGQ-2iZWbML50C_yw8BbjzkUF93n-gbmhoLinjBH22-1Q
 - file:///C:/Users/Jesse/Downloads/ijerph-16-00832.pdf
 - file:///C:/Users/Jesse/Downloads/AlternativeUsesInandOffFieldManagementtoReduceAdverseImpactofCropResidueBurning.pdf
--  file:///C:/Users/Jesse/Downloads/129_Bhavana_2021.pdf 
+- file:///C:/Users/Jesse/Downloads/129_Bhavana_2021.pdf 
+- Happy Seeders: https://www.cimmyt.org/news/happy-seeder-can-reduce-air-pollution-and-greenhouse-gas-emissions-while-making-profits-for-farmers/
 
 Positive Deviance Analysis:
 - https://reader.elsevier.com/reader/sd/pii/S2352728521000324?token=8C5133EAB5B6DFBFD45BEAC37D2E1B3C17F84B6F61996888E242656094C692205CE6C68ECA0C691A74D81794232AB107&originRegion=eu-west-1&originCreation=20220604115520
@@ -52,27 +43,24 @@ Time Series Analysis:
 - https://www.statsmodels.org/devel/examples/notebooks/generated/stl_decomposition.html
 - STL: https://doc.arcgis.com/en/insights/latest/analyze/stl.htm
 
-
-Folium:
-https://pypi.org/project/folium/
+Data Sources:
+- Burnt Area Data: https://land.copernicus.eu/global/products/ba, https://developers.google.com/earth-engine/datasets/catalog/ESA_CCI_FireCCI_5_1?hl=en, https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MCD64A1#description
+- PM2.5: indiaenvironmentportal.org.in (https://pubs.acs.org/doi/abs/10.1021/acs.est.5b05833)
+https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-agricultural-forest-fires/
+- Crop Types: https://data.telangana.gov.in/dataset/kamareddy-district-mandal-wise-crop-areas,  https://code.earthengine.google.com/3591b550e5ab9ecdee134544a9d940fa
+- NO2: https://neo.gsfc.nasa.gov/view.php?datasetId=AURA_NO2_M&year=2015 (https://www.earthdata.nasa.gov/learn/articles/find-no2-data)
+- Extra Spatial Data: https://giovanni.gsfc.nasa.gov/giovanni/#service=ArAvTs&starttime=2015-03-01T00:00:00Z&endtime=2022-06-28T23:59:59Z&bbox=76.8,28.18,76.87,28.22&data=MOD08_D3_6_1_AOD_550_Dark_Target_Deep_Blue_Combined_Mean&variableFacets=dataFieldMeasurement%3AOrganic%20Carbon%3BdataProductPlatformInstrument%3AMODIS-Aqua%3BdataProductSpatialResolution%3A4%20km%3BdataProductTimeInterval%3Amonthly%3B & https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-reanalysis-eac4?tab=form
 
 Hackathon Blog:
 https://medium.com/indo-data-week/sujit-nayak-d297093c5c33 
 
-Increase crop fires COVID: https://link.springer.com/content/pdf/10.1007/s11356-021-17550-y.pdf 
+Random Forest:
+- Amount of trees in a random forest: file:///C:/Users/Jesse/Downloads/HowManyTreesinaRandomForest.pdf
+- Creating Lags: https://towardsdatascience.com/timeseries-data-munging-lagging-variables-that-are-distributed-across-multiple-groups-86e0a038460c
+- Random Forest in Python: https://towardsdatascience.com/random-forest-in-python-24d0893d51c0
 
-Data PM2.5: indiaenvironmentportal.org.in (https://pubs.acs.org/doi/abs/10.1021/acs.est.5b05833)
-https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-agricultural-forest-fires/
-
-Extra Spatial Data:
-https://giovanni.gsfc.nasa.gov/giovanni/#service=ArAvTs&starttime=2015-03-01T00:00:00Z&endtime=2022-06-28T23:59:59Z&bbox=76.8,28.18,76.87,28.22&data=MOD08_D3_6_1_AOD_550_Dark_Target_Deep_Blue_Combined_Mean&variableFacets=dataFieldMeasurement%3AOrganic%20Carbon%3BdataProductPlatformInstrument%3AMODIS-Aqua%3BdataProductSpatialResolution%3A4%20km%3BdataProductTimeInterval%3Amonthly%3B
-
-https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-reanalysis-eac4?tab=form
-
-https://neo.gsfc.nasa.gov/view.php?datasetId=AURA_NO2_M&year=2015 &
-NOX: https://www.earthdata.nasa.gov/learn/articles/find-no2-data
-
-Crop types : https://code.earthengine.google.com/3591b550e5ab9ecdee134544a9d940fa
-
-Amount of trees in a random forest: file:///C:/Users/Jesse/Downloads/HowManyTreesinaRandomForest.pdf
+Models & Features etc:
+- Estimation of Field-Level NOx Emissions from Crop Residue Burning Using Remote Sensing Data: A Case Study in Hubei, China: https://www.mdpi.com/2072-4292/13/3/404/htm
+- Can Neural Networks Forecast Open Field Burning of Crop Residue in Regions with Anthropogenic Management and Control? A Case Study in Northeastern China: https://www.mdpi.com/2072-4292/13/19/3988/htm
+- Spatialization and Prediction of Seasonal NO2 Pollution Due to Climate Change in the Korean Capital Area through Land Use Regression Modeling: file:///C:/Users/Jesse/Downloads/ijerph-19-05111%20(2).pdf
 

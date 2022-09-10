@@ -75,27 +75,34 @@ def rescale(j, nodata_value_new, Scaling, Offset, file_path):
     del new_raster
 
 def crop_image(boundary):
-    file_names = os.listdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output")
-    for i in file_names:
-        file_name = "c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i
-        with rasterio.open(file_name) as src:
-            out_image, out_transform = rasterio.mask.mask(src, boundary.geometry, crop=True)
-            out_meta = src.meta
-        
-        out_meta.update({"driver": "GTiff",
-                    "height": out_image.shape[1],
-                    "width": out_image.shape[2],
-                    "transform": out_transform})
+    maps = os.listdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\")
+    for i in maps:
+        year_maps = os.listdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i + "\\")
+        for j in year_maps:
+            file_name = "c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i + "\\" + j
+            with rasterio.open(file_name) as src:
+                out_image, out_transform = rasterio.mask.mask(src, boundary.geometry, crop=True)
+                out_meta = src.meta
+            
+            out_meta.update({"driver": "GTiff",
+                        "height": out_image.shape[1],
+                        "width": out_image.shape[2],
+                        "transform": out_transform})
 
-        # Save the Geotiff file to Burnt Area in Telangana
-        with rasterio.open("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i, "w", **out_meta) as dest:
-            dest.write(out_image)
-        print(i)
+            # Save the Geotiff file to Burnt Area in Telangana
+            with rasterio.open("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i + "\\"+ j , "w", **out_meta) as dest:
+                dest.write(out_image)
+            print(i)
 
 #Stat can be PM2.5 (Particular Matter), SSM (Soil mMisture), ST (Soil Temperature), NO2 (Nitrogren Dioxide)
-def read_tiffs(boundaries, stat:str, loc_month_begin:int, loc_month_end:int, loc_year_begin:int, loc_year_end:int):
+def read_tiffs(boundaries, level:str, stat:str, loc_month_begin:int, loc_month_end:int, loc_year_begin:int, loc_year_end:int, all_touched:bool):
 
-    columns =['index', 'Mandal_Nam', 'Dist_Name', 'geometry']
+    if level == 'Mandal':
+        columns =['index', 'Mandal_Nam', 'Dist_Name', 'geometry']
+    elif level == 'District':
+        columns =['index', 'Dist_Name', 'geometry']
+    else:
+        columns =['index', 'geometry']
 
     stat_df = boundaries[columns]
     stat_df.head()
@@ -113,7 +120,7 @@ def read_tiffs(boundaries, stat:str, loc_month_begin:int, loc_month_end:int, loc
 
         stat_df[time] = 0
         
-        stat_mean = zonal_stats(boundaries.geometry, file_array, affine = affine, geojson_out = True, nodata = file.nodata, all_touched = True)
+        stat_mean = zonal_stats(boundaries.geometry, file_array, affine = affine, geojson_out = True, nodata = file.nodata, all_touched = all_touched)
         
         stat_lst = []
         for a in range(0, len(boundaries)):
@@ -121,7 +128,19 @@ def read_tiffs(boundaries, stat:str, loc_month_begin:int, loc_month_end:int, loc
 
         stat_df[time] = stat_lst
 
-        os.chdir('c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Data_csv\\results_csv')
-        stat_df.to_csv(stat+'.csv')
+    if level == 'Mandal':
+        df_unpivot = pd.melt(stat_df, id_vars=['index', 'Mandal_Nam', 'Dist_Name', 'geometry'], value_vars=stat_df.columns)
+        col_names = ['index', 'Mandal_Nam', 'Dist_Name', 'geometry', 'ModifiedDateTime', 'Value']
+    elif level == 'District':
+        df_unpivot = pd.melt(stat_df, id_vars=['index', 'Dist_Name', 'geometry'], value_vars=stat_df.columns)
+        col_names = ['index', 'Dist_Name', 'geometry', 'ModifiedDateTime', 'Value']
+    elif (level == '10_km') | (level == '1_km'):
+        df_unpivot = pd.melt(stat_df, id_vars=['index', 'geometry'], value_vars=stat_df.columns)
+        col_names = ['index','geometry', 'ModifiedDateTime', 'Value']
+    
+    df_unpivot.columns = col_names
+    df_unpivot['ModifiedDateTime'] = pd.to_datetime(df_unpivot['ModifiedDateTime'])
+    os.chdir('c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Data_csv\\results_csv')
+    df_unpivot.to_csv(stat+'_'+level+'.csv')
 
-    return(stat_df)
+    return(stat_df, df_unpivot)

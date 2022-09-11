@@ -240,7 +240,7 @@ def create_avg_plot(df, beginyear:int, endyear:int, name:str, level:str, unit:st
     avg_year.plot(column = 'Value', 
                         legend = True, 
                         figsize = [12,6],\
-                        legend_kwds = {'label': 'Average ' + name + 'Value ' + '(' + unit + ')' }, 
+                        legend_kwds = {'label': 'Average ' + name + ' Value ' + '(' + unit + ')' }, 
                         cmap = 'RdYlGn_r')
     plt.title(text)
     plt.axis('off')

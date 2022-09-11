@@ -143,4 +143,4 @@ def read_tiffs(boundaries, level:str, stat:str, loc_month_begin:int, loc_month_e
     os.chdir('c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Data_csv\\results_csv')
     df_unpivot.to_csv(stat+'_'+level+'.csv')
 
-    return(stat_df, df_unpivot)
+    return(df_unpivot)

@@ -8,7 +8,7 @@
 | Soil Surface Moisture | The amount of water within the soil | Done | Done | In progress | Done |
 | Land Surface Temperature | The radiative skin temperature of the land surface during daytime | Done | Done | In progress | Done |
 | Burnt Area | Add short description | In progress | In progress | In progress | In progress |
-| Nitrogen Dioxide (NO2) | Gaseous air pollutant composed of nitrogen and oxygen | Done | Done | In progress | In progress |
-| Particulate Matter 2.5 (PM2.5) | Describes fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller | Done | Done | In progress | In progress|
+| Nitrogen Dioxide (NO2) | Gaseous air pollutant composed of nitrogen and oxygen | Done | Done | Done | In progress |
+| Particulate Matter 2.5 (PM2.5) | Describes fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller | Done | Done | Done | In progress|
 | Soil Organic Carbon | Add short description | Done | Done | In progress | In progress |
 | AgroForestry | Add short description | Done | In progress | In progress | In progress |

@@ -26,6 +26,6 @@ DPPD has been calculated, district and mandal wise<br><br>
 ### DPPD Results and Discussion
 
 ![District wise Agroforestry DPPD Analysis](agro_dev_5yr_dist.png)<br>
-![Mandal wise Agroforestry DPPD Analysis]](agro_dev_5yr_mandal.png)<br><br>
+![Mandal wise Agroforestry DPPD Analysis](agro_dev_5yr_mandal.png)<br><br>
 
 

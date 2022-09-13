@@ -18,6 +18,7 @@ import geopandas as gpd
 import numpy as np
 import rasterio
 import rasterio.mask
+import netCDF4 as nc
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -108,3 +109,9 @@ def crop_image(j, file_path, boundary, dest_path):
                         
     with rasterio.open(dest_path + j, "w", **out_meta) as dest:
         dest.write(out_image)
+
+# This function converts a a netCDF (nc) to a GeoTIFF
+def nc_tiff(j, file_path, dest_path):
+    nc_file = gdal.Open('NETCDF:'+ file_path + j)
+    # Convert the netCDF to Geotiff file
+    gdal.Translate(dest_path + j[:-3] + '.tif', nc_file)

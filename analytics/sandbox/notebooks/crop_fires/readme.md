@@ -43,6 +43,8 @@ Time Series Analysis:
 - https://www.statsmodels.org/devel/examples/notebooks/generated/stl_decomposition.html
 - STL: https://doc.arcgis.com/en/insights/latest/analyze/stl.htm
 
+Seasons India: https://fabriclore.com/blogs/journal/season-of-harvest-what-is-harvested-when-where-in-india 
+
 Data Sources:
 - Burnt Area Data: https://land.copernicus.eu/global/products/ba, https://developers.google.com/earth-engine/datasets/catalog/ESA_CCI_FireCCI_5_1?hl=en, https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MCD64A1#description
 - PM2.5: indiaenvironmentportal.org.in (https://pubs.acs.org/doi/abs/10.1021/acs.est.5b05833)

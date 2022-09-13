@@ -111,7 +111,11 @@ def crop_image(j, file_path, boundary, dest_path):
         dest.write(out_image)
 
 # This function converts a a netCDF (nc) to a GeoTIFF (tif)
-def nc_tiff(j, file_path, dest_path):
-    nc_file = gdal.Open('NETCDF:'+ file_path + j)
+# NOTE: you can find the band_name by using the following:
+# file_name = 'path.nc'
+# ds = nc.Dataset(file_name)
+# bands = list(ds.variables)
+def nc_tiff(j, file_path, dest_path, band):
+    nc_file = gdal.Open('NETCDF:'+ file_path + j + band)
     # Convert the netCDF to Geotiff file
     gdal.Translate(dest_path + j[:-3] + '.tif', nc_file)

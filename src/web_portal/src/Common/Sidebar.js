@@ -120,7 +120,18 @@ const SidebarComponent = (props) => {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
       window.layerType = "Vector";
       dispatch({ type: "HIDERASTER" });
-    } else {
+    } 
+    if(layer === "SOIL_M_DEV"){
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
+      window.layerType = "Vector";
+      dispatch({ type: "HIDERASTER" });
+    } 
+    if(layer === "LST_DPPD"){
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
+      window.layerType = "Vector";
+      dispatch({ type: "HIDERASTER" });
+    } 
+     else {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
       window.layerType = "Raster";
       dispatch({ type: "SHOWRASTER" });
@@ -216,7 +227,7 @@ const SidebarComponent = (props) => {
                                   }
                                   disabled={items.isavailable ? false : true}
                                 />{" "}
-                                {items.display_name}
+                                {items.display_name === "Land Service Temperature (LST)" ? "Land Surface Temperature (LST)" : items.display_name}
                               </Label>
                             </Col>
                             <Col md={4}>

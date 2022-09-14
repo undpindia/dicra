@@ -19,7 +19,7 @@ import changeOpacity from "./RasterOpacity";
 import setDownloadFile from "./DownloadFile";
 import currentLayerType from "./currentLayerType";
 import hoverlatlon from "./setlatlon";
-
+import setDevColorReducer from "./setDevColorReducer";
 import {combineReducers} from 'redux';
 
 const allReducers=combineReducers({
@@ -37,6 +37,7 @@ const allReducers=combineReducers({
     CurrentRegion:setCurrentRegion,
     MapKey:setKeyMap,
     SetColor:setColorReducer,
+    SetDevColor:setDevColorReducer,
     LayerDescription:setLayerDesc,
     DownloadLayerDesc:setDownLayerDesc,
     ShowDrawer:drawerChange,

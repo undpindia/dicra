@@ -78,12 +78,14 @@ const mapStateToProps = (ReduxProps) => {
     MapKey: ReduxProps.MapKey,
     LayerDescription: ReduxProps.LayerDescription,
     vectorColor: ReduxProps.SetColor,
+    DevvectorColor: ReduxProps.SetDevColor,
     currentLayerType: ReduxProps.CurrentLayerType,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     setVectorColor: (col) => dispatch({ type: "SETCOLOR_SCALE", payload: col }),
+    setDevVectorColor: (col) => dispatch({ type: "SETDEVCOLOR_SCALE", payload: col }),
     setvalue: (val) => dispatch({ type: "SETVALUE", payload: val }),
     setplace: (plc) => dispatch({ type: "SETPLACE", payload: plc }),
     VectorLoader: () => dispatch({ type: "ENABLEVECTOR" }),
@@ -165,6 +167,7 @@ export class map extends Component {
       latnew: 18.1124,
       longnew: 79.0193,
       selectedWeatherMandal: "",
+      selectedMandal: "",
       mapZoom: 7.5,
       layerUID: "",
       showlayertype: true,
@@ -343,6 +346,26 @@ export class map extends Component {
           }
         );
       } 
+      else if (this.props.CurrentLayer === "LST_DPPD") {
+        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+        area = area / 1000000;
+        this.setState({
+          area: parseFloat(area).toFixed(2),
+          areaValue: parseFloat(
+            e.sourceTarget.feature.properties["DPPD score"]
+          ).toFixed(5),
+        });
+        this.setState(
+          {
+            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+          },
+          () => {
+            this.child.current.showDrawer();
+            // this.child.current.getLULC();
+            // this.child.current.setPointsChart();
+          }
+        );
+      } 
       else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
@@ -393,23 +416,28 @@ export class map extends Component {
       this.child.current.showDrawer();
     }
      else {
-      this.setState(
-        {
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties.zonalstat.mean
-          ).toFixed(2),
-          minVal: parseFloat(
-            e.sourceTarget.feature.properties.zonalstat.min
-          ).toFixed(2),
-          maxVal: parseFloat(
-            e.sourceTarget.feature.properties.zonalstat.max
-          ).toFixed(2),
-          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-        },
-        () => {
-          this.child.current.settimerange("1Year");
-        }
-      );
+      if( e.sourceTarget.feature.properties !== undefined){
+        this.setState(
+          {
+            areaValue: parseFloat(
+              e.sourceTarget.feature.properties.zonalstat.mean
+            ).toFixed(2),
+            minVal: parseFloat(
+              e.sourceTarget.feature.properties.zonalstat.min
+            ).toFixed(2),
+            maxVal: parseFloat(
+              e.sourceTarget.feature.properties.zonalstat.max
+            ).toFixed(2),
+            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+          },
+          () => {
+            this.child.current.settimerange("1Year");
+          }
+        );
+      }else{
+        console.log()
+      }
+      
 
       area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
@@ -541,9 +569,16 @@ export class map extends Component {
       };
     }
     if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "DPPD"){
-      scale = chroma
-        .scale(this.props.vectorColor)
-        .domain([0, 0.010, 0.020, 0.030, 0.040, 0.050, 0.060, 0.070, 0.080, 0.090]);
+      if(this.props.CurrentRegion === "MANDAL"){
+        scale = chroma
+        .scale(this.props.DevvectorColor)
+        .domain([-0.015,-0.010,-0.005,0,0.005,0.010,0.015]);
+      } else{
+        scale = chroma
+        .scale(this.props.DevvectorColor)
+        .domain([-0.08,-0.06,-0.04,-0.02,0,0.02,0.04,0.06,0.08]);
+      }
+      
         if (feature.properties.zonalstat === undefined){
           if(this.props.CurrentLayer === "DPPD"){
             return {
@@ -558,6 +593,48 @@ export class map extends Component {
           else{
             console.log()
           }
+        }
+    }
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "SOIL_M_DEV"){
+      console.log(this.props.DevvectorColor)
+      if(this.props.CurrentRegion === "MANDAL"){
+        scale = chroma
+        .scale(this.props.DevvectorColor)
+        .domain([-1,-0.07,-0.05,-0.03,0,0.03,0.05,0.07,1]);
+      } else{
+        scale = chroma
+        .scale(this.props.DevvectorColor)
+        .domain([-0.08,-0.06,-0.04,-0.02,0,0.02,0.04,0.06,0.08]);
+      }
+        if (feature.properties.zonalstat !== undefined){
+          if(this.props.CurrentLayer === "SOIL_M_DEV"){
+            return {
+              // fillColor: this.getColor(feature.properties.zonalstat.mean),
+              fillColor: scale(feature.properties.zonalstat.mean),
+              weight: 1,
+              opacity: 1,
+              color: "#d65522",
+              fillOpacity: 1,
+            }; 
+          }
+          else{
+            console.log()
+          }
+        }
+    }
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "LST_DPPD"){
+      scale = chroma
+        .scale(this.props.DevvectorColor)
+        .domain([-1,-0.00050,-0.00030,0, 0.00030, 0.00050,1]);
+          if(this.props.CurrentLayer === "LST_DPPD"){
+            return {
+              // fillColor: this.getColor(feature.properties.zonalstat.mean),
+              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "LST_DPPD" ? scale(feature.properties["DPPD score"]) : scale(feature.properties.zonalstat.mean),
+              weight: 1,
+              opacity: 1,
+              color: "#d65522",
+              fillOpacity: 1,
+            }; 
         }
     }
     if (ltype === "Vector") {
@@ -596,7 +673,7 @@ export class map extends Component {
         }
         return {
           // fillColor: this.getColor(feature.properties.zonalstat.mean),
-          fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
+          fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "LST_DPPD" ? scale(feature.properties["DPPD score"]) : scale(feature.properties.zonalstat.mean),
           weight: 1,
           opacity: 1,
           color: "#d65522",
@@ -836,7 +913,108 @@ export class map extends Component {
       });
     } 
     else if (this.props.CurrentLayer === "DPPD") {
+      this.props.setLayerType("Vector");
       this.props.hideRaster();
+      window.layerType = "Vector"
+      this.changeVectorLoader(60.732421875, 80.67555881973475);
+      this.changeRasterLoader(60.732421875, 80.67555881973475);
+      this.setState({
+        pointVector: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [55.6761, 12.5683],
+              },
+              properties: {
+                brightness: 330.5,
+                scan: 1.16,
+                track: 1.07,
+                acq_date: "2021-11-02",
+                acq_time: 801,
+                satellite: "Aqua",
+                instrument: "MODIS",
+                confidence: 83,
+                version: "6.1NRT",
+                bright_t31: 296.07,
+                frp: 25.58,
+                daynight: "D",
+                latitude: 12.5683,
+                longitude: 55.6761,
+              },
+            },
+          ],
+        },
+      });
+      try {
+        const res = await axiosConfig.get(
+          `/currentvector?parameter=` +
+            this.props.CurrentLayer +
+            `&admbound=` +
+            this.props.CurrentRegion
+        );
+        this.props.SetBoundary(res.data.data);
+        this.props.setMapKey();
+        this.changeVectorLoader(60.732421875, 80.67555881973475);
+      } catch (err) {
+        message.error("Failed to connect to server");
+      }
+    }  else if (this.props.CurrentLayer === "SOIL_M_DEV") {
+      this.props.setLayerType("Vector");
+      this.props.hideRaster();
+      window.layerType = "Vector"
+      this.changeVectorLoader(60.732421875, 80.67555881973475);
+      this.changeRasterLoader(60.732421875, 80.67555881973475);
+      this.setState({
+        pointVector: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [55.6761, 12.5683],
+              },
+              properties: {
+                brightness: 330.5,
+                scan: 1.16,
+                track: 1.07,
+                acq_date: "2021-11-02",
+                acq_time: 801,
+                satellite: "Aqua",
+                instrument: "MODIS",
+                confidence: 83,
+                version: "6.1NRT",
+                bright_t31: 296.07,
+                frp: 25.58,
+                daynight: "D",
+                latitude: 12.5683,
+                longitude: 55.6761,
+              },
+            },
+          ],
+        },
+      });
+      try {
+        const res = await axiosConfig.get(
+          `/currentvector?parameter=` +
+            this.props.CurrentLayer +
+            `&admbound=` +
+            this.props.CurrentRegion
+        );
+        this.props.SetBoundary(res.data.data);
+        this.props.setMapKey();
+        this.changeVectorLoader(60.732421875, 80.67555881973475);
+      } catch (err) {
+        message.error("Failed to connect to server");
+      }
+    } 
+    else if (this.props.CurrentLayer === "LST_DPPD") {
+      this.props.setLayerType("Vector");
+      this.props.hideRaster();
+      window.layerType = "Vector"
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -986,6 +1164,18 @@ export class map extends Component {
         console.log()
       }
     } 
+    else if (this.props.CurrentLayer === "LST_DPPD") {
+      if (e.layer.feature.properties["DPPD score"] !== undefined) {
+      this.props.setvalue(
+        parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(
+          5
+        )
+      );
+      }
+      else{
+        console.log()
+      }
+    } 
     else if (this.props.CurrentLayer !== "LULC") {
       if (e.layer.feature.properties.zonalstat !== undefined) {
         if (isNaN(e.layer.feature.properties.zonalstat.mean) === true) {
@@ -1015,9 +1205,9 @@ export class map extends Component {
     }
   }
   searchRegion(e) {
-    var selected_region = this.state.regionList[e.target.selectedIndex];
+    var selected_region = this.state.regionList[e.target.selectedIndex - 1];
     var current_reg = this.props.CurrentVector.features[e.target.selectedIndex];
-    console.log("SELETED REGION", current_reg);
+    // console.log("SELETED REGION", selected_region);
     this.setState(
       {
         latnew: selected_region.centerPoint[1],
@@ -1030,20 +1220,34 @@ export class map extends Component {
           var mandal_name = current_reg.properties.Mandal_Nam;
           if (typeof mandal_name !== "undefined") {
             this.props.setplace(mandal_name);
-            this.props.setvalue(
-              parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
-            );
+            if(current_reg.properties.zonalstat !== undefined){
+              this.props.setvalue(
+                parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
+              );
+            }else{
+              this.props.setvalue("N/A");
+            }
+           
           } else {
             this.props.setplace("");
             this.props.setvalue(0);
           }
         } else if (this.props.CurrentRegion === "DISTRICT") {
-          var district_name = current_reg.properties.Dist_Name;
+          if(current_reg.properties.Dist_Name === undefined){
+            var district_name = current_reg.properties.Dist_Name;
+          } else
+          {
+            console.log()
+          }
           if (typeof district_name !== "undefined") {
             this.props.setplace(current_reg.properties.Dist_Name);
-            this.props.setvalue(
-              parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
-            );
+            if(current_reg.properties.zonalstat !== undefined){
+              this.props.setvalue(
+                parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
+              );
+            }else{
+              this.props.setvalue("N/A");
+            }
           } else {
             this.props.setplace("");
             this.props.setvalue(0);

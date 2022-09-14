@@ -336,6 +336,14 @@ class DrawerModal extends Component {
         enddate: "2022-04-05",
         parameter: this.props.CurrentLayer,
       };
+    } 
+    else if (this.props.CurrentLayer === "SOIL_M_DEV") {
+      bodyParams = {
+        geojson: shapeparams,
+        startdate: this.state.from_date,
+        enddate: this.state.to_date,
+        parameter: "SOILM",
+      };
     } else {
       bodyParams = {
         geojson: shapeparams,
@@ -421,8 +429,135 @@ class DrawerModal extends Component {
         name: this.state.selectedWeatherparams,
         data: [],
       };
+      this.setState({
+        options: {
+          colors: ["#d65522"],
+          chart: {
+            id: "trendChart",
+            type: "area",
+            height: 140,
+            width: 316,
+            zoom: {
+              autoScaleYaxis: true,
+            },
+            toolbar: {
+              show: true,
+              export: {
+                csv: {
+                  headerCategory: "Datetime",
+                },
+                svg: {
+                  show: false,
+                },
+                png: {
+                  show: false,
+                },
+              },
+              tools: {
+                download: true,
+                selection: false,
+                zoom: false,
+                zoomin: false,
+                zoomout: false,
+                pan: false,
+                reset: false,
+              },
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          markers: {
+            size: 0,
+            style: "hollow",
+          },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
+          yaxis: {
+            show: true,
+            tickAmount: 3,
+            min: 0,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
+            title: {
+              text: this.getyaxistext(),
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            labels: {
+              format: "yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
+            },
+            title: {
+              text: this.props.LayerDescription.xaxislabel,
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 5,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          tooltip: {
+            x: {
+              format: "yyyy",
+            },
+          },
+          fill: {
+            colors: ["#1A73E8"],
+          },
+          stroke: {
+            show: true,
+            curve: "straight",
+            lineCap: "butt",
+            colors: undefined,
+            width: 1,
+            dashArray: 0,
+          },
+        },
+      });
     }
-    if (this.props.CurrentLayer === "LULC") {
+    else if (this.props.CurrentLayer === "LULC") {
       trendData = {
         name: "Percentage",
         data: [],
@@ -555,7 +690,7 @@ class DrawerModal extends Component {
         },
       });
     }
-    if (this.props.CurrentLayer === "POPULATION") {
+    else if (this.props.CurrentLayer === "POPULATION") {
       this.setState({
         options: {
           tooltip: {
@@ -631,7 +766,8 @@ class DrawerModal extends Component {
           },
         },
       });
-    }if (this.props.CurrentLayer === "DPPD") {
+    }
+    else if (this.props.CurrentLayer === "DPPD") {
       trendData = {
         name: "Crop Fires",
         data: [],
@@ -696,7 +832,88 @@ class DrawerModal extends Component {
               },
             },
             title: {
-              text: this.props.LayerDescription.xaxislabel,
+              text: "Date/Time",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+        },
+      });
+    }
+    else if (this.props.CurrentLayer === "SOIL_M_DEV") {
+      trendData = {
+        name: "SOILM",
+        data: [],
+      };
+      this.setState({
+        options: {
+          tooltip: {
+            x: {
+              format: "dd MMM yyyy",
+            },
+          },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
+          yaxis: {
+            show: true,
+            tickAmount: 3,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
+            title: {
+              text: "Soil Moisture",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            labels: {
+              format: "MMM yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
+            },
+            title: {
+              text: "Date/Time",
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
@@ -750,7 +967,7 @@ class DrawerModal extends Component {
               },
             },
             title: {
-              text: this.getyaxistext(),
+              text: this.props.LayerDescription.yaxislabel,
               rotate: -90,
               offsetX: 0,
               offsetY: 0,
@@ -1181,7 +1398,7 @@ class DrawerModal extends Component {
         this.props.district.area >= 50 &&
         this.props.district.area <= 100
       ) {
-        scaleValue = 200000;
+        scaleValue1 = 200000;
       } else if (
         this.props.district.area >= 100 &&
         this.props.district.area <= 200
@@ -1217,6 +1434,74 @@ class DrawerModal extends Component {
       }
       PROJECTION_CONFIG = {
         scale: scaleValue1,
+        center: Vectorcenterpoint,
+      };
+    }
+    if (this.props.CurrentLayer === "LST_DPPD") {
+      const width = 800;
+      const height = width * 0.9;
+      projection = geoMercator().fitExtent(
+        [
+          [0, 0],
+          [width * 0.7, height * 0.7],
+        ],
+        this.state.selected_shape
+      );
+     const Vectorcenterpoint = this.state.selected_shape.features[0].properties.centroid;
+        
+      var scaleValue2;
+      if (this.props.district.area < 0.001) {
+        scaleValue2 = 20000000;
+      } else if (
+        this.props.district.area >= 0.001 &&
+        this.props.district.area <= 0.1
+      ) {
+        scaleValue2 = 15000000;
+      } else if (
+        this.props.district.area >= 1 &&
+        this.props.district.area <= 50
+      ) {
+        scaleValue2 = 250000;
+      } else if (
+        this.props.district.area >= 50 &&
+        this.props.district.area <= 100
+      ) {
+        scaleValue2 = 200000;
+      } else if (
+        this.props.district.area >= 100 &&
+        this.props.district.area <= 200
+      ) {
+        scaleValue2 = 100000;
+      } else if (
+        this.props.district.area >= 200 &&
+        this.props.district.area <= 300
+      ) {
+        scaleValue2 = 80000;
+      } else if (
+        this.props.district.area >= 300 &&
+        this.props.district.area <= 400
+      ) {
+        scaleValue2 = 70000;
+      } else if (
+        this.props.district.area >= 400 &&
+        this.props.district.area <= 500
+      ) {
+        scaleValue2 = 60000;
+      } else if (
+        this.props.district.area >= 500 &&
+        this.props.district.area <= 800
+      ) {
+        scaleValue2 = 50000;
+      } else if (
+        this.props.district.area >= 1000 &&
+        this.props.district.area <= 2000
+      ) {
+        scaleValue2 = 40000;
+      } else {
+        scaleValue2 = 25000;
+      }
+      PROJECTION_CONFIG = {
+        scale: scaleValue2,
         center: Vectorcenterpoint,
       };
     }
@@ -1316,7 +1601,8 @@ class DrawerModal extends Component {
                     <Row style={{ fontSize: "18px", color: "#fff" }}>
                       <p style={{ marginBottom: "20px", textAlign: "right" }}>
                         {this.props.CurrentLayer === "WEATHER"
-                          ? this.props.district.selectedWeatherMandal
+                          ? this.props.district.selectedWeatherMandal :
+                          this.props.CurrentRegion === "MANDAL" ? this.state.selected_shape.features[0].properties.Mandal_Nam
                           : this.props.district.selectedRegion}
                       </p>
                     </Row>
@@ -1344,7 +1630,7 @@ class DrawerModal extends Component {
               <Col>
                 <div>
                   <p style={{ fontSize: "18px", display: "inline" }}>
-                    <BiLayer /> {this.props.LayerDescription.display_name}
+                    <BiLayer /> {this.props.LayerDescription.display_name === "Land Service Temperature (LST)" ? "Land Surface Temperature" : this.props.LayerDescription.display_name}
                   </p>
                 </div>
               </Col>
@@ -1462,7 +1748,8 @@ class DrawerModal extends Component {
                   this.props.CurrentLayer === "WEATHER" ||
                   this.props.CurrentLayer === "POPULATION" ||
                   this.props.CurrentLayer === "LULC" ||
-                  this.props.CurrentLayer === "DPPD"
+                  this.props.CurrentLayer === "DPPD" ||
+                  this.props.CurrentLayer === "LST_DPPD"
                     ? { display: "none" }
                     : { paddingLeft: "0px", paddingTop: "20px" }
                 }
@@ -1578,7 +1865,7 @@ class DrawerModal extends Component {
             </Col>
             <Row
               style={
-                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD"
+                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD" || this.props.CurrentLayer === "SOIL_M_DEV"
                   ? {}
                   : { display: "none" }
               }
@@ -1597,7 +1884,7 @@ class DrawerModal extends Component {
             </Row>
             <Row
               style={
-                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD"
+                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD" || this.props.CurrentLayer === "SOIL_M_DEV"
                   ? {}
                   : { display: "none" }
               }
@@ -1674,7 +1961,7 @@ class DrawerModal extends Component {
                 role="group"
                 aria-label="Basic radio toggle button group"
                 style={
-                  this.props.LayerDescription.timerangefilter
+                  this.props.LayerDescription.timerangefilter || this.props.CurrentLayer === "SOIL_M_DEV"
                     ? { fontSize: "10px", marginTop: "10px" }
                     : { display: "none" }
                 }

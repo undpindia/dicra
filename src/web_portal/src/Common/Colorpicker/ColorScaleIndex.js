@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {DEFAULT_SCALE} from './constants';
+import {DEFAULTDEV_SCALE} from './constants';
 
 export default class Colorscale extends Component {
   render() {
     const scale = this.props.colorscale ? this.props.colorscale : DEFAULT_SCALE;
+    const devscale = this.props.colorscale ? this.props.colorscale : DEFAULTDEV_SCALE;
 
     return (
       <div style={{width: '100%'}} className="colorscale-container">
@@ -30,16 +32,17 @@ export default class Colorscale extends Component {
             width: this.props.label ? '75%' : '100%',
           }}
         >
-          <div
+          {this.props.currentLayer === "DPPD" || this.props.currentLayer === "SOIL_M_DEV" || this.props.currentLayer === "LST_DPPD" ?
+         ( <div
             className="colorscale-block"
             style={{
               fontSize: '0px',
               display: 'inline-block',
               width: '100%',
             }}
-            onClick={() => this.props.onClick(scale, this.props.start, this.props.rot)}
+            onClick={() => this.props.onClick(devscale, this.props.start, this.props.rot)}
           >
-            {scale.map((x, i) => (
+            {devscale.map((x, i) => (
               <div
                 key={i}
                 className="colorscale-swatch"
@@ -53,7 +56,35 @@ export default class Colorscale extends Component {
                 }}
               />
             ))}
-          </div>
+          </div>) :(
+             <div
+             className="colorscale-block"
+             style={{
+               fontSize: '0px',
+               display: 'inline-block',
+               width: '100%',
+             }}
+             onClick={() => this.props.onClick(scale, this.props.start, this.props.rot)}
+           >
+             {scale.map((x, i) => (
+               <div
+                 key={i}
+                 className="colorscale-swatch"
+                 style={{
+                   backgroundColor: x,
+                   width: '' + 100.0 / scale.length + '%',
+                   height: '20px',
+                   margin: '0 auto',
+                   display: 'inline-block',
+                   cursor: 'pointer',
+                 }}
+               />
+             ))}
+           </div>
+          )
+
+
+        }
         </div>
       </div>
     );

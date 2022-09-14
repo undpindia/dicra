@@ -175,7 +175,7 @@ const BottomNav = (props) => {
       window.layerType = "Raster";
       dispatch({ type: "SHOWRASTER" });
     } 
-    if(layer === "DPPD"){
+    if(layer === "DPPD" || layer === "SOIL_M_DEV"){
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
       window.layerType = "Vector";
       dispatch({ type: "HIDERASTER" });

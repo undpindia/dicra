@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.5b86126c.chunk.css",
-    "main.js": "/static/js/main.94c06144.chunk.js",
-    "main.js.map": "/static/js/main.94c06144.chunk.js.map",
+    "main.js": "/static/js/main.1c5a3525.chunk.js",
+    "main.js.map": "/static/js/main.1c5a3525.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.0debc2d5.js",
     "runtime-main.js.map": "/static/js/runtime-main.0debc2d5.js.map",
     "static/css/2.559f039e.chunk.css": "/static/css/2.559f039e.chunk.css",
-    "static/js/2.05930dd1.chunk.js": "/static/js/2.05930dd1.chunk.js",
-    "static/js/2.05930dd1.chunk.js.map": "/static/js/2.05930dd1.chunk.js.map",
+    "static/js/2.9005223a.chunk.js": "/static/js/2.9005223a.chunk.js",
+    "static/js/2.9005223a.chunk.js.map": "/static/js/2.9005223a.chunk.js.map",
     "static/js/3.215c77e2.chunk.js": "/static/js/3.215c77e2.chunk.js",
     "static/js/3.215c77e2.chunk.js.map": "/static/js/3.215c77e2.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.559f039e.chunk.css.map": "/static/css/2.559f039e.chunk.css.map",
     "static/css/main.5b86126c.chunk.css.map": "/static/css/main.5b86126c.chunk.css.map",
-    "static/js/2.05930dd1.chunk.js.LICENSE.txt": "/static/js/2.05930dd1.chunk.js.LICENSE.txt",
+    "static/js/2.9005223a.chunk.js.LICENSE.txt": "/static/js/2.9005223a.chunk.js.LICENSE.txt",
     "static/media/MistEO_Logo_Square.b889124b.png": "/static/media/MistEO_Logo_Square.b889124b.png",
     "static/media/common.css": "/static/media/customdraw.9248c5a9.svg",
     "static/media/icrisat.129c330b.png": "/static/media/icrisat.129c330b.png",
@@ -31,8 +31,8 @@
   "entrypoints": [
     "static/js/runtime-main.0debc2d5.js",
     "static/css/2.559f039e.chunk.css",
-    "static/js/2.05930dd1.chunk.js",
+    "static/js/2.9005223a.chunk.js",
     "static/css/main.5b86126c.chunk.css",
-    "static/js/main.94c06144.chunk.js"
+    "static/js/main.1c5a3525.chunk.js"
   ]
 }

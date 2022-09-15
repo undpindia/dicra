@@ -344,7 +344,24 @@ class DrawerModal extends Component {
         enddate: this.state.to_date,
         parameter: "SOILM",
       };
-    } else {
+    } 
+    else if (this.props.CurrentLayer === "LAI_DPPD") {
+      bodyParams = {
+        geojson: shapeparams,
+        startdate: this.state.from_date,
+        enddate: this.state.to_date,
+        parameter: "LAI",
+      };
+    } 
+    else if (this.props.CurrentLayer === "NDVI_DPPD") {
+      bodyParams = {
+        geojson: shapeparams,
+        startdate: this.state.from_date,
+        enddate: this.state.to_date,
+        parameter: "NDVI"
+      };
+    }   
+    else {
       bodyParams = {
         geojson: shapeparams,
         startdate: this.state.from_date,
@@ -848,6 +865,168 @@ class DrawerModal extends Component {
         },
       });
     }
+    else if (this.props.CurrentLayer === "LAI_DPPD") {
+      trendData = {
+        name: "LAI",
+        data: [],
+      };
+      this.setState({
+        options: {
+          tooltip: {
+            x: {
+              format: "dd MMM yyyy",
+            },
+          },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
+          yaxis: {
+            show: true,
+            tickAmount: 3,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
+            title: {
+              text: "LAI",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            labels: {
+              format: "MMM yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
+            },
+            title: {
+              text: "Date/Time",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+        },
+      });
+    }
+    else if (this.props.CurrentLayer === "NDVI_DPPD") {
+      trendData = {
+        name: "NDVI",
+        data: [],
+      };
+      this.setState({
+        options: {
+          tooltip: {
+            x: {
+              format: "dd MMM yyyy",
+            },
+          },
+          grid: {
+            show: true,
+            borderColor: "#90A4AE",
+            strokeDashArray: 0,
+            position: "back",
+            xaxis: {
+              lines: {
+                show: false,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: false,
+              },
+            },
+          },
+          yaxis: {
+            show: true,
+            tickAmount: 3,
+            labels: {
+              show: true,
+              style: {
+                colors: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-label",
+              },
+            },
+            title: {
+              text: "NDVI",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+          xaxis: {
+            type: "datetime",
+            labels: {
+              format: "MMM yyyy",
+              style: {
+                colors: "#90989b",
+                cssClass: "apexcharts-xaxis-label",
+              },
+            },
+            title: {
+              text: "Date/Time",
+              rotate: -90,
+              offsetX: 0,
+              offsetY: 0,
+              style: {
+                color: "#90989b",
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-yaxis-title",
+              },
+            },
+          },
+        },
+      });
+    }
     else if (this.props.CurrentLayer === "SOIL_M_DEV") {
       trendData = {
         name: "SOILM",
@@ -1275,6 +1454,7 @@ class DrawerModal extends Component {
     }
   }
   render() {
+    console.log(this.state.from_date)
     const menu = (
       <Menu onClick={this.onClickParameter}>
         <Menu.Item key="max_temp">Maximum Temperature</Menu.Item>
@@ -1505,7 +1685,6 @@ class DrawerModal extends Component {
         center: Vectorcenterpoint,
       };
     }
-
     return (
       <div>
         <Drawer
@@ -1749,7 +1928,9 @@ class DrawerModal extends Component {
                   this.props.CurrentLayer === "POPULATION" ||
                   this.props.CurrentLayer === "LULC" ||
                   this.props.CurrentLayer === "DPPD" ||
-                  this.props.CurrentLayer === "LST_DPPD"
+                  this.props.CurrentLayer === "LST_DPPD" ||
+                  this.props.CurrentLayer === "LAI_DPPD"
+                  || this.props.CurrentLayer === "NDVI_DPPD"
                     ? { display: "none" }
                     : { paddingLeft: "0px", paddingTop: "20px" }
                 }
@@ -1865,7 +2046,8 @@ class DrawerModal extends Component {
             </Col>
             <Row
               style={
-                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD" || this.props.CurrentLayer === "SOIL_M_DEV"
+                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD" || this.props.CurrentLayer === "SOIL_M_DEV" ||
+                this.props.CurrentLayer === "LAI_DPPD"
                   ? {}
                   : { display: "none" }
               }
@@ -1884,7 +2066,8 @@ class DrawerModal extends Component {
             </Row>
             <Row
               style={
-                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD" || this.props.CurrentLayer === "SOIL_M_DEV"
+                this.props.LayerDescription.multiple_files || this.props.CurrentLayer === "DPPD" || this.props.CurrentLayer === "SOIL_M_DEV" ||
+                this.props.CurrentLayer === "LAI_DPPD" || this.props.CurrentLayer === "NDVI_DPPD"
                   ? {}
                   : { display: "none" }
               }
@@ -1961,7 +2144,8 @@ class DrawerModal extends Component {
                 role="group"
                 aria-label="Basic radio toggle button group"
                 style={
-                  this.props.LayerDescription.timerangefilter || this.props.CurrentLayer === "SOIL_M_DEV"
+                  this.props.LayerDescription.timerangefilter || this.props.CurrentLayer === "SOIL_M_DEV" || this.props.CurrentLayer === "LAI_DPPD"
+                  || this.props.CurrentLayer === "NDVI_DPPD"
                     ? { fontSize: "10px", marginTop: "10px" }
                     : { display: "none" }
                 }

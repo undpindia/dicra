@@ -40,6 +40,8 @@ function Legend() {
            {currentLayer === "DPPD" ? "CROP FIRES " : 
            currentLayer === "SOIL_M_DEV" ? "SOIL MOISTURE" : 
            currentLayer === "LST_DPPD" ? "LST"  : 
+           currentLayer === "LAI_DPPD" ? "LAI"  : 
+           currentLayer === "NDVI_DPPD" ? "NDVI"  : 
            currentLayer} |{" "}
             {Moment(currentLayerDesc.last_updated)
               .format("DD-MM-YYYY")

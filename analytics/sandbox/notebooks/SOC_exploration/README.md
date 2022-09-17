@@ -40,6 +40,30 @@ Linear Regression Model: score =0.59<br>
 Normalized value for difference in True and Predicted SOC<br>
 Range -1  to 1 showing negative to positive deviance<br>
 ![Positive and Negative Deviances](download.png)
+
+
+## Details of Soil Products that has been used in this analysis
+
+### Soil Organic Carbon Content
+Unit: dg/kg
+Raster Available: YES <br>
+Vector available: YES <br>
+Vector type: Polygon    <br>
+Multiple layers: NO <br>
+### Bulk Density
+Unit: cg/cm3
+Raster Available: YES <br>
+Vector available: YES <br>
+Vector type: Polygon     <br>
+Multiple layers: NO <br>
+### Clay content
+Unit: g/kg
+Raster Available: YES <br>
+Vector available: YES <br>
+Vector type: Polygon     <br>
+Multiple layers: NO <br>
+<br>
+
 ## References
 
 He G, Zhang Z, Zhang J, Huang X. Soil Organic Carbon Dynamics and Driving Factors in Typical Cultivated Land on the Karst Plateau. Int J Environ Res Public Health. 2020 Aug 6;17(16):5697. doi: 10.3390/ijerph17165697. PMID: 32781763; PMCID: PMC7459649.<br>

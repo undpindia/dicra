@@ -1,25 +1,24 @@
 const setDevColorReducer = (
-  state = [
-    '#006837',
-    '#1a9850',
-    '#66bd63', 
-    '#a6d96a', 
-    '#d9ef8b', 
-    '#ffffbf', 
-    '#fee08b',
-    '#fdae61',
-    '#f46d43', 
-    '#d73027', 
+    state = [
     '#a50026',
-  ],
-  action
-) => {
-  switch (action.type) {
-    case "SETDEVCOLOR_SCALE":
-      return (state = action.payload);
-    default:
-      return state;
-  }
-};
-
-export default setDevColorReducer;
+    '#d73027', 
+    '#f46d43',
+    '#fdae61', 
+    '#fee08b', 
+    '#ffffbf', 
+    '#d9ef8b',
+    '#a6d96a',
+    '#66bd63',
+    '#1a9850', 
+    '#006837'],
+    action
+  ) => {
+    switch (action.type) {
+      case "SETDEVCOLOR_SCALE":
+        return (state = action.payload);
+      default:
+        return state;
+    }
+  };
+  
+  export default setDevColorReducer;

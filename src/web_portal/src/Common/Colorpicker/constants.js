@@ -576,7 +576,11 @@ export const DEFAULT_SCALE = chroma
   .scale(state.SetColor)
   .mode("lch")
   .colors(DEFAULT_SWATCHES);
-export const DEFAULTDEV_SCALE = chroma
+export const DEFAULTDEVCF_SCALE = chroma
+  .scale(state.SetDevCFColor)
+  .mode("lch")
+  .colors(DEFAULT_SWATCHES);
+ export const DEFAULTDEV_SCALE = chroma
   .scale(state.SetDevColor)
   .mode("lch")
   .colors(DEFAULT_SWATCHES);

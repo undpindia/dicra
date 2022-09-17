@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Colorscale from "./Colorpicker/ColorScaleIndex";
 import ColorscalePicker from "./Colorpicker/ColorPickerIndex";
-import { DEFAULT_SCALE } from "./Colorpicker/constants";
-import { DEFAULTDEV_SCALE } from "./Colorpicker/constants";
+import {
+  DEFAULTDEVCF_SCALE,
+  DEFAULTDEV_SCALE,
+  DEFAULT_SCALE
+} from "./Colorpicker/constants";
 import { Row, Col } from "reactstrap";
 import { clone } from "ramda";
 import { BiPalette, BiX } from "react-icons/bi";
@@ -20,6 +23,8 @@ const mapStateToProps = (ReduxProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     changecolor: (cl) => dispatch({ type: "SETCOLOR_SCALE", payload: cl }),
+    devcfchangecolor: (cl) =>
+      dispatch({ type: "SETDEVCFCOLOR_SCALE", payload: cl }),
     devchangecolor: (cl) =>
       dispatch({ type: "SETDEVCOLOR_SCALE", payload: cl }),
   };
@@ -30,12 +35,14 @@ class ColorPicker extends Component {
     this.state = {
       showColorscalePicker: false,
       colorscale: DEFAULT_SCALE,
-      devcolorscale: DEFAULTDEV_SCALE,
+      devcfchangecolor: DEFAULTDEVCF_SCALE,
+      devchangecolor: DEFAULTDEV_SCALE,
       data: [],
       active: false,
       isActive: true,
     };
     this.onChange = this.onChange.bind(this);
+    this.onChangeDevCF = this.onChangeDevCF.bind(this);
     this.onChangeDev = this.onChangeDev.bind(this);
     this.toggleColorscalePicker = this.toggleColorscalePicker.bind(this);
   }
@@ -59,12 +66,20 @@ class ColorPicker extends Component {
       colorscale: colorscale,
     });
   };
-  onChangeDev = (devcolorscale) => {
-    const data = this.recolorData(this.state.data, devcolorscale);
-    this.props.devchangecolor(devcolorscale);
+  onChangeDevCF = (devcfchangecolor) => {
+    const data = this.recolorData(this.state.data, devcfchangecolor);
+    this.props.devcfchangecolor(devcfchangecolor);
     this.setState({
       data: data,
-      devcolorscale: devcolorscale,
+      devcfchangecolor: devcfchangecolor,
+    });
+  };
+  onChangeDev = (devchangecolor) => {
+    const data = this.recolorData(this.state.data, devchangecolor);
+    this.props.devchangecolor(devchangecolor);
+    this.setState({
+      data: data,
+      devchangecolor: devchangecolor,
     });
   };
 
@@ -82,13 +97,18 @@ class ColorPicker extends Component {
         <div>
           <Row>
             <div className="col-10">
-              {this.props.CurrentLayer === "DPPD" ||
-              this.props.CurrentLayer === "SOIL_M_DEV" ||
-              this.props.CurrentLayer === "LST_DPPD" ||
-              this.props.CurrentLayer === "LAI_DPPD" ||
-              this.props.CurrentLayer === "NDVI_DPPD" ? (
+              {this.props.CurrentLayer === "DPPD" ? (
                 <Colorscale
-                  colorscale={this.state.devcolorscale}
+                  colorscale={this.state.devcfchangecolor}
+                  onClick={() => {}}
+                  width={180}
+                />
+              ) : this.props.CurrentLayer === "SOIL_M_DEV" ||
+                this.props.CurrentLayer === "LST_DPPD" ||
+                this.props.CurrentLayer === "LAI_DPPD" ||
+                this.props.CurrentLayer === "NDVI_DPPD" ? (
+                <Colorscale
+                  colorscale={this.state.devchangecolor}
                   onClick={() => {}}
                   width={180}
                 />
@@ -131,21 +151,23 @@ class ColorPicker extends Component {
         {this.state.showColorscalePicker && (
           <ColorscalePicker
             onChange={
-              this.props.CurrentLayer === "DPPD" ||
-              this.props.CurrentLayer === "SOIL_M_DEV" ||
-              this.props.CurrentLayer === "LST_DPPD" ||
-              this.props.CurrentLayer === "LAI_DPPD" ||
-              this.props.CurrentLayer === "NDVI_DPPD"
+              this.props.CurrentLayer === "DPPD"
+                ? this.onChangeDevCF
+                : this.props.CurrentLayer === "SOIL_M_DEV" ||
+                  this.props.CurrentLayer === "LST_DPPD" ||
+                  this.props.CurrentLayer === "LAI_DPPD" ||
+                  this.props.CurrentLayer === "NDVI_DPPD"
                 ? this.onChangeDev
                 : this.onChange
             }
             colorscale={
-              this.props.CurrentLayer === "DPPD" ||
-              this.props.CurrentLayer === "SOIL_M_DEV" ||
-              this.props.CurrentLayer === "LST_DPPD" ||
-              this.props.CurrentLayer === "LAI_DPPD" ||
-              this.props.CurrentLayer === "NDVI_DPPD"
-                ? this.state.devcolorscale
+              this.props.CurrentLayer === "DPPD"
+                ? this.state.devcfchangecolor :
+                this.props.CurrentLayer === "SOIL_M_DEV" ||
+                this.props.CurrentLayer === "LST_DPPD" ||
+                this.props.CurrentLayer === "LAI_DPPD" ||
+                this.props.CurrentLayer === "NDVI_DPPD" ?
+                this.state.devchangecolor
                 : this.state.colorscale
             }
             width={300}

@@ -78,6 +78,7 @@ const mapStateToProps = (ReduxProps) => {
     MapKey: ReduxProps.MapKey,
     LayerDescription: ReduxProps.LayerDescription,
     vectorColor: ReduxProps.SetColor,
+    DevcfvectorColor: ReduxProps.SetDevCFColor,
     DevvectorColor: ReduxProps.SetDevColor,
     currentLayerType: ReduxProps.CurrentLayerType,
   };
@@ -85,7 +86,8 @@ const mapStateToProps = (ReduxProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setVectorColor: (col) => dispatch({ type: "SETCOLOR_SCALE", payload: col }),
-    setDevVectorColor: (col) => dispatch({ type: "SETDEVCOLOR_SCALE", payload: col }),
+    setDevcfvectorColor: (col) => dispatch({ type: "SETDEVCFCOLOR_SCALE", payload: col }),
+    setDevvectorColor: (col) => dispatch({ type: "SETDEVCOLOR_SCALE", payload: col }),
     setvalue: (val) => dispatch({ type: "SETVALUE", payload: val }),
     setplace: (plc) => dispatch({ type: "SETPLACE", payload: plc }),
     VectorLoader: () => dispatch({ type: "ENABLEVECTOR" }),
@@ -608,11 +610,11 @@ export class map extends Component {
     if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "DPPD"){
       if(this.props.CurrentRegion === "MANDAL"){
         scale = chroma
-        .scale(this.props.DevvectorColor)
+        .scale(this.props.DevcfvectorColor)
         .domain([-0.015,-0.010,-0.005,0,0.005,0.010,0.015]);
       } else{
         scale = chroma
-        .scale(this.props.DevvectorColor)
+        .scale(this.props.DevcfvectorColor)
         .domain([-0.08,-0.06,-0.04,-0.02,0,0.02,0.04,0.06,0.08]);
       }
       

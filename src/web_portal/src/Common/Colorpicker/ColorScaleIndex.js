@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { DEFAULT_SCALE } from "./constants";
-import { DEFAULTDEV_SCALE } from "./constants";
+import {DEFAULT_SCALE,DEFAULTDEVCF_SCALE, DEFAULTDEV_SCALE } from "./constants";
 
 export default class Colorscale extends Component {
   render() {
     const scale = this.props.colorscale ? this.props.colorscale : DEFAULT_SCALE;
+    const devscalecf = this.props.colorscale
+      ? this.props.colorscale
+      : DEFAULTDEVCF_SCALE;
     const devscale = this.props.colorscale
       ? this.props.colorscale
       : DEFAULTDEV_SCALE;
@@ -34,12 +36,40 @@ export default class Colorscale extends Component {
             width: this.props.label ? "75%" : "100%",
           }}
         >
-          {this.props.currentLayer === "DPPD" ||
-          this.props.currentLayer === "SOIL_M_DEV" ||
+          {this.props.currentLayer === "DPPD" ?
+          (
+            <div
+              className="colorscale-block"
+              style={{
+                fontSize: "0px",
+                display: "inline-block",
+                width: "100%",
+              }}
+              onClick={() =>
+                this.props.onClick(devscalecf, this.props.start, this.props.rot)
+              }
+            >
+              {devscalecf.map((x, i) => (
+                <div
+                  key={i}
+                  className="colorscale-swatch"
+                  style={{
+                    backgroundColor: x,
+                    width: "" + 100.0 / scale.length + "%",
+                    height: "20px",
+                    margin: "0 auto",
+                    display: "inline-block",
+                    cursor: "pointer",
+                  }}
+                />
+              ))}
+            </div>
+          ) : this.props.currentLayer === "SOIL_M_DEV" ||
           this.props.currentLayer === "LST_DPPD" ||
           this.props.currentLayer === "LAI_DPPD" ||
-          this.props.currentLayer === "NDVI_DPPD" ? (
-            <div
+          this.props.currentLayer === "NDVI_DPPD" ?
+          (
+          <div
               className="colorscale-block"
               style={{
                 fontSize: "0px",
@@ -65,7 +95,8 @@ export default class Colorscale extends Component {
                 />
               ))}
             </div>
-          ) : (
+          ) 
+          : (
             <div
               className="colorscale-block"
               style={{

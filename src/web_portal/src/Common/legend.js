@@ -41,6 +41,7 @@ function Legend() {
            currentLayer === "SOIL_M_DEV" ? "SOIL MOISTURE" : 
            currentLayer === "LST_DPPD" ? "LST"  : 
            currentLayer === "LAI_DPPD" ? "LAI"  : 
+           currentLayer === "NO2_DPPD" ? "NO2"  : 
            currentLayer === "NDVI_DPPD" ? "NDVI"  : 
            currentLayer} |{" "}
             {Moment(currentLayerDesc.last_updated)

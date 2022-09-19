@@ -405,6 +405,25 @@ export class map extends Component {
           }
         );
       }  
+      else if (this.props.CurrentLayer === "NO2_DPPD") {
+        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+        area = area / 1000000;
+        this.setState({
+          area: parseFloat(area).toFixed(2),
+          areaValue: parseFloat(
+            e.sourceTarget.feature.properties["Slope Score"]
+          ).toFixed(5),
+        });
+        this.setState(
+          {
+            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+          },
+          () => {
+            this.child.current.showDrawer();
+            this.child.current.settimerange("1Year");
+          }
+        );
+      }  
       else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
@@ -698,6 +717,21 @@ export class map extends Component {
             return {
               // fillColor: this.getColor(feature.properties.zonalstat.mean),
               fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "LST_DPPD" ? scale(feature.properties["DPPD score"]) : scale(feature.properties.zonalstat.mean),
+              weight: 1,
+              opacity: 1,
+              color: "#d65522",
+              fillOpacity: 1,
+            }; 
+        }
+    }
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "NO2_DPPD"){
+      scale = chroma
+        .scale(this.props.DevvectorColor)
+        .domain([-1,-0.50,-0.30,0, 0.30, 0.50,1]);
+          if(this.props.CurrentLayer === "NO2_DPPD"){
+            return {
+              // fillColor: this.getColor(feature.properties.zonalstat.mean),
+              fillColor: this.props.CurrentLayer === "NO2_DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
               weight: 1,
               opacity: 1,
               color: "#d65522",
@@ -1079,6 +1113,56 @@ export class map extends Component {
         message.error("Failed to connect to server");
       }
     } 
+    else if (this.props.CurrentLayer === "NO2_DPPD") {
+      this.props.setLayerType("Vector");
+      this.props.hideRaster();
+      window.layerType = "Vector"
+      this.changeVectorLoader(60.732421875, 80.67555881973475);
+      this.changeRasterLoader(60.732421875, 80.67555881973475);
+      this.setState({
+        pointVector: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [55.6761, 12.5683],
+              },
+              properties: {
+                brightness: 330.5,
+                scan: 1.16,
+                track: 1.07,
+                acq_date: "2021-11-02",
+                acq_time: 801,
+                satellite: "Aqua",
+                instrument: "MODIS",
+                confidence: 83,
+                version: "6.1NRT",
+                bright_t31: 296.07,
+                frp: 25.58,
+                daynight: "D",
+                latitude: 12.5683,
+                longitude: 55.6761,
+              },
+            },
+          ],
+        },
+      });
+      try {
+        const res = await axiosConfig.get(
+          `/currentvector?parameter=` +
+            this.props.CurrentLayer +
+            `&admbound=` +
+            this.props.CurrentRegion
+        );
+        this.props.SetBoundary(res.data.data);
+        this.props.setMapKey();
+        this.changeVectorLoader(60.732421875, 80.67555881973475);
+      } catch (err) {
+        message.error("Failed to connect to server");
+      }
+    } 
     else if (this.props.CurrentLayer === "LST_DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
@@ -1360,6 +1444,18 @@ export class map extends Component {
       if (e.layer.feature.properties["DPPD score"] !== undefined) {
       this.props.setvalue(
         parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(
+          5
+        )
+      );
+      }
+      else{
+        console.log()
+      }
+    } 
+    else if (this.props.CurrentLayer === "NO2_DPPD") {
+      if (e.layer.feature.properties["Slope Score"] !== undefined) {
+      this.props.setvalue(
+        parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(
           5
         )
       );

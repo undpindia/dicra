@@ -35,14 +35,18 @@ def Trend_Score(df, index:int, seas:int):
         #of observations per season also 12, because there 12 months within a year.
         stl = STL(df_selected['Value'], seasonal = seas, period = 12, robust = True)
         res = stl.fit()
+    
+        #res.plot()
+        #plt.show()
 
         df_trend = res.trend.to_frame().reset_index().dropna()
-
+        
         #Date needs to be converted to a numerical value
         df_trend = df_trend.reset_index()
         df_trend['ModifiedDateTime_num'] = df_trend['index']
         #df_trend['ModifiedDateTime_num'] = df_trend['ModifiedDateTime'].map(dt.datetime.toordinal)
 
+    
         #Set the data in the right format for Linear Regression
         X = np.array(df_trend['ModifiedDateTime_num'])
         X = X.reshape(-1, 1)
@@ -54,6 +58,18 @@ def Trend_Score(df, index:int, seas:int):
         y_pred_trend = reg.predict(X)
         slope, intercept = np.polyfit(np.array(df_trend['ModifiedDateTime_num']), y_pred_trend,1)
         line_slope = slope[0]
+
+        #plt.figure(figsize=(8,6))
+        #plt.scatter(df_trend['ModifiedDateTime'] , df_trend['trend'], label = 'Actual Trend')
+        #plt.plot(df_trend['ModifiedDateTime'] , y_pred_trend, color='red', label = 'Linear Trend')
+        #plt.xlabel('Date')
+        #plt.ylabel('Amount of Fires')
+        #plt.title('Simple Linear Regression on Trend Mandal Yellandu')
+        #plt.legend()
+        #plt.show()
+
+
+
 
     else:
         #If the dataframe is empty there are no fires in that region at all, also no slope line. We are not interested in these regions.
@@ -68,10 +84,13 @@ def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, var
     st = time.time()
     
     #Get the right parameter for seasonal (needs to be odd)
-    if (endyear-beginyear+1)%2==0:
-        seas = endyear-beginyear
+    if (endyear-beginyear+1)<7:
+        seas = 7
     else:
-        seas = endyear-beginyear+1
+        if (endyear-beginyear+1)%2==0:
+            seas = endyear-beginyear
+        else:
+            seas = endyear-beginyear+1
         
     #Create geodataframe from the data
     geo_fire_data = gpd.GeoDataFrame(fire_data,geometry = fire_data.geometry, crs = {'init': 'epsg:4326'}) 

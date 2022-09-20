@@ -402,6 +402,7 @@ export class map extends Component {
           },
           () => {
             this.child.current.showDrawer();
+            this.child.current.settimerange("1Year");
           }
         );
       }  

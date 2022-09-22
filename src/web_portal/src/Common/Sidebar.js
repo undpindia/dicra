@@ -146,6 +146,11 @@ const SidebarComponent = (props) => {
       window.layerType = "Vector";
       dispatch({ type: "HIDERASTER" });
     } 
+    if(layer === "PM25_DPPD"){
+      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
+      window.layerType = "Vector";
+      dispatch({ type: "HIDERASTER" });
+    } 
      else {
       dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
       window.layerType = "Raster";

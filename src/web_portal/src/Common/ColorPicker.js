@@ -107,6 +107,7 @@ class ColorPicker extends Component {
                 this.props.CurrentLayer === "LST_DPPD" ||
                 this.props.CurrentLayer === "LAI_DPPD" ||
                 this.props.CurrentLayer === "NO2_DPPD" ||
+                this.props.CurrentLayer === "PM25_DPPD" ||
                 this.props.CurrentLayer === "NDVI_DPPD" ? (
                 <Colorscale
                   colorscale={this.state.devchangecolor}
@@ -158,6 +159,7 @@ class ColorPicker extends Component {
                   this.props.CurrentLayer === "LST_DPPD" ||
                   this.props.CurrentLayer === "LAI_DPPD" ||
                   this.props.CurrentLayer === "NO2_DPPD" ||
+                  this.props.CurrentLayer === "PM25_DPPD" ||
                   this.props.CurrentLayer === "NDVI_DPPD"
                 ? this.onChangeDev
                 : this.onChange
@@ -169,6 +171,7 @@ class ColorPicker extends Component {
                 this.props.CurrentLayer === "LST_DPPD" ||
                 this.props.CurrentLayer === "LAI_DPPD" ||
                 this.props.CurrentLayer === "NO2_DPPD" ||
+                this.props.CurrentLayer === "PM25_DPPD" ||
                 this.props.CurrentLayer === "NDVI_DPPD" ?
                 this.state.devchangecolor
                 : this.state.colorscale

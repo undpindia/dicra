@@ -45,6 +45,7 @@ function Legend() {
            currentLayer === "NDVI_DPPD" ? "NDVI"  : 
            currentLayer === "PM25_DPPD" ? "PM2.5"  :
            currentLayer === "PM25" ? "PM2.5"  : 
+           currentLayer === "SOC_DPPD" ? "SOC"  :
            currentLayer} |{" "}
             {Moment(currentLayerDesc.last_updated)
               .format("DD-MM-YYYY")

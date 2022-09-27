@@ -68,6 +68,7 @@ export default class Colorscale extends Component {
           this.props.currentLayer === "LST_DPPD" ||
           this.props.currentLayer === "LAI_DPPD" ||
           this.props.currentLayer === "NO2_DPPD" ||
+          this.props.currentLayer === "SOC_DPPD" ||
           this.props.currentLayer === "NDVI_DPPD" ?
           (
           <div

@@ -2227,6 +2227,7 @@ class DrawerModal extends Component {
                   this.props.CurrentLayer === "LST_DPPD" ||
                   this.props.CurrentLayer === "NO2_DPPD" ||
                   this.props.CurrentLayer === "PM25_DPPD" ||
+                  this.props.CurrentLayer === "SOC_DPPD" ||
                   this.props.CurrentLayer === "LAI_DPPD"
                   || this.props.CurrentLayer === "NDVI_DPPD"
                     ? { display: "none" }

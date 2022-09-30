@@ -185,7 +185,7 @@ class LayerDetails extends Component {
           You can also download the data using our open API.{" "}
           <a
             target="_blank"
-            href={"https://internalapidev.chickenkiller.com/docs#"}
+            href={"https://api-dicra.misteo.co/docs#"}
             rel="noreferrer"
           >
             know more

@@ -37,7 +37,16 @@ function Legend() {
           </div>
           <div className="w-100"></div>
           <div className="col" style={{ color: "rgba(215 215 215)" }}>
-            {currentLayer} |{" "}
+           {currentLayer === "DPPD" ? "CROP FIRES " : 
+           currentLayer === "SOIL_M_DEV" ? "SOIL MOISTURE" : 
+           currentLayer === "LST_DPPD" ? "LST"  : 
+           currentLayer === "LAI_DPPD" ? "LAI"  : 
+           currentLayer === "NO2_DPPD" ? "NO2"  : 
+           currentLayer === "NDVI_DPPD" ? "NDVI"  : 
+           currentLayer === "PM25_DPPD" ? "PM2.5"  :
+           currentLayer === "PM25" ? "PM2.5"  : 
+           currentLayer === "SOC_DPPD" ? "SOC"  :
+           currentLayer} |{" "}
             {Moment(currentLayerDesc.last_updated)
               .format("DD-MM-YYYY")
               .slice(0, 10)}

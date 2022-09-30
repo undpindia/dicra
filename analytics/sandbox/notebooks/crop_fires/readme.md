@@ -66,3 +66,7 @@ Models & Features etc:
 - Can Neural Networks Forecast Open Field Burning of Crop Residue in Regions with Anthropogenic Management and Control? A Case Study in Northeastern China: https://www.mdpi.com/2072-4292/13/19/3988/htm
 - Spatialization and Prediction of Seasonal NO2 Pollution Due to Climate Change in the Korean Capital Area through Land Use Regression Modeling: file:///C:/Users/Jesse/Downloads/ijerph-19-05111%20(2).pdf
 
+Missing Values:
+- https://www.section.io/engineering-education/missing-values-in-time-series/
+- file:///C:/Users/Jesse/Downloads/s12911-022-01752-6.pdf
+- https://machinelearningmastery.com/statistical-imputation-for-missing-values-in-machine-learning/

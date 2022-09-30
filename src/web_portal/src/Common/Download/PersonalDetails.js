@@ -60,7 +60,7 @@ class PersonalDetails extends Component {
   async downloadfile() {
     try {
       saveAs(
-        "https://internalapidev.chickenkiller.com/downloadfile?parameter="+ String(this.props.DownloadLayer)+"&filename="+String(this.props.DownloadFile)+"&name="+String(this.state.name[0])+"&email="+ String(this.state.mailID[0])+"&usage_type="+ String(this.state.usage[0])+"&purpose="+String(this.state.purpose[0])+"&region=Telangana",".zip",
+        "https://api-dicra.misteo.co/downloadfile?parameter="+ String(this.props.DownloadLayer)+"&filename="+String(this.props.DownloadFile)+"&name="+String(this.state.name[0])+"&email="+ String(this.state.mailID[0])+"&usage_type="+ String(this.state.usage[0])+"&purpose="+String(this.state.purpose[0])+"&region=Telangana",".zip",
         )
     } catch (err) {
       message.error("Failed to connect to server");

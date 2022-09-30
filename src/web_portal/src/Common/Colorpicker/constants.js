@@ -122,6 +122,21 @@ export const BUILTINS = {
       "#f0f921"
     ]
   },
+  Divergent:{
+   RdYlGn_r: [
+    '#006837',
+    '#1a9850',
+    '#66bd63', 
+    '#a6d96a', 
+    '#d9ef8b', 
+    '#ffffbf', 
+    '#fee08b',
+    '#fdae61',
+    '#f46d43', 
+    '#d73027', 
+    '#a50026',
+   ]
+  },
   categorical: {
     D3: [
       "#1f77b4",
@@ -559,6 +574,14 @@ export const DEFAULT_NCOLORS = 10;
 export const DEFAULT_SWATCHES = 9;
 export const DEFAULT_SCALE = chroma
   .scale(state.SetColor)
+  .mode("lch")
+  .colors(DEFAULT_SWATCHES);
+export const DEFAULTDEVCF_SCALE = chroma
+  .scale(state.SetDevCFColor)
+  .mode("lch")
+  .colors(DEFAULT_SWATCHES);
+ export const DEFAULTDEV_SCALE = chroma
+  .scale(state.SetDevColor)
   .mode("lch")
   .colors(DEFAULT_SWATCHES);
 export const DEFAULT_LOG_BREAKPOINTS = 4;

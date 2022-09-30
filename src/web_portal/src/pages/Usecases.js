@@ -186,7 +186,7 @@ class Usecases extends React.Component {
                     <div className="card" style={{ width: "300px" }}>
                       <img
                         src={
-                          "https://internalapidev.chickenkiller.com/static/" +
+                          "https://api-dicra.misteo.co/static/" +
                           data.image
                         }
                         className="card-img-top"
@@ -411,7 +411,7 @@ class Usecases extends React.Component {
                     <div>
                       <img
                         src={
-                          "https://internalapidev.chickenkiller.com/static/" +
+                          "https://api-dicra.misteo.co/static/" +
                           this.state.currentUsecase.image
                         }
                         alt="..."

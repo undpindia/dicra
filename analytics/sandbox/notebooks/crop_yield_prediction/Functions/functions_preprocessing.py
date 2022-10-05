@@ -23,6 +23,17 @@ import netCDF4 as nc
 import warnings
 warnings.filterwarnings('ignore')
 
+# We should use this function to convert a netCDF to a GeoTIFF format, specifically for SIF
+def nc_tiff(j, file_path, dest_path, new_name, date_time, band):
+    date = re.search('.*\_(.\d+?[ab])', j).group(1)
+    if date[-1] == 'a': # First part of the month
+        date_time = date[:4] + '-' + date[4:6] + '-01'
+    elif date[-1] == 'b': # Second part of the month
+        date_time = date[:4] + '-' + date[4:6] + '-16'
+    nc_file = gdal.Open('NETCDF:'+ file_path + j + band)
+    # Convert the netCDF to GeoTIFF
+    gdal.Translate(dest_path + new_name + date_time + '.tif', nc_file)
+
 # We should use this function to rescale and set nodata value if each file name has the same format
 def rescale(j, file_path, nodata_value, Scaling, Offset, dest_path, new_name):
     tiff_open = gdal.Open(file_path) # open the GeoTIFF we want to rescale

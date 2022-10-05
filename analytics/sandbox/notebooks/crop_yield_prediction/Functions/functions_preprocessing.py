@@ -19,6 +19,7 @@ import numpy as np
 import rasterio
 import rasterio.mask
 import netCDF4 as nc
+from osgeo import gdal
 
 import warnings
 warnings.filterwarnings('ignore')

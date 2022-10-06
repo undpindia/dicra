@@ -25,7 +25,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # We should use this function to convert a netCDF to a GeoTIFF format, specifically for SIF
-def nc_tiff(j, file_path, dest_path, new_name, date_time, band):
+def nc_tiff(j, file_path, dest_path, new_name, band):
     date = re.search('.*\_(.\d+?[ab])', j).group(1)
     if date[-1] == 'a': # First part of the month
         date_time = date[:4] + '-' + date[4:6] + '-01'

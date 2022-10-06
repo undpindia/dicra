@@ -70,3 +70,7 @@ Missing Values:
 - https://www.section.io/engineering-education/missing-values-in-time-series/
 - file:///C:/Users/Jesse/Downloads/s12911-022-01752-6.pdf
 - https://machinelearningmastery.com/statistical-imputation-for-missing-values-in-machine-learning/
+
+Power Plants:
+- https://en.wikipedia.org/wiki/List_of_power_stations_in_Telangana
+- Mines: https://mines.telangana.gov.in/MinesAndGeology/Views/MineralsinTelangana.aspx

@@ -47,7 +47,30 @@ def adjust_resolution(highres_tiff, lowres_tiff, lowered_tiff, nodata_value):
                     dst_crs=dst_crs,
                     resampling=Resampling.mode) # mode resampling method
 
+# This function sets the pixel value to nodata value when the pixel belongs to another category than given
+def mask(file_path, mask_path, paddy):
+    tiff_open = gdal.Open(file_path,1) # open the GeoTIFF we want to mask
+    band = tiff_open.GetRasterBand(1) # Select the band
+    tiff_array = tiff_open.ReadAsArray() # Assign raster values to a numpy nd array
 
+    mask_open = gdal.Open(mask_path) # open the GeoTIFF for masking
+    mask_array = mask_open.ReadAsArray() # Assign raster values to a numpy nd array
+
+    ndval = band.GetNoDataValue() # value which has been assigned for the nodata
+    # Flooded vegetation (4) and Crops (5)
+    if paddy == True:
+        tiff_array[(mask_array != 4) & (mask_array != 5)] = ndval # Set pixel value to nodata value when the pixel belongs to another category than category
+    if paddy == False:
+        tiff_array[mask_array != 5] = ndval # Set pixel value to nodata value when the pixel belongs to another category than category
+
+    # Write and close datasets
+    band.WriteArray(tiff_array)
+    tiff_open.FlushCache()
+    band = None
+    ds = None
+    del tiff_array
+    del mask_array
+    mask_open = None
 
 # This function creates GeoTIFFs representing the monthly averages 
 # NOTE: Files are in format as YYYY-MM-DD

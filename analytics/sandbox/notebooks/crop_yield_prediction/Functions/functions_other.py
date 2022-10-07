@@ -4,6 +4,50 @@ import os
 import numpy as np
 import rasterio
 import re
+import rasterstats
+from rasterio.warp import reproject, Resampling, calculate_default_transform
+
+# This function adjusts the resolution of the higher resolution GeoTIFF (1) to the resolution of the lower resolution GeoTIFF (2) and saves it as a new GeoTIFF
+def adjust_resolution(highres_tiff, lowres_tiff, lowered_tiff, nodata_value):
+    # open the higher resolution GeoTIFF (1)
+    with rasterio.open(highres_tiff) as src:
+        src_transform = src.transform
+        
+        # open the lower resoltuion GeoTIFF (2)
+        with rasterio.open(lowres_tiff) as lowres_tiff:
+            dst_crs = lowres_tiff.crs
+            
+            # Calculate the output transform matrix
+            dst_transform, dst_width, dst_height = calculate_default_transform(
+                src.crs,     # CRS of higher resolution GeoTIFF (1)
+                dst_crs,     # CRS of lower/desired resolution GeoTIFF (2)
+                lowres_tiff.width,   # width of lower/desired resolution GeoTIFF (2)
+                lowres_tiff.height,  # height of lower/desired resolution GeoTIFF (2)
+                *lowres_tiff.bounds,  # unpacks outer boundaries (left, bottom, right, top) of lower/desired resolution GeoTIFF (2)
+            )
+
+        # Set properties for new/desired GeoTIFF
+        dst_kwargs = src.meta.copy() # copies the metadata of the original higher resolution GeoTIFF (1)
+        dst_kwargs.update({"crs": dst_crs,
+                           "transform": dst_transform,
+                           "width": dst_width,
+                           "height": dst_height,
+                           "nodata": nodata_value}) # updates part of the metadata such that it can be transformed to the desired resolution
+        print("Coregistered to shape:", dst_height,dst_width,'\n Affine',dst_transform)
+        # open the new/desired GeoTIFF such that we can adjust it
+        with rasterio.open(lowered_tiff, "w", **dst_kwargs) as dst:
+            # iterate through bands and write using reproject function
+            for i in range(1, src.count + 1):
+                reproject(
+                    source=rasterio.band(src, i),
+                    destination=rasterio.band(dst, i),
+                    src_transform=src.transform,
+                    src_crs=src.crs,
+                    dst_transform=dst_transform,
+                    dst_crs=dst_crs,
+                    resampling=Resampling.mode) # mode resampling method
+
+
 
 # This function creates GeoTIFFs representing the monthly averages 
 # NOTE: Files are in format as YYYY-MM-DD

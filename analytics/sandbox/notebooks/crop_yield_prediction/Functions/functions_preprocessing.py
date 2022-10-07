@@ -24,8 +24,18 @@ from osgeo import gdal
 import warnings
 warnings.filterwarnings('ignore')
 
+# This function converts a a netCDF (nc) to a GeoTIFF (tif)
+# NOTE: you can find the band_name by using the following:
+# file_name = 'path.nc'
+# ds = nc.Dataset(file_name)
+# bands = list(ds.variables)
+def nc_tiff(j, file_path, dest_path, band):
+    nc_file = gdal.Open('NETCDF:'+ file_path + j + band)
+    # Convert the netCDF to Geotiff file
+    gdal.Translate(dest_path + j[:-3] + '.tif', nc_file)
+    
 # We should use this function to convert a netCDF to a GeoTIFF format, specifically for SIF
-def nc_tiff(j, file_path, dest_path, new_name, band):
+def nc_tiff_ab(j, file_path, dest_path, new_name, band):
     date = re.search('.*\_(.\d+?[ab])', j).group(1)
     if date[-1] == 'a': # First part of the month
         date_time = date[:4] + '-' + date[4:6] + '-01'
@@ -121,13 +131,3 @@ def crop_image(j, file_path, boundary, dest_path):
                         
     with rasterio.open(dest_path + j, "w", **out_meta) as dest:
         dest.write(out_image)
-
-# This function converts a a netCDF (nc) to a GeoTIFF (tif)
-# NOTE: you can find the band_name by using the following:
-# file_name = 'path.nc'
-# ds = nc.Dataset(file_name)
-# bands = list(ds.variables)
-def nc_tiff(j, file_path, dest_path, band):
-    nc_file = gdal.Open('NETCDF:'+ file_path + j + band)
-    # Convert the netCDF to Geotiff file
-    gdal.Translate(dest_path + j[:-3] + '.tif', nc_file)

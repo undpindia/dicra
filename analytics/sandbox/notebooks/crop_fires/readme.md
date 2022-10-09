@@ -69,6 +69,11 @@ Random Forest Previous Research:
 Parameter Tuning:
 - https://wires.onlinelibrary.wiley.com/doi/full/10.1002/widm.1301
 - https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74
+- https://towardsdatascience.com/dont-use-k-fold-validation-for-time-series-forecasting-30b724aaea64
+
+Cross-Validation:
+- https://hub.packtpub.com/cross-validation-strategies-for-time-series-forecasting-tutorial/
+- https://neptune.ai/blog/cross-validation-in-machine-learning-how-to-do-it-right
 
 PM2.5: 
 - file:///C:/Users/Jesse/Downloads/atmosphere-10-00373.pdf

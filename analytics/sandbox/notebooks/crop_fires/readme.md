@@ -56,18 +56,21 @@ https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-ag
 Hackathon Blog:
 https://medium.com/indo-data-week/sujit-nayak-d297093c5c33 
 
-Random Forest:
-- Amount of trees in a random forest: file:///C:/Users/Jesse/Downloads/HowManyTreesinaRandomForest.pdf
-- Creating Lags: https://towardsdatascience.com/timeseries-data-munging-lagging-variables-that-are-distributed-across-multiple-groups-86e0a038460c
-- Random Forest in Python: https://towardsdatascience.com/random-forest-in-python-24d0893d51c0
-
 Models & Features etc:
 - Estimation of Field-Level NOx Emissions from Crop Residue Burning Using Remote Sensing Data: A Case Study in Hubei, China: https://www.mdpi.com/2072-4292/13/3/404/htm
 - Can Neural Networks Forecast Open Field Burning of Crop Residue in Regions with Anthropogenic Management and Control? A Case Study in Northeastern China: https://www.mdpi.com/2072-4292/13/19/3988/htm
 - Spatialization and Prediction of Seasonal NO2 Pollution Due to Climate Change in the Korean Capital Area through Land Use Regression Modeling: file:///C:/Users/Jesse/Downloads/ijerph-19-05111%20(2).pdf
 
-Random Forest:
-PM2.5 : 
+Random Forest Previous Research:
+- Amount of trees in a random forest: file:///C:/Users/Jesse/Downloads/HowManyTreesinaRandomForest.pdf
+- Creating Lags: https://towardsdatascience.com/timeseries-data-munging-lagging-variables-that-are-distributed-across-multiple-groups-86e0a038460c
+- Random Forest in Python: https://towardsdatascience.com/random-forest-in-python-24d0893d51c
+
+Parameter Tuning:
+- https://wires.onlinelibrary.wiley.com/doi/full/10.1002/widm.1301
+- https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74
+
+PM2.5: 
 - file:///C:/Users/Jesse/Downloads/atmosphere-10-00373.pdf
 - https://reader.elsevier.com/reader/sd/pii/S0269749118319997?token=02506D511E94714AC303A81F11F19F469BB9D93C1306AAE4EE889A8B3DCD14A5D64D5252D004147913973BDB3477E116&originRegion=eu-west-1&originCreation=20221009141355
 - file:///C:/Users/Jesse/Downloads/ChenEtAl18b_authorVersion.pdf

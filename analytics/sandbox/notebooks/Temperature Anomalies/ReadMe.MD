@@ -44,7 +44,6 @@ The procedure for estimating the global mean temperature anomaly is outlined bel
 3) An average is obtained for the values in 1) and 2) according to the land-to-ocean ratio for each grid box.
 4) Monthly mean global temperature anomaly is obtained by averaging the anomalies of all the grid boxes weighted with the area of the grid box.
 5) Annual and seasonal mean global temperature anomalies are obtained by averaging monthly-mean global temperature anomalies.
-(https://web.archive.org/web/20220623113538/https://ds.data.jma.go.jp/tcc/tcc/products/gwp/temp/explanation.html)
 
 
 ## *Conclusion* <br>

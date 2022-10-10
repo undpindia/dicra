@@ -19,26 +19,25 @@ Resolution: ~11.1 KMs
 
 ## METHODS: <br>
 
-> NASA CLIMATE: <br>
+NASA CLIMATE: <br>
 A temperature anomaly is a calculation of how much colder or warmer a measured temperature is at a given weather station compared to an average value for that location and time, which is calculated over a 30-year reference period (1951-1980).
 (The Raw Truth on Global Temperature Records – Climate Change: Vital Signs of the Planet)
 
-> INTERNATIONAL RESEARCH INSTITUTE FOR  CLIMATE AND SOCIETY: <br>
+INTERNATIONAL RESEARCH INSTITUTE FOR  CLIMATE AND SOCIETY: <br>
 An anomaly is the difference between an actual value and some long-term average value.
 For example, if
 
-X = actual value of average temperature for January, 1982 and
-Xbar = long-term average temperature for January (an average over many years)
-anom = anomaly value for January, 1982
-then anom = X - Xbar
-Source: (How are anomalies calculated?)
+>X = actual value of average temperature for January, 1982 and
+>Xbar = long-term average temperature for January (an average over many years)
+>anom = anomaly value for January, 1982
+>then anom = X - Xbar
 
-> INBUILT FUNCTION GOOGLE EARTH ENGINE TO CALCULATE TEMPERATURE ANOMALIES <br> 
+INBUILT FUNCTION GOOGLE EARTH ENGINE TO CALCULATE TEMPERATURE ANOMALIES <br> 
 Here, same ERA5 data will be present but from year 1981-Present
 (Climatological Anomalies — wxee documentation)
 
 
-> JAPAN METEOROLOGICAL ASSOCIATION METHOD <br>
+JAPAN METEOROLOGICAL ASSOCIATION METHOD <br>
 The procedure for estimating the global mean temperature anomaly is outlined below.
 1) An average is obtained for monthly-mean temperature anomalies against the 1991-2020 baseline over land in each 5° x 5° grid box worldwide.
 2) An average is obtained for monthly mean sea surface temperature anomalies against the 1991-2020 baseline in each 5° x 5° grid box worldwide in which at least one in-situ observation exists.

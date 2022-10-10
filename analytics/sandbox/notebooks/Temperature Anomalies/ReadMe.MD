@@ -27,10 +27,10 @@ INTERNATIONAL RESEARCH INSTITUTE FOR  CLIMATE AND SOCIETY: <br>
 An anomaly is the difference between an actual value and some long-term average value.
 For example, if
 
->X = actual value of average temperature for January, 1982 and
->Xbar = long-term average temperature for January (an average over many years)
->anom = anomaly value for January, 1982
->then anom = X - Xbar
+>X = actual value of average temperature for January, 1982 and <br>
+>Xbar = long-term average temperature for January (an average over many years) <br>
+>anom = anomaly value for January, 1982 <br>
+>then anom = X - Xbar <br>
 
 INBUILT FUNCTION GOOGLE EARTH ENGINE TO CALCULATE TEMPERATURE ANOMALIES <br> 
 Here, same ERA5 data will be present but from year 1981-Present

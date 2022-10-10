@@ -53,7 +53,7 @@ Calculate the deviation of specific month/year from average value calculated. <b
 Create the temperature anomaly maps according to various levels of geographical boundaries such as district/ mandal. <br>
 
 ## Workflow of the methodology
-https://github.com/undpindia/dicra/blob/main/analytics/sandbox/notebooks/Temperature%20Anomalies/Results/Workflow.png
+(https://github.com/undpindia/dicra/blob/main/analytics/sandbox/notebooks/Temperature%20Anomalies/Results/Workflow.png)
 
 ## References 
 https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018JD029522#jgrd55486-bib-0001 <br>

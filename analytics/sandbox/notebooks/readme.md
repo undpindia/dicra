@@ -12,3 +12,4 @@
 | Particulate Matter 2.5 (PM2.5) | Describes fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller | Done | Done | Done | Done |
 | Soil Organic Carbon | Add short description | Done | Done | Done | Done |
 | AgroForestry | Add short description | Done | In progress | In progress | In progress |
+| Temperature Anomalies | Difference of recorded observation from mean temperatures | Done | In Progress | In Progress | In progress 

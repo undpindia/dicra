@@ -46,7 +46,7 @@ The procedure for estimating the global mean temperature anomaly is outlined bel
 5) Annual and seasonal mean global temperature anomalies are obtained by averaging monthly-mean global temperature anomalies.
 
 
-## *Conclusion* <br>
+## *Methodology used* <br>
 All the methods can be compiled into the following steps: <br>
 Calculate 30/50 year monthly/annual averages of global temperature data. <br>
 Calculate the deviation of specific month/year from average value calculated. <br> 
@@ -55,6 +55,12 @@ Create the temperature anomaly maps according to various levels of geographical 
 ## Workflow of the methodology
 ![Workflow](https://github.com/undpindia/dicra/blob/16cec008ed0e346c23a5d86ac7a1e7f4fc5e25ab/analytics/sandbox/notebooks/Temperature%20Anomalies/Results/Workflow.png)
 
+## Results 
+
+![GlobalAnomaly](https://github.com/undpindia/dicra/blob/c9b84f1081ef46b325351c09fd8472653b2d61ca/analytics/sandbox/notebooks/Temperature%20Anomalies/Results/MonthlyGlobalTempAnomalies.png)
+![Telangana](https://github.com/undpindia/dicra/blob/c9b84f1081ef46b325351c09fd8472653b2d61ca/analytics/sandbox/notebooks/Temperature%20Anomalies/Results/TelTemperatureAnomalies.png)
+![District](https://github.com/undpindia/dicra/blob/c9b84f1081ef46b325351c09fd8472653b2d61ca/analytics/sandbox/notebooks/Temperature%20Anomalies/Results/TelDistrictTemperatureAnomalies2021.png)
+![Mandal](https://github.com/undpindia/dicra/blob/c9b84f1081ef46b325351c09fd8472653b2d61ca/analytics/sandbox/notebooks/Temperature%20Anomalies/Results/TelMandalTemperatureAnomalies2021.png)
 ## References 
 https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018JD029522#jgrd55486-bib-0001 <br>
 https://iopscience.iop.org/article/10.1088/1748-9326/ab154b <br>

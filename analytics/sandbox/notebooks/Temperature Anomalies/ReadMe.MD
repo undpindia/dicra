@@ -18,13 +18,13 @@ Features of data:
 Monthly average Temperature 1950-Present
 Resolution: ~11.1 KMs
 
-METHODS:
+## METHODS:
 
-NASA CLIMATE:
+> NASA CLIMATE:
 A temperature anomaly is a calculation of how much colder or warmer a measured temperature is at a given weather station compared to an average value for that location and time, which is calculated over a 30-year reference period (1951-1980).
 (The Raw Truth on Global Temperature Records – Climate Change: Vital Signs of the Planet)
 
-INTERNATIONAL RESEARCH INSTITUTE FOR  CLIMATE AND SOCIETY:
+> INTERNATIONAL RESEARCH INSTITUTE FOR  CLIMATE AND SOCIETY:
 An anomaly is the difference between an actual value and some long-term average value.
 For example, if
 
@@ -34,16 +34,12 @@ anom = anomaly value for January, 1982
 then anom = X - Xbar
 Source: (How are anomalies calculated?)
 
-
-
-INTERNATIONAL GEE TIME-SERIES ANALYSIS
-
-INBUILT FUNCTION GOOGLE EARTH ENGINE TO CALCULATE TEMPERATURE ANOMALIES 
+> INBUILT FUNCTION GOOGLE EARTH ENGINE TO CALCULATE TEMPERATURE ANOMALIES 
 Here, same ERA5 data will be present but from year 1981-Present
 (Climatological Anomalies — wxee documentation)
 
 
-JAPAN METEOROLOGICAL ASSOCIATION METHOD
+> JAPAN METEOROLOGICAL ASSOCIATION METHOD
 The procedure for estimating the global mean temperature anomaly is outlined below.
 1) An average is obtained for monthly-mean temperature anomalies against the 1991-2020 baseline over land in each 5° x 5° grid box worldwide.
 2) An average is obtained for monthly mean sea surface temperature anomalies against the 1991-2020 baseline in each 5° x 5° grid box worldwide in which at least one in-situ observation exists.
@@ -53,11 +49,11 @@ The procedure for estimating the global mean temperature anomaly is outlined bel
 (https://web.archive.org/web/20220623113538/https://ds.data.jma.go.jp/tcc/tcc/products/gwp/temp/explanation.html)
 
 
-Conclusion
-All the methods can be compiled into the following steps:
-Calculate 30/50 year monthly/annual averages of global temperature data.
-Calculate the deviation of specific month/year from average value calculated. 
-Create the temperature anomaly maps according to various levels of geographical boundaries such as district/ mandal.
+*Conclusion*
+All the methods can be compiled into the following steps: <br>
+Calculate 30/50 year monthly/annual averages of global temperature data. <br>
+Calculate the deviation of specific month/year from average value calculated. <br> 
+Create the temperature anomaly maps according to various levels of geographical boundaries such as district/ mandal. <br>
 
 
 ## References 

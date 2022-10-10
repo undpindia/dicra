@@ -13,8 +13,8 @@ These analyses use considerably different methods for the calculation of histori
 https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land-monthly-means?tab=form
 
 ### Features of data: 
-2m temperature 
-Monthly average Temperature 1950-Present
+2m temperature <br>
+Monthly average Temperature 1950-Present <br>
 Resolution: ~11.1 KMs
 
 ## METHODS: <br>

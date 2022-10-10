@@ -41,7 +41,7 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 
 ### Core Team
 - [Swetha Kolluri, Head of Experimentation, UNDP in India](https://www.linkedin.com/in/swetha-kolluri/)
-- [Parvathy Krishnan, Data Science Lead, DiCRA] (https://www.linkedin.com/in/parvathykrishnank/)
+- [Parvathy Krishnan, Data Science Lead, DiCRA](https://www.linkedin.com/in/parvathykrishnank/)
 - [Ambarish Narayanan, CTO, mistEO](https://www.linkedin.com/in/ambarishnarayanan/)
 
 ### Data Science Community of Practice

@@ -65,6 +65,7 @@ Random Forest Previous Research:
 - Amount of trees in a random forest: file:///C:/Users/Jesse/Downloads/HowManyTreesinaRandomForest.pdf
 - Creating Lags: https://towardsdatascience.com/timeseries-data-munging-lagging-variables-that-are-distributed-across-multiple-groups-86e0a038460c
 - Random Forest in Python: https://towardsdatascience.com/random-forest-in-python-24d0893d51c
+- Optimization Problem Formulation: file:///C:/Users/Jesse/Downloads/SSRN-id2986630.pdf
 
 Parameter Tuning:
 - https://wires.onlinelibrary.wiley.com/doi/full/10.1002/widm.1301

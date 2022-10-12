@@ -51,6 +51,11 @@ Data Sources:
 https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-agricultural-forest-fires/
 - Crop Types: https://data.telangana.gov.in/dataset/kamareddy-district-mandal-wise-crop-areas,  https://code.earthengine.google.com/3591b550e5ab9ecdee134544a9d940fa
 - NO2: https://neo.gsfc.nasa.gov/view.php?datasetId=AURA_NO2_M&year=2015 (https://www.earthdata.nasa.gov/learn/articles/find-no2-data)
+- Soil Type: https://data.apps.fao.org/map/catalog/srv/eng/catalog.search#/metadata/446ed430-8383-11db-b9b2-000d939bc5d8
+- SSM: https://developers.google.com/earth-engine/datasets/catalog/NASA_USDA_HSL_SMAP10KM_soil_moisture#description
+- ST: https://lpdaac.usgs.gov/products/mod11a1v061/
+- Urban Rural areas: https://data.apps.fao.org/catalog/iso/9dc31512-a438-4b59-acfd-72830fbd6943
+- Rainfall: https://chc.ucsb.edu/data/chirps
 - Extra Spatial Data: https://giovanni.gsfc.nasa.gov/giovanni/#service=ArAvTs&starttime=2015-03-01T00:00:00Z&endtime=2022-06-28T23:59:59Z&bbox=76.8,28.18,76.87,28.22&data=MOD08_D3_6_1_AOD_550_Dark_Target_Deep_Blue_Combined_Mean&variableFacets=dataFieldMeasurement%3AOrganic%20Carbon%3BdataProductPlatformInstrument%3AMODIS-Aqua%3BdataProductSpatialResolution%3A4%20km%3BdataProductTimeInterval%3Amonthly%3B & https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-reanalysis-eac4?tab=form
 
 Hackathon Blog:
@@ -91,6 +96,6 @@ Missing Values:
 - file:///C:/Users/Jesse/Downloads/s12911-022-01752-6.pdf
 - https://machinelearningmastery.com/statistical-imputation-for-missing-values-in-machine-learning/
 
-Power Plants:
+Power Plants: 
 - https://en.wikipedia.org/wiki/List_of_power_stations_in_Telangana
 - Mines: https://mines.telangana.gov.in/MinesAndGeology/Views/MineralsinTelangana.aspx

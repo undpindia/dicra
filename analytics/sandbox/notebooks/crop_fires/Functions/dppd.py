@@ -82,7 +82,6 @@ def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, var
     """Creates a visualization of all the slope scores for each region. It takes as input the begin- and endyear of interest, the fire data, 
     the boundaries of the regions we are interested in. """
     st = time.time()
-    
     #Get the right parameter for seasonal (needs to be odd)
     if (endyear-beginyear+1)<7:
         seas = 7
@@ -187,7 +186,6 @@ def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, var
 def dppd_general(data, beginyear:int, endyear:int, name:str, boundaries, level:str, unit:str):
     data['ModifiedDateTime'] = pd.to_datetime(data['ModifiedDateTime'])
     data = data[(data['ModifiedDateTime']<str(endyear+1)+'-01-01') & (data['ModifiedDateTime']>str(beginyear)+'-01-01') ]
-
     if (endyear-beginyear+1)%2==0:
         seas = endyear-beginyear
     else:
@@ -243,6 +241,7 @@ def dppd_general(data, beginyear:int, endyear:int, name:str, boundaries, level:s
 
 def create_avg_plot(df, beginyear:int, endyear:int, name:str, level:str, unit:str):
     '''Calculates the average of a specific variable of interest per Year (specifiy metric) on different levels'''
+    plt.style.use('fivethirtyeight')
     df['ModifiedDateTime'] = pd.to_datetime(df['ModifiedDateTime'])
     df = df[(df['ModifiedDateTime']<str(endyear+1)+'-01-01') & (df['ModifiedDateTime']>str(beginyear)+'-01-01') ]
 

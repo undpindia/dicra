@@ -75,27 +75,23 @@ def rescale(j, nodata_value_new, Scaling, Offset, file_path):
     del new_raster
     return tiff_array_new
 
-def crop_image(boundary):
+def crop_image(boundary): 
     maps = os.listdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\")
     for i in maps:
-        year_maps = os.listdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i + "\\")
-        for j in year_maps:
-            file_names = os.listdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i + "\\" + j+ '\\')
-            for file_name in file_names:
-                os.chdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i + "\\" + j)
-                print(file_name)
-                with rasterio.open(file_name) as src:
-                    out_image, out_transform = rasterio.mask.mask(src, boundary.geometry, crop=True)
-                    out_meta = src.meta
-                
-                out_meta.update({"driver": "GTiff",
-                            "height": out_image.shape[1],
-                            "width": out_image.shape[2],
-                            "transform": out_transform})
+        os.chdir("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\")
+ 
+        with rasterio.open(i) as src:
+            out_image, out_transform = rasterio.mask.mask(src, boundary.geometry, crop=True)
+            out_meta = src.meta
+        
+        out_meta.update({"driver": "GTiff",
+                    "height": out_image.shape[1],
+                    "width": out_image.shape[2],
+                    "transform": out_transform})
 
-                # Save the Geotiff file to Burnt Area in Telangana
-                with rasterio.open("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i + "\\"+ j + '\\'+ file_name, "w", **out_meta) as dest:
-                    dest.write(out_image)
+        # Save the Geotiff file to Burnt Area in Telangana
+        with rasterio.open("c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Preprocessing_Data_Dicra\\Output\\" + i, "w", **out_meta) as dest:
+            dest.write(out_image)
 
 
 #Stat can be PM2.5 (Particular Matter), SSM (Soil mMisture), ST (Soil Temperature), NO2 (Nitrogren Dioxide)
@@ -149,7 +145,7 @@ def read_tiffs(boundaries, level:str, stat:str, loc_month_begin:int, loc_month_e
         df_unpivot['Value'] = df_unpivot['Value'] * 0.09 #One pixel is equal to 300m by 300m also in total *0.09 km^2 burnt area in a mandal
 
     os.chdir('c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\Data_csv\\results_csv')
-    df_unpivot.to_csv(stat+'_'+level+'.csv')
+    df_unpivot.to_csv(stat+'_'+level+'_'+statistic+'.csv')
 
     return(df_unpivot)
 
@@ -174,8 +170,8 @@ def monthly_averages(folder_path, dest_path, beginyear, endyear):
                 col = images[0].RasterXSize # number of columns
                 rows = images[0].RasterYSize # number of rows
                 driver = images[0].GetDriver()
-                nodata_value = images[0].GetRasterBand(1).GetNoDataValue() # value which has been assigned for the nodata
-                
+                nodata_value = images[1].GetRasterBand(1).GetNoDataValue() # value which has been assigned for the nodata
+
                 for k in range(n):
                     bin_array.append(np.where(val_array[k] == nodata_value, 1, 0)) # For each image, create binary array where value is 1 if nodata pixel, 0 otherwise
                 sum_counts = sum(bin_array) # For each pixel, we count the number of nodata values

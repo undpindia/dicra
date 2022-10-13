@@ -57,7 +57,6 @@ https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-ag
 - Power plants India: https://datasource.kapsarc.org/explore/dataset/coal-power-plants-database_india_final/information/?disjunctive.region&disjunctive.state&disjunctive.district&disjunctive.location&disjunctive.plant_name&disjunctive.coal_type&disjunctive.owner&disjunctive.sector&disjunctive.status&refine.state=Telangana&basemap=a92047&location=12,13.27787,79.34275
 - Urban Rural areas: https://data.apps.fao.org/catalog/iso/9dc31512-a438-4b59-acfd-72830fbd6943
 - Rainfall: https://chc.ucsb.edu/data/chirps
-- 
 - Extra Spatial Data: https://giovanni.gsfc.nasa.gov/giovanni/#service=ArAvTs&starttime=2015-03-01T00:00:00Z&endtime=2022-06-28T23:59:59Z&bbox=76.8,28.18,76.87,28.22&data=MOD08_D3_6_1_AOD_550_Dark_Target_Deep_Blue_Combined_Mean&variableFacets=dataFieldMeasurement%3AOrganic%20Carbon%3BdataProductPlatformInstrument%3AMODIS-Aqua%3BdataProductSpatialResolution%3A4%20km%3BdataProductTimeInterval%3Amonthly%3B & https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-reanalysis-eac4?tab=form
 
 Hackathon Blog:
@@ -73,6 +72,8 @@ Random Forest Previous Research:
 - Creating Lags: https://towardsdatascience.com/timeseries-data-munging-lagging-variables-that-are-distributed-across-multiple-groups-86e0a038460c
 - Random Forest in Python: https://towardsdatascience.com/random-forest-in-python-24d0893d51c
 - Optimization Problem Formulation: file:///C:/Users/Jesse/Downloads/SSRN-id2986630.pdf
+- PHD: https://www.dcc.fc.up.pt/~ltorgo/PhD/ (https://stats.stackexchange.com/questions/44382/mathematics-behind-classification-and-regression-trees)
+- Book: https://link.springer.com/content/pdf/10.1007/978-1-4899-7641-3.pdf
 
 Parameter Tuning:
 - https://wires.onlinelibrary.wiley.com/doi/full/10.1002/widm.1301

@@ -102,3 +102,6 @@ Missing Values:
 Power Plants: 
 - https://en.wikipedia.org/wiki/List_of_power_stations_in_Telangana
 - Mines: https://mines.telangana.gov.in/MinesAndGeology/Views/MineralsinTelangana.aspx
+
+SHAP:
+- https://christophm.github.io/interpretable-ml-book/shap.html

@@ -172,6 +172,9 @@ def monthly_averages(folder_path, dest_path, beginyear, endyear):
                 driver = images[0].GetDriver()
                 nodata_value = images[1].GetRasterBand(1).GetNoDataValue() # value which has been assigned for the nodata
 
+                if nodata_value == None:
+                    nodata_value = -9999
+                    
                 for k in range(n):
                     bin_array.append(np.where(val_array[k] == nodata_value, 1, 0)) # For each image, create binary array where value is 1 if nodata pixel, 0 otherwise
                 sum_counts = sum(bin_array) # For each pixel, we count the number of nodata values

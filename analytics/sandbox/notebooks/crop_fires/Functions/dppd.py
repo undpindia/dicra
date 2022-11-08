@@ -11,6 +11,8 @@ from sklearn.linear_model import LinearRegression
 import datetime as dt
 from matplotlib.colors import TwoSlopeNorm
 import time
+import calendar
+import matplotlib.dates as mdates
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -35,7 +37,7 @@ def Trend_Score(df, index:int, seas:int):
         #of observations per season also 12, because there 12 months within a year.
         stl = STL(df_selected['Value'], seasonal = seas, period = 12, robust = True)
         res = stl.fit()
-    
+        #print(index)
         #res.plot()
         #plt.show()
 
@@ -58,14 +60,18 @@ def Trend_Score(df, index:int, seas:int):
         y_pred_trend = reg.predict(X)
         slope, intercept = np.polyfit(np.array(df_trend['ModifiedDateTime_num']), y_pred_trend,1)
         line_slope = slope[0]
-
-        #plt.figure(figsize=(8,6))
-        #plt.scatter(df_trend['ModifiedDateTime'] , df_trend['trend'], label = 'Actual Trend')
-        #plt.plot(df_trend['ModifiedDateTime'] , y_pred_trend, color='red', label = 'Linear Trend')
-        #plt.xlabel('Date')
-        #plt.ylabel('Amount of Fires')
-        #plt.title('Simple Linear Regression on Trend Mandal Yellandu')
-        #plt.legend()
+        #myFmt = mdates.DateFormatter('%Y-%b') 
+        
+        #n = 0
+        #ax = plt.subplot(1, 1, n + 1)
+        #ax.scatter(df_trend['ModifiedDateTime'] , df_trend['trend'], label = 'Actual Trend')
+        #ax.plot(df_trend['ModifiedDateTime'] , y_pred_trend, color='red', label = 'Linear Trend')
+        #ax.set_xlabel('Date')
+        #ax.set_xticklabels(df_trend['ModifiedDateTime'], rotation = 45)
+        #ax.set_ylabel('Number of Fires')
+        #ax.set_title('Simple Linear Regression on Trend Mandal Yellandu')
+        #ax.xaxis.set_major_formatter(myFmt)
+        #ax.legend()
         #plt.show()
 
 
@@ -78,7 +84,7 @@ def Trend_Score(df, index:int, seas:int):
     return(line_slope)
 
 
-def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, variable_of_interest):
+def dppd_fires(beginyear:int, endyear:int, beginmonth:int, endmonth:int, fire_data, boundaries, level:str, variable_of_interest):
     """Creates a visualization of all the slope scores for each region. It takes as input the begin- and endyear of interest, the fire data, 
     the boundaries of the regions we are interested in. """
     st = time.time()
@@ -106,7 +112,7 @@ def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, var
     geo_fire_data['day'] = (geo_fire_data['acq_date']).dt.day
 
     #Selects the years we are interested in, depending on the input of the function
-    geo_fire_data = geo_fire_data[(geo_fire_data['acq_date'] >= str(beginyear)+'-01-01') & (geo_fire_data['acq_date'] < str(endyear+1)+'-01-01')]
+    geo_fire_data = geo_fire_data[(geo_fire_data['acq_date'] >= str(beginyear)+'-0'+str(beginmonth)+'-01') & (geo_fire_data['acq_date'] <= str(endyear)+'-0'+str(endmonth)+'-01')]
 
     #Count all fires within a region given by the boundaries dataframe
     fires_per_boundaries= gpd.sjoin(geo_fire_data, boundaries, how="inner")
@@ -141,10 +147,12 @@ def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, var
     scores = []
 
     for i in range(0, len(boundaries['index'])):
+        #if boundaries['index'].iloc[i] not in [13, 34, 37, 220, 265, 579, 584, 585, 586, 587, 588, 591]:
         ids.append(boundaries['index'].iloc[i])
         #We use the previously defined function in order to calculate the trend score per specific area
         score = Trend_Score(fires_per_boundaries_count, i, seas)
         scores.append(score)
+
     
     #Create a Dataframe from the scores
     DPPD_df = pd.DataFrame({'index': ids, 'Slope Score': scores}) 
@@ -160,9 +168,9 @@ def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, var
     DPPD_df['Slope Score'] = DPPD_df['Slope Score'].astype('float')
 
     DPPD_df = gpd.GeoDataFrame(DPPD_df, geometry = DPPD_df.geometry, crs = {'init': 'epsg:4326'}) 
-    DPPD_df.to_file('C:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\DPPD_Jesse\\Fires\\results\\DPPD_Fires_'+str(beginyear) +'-' + str(endyear)+level+'.geojson', driver="GeoJSON") 
+    DPPD_df.to_file('C:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\DPPD_Jesse\\Fires\\results\\DPPD_Fires_'+str(beginyear) +'-' +str(beginmonth)+ '--' + str(endyear)+ '-' + str(endmonth)+level+'.geojson', driver="GeoJSON") 
     #Define text for the plots
-    text = 'DPPD ' + unit + ' STL ' + level + ' Level ('+ str(beginyear) +'-'+str(endyear)+')'
+    text = 'DPPD ' + unit 
 
     ranges = max(abs(DPPD_df['Slope Score'].min()), (DPPD_df['Slope Score'].max()))
     vmin, vmax, vcenter = ranges*-1 , ranges, 0
@@ -183,9 +191,10 @@ def dppd_fires(beginyear:int, endyear:int, fire_data, boundaries, level:str, var
     
     return(plt.show(), DPPD_df)
 
-def dppd_general(data, beginyear:int, endyear:int, name:str, boundaries, level:str, unit:str):
+def dppd_general(data, beginyear:int, endyear:int, beginmonth:int, endmonth:int, name:str, boundaries, level:str, unit:str):
     data['ModifiedDateTime'] = pd.to_datetime(data['ModifiedDateTime'])
-    data = data[(data['ModifiedDateTime']<str(endyear+1)+'-01-01') & (data['ModifiedDateTime']>str(beginyear)+'-01-01') ]
+    data = data[(data['ModifiedDateTime'] >= str(beginyear)+'-0'+str(beginmonth)+'-01') & (data['ModifiedDateTime'] <= str(endyear)+'-0'+str(endmonth)+'-01')]
+
     if (endyear-beginyear+1)%2==0:
         seas = endyear-beginyear
     else:
@@ -196,6 +205,7 @@ def dppd_general(data, beginyear:int, endyear:int, name:str, boundaries, level:s
     scores = []
 
     for i in data['index'].unique():
+        #if i not in [13, 34, 37, 220, 265, 579, 584, 585, 586, 587, 588, 591]:
         ids.append(i)
         score = Trend_Score(data, i, seas)
         scores.append(score)
@@ -213,7 +223,7 @@ def dppd_general(data, beginyear:int, endyear:int, name:str, boundaries, level:s
     DPPD_df = DPPD_df.merge(boundaries[['index', 'geometry']], how='left', on=['index'])
 
     #Define text for the plots
-    text = 'Changes ' + name + ' '+ str(beginyear) + '-'+ str(endyear) + ' ' + level + ' Level'
+    text = 'DPPD ' + name 
 
     #Making sure data has the right type
     DPPD_df['Slope Score'] = DPPD_df['Slope Score'].astype('float')

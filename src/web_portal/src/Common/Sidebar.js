@@ -43,6 +43,7 @@ const SidebarComponent = (props) => {
   const [isActivebutton, setActivebutton] = useState(false);
   const [Layercount, setLayercount] = useState(0);
   const [Categorylist, setCategorylist] = useState([]);
+  const [activeStep, setactiveStep] = useState(0);
   const dispatch = useDispatch();
   const handleClick = () => {
     window.open("https://github.com/UNDP-India/Data4Policy/");
@@ -55,6 +56,7 @@ const SidebarComponent = (props) => {
   const onOpen = (id) => {
     setOpenTab(id);
     setlegend(!isActive);
+    onopenTab()
   };
 
   const onOpenDownloads = (layer, desc) => {
@@ -62,6 +64,30 @@ const SidebarComponent = (props) => {
     dispatch({ type: "DOWNCHANGELAYERDESC", payload: desc });
     // dispatch(setdownloadlayer(layer));
     setOpenTab("downloads");
+    setactiveStep(0);
+  };
+
+  function onopenTab()  {
+    if(openTab === "layer"){
+      setactiveStep(0)
+    } else if(openTab ==="downloads"){
+      setactiveStep(1)
+    }
+    else if(openTab === "use-cases"){
+      setactiveStep(0)
+    }
+    else if(openTab === "about-project"){
+      setactiveStep(0)
+    }
+    else if(openTab === "help"){
+      setactiveStep(0)
+    }
+    else if(openTab === "analytics"){
+      setactiveStep(0)
+    }
+    else if(openTab === "github" ){
+      setactiveStep(0)
+    }
   };
   const prevStyle = {
     background: "rgb(3, 53, 100)",
@@ -227,6 +253,11 @@ const SidebarComponent = (props) => {
                   <Panel header={layers} key={index} className="layer-header">
                     {Layers[0][layers].map((items, indexlayers, datalayers) => {
                       return (
+                        <div style={
+                          items.display_name === "Land Service Temperature (LST)" 
+                            ? { display: "none"}
+                            : { }
+                        }>
                         <FormGroup
                           tag="fieldset"
                           className="btn-radio"
@@ -348,6 +379,7 @@ const SidebarComponent = (props) => {
                             </Col>
                           </Row>
                         </FormGroup>
+                        </div>
                       );
                     })}
                   </Panel>
@@ -367,7 +399,7 @@ const SidebarComponent = (props) => {
             }
           >
             <Multistep
-              activeStep={0}
+              activeStep={activeStep}
               showNavigation={true}
               steps={steps}
               prevStyle={prevStyle}

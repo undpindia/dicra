@@ -1571,3 +1571,9 @@ hr.horizontal-line {
   border-color: #c8d4e3 !important;
   box-shadow: none;
 }
+
+select optgroup[label] {
+  font-style: inherit;
+  font-weight: 300;
+  text-shadow: none;
+}

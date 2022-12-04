@@ -47,6 +47,8 @@ class LayerDetails extends Component {
       layerDesc:
         "Normalized Difference Vegetation Index (NDVI) quantifies vegetation by measuring the difference between near-infrared (which vegetation strongly reflects) and red light (which vegetation absorbs)",
       layersource: "GLAM NDVIDB",
+      layerList: [],
+      Categorylist: [],
     };
   }
   onChange = (e) => {
@@ -98,6 +100,25 @@ class LayerDetails extends Component {
       message.error("Failed to connect to server");
     }
   }
+
+  async getLayerdetails() {
+    try {
+      const layers = await axiosConfig.get(`/getlayerconfig?`);
+      // dispatch(setlayerlist(layers.data));
+      let result;
+      result = layers.data.reduce(function (r, a) {
+        r[a.category] = r[a.category] || [];
+        r[a.category].push(a);
+        return r;
+      }, Object.create(null));
+      this.setState({
+        layerList: [result],
+        Categorylist: Object.keys([result][0]),
+      })
+    } catch (err) {
+       message.error("Failed to connect to server");
+    }
+  };
   changeFile(e) {
     this.props.setdownloadfile(e.target.value);
     this.setState({
@@ -106,6 +127,7 @@ class LayerDetails extends Component {
   }
   componentDidMount() {
     this.getavailableFiles();
+    this.getLayerdetails();
   }
   render() {
     return (
@@ -124,7 +146,7 @@ class LayerDetails extends Component {
                   value={this.props.DownloadLayer}
                   onChange={(e) => this.changeLayer(e)}
                 >
-                  {this.props.layers.map((layer, index) =>
+                  {/* {this.props.layers.map((layer, index) =>
                     layer.isavailable ? (
                       <option
                         value={layer.layer_name}
@@ -136,7 +158,23 @@ class LayerDetails extends Component {
                     ) : (
                       console.log("Download layer not available")
                     )
+                  )} */}
+                   {this.state.Categorylist.map(
+                    (layers, datacategory) => (
+                      <optgroup label={layers}>
+                        {this.state.layerList[0][layers].map((items, index) =>
+                          items.isavailable ? (
+                          <option value={items.layer_name}
+                          key={index}
+                          disabled={items.isavailable ? false : true}>
+                            {items.display_name}
+                          </option>):
+                          ( console.log("Download layer not available"))
+                        )}
+                      </optgroup>
+                    )
                   )}
+                  
                 </Input>
               </FormGroup>
 

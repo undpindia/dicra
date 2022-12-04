@@ -43,16 +43,28 @@ const BottomNav = (props) => {
   const [isActivebutton, setActivebutton] = useState(false);
   const [Layercount, setLayercount] = useState(0);
   const [Categorylist, setCategorylist] = useState([]);
+  const [activeStep, setactiveStep] = useState(0);
+  const [activeLayer, setactiveLayer] = useState("layer");
   const dispatch = useDispatch();
   const handleClick = () => {
     window.open("https://github.com/UNDP-India/Data4Policy/");
   };
- 
+  function resetStep(){
+    if(activeLayer === "layer") {
+      setactiveStep(1)
+    }else  if(activeLayer === "download") {
+      setactiveStep(0)
+    }
+    else  if(activeLayer === "other") {
+      setactiveStep(1)
+    }
+  }
   const onOpenDownloads = (layer, desc) => {
     dispatch({ type: "SETDOWNLOADLAYER", payload: layer });
     dispatch({ type: "DOWNCHANGELAYERDESC", payload: desc });
     setIsModalDownload(true);
     setIsModalVisible(false);
+    setactiveStep(0);
   };
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -70,6 +82,8 @@ const BottomNav = (props) => {
         setIsModalVisible(true);
         setIsModalDownload(false);
         setIsModalOther(false);
+        setactiveLayer("layer")
+        resetStep()
       },
     },
 
@@ -83,6 +97,9 @@ const BottomNav = (props) => {
         setIsModalDownload(true);
         setIsModalVisible(false);
         setIsModalOther(false);
+        setactiveLayer("download")
+        resetStep()
+
       },
     },
 
@@ -108,6 +125,8 @@ const BottomNav = (props) => {
         setIsModalOther(true);
         setIsModalDownload(false);
         setIsModalVisible(false);
+        setactiveLayer("other")
+        resetStep()
       },
     },
   ];
@@ -293,6 +312,11 @@ const BottomNav = (props) => {
                   <Panel header={layers} key={index} className="layer-header">
                     {Layers[0][layers].map((items,indexlayers) => {
                       return (
+                        <div style={
+                          items.display_name === "Land Service Temperature (LST)" 
+                            ? { display: "none"}
+                            : { }
+                        }>
                         <FormGroup tag="fieldset" className="btn-radio" key={indexlayers}>
                           <Row>
                             <div className="col-8"
@@ -410,6 +434,7 @@ const BottomNav = (props) => {
                             </div>
                           </Row>
                         </FormGroup>
+                        </div>
                       );
                     })}
                   </Panel>
@@ -433,7 +458,7 @@ const BottomNav = (props) => {
             }}
           >
             <Multistep
-              activeStep={0}
+              activeStep={activeStep}
               showNavigation={true}
               steps={steps}
               prevStyle={prevStyle}

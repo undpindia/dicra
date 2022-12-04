@@ -89,6 +89,7 @@ export default function GeoRaster(props) {
                 "#64caef",
               ]);
 
+
               window.tiff = georaster;
             } else {
               range = georaster.ranges[0];

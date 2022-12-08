@@ -664,6 +664,14 @@ export class map extends Component {
           weight: 0.5,
       };
     }
+    else if ( this.props.currentLayerType === "Vector" && this.state.layerUID === feature.properties.uid ) {
+      return {
+        opacity: 1,
+        color: "#2bf527",
+        fillOpacity: 1,
+        weight: 6,
+      };
+    }
     if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "DPPD"){
       if(this.props.CurrentRegion === "MANDAL"){
         scale = chroma
@@ -806,7 +814,7 @@ export class map extends Component {
               fillOpacity: 1,
             }; 
         }
-    }
+    } 
     if (ltype === "Vector") {
       if (this.state.layerUID === feature.properties.uid) {
         return {
@@ -1565,6 +1573,7 @@ export class map extends Component {
     }
   }
   onMouseOver(e) {
+    console.log("vector value", e.layer.feature.properties.zonalstat)
     if (this.props.CurrentLayer === "POPULATION") {
       this.props.setvalue(
         parseFloat(e.layer.feature.properties.zonalstat.sum / 1000000).toFixed(
@@ -1738,7 +1747,6 @@ export class map extends Component {
   }
   updateDimensions = () => {
     if (window.innerWidth <= 480) {
-      console.log("mobile");
       this.setState({
         mapZoom: 6.5,
       });

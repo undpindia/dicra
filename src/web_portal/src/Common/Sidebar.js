@@ -182,11 +182,6 @@ const SidebarComponent = (props) => {
       window.layerType = "Vector";
       dispatch({ type: "HIDERASTER" });
     } 
-     else {
-      dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
-      window.layerType = "Raster";
-      dispatch({ type: "SHOWRASTER" });
-    }
     props.resetZoom();
     // if (selectedRegion !== "CUSTOM") {
     setTimeout(function () {

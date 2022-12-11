@@ -48,7 +48,7 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 - [Jesse Swinkels, Tilburg University](https://www.linkedin.com/in/jesse-swinkels-239890195/)
 - [Mieke Couwenberg](https://www.linkedin.com/in/mieke-couwenberg/)
 - [Shivang Pandey](https://www.linkedin.com/in/shivangpandey/)
-- Shubham 
+- [Shubham Singh](https://www.linkedin.com/in/shubhamcodez/)
 - Amit
 - 
 

@@ -8,10 +8,10 @@ import geopandas as gpd
 
 
 #use session to get the page
-r = session.get('https://news.google.com/search?q=agriculture%20telangana&hl=en-IN&gl=IN&ceid=IN%3Aen')  #agriculture telangana
+r = session.get('https://news.google.com/search?q=agriculture&hl=en-IN&gl=IN&ceid=IN%3Aen')  #agriculture telangana
 
 #render the html, sleep=1 to give it a second to finish before moving on. scrolldown= how many times to page down on the browser, to get more results. 5 was a good number here
-r.html.render(sleep=1, scrolldown=5)     # ----------------------# THIS LINE WAS FETCHING ME ERROR IN JUPYTER NOTEBOOK
+r.html.render(sleep=5, scrolldown=10)     # ----------------------# THIS LINE WAS FETCHING ME ERROR IN JUPYTER NOTEBOOK
 
 #find all the articles by using inspect element and create blank list
 articles = r.html.find('article')
@@ -33,7 +33,7 @@ for item in articles:
 
 #print the length of the list
 print('List of news articles: ',len(newslist))
-
+'''
 #Create a dataframe of newslist and link
 df = pd.DataFrame(newslist)
 
@@ -104,5 +104,6 @@ news['Districts'] = dist_list
 news.to_csv('news_full.csv', index = False)
 
 #Dataframe with few columns
-news1 = news[['title','Mandals','Districts','published_date','text']]
+news1 = news[['title','Mandals','Districts','published_date']]
 news1.to_csv('news.csv', index = False)
+'''

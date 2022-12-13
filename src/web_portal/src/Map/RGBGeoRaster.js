@@ -71,33 +71,11 @@ export default function GeoRaster(props) {
             var range;
             layermin.current = min;
             layermax.current = max;
-
-            if (currentLayerNow.current === "LULC") {
-              range = georaster.ranges[0];
-              layerrange.current = range;
-              scale = chroma.scale([
-                "#dc0f0f",
-                "#44ce5d",
-                "#7533e6",
-                "#de8313",
-                "#dfef4d",
-                "#98e16e",
-                "#bb3cc9",
-                "#455dca",
-                "#3feabd",
-                "#cf3c8d",
-                "#64caef",
-              ]);
-
-
-              window.tiff = georaster;
-            } else {
               range = georaster.ranges[0];
               layerrange.current = range;
               scale = chroma
                 .scale(colorscalepickerRef.current)
                 .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-            }
             window.tiff = georaster;
             layer = new GeoRasterLayer({
               georaster,
@@ -106,7 +84,40 @@ export default function GeoRaster(props) {
               debugLevel: 0,
               pixelValuesToColorFn: (values) => {
                 var pixelValue = values[0];
-                if (pixelValue < min) {
+                if(currentLayerNow.current === "LULC"){
+                  if(pixelValue === 1){
+                    return "#1A5BAB";
+                  }
+                  if(pixelValue === 2){
+                    return "#358221";
+                  }
+                  if(pixelValue === 4){
+                    return "#87D19E";
+                  }
+                  if(pixelValue === 5){
+                    return "#FFDB5C";
+                  }
+                  if(pixelValue === 7){
+                    return "#ED022A";
+                  }
+                  if(pixelValue === 8){
+                    return "#91908e";
+                  }
+                  if(pixelValue === 9){
+                    return "#F2FAFF";
+                  }
+                  if(pixelValue === 10){
+                    return "#C8C8C8";
+                  }
+                  if(pixelValue === 11){
+                    return "#C6AD8D";
+                  }
+                  else{
+                    console.log()
+                  }
+                  
+                }
+                else if (pixelValue < min) {
                   return null;
                 } else if (pixelValue > max) {
                   return "#757575";
@@ -172,24 +183,39 @@ export default function GeoRaster(props) {
           } else if (values[0] > layermax.current) {
             return "#757575";
           }
+          var pixelValue = values[0];
           if (currentLayerNow.current === "LULC") {
-            newScale = chroma.scale([
-              "#dc0f0f",
-              "#44ce5d",
-              "#7533e6",
-              "#de8313",
-              "#dfef4d",
-              "#98e16e",
-              "#bb3cc9",
-              "#455dca",
-              "#3feabd",
-              "#cf3c8d",
-              "#64caef",
-            ]);
-            scaledPixelvalue =
-              (values[0] - layermin.current) / layerrange.current;
-            color = newScale(scaledPixelvalue).hex();
-            return color;
+            if(pixelValue === 1){
+              return "#1A5BAB";
+            }
+            if(pixelValue === 2){
+              return "#358221";
+            }
+            if(pixelValue === 4){
+              return "#87D19E";
+            }
+            if(pixelValue === 5){
+              return "#FFDB5C";
+            }
+            if(pixelValue === 7){
+              return "#ED022A";
+            }
+            if(pixelValue === 8){
+              return "#91908e";
+            }
+            if(pixelValue === 9){
+              return "#F2FAFF";
+            }
+            if(pixelValue === 10){
+              return "#C8C8C8";
+            }
+            if(pixelValue === 11){
+              return "#C6AD8D";
+            }
+            else{
+              console.log()
+            }
+           
           } else {
             newScale = chroma
               .scale(colorscalepickerRef.current)

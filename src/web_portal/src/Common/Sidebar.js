@@ -249,7 +249,8 @@ const SidebarComponent = (props) => {
                     {Layers[0][layers].map((items, indexlayers, datalayers) => {
                       return (
                         <div style={
-                          items.display_name === "Land Service Temperature (LST)" 
+                          items.display_name === "Land Service Temperature (LST)" ||
+                          items.layer_name === "SOILORGANICCARBON" 
                             ? { display: "none"}
                             : { }
                         }>

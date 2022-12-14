@@ -17,7 +17,10 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import GridSearchCV
 import random
 import math
+import re
+import rasterio
 from rasterstats import zonal_stats
+from osgeo import gdal
 
 # This function is used for the Blocking Split Cross Validation
 class BlockingTimeSeriesSplit():

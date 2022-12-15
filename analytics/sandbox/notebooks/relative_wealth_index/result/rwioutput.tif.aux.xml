@@ -1,0 +1,12 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>rwi</Description>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">1.95</MDI>
+      <MDI key="STATISTICS_MEAN">-0.13710169098911</MDI>
+      <MDI key="STATISTICS_MINIMUM">-1.306</MDI>
+      <MDI key="STATISTICS_STDDEV">0.41565417985827</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">48.66</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

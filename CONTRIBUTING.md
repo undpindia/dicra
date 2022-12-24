@@ -33,12 +33,12 @@ While direct merges work great as we work with independent python notebooks, it 
 </ul>
 
 ## Submitting a Pull Request
-<ul>
-  <li>Include a clear and concise description of changes in the pull request </li>
+<ol>
+  <li>Include a clear and concise description of changes in the pull request</li>
   <li>Link to relevant issues in the pull request description</li>
   <li>Address comments and suggestions during the review process</li>
   <li>Resolve merge conflicts, if necessary, before the pull request can be merged</li>
-</ul>
+</ol>
   Direct merges work fine too, just make sure you have the permission to do it.
 
 ## After Your Pull Request is Merged

@@ -34,7 +34,7 @@ Familiarize yourself with the project's goals and objectives. Go through [ReadMe
 ## Submitting a Pull Request
 <ul>
   <li>Include a clear and concise description of changes in the pull request </li>
-  <li>Link to relevant issues in the pull request description</li
+  <li>Link to relevant issues in the pull request description</li>
   <li>Address comments and suggestions during the review process</li>
   <li>Resolve merge conflicts, if necessary, before the pull request can be merged</li>
 </ul>

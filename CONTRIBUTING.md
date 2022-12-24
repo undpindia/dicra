@@ -20,7 +20,11 @@ We use GitHub issues to track public bugs, take suggestions and feedback. Report
 While direct merges work great as we work with independent python notebooks, it can get messy and violate our standards sometimes. Here are some recommended guidelines, we insist you follow if you are contributing to the repository for the first time.
 <ul>
 
-<li>Submit contributions through pull requests: Pull requests allow you to propose changes to the codebase and have them reviewed by the project's maintainers and other contributors. To submit a pull request, first make sure that you have forked the repository and created a separate working branch for your changes. Then, push your changes to your fork and submit a pull request from your branch to the upstream repository. Be sure to include a clear and concise description of your changes in the pull request, as well as any relevant issues or considerations. Direct merges work fine too, just make sure you have the permission to do it. </li>
+<li>Submit contributions through pull requests: Pull requests allow you to propose changes to the codebase and have them reviewed by the project's maintainers and other contributors. 
+  <ul><li>To submit a pull request, first make sure that you have forked the repository and created a separate working branch for your changes. </li>
+  <li>Then, push your changes to your fork and submit a pull request from your branch to the upstream repository. </li>
+  <li>Be sure to include a clear and concise description of your changes in the pull request, as well as any relevant issues or considerations. </li>
+    <li>Direct merges work fine too, just make sure you have the permission to do it. </li> </ul> </li>
 
 <li>Consider opening an issue to discuss significant changes: If you are considering making significant changes to the codebase, it is a good idea to open an issue to discuss your proposed changes before creating a pull request. This will allow you to get feedback and input from the project's maintainers and other contributors, and can help ensure that your changes align with the project's goals and direction.
 </li>

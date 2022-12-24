@@ -1,9 +1,7 @@
 # Welcome to DiCRA contributing guide
-Thank you for investing your time in contributing to our project!
-
-Read our Code of Conduct to keep our community approachable and respectable.
+Thank you for investing your time in contributing to our project! <br>
+Before you start, read our Code of Conduct to keep our community approachable and respectable. <br>
 In this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, reviewing, and merging the PR.
-
 ## New Contributor guide
 Familiarize yourself with the project's goals and objectives. Go through [ReadMe](https://github.com/shubhamcodez/dicra/blob/main/readme.md) and [Code of Conduct](https://github.com/shubhamcodez/dicra/blob/main/CODE_OF_CONDUCT.md) to better understand our expectations of standard and enforcement guidelines. It is important to be respectful and considerate of others when interacting with the project and its community. Make sure to follow the repository's code of conduct to ensure that all interactions are positive and constructive. If you have any questions or concerns, don't hesitate to reach out to the project's maintainers or other community members for help or guidance. If you have never worked with Github, I would suggest Git for [Beginners](https://youtu.be/RGOj5yH7evk) or reading the github [docs](https://docs.github.com/en/get-started). 
 

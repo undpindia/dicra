@@ -19,21 +19,6 @@ We use GitHub issues to track public bugs, take suggestions and feedback. Report
 ## Making Contributions
 While direct merges work great as we work with independent python notebooks, it can get messy and violate our standards sometimes. Here are some recommended guidelines, we insist you follow if you are contributing to the repository for the first time.
 <ul>
-
-<li> Submit contributions through pull requests: <br>
-  Pull requests allow you to propose changes to the codebase and have them reviewed by the project's maintainers and other contributors.
-  <ol>
-  <li>Fork the repository to your own Github account</li>
-  <li>Clone the project to your machine</li>
-  <li>Create a branch locally with a succinct but descriptive name</li>
-  <li>Commit changes to the branch</li>
-  <li>Following any formatting and testing guidelines specific to this repo</li>
-  <li>Push changes to your fork</li>
-  <li>Open a PR in our repository so that we can review the changes.</li>
-  </ol>
-  Direct merges work fine too, just make sure you have the permission to do it.  
-</li>
-
 <li>Consider opening an issue to discuss significant changes: <br>
   If you are considering making significant changes to the codebase, it is a good idea to open an issue to discuss your proposed changes before creating a pull request. This will allow you to get feedback and input from the project's maintainers and other contributors, and can help ensure that your changes align with the project's goals and direction.
 </li>
@@ -54,6 +39,7 @@ While direct merges work great as we work with independent python notebooks, it 
   <li>Address comments and suggestions during the review process</li>
   <li>Resolve merge conflicts, if necessary, before the pull request can be merged</li>
 </ul>
+  Direct merges work fine too, just make sure you have the permission to do it.
 
 ## After Your Pull Request is Merged
 Congratulations you have successfully contributed to DiCRA.✨ <br>

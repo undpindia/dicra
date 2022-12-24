@@ -5,7 +5,7 @@ Read our Code of Conduct to keep our community approachable and respectable.
 In this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, reviewing, and merging the PR.
 
 ## New Contributor guide
-Familiarize yourself with the project's goals and objectives. 
+Familiarize yourself with the project's goals and objectives. Go through [ReadMe](https://github.com/shubhamcodez/dicra/blob/main/readme.md) and [Code of Conduct](https://github.com/shubhamcodez/dicra/blob/main/CODE_OF_CONDUCT.md) to better understand our expectations of standard and enforcement guidelines. 
 
 #### For Technical contributions, 
 <ul>

@@ -22,13 +22,15 @@ While direct merges work great as we work with independent python notebooks, it 
 
 <li> Submit contributions through pull requests: <br>
   Pull requests allow you to propose changes to the codebase and have them reviewed by the project's maintainers and other contributors.
-  1. Fork the repository to your own Github account
-  2. Clone the project to your machine
-  3. Create a branch locally with a succinct but descriptive name
-  4. Commit changes to the branch
-  5. Following any formatting and testing guidelines specific to this repo
-  6. Push changes to your fork
-  7. Open a PR in our repository so that we can review the changes.
+  <ol>
+  <li>Fork the repository to your own Github account</li>
+  <li>Clone the project to your machine</li>
+  <li>Create a branch locally with a succinct but descriptive name</li>
+  <li>Commit changes to the branch</li>
+  <li>Following any formatting and testing guidelines specific to this repo</li>
+  <li>Push changes to your fork</li>
+  <li>Open a PR in our repository so that we can review the changes.</li>
+  </ol>
   Direct merges work fine too, just make sure you have the permission to do it.  
 </li>
 

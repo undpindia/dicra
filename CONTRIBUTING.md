@@ -13,7 +13,7 @@ Familiarize yourself with the project's goals and objectives. Go through [ReadMe
   <li>Preferably, set up a virtual environment. Using a virtual environment in Python can help to isolate dependencies, improve reproducibility, and enhance security by allowing you to install and manage packages and dependencies needed for a specific project in a separate location from your global Python environment.</li>
 </ul>
 
-## Report bugs, add suggestions using Github's issues
+## Provide feedback and report bugs using Github's issues
 We use GitHub issues to track public bugs, take suggestions and feedback. Report bugs, improvement suggestions by opening a new [issue](https://github.com/undpindia/dicra/issues); it's that easy!
 
 ## Making Contributions
@@ -22,10 +22,13 @@ While direct merges work great as we work with independent python notebooks, it 
 
 <li> Submit contributions through pull requests: <br>
   Pull requests allow you to propose changes to the codebase and have them reviewed by the project's maintainers and other contributors.
-  <ul><li>To submit a pull request, first make sure that you have forked the repository and created a separate working branch for your changes. </li>
+  <ul>
+  <li>To submit a pull request, first make sure that you have forked the repository and created a separate working branch for your changes. </li>
   <li>Then, push your changes to your fork and submit a pull request from your branch to the upstream repository. </li>
   <li>Be sure to include a clear and concise description of your changes in the pull request, as well as any relevant issues or considerations. </li>
-    <li>Direct merges work fine too, just make sure you have the permission to do it. </li> </ul> </li>
+  <li>Direct merges work fine too, just make sure you have the permission to do it. </li> 
+  </ul> 
+</li>
 
 <li>Consider opening an issue to discuss significant changes: <br>
   If you are considering making significant changes to the codebase, it is a good idea to open an issue to discuss your proposed changes before creating a pull request. This will allow you to get feedback and input from the project's maintainers and other contributors, and can help ensure that your changes align with the project's goals and direction.

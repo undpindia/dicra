@@ -815,6 +815,42 @@ export class map extends Component {
             }; 
         }
     } 
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "RWI"){
+      scale = chroma
+        .scale(this.props.vectorColor)
+        .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+          if(this.props.CurrentLayer === "RWI"){
+            if (feature.properties.zonalstat === undefined){
+            }else{
+            return {
+              // fillColor: this.getColor(feature.properties.zonalstat.mean),
+              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "SOC_DPPD" ? scale(feature.properties.deviance) : scale(feature.properties.zonalstat.mean),
+              weight: 1,
+              opacity: 1,
+              color: "#d65522",
+              fillOpacity: 1,
+            };
+          } 
+        }
+    } 
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "LAI"){
+      scale = chroma
+        .scale(this.props.vectorColor)
+        .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+          if(this.props.CurrentLayer === "LAI"){
+            if (feature.properties.zonalstat === undefined){
+            }else{
+              return {
+                // fillColor: this.getColor(feature.properties.zonalstat.mean),
+                fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "SOC_DPPD" ? scale(feature.properties.deviance) : scale(feature.properties.zonalstat.mean),
+                weight: 1,
+                opacity: 1,
+                color: "#d65522",
+                fillOpacity: 1,
+              }; 
+            }
+        }
+    } 
     if (ltype === "Vector") {
       if (this.state.layerUID === feature.properties.uid) {
         return {
@@ -844,6 +880,10 @@ export class map extends Component {
           scale = chroma
             .scale(this.props.vectorColor)
             .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+        } else if (feature.properties.zonalstat.mean > 10 && feature.properties.zonalstat.mean < 100) {
+          scale = chroma
+            .scale(this.props.vectorColor)
+            .domain([5,10,15,20,25,30,35,40,45]);
         } else {
           scale = chroma
             .scale(this.props.vectorColor)
@@ -1573,7 +1613,6 @@ export class map extends Component {
     }
   }
   onMouseOver(e) {
-    console.log("vector value", e.layer.feature.properties.zonalstat)
     if (this.props.CurrentLayer === "POPULATION") {
       this.props.setvalue(
         parseFloat(e.layer.feature.properties.zonalstat.sum / 1000000).toFixed(

@@ -51,7 +51,7 @@ The procedure for estimating the global mean temperature anomaly is outlined bel
 (https://web.archive.org/web/20220623113538/https://ds.data.jma.go.jp/tcc/tcc/products/gwp/temp/explanation.html)
 
 
-Conclusion
+**Conclusion**
 All the methods can be compiled into the following steps:
 Calculate 30/50 year monthly/annual averages of global temperature data.
 Calculate the deviation of specific month/year from average value calculated. 

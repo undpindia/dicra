@@ -59,9 +59,11 @@ Create the temperature anomaly maps according to various levels of geographical 
 
 
 ## References 
-https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018JD029522#jgrd55486-bib-0001 <br>
-https://iopscience.iop.org/article/10.1088/1748-9326/ab154b <br>
-https://web.archive.org/web/20220623113538/https://ds.data.jma.go.jp/tcc/tcc/products/gwp/temp/explanation.html <br>
-https://wxee.readthedocs.io/en/latest/examples/climatology_anomaly.html <br>
-https://www.pnas.org/doi/10.1073/pnas.1701762114 <br>
-https://en.wikipedia.org/wiki/Temperature_anomaly#:~:text=Temperature%20anomalies%20are%20a%20measure,rather%20than%20as%20absolute%20temperatures.
+<ol>
+  <li>https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018JD029522#jgrd55486-bib-0001</li>
+  <li>https://iopscience.iop.org/article/10.1088/1748-9326/ab154b</li>
+  <li>https://web.archive.org/web/20220623113538/https://ds.data.jma.go.jp/tcc/tcc/products/gwp/temp/explanation.html</li>
+  <li>https://wxee.readthedocs.io/en/latest/examples/climatology_anomaly.html</li>
+  <li>https://www.pnas.org/doi/10.1073/pnas.1701762114</li>
+  <li>https://en.wikipedia.org/wiki/Temperature_anomaly#:~:text=Temperature%20anomalies%20are%20a%20measure,rather%20than%20as%20absolute%20temperatures.</li>
+</ol>

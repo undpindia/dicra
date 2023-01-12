@@ -27,7 +27,7 @@ def DFcreation(boundaries, directory ):
         tiffs.remove(x)
 
     for tiff in tiffs:
-        lulc = rasterio.open('NDVI/Karnataka/'+tiff, mode = 'r')
+        lulc = rasterio.open(directory+tiff, mode = 'r')
         lulc_array = lulc.read(1) 
         affine = lulc.transform
         
@@ -79,7 +79,7 @@ def Trend_Score(df, index:int):
         y_pred_trend = reg.predict(X)
         slope, intercept = np.polyfit(np.array(df_trend['ModifiedDateTime_num']), y_pred_trend,1)
         line_slope = slope[0]
-
+        
     else:
         #If the dataframe is empty there are no fires in that region at all, also no slope line. We are not interested in these regions.
         line_slope = 'Unknown'
@@ -123,13 +123,19 @@ def correlation(directory, beginyear, endyear, boundaries, level):
 
     vmin, vmax = DPPD_df['Slope Score'].min() , DPPD_df['Slope Score'].max()
     vcenter = DPPD_df['Slope Score'].mean()
-    norm = TwoSlopeNorm(vmin= vmin , vcenter=vcenter, vmax= vmax) 
+    norm = TwoSlopeNorm(vmin= vmin , vcenter=vcenter, vmax= vmax)
+    res = np.array(DPPD_df['Slope Score'])
+    data_norm = np.where(res >= 0, res/np.max(res), -res/np.min(res))
+    del DPPD_df['Slope Score']
+    DPPD_df['DPPD Score'] = data_norm
+    
+    '''
     # create a normalized colorbar
     cmap = 'RdYlGn_r'
     cbar = plt.cm.ScalarMappable(norm=norm, cmap=cmap)
     base = boundaries.plot(color='white', edgecolor='black',figsize = [20,20])
     DPPD_df.plot(ax = base,
-        column = 'Slope Score', 
+        column = 'DPPD Score', 
                         legend = True, 
                         figsize = [20,20],\
                         legend_kwds = {'label': 'Deviance'}, 
@@ -137,6 +143,6 @@ def correlation(directory, beginyear, endyear, boundaries, level):
                         norm = norm)
     plt.title(text)
     plt.savefig(text + '.png', bbox_inches='tight')
-
-    return(plt.show(), DPPD_df)
+    '''
+    return(DPPD_df)
 

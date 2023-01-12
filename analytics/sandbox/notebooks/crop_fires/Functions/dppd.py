@@ -168,7 +168,7 @@ def dppd_fires(beginyear:int, endyear:int, beginmonth:int, endmonth:int, fire_da
     DPPD_df['Slope Score'] = DPPD_df['Slope Score'].astype('float')
 
     DPPD_df = gpd.GeoDataFrame(DPPD_df, geometry = DPPD_df.geometry, crs = {'init': 'epsg:4326'}) 
-    DPPD_df.to_file('C:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\DPPD_Jesse\\Fires\\results\\DPPD_Fires_'+str(beginyear) +'-' +str(beginmonth)+ '--' + str(endyear)+ '-' + str(endmonth)+level+'.geojson', driver="GeoJSON") 
+    DPPD_df.to_file(str(beginyear) +'-' +str(beginmonth)+ '--' + str(endyear)+ '-' + str(endmonth)+level+'.geojson', driver="GeoJSON") 
     #Define text for the plots
     text = 'DPPD ' + unit 
 
@@ -186,7 +186,6 @@ def dppd_fires(beginyear:int, endyear:int, beginmonth:int, endmonth:int, fire_da
                         norm = norm)
     plt.title(text)
     plt.axis('off')
-    os.chdir('c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\\sandbox\\notebooks\\crop_fires\\DPPD_Jesse\\Fires\\results')
     plt.savefig(text + '.png', bbox_inches='tight')
     
     return(plt.show(), DPPD_df)
@@ -244,7 +243,6 @@ def dppd_general(data, beginyear:int, endyear:int, beginmonth:int, endmonth:int,
                         norm = norm)
     plt.title(text)
     plt.axis('off')
-    os.chdir('c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\sandbox\\notebooks\\crop_fires\\DPPD_Jesse\\'+name+'\\result')
     plt.savefig(text + '.png', bbox_inches='tight')
     plt.show()
     return(plt.show(), DPPD_df)
@@ -272,7 +270,6 @@ def create_avg_plot(df, beginyear:int, endyear:int, name:str, level:str, unit:st
                         cmap = 'RdYlGn_r')
     plt.title(text)
     plt.axis('off')
-    os.chdir('c:\\Users\\Jesse\\OneDrive\\Documenten\\Master BAOR\\Thesis\\GitHub\\dicra\\analytics\sandbox\\notebooks\\crop_fires\\DPPD_Jesse\\'+name+'\\result')
     plt.savefig(text + '.png', bbox_inches='tight')
     return(plt.show())
 

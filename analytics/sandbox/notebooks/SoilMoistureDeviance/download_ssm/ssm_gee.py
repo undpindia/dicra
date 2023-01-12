@@ -59,29 +59,6 @@ for i in arr:
 # Open band 1 as array
 arr = os.listdir('projected/')
 
-if 'recalculated' not in os.listdir():
-    os.mkdir('recalculated')
-else:
-    print('directory exists')
-
-for i in arr:
-    ds = gdal.Open('projected/'+str(i))
-    b1 = ds.GetRasterBand(1)
-    arr_q = b1.ReadAsArray()
-   # ndv = 1
-    # apply scale factpr
-    data = arr_q*(0.0001)
-    #data = np.where(data > 1,-9999, data)
-    #data=np.where(data<0,-9999,data)
-    print(str(i))
-    # save array, using ds as a prototype
-    output="recalculated/"+str(i)
-    gdal_array.SaveArray(data.astype("float32"), output, "GTIFF", ds)
-
-    ds = None
-
-basepath='recalculated/'
-arr = os.listdir('recalculated')
 
 if 'clipped' not in os.listdir():
     os.mkdir('clipped')

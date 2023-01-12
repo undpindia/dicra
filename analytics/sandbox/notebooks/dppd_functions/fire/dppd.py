@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 def regional_fires(adm_name):
 
 
-    viirs = pd.read_csv('VIIRS.csv')  #ENTER THE CSV FILE NAME AND LOCATION HERE
+    viirs = pd.read_csv('VIIRS1.csv')  #ENTER THE CSV FILE NAME AND LOCATION HERE
 
     fire_pts = gpd.GeoDataFrame(viirs,                        #Converting fire points into dataframe
                             geometry=gpd.points_from_xy(

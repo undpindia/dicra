@@ -44,18 +44,3 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 - [Parvathy Krishnan, Data Science Lead, DiCRA](https://www.linkedin.com/in/parvathykrishnank/)
 - [Ambarish Narayanan, CTO, mistEO](https://www.linkedin.com/in/ambarishnarayanan/)
 
-### Data Science Community of Practice
-- [Jesse Swinkels, Tilburg University](https://www.linkedin.com/in/jesse-swinkels-239890195/)
-- [Mieke Couwenberg](https://www.linkedin.com/in/mieke-couwenberg/)
-- [Shivang Pandey](https://www.linkedin.com/in/shivangpandey/)
-- [Shubham Singh](https://www.linkedin.com/in/shubhamcodez/)
-- Amit
-- 
-
-### Policy Advisors
-
-### UI/UX and Communications Support
-
-### Data Science Advisors
-
-### Peer-Reviewers

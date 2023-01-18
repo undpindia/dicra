@@ -6,6 +6,8 @@ import About from "./pages/About";
 import Analytics from "./pages/Analytics";
 import Policy from "./pages/Policy";
 import Terms from "./pages/Terms";
+import FieldStories from "./pages/FieldStories";
+import Data4Policy from "./pages/Data4Policy";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
@@ -41,6 +43,12 @@ function App() {
           </Route>
           <Route path="/policy">
             <Policy />
+          </Route>
+          <Route path="/field-stories">
+            <FieldStories />
+          </Route>
+          <Route path="/data4policy">
+            <Data4Policy />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -6,6 +6,8 @@ import About from "../About.js";
 import Analytics from "../Analytics";
 import Policy from "../Policy";
 import Terms from "../Terms"
+import FieldStories from "../FieldStories.js";
+import Data4Policy from "../Data4Policy.js";
 import enzyme from "enzyme";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
@@ -49,5 +51,23 @@ describe("Test Pages Component", () => {
     ).exists();
     assert(TermsComponent === true);
     expect(TermsComponent).to.equal(true);
+  });
+  it("render Terms component with status OK", () => {
+    const FieldStoriesComponent = shallow(
+      <Provider store={store}>
+        <FieldStories/>
+      </Provider>
+    ).exists();
+    assert(FieldStoriesComponent === true);
+    expect(FieldStoriesComponent).to.equal(true);
+  });
+  it("render Terms component with status OK", () => {
+    const Data4PolicyComponent = shallow(
+      <Provider store={store}>
+        <Data4Policy/>
+      </Provider>
+    ).exists();
+    assert(Data4PolicyComponent === true);
+    expect(Data4PolicyComponent).to.equal(true);
   });
 });

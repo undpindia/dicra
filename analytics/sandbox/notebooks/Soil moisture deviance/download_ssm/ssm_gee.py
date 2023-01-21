@@ -22,9 +22,9 @@ data =json.load(f)
 data = data['features'][0]['geometry']['coordinates'][0]
 roi = ee.Geometry.Polygon(data)
 
-collection_subset = ee.ImageCollection("NASA_USDA/HSL/SMAP10KM_soil_moisture") \
-    .sort('IMAGE_DATE').select('ssm') \
-    .filterDate('2019-09-17',str(date_tdy)) # Only select images for the years 2016-present
+collection_subset = ee.ImageCollection("NASA/SMAP/SPL3SMP_E/005") \
+    .sort('IMAGE_DATE').select('soil_moisture_am') \
+    .filterDate('2015-03-31',str(date_tdy)) # Only select images for the years 2016-present
 print(collection_subset.size().getInfo()) # Shows the number of images within the subcollection
 
 image = collection_subset.first().select('ssm')  # Pick the first image from the 'list' and select the layer of interest

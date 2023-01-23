@@ -91,7 +91,7 @@ if __name__ == '__main__':
     print(np.min(res))
     data_norm = np.where(res >= 0, res/np.max(res), -res/np.min(res))
     boundary['deviance'] = list(data_norm)
-    bounndary = boundary[['index','deviance','geometry']]
+    boundary = boundary[['index','deviance','geometry']]
     #return res
     #return gpd.GeoDataFrame(boundary)
     gpd.GeoDataFrame(boundary).to_file('deviance_grid_ndvi.json')

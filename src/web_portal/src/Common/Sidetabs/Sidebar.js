@@ -377,40 +377,40 @@ class Sidebar extends React.Component {
                 <div className="container" style={{fontSize:"12px"}}>
                     <div className="row">
                       <div className="col" style={{marginTop:"10px"}}>
-                       <span style={{height:"12px", width:"12px",backgroundColor:"#dc0f0f", display:"inline-block" }}></span>  Water
+                       <span style={{height:"12px", width:"12px",backgroundColor:"#1A5BAB", display:"inline-block" }}></span>  Water
                       </div>
                       <div className="col" style={{marginTop:"10px"}}>
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#44ce5d", display:"inline-block" }}></span>  Trees
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#358221", display:"inline-block" }}></span>  Trees
                       </div>
                     </div>
                     <div className="row">
                     <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#de8313", display:"inline-block" }}></span>  Flooded Vegitation
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#87D19E", display:"inline-block" }}></span>  Flooded Vegitation
                       </div>
                       <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#dfef4d", display:"inline-block" }}></span>  Crops
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#FFDB5C", display:"inline-block" }}></span>  Crops
                       </div>
                     </div>
                     <div className="row">
                        <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#bb3cc9", display:"inline-block" }}></span>  Built Area
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#ED022A", display:"inline-block" }}></span>  Built Area
                       </div>
                       <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#455dca", display:"inline-block" }}></span>  Bare Ground
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#91908e", display:"inline-block" }}></span>  Bare Ground
                       </div>
                     </div>
                     <div className="row">
                     <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#3feabd", display:"inline-block" }}></span>  Snow / Ice
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#F2FAFF", display:"inline-block" }}></span>  Snow / Ice
                       </div>
                       <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#cf3c8d", display:"inline-block" }}></span>  Clouds
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#C8C8C8", display:"inline-block" }}></span>  Clouds
                       </div>
                     </div>
                     <div className="row">
                     <div className="col">
                       <div className="col">
-                      <span style={{height:"12px", width:"12px",backgroundColor:"#64caef", display:"inline-block" }}></span>  Rangeland
+                      <span style={{height:"12px", width:"12px",backgroundColor:"#C6AD8D", display:"inline-block" }}></span>  Rangeland
                       </div>
                     </div>
                     </div>

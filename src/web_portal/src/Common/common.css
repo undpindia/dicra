@@ -1571,3 +1571,19 @@ hr.horizontal-line {
   border-color: #c8d4e3 !important;
   box-shadow: none;
 }
+
+select optgroup[label] {
+  font-style: inherit;
+  font-weight: 300;
+  text-shadow: none;
+}
+.react-pdf__Page__canvas{
+  display: block;
+  user-select: none;
+  width: 700px !important;
+  height: auto !important;
+  /* margin-left: 17rem; */
+}
+.pdf-wrapper{
+text-align:  -webkit-center !important;
+}

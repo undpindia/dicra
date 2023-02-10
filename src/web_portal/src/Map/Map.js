@@ -664,6 +664,14 @@ export class map extends Component {
           weight: 0.5,
       };
     }
+    else if ( this.props.currentLayerType === "Vector" && this.state.layerUID === feature.properties.uid ) {
+      return {
+        opacity: 1,
+        color: "#2bf527",
+        fillOpacity: 1,
+        weight: 6,
+      };
+    }
     if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "DPPD"){
       if(this.props.CurrentRegion === "MANDAL"){
         scale = chroma
@@ -806,7 +814,43 @@ export class map extends Component {
               fillOpacity: 1,
             }; 
         }
-    }
+    } 
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "RWI"){
+      scale = chroma
+        .scale(this.props.vectorColor)
+        .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+          if(this.props.CurrentLayer === "RWI"){
+            if (feature.properties.zonalstat === undefined){
+            }else{
+            return {
+              // fillColor: this.getColor(feature.properties.zonalstat.mean),
+              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "SOC_DPPD" ? scale(feature.properties.deviance) : scale(feature.properties.zonalstat.mean),
+              weight: 1,
+              opacity: 1,
+              color: "#d65522",
+              fillOpacity: 1,
+            };
+          } 
+        }
+    } 
+    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "LAI"){
+      scale = chroma
+        .scale(this.props.vectorColor)
+        .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+          if(this.props.CurrentLayer === "LAI"){
+            if (feature.properties.zonalstat === undefined){
+            }else{
+              return {
+                // fillColor: this.getColor(feature.properties.zonalstat.mean),
+                fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "SOC_DPPD" ? scale(feature.properties.deviance) : scale(feature.properties.zonalstat.mean),
+                weight: 1,
+                opacity: 1,
+                color: "#d65522",
+                fillOpacity: 1,
+              }; 
+            }
+        }
+    } 
     if (ltype === "Vector") {
       if (this.state.layerUID === feature.properties.uid) {
         return {
@@ -836,6 +880,10 @@ export class map extends Component {
           scale = chroma
             .scale(this.props.vectorColor)
             .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+        } else if (feature.properties.zonalstat.mean > 10 && feature.properties.zonalstat.mean < 100) {
+          scale = chroma
+            .scale(this.props.vectorColor)
+            .domain([5,10,15,20,25,30,35,40,45]);
         } else {
           scale = chroma
             .scale(this.props.vectorColor)
@@ -1738,7 +1786,6 @@ export class map extends Component {
   }
   updateDimensions = () => {
     if (window.innerWidth <= 480) {
-      console.log("mobile");
       this.setState({
         mapZoom: 6.5,
       });

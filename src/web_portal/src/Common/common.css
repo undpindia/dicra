@@ -1577,3 +1577,13 @@ select optgroup[label] {
   font-weight: 300;
   text-shadow: none;
 }
+.react-pdf__Page__canvas{
+  display: block;
+  user-select: none;
+  width: 700px !important;
+  height: auto !important;
+  /* margin-left: 17rem; */
+}
+.pdf-wrapper{
+text-align:  -webkit-center !important;
+}

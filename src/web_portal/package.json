@@ -51,6 +51,7 @@
     "react-leaflet-sidebarv2": "^0.6.0",
     "react-loading-screen": "0.0.17",
     "react-multistep": "^5.3.0",
+    "react-pdf": "^5.7.0",
     "react-read-more-read-less": "^1.0.7",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",

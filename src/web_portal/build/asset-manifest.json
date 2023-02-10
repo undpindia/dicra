@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.fde64d69.chunk.css",
-    "main.js": "/static/js/main.2bef1cf6.chunk.js",
-    "main.js.map": "/static/js/main.2bef1cf6.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.0d0d8b3f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.0d0d8b3f.js.map",
-    "static/css/2.559f039e.chunk.css": "/static/css/2.559f039e.chunk.css",
-    "static/js/2.3c4b3e6a.chunk.js": "/static/js/2.3c4b3e6a.chunk.js",
-    "static/js/2.3c4b3e6a.chunk.js.map": "/static/js/2.3c4b3e6a.chunk.js.map",
-    "static/js/3.1194114c.chunk.js": "/static/js/3.1194114c.chunk.js",
-    "static/js/3.1194114c.chunk.js.map": "/static/js/3.1194114c.chunk.js.map",
+    "main.js": "/static/js/main.2d0beec6.chunk.js",
+    "main.js.map": "/static/js/main.2d0beec6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a44a68fc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a44a68fc.js.map",
+    "static/css/2.d6cf406d.chunk.css": "/static/css/2.d6cf406d.chunk.css",
+    "static/js/2.414c7c16.chunk.js": "/static/js/2.414c7c16.chunk.js",
+    "static/js/2.414c7c16.chunk.js.map": "/static/js/2.414c7c16.chunk.js.map",
+    "static/js/3.8cea23ca.chunk.js": "/static/js/3.8cea23ca.chunk.js",
+    "static/js/3.8cea23ca.chunk.js.map": "/static/js/3.8cea23ca.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.559f039e.chunk.css.map": "/static/css/2.559f039e.chunk.css.map",
+    "static/css/2.d6cf406d.chunk.css.map": "/static/css/2.d6cf406d.chunk.css.map",
     "static/css/main.fde64d69.chunk.css.map": "/static/css/main.fde64d69.chunk.css.map",
-    "static/js/2.3c4b3e6a.chunk.js.LICENSE.txt": "/static/js/2.3c4b3e6a.chunk.js.LICENSE.txt",
+    "static/js/2.414c7c16.chunk.js.LICENSE.txt": "/static/js/2.414c7c16.chunk.js.LICENSE.txt",
     "static/media/Climate Resilient Agriculture_Filed Stories_Telangana.482e884d.pdf": "/static/media/Climate Resilient Agriculture_Filed Stories_Telangana.482e884d.pdf",
     "static/media/MistEO_Logo_Square.b889124b.png": "/static/media/MistEO_Logo_Square.b889124b.png",
     "static/media/UNDP_Report.bcb9b2d5.pdf": "/static/media/UNDP_Report.bcb9b2d5.pdf",
@@ -31,10 +31,10 @@
     "static/media/undp-logo.b5da5b26.png": "/static/media/undp-logo.b5da5b26.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0d0d8b3f.js",
-    "static/css/2.559f039e.chunk.css",
-    "static/js/2.3c4b3e6a.chunk.js",
+    "static/js/runtime-main.a44a68fc.js",
+    "static/css/2.d6cf406d.chunk.css",
+    "static/js/2.414c7c16.chunk.js",
     "static/css/main.fde64d69.chunk.css",
-    "static/js/main.2bef1cf6.chunk.js"
+    "static/js/main.2d0beec6.chunk.js"
   ]
 }

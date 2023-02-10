@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../Common/common.css";
 import Header from "../Common/Header";
 import { BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { Row, Col} from "reactstrap";
-import { Document, Page, pdfjs  } from 'react-pdf';
 import PDF from "../pdf/UNDP_Report.pdf"
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
+import { Worker, Viewer } from "@react-pdf-viewer/core";
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 const Data4Policy = () => {
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber] = useState(1);
-  
-    function onDocumentLoadSuccess({ numPages }) {
-      setNumPages(numPages);
-    }
+    const defaultLayoutPluginInstance = defaultLayoutPlugin();
     return (
       <React.Fragment>
         <div className="page-header">
@@ -33,16 +29,11 @@ const Data4Policy = () => {
               <div className="container about-page">
                 <Row>
                   <Col className="pdf-wrapper">
-                    <Document
-                    file={PDF}
-                    onLoadSuccess={onDocumentLoadSuccess}
-                    showToolbar= {true}
-                >{Array.apply(null, Array(numPages))
-                  .map((x, i)=>i+1)
-                  .map(page => <Page pageNumber={page}/>)}
-                    
-                </Document>
-      <p>Page {pageNumber} of {numPages}</p>
+                    <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+                  <div>
+                    <Viewer fileUrl={PDF} plugins={[defaultLayoutPluginInstance]} />
+                  </div>
+                </Worker>
                   </Col>
                 </Row>
               </div>

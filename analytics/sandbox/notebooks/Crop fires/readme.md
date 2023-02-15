@@ -1,3 +1,9 @@
+# Important Steps to take
+update FIRMS data and extract latest data from "notebooks/Crop fires/Download_FIRMS.ipynb"
+Calculate DPPD using "notebooks/Crop fires/DPPD_Jesse/Fires/DPPD_fires_DS.ipynb" and define boundary, LULC data address accordingly
+<br>
+<br>
+<br><br><br><br>s
 ## References
 
 - [Stubble burning in Northern India](https://earthobservatory.nasa.gov/images/84680/stubble-burning-in-northern-india)

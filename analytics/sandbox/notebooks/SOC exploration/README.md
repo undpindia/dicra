@@ -5,6 +5,10 @@ Sequestering carbon in SOC has been suggested as one way to mitigate climate cha
 The argument is that small increases of SOC over very large areas in agricultural and pastoral lands will significantly reduce atmospheric carbon dioxide.<br>
 SOC is crucial to soil health, fertility and ecosystem services, including food production – making its preservation and restoration essential for sustainable development.<br><br>
 
+
+## Download data:
+SOC data can be downloaded using script "SOC_Download.ipynb"
+
 ## Types of Soil Organic Carbon data
 
 ### Products:

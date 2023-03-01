@@ -1,0 +1,16 @@
+soilgrids
+geopandas
+matplotlib
+seaborn
+rasterio
+rasterstats
+sklearn
+#ee
+#geemap
+#json
+#subprocess
+rasterio
+statsmodels
+numpy
+#multiprocessing
+#functools

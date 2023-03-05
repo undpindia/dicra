@@ -5,7 +5,7 @@
 #First, install the essential libraries
 
 !pip install geopandas
-!pip install geoplot #-- failed
+#!pip install geoplot #-- failed
 !pip install rasterio
 !pip install rasterstats
 !pip install rioxarray

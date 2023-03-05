@@ -21,19 +21,19 @@ body {
 }
 
 .header {
+  background-color: #143461;
   z-index: 998;
   height: 70px;
-  background-image: linear-gradient(#080808, rgba(0, 0, 0, .2));
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0
 }
 
 .page-header {
+  background-color: #143461;
   z-index: 998;
   height: 70px;
-  background-color: #000;
-  position: sticky;
+  position: fixed;
   width: 100%;
   top: 0
 }
@@ -52,23 +52,27 @@ body {
 }
 
 .dicra {
-  font-size: 28px;
-  color: #fff;
-  margin-top: 2px;
-  padding-left: 0;
-  padding-right: 0;
+  position: relative;
   text-align: left;
-  margin-left: 11px
+  font-size: 20px;
+  margin-left: 20px;
+  color: #FFFFFF;
+  top: 6px;
 }
 
 .heading {
-  color: #d9d9d9;
+  /* color: #d9d9d9;
   position: relative;
   top: -6px;
-  font-size: 16px
+  font-size: 16px */
+  position: relative;
+  text-align: left;
+  font-size: 10px;
+  margin-left: 21px;
+  color: #FFFFFF;
 }
 
-.telangana {
+/* .telangana {
   background-color: #40822c;
   color: #fff;
   border-radius: 3px;
@@ -80,7 +84,7 @@ body {
   position: relative;
   margin-left: 10px;
   top: -5px
-}
+} */
 
 .col.undp-logo {
   float: right;
@@ -96,32 +100,51 @@ body {
   margin-top: 10px
 }
 
-.leaflet-bar {
+/* .leaflet-bar {
   top: 236px
-}
+} */
 
 .leaflet-touch .leaflet-bar a {
-  background-color: #282929;
-  color: #90989b
-}
+background: rgba(255, 255, 255, 0.4);
+box-shadow: 0px 2.42857px 6.47619px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(45px);
+color: #FFFFFF;
+/* Note: backdrop-filter has minimal browser support */
 
-.leaflet-touch .leaflet-bar a:first-child {
-  margin-bottom: 12px
+/* border-radius: 12.1429px; */
+width: 40px !important;
+height: 42.5px !important;
+
 }
+.leaflet-touch .leaflet-bar a {
+  width: 30px;
+  height: 30px;
+  line-height: 40px !important;
+}
+/* .leaflet-touch .leaflet-bar a:first-child {
+  margin-bottom: 12px
+} */
 
 .leaflet-bar a,
 .leaflet-bar a:hover {
   border-bottom: none
 }
 
-.leaflet-touch .leaflet-bar a:last-child {
+/* .leaflet-touch .leaflet-bar a:last-child {
   border-radius: 4px
 }
 
 .leaflet-touch .leaflet-bar a:first-child {
   border-radius: 4px
+} */
+.leaflet-touch .leaflet-bar a:first-child {
+  border-top-left-radius: 12.1429px;
+  border-top-right-radius: 12.1429px;
 }
-
+.leaflet-touch .leaflet-bar a:last-child {
+  border-bottom-left-radius: 12.1429px;
+  border-bottom-right-radius: 12.1429px;
+}
 .ant-drawer-header {
   background-color: #021725;
   border: none !important
@@ -171,8 +194,9 @@ body {
 }
 
 .ant-radio-button-wrapper {
-  background: #282929;
-  color: #90989b
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3.66px;
+  color: #FFFFFF;
 }
 
 .ant-radio-button-wrapper:first-child {
@@ -374,11 +398,14 @@ input:-internal-autofill-selected {
 }
 
 .selection {
-  width: 98px;
+  width: 250px;
   position: absolute;
-  right: 67px;
-  top: 80px;
-  z-index: 999
+  right: 27px;
+  top: 227px;
+  z-index: 999;
+  background: #143461;
+  border-radius: 7.31292px;
+  height: 56px;
 }
 
 .selection-collapsed {
@@ -392,12 +419,13 @@ input:-internal-autofill-selected {
 .btn-toggle {
   z-index: 999;
   position: absolute;
-  right: 10px;
-  top: 135px;
+  right: 27px;
+  top: 157px;
   padding: 7px 6px;
-  background-color: #282929;
-  border-radius: 5px;
-  width: 155px
+  background: #143461;
+  border-radius: 7.31292px;
+  width: 250px;
+  height: 56px;
 }
 
 .btn-toggleLayer {
@@ -412,18 +440,21 @@ input:-internal-autofill-selected {
 
 .btn-toggleBaseMap {
   z-index: 999;
-  position: absolute;
-  right: 10px;
-  top: 193px;
-  padding: 0;
-  border-radius: 5px;
-  width: 155px
+    position: absolute;
+    right: 27px;
+    top: 87px;
+    padding: 0;
+    width: 250px;
+    background: #143461;
+    border-radius: 7.31292px;
+    height: 56px;
 }
 
 .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
-  color: #fff;
-  background: #033564;
-  border-color: #033564
+  color: #143461;
+  background: #FFFFFF;;
+  border-color: #FFFFFF;
+
 }
 
 :focus {
@@ -657,16 +688,20 @@ ul {
 
 .btn-home {
   position: absolute;
-  padding: 0 7px 5px 7px;
-  border-radius: 3px;
-  background-color: #282929;
-  color: #90989b;
-  right: 53px;
-  top: 247px;
+  padding: 3px 4px 3px 5px;
+  color: #FFFFFF;
+  right: 82px;
+  bottom: 50px;
   z-index: 9999;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 0 2px 0 #000
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 2.42857px 6.47619px rgb(0 0 0 / 10%);
+  -webkit-backdrop-filter: blur(45px);
+  backdrop-filter: blur(45px);
+  border-radius: 12.1429px;
+  width: 40px;
+  height: 42px;
 }
 
 .ant-message {
@@ -994,7 +1029,9 @@ hr.horizontal-line {
 .leaflet-touch .leaflet-control-layers {
   border: none !important;
   position: relative;
-  right: -9px
+  right: 7px;
+  z-index: 9999;
+  bottom: 23px;
 }
 
 .ant-radio-button-wrapper-disabled:first-child.ant-radio-button-wrapper-disabled:hover {

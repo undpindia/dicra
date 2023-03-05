@@ -8,6 +8,7 @@ import Policy from "./pages/Policy";
 import Terms from "./pages/Terms";
 import FieldStories from "./pages/FieldStories";
 import Data4Policy from "./pages/Data4Policy";
+import LandingPage from "./LandingPage/Landing";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
@@ -26,7 +27,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
+        <Route exact path="/">
+          <LandingPage />
+          </Route>
+          <Route exact path="/telangana">
           <Map />
           </Route>
           <Route path="/use-cases">

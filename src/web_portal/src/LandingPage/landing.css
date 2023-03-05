@@ -1,0 +1,49 @@
+.landing-header {
+  background-color: #143461;
+  z-index: 998;
+  height: 70px;
+
+  position: fixed;
+  width: 100%;
+  top: 0
+}
+
+/* body {
+  background-color: #091B33;
+} */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  padding: 10px;
+}
+
+.img-card {
+  background-color: none !important;
+  /* border-radius: 0.25rem; */
+  /* box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25); */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  ;
+}
+
+
+/* .img-card img:hover {
+    transform: scale(1.1);
+  } */
+
+.col.undp-logo-new {
+  float: right;
+  padding: 0;
+  position: relative;
+  right: 31px;
+  top: 10px;
+}

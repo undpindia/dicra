@@ -10,9 +10,10 @@ export default class Header extends Component {
     return (
       <React.Fragment>
         <div className="topnav-left">
-          <Row>
+          <Row style={{marginTop:"5px"}}>
             <Col className="dicra">
-              DiCRA<span className="telangana">Telangana</span>
+              DiCRA
+              {/* <span className="telangana">Telangana</span> */}
             </Col>
           </Row>
           <div className="heading">Data in Climate Resilient Agriculture</div>
@@ -23,7 +24,7 @@ export default class Header extends Component {
               <img src={Telangana} width={50} height={50} alt="Telengana" />
             </Col>
             <Col className="undp-logo">
-              <img src={Undp} width={25} height={50} alt="Undp" />
+              <img src={Undp} width={23} height={50} alt="Undp" />
             </Col>
           </Row>
         </div>

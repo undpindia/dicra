@@ -86,8 +86,10 @@ const mapStateToProps = (ReduxProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setVectorColor: (col) => dispatch({ type: "SETCOLOR_SCALE", payload: col }),
-    setDevcfvectorColor: (col) => dispatch({ type: "SETDEVCFCOLOR_SCALE", payload: col }),
-    setDevvectorColor: (col) => dispatch({ type: "SETDEVCOLOR_SCALE", payload: col }),
+    setDevcfvectorColor: (col) =>
+      dispatch({ type: "SETDEVCFCOLOR_SCALE", payload: col }),
+    setDevvectorColor: (col) =>
+      dispatch({ type: "SETDEVCOLOR_SCALE", payload: col }),
     setvalue: (val) => dispatch({ type: "SETVALUE", payload: val }),
     setplace: (plc) => dispatch({ type: "SETPLACE", payload: plc }),
     VectorLoader: () => dispatch({ type: "ENABLEVECTOR" }),
@@ -292,8 +294,7 @@ export class map extends Component {
     this.formatgeojson(e.sourceTarget.feature);
     if (this.props.CurrentLayer === "FIREEV") {
       this.getCountEvents(e);
-    }
-    else if (this.props.CurrentLayer === "WH") {
+    } else if (this.props.CurrentLayer === "WH") {
     } else if (this.props.CurrentLayer === "CP") {
       // this.CPchild.current.showDrawer();
     } else if (this.props.CurrentLayer === "WEATHER") {
@@ -327,142 +328,134 @@ export class map extends Component {
           this.child.current.getLULC();
         }
       );
-    }
-      else if (this.props.CurrentLayer === "DPPD") {
-        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
-        area = area / 1000000;
-        this.setState({
-          area: parseFloat(area).toFixed(2),
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties["Slope Score"]
-          ).toFixed(5),
-        });
-        this.setState(
-          {
-            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          },
-          () => {
-            this.child.current.showDrawer();
-            this.child.current.setPointsChart();
-          }
-        );
-      } 
-      else if (this.props.CurrentLayer === "LAI_DPPD") {
-        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
-        area = area / 1000000;
-        this.setState({
-          area: parseFloat(area).toFixed(2),
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties["DPPD score"]
-          ).toFixed(5),
-        });
-        this.setState(
-          {
-            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          },
-          () => {
-            this.child.current.showDrawer();
-            // this.child.current.gettrendchart();
-            this.child.current.settimerange("1Year");
-          }
-        );
-      } 
-      else if (this.props.CurrentLayer === "NDVI_DPPD") {
-        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
-        area = area / 1000000;
-        this.setState({
-          area: parseFloat(area).toFixed(2),
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties["DPPD score"]
-          ).toFixed(5),
-        });
-        this.setState(
-          {
-            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          },
-          () => {
-            this.child.current.showDrawer();
-            // this.child.current.gettrendchart();
-            this.child.current.settimerange("1Year");
-          }
-        );
-      } 
-      else if (this.props.CurrentLayer === "LST_DPPD") {
-        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
-        area = area / 1000000;
-        this.setState({
-          area: parseFloat(area).toFixed(2),
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties["DPPD score"]
-          ).toFixed(5),
-        });
-        this.setState(
-          {
-            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          },
-          () => {
-            this.child.current.showDrawer();
-            this.child.current.settimerange("1Year");
-          }
-        );
-      }  
-      else if (this.props.CurrentLayer === "NO2_DPPD") {
-        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
-        area = area / 1000000;
-        this.setState({
-          area: parseFloat(area).toFixed(2),
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties["Slope Score"]
-          ).toFixed(5),
-        });
-        this.setState(
-          {
-            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          },
-          () => {
-            this.child.current.showDrawer();
-            this.child.current.settimerange("1Year");
-          }
-        );
-      }  
-      else if (this.props.CurrentLayer === "PM25_DPPD") {
-        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
-        area = area / 1000000;
-        this.setState({
-          area: parseFloat(area).toFixed(2),
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties["Slope Score"]
-          ).toFixed(5),
-        });
-        this.setState(
-          {
-            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          },
-          () => {
-            this.child.current.showDrawer();
-            this.child.current.settimerange("1Year");
-          }
-        );
-      } 
-      else if (this.props.CurrentLayer === "SOC_DPPD") {
-        area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
-        area = area / 1000000;
-        this.setState({
-          area: parseFloat(area).toFixed(2),
-          areaValue: parseFloat(
-            e.sourceTarget.feature.properties.deviance
-          ).toFixed(5),
-        });
-        this.setState(
-          {
-            selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
-          },
-          () => {
-            this.child.current.showDrawer();
-          }
-        );
-      }   
-      else if (this.props.CurrentLayer === "POPULATION") {
+    } else if (this.props.CurrentLayer === "DPPD") {
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = area / 1000000;
+      this.setState({
+        area: parseFloat(area).toFixed(2),
+        areaValue: parseFloat(
+          e.sourceTarget.feature.properties["Slope Score"]
+        ).toFixed(5),
+      });
+      this.setState(
+        {
+          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+        },
+        () => {
+          this.child.current.showDrawer();
+          this.child.current.setPointsChart();
+        }
+      );
+    } else if (this.props.CurrentLayer === "LAI_DPPD") {
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = area / 1000000;
+      this.setState({
+        area: parseFloat(area).toFixed(2),
+        areaValue: parseFloat(
+          e.sourceTarget.feature.properties["DPPD score"]
+        ).toFixed(5),
+      });
+      this.setState(
+        {
+          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+        },
+        () => {
+          this.child.current.showDrawer();
+          // this.child.current.gettrendchart();
+          this.child.current.settimerange("1Year");
+        }
+      );
+    } else if (this.props.CurrentLayer === "NDVI_DPPD") {
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = area / 1000000;
+      this.setState({
+        area: parseFloat(area).toFixed(2),
+        areaValue: parseFloat(
+          e.sourceTarget.feature.properties["DPPD score"]
+        ).toFixed(5),
+      });
+      this.setState(
+        {
+          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+        },
+        () => {
+          this.child.current.showDrawer();
+          // this.child.current.gettrendchart();
+          this.child.current.settimerange("1Year");
+        }
+      );
+    } else if (this.props.CurrentLayer === "LST_DPPD") {
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = area / 1000000;
+      this.setState({
+        area: parseFloat(area).toFixed(2),
+        areaValue: parseFloat(
+          e.sourceTarget.feature.properties["DPPD score"]
+        ).toFixed(5),
+      });
+      this.setState(
+        {
+          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+        },
+        () => {
+          this.child.current.showDrawer();
+          this.child.current.settimerange("1Year");
+        }
+      );
+    } else if (this.props.CurrentLayer === "NO2_DPPD") {
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = area / 1000000;
+      this.setState({
+        area: parseFloat(area).toFixed(2),
+        areaValue: parseFloat(
+          e.sourceTarget.feature.properties["Slope Score"]
+        ).toFixed(5),
+      });
+      this.setState(
+        {
+          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+        },
+        () => {
+          this.child.current.showDrawer();
+          this.child.current.settimerange("1Year");
+        }
+      );
+    } else if (this.props.CurrentLayer === "PM25_DPPD") {
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = area / 1000000;
+      this.setState({
+        area: parseFloat(area).toFixed(2),
+        areaValue: parseFloat(
+          e.sourceTarget.feature.properties["Slope Score"]
+        ).toFixed(5),
+      });
+      this.setState(
+        {
+          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+        },
+        () => {
+          this.child.current.showDrawer();
+          this.child.current.settimerange("1Year");
+        }
+      );
+    } else if (this.props.CurrentLayer === "SOC_DPPD") {
+      area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
+      area = area / 1000000;
+      this.setState({
+        area: parseFloat(area).toFixed(2),
+        areaValue: parseFloat(
+          e.sourceTarget.feature.properties.deviance
+        ).toFixed(5),
+      });
+      this.setState(
+        {
+          selectedRegion: e.sourceTarget.feature.properties.Dist_Name,
+        },
+        () => {
+          this.child.current.showDrawer();
+        }
+      );
+    } else if (this.props.CurrentLayer === "POPULATION") {
       this.setState(
         {
           areaValue: parseInt(e.sourceTarget.feature.properties.zonalstat.sum),
@@ -510,9 +503,8 @@ export class map extends Component {
       });
 
       this.child.current.showDrawer();
-    }
-     else {
-      if( e.sourceTarget.feature.properties !== undefined){
+    } else {
+      if (e.sourceTarget.feature.properties !== undefined) {
         this.setState(
           {
             areaValue: parseFloat(
@@ -530,10 +522,9 @@ export class map extends Component {
             this.child.current.settimerange("1Year");
           }
         );
-      }else{
-        console.log()
+      } else {
+        console.log();
       }
-      
 
       area = geojsonArea.geometry(e.sourceTarget.feature.geometry);
       area = area / 1000000;
@@ -635,36 +626,38 @@ export class map extends Component {
     if (this.props.CurrentLayer === "LULC") {
       return {
         opacity: 1,
-          color: "#d65522",
-          fillOpacity: 0,
-          weight: 0.5,
+        color: "#d65522",
+        fillOpacity: 0,
+        weight: 0.5,
       };
     }
     if (this.props.CurrentLayer === "FIREEV") {
       return {
         opacity: 1,
-          color: "#d65522",
-          fillOpacity: 0,
-          weight: 0.5,
+        color: "#d65522",
+        fillOpacity: 0,
+        weight: 0.5,
       };
     }
     if (this.props.CurrentLayer === "CP") {
       return {
         opacity: 1,
-          color: "#d65522",
-          fillOpacity: 0,
-          weight: 0.5,
+        color: "#d65522",
+        fillOpacity: 0,
+        weight: 0.5,
       };
     }
     if (this.props.CurrentLayer === "WH") {
       return {
         opacity: 1,
-          color: "#d65522",
-          fillOpacity: 0,
-          weight: 0.5,
+        color: "#d65522",
+        fillOpacity: 0,
+        weight: 0.5,
       };
-    }
-    else if ( this.props.currentLayerType === "Vector" && this.state.layerUID === feature.properties.uid ) {
+    } else if (
+      this.props.currentLayerType === "Vector" &&
+      this.state.layerUID === feature.properties.uid
+    ) {
       return {
         opacity: 1,
         color: "#2bf527",
@@ -672,185 +665,256 @@ export class map extends Component {
         weight: 6,
       };
     }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "DPPD"){
-      if(this.props.CurrentRegion === "MANDAL"){
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "DPPD"
+    ) {
+      if (this.props.CurrentRegion === "MANDAL") {
         scale = chroma
-        .scale(this.props.DevcfvectorColor)
-        .domain([-0.015,-0.010,-0.005,0,0.005,0.010,0.015]);
-      } else{
+          .scale(this.props.DevcfvectorColor)
+          .domain([-0.015, -0.01, -0.005, 0, 0.005, 0.01, 0.015]);
+      } else {
         scale = chroma
-        .scale(this.props.DevcfvectorColor)
-        .domain([-0.08,-0.06,-0.04,-0.02,0,0.02,0.04,0.06,0.08]);
+          .scale(this.props.DevcfvectorColor)
+          .domain([-0.08, -0.06, -0.04, -0.02, 0, 0.02, 0.04, 0.06, 0.08]);
       }
-      
-        if (feature.properties.zonalstat === undefined){
-          if(this.props.CurrentLayer === "DPPD"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-          }
-          else{
-            console.log()
-          }
+
+      if (feature.properties.zonalstat === undefined) {
+        if (this.props.CurrentLayer === "DPPD") {
+          return {
+            // fillColor: this.getColor(feature.properties.zonalstat.mean),
+            fillColor:
+              this.props.CurrentLayer === "DPPD"
+                ? scale(feature.properties["Slope Score"])
+                : scale(feature.properties.zonalstat.mean),
+            weight: 1,
+            opacity: 1,
+            color: "#d65522",
+            fillOpacity: 1,
+          };
+        } else {
+          console.log();
         }
-    }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "SOIL_M_DEV"){
-      if(this.props.CurrentRegion === "MANDAL"){
-        scale = chroma
-        .scale(this.props.DevvectorColor)
-        .domain([-1,-0.07,-0.05,-0.03,0,0.03,0.05,0.07,1]);
-      } else{
-        scale = chroma
-        .scale(this.props.DevvectorColor)
-        .domain([-0.08,-0.06,-0.04,-0.02,0,0.02,0.04,0.06,0.08]);
       }
-        if (feature.properties.zonalstat !== undefined){
-          if(this.props.CurrentLayer === "SOIL_M_DEV"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-          }
-          else{
-            console.log()
-          }
-        }
     }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "LAI_DPPD"){
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "SOIL_M_DEV"
+    ) {
+      if (this.props.CurrentRegion === "MANDAL") {
+        scale = chroma
+          .scale(this.props.DevvectorColor)
+          .domain([-1, -0.07, -0.05, -0.03, 0, 0.03, 0.05, 0.07, 1]);
+      } else {
+        scale = chroma
+          .scale(this.props.DevvectorColor)
+          .domain([-0.08, -0.06, -0.04, -0.02, 0, 0.02, 0.04, 0.06, 0.08]);
+      }
+      if (feature.properties.zonalstat !== undefined) {
+        if (this.props.CurrentLayer === "SOIL_M_DEV") {
+          return {
+            // fillColor: this.getColor(feature.properties.zonalstat.mean),
+            fillColor: scale(feature.properties.zonalstat.mean),
+            weight: 1,
+            opacity: 1,
+            color: "#d65522",
+            fillOpacity: 1,
+          };
+        } else {
+          console.log();
+        }
+      }
+    }
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "LAI_DPPD"
+    ) {
       scale = chroma
         .scale(this.props.DevvectorColor)
-        .domain([-0.004,-0.003,-0.002,-0.001,0,0.001,0.002,0.003,0.004]);
-          if(this.props.CurrentLayer === "LAI_DPPD"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "LAI_DPPD" ? scale(feature.properties["DPPD score"]) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-        }
+        .domain([
+          -0.004, -0.003, -0.002, -0.001, 0, 0.001, 0.002, 0.003, 0.004,
+        ]);
+      if (this.props.CurrentLayer === "LAI_DPPD") {
+        return {
+          // fillColor: this.getColor(feature.properties.zonalstat.mean),
+          fillColor:
+            this.props.CurrentLayer === "DPPD"
+              ? scale(feature.properties["Slope Score"])
+              : this.props.CurrentLayer === "LAI_DPPD"
+              ? scale(feature.properties["DPPD score"])
+              : scale(feature.properties.zonalstat.mean),
+          weight: 1,
+          opacity: 1,
+          color: "#d65522",
+          fillOpacity: 1,
+        };
+      }
     }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "NDVI_DPPD"){
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "NDVI_DPPD"
+    ) {
       scale = chroma
         .scale(this.props.DevvectorColor)
-        .domain([-1,-0.0009,-0.00050,-0.00030,0,0.0003,0.0005,0.0009,1]);
-          if(this.props.CurrentLayer === "NDVI_DPPD"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "NDVI_DPPD" ? scale(feature.properties["DPPD score"]) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-        }
+        .domain([-1, -0.0009, -0.0005, -0.0003, 0, 0.0003, 0.0005, 0.0009, 1]);
+      if (this.props.CurrentLayer === "NDVI_DPPD") {
+        return {
+          // fillColor: this.getColor(feature.properties.zonalstat.mean),
+          fillColor:
+            this.props.CurrentLayer === "DPPD"
+              ? scale(feature.properties["Slope Score"])
+              : this.props.CurrentLayer === "NDVI_DPPD"
+              ? scale(feature.properties["DPPD score"])
+              : scale(feature.properties.zonalstat.mean),
+          weight: 1,
+          opacity: 1,
+          color: "#d65522",
+          fillOpacity: 1,
+        };
+      }
     }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "LST_DPPD"){
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "LST_DPPD"
+    ) {
       scale = chroma
         .scale(this.props.DevvectorColor)
-        .domain([-1,-0.00050,-0.00030,0, 0.00030, 0.00050,1]);
-          if(this.props.CurrentLayer === "LST_DPPD"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "LST_DPPD" ? scale(feature.properties["DPPD score"]) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-        }
+        .domain([-1, -0.0005, -0.0003, 0, 0.0003, 0.0005, 1]);
+      if (this.props.CurrentLayer === "LST_DPPD") {
+        return {
+          // fillColor: this.getColor(feature.properties.zonalstat.mean),
+          fillColor:
+            this.props.CurrentLayer === "DPPD"
+              ? scale(feature.properties["Slope Score"])
+              : this.props.CurrentLayer === "LST_DPPD"
+              ? scale(feature.properties["DPPD score"])
+              : scale(feature.properties.zonalstat.mean),
+          weight: 1,
+          opacity: 1,
+          color: "#d65522",
+          fillOpacity: 1,
+        };
+      }
     }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "NO2_DPPD"){
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "NO2_DPPD"
+    ) {
       scale = chroma
         .scale(this.props.DevvectorColor)
-        .domain([-1,-0.50,-0.30,0, 0.30, 0.50,1]);
-          if(this.props.CurrentLayer === "NO2_DPPD"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "NO2_DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-        }
+        .domain([-1, -0.5, -0.3, 0, 0.3, 0.5, 1]);
+      if (this.props.CurrentLayer === "NO2_DPPD") {
+        return {
+          // fillColor: this.getColor(feature.properties.zonalstat.mean),
+          fillColor:
+            this.props.CurrentLayer === "NO2_DPPD"
+              ? scale(feature.properties["Slope Score"])
+              : scale(feature.properties.zonalstat.mean),
+          weight: 1,
+          opacity: 1,
+          color: "#d65522",
+          fillOpacity: 1,
+        };
+      }
     }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "PM25_DPPD"){
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "PM25_DPPD"
+    ) {
       scale = chroma
         .scale(this.props.DevvectorColor)
-        .domain([-1,-0.050,-0.030,0, 0.030, 0.050,1]);
-          if(this.props.CurrentLayer === "PM25_DPPD"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "PM25_DPPD" ? scale(feature.properties["Slope Score"]) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-        }
+        .domain([-1, -0.05, -0.03, 0, 0.03, 0.05, 1]);
+      if (this.props.CurrentLayer === "PM25_DPPD") {
+        return {
+          // fillColor: this.getColor(feature.properties.zonalstat.mean),
+          fillColor:
+            this.props.CurrentLayer === "DPPD"
+              ? scale(feature.properties["Slope Score"])
+              : this.props.CurrentLayer === "PM25_DPPD"
+              ? scale(feature.properties["Slope Score"])
+              : scale(feature.properties.zonalstat.mean),
+          weight: 1,
+          opacity: 1,
+          color: "#d65522",
+          fillOpacity: 1,
+        };
+      }
     }
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "SOC_DPPD"){
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "SOC_DPPD"
+    ) {
       scale = chroma
         .scale(this.props.DevvectorColor)
-        .domain([-1,-0.70,-0.50,-0.30,0, 0.30, 0.50,0.70,1]);
-          if(this.props.CurrentLayer === "SOC_DPPD"){
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "SOC_DPPD" ? scale(feature.properties.deviance) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            }; 
-        }
-    } 
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "RWI"){
+        .domain([-1, -0.7, -0.5, -0.3, 0, 0.3, 0.5, 0.7, 1]);
+      if (this.props.CurrentLayer === "SOC_DPPD") {
+        return {
+          // fillColor: this.getColor(feature.properties.zonalstat.mean),
+          fillColor:
+            this.props.CurrentLayer === "DPPD"
+              ? scale(feature.properties["Slope Score"])
+              : this.props.CurrentLayer === "SOC_DPPD"
+              ? scale(feature.properties.deviance)
+              : scale(feature.properties.zonalstat.mean),
+          weight: 1,
+          opacity: 1,
+          color: "#d65522",
+          fillOpacity: 1,
+        };
+      }
+    }
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "RWI"
+    ) {
       scale = chroma
         .scale(this.props.vectorColor)
         .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-          if(this.props.CurrentLayer === "RWI"){
-            if (feature.properties.zonalstat === undefined){
-            }else{
-            return {
-              // fillColor: this.getColor(feature.properties.zonalstat.mean),
-              fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "SOC_DPPD" ? scale(feature.properties.deviance) : scale(feature.properties.zonalstat.mean),
-              weight: 1,
-              opacity: 1,
-              color: "#d65522",
-              fillOpacity: 1,
-            };
-          } 
+      if (this.props.CurrentLayer === "RWI") {
+        if (feature.properties.zonalstat === undefined) {
+        } else {
+          return {
+            // fillColor: this.getColor(feature.properties.zonalstat.mean),
+            fillColor:
+              this.props.CurrentLayer === "DPPD"
+                ? scale(feature.properties["Slope Score"])
+                : this.props.CurrentLayer === "SOC_DPPD"
+                ? scale(feature.properties.deviance)
+                : scale(feature.properties.zonalstat.mean),
+            weight: 1,
+            opacity: 1,
+            color: "#d65522",
+            fillOpacity: 1,
+          };
         }
-    } 
-    if( this.props.currentLayerType === "Vector" && this.props.CurrentLayer === "LAI"){
+      }
+    }
+    if (
+      this.props.currentLayerType === "Vector" &&
+      this.props.CurrentLayer === "LAI"
+    ) {
       scale = chroma
         .scale(this.props.vectorColor)
         .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-          if(this.props.CurrentLayer === "LAI"){
-            if (feature.properties.zonalstat === undefined){
-            }else{
-              return {
-                // fillColor: this.getColor(feature.properties.zonalstat.mean),
-                fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "SOC_DPPD" ? scale(feature.properties.deviance) : scale(feature.properties.zonalstat.mean),
-                weight: 1,
-                opacity: 1,
-                color: "#d65522",
-                fillOpacity: 1,
-              }; 
-            }
+      if (this.props.CurrentLayer === "LAI") {
+        if (feature.properties.zonalstat === undefined) {
+        } else {
+          return {
+            // fillColor: this.getColor(feature.properties.zonalstat.mean),
+            fillColor:
+              this.props.CurrentLayer === "DPPD"
+                ? scale(feature.properties["Slope Score"])
+                : this.props.CurrentLayer === "SOC_DPPD"
+                ? scale(feature.properties.deviance)
+                : scale(feature.properties.zonalstat.mean),
+            weight: 1,
+            opacity: 1,
+            color: "#d65522",
+            fillOpacity: 1,
+          };
         }
-    } 
+      }
+    }
     if (ltype === "Vector") {
       if (this.state.layerUID === feature.properties.uid) {
         return {
@@ -860,7 +924,7 @@ export class map extends Component {
           weight: 1,
         };
       } else {
-        if (feature.properties.zonalstat === undefined){
+        if (feature.properties.zonalstat === undefined) {
           // if(this.props.CurrentLayer === "DPPD"){
           //   return {
           //     // fillColor: this.getColor(feature.properties.zonalstat.mean),
@@ -869,38 +933,44 @@ export class map extends Component {
           //     opacity: 1,
           //     color: "#d65522",
           //     fillOpacity: 1,
-          //   }; 
+          //   };
           // }
           // else{
           //   console.log()
           // }
-        }
-        else { 
-        if (feature.properties.zonalstat.mean <= 1) {
-          scale = chroma
-            .scale(this.props.vectorColor)
-            .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
-        } else if (feature.properties.zonalstat.mean > 10 && feature.properties.zonalstat.mean < 100) {
-          scale = chroma
-            .scale(this.props.vectorColor)
-            .domain([5,10,15,20,25,30,35,40,45]);
         } else {
-          scale = chroma
-            .scale(this.props.vectorColor)
-            .domain([0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500]);
+          if (feature.properties.zonalstat.mean <= 1) {
+            scale = chroma
+              .scale(this.props.vectorColor)
+              .domain([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
+          } else if (
+            feature.properties.zonalstat.mean > 10 &&
+            feature.properties.zonalstat.mean < 100
+          ) {
+            scale = chroma
+              .scale(this.props.vectorColor)
+              .domain([5, 10, 15, 20, 25, 30, 35, 40, 45]);
+          } else {
+            scale = chroma
+              .scale(this.props.vectorColor)
+              .domain([0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500]);
+          }
+          return {
+            // fillColor: this.getColor(feature.properties.zonalstat.mean),
+            fillColor:
+              this.props.CurrentLayer === "DPPD"
+                ? scale(feature.properties["Slope Score"])
+                : this.props.CurrentLayer === "LST_DPPD"
+                ? scale(feature.properties["DPPD score"])
+                : scale(feature.properties.zonalstat.mean),
+            weight: 1,
+            opacity: 1,
+            color: "#d65522",
+            fillOpacity: 1,
+          };
         }
-        return {
-          // fillColor: this.getColor(feature.properties.zonalstat.mean),
-          fillColor: this.props.CurrentLayer === "DPPD" ? scale(feature.properties["Slope Score"]) : this.props.CurrentLayer === "LST_DPPD" ? scale(feature.properties["DPPD score"]) : scale(feature.properties.zonalstat.mean),
-          weight: 1,
-          opacity: 1,
-          color: "#d65522",
-          fillOpacity: 1,
-        };
       }
-      }
-    } 
-    else {
+    } else {
       if (this.state.layerUID === feature.properties.uid) {
         return {
           opacity: 1,
@@ -1129,11 +1199,10 @@ export class map extends Component {
           ],
         },
       });
-    } 
-    else if (this.props.CurrentLayer === "DPPD") {
+    } else if (this.props.CurrentLayer === "DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1179,10 +1248,10 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    }  else if (this.props.CurrentLayer === "SOIL_M_DEV") {
+    } else if (this.props.CurrentLayer === "SOIL_M_DEV") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1228,11 +1297,10 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } 
-    else if (this.props.CurrentLayer === "NO2_DPPD") {
+    } else if (this.props.CurrentLayer === "NO2_DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1278,11 +1346,10 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } 
-    else if (this.props.CurrentLayer === "LST_DPPD") {
+    } else if (this.props.CurrentLayer === "LST_DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1328,11 +1395,10 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } 
-    else if (this.props.CurrentLayer === "LAI_DPPD") {
+    } else if (this.props.CurrentLayer === "LAI_DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1378,11 +1444,10 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } 
-    else if (this.props.CurrentLayer === "NDVI_DPPD") {
+    } else if (this.props.CurrentLayer === "NDVI_DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1428,11 +1493,10 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } 
-    else if (this.props.CurrentLayer === "PM25_DPPD") {
+    } else if (this.props.CurrentLayer === "PM25_DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1478,11 +1542,10 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } 
-    else if (this.props.CurrentLayer === "SOC_DPPD") {
+    } else if (this.props.CurrentLayer === "SOC_DPPD") {
       this.props.setLayerType("Vector");
       this.props.hideRaster();
-      window.layerType = "Vector"
+      window.layerType = "Vector";
       this.changeVectorLoader(60.732421875, 80.67555881973475);
       this.changeRasterLoader(60.732421875, 80.67555881973475);
       this.setState({
@@ -1528,8 +1591,7 @@ export class map extends Component {
       } catch (err) {
         message.error("Failed to connect to server");
       }
-    } 
-    else if (this.props.CurrentLayer === "LULC") {
+    } else if (this.props.CurrentLayer === "LULC") {
       if (this.props.CurrentRegion === "MANDAL") {
         this.props.SetBoundary(MANDALBOUNDS);
       }
@@ -1619,92 +1681,63 @@ export class map extends Component {
           2
         )
       );
-        } 
-    else if (this.props.CurrentLayer === "DPPD") {
+    } else if (this.props.CurrentLayer === "DPPD") {
       if (e.layer.feature.properties["Slope Score"] !== undefined) {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(
-          5
-        )
-      );
+        this.props.setvalue(
+          parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(5)
+        );
+      } else {
+        console.log();
       }
-      else{
-        console.log()
-      }
-    } 
-    else if (this.props.CurrentLayer === "LST_DPPD") {
+    } else if (this.props.CurrentLayer === "LST_DPPD") {
       if (e.layer.feature.properties["DPPD score"] !== undefined) {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(
-          5
-        )
-      );
+        this.props.setvalue(
+          parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(5)
+        );
+      } else {
+        console.log();
       }
-      else{
-        console.log()
-      }
-    } 
-    else if (this.props.CurrentLayer === "NDVI_DPPD") {
+    } else if (this.props.CurrentLayer === "NDVI_DPPD") {
       if (e.layer.feature.properties["DPPD score"] !== undefined) {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(
-          5
-        )
-      );
+        this.props.setvalue(
+          parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(5)
+        );
+      } else {
+        console.log();
       }
-      else{
-        console.log()
-      }
-    } 
-    else if (this.props.CurrentLayer === "LAI_DPPD") {
+    } else if (this.props.CurrentLayer === "LAI_DPPD") {
       if (e.layer.feature.properties["DPPD score"] !== undefined) {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(
-          5
-        )
-      );
+        this.props.setvalue(
+          parseFloat(e.layer.feature.properties["DPPD score"]).toFixed(5)
+        );
+      } else {
+        console.log();
       }
-      else{
-        console.log()
-      }
-    } 
-    else if (this.props.CurrentLayer === "NO2_DPPD") {
+    } else if (this.props.CurrentLayer === "NO2_DPPD") {
       if (e.layer.feature.properties["Slope Score"] !== undefined) {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(
-          5
-        )
-      );
+        this.props.setvalue(
+          parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(5)
+        );
+      } else {
+        console.log();
       }
-      else{
-        console.log()
-      }
-    } 
-    else if (this.props.CurrentLayer === "PM25_DPPD") {
+    } else if (this.props.CurrentLayer === "PM25_DPPD") {
       if (e.layer.feature.properties["Slope Score"] !== undefined) {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(
-          5
-        )
-      );
+        this.props.setvalue(
+          parseFloat(e.layer.feature.properties["Slope Score"]).toFixed(5)
+        );
+      } else {
+        console.log();
       }
-      else{
-        console.log()
-      }
-    }
-    else if (this.props.CurrentLayer === "SOC_DPPD") {
+    } else if (this.props.CurrentLayer === "SOC_DPPD") {
       if (e.layer.feature.properties.deviance !== undefined) {
-      this.props.setvalue(
-        parseFloat(e.layer.feature.properties.deviance).toFixed(
-          5
-        )
-      );
+        this.props.setvalue(
+          parseFloat(e.layer.feature.properties.deviance).toFixed(5)
+        );
+      } else {
+        console.log();
       }
-      else{
-        console.log()
-      }
-    } 
-    else if (this.props.CurrentLayer !== "LULC") {
+    } else if (this.props.CurrentLayer !== "LULC") {
       if (e.layer.feature.properties.zonalstat !== undefined) {
         if (isNaN(e.layer.feature.properties.zonalstat.mean) === true) {
           this.props.setvalue("N/A");
@@ -1748,32 +1781,30 @@ export class map extends Component {
           var mandal_name = current_reg.properties.Mandal_Nam;
           if (typeof mandal_name !== "undefined") {
             this.props.setplace(mandal_name);
-            if(current_reg.properties.zonalstat !== undefined){
+            if (current_reg.properties.zonalstat !== undefined) {
               this.props.setvalue(
                 parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
               );
-            }else{
+            } else {
               this.props.setvalue("N/A");
             }
-           
           } else {
             this.props.setplace("");
             this.props.setvalue(0);
           }
         } else if (this.props.CurrentRegion === "DISTRICT") {
-          if(current_reg.properties.Dist_Name === undefined){
+          if (current_reg.properties.Dist_Name === undefined) {
             var district_name = current_reg.properties.Dist_Name;
-          } else
-          {
-            console.log()
+          } else {
+            console.log();
           }
           if (typeof district_name !== "undefined") {
             this.props.setplace(current_reg.properties.Dist_Name);
-            if(current_reg.properties.zonalstat !== undefined){
+            if (current_reg.properties.zonalstat !== undefined) {
               this.props.setvalue(
                 parseFloat(current_reg.properties.zonalstat.mean).toFixed(2)
               );
-            }else{
+            } else {
               this.props.setvalue("N/A");
             }
           } else {
@@ -1839,7 +1870,7 @@ export class map extends Component {
         baseMapselected: "Dark",
       });
 
-       /*
+      /*
       Option 2 - OSM Layer with base style (NOT DARK THEME)
       */
       // this.setState({
@@ -1868,8 +1899,8 @@ export class map extends Component {
         attribution: "",
         baseMapselected: "Satellite",
       });
-      
-       /*
+
+      /*
       Option 2 - OSM Layer with base style  (NOT SATELLITE THEME)
       */
       // this.setState({
@@ -1912,8 +1943,7 @@ export class map extends Component {
         baseMapselected: "Grey",
       });
 
-      
-       /*
+      /*
       Option 2 - OSM Layer with base style  (NOT GREY THEME)
       */
       // this.setState({
@@ -2055,101 +2085,169 @@ export class map extends Component {
         </div>
 
         <div className="btn-toggleBaseMap">
-          <FormGroup>
-            <Input
-              type="select"
-              name="select"
+          <div class="row">
+            <div
+              class="col-sm-4"
               style={{
-                backgroundColor: "#282929",
-                color: "#fff",
-                border: "none",
-                height: "43px",
+                color: "#FFFFFF",
+                position: "relative",
+                top: "17px",
+                left: "8px",
               }}
-              value={this.state.baseMapselected}
-              onChange={this.ChangeBasemap}
             >
-              <option value="Dark">Dark</option>
-              <option value="Satellite">Satellite</option>
-              <option value="Grey">Grey</option>
-            </Input>
-          </FormGroup>
+              Theme
+            </div>
+            <div class="col-sm-8">
+              <FormGroup>
+                <Input
+                  type="select"
+                  name="select"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    "backdrop-filter": "blur(81.9048px)",
+                    borderRadius: "3.65646px",
+                    color: "#fff",
+                    border: "none",
+                    // height: "43px",
+                    width: "139px",
+                    position: "relative",
+                    top: "11px",
+                    left: "8px",
+                  }}
+                  value={this.state.baseMapselected}
+                  onChange={this.ChangeBasemap}
+                >
+                  <option value="Dark">Dark</option>
+                  <option value="Satellite">Satellite</option>
+                  <option value="Grey">Grey</option>
+                </Input>
+              </FormGroup>
+            </div>
+          </div>
         </div>
         <div className="btn-toggle">
-          <Radio.Group
-            options={options}
-            onChange={this.onChangeLayertype}
-            value={this.state.layerType}
-            optionType="button"
-            buttonStyle="solid"
-            disabled={
-              this.state.showlayertype
-                ? this.props.LayerDescription.vector_status === false
-                  ? true
-                  : false || this.props.LayerDescription.raster_status === false
-                  ? true
-                  : false
-                : true
-            }
-          />
+          <div class="row">
+            <div
+              class="col-sm-4"
+              style={{
+                color: "#FFFFFF",
+                position: "relative",
+                top: "11px",
+                left: "0px",
+              }}
+            >
+              Type
+            </div>
+            <div class="col-sm-8" style={{ position: "relative", top: "4px" }}>
+              <Radio.Group
+                options={options}
+                onChange={this.onChangeLayertype}
+                value={this.state.layerType}
+                optionType="button"
+                buttonStyle="solid"
+                disabled={
+                  this.state.showlayertype
+                    ? this.props.LayerDescription.vector_status === false
+                      ? true
+                      : false ||
+                        this.props.LayerDescription.raster_status === false
+                      ? true
+                      : false
+                    : true
+                }
+              />
+            </div>
+          </div>
         </div>
         <div
-          className={
-            this.state.activeSearch ? "selection" : "selection-collapsed"
-          }
+          // className={
+          //   this.state.activeSearch ? "selection" : "selection-collapsed"
+          // }
+          className="selection"
         >
-          <FormGroup
-            // style={
-            //   this.state.layerType === "Vector" ? { cursor: "not-allowed" } : {}
-            // }
-          >
-            <Input
-              type="select"
-              name="select"
+          <div class="row">
+            <div
+              class="col-sm-4"
               style={{
-                backgroundColor: "#282929",
-                color: "#fff",
-                border: "none",
-                height: "44px",
+                color: "#FFFFFF",
+                position: "relative",
+                top: "17px",
+                left: "20px",
               }}
-              disabled={
-                this.props.CurrentLayer === "WEATHER"
-                  ? true
-                  : false 
-                  // || this.state.layerType === "Vector"
-                  // ? true
-                  // : false
-              }
-              key={this.state.regionkey}
-              value={this.props.CurrentRegion}
-              onChange={(e) => this.onchangeshape(e)}
             >
-              <option value="DISTRICT" key="DISTRICT">
-                District
-              </option>
-              <option value="MANDAL" key="MANDAL">
-                Mandal
-              </option>
-              <option
-                key="CUSTOM"
-                value="CUSTOM"
-                disabled={
-                  this.props.LayerDescription.showcustom === false
-                    ? true
-                    : false
-                }
+              Boundary
+            </div>
+            <div class="col-sm-8">
+              {" "}
+              <FormGroup
+              // style={
+              //   this.state.layerType === "Vector" ? { cursor: "not-allowed" } : {}
+              // }
               >
-                Custom
-              </option>
-            </Input>
-          </FormGroup>
+                <Input
+                  type="select"
+                  name="select"
+                  style={{
+                    position: "relative",
+                    top: "11px",
+                    left: "8px",
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    "backdrop-filter": "blur(81.9048px)",
+                    /* Note: backdrop-filter has minimal browser support */
+
+                    borderRadius: "3.65646px",
+                    color: "#fff",
+                    border: "none",
+                    width: "139px",
+                  }}
+                  disabled={
+                    this.props.CurrentLayer === "WEATHER" ? true : false
+                    // || this.state.layerType === "Vector"
+                    // ? true
+                    // : false
+                  }
+                  key={this.state.regionkey}
+                  value={this.props.CurrentRegion}
+                  onChange={(e) => this.onchangeshape(e)}
+                >
+                  <option value="DISTRICT" key="DISTRICT">
+                    District
+                  </option>
+                  <option value="MANDAL" key="MANDAL">
+                    Mandal
+                  </option>
+                  <option
+                    key="CUSTOM"
+                    value="CUSTOM"
+                    disabled={
+                      this.props.LayerDescription.showcustom === false
+                        ? true
+                        : false
+                    }
+                  >
+                    Custom
+                  </option>
+                </Input>
+              </FormGroup>
+            </div>
+          </div>
         </div>
 
         <div
-          className={
-            this.state.activeSearch ? "search-card" : "search-card-collapsed"
-          }
+          // className={
+          //   this.state.activeSearch ? "search-card" : "search-card-collapsed"
+          // }
+          className="search-card-collapsed"
         >
           <div className="row" style={{ padding: "0px" }}>
+          <div className="col" style={{ padding: "0px" }}>
+              {/* {this.state.activeSearch ? (
+                <BiSearch className="search-icon" onClick={this.toggleClass} />
+              ) : (
+                <BiX className="search-close" onClick={this.toggleClass} />
+              )} */}
+               <BiSearch className="search-icon" onClick={this.toggleClass} />
+            </div>
             <div className="col search" style={{ paddingLeft: "0px" }}>
               <div
                 style={
@@ -2181,7 +2279,7 @@ export class map extends Component {
                 }
               >
                 <div style={{ marginLeft: "50px", marginTop: "7px" }}>
-                 {/* 
+                  {/* 
                   By default, Google Search API is used. Another opensource search option 
                   is also provided(Nominatim). If needed, uncomment NominatimSearch function
                   and comment SearchPlace component. While using Nominatim please ensure that line 39
@@ -2199,14 +2297,6 @@ export class map extends Component {
                      */}
                 </div>
               </div>
-            </div>
-
-            <div className="col" style={{ padding: "0px" }}>
-              {this.state.activeSearch ? (
-                <BiSearch className="search-icon" onClick={this.toggleClass} />
-              ) : (
-                <BiX className="search-close" onClick={this.toggleClass} />
-              )}
             </div>
           </div>
         </div>
@@ -2336,7 +2426,7 @@ export class map extends Component {
             changeLoader={this.changeRasterLoader}
           />
 
-          <ZoomControl position="topright" className="btn-zoomcontrol" />
+          <ZoomControl position="bottomright" className="btn-zoomcontrol" />
           <TileLayer
             url={this.state.baseMap}
             attribution={this.state.attribution}

@@ -93,11 +93,15 @@ body {
 
 .undp-logo {
   padding-left: 20px;
-  margin-top: 10px
+  margin-top: 10px;
+  position: relative;
+  right: 17px;
 }
 
 .telangana-logo {
-  margin-top: 10px
+  margin-top: 10px;
+  position: relative;
+  right: 30px;
 }
 
 /* .leaflet-bar {

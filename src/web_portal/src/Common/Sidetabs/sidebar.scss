@@ -335,11 +335,15 @@
 /* Legend */
 .legend-section {
     z-index: 999;
-    width: 230px;
+    width: 269px;
+    height: 245px;
     position: absolute;
     color: #fff;
     bottom: 0px;   
-    background-image: linear-gradient(rgba(0,0,0, 0.1), rgba(0,0,0,0.9));
+    // background-image: linear-gradient(rgba(0,0,0, 0.1), rgba(0,0,0,0.9));
+    background: rgba(103, 103, 103, 0.3);
+    backdrop-filter: blur(112px);
+    border-radius: 5px;
   }
   .legend-section-lulc {
     z-index: 999;
@@ -391,4 +395,9 @@
      .sidebar{
         display: none;
     }
+  }
+
+  .toggleButton{
+    position: relative;
+    right: 200px;
   }

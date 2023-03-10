@@ -36,7 +36,7 @@ with DAG(
     # [END howto_operator_bash]
 
        # [START howto_operator_bash]
-    process_path = "/opt/airflow/dags/scripts/uttarakhand/lulc-uttarakhand-process.py"
+    process_path = "/opt/airflow/dags/scripts/uttarakhand/lulc-uttarakhand-preprocess.py"
     process_command = "python3 " + process_path
     if os.path.exists(process_path):
         process_data = BashOperator(

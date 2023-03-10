@@ -196,7 +196,7 @@ class Usecases extends React.Component {
                       <div className="card-body">
                         <Row style={{ paddingBottom: "10px" }}>
                           <Col>
-                            <a href={() => false} className="card-calender">20 March 2021</a>
+                            {/* <a href={() => false} className="card-calender">20 March 2021</a> */}
                           </Col>
                           <Col>
                             <a href={() => false} className="card-link">{data.url}</a>

@@ -250,7 +250,7 @@ const SidebarComponent = (props) => {
                       return (
                         <div style={
                           items.display_name === "Land Service Temperature (LST)" ||
-                          items.layer_name === "SOILORGANICCARBON" 
+                          items.layer_name === "SOILORGANICCARBON" || items.isavailable === false
                             ? { display: "none"}
                             : { }
                         }>

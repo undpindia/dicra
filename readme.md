@@ -49,4 +49,6 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 - [E.V.S. Prakasa Rao, Honorary Scientist CSIR-Fourth Paradigm Institute, and Executive Committee Member at National Academy of Agricultural Sciences](https://www.linkedin.com/in/e-v-s-prakasa-rao-18920420/)
 - [Lokendra Chauhan, Founder at Qen Labs Inc. Focused on GeoAI for sustainability in agriculture and SDG measurements](https://www.linkedin.com/in/lokendrachauhan/)
 - [Daman deep Singh, Senior Consultant at EY](https://www.linkedin.com/in/daman16/)
+- [Jeswanth Gutti, AI Team Lead at Elevate Tech](https://www.linkedin.com/in/jeswanth-g-pmp-91391849/)
+- [Samuel Mwamburi Mghendi, Data Analyst, ONA, Kenya and UNEP](https://www.linkedin.com/in/mwamburi/)
 - [Mohammadmehdi Fayazbakhsh, Senior Data Scientist, OMRON](www.linkedin.com/in/mahdifayazbakhsh-779898136)

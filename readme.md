@@ -44,3 +44,14 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 - [Parvathy Krishnan, Data Science Lead, DiCRA](https://www.linkedin.com/in/parvathykrishnank/)
 - [Ambarish Narayanan, CTO, mistEO](https://www.linkedin.com/in/ambarishnarayanan/)
 
+### Peer Review Team
+- [Shiva Reddy Koti, Scientist/Engg IIRS, ISRO](https://www.linkedin.com/in/shivareddy/)
+- [E.V.S. Prakasa Rao, Honorary Scientist CSIR-Fourth Paradigm Institute, and Executive Committee Member at National Academy of Agricultural Sciences](https://www.linkedin.com/in/e-v-s-prakasa-rao-18920420/)
+- [Lokendra Chauhan, Founder at Qen Labs Inc. Focused on GeoAI for sustainability in agriculture and SDG measurements](https://www.linkedin.com/in/lokendrachauhan/)
+- [Daman deep Singh, Senior Consultant at EY](https://www.linkedin.com/in/daman16/)
+- [Jeswanth Gutti, AI Team Lead at Elevate Tech](https://www.linkedin.com/in/jeswanth-g-pmp-91391849/)
+- [Divyang Soni, Geospatial Developer, IIT Bombay](https://www.linkedin.com/in/divyang-soni-b472081a9/)
+- [Samuel Mwamburi Mghendi, Data Analyst, ONA, Kenya and UNEP](https://www.linkedin.com/in/mwamburi/)
+- [Mohammadmehdi Fayazbakhsh, Senior Data Scientist, OMRON](www.linkedin.com/in/mahdifayazbakhsh-779898136)
+- [Ulrick Loïc Nguekam Emalieu, Data Scientist, KPN](https://www.linkedin.com/in/nguekam-loic/)
+- [Mahi Tazwar, Geo-Information Science, University of Twente](https://www.linkedin.com/in/tahmidamuna1024/)

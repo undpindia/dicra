@@ -68,7 +68,7 @@ for i in arr:
     arr_q = b1.ReadAsArray()
    # ndv = 1
     # apply scale factor
-    data = arr_q*(0.0001)			#RECALCULATION FORMULA WILL DIFFER FOR EACH DATASET
+    data = arr_q*(0.02) -273.15			#RECALCULATION FORMULA WILL DIFFER FOR EACH DATASET
     #data = np.where(data > 1,-9999, data)
     #data=np.where(data<0,-9999,data)
     print(str(i))

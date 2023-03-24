@@ -56,3 +56,4 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 - [Mohammadmehdi Fayazbakhsh, Senior Data Scientist, OMRON](www.linkedin.com/in/mahdifayazbakhsh-779898136)
 - [Ulrick Loïc Nguekam Emalieu, Data Scientist, KPN](https://www.linkedin.com/in/nguekam-loic/)
 - [Mahi Tazwar, Geo-Information Science, University of Twente](https://www.linkedin.com/in/tahmidamuna1024/)
+- [Parmita Ghosh, Remote Sensing Data Scientist, CORTEVA Agriscience](https://www.linkedin.com/in/parmita-ghosh-584204105/)

@@ -58,3 +58,4 @@ DiCRA is a collaborative effort of national and International data scienstists, 
 - [Mahi Tazwar, Geo-Information Science, University of Twente](https://www.linkedin.com/in/tahmidamuna1024/)
 - [Parmita Ghosh, Remote Sensing Data Scientist, CORTEVA Agriscience](https://www.linkedin.com/in/parmita-ghosh-584204105/)
 - [Rampunit Kumar, Lumiq.ai, IIT Jodhpur](https://www.linkedin.com/in/rampunit-kumar-636042183/)
+- [Amruth Kiran, Senior Associate - Geospatial Lab, Indian Institute for Human Settlements](https://www.linkedin.com/in/amruth-kiran/)

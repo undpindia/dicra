@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, Table } from "reactstrap";
 import undplogo from "../img/undp-logo.png";
 import telenganalogo from "../img/telengana-logo.png";
-import telenganaagri from "../img/telengana-agri.png";
+import japan from "../img/japan.jpg";
 import icrisat from "../img/icrisat.png";
 import jads from "../img/jads.png";
 import rich from "../img/rich.jpg";
@@ -32,8 +32,8 @@ class About extends React.Component {
     try {
       const layers = await axiosConfig.get(`/getlayerconfig?`);
       this.setState({
-        layerData:layers.data
-      })
+        layerData: layers.data,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -84,11 +84,13 @@ class About extends React.Component {
                       Partners
                     </div>
                     <p style={{ fontSize: "16px" }}>
-                      The platform is facilitated by Government of Telangana and
+                      The platform is facilitated by Government agencies and
                       UNDP, in collaboration with Zero Huger Lab (Netherlands),
-                      JADS (Netherlands), ICRISAT, PJTSAU, and RICH. It is part
-                      of UNDP’s ‘Data for Policy’ initiative supported by
-                      Rockefeller Foundation.
+                      JADS (Netherlands), ICRISAT, and RICH. It is part of
+                      UNDP’s ‘Data for Policy’ initiative supported by
+                      Rockefeller Foundation and 'Climate Adaptation''
+                      initiative with the generous financial contribution from
+                      the Government and the People of Japan.
                     </p>
                   </Col>
                 </Row>
@@ -96,20 +98,20 @@ class About extends React.Component {
                   <ul className="org-logo">
                     <li className="org-logo-item">
                       <a
-                        href="https://www.undp.org/"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <img src={undplogo} alt="" />
-                      </a>
-                    </li>
-                    <li className="org-logo-item">
-                      <a
                         href="https://www.telangana.gov.in/"
                         target="_blank"
                         rel="noreferrer"
                       >
                         <img src={telenganalogo} alt="" />
+                      </a>
+                    </li>
+                    <li className="org-logo-item">
+                      <a
+                        href="https://www.undp.org/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img src={undplogo} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
@@ -132,11 +134,11 @@ class About extends React.Component {
                     </li>
                     <li className="org-logo-item">
                       <a
-                        href="https://www.jads.nl/"
+                        href="https://www.japan.go.jp/"
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <img src={jads} alt="" />
+                        <img src={japan} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
@@ -150,11 +152,11 @@ class About extends React.Component {
                     </li>
                     <li className="org-logo-item">
                       <a
-                        href="https://www.pjtsau.edu.in/"
+                        href="https://www.jads.nl/"
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <img src={telenganaagri} alt="" />
+                        <img src={jads} alt="" />
                       </a>
                     </li>
                     <li className="org-logo-item">
@@ -214,9 +216,7 @@ class About extends React.Component {
                             <td>{data.citation}</td>
                             <td>{data.standards}</td>
                           </tr>
-                        ) : (
-                          null
-                        )
+                        ) : null
                       )}
                     </tbody>
                   </Table>

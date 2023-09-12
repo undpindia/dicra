@@ -39,8 +39,8 @@ with DAG(
     process_path = "/opt/airflow/dags/scripts/common/rainfall-india-preprocess.py"
     process_command = "python3 " + process_path
     if os.path.exists(process_path):
-        process_data = BashOperator(
-            task_id="process_data",
+        pre_process_data = BashOperator(
+            task_id="pre_process_data",
             bash_command=process_command,
             dag=dag
         )
@@ -49,8 +49,7 @@ with DAG(
 
     # [END howto_operator_bash]
 
-
-    download_data >> process_data >> run_this_last
+    download_data >> pre_process_data  >> run_this_last
 
 if __name__ == "__main__":
     dag.test()

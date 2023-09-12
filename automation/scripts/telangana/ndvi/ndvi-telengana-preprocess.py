@@ -6,9 +6,9 @@ from datetime import datetime, timedelta
 
 
 #Every file type and state base folder should be set in the beginning of the program
-statebase = '/nfsdata/ndvi/telengana'
+statebase = '/nfsdata/ndvi/telangana'
 scriptbase= statebase + '/process'
-boundryfile = statebase + "/tsdm/District_Boundary.shp"
+boundryfile = '/nfsdata/tl_district_boundary.geojson'
 tifspath = statebase + '/download/GEE_NDVItifs'
 
 #Enter path of downloaded files, always prefix the scriptbase path to avoid files getting generated in wrong folders

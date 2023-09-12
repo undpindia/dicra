@@ -7,7 +7,7 @@ from datetime import date, datetime, timedelta
 #Every file type and state base folder should be set in the beginning of the program
 statebase = '/nfsdata/ndvi/maharashtra'
 scriptbase= statebase + '/download'
-basepath= statebase + '/base'
+basepath=  '/nfsdata/base_shapefiles'
 tifspath = scriptbase + '/GEE_NDVItifs'
 
 today = date.today() 
@@ -28,7 +28,7 @@ ee.Initialize() # Initialize
 #Append state's boundary data address
 #f=  open('../../../../../src/data_preprocessing/base_geojson/TL_state_shapefile_for_clip.geojson')
 #Enter path of the config files, always prefix the scriptbase path to avoid referring wrong folders
-f=  open(basepath+'/Maharashtra_state_shapefile_for_clip.geojson')
+f=  open(basepath+'/mh_state_boundary.geojson')
 data =json.load(f)
 
 data = data['features'][0]['geometry']['coordinates'][0]
@@ -41,10 +41,10 @@ image = collection_subset.first().select('NDVI')  # Pick the first image from th
 geemap.image_props(image).getInfo() # Finds basic info of this image
 
 
-if tifspath not in os.listdir():
-    os.mkdir(tifspath)
-else:
-    print('GEE_NDVItifs directory exists')
+#if tifspath not in os.listdir():
+#    os.mkdir(tifspath)
+#else:
+#    print('GEE_NDVItifs directory exists')
 
 #out = os.path.join('GEE_NDVItifs') # Set path to where we want to save the GeoTIF
 out = os.path.join(tifspath) # Set path to where we want to save the GeoTIF

@@ -1077,7 +1077,7 @@ class DrawerComp extends Component {
     var bodyParams = {
       geojson: shapeparams,
       startdate: "2021-01-01",
-      enddate: "2022-01-20",
+      enddate: "2021-12-12",
     };
     try {
       const response = await getcfpoint(bodyParams);
@@ -1197,7 +1197,7 @@ class DrawerComp extends Component {
       var bodyParams = {
         geojson: shapeparams,
         startdate: "2021-01-01",
-        enddate: "2022-01-20",
+        enddate: "2021-12-12",
       };
 
       getcftrend(bodyParams)
@@ -1805,8 +1805,11 @@ class DrawerComp extends Component {
                       <Row>
                         <p className="drawer-distdisc">{this.state.distname}</p>
                       </Row>
-                      <Row>
+                      <Row style ={this.props.CurrentRegion === "DISTRICT" ? {} : {display:"none"}}>
                         <p className="drawer-distheader">DISTRICT</p>
+                      </Row>
+                      <Row style ={this.props.CurrentRegion === "MANDAL" ? {} : {display:"none"}}>
+                        <p className="drawer-distheader">SUB DISTRICT</p>
                       </Row>
                       <Row>
                         <p className="drawer-distdisc">{this.state.area}</p>

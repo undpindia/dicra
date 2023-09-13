@@ -431,6 +431,14 @@ class LeafletMap extends React.Component {
   }
   onMouseOver(e) {
     this.props.setlatlon(e.latlng.lat, e.latlng.lng);
+    if(this.props.CurrentRegion === "MANDAL" && this.props.currentLayerType === "Vector"){
+      var mandal_name = e.layer.feature.properties.mandal_name;
+      this.props.setplace(mandal_name);
+
+    }else if (this.props.CurrentRegion === "DISTRICT" && this.props.currentLayerType === "Vector"){
+      var district_name = e.layer.feature.properties.district_name;
+      this.props.setplace(district_name);
+    }
     // console.log("hover", e.layer.feature.properties["DPPD score"])
     if (e.layer.feature.properties.zonalstat !== undefined && this.props.currentLayerType === "Vector") {
       if (isNaN(e.layer.feature.properties.zonalstat.mean) === true) {
@@ -804,7 +812,7 @@ class LeafletMap extends React.Component {
       layerUID: "",
       shapeSelected: false,
     });
-    this.props.setplace(0);
+    this.props.setplace('');
     this.props.isShapeSelected(false);
   }
   updateMapZoom = (newZoomValue) => {

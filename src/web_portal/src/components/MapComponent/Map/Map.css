@@ -16,24 +16,41 @@
 .home-icon {
   padding: 9px;
 }
+
 .leaflet-touch .leaflet-bar a {
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0px 2.42857px 6.47619px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(45px);
   color: #ffffff;
   /* Note: backdrop-filter has minimal browser support */
+
+  /* border-radius: 12.1429px; */
   width: 40px !important;
   height: 42.5px !important;
 }
+
 .leaflet-touch .leaflet-bar a {
   width: 30px;
   height: 30px;
   line-height: 40px !important;
 }
+
+/* .leaflet-touch .leaflet-bar a:first-child {
+      margin-bottom: 12px
+    } */
+
 .leaflet-bar a,
 .leaflet-bar a:hover {
   border-bottom: none;
 }
+
+/* .leaflet-touch .leaflet-bar a:last-child {
+      border-radius: 4px
+    }
+    
+    .leaflet-touch .leaflet-bar a:first-child {
+      border-radius: 4px
+    } */
 .leaflet-touch .leaflet-bar a:first-child {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -169,6 +186,15 @@ option:checked {
 }
 
 .state-name {
+  /* font-style: normal;
+  font-size: 24px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  position: relative;
+  left: 86px;
+  top: 4px; */
   background-color: #40822c;
   color: #fff;
   border-radius: 3px;
@@ -219,8 +245,11 @@ input[type='search']::placeholder {
   font-style: normal;
   font-size: 14px;
   line-height: 15px;
+  /* identical to box height, or 94% */
+
   display: flex;
   align-items: center;
+
   color: #ffffff;
 }
 
@@ -815,7 +844,12 @@ input.nosubmit {
   :where(.css-dev-only-do-not-override-19gw05y).ant-drawer {
     z-index: 10000;
   }
-
+  :where(.css-19gw05y).ant-drawer {
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 10000;
+}
   #clear-button-1 {
     position: absolute;
     right: 10px;

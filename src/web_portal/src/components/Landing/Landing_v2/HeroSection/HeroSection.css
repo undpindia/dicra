@@ -1,0 +1,137 @@
+.hero-section {
+  position: relative;
+  top: 20%;
+  height: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+}
+
+/* LEFT SECTION */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  padding: 0 30px;
+  gap: 20px;
+}
+
+.left-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background-color: #252836;
+  white-space: nowrap;
+  padding: 5px 15px;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+.left-tag span {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.left-heading span {
+  color: #143461;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.left-description span {
+  color: #434343;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+/* SECTIONS DIVIDER */
+.section-divider {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 10%;
+}
+
+.divider-content-image-1 {
+  position: absolute;
+  top: 17%;
+}
+
+.divider-content-image-2 {
+  position: absolute;
+  top: 33%;
+}
+
+/* RIGHT SECTION */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 100%;
+}
+
+.hero-right img {
+  width: 590px;
+  height: 480px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    height: 700px;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .left-description {
+    text-align: justify;
+  }
+
+  .hero-right,
+  .section-divider {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-section {
+    flex-direction: column;
+    padding-top: 10rem;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .left-heading span {
+    font-size: 40px;
+  }
+
+  .left-description {
+    text-align: justify;
+  }
+
+  .hero-right,
+  .section-divider {
+    display: none;
+  }
+}

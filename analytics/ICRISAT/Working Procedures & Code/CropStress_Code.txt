@@ -1,0 +1,119 @@
+var crop=imageCollection.filterDate('2019-01-01','2019-12-31').max()
+.select('discrete_classification').eq(40).clip(geometry)
+
+//Map.addLayer(crop)
+
+var NDVI=MODIS.select('NDVI')
+
+
+
+// Let's compute seasonal NDVI deviation for the state
+var lpaYears = ee.List.sequence(2010, 2018)
+var months = ee.List.sequence(1, 12)
+
+// Map over the years and create a monthly totals collection
+var monthlyImages = lpaYears.map(function(year) {
+  return months.map(function(month) {
+    var filtered = NDVI
+      .filter(ee.Filter.calendarRange(year, year, 'year'))
+      .filter(ee.Filter.calendarRange(month, month, 'month'))
+    var monthly = filtered.max()
+    return monthly.set({'month': month, 'year': year})
+  })
+}).flatten()
+
+// We now have 1 image per month for entire long-period duratioon
+var monthlyCol = ee.ImageCollection.fromImages(monthlyImages)
+//print(monthlyCol)
+
+// We can compute average for each month across all years
+
+var longTermMeans = months.map(function(month) {
+    var filtered = monthlyCol.filter(ee.Filter.eq('month', month))
+    var monthlyMean = filtered.max()
+    return monthlyMean.set('month', month)
+})
+var monthlyNDVI = ee.ImageCollection.fromImages(longTermMeans)
+
+print(monthlyNDVI)
+
+// Now we take 2020 data and compute monthly average
+var filtered = NDVI.filter(ee.Filter.date('2021-01-01', '2021-12-31'))
+
+// Calculate monthly max NDVI
+
+var monthlyTotals = months
+  .map(function(month) {
+    return filtered
+      .filter(ee.Filter.calendarRange(month, month, 'month'))
+        .max()
+        .set('month', month);
+});
+
+var currentNDVI = ee.ImageCollection.fromImages(monthlyTotals)
+
+//print(currentNDVI)
+
+
+// Seasonal Deviation
+
+var combinedFilter = ee.Filter.and(
+  ee.Filter.gte('month', 5), ee.Filter.lte('month', 12))
+  
+var NDVINormal = monthlyNDVI.filter(combinedFilter).max().multiply(0.0001)
+
+//print(NDVINormal)
+
+var NDVIstress = currentNDVI.filter(combinedFilter).max().multiply(0.0001)
+//print(NDVIstress)
+
+var seasonalDeviation = (NDVINormal.subtract(NDVIstress))
+
+//print(seasonalDeviation)
+   
+var visParams = {
+  min:-0.2,
+  max:0.2,
+  palette: ['d7191c','fdae61','ffffbf','abdda4']
+}
+
+//Map.addLayer(seasonalDeviation.clip(geometry).updateMask(crop), visParams, 'Deviation')
+
+//Decision trees
+var DTstring = ['1) root 9999 9999 9999', '2) NDVI>=0.2 9999 9999 1 *', //Severe drought
+'3) NDVI<0.2 9999 9999 9999', '6) NDVI>= 0.1 9999 9999 2 *', // Moderate drought
+'7) NDVI<0.1 9999 9999 9999', '14) NDVI>=0 9999 9999 3 *', // Mild drought
+'15) NDVI<0 9999 9999 4 *'].join("\n"); //No drought
+
+//print(DTstring)
+
+var classifier = ee.Classifier.decisionTree(DTstring);
+var Final_classification = seasonalDeviation.select('NDVI').classify(classifier);
+
+var visParams_1 = {
+  min:1,
+  max:4,
+  palette: ['ff0404','ffa706','ffec08','02ff2d']
+}
+
+//Map.addLayer(Final_classification.clip(geometry).updateMask(crop),visParams_1,'classes')
+
+
+//legend
+var add_legend = function(title, lbl, pal) {
+  var legend = ui.Panel({style: {position: 'bottom-center'}}), entry;
+  legend.add(ui.Label({value: title, style: { fontWeight: 'bold', fontSize: '15px', margin: '0 0 9px 0', padding: '0px' } }));
+  for (var x = 0; x < lbl.length; x++){
+    entry = [ ui.Label({style:{color: pal[x], margin: '0 0 15px 0'}, value: '██'}),
+      ui.Label({ value: labels[x], style: { margin: '0 0 15px 9px' } }) ];
+    legend.add(ui.Panel(entry, ui.Panel.Layout.Flow('horizontal')))
+  } Map.add(legend); }
+  
+  var palette = ['ff0404','ffa706','ffec08','02ff2d']
+var labels = ['Severe','Moderate','Mild','No drought'];  
+add_legend('Drought Classification', labels, palette);
+  Map.addLayer(Final_classification.clip(geometry).updateMask(crop),
+             {palette: palette, min: 1, max: 4},
+             'classification');
+             
+    

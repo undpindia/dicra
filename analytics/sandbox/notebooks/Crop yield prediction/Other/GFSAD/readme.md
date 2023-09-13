@@ -1,0 +1,1 @@
+The aim of this folder is to provide a visualization of the GFSAD data derived from Google Earth Engine. Here, GFSAD1000: Cropland Extent 1km Multi-Study Crop Mask, Global Food-Support Analysis Data is used as a dataset. This dataset describes the watering method used. Is the cropland rainfed or is irrigation used? 

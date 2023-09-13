@@ -1805,8 +1805,11 @@ class DrawerComp extends Component {
                       <Row>
                         <p className="drawer-distdisc">{this.state.distname}</p>
                       </Row>
-                      <Row>
+                      <Row style ={this.props.CurrentRegion === "DISTRICT" ? {} : {display:"none"}}>
                         <p className="drawer-distheader">DISTRICT</p>
+                      </Row>
+                      <Row style ={this.props.CurrentRegion === "MANDAL" ? {} : {display:"none"}}>
+                        <p className="drawer-distheader">SUB DISTRICT</p>
                       </Row>
                       <Row>
                         <p className="drawer-distdisc">{this.state.area}</p>

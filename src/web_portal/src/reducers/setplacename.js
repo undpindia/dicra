@@ -1,4 +1,4 @@
-const setplaceReducer = (state = 0, action) => {
+const setplaceReducer = (state = '', action) => {
   switch (action.type) {
     case "SETPLACE":
       return (state = action.payload);

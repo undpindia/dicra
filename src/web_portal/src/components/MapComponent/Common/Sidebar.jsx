@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import './Sidebar.css';
-import Toggle from '../../../assets/images/toggle.png';
-import Close from '../../../assets/images/close.png';
-import Layer from '../../../assets/images/layer.png';
-import Download from '../../../assets/images/download.png';
-import Help from '../../../assets/images/help.png';
-import Analytics from '../../../assets/images/siteanalytics.png';
-import Git from '../../../assets/images/github.png';
-import { NavLink } from 'react-router-dom';
-import Back from '../../../assets/images/back.png';
-import { Form, FormGroup, Label, Input, Button, Row, Col } from 'reactstrap';
-import LayerDetails from './Download/LayerDetails';
-import PersonalDetails from './Download/PersonalDetails.jsx';
-import { Tooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css';
-import { getlayers } from '../../../assets/api/apiService';
-import Nav from '../../../assets/images/navarrow.png';
-import ColorPicker from './ColorPicker';
-import { useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import Config from '../Config/config';
-import { setcurrentlayer } from '../../../actions/index';
-import { getraster } from '../../../assets/api/apiService';
+import React, { useState, useEffect } from "react";
+import "./Sidebar.css";
+import Toggle from "../../../assets/images/toggle.png";
+import Close from "../../../assets/images/close.png";
+import Layer from "../../../assets/images/layer.png";
+import Download from "../../../assets/images/download.png";
+import Help from "../../../assets/images/help.png";
+import Analytics from "../../../assets/images/siteanalytics.png";
+import Git from "../../../assets/images/github.png";
+import { NavLink } from "react-router-dom";
+import Back from "../../../assets/images/back.png";
+import { Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
+import LayerDetails from "./Download/LayerDetails";
+import PersonalDetails from "./Download/PersonalDetails.jsx";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+import { getlayers } from "../../../assets/api/apiService";
+import Nav from "../../../assets/images/navarrow.png";
+import ColorPicker from "./ColorPicker";
+import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import Config from "../Config/config";
+import { setcurrentlayer } from "../../../actions/index";
+import { getraster } from "../../../assets/api/apiService";
 import {
   BiDownload,
   BiInfoSquare,
   BiHide,
   BiShow,
   // BiSquare,
-} from 'react-icons/bi';
-import { useTour } from '@reactour/tour';
-import marker from '../../../assets/images/locationMK.png';
+} from "react-icons/bi";
+import { useTour } from "@reactour/tour";
+import marker from "../../../assets/images/locationMK.png";
 import LulcLegend from "../Common/Legend/LulcLegend";
 import CropLegend from "../Common/Legend/CropLegend";
-import FELegend from './Legend/FELegend';
+import FELegend from "./Legend/FELegend";
 
 const Sidebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,11 +44,10 @@ const Sidebar = (props) => {
   const [allLayers, setLayers] = useState([]);
   const [isCollapse, setIsCollapse] = useState([false]);
   const [isLegendshow, setIsLegendshow] = useState([false]);
-  const [selectedCategory, setselectedCategory] = useState('SOCIO-ECONOMIC');
-  const [selectedCategory_id, setselectedCategory_id] = useState('1');
-  const [rasterurl, setrasterurl] = useState('');
+  const [selectedCategory, setselectedCategory] = useState("SOCIO-ECONOMIC");
+  const [selectedCategory_id, setselectedCategory_id] = useState("1");
+  const [rasterurl, setrasterurl] = useState("");
   const LayerToggle = useSelector((state) => state.RasterOpacity);
-
 
   const { isOpen: isTourOpen, setIsOpen: setTourOpen } = useTour();
 
@@ -60,6 +59,8 @@ const Sidebar = (props) => {
   const currentraster = useSelector((state) => state.RasterLayerUrl);
   let layertype = useSelector((state) => state.CurrentLayerType);
   const DownloadDesc = useSelector((state) => state.DownloadLayer);
+  const setplace = useSelector((state) => state.setplace);
+  const currentregion = useSelector((state) => state.CurrentRegion);
   var valueKey = 1;
   const toggleClass = () => {
     setIsChangeclass(!isChangeclass);
@@ -77,14 +78,14 @@ const Sidebar = (props) => {
   const toggleshow = () => setIsLegendshow(!isLegendshow);
   function toggleLayer() {
     if (LayerToggle === true) {
-      dispatch({ type: 'HIDERASTER' });
+      dispatch({ type: "HIDERASTER" });
       setrasterurl(currentraster);
       // dispatch({ type: 'SETRASTERLAYERURL', payload: rasterurl });
-      dispatch({ type: 'CHANGEKEYMAP' });
+      dispatch({ type: "CHANGEKEYMAP" });
     } else {
-      dispatch({ type: 'SHOWRASTER' });
+      dispatch({ type: "SHOWRASTER" });
       // dispatch({ type: 'SETRASTERLAYERURL', payload: rasterurl });
-      dispatch({ type: 'CHANGEKEYMAP' });
+      dispatch({ type: "CHANGEKEYMAP" });
     }
   }
   const getLayers = (id) => {
@@ -96,11 +97,11 @@ const Sidebar = (props) => {
         return r;
       }, Object.create(null));
       setLayers(result);
-      dispatch({ type: 'CHANGELAYERDESC', payload: result[1][0] });
+      dispatch({ type: "CHANGELAYERDESC", payload: result[1][0] });
     });
   };
   const handleClick = () => {
-    window.open('https://github.com/UNDP-India/Data4Policy/');
+    window.open("https://github.com/UNDP-India/Data4Policy/");
   };
   const location = useLocation();
 
@@ -115,103 +116,103 @@ const Sidebar = (props) => {
   function changeLayer(layername, layerdetails) {
     props.onClose();
     dispatch({
-      type: 'SETSELECTERCATEGORY',
+      type: "SETSELECTERCATEGORY",
       payload: selectedCategory,
     });
     dispatch({
-      type: 'SETSELECTERCATEGORYID',
+      type: "SETSELECTERCATEGORYID",
       payload: selectedCategory_id,
     });
-    dispatch({ type: 'SETDOWNLOADLAYER', payload: layerdetails.display_name });
-    dispatch({ type: 'DOWNCHANGELAYERDESC', payload: layerdetails }); 
-    dispatch({ type: 'REMOVE_MARKER', payload: [0,0]  })
+    dispatch({ type: "SETDOWNLOADLAYER", payload: layerdetails.display_name });
+    dispatch({ type: "DOWNCHANGELAYERDESC", payload: layerdetails });
+    dispatch({ type: "REMOVE_MARKER", payload: [0, 0] });
     dispatch(setcurrentlayer(layername));
-    dispatch({ type: 'CHANGELAYERDESC', payload: layerdetails });
-    dispatch({ type: "SHOWDRAWER",payload: false });
+    dispatch({ type: "CHANGELAYERDESC", payload: layerdetails });
+    dispatch({ type: "SHOWDRAWER", payload: false });
     var layerID = layerdetails.id;
     dispatch({
-      type: 'SETRASLATLON',
+      type: "SETRASLATLON",
       payload: [Config.loaderlatvector, Config.loaderlngvector],
     });
 
     getraster(layerID).then((json) => {
       if (
         layerdetails.raster_status === false ||
-        layerdetails.layername === 'SOIL_M_DEV' ||
-        layerdetails.layername === 'LAI_DPPD'
+        layerdetails.layername === "SOIL_M_DEV" ||
+        layerdetails.layername === "LAI_DPPD"
       ) {
-        dispatch({ type: 'SETCURRRENTLAYERTYPE', payload: 'Vector' });
+        dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Vector" });
         dispatch({
-          type: 'SETRASLATLON',
+          type: "SETRASLATLON",
           payload: [60.732421875, 80.67555881973475],
         });
         props.changecurrentlayer(layerdetails.id);
-        dispatch({ type: 'SETCURRENTREGION', payload: 'DISTRICT' });
-        dispatch({ type: 'SETCUSTOMSTATUS', payload: false });
+        dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
+        dispatch({ type: "SETCUSTOMSTATUS", payload: false });
         dispatch({
-          type: 'SETCURRRENTBASEMAP',
+          type: "SETCURRRENTBASEMAP",
           payload:
-            'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
+            "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
         });
-        dispatch({ type: 'SETCURRRENTBASEMAPTYPE', payload: 'Dark' });
+        dispatch({ type: "SETCURRRENTBASEMAPTYPE", payload: "Dark" });
       } else if (layerdetails.raster_status === true) {
         let result = process.env.REACT_APP_APIEND_RASTER.replace(
-          'LAYER_DETAILS_ID',
+          "LAYER_DETAILS_ID",
           layerdetails.id
         );
         props.changecurrentlayer(layerdetails.id);
-        dispatch({ type: 'SETRASTERLAYERURL', payload: result });
-        dispatch({ type: 'SETCURRENTREGION', payload: 'DISTRICT' });
-        dispatch({ type: 'SETCUSTOMSTATUS', payload: false });
+        dispatch({ type: "SETRASTERLAYERURL", payload: result });
+        dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
+        dispatch({ type: "SETCUSTOMSTATUS", payload: false });
         dispatch({
-          type: 'SETCURRRENTBASEMAP',
+          type: "SETCURRRENTBASEMAP",
           payload:
-            'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
+            "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
         });
-        dispatch({ type: 'SETCURRRENTBASEMAPTYPE', payload: 'Dark' });
-        dispatch({ type: 'SHOWRASTER' });
-        dispatch({ type: 'SETCURRRENTLAYERTYPE', payload: 'Raster' });
-        dispatch({ type: 'SHOWLAYERTYPE', payload: true });
+        dispatch({ type: "SETCURRRENTBASEMAPTYPE", payload: "Dark" });
+        dispatch({ type: "SHOWRASTER" });
+        dispatch({ type: "SETCURRRENTLAYERTYPE", payload: "Raster" });
+        dispatch({ type: "SHOWLAYERTYPE", payload: true });
       }
       let result = process.env.REACT_APP_APIEND_RASTER.replace(
-        'LAYER_DETAILS_ID',
+        "LAYER_DETAILS_ID",
         layerdetails.id
       );
       props.changecurrentlayer(layerdetails.id);
-      dispatch({ type: 'SETCURRENTREGION', payload: 'DISTRICT' });
-      dispatch({ type: 'SETRASTERLAYERURL', payload: result });
-      dispatch({ type: 'SETCUSTOMSTATUS', payload: false });
+      dispatch({ type: "SETCURRENTREGION", payload: "DISTRICT" });
+      dispatch({ type: "SETRASTERLAYERURL", payload: result });
+      dispatch({ type: "SETCUSTOMSTATUS", payload: false });
       dispatch({
-        type: 'SETCURRRENTBASEMAP',
+        type: "SETCURRRENTBASEMAP",
         payload:
-          'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
+          "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
       });
-      dispatch({ type: 'SETCURRRENTBASEMAPTYPE', payload: 'Dark' });
-      dispatch({ type: 'SHOWRASTER' });
-      dispatch({ type: 'SHOWLAYERTYPE', payload: true });
+      dispatch({ type: "SETCURRRENTBASEMAPTYPE", payload: "Dark" });
+      dispatch({ type: "SHOWRASTER" });
+      dispatch({ type: "SHOWLAYERTYPE", payload: true });
     });
-    localStorage.setItem('id', layerdetails.id);
+    localStorage.setItem("id", layerdetails.id);
   }
   const onOpenDownloads = (layer, desc) => {
     dispatch({
-      type: 'SETSELECTERCATEGORY',
+      type: "SETSELECTERCATEGORY",
       payload: selectedCategory,
     });
     dispatch({
-      type: 'SETSELECTERCATEGORYID',
+      type: "SETSELECTERCATEGORYID",
       payload: selectedCategory_id,
     });
-    dispatch({ type: 'SETDOWNLOADLAYER', payload: layer });
-    dispatch({ type: 'DOWNCHANGELAYERDESC', payload: desc });
+    dispatch({ type: "SETDOWNLOADLAYER", payload: layer });
+    dispatch({ type: "DOWNCHANGELAYERDESC", payload: desc });
   };
   return (
     <div className="container-sidebar">
       <div
-        style={{ width: isOpen ? '303px' : '4rem', padding: '10px' }}
+        style={{ width: isOpen ? "303px" : "4rem", padding: "10px" }}
         className="sidebar"
       >
         <div className="top_section">
-          <div style={{ marginLeft: isOpen ? '5px' : '5px' }} className="bars">
+          <div style={{ marginLeft: isOpen ? "5px" : "5px" }} className="bars">
             <img
               src={isOpen ? Close : Toggle}
               width="25px"
@@ -226,10 +227,10 @@ const Sidebar = (props) => {
         <NavLink
           style={
             Showdownload
-              ? { background: '#143461' }
+              ? { background: "#143461" }
               : Showlayer
-              ? { background: '#0B202F', borderRadius: '5px' }
-              : { background: '#143461' }
+              ? { background: "#0B202F", borderRadius: "5px" }
+              : { background: "#143461" }
           }
           to={`${process.env.PUBLIC_URL}/`}
           key={1}
@@ -247,27 +248,27 @@ const Sidebar = (props) => {
               <img
                 src={Layer}
                 width="33px"
-                style={{ position: 'relative', bottom: '3px', left: '2px' }}
+                style={{ position: "relative", bottom: "3px", left: "2px" }}
                 alt=""
               />
             }
           </div>
           <div
             style={{
-              display: isOpen ? 'block' : 'none',
-              textDecoration: 'none',
+              display: isOpen ? "block" : "none",
+              textDecoration: "none",
             }}
             className="link_text layer"
           >
-            {'Layers'}
+            {"Layers"}
           </div>
         </NavLink>
         <NavLink
           to={`${process.env.PUBLIC_URL}/`}
           style={
             Showdownload
-              ? { background: '#0B202F', borderRadius: '5px' }
-              : { background: '#143461' }
+              ? { background: "#0B202F", borderRadius: "5px" }
+              : { background: "#143461" }
           }
           key={2}
           className="link download"
@@ -283,19 +284,19 @@ const Sidebar = (props) => {
               <img
                 src={Download}
                 width="18px"
-                style={{ position: 'relative', left: '9px' }}
+                style={{ position: "relative", left: "9px" }}
                 alt=""
               />
             }
           </div>
           <div
             style={{
-              display: isOpen ? 'block' : 'none',
-              textDecoration: 'none',
+              display: isOpen ? "block" : "none",
+              textDecoration: "none",
             }}
             className="link_text download"
           >
-            {'Download'}
+            {"Download"}
           </div>
         </NavLink>
         <NavLink
@@ -314,19 +315,19 @@ const Sidebar = (props) => {
               <img
                 src={Help}
                 width="23px"
-                style={{ position: 'relative', left: '6px' }}
+                style={{ position: "relative", left: "6px" }}
                 alt=""
               />
             }
           </div>
           <div
             style={{
-              display: isOpen ? 'block' : 'none',
-              textDecoration: 'none',
+              display: isOpen ? "block" : "none",
+              textDecoration: "none",
             }}
             className="link_text help"
           >
-            {'Help'}
+            {"Help"}
           </div>
         </NavLink>
         <NavLink
@@ -345,19 +346,19 @@ const Sidebar = (props) => {
               <img
                 src={Analytics}
                 width="17px"
-                style={{ position: 'relative', left: '9px' }}
+                style={{ position: "relative", left: "9px" }}
                 alt=""
               />
             }
           </div>
           <div
             style={{
-              display: isOpen ? 'block' : 'none',
-              textDecoration: 'none',
+              display: isOpen ? "block" : "none",
+              textDecoration: "none",
             }}
             className="link_text analytics"
           >
-            {'Site Analytics'}
+            {"Site Analytics"}
           </div>
         </NavLink>
         <div
@@ -374,47 +375,47 @@ const Sidebar = (props) => {
               <img
                 src={Git}
                 width="17px"
-                style={{ position: 'relative', left: '9px' }}
+                style={{ position: "relative", left: "9px" }}
                 alt=""
               />
             }
           </div>
           <div
             style={{
-              display: isOpen ? 'block' : 'none',
-              textDecoration: 'none',
+              display: isOpen ? "block" : "none",
+              textDecoration: "none",
             }}
             className="link_text github"
           >
-            {'GitHub'}
+            {"GitHub"}
           </div>
         </div>
         {Showlayer && (
           <div className="layer-container">
             <div
               className={
-                isChangeclass ? 'side-drawer' : 'side-drawer-collapsed'
+                isChangeclass ? "side-drawer" : "side-drawer-collapsed"
               }
             >
               <div
                 className="layer-content"
                 style={{
-                  padding: '10px',
-                  height: 'calc(100vh - 60px)',
-                  overflowY: 'auto',
-                  overflowX: 'hidden',
+                  padding: "10px",
+                  height: "calc(100vh - 60px)",
+                  overflowY: "auto",
+                  overflowX: "hidden",
                 }}
               >
                 <div>
                   <span
                     style={{
-                      fontStyle: 'normal',
-                      fontWeight: '600',
-                      fontSize: '20px',
-                      lineHeight: '30px',
-                      color: '#FFFFFF',
-                      padding: '10px',
-                      margiTop: '20px',
+                      fontStyle: "normal",
+                      fontWeight: "600",
+                      fontSize: "20px",
+                      lineHeight: "30px",
+                      color: "#FFFFFF",
+                      padding: "10px",
+                      margiTop: "20px",
                     }}
                   >
                     Layers
@@ -423,7 +424,7 @@ const Sidebar = (props) => {
                 <div>
                   <div
                     className="radio-toolbar"
-                    style={{ flexWrap: 'wrap', display: 'flex' }}
+                    style={{ flexWrap: "wrap", display: "flex" }}
                     data-tut="reactour__layers"
                   >
                     <input
@@ -431,11 +432,11 @@ const Sidebar = (props) => {
                       id="socio-eco"
                       name="radiolayer"
                       onClick={() => {
-                        setselectedCategory('SOCIO-ECONOMIC');
-                        setselectedCategory_id('1');
+                        setselectedCategory("SOCIO-ECONOMIC");
+                        setselectedCategory_id("1");
                       }}
                       defaultChecked={
-                        selectedCategory === 'SOCIO-ECONOMIC' ? true : false
+                        selectedCategory === "SOCIO-ECONOMIC" ? true : false
                       }
                     />
                     <label for="socio-eco" className="icon-socienv">
@@ -459,11 +460,11 @@ const Sidebar = (props) => {
                       id="env"
                       name="radiolayer"
                       onClick={() => {
-                        setselectedCategory('ENVIRONMENTAL');
-                        setselectedCategory_id('2');
+                        setselectedCategory("ENVIRONMENTAL");
+                        setselectedCategory_id("2");
                       }}
                       defaultChecked={
-                        selectedCategory === 'ENVIRONMENTAL' ? true : false
+                        selectedCategory === "ENVIRONMENTAL" ? true : false
                       }
                     />
                     <label for="env" className="icon-env">
@@ -483,14 +484,14 @@ const Sidebar = (props) => {
                         />
 
                         <g id="SVGRepo_iconCarrier">
-                          {' '}
+                          {" "}
                           <g>
-                            {' '}
+                            {" "}
                             <g>
-                              {' '}
-                              <path d="M487.486,3.079c-2.347-2.347-5.653-3.413-8.96-2.987c-4.8,0.64-11.2,1.387-18.987,2.24 c-66.987,7.36-244.8,27.093-343.787,128.427c-111.36,114.027-66.88,208.747-30.507,255.04c1.28,1.707,2.987,3.627,4.8,5.653 c-6.4,9.6-31.893,44.693-85.227,79.573c-4.907,3.2-6.293,9.813-3.093,14.827c3.2,4.907,9.813,6.293,14.827,3.093 c51.307-33.6,78.4-67.2,88.64-81.813c2.88,2.773,5.547,5.227,7.573,7.147c15.467,13.76,53.44,41.92,105.493,41.92 c40.96,0,90.56-17.387,144.747-72.853C463.166,280.839,481.832,96.839,488.872,27.612c0.64-6.4,1.173-11.627,1.707-15.467 C491.006,8.625,489.832,5.425,487.486,3.079z M467.752,25.265c-6.187,60.8-24.96,245.76-119.893,342.933 c-106.88,109.44-189.973,57.387-220.8,29.973c-2.56-2.24-5.76-5.333-9.067-8.64c9.707-12.907,20.267-27.84,32.107-44.587 c59.947-84.48,150.507-212.053,254.613-249.707c5.547-2.027,8.427-8.107,6.4-13.653c-2.027-5.547-8.107-8.427-13.653-6.4 c-110.507,40-199.68,165.76-264.853,257.6c-10.88,15.36-20.587,29.013-29.547,41.067c-0.32-0.427-0.747-0.853-0.96-1.173 c-39.253-49.813-66.027-129.707,29.013-226.88c93.547-96,265.92-115.093,330.773-122.24l6.08-0.64 C467.859,23.665,467.752,24.519,467.752,25.265z" />{' '}
-                            </g>{' '}
-                          </g>{' '}
+                              {" "}
+                              <path d="M487.486,3.079c-2.347-2.347-5.653-3.413-8.96-2.987c-4.8,0.64-11.2,1.387-18.987,2.24 c-66.987,7.36-244.8,27.093-343.787,128.427c-111.36,114.027-66.88,208.747-30.507,255.04c1.28,1.707,2.987,3.627,4.8,5.653 c-6.4,9.6-31.893,44.693-85.227,79.573c-4.907,3.2-6.293,9.813-3.093,14.827c3.2,4.907,9.813,6.293,14.827,3.093 c51.307-33.6,78.4-67.2,88.64-81.813c2.88,2.773,5.547,5.227,7.573,7.147c15.467,13.76,53.44,41.92,105.493,41.92 c40.96,0,90.56-17.387,144.747-72.853C463.166,280.839,481.832,96.839,488.872,27.612c0.64-6.4,1.173-11.627,1.707-15.467 C491.006,8.625,489.832,5.425,487.486,3.079z M467.752,25.265c-6.187,60.8-24.96,245.76-119.893,342.933 c-106.88,109.44-189.973,57.387-220.8,29.973c-2.56-2.24-5.76-5.333-9.067-8.64c9.707-12.907,20.267-27.84,32.107-44.587 c59.947-84.48,150.507-212.053,254.613-249.707c5.547-2.027,8.427-8.107,6.4-13.653c-2.027-5.547-8.107-8.427-13.653-6.4 c-110.507,40-199.68,165.76-264.853,257.6c-10.88,15.36-20.587,29.013-29.547,41.067c-0.32-0.427-0.747-0.853-0.96-1.173 c-39.253-49.813-66.027-129.707,29.013-226.88c93.547-96,265.92-115.093,330.773-122.24l6.08-0.64 C467.859,23.665,467.752,24.519,467.752,25.265z" />{" "}
+                            </g>{" "}
+                          </g>{" "}
                         </g>
                       </svg>
                       <div>Environmental</div>
@@ -501,11 +502,11 @@ const Sidebar = (props) => {
                       id="infra"
                       name="radiolayer"
                       onClick={() => {
-                        setselectedCategory('INFRASTRUCTURE');
-                        setselectedCategory_id('3');
+                        setselectedCategory("INFRASTRUCTURE");
+                        setselectedCategory_id("3");
                       }}
                       defaultChecked={
-                        selectedCategory === 'INFRASTRUCTURE' ? true : false
+                        selectedCategory === "INFRASTRUCTURE" ? true : false
                       }
                     />
                     <label for="infra" className="icon-infra">
@@ -528,13 +529,13 @@ const Sidebar = (props) => {
                       name="radiolayer"
                       onClick={() => {
                         setselectedCategory(
-                          'POSITIVE DEVIANCE & NEGATIVE DEVIANCE'
+                          "POSITIVE DEVIANCE & NEGATIVE DEVIANCE"
                         );
-                        setselectedCategory_id('4');
+                        setselectedCategory_id("4");
                       }}
                       defaultChecked={
                         selectedCategory ===
-                        'POSITIVE DEVIANCE & NEGATIVE DEVIANCE'
+                        "POSITIVE DEVIANCE & NEGATIVE DEVIANCE"
                           ? true
                           : false
                       }
@@ -596,14 +597,14 @@ const Sidebar = (props) => {
                           <div
                             style={
                               // item.display_name === "Land Service Temperature (LST)" ||
-                              item.layer_name === 'SOILORGANICCARBON' ||
+                              item.layer_name === "SOILORGANICCARBON" ||
                               item.isavailable === false
-                                ? { display: 'none' }
+                                ? { display: "none" }
                                 : {}
                             }
                           >
                             <FormGroup check>
-                              <Row style={{ padding: '10px' }}>
+                              <Row style={{ padding: "10px" }}>
                                 <Col md={7}>
                                   <Input
                                     name="radio1"
@@ -616,7 +617,7 @@ const Sidebar = (props) => {
                                     onChange={(e) => {
                                       changeLayer(item.layer_name, item);
                                     }}
-                                  />{' '}
+                                  />{" "}
                                   <Label check>{item.display_name}</Label>
                                 </Col>
                                 <Col md={5}>
@@ -626,13 +627,13 @@ const Sidebar = (props) => {
                                       style={
                                         LayerDesc.layer_name === item.layer_name
                                           ? {}
-                                          : { display: 'none' }
+                                          : { display: "none" }
                                       }
                                     >
-                                      {' '}
+                                      {" "}
                                       {LayerDesc.raster_status === false ? (
                                         <BiShow
-                                          style={{ cursor: 'not-allowed' }}
+                                          style={{ cursor: "not-allowed" }}
                                         />
                                       ) : LayerToggle ? (
                                         <BiShow
@@ -652,9 +653,10 @@ const Sidebar = (props) => {
                                     <div className="col-md-4">
                                       <div
                                         style={
-                                          LayerDesc.layer_name === item.layer_name
+                                          LayerDesc.layer_name ===
+                                          item.layer_name
                                             ? {}
-                                            : { display: 'none' }
+                                            : { display: "none" }
                                         }
                                       >
                                         <BiDownload
@@ -679,7 +681,7 @@ const Sidebar = (props) => {
                                         data-tooltip-content={
                                           item.isavailable
                                             ? item.short_description
-                                            : 'Work in progress'
+                                            : "Work in progress"
                                         }
                                       />
                                       <Tooltip id="about-tooltip" />
@@ -700,27 +702,27 @@ const Sidebar = (props) => {
           <div className="layer-container">
             <div
               className={
-                isChangeclass ? 'side-drawer' : 'side-drawer-collapsed '
+                isChangeclass ? "side-drawer" : "side-drawer-collapsed "
               }
             >
               <div
                 className="layer-content"
                 style={{
-                  padding: '10px',
-                  height: 'calc(100vh - 60px)',
-                  overflowY: 'auto',
+                  padding: "10px",
+                  height: "calc(100vh - 60px)",
+                  overflowY: "auto",
                 }}
               >
                 {isSteps ? (
                   <div>
                     <span
                       style={{
-                        fontStyle: 'normal',
-                        fontWeight: '600',
-                        fontSize: '20px',
-                        lineHeight: '30px',
-                        color: '#FFFFFF',
-                        marginTop: '10px',
+                        fontStyle: "normal",
+                        fontWeight: "600",
+                        fontSize: "20px",
+                        lineHeight: "30px",
+                        color: "#FFFFFF",
+                        marginTop: "10px",
                       }}
                     >
                       <img
@@ -737,21 +739,21 @@ const Sidebar = (props) => {
                       <LayerDetails />
                       <Form
                         style={{
-                          margin: 'none',
-                          border: 'none',
-                          padding: '10px',
+                          margin: "none",
+                          border: "none",
+                          padding: "10px",
                         }}
                       >
                         <Button
                           style={{
-                            background: '#143461',
-                            backdropFilter: 'blur(27px)',
-                            borderRadius: '9.56633px',
-                            width: '375px',
+                            background: "#143461",
+                            backdropFilter: "blur(27px)",
+                            borderRadius: "9.56633px",
+                            width: "375px",
                             // height: "64px",
-                            border: 'none',
-                            fontSize: '12px',
-                            fontWeight: '600',
+                            border: "none",
+                            fontSize: "12px",
+                            fontWeight: "600",
                           }}
                           onClick={toggleStep}
                         >
@@ -764,12 +766,12 @@ const Sidebar = (props) => {
                   <div>
                     <span
                       style={{
-                        fontStyle: 'normal',
-                        fontWeight: '600',
-                        fontSize: '20px',
-                        lineHeight: '30px',
-                        color: '#FFFFFF',
-                        marginTop: '10px',
+                        fontStyle: "normal",
+                        fontWeight: "600",
+                        fontSize: "20px",
+                        lineHeight: "30px",
+                        color: "#FFFFFF",
+                        marginTop: "10px",
                       }}
                     >
                       <img
@@ -782,7 +784,7 @@ const Sidebar = (props) => {
                       />
                       &nbsp; {DownloadDesc} Downloads
                     </span>
-                    <div style={{ padding: '10px' }}>
+                    <div style={{ padding: "10px" }}>
                       <PersonalDetails />
                     </div>
                   </div>
@@ -798,95 +800,168 @@ const Sidebar = (props) => {
         location.pathname === `${process.env.PUBLIC_URL}/about` ||
         location.pathname === `${process.env.PUBLIC_URL}/analytics` ||
         location.pathname === `${process.env.PUBLIC_URL}/help` ? null : (
-          <span style={{ display: isLegendshow ? 'block' : 'none' }}>
+          <span style={{ display: isLegendshow ? "block" : "none" }}>
             <div
               className="legend"
               style={{
                 marginLeft: isCollapse
-                  ? '20px'
+                  ? "20px"
                   : Showdownload
-                  ? '350px'
+                  ? "350px"
                   : Showlayer
-                  ? '350px'
-                  : '20px',
+                  ? "350px"
+                  : "20px",
               }}
               data-tut="reactour__legend"
             >
-              {LayerDesc.layer_name === 'LULC' ||  LayerDesc.layer_name === 'crop_intensity' || LayerDesc.layer_name === 'crop_type' || LayerDesc.layer_name === 'crop_stress' || LayerDesc.layer_name === 'crop_land'|| LayerDesc.layer_name === 'WH' ||  LayerDesc.layer_name === 'FIREEV'  ? (
-                ''
+              {LayerDesc.layer_name === "LULC" ||
+              LayerDesc.layer_name === "crop_intensity" ||
+              LayerDesc.layer_name === "crop_type" ||
+              LayerDesc.layer_name === "crop_stress" ||
+              LayerDesc.layer_name === "crop_land" ||
+              LayerDesc.layer_name === "WH" ||
+              LayerDesc.layer_name === "FIREEV" ? (
+                ""
               ) : (
                 <div className="legend-layer-value" key={valueKey}>
                   {}
                   {isNaN(setval)
-                    ? '0.0'
+                    ? "0.0"
                     : setval === undefined
-                    ? '0.0'
-                    : setval}{' '}
-                  <span style={{ fontSize: '14px' }}>
-                    {LayerDesc.unit === 'unit' || LayerDesc.unit === 'string'
-                      ? ''
+                    ? "0.0"
+                    : setval}{" "}
+                  <span style={{ fontSize: "14px" }}>
+                    {LayerDesc.unit === "unit" || LayerDesc.unit === "string"
+                      ? ""
                       : LayerDesc.unit}
                   </span>
                 </div>
               )}
               <div className="legend-layer-name">
                 <span>
-                  {LayerDesc.layer_name === 'SOIL_M_DEV'
-                    ? 'SOIL MOISTURE'
-                    : LayerDesc.layer_name === 'LST_DPPD'
-                    ? 'LST'
-                    : LayerDesc.layer_name === 'LAI_DPPD'
-                    ? 'LAI'
-                    : LayerDesc.layer_name === 'NO2_DPPD'
-                    ? 'NO2'
-                    : LayerDesc.layer_name === 'NDVI_DPPD'
-                    ? 'NDVI'
-                    : LayerDesc.layer_name === 'PM25_DPPD'
-                    ? 'PM2.5'
-                    : LayerDesc.layer_name === 'PM25'
-                    ? 'PM2.5'
-                    : LayerDesc.layer_name === 'NDWI_DPPD'
-                    ? 'NDWI'
-                    : LayerDesc.layer_name === 'crop_intensity'
-                    ? 'Crop Intensity'
-                    : LayerDesc.layer_name === 'crop_type' 
-                    ? 'Crop Type'
-                    : LayerDesc.layer_name === 'crop_stress' 
-                    ? 'Crop Stress'
-                    : LayerDesc.layer_name === 'crop_land' 
-                    ? 'Croplands'
-                    : LayerDesc.layer_name === 'FIREEV'
-                    ? '' 
-                    : LayerDesc.layer_name === 'DPPD'
-                    ? 'CROP FIRES' 
-                    : LayerDesc.layer_name === 'WH' ?
-                    <span><span><img src={marker} width={15}/> </span><span style={{marginLeft:"20px"}}>Warehouses&nbsp;&nbsp;</span></span> :
-                    LayerDesc.layer_name}
+                  {LayerDesc.layer_name === "SOIL_M_DEV" ? (
+                    "SOIL MOISTURE"
+                  ) : LayerDesc.layer_name === "LST_DPPD" ? (
+                    "LST"
+                  ) : LayerDesc.layer_name === "LAI_DPPD" ? (
+                    "LAI"
+                  ) : LayerDesc.layer_name === "NO2_DPPD" ? (
+                    "NO2"
+                  ) : LayerDesc.layer_name === "NDVI_DPPD" ? (
+                    "NDVI"
+                  ) : LayerDesc.layer_name === "PM25_DPPD" ? (
+                    "PM2.5"
+                  ) : LayerDesc.layer_name === "PM25" ? (
+                    "PM2.5"
+                  ) : LayerDesc.layer_name === "NDWI_DPPD" ? (
+                    "NDWI"
+                  ) : LayerDesc.layer_name === "crop_intensity" ? (
+                    "Crop Intensity"
+                  ) : LayerDesc.layer_name === "crop_type" ? (
+                    "Crop Type"
+                  ) : LayerDesc.layer_name === "crop_stress" ? (
+                    "Crop Stress"
+                  ) : LayerDesc.layer_name === "crop_land" ? (
+                    "Croplands"
+                  ) : LayerDesc.layer_name === "FIREEV" ? (
+                    ""
+                  ) : LayerDesc.layer_name === "DPPD" ? (
+                    "CROP FIRES"
+                  ) : LayerDesc.layer_name === "WH" ? (
+                    <span>
+                      <span>
+                        <img src={marker} width={15} />{" "}
+                      </span>
+                      <span style={{ marginLeft: "20px" }}>
+                        Warehouses&nbsp;&nbsp;
+                      </span>
+                    </span>
+                  ) : (
+                    LayerDesc.layer_name
+                  )}
                 </span>
-                <span style={
-                  LayerDesc.layer_name === 'LULC' ||  LayerDesc.layer_name === 'crop_intensity' || LayerDesc.layer_name === 'crop_type' || LayerDesc.layer_name === 'crop_stress' || LayerDesc.layer_name === 'crop_land' || LayerDesc.layer_name === 'WH' || LayerDesc.layer_name === 'FIREEV' ? { display: 'none' } : {}
-                }>&nbsp;{'|'}&nbsp;</span>
-                <span  style={
-                  LayerDesc.layer_name === 'LULC' ||  LayerDesc.layer_name === 'crop_intensity' || LayerDesc.layer_name === 'crop_type' || LayerDesc.layer_name === 'crop_stress' || LayerDesc.layer_name === 'crop_land' | LayerDesc.layer_name === 'WH' || LayerDesc.layer_name === 'FIREEV' ? { display: 'none' } : {}
-                }>{currentDate}</span>
+                <span
+                  style={
+                    LayerDesc.layer_name === "LULC" ||
+                    LayerDesc.layer_name === "crop_intensity" ||
+                    LayerDesc.layer_name === "crop_type" ||
+                    LayerDesc.layer_name === "crop_stress" ||
+                    LayerDesc.layer_name === "crop_land" ||
+                    LayerDesc.layer_name === "WH" ||
+                    LayerDesc.layer_name === "FIREEV"
+                      ? { display: "none" }
+                      : {}
+                  }
+                >
+                  &nbsp;{"|"}&nbsp;
+                </span>
+                <span
+                  style={
+                    LayerDesc.layer_name === "LULC" ||
+                    LayerDesc.layer_name === "crop_intensity" ||
+                    LayerDesc.layer_name === "crop_type" ||
+                    LayerDesc.layer_name === "crop_stress" ||
+                    (LayerDesc.layer_name === "crop_land") |
+                      (LayerDesc.layer_name === "WH") ||
+                    LayerDesc.layer_name === "FIREEV"
+                      ? { display: "none" }
+                      : {}
+                  }
+                >
+                  {currentDate}
+                </span>
               </div>
               <div
                 className="legend-layer-latlong"
                 style={
-                  LayerDesc.layer_name === 'LULC' ||  LayerDesc.layer_name === 'crop_intensity' || LayerDesc.layer_name === 'crop_type' || LayerDesc.layer_name === 'crop_stress' || LayerDesc.layer_name === 'crop_land' || LayerDesc.layer_name === 'WH' || LayerDesc.layer_name === 'FIREEV' || layertype === 'Vector' ? { display: 'none' } : {}
+                  LayerDesc.layer_name === "LULC" ||
+                  LayerDesc.layer_name === "crop_intensity" ||
+                  LayerDesc.layer_name === "crop_type" ||
+                  LayerDesc.layer_name === "crop_stress" ||
+                  LayerDesc.layer_name === "crop_land" ||
+                  LayerDesc.layer_name === "WH" ||
+                  LayerDesc.layer_name === "FIREEV" ||
+                  layertype === "Vector" ||
+                  currentregion === "CUSTOM"
+                    ? { display: "none" }
+                    : {}
                 }
               >
-                {' '}
+                {" "}
                 {hoverLatLon} <img src={Nav} width="19px" alt="Nav" />
               </div>
+              <div
+                className="legend-layer-latlong"
+                style={
+                  LayerDesc.layer_name === "LULC" ||
+                  LayerDesc.layer_name === "crop_intensity" ||
+                  LayerDesc.layer_name === "crop_type" ||
+                  LayerDesc.layer_name === "crop_stress" ||
+                  LayerDesc.layer_name === "crop_land" ||
+                  LayerDesc.layer_name === "WH" ||
+                  LayerDesc.layer_name === "FIREEV" ||
+                  layertype === "Raster" ||
+                  currentregion === "CUSTOM"
+                    ? { display: "none" }
+                    : {}
+                }
+              >
+                {" "}
+                {setplace}
+              </div>
               <div>
-                {LayerDesc.layer_name === 'LULC' ? (
+                {LayerDesc.layer_name === "LULC" ? (
                   <LulcLegend />
-                ) : LayerDesc.layer_name === 'crop_intensity' || LayerDesc.layer_name === 'crop_type' || LayerDesc.layer_name === 'crop_stress' || LayerDesc.layer_name === 'crop_land' ? 
-                   ( <CropLegend /> )
-                   : LayerDesc.layer_name === "WH" ? '' 
-                   : LayerDesc.layer_name === "FIREEV" ? (<FELegend />) 
-                   :(
+                ) : LayerDesc.layer_name === "crop_intensity" ||
+                  LayerDesc.layer_name === "crop_type" ||
+                  LayerDesc.layer_name === "crop_stress" ||
+                  LayerDesc.layer_name === "crop_land" ? (
+                  <CropLegend />
+                ) : LayerDesc.layer_name === "WH" ? (
+                  ""
+                ) : LayerDesc.layer_name === "FIREEV" ? (
+                  <FELegend />
+                ) : (
                   <ColorPicker />
                 )}
               </div>

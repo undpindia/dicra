@@ -80,8 +80,8 @@ const BottomNav = (props) => {
         setIsModalDownload(!isModalDownload);
         setIsModalVisible(false);
         // setIsModalOther(false);
-        // setactiveLayer('download');
-        // resetStep();
+        setactiveLayer('download');
+        resetStep();
       },
     },
 
@@ -219,11 +219,11 @@ const BottomNav = (props) => {
 
   const resetStep = () => {
     if (activeLayer === 'layer') {
-      setactiveStep(1);
-    } else if (activeLayer === 'download') {
       setactiveStep(0);
-    } else if (activeLayer === 'other') {
+    } else if (activeLayer === 'download') {
       setactiveStep(1);
+    } else if (activeLayer === 'other') {
+      setactiveStep(0);
     }
   };
 

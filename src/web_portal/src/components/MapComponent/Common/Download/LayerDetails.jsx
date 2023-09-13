@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import {
- getdownloadfiles,
- getlayers
-} from "../../../../assets/api/apiService";
+import { getdownloadfiles, getlayers } from '../../../../assets/api/apiService';
 
 const mapStateToProps = (props) => {
   return {
@@ -114,8 +110,7 @@ class LayerDetails extends Component {
         () => {
           if (this.state.availableFiles === undefined) {
             console.log();
-          }
-          else if (this.state.availableFiles[0] === undefined) {
+          } else if (this.state.availableFiles[0] === undefined) {
             console.log();
           } else {
             this.props.setdownloadfile(
@@ -162,17 +157,39 @@ class LayerDetails extends Component {
 
     this.getLayerdetails();
   }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.LayerDescription !== this.props.LayerDescription ||
+      prevProps.DownloadLayer !== this.props.DownloadLayer ||
+      prevProps.SelecterCategory !== this.props.SelecterCategory ||
+      prevProps.SelecterCategoryId !== this.props.SelecterCategoryId
+    ) {
+      this.setState({
+        layerDesc: this.props.LayerDescription.long_description,
+        layersource: this.props.LayerDescription.source,
+        currentselect: this.props.DownloadLayer,
+        selecterCategory: this.props.SelecterCategory,
+        DownloadLayer: this.props.DownloadLayer,
+        selectCategory_id: this.props.SelecterCategoryId || 1,
+      });
+
+      this.getavailableFiles(this.props.LayerDescription.id);
+      this.getLayerdetails();
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
-        <div className="download-section" style={{ marginTop: "10px" }}>
+        <div className="download-section" style={{ marginTop: '10px' }}>
           <div className="downloads-content">
             <div
               className="radio-toolbar"
               style={{
-                flexWrap: "wrap",
-                display: "flex",
-                justifyContent: "space-around",
+                flexWrap: 'wrap',
+                display: 'flex',
+                justifyContent: 'space-around',
               }}
             >
               <input
@@ -180,13 +197,13 @@ class LayerDetails extends Component {
                 id="socio-eco"
                 name="radiolayer"
                 checked={
-                  this.state.selecterCategory === "SOCIO-ECONOMIC" ||
+                  this.state.selecterCategory === 'SOCIO-ECONOMIC' ||
                   this.state.selectCategory_id === 1
                 }
                 onClick={() => {
                   if (this.state.layerdata[1][0].id) {
                     this.setState({
-                      selecterCategory: "SOCIO-ECONOMIC",
+                      selecterCategory: 'SOCIO-ECONOMIC',
                       selectCategory_id: 1,
                       layerDesc: this.state.layerdata[1][0].long_description,
                       layersource: this.props.LayerDescription.source,
@@ -199,7 +216,7 @@ class LayerDetails extends Component {
                     );
                   } else {
                     this.setState({
-                      selecterCategory: "SOCIO-ECONOMIC",
+                      selecterCategory: 'SOCIO-ECONOMIC',
                       selectCategory_id: 1,
                     });
                   }
@@ -226,15 +243,15 @@ class LayerDetails extends Component {
                 id="env"
                 name="radiolayer"
                 checked={
-                  this.state.selecterCategory === "ENVIRONMENTAL" ||
+                  this.state.selecterCategory === 'ENVIRONMENTAL' ||
                   this.state.selectCategory_id === 2
                 }
                 onClick={() => {
-                  console.log("clicked");
+                  console.log('clicked');
 
                   if (this.state.layerdata[2][0].id) {
                     this.setState({
-                      selecterCategory: "ENVIRONMENTAL",
+                      selecterCategory: 'ENVIRONMENTAL',
                       selectCategory_id: 2,
                       layerDesc: this.state.layerdata[2][0].long_description,
                       layersource: this.props.LayerDescription.source,
@@ -247,7 +264,7 @@ class LayerDetails extends Component {
                     );
                   } else {
                     this.setState({
-                      selecterCategory: "ENVIRONMENTAL",
+                      selecterCategory: 'ENVIRONMENTAL',
                       selectCategory_id: 2,
                     });
                   }
@@ -270,14 +287,14 @@ class LayerDetails extends Component {
                   />
 
                   <g id="SVGRepo_iconCarrier">
-                    {" "}
+                    {' '}
                     <g>
-                      {" "}
+                      {' '}
                       <g>
-                        {" "}
-                        <path d="M487.486,3.079c-2.347-2.347-5.653-3.413-8.96-2.987c-4.8,0.64-11.2,1.387-18.987,2.24 c-66.987,7.36-244.8,27.093-343.787,128.427c-111.36,114.027-66.88,208.747-30.507,255.04c1.28,1.707,2.987,3.627,4.8,5.653 c-6.4,9.6-31.893,44.693-85.227,79.573c-4.907,3.2-6.293,9.813-3.093,14.827c3.2,4.907,9.813,6.293,14.827,3.093 c51.307-33.6,78.4-67.2,88.64-81.813c2.88,2.773,5.547,5.227,7.573,7.147c15.467,13.76,53.44,41.92,105.493,41.92 c40.96,0,90.56-17.387,144.747-72.853C463.166,280.839,481.832,96.839,488.872,27.612c0.64-6.4,1.173-11.627,1.707-15.467 C491.006,8.625,489.832,5.425,487.486,3.079z M467.752,25.265c-6.187,60.8-24.96,245.76-119.893,342.933 c-106.88,109.44-189.973,57.387-220.8,29.973c-2.56-2.24-5.76-5.333-9.067-8.64c9.707-12.907,20.267-27.84,32.107-44.587 c59.947-84.48,150.507-212.053,254.613-249.707c5.547-2.027,8.427-8.107,6.4-13.653c-2.027-5.547-8.107-8.427-13.653-6.4 c-110.507,40-199.68,165.76-264.853,257.6c-10.88,15.36-20.587,29.013-29.547,41.067c-0.32-0.427-0.747-0.853-0.96-1.173 c-39.253-49.813-66.027-129.707,29.013-226.88c93.547-96,265.92-115.093,330.773-122.24l6.08-0.64 C467.859,23.665,467.752,24.519,467.752,25.265z" />{" "}
-                      </g>{" "}
-                    </g>{" "}
+                        {' '}
+                        <path d="M487.486,3.079c-2.347-2.347-5.653-3.413-8.96-2.987c-4.8,0.64-11.2,1.387-18.987,2.24 c-66.987,7.36-244.8,27.093-343.787,128.427c-111.36,114.027-66.88,208.747-30.507,255.04c1.28,1.707,2.987,3.627,4.8,5.653 c-6.4,9.6-31.893,44.693-85.227,79.573c-4.907,3.2-6.293,9.813-3.093,14.827c3.2,4.907,9.813,6.293,14.827,3.093 c51.307-33.6,78.4-67.2,88.64-81.813c2.88,2.773,5.547,5.227,7.573,7.147c15.467,13.76,53.44,41.92,105.493,41.92 c40.96,0,90.56-17.387,144.747-72.853C463.166,280.839,481.832,96.839,488.872,27.612c0.64-6.4,1.173-11.627,1.707-15.467 C491.006,8.625,489.832,5.425,487.486,3.079z M467.752,25.265c-6.187,60.8-24.96,245.76-119.893,342.933 c-106.88,109.44-189.973,57.387-220.8,29.973c-2.56-2.24-5.76-5.333-9.067-8.64c9.707-12.907,20.267-27.84,32.107-44.587 c59.947-84.48,150.507-212.053,254.613-249.707c5.547-2.027,8.427-8.107,6.4-13.653c-2.027-5.547-8.107-8.427-13.653-6.4 c-110.507,40-199.68,165.76-264.853,257.6c-10.88,15.36-20.587,29.013-29.547,41.067c-0.32-0.427-0.747-0.853-0.96-1.173 c-39.253-49.813-66.027-129.707,29.013-226.88c93.547-96,265.92-115.093,330.773-122.24l6.08-0.64 C467.859,23.665,467.752,24.519,467.752,25.265z" />{' '}
+                      </g>{' '}
+                    </g>{' '}
                   </g>
                 </svg>
                 <div>Environmental</div>
@@ -288,13 +305,13 @@ class LayerDetails extends Component {
                 id="infra"
                 name="radiolayer"
                 checked={
-                  this.state.selecterCategory === "INFRASTRUCTURE" ||
+                  this.state.selecterCategory === 'INFRASTRUCTURE' ||
                   this.state.selectCategory_id === 3
                 }
                 onClick={() => {
                   if (this.state.layerdata[3][0].id) {
                     this.setState({
-                      selecterCategory: "ENVIRONMENTAL",
+                      selecterCategory: 'ENVIRONMENTAL',
                       selectCategory_id: 3,
                       layerDesc: this.state.layerdata[3][0].long_description,
                       layersource: this.props.LayerDescription.source,
@@ -307,7 +324,7 @@ class LayerDetails extends Component {
                     );
                   } else {
                     this.setState({
-                      selecterCategory: "INFRASTRUCTURE",
+                      selecterCategory: 'INFRASTRUCTURE',
                       selectCategory_id: 3,
                     });
                   }
@@ -333,13 +350,13 @@ class LayerDetails extends Component {
                 name="radiolayer"
                 checked={
                   this.state.selecterCategory ===
-                    "POSITIVE DEVIANCE & NEGATIVE DEVIANCE" ||
+                    'POSITIVE DEVIANCE & NEGATIVE DEVIANCE' ||
                   this.state.selectCategory_id === 4
                 }
                 onClick={() => {
                   if (this.state.layerdata[4][0].id) {
                     this.setState({
-                      selecterCategory: "POSITIVE DEVIANCE & NEGATIVE DEVIANCE",
+                      selecterCategory: 'POSITIVE DEVIANCE & NEGATIVE DEVIANCE',
                       selectCategory_id: 4,
                       layerDesc: this.state.layerdata[4][0].long_description,
                     });
@@ -351,7 +368,7 @@ class LayerDetails extends Component {
                     );
                   } else {
                     this.setState({
-                      selecterCategory: "POSITIVE DEVIANCE & NEGATIVE DEVIANCE",
+                      selecterCategory: 'POSITIVE DEVIANCE & NEGATIVE DEVIANCE',
                       selectCategory_id: 4,
                     });
                   }
@@ -405,16 +422,16 @@ class LayerDetails extends Component {
               </label>
             </div>
             <br />
-            <div style={{ padding: "10px" }}>
+            <div style={{ padding: '10px' }}>
               <select
                 className="download-select"
                 style={{
-                  backdropFilter: "blur(112px)",
-                  borderRadius: "5px",
-                  border: "none",
-                  color: "#ffffff",
-                  padding: "10px",
-                  fontSize: "12px",
+                  backdropFilter: 'blur(112px)',
+                  borderRadius: '5px',
+                  border: 'none',
+                  color: '#ffffff',
+                  padding: '10px',
+                  fontSize: '12px',
                 }}
                 value={this.state.currentselect}
                 onChange={(e) => this.changeLayer(e)}
@@ -436,57 +453,56 @@ class LayerDetails extends Component {
                 {this.state.layerDesc}
               </div>
               <br />
-              <div style={{ fontSize: "12px" }}>
-                Source : {this.state.layersource}{" "}
+              <div style={{ fontSize: '12px' }}>
+                Source : {this.state.layersource}{' '}
               </div>
               <br />
               <select
                 className="download-select"
                 style={{
-                  backdropFilter: "blur(112px)",
-                  borderRadius: "5px",
-                  border: "none",
-                  color: "#ffffff",
-                  padding: "10px",
-                  fontSize: "12px",
+                  backdropFilter: 'blur(112px)',
+                  borderRadius: '5px',
+                  border: 'none',
+                  color: '#ffffff',
+                  padding: '10px',
+                  fontSize: '12px',
                 }}
                 value={this.state.selectedFile}
                 onChange={(e) => this.changeFile(e)}
                 defaultChecked={this.state.currentselect}
               >
-                {this.state.availableFiles ===
-                undefined
+                {this.state.availableFiles === undefined
                   ? console.log()
                   : this.state.availableFiles.map(function (layer, index) {
-                  return (
-                    <option value={layer.filename_on_blob} key={index}>
-                      {layer.filename_on_blob}
-                    </option>
-                  );
-                })}
+                      return (
+                        <option value={layer.filename_on_blob} key={index}>
+                          {layer.filename_on_blob}
+                        </option>
+                      );
+                    })}
               </select>
               <div>
                 <br />
                 <span
                   style={{
-                    fontStyle: "italic",
-                    fontWeight: "400",
-                    fontSize: "12px",
-                    lineHeight: "28px",
-                    color: "#C1C1C1",
+                    fontStyle: 'italic',
+                    fontWeight: '400',
+                    fontSize: '12px',
+                    lineHeight: '28px',
+                    color: '#C1C1C1',
                   }}
                 >
-                  You can also download the data using our open API{" "}
+                  You can also download the data using our open API{' '}
                 </span>
                 <a
                   style={{
-                    fontStyle: "italic",
-                    fontWeight: "400",
-                    fontSize: "12px",
-                    lineHeight: "28px",
+                    fontStyle: 'italic',
+                    fontWeight: '400',
+                    fontSize: '12px',
+                    lineHeight: '28px',
                   }}
                   target="_blank"
-                  href={"https://api-dicra.undp.org.in/docs#"}
+                  href={'https://api-dicra.undp.org.in/docs#'}
                   rel="noreferrer"
                 >
                   know more

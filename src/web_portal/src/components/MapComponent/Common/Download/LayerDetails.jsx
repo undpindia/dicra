@@ -158,26 +158,26 @@ class LayerDetails extends Component {
     this.getLayerdetails();
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.LayerDescription !== this.props.LayerDescription ||
-      prevProps.DownloadLayer !== this.props.DownloadLayer ||
-      prevProps.SelecterCategory !== this.props.SelecterCategory ||
-      prevProps.SelecterCategoryId !== this.props.SelecterCategoryId
-    ) {
-      this.setState({
-        layerDesc: this.props.LayerDescription.long_description,
-        layersource: this.props.LayerDescription.source,
-        currentselect: this.props.DownloadLayer,
-        selecterCategory: this.props.SelecterCategory,
-        DownloadLayer: this.props.DownloadLayer,
-        selectCategory_id: this.props.SelecterCategoryId || 1,
-      });
+  // componentDidUpdate(prevProps) {
+  //   if (
+  //     prevProps.LayerDescription !== this.props.LayerDescription ||
+  //     prevProps.DownloadLayer !== this.props.DownloadLayer ||
+  //     prevProps.SelecterCategory !== this.props.SelecterCategory ||
+  //     prevProps.SelecterCategoryId !== this.props.SelecterCategoryId
+  //   ) {
+  //     this.setState({
+  //       layerDesc: this.props.LayerDescription.long_description,
+  //       layersource: this.props.LayerDescription.source,
+  //       currentselect: this.props.DownloadLayer,
+  //       selecterCategory: this.props.SelecterCategory,
+  //       DownloadLayer: this.props.DownloadLayer,
+  //       selectCategory_id: this.props.SelecterCategoryId || 1,
+  //     });
 
-      this.getavailableFiles(this.props.LayerDescription.id);
-      this.getLayerdetails();
-    }
-  }
+  //     this.getavailableFiles(this.props.LayerDescription.id);
+  //     this.getLayerdetails();
+  //   }
+  // }
 
   render() {
     return (

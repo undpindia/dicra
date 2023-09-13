@@ -1,18 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { Provider } from "react-redux";
-import configureStore from './store/configStore'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { TourProvider } from '@reactour/tour';
+import configureStore from './store/configStore';
+import steps from './react-tour-setup/steps';
 
-const store=configureStore()
+const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-   <App />
-  </Provider>,
-  document.getElementById("root")
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <TourProvider steps={steps}>
+          <App />
+        </TourProvider>
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

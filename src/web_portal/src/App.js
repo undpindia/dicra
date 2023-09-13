@@ -1,57 +1,34 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import Map from "./Map/Map";
-import Usecases from "./pages/Usecases";
-import About from "./pages/About";
-import Analytics from "./pages/Analytics";
-import Policy from "./pages/Policy";
-import Terms from "./pages/Terms";
-import FieldStories from "./pages/FieldStories";
-import Data4Policy from "./pages/Data4Policy";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-
+import React from 'react';
+import './App.css';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import Map from './components/MapComponent/Map/Map';
+// import About from './components/MapComponent/pages/About.jsx';
+import Analytics from './components/MapComponent/pages/Analytics.jsx';
+// import Usecase from './components/MapComponent/pages/Usecase.jsx';
+import Help from './components/MapComponent/pages/Help';
+import LandingPage from './components/Landing/Landing';
 
 function App() {
-  const [loading, setLoading] = useState(true);
- 
-  useEffect(() => {
-    if (loading) {
-      setTimeout(() => {
-        setLoading(false);
-        window.layerType = "Raster";
-      }, 5000);
-    }
-  }, [loading]);
+  const baseUrl = process.env.PUBLIC_URL;
+  const location = useLocation();
+  console.log(location);
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-          <Map />
-          </Route>
-          <Route path="/use-cases">
-            <Usecases />
-          </Route>
-          <Route path="/about-project">
-            <About />
-          </Route>
-          <Route path="/analytics">
-            <Analytics />
-          </Route>
-          <Route path="/terms">
-            <Terms />
-          </Route>
-          <Route path="/policy">
-            <Policy />
-          </Route>
-          <Route path="/field-stories">
-            <FieldStories />
-          </Route>
-          <Route path="/data4policy">
-            <Data4Policy />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+    <div>
+      <Routes basename={baseUrl} forceRefresh={true}>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<Map />} />
+        <Route path={`${process.env.PUBLIC_URL}/map`} element={<Map />} />
+        {/* <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} /> */}
+        <Route
+          path={`${process.env.PUBLIC_URL}/analytics`}
+          element={<Analytics />}
+        />
+        {/* <Route
+          path={`${process.env.PUBLIC_URL}/usecases`}
+          element={<Usecase />}
+        /> */}
+        <Route path={`${process.env.PUBLIC_URL}/Help`} element={<Help />} />
+      </Routes>
     </div>
   );
 }

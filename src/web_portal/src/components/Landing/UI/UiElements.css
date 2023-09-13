@@ -1,0 +1,100 @@
+.custom-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-radius: 50px;
+  background-color: #143461;
+  white-space: nowrap;
+  padding: 10px 22px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.custom-button:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+  color: #fff;
+}
+
+.custom-adaptive-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 330px;
+  height: 330px;
+  gap: 35px;
+  background-color: #ebebeb;
+}
+
+.custom-adaptive-card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+  color: #fff;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* width: 265px;
+  height: 265px; */
+  width: 268px;
+  height: 180px;
+  gap: 35px;
+  background-color: #ebebeb;
+}
+
+.custom-adaptive-card-title {
+  color: #143461;
+  text-align: center;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 35px;
+  letter-spacing: 0.222px;
+}
+
+.custom-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.custom-input {
+  height: 60px;
+  border-radius: 50px;
+  border: 1px solid #8e8d94;
+  background: rgba(37, 40, 54, 0.1);
+  outline: none;
+  padding: 0 20px;
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .custom-adaptive-card {
+    width: 300px;
+    height: 300px;
+  }
+}

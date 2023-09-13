@@ -1,0 +1,501 @@
+import React, {Component} from 'react';
+import Colorscale from './ColorScaleIndex';
+import chroma from 'chroma-js';
+import Select from 'react-select';
+
+
+import {
+  COLORSCALE_TYPES,
+  COLORSCALE_DESCRIPTIONS,
+  BREWER,
+  CMOCEAN,
+  CUBEHELIX,
+  SCALES_WITHOUT_LOG,
+  DEFAULT_SCALE,
+  DEFAULT_BREAKPOINTS,
+  DEFAULT_START,
+  DEFAULT_LOG_BREAKPOINTS,
+  DEFAULT_ROTATIONS,
+  DEFAULT_GAMMA,
+  DEFAULT_LIGHTNESS,
+  DEFAULT_NCOLORS,
+  DEFAULT_NPREVIEWCOLORS,
+  BUILTINS,
+} from './constants.js';
+
+export function getColorscale(
+  colorscale,
+  nSwatches,
+  logBreakpoints,
+  log,
+  colorscaleType
+) {
+  /*
+   * getColorscale() takes a scale, modifies it based on the input
+   * parameters, and returns a new scale
+   */
+  // helper function repeats a categorical colorscale array N times
+  let repeatArray = (array, n) => {
+    let arrays = Array.apply(null, new Array(n));
+    arrays = arrays.map(function() {
+      return array;
+    });
+    return [].concat.apply([], arrays);
+  };
+
+  let cs = chroma.scale(colorscale).mode('lch');
+
+  if (log) {
+    const logData = Array(nSwatches)
+      .fill()
+      .map((x, i) => i + 1);
+    cs = cs.classes(chroma.limits(logData, 'l', logBreakpoints));
+  }
+
+  let discreteScale = cs.colors(nSwatches);
+
+  if (!log && colorscaleType === 'categorical') {
+    discreteScale = repeatArray(colorscale, nSwatches).slice(0, nSwatches);
+  }
+
+  return discreteScale;
+}
+
+export default class ColorscalePicker extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      colorscale: this.props.colorscale || DEFAULT_SCALE,
+      nSwatches: (this.props.colorscale || DEFAULT_SCALE).length,
+      previousColorscale: this.props.colorscale || DEFAULT_SCALE,
+      colorscaleType:
+        this.props.colorscaleType || this.props.initialColorscaleType,
+      log: false,
+      logBreakpoints: DEFAULT_LOG_BREAKPOINTS,
+      customBreakpoints: DEFAULT_BREAKPOINTS,
+      previousCustomBreakpoints: null,
+      cubehelix: {
+        start: DEFAULT_START,
+        rotations: DEFAULT_ROTATIONS,
+      },
+    };
+
+    this.onClick = this.onClick.bind(this);
+    this.setColorscaleType = this.setColorscaleType.bind(this);
+    this.updateCubehelixStart = this.updateCubehelixStart.bind(this);
+    this.updateCubehelixRotations = this.updateCubehelixRotations.bind(this);
+    this.updateCubehelix = this.updateCubehelix.bind(this);
+    this.toggleLog = this.toggleLog.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({colorscaleOnMount: this.props.colorscale});
+  }
+
+  toggleLog = () => {
+    const cs = getColorscale(
+      this.state.previousColorscale,
+      this.state.nSwatches,
+      this.state.logBreakpoints,
+      !this.state.log,
+      this.state.colorscaleType
+    );
+
+    this.setState({log: !this.state.log, colorscale: cs});
+
+    this.props.onChange(cs);
+  };
+
+  onClick = (newColorscale, start, rot) => {
+    const bp = this.state.customBreakpoints;
+    const prevBp = this.state.previousCustomBreakpoints;
+
+    if (bp === prevBp && this.state.colorscaleType === 'custom') {
+      return;
+    }
+
+    const cs = getColorscale(
+      newColorscale,
+      newColorscale.length,
+      this.state.logBreakpoints,
+      this.state.log,
+      this.state.colorscaleType
+    );
+
+    let previousColorscale = newColorscale;
+    if (this.state.colorscaleType === 'custom') {
+      previousColorscale = this.state.previousColorscale;
+    }
+
+    if (!start && !rot) {
+      this.setState({
+        previousColorscale: previousColorscale,
+        colorscale: cs,
+        nSwatches: newColorscale.length,
+        previousCustomBreakpoints:
+          this.state.colorscaleType === 'custom'
+            ? this.state.customBreakpoints
+            : null,
+      });
+    } else {
+      this.setState({
+        previousColorscale: previousColorscale,
+        colorscale: cs,
+        nSwatches: newColorscale.length,
+        previousCustomBreakpoints: null,
+        cubehelix: {
+          start: start,
+          rotations: rot,
+        },
+      });
+    }
+    this.props.onChange(cs, this.state.colorscaleType);
+  };
+
+  updateSwatchNumber = ns => {
+    const cs = getColorscale(
+      this.state.previousColorscale,
+      ns,
+      this.state.logBreakpoints,
+      this.state.log,
+      this.state.colorscaleType
+    );
+    this.setState({
+      nSwatches: ns,
+      colorscale: cs,
+      customBreakpoints: DEFAULT_BREAKPOINTS,
+    });
+    this.props.onChange(cs);
+  };
+
+  updateBreakpoints = e => {
+    const bp = e.currentTarget.valueAsNumber;
+
+    const cs = getColorscale(
+      this.state.previousColorscale,
+      this.state.nSwatches,
+      bp,
+      this.state.log,
+      this.state.colorscaleType
+    );
+
+    this.setState({
+      logBreakpoints: bp,
+      colorscale: cs,
+    });
+
+    this.props.onChange(cs);
+  };
+
+  updateBreakpointArray = e => {
+    const bpArr = e.currentTarget.value
+      .replace(/,\s*$/, '')
+      .split(',')
+      .map(Number);
+    this.setState({
+      customBreakpoints: bpArr,
+    });
+  };
+
+  updateCubehelixStart = start => {
+    const rot = this.state.cubehelix.rotations;
+    this.updateCubehelix(start, rot);
+  };
+
+  updateCubehelixRotations = rot => {
+    const start = this.state.cubehelix.start;
+    this.updateCubehelix(start, rot);
+  };
+
+
+  updateCubehelixRotState = rot => {
+    const ch = this.state.cubehelix;
+    ch.rotations = rot;
+    this.setState({cubehelix: ch});
+  };
+
+  updateCubehelix = (start, rot) => {
+    const newColorscale = chroma
+      .cubehelix()
+      .start(start)
+      .rotations(this.state.cubehelix.rotations)
+      .gamma(DEFAULT_GAMMA)
+      .lightness(DEFAULT_LIGHTNESS)
+      .scale()
+      .correctLightness()
+      .colors(DEFAULT_NCOLORS);
+
+    this.onClick(newColorscale, start, rot);
+  };
+
+  setColorscaleType(colorscale) {
+    const value = colorscale.value;
+    if (value !== this.state.colorscaleType) {
+      let isLogColorscale = this.state.log;
+
+      if (SCALES_WITHOUT_LOG.indexOf(value) >= 0) {
+        isLogColorscale = false;
+      }
+
+      this.setState({
+        colorscaleType: value,
+        log: isLogColorscale,
+      });
+    }
+  }
+
+  renderSwatchControls() {
+    let swatchLabel = null;
+    // let swatchSlider = null;
+
+    if (!this.props.fixSwatches) {
+      swatchLabel = (
+        <div className="noWrap inlineBlock">
+          <span className="textLabel spaceRight">Swatches:</span>
+          <span className="textLabel spaceRight">{this.state.nSwatches}</span>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        {swatchLabel}
+        {SCALES_WITHOUT_LOG.indexOf(this.state.colorscaleType) < 0 && (
+          <div className="noWrap inlineBlock alignTop">
+            <span className="textLabel spaceRight spaceLeft">Log scale</span>
+            <input
+              type="checkbox"
+              name="log"
+              value="log"
+              onChange={this.toggleLog}
+              defaultChecked={this.state.log}
+              className="spaceRightZeroTop alignMiddle"
+            />
+            {this.state.log && (
+              <span>
+                <span className="textLabel spaceRight spaceLeft">
+                  Breakpoints:{' '}
+                </span>
+                <input
+                  type="number"
+                  step="1"
+                  min="1"
+                  max="10"
+                  value={`${this.state.logBreakpoints}`}
+                  onChange={this.updateBreakpoints}
+                />
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  render() {
+    const colorscaleOptions = COLORSCALE_TYPES.map(c => ({
+      label: c + ' scales',
+      value: c,
+    }));
+
+    const colorscalePickerContainerClassnames =
+      'colorscalePickerContainer' +
+      (this.props.className ? ' ' + this.props.className : '');
+
+    return (
+      <div
+        className={colorscalePickerContainerClassnames}
+        style={{width: this.props.width || '300px'}}
+      >
+         <span className='color-palette-header'>Pick a Color Scale</span>
+         <div style={{marginBottom:"5px"}}>{''}</div>
+         <div className="colorscalePickerTopContainer">
+          <Select
+            options={colorscaleOptions}
+            value={this.state.colorscaleType}
+            onChange={this.setColorscaleType}
+            placeholder={this.state.colorscaleType + ' scales'}
+            noResultsText={'Colorscale not found'}
+            clearable={false}
+            searchable={false}
+            style={{color:"black"}}
+          />
+        </div>
+
+        <ColorscalePaletteSelector
+          colorscaleType={
+            this.props.colorscaleType || this.state.colorscaleType
+          }
+          colorscaleOnMount={this.state.colorscaleOnMount}
+          onClick={this.onClick}
+          previousColorscale={this.state.previousColorscale}
+          customBreakpoints={this.state.customBreakpoints}
+          nSwatches={this.state.nSwatches}
+          cubehelix={this.state.cubehelix}
+          updateCubehelixStartState={this.updateCubehelixStartState}
+          updateCubehelixStart={this.updateCubehelixStart}
+          handle={this.handle}
+          updateCubehelixRotState={this.updateCubehelixRotState}
+          updateCubehelixRotations={this.updateCubehelixRotations}
+          updateBreakpointArray={this.updateBreakpointArray}
+          scaleLength={this.props.scaleLength}
+        />
+
+        {this.props.disableSwatchControls ? null : this.renderSwatchControls()}
+      </div>
+    );
+  }
+}
+
+ColorscalePicker.defaultProps = {
+  initialColorscaleType: 'Sequential',
+};
+
+export class ColorscalePaletteSelector extends Component {
+  render() {
+    const {
+      colorscaleType,
+      onClick,
+      previousColorscale,
+      customBreakpoints,
+      nSwatches,
+      cubehelix,
+      updateBreakpointArray,
+      scaleLength,
+    } = this.props;
+
+    return (
+      <div className="colorscalePickerBottomContainer">
+        <div style={{margin: '0 auto'}}>
+          <Colorscale
+            key="reset"
+            colorscale={[
+              "#fafa6e",
+              "#bdea75",
+              "#86d780",
+              "#54c18a",
+              "#23aa8f",
+              "#00918d",
+              "#007882",
+              "#1f5f70",
+              "#2a4858"
+            ]}
+            onClick={onClick}
+            label={'RESET'}
+            scaleLength={scaleLength || DEFAULT_NPREVIEWCOLORS}
+          />
+
+
+          {BUILTINS.hasOwnProperty(colorscaleType) &&
+            Object.keys(BUILTINS[colorscaleType]).map((x, i) => (
+              <Colorscale
+                key={i}
+                onClick={onClick}
+                colorscale={BUILTINS[colorscaleType][x]}
+                label={x}
+                scaleLength={BUILTINS[colorscaleType][x].length}
+              />
+            ))}
+
+          {BREWER.hasOwnProperty(colorscaleType) &&
+            BREWER[colorscaleType].map((x, i) => (
+              <Colorscale
+                key={i}
+                onClick={onClick}
+                colorscale={chroma.brewer[x]}
+                label={x}
+                scaleLength={chroma.brewer[x].length}
+              />
+            ))}
+
+          {colorscaleType === 'cubehelix' &&
+            CUBEHELIX.map((x, i) => (
+              <Colorscale
+                key={i}
+                onClick={onClick}
+                colorscale={chroma
+                  .cubehelix()
+                  .start(x.start)
+                  .rotations(x.rotations)
+                  .gamma(DEFAULT_GAMMA)
+                  .lightness(DEFAULT_LIGHTNESS)
+                  .scale()
+                  .correctLightness()
+                  .colors(scaleLength || DEFAULT_NPREVIEWCOLORS)}
+                start={x.start}
+                rot={x.rotations}
+                label={`s${x.start} r${x.rotations}`}
+                scaleLength={scaleLength}
+              />
+            ))}
+
+          {colorscaleType === 'cmocean' &&
+            Object.keys(CMOCEAN).map((x, i) => (
+              <Colorscale
+                key={i}
+                onClick={onClick}
+                colorscale={CMOCEAN[x]}
+                label={x}
+                scaleLength={CMOCEAN[x].length}
+              />
+            ))}
+
+          {colorscaleType === 'custom' && (
+            <Colorscale
+              onClick={onClick}
+              colorscale={chroma
+                .scale(previousColorscale)
+                .classes(customBreakpoints)
+                .mode('lch')
+                .colors(scaleLength || nSwatches)}
+              maxWidth={200}
+              label="Preview"
+              scaleLength={scaleLength}
+            />
+          )}
+
+          <p className="colorscaleDescription">
+            {COLORSCALE_DESCRIPTIONS[colorscaleType]}
+          </p>
+
+          {['custom', 'cubehelix'].includes(colorscaleType) ? (
+            <div className="colorscaleControlPanel">
+              {colorscaleType === 'cubehelix' && (
+                <div>
+                  <div className="noWrap">
+                    <span className="textLabel">Start: </span>
+                    <span className="textLabel">{cubehelix.start}</span>
+                  </div>
+                  <div className="noWrap">
+                    <span className="textLabel">Rotations: </span>
+                    <span className="textLabel">{cubehelix.rotations}</span>
+                  </div>
+                </div>
+              )}
+              <div>
+                {colorscaleType === 'custom' && (
+                  <div className="colorscaleControlsRow">
+                    <p className="textLabel zeroSpace">
+                      Decimals between 0 and 1, or numbers between MIN and MAX
+                      of your data, separated by commas:
+                    </p>
+                    <input
+                      type="text"
+                      defaultValue={customBreakpoints.join(', ')}
+                      onChange={updateBreakpointArray}
+                    />
+                    <p className="textLabel spaceTop">
+                      {customBreakpoints.length - 1} breakpoints:{' '}
+                      {customBreakpoints.join(' | ')}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    );
+  }
+}

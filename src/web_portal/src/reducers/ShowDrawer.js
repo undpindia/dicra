@@ -1,9 +1,7 @@
 const showDrawerReducer = (state = false, action) => {
   switch (action.type) {
     case "SHOWDRAWER":
-      return (state = true);
-    case "HIDEDRAWER":
-      return (state = false);
+      return (state = action.payload);
     default:
       return state;
   }

@@ -1,0 +1,164 @@
+body {
+  font-family: proxima-nova, sans-serif;
+  overflow-x: hidden;
+}
+.header {
+  background-color: #143461;
+  z-index: 998;
+  height: 4rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.topnav-left {
+  float: left;
+  margin-left: 22px;
+  display: block;
+  position: absolute;
+}
+
+.topnav-right {
+  float: right;
+  margin-right: 25px;
+  display: block;
+}
+
+.dicra {
+  position: relative;
+  text-align: left;
+  font-size: 26px;
+  margin-left: 60px;
+  color: #ffffff;
+  top: 0px;
+}
+
+.heading {
+  position: relative;
+  text-align: left;
+  font-size: 10px;
+  margin-left: 60px;
+  color: #ffffff;
+  margin-top: -4px;
+}
+
+.col.undp-logo {
+  float: right;
+  padding: 0;
+}
+
+.state-logo {
+  margin-top: 12px;
+}
+
+.undp-logo {
+  padding-left: 20px;
+  margin-top: 7px;
+  margin-left: 10px;
+  position: relative;
+  right: 17px;
+}
+.nabard-logo {
+  padding-left: 18px;
+  margin-top: 8px;
+  margin-left: 9px;
+  position: relative;
+  right: 17px;
+}
+.state-logo {
+  margin-top: 12px;
+  position: relative;
+  /* right: 30px; */
+}
+
+.search-region {
+  width: 250px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  position: relative;
+  top: 16px;
+}
+
+@media screen and (max-width: 425px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .topnav-left {
+    position: relative;
+    margin-left: 0;
+  }
+
+  .topnav-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .topnav-left .row .state-name {
+    top: 5px;
+    left: 25px;
+  } */
+
+  .search-region {
+    width: 195px;
+    margin-right: 30px;
+  }
+
+  .topnav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-right: 30px;
+    position: relative;
+    right: 6%;
+  }
+
+  .state-logo {
+    margin-top: -43px;
+    right: -10px;
+  }
+
+  .undp-logo {
+    margin-top: -50px;
+    margin-left: 10px;
+    position: relative;
+    right: -2px;
+  }
+  .nabard-logo {
+    margin-top: -47px;
+    margin-left: 0px;
+    position: relative;
+    right: -2px;
+  }
+  .dicra {
+    position: relative;
+    text-align: left;
+    font-size: 26px;
+    margin-left: 20px;
+    color: #ffffff;
+    top: 0px;
+  }
+  .heading {
+    position: relative;
+    text-align: left;
+    font-size: 10px;
+    margin-left: 22px;
+    color: #ffffff;
+    margin-top: -4px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .search-region {
+    width: 170px;
+    position: absolute;
+    right: -24px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .topnav-right {
+    margin-right: 4px;
+  }
+}

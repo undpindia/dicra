@@ -552,7 +552,7 @@ input.nosubmit {
 :where(.css-19gw05y).ant-drawer {
   position: fixed;
   inset: 0;
-  z-index: 10000;
+  z-index: 997;
   pointer-events: none;
 }
 
@@ -844,7 +844,12 @@ input.nosubmit {
   :where(.css-dev-only-do-not-override-19gw05y).ant-drawer {
     z-index: 10000;
   }
-
+  :where(.css-19gw05y).ant-drawer {
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 10000;
+}
   #clear-button-1 {
     position: absolute;
     right: 10px;

@@ -1455,7 +1455,8 @@ class DrawerComp extends Component {
           }
         })
         .catch((err) => {
-          message.error("Failed to connect to server");
+          // message.error("Failed to connect to server");
+          console.log()
         });
     } else {
       var shapeparams = e.geometry;

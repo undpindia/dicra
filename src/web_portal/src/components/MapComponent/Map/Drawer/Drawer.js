@@ -87,6 +87,7 @@ class DrawerComp extends Component {
       loaderpercentage: true,
       renderComponent: false,
       cfpoint: null,
+      meanvalue: '',
       options: {
         colors: ["#d65522"],
         chart: {
@@ -1106,10 +1107,13 @@ class DrawerComp extends Component {
           meanvalue: res[1].count,
         });
       } else {
-        message.error("Failed to connect to the server");
+        // message.error("Failed to connect to the server");
       }
     } catch (error) {
-      message.error("Failed to connect to the server");
+      // message.error("Failed to connect to the server");
+      this.setState({
+        meanvalue: '0',
+      });
     }
   }
   async getlayerperc(e) {

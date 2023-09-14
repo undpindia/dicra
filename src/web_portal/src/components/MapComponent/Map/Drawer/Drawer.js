@@ -32,7 +32,6 @@ import { connect } from "react-redux";
 import Chart from "react-apexcharts";
 import ValueTable from "../../ValueTable";
 import CategoryName from "../../CategoryName";
-import moment from 'moment';
 
 const geojsonArea = require("@mapbox/geojson-area");
 const mapStateToProps = (ReduxProps) => {
@@ -88,6 +87,7 @@ class DrawerComp extends Component {
       loaderpercentage: true,
       renderComponent: false,
       cfpoint: null,
+      meanvalue: '',
       options: {
         colors: ["#d65522"],
         chart: {
@@ -383,10 +383,20 @@ class DrawerComp extends Component {
             this.props.CurrentLayer === "DPPD") &&
           this.props.currentLayerType === "Vector"
         ) {
-          this.setState({
-            meanvalue:
-              data.sourceTarget.feature.properties["Slope Score"].toFixed(2),
-          });
+          if (
+            this.props.CurrentLayer === "NO2_DPPD" ||
+            this.props.CurrentLayer === "PM25_DPPD"
+          ) {
+            this.setState({
+              meanvalue:
+                data.sourceTarget.feature.properties["Slope Score"].toFixed(2),
+            });
+          } else {
+            this.setState({
+              meanvalue:
+                data.sourceTarget.feature.properties["Slope Score"].toFixed(5),
+            });
+          }
         }
         this.setState({
           visible: true,
@@ -648,10 +658,20 @@ class DrawerComp extends Component {
             this.props.CurrentLayer === "DPPD") &&
           this.props.currentLayerType === "Vector"
         ) {
-          this.setState({
-            meanvalue:
-              data.sourceTarget.feature.properties["Slope Score"].toFixed(2),
-          });
+          if (
+            this.props.CurrentLayer === "NO2_DPPD" ||
+            this.props.CurrentLayer === "PM25_DPPD"
+          ) {
+            this.setState({
+              meanvalue:
+                data.sourceTarget.feature.properties["Slope Score"].toFixed(2),
+            });
+          } else {
+            this.setState({
+              meanvalue:
+                data.sourceTarget.feature.properties["Slope Score"].toFixed(5),
+            });
+          }
         }
         this.setState({
           visible: true,
@@ -1048,9 +1068,9 @@ class DrawerComp extends Component {
     var from_mm = String(last_updated_date.getMonth() + 1).padStart(2, "0"); //January is 0!
     var from_yyyy = last_updated_date.getFullYear();
     var from_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-    var currentdate = this.props.currentdate
-    var parts = currentdate.split('-');
-    var reversedDate = parts[2] + '-' + parts[1] + '-' + parts[0];
+    var currentdate = this.props.currentdate;
+    var parts = currentdate.split("-");
+    var reversedDate = parts[2] + "-" + parts[1] + "-" + parts[0];
     var bodyParams = {
       geojson: geojson.features[0].geometry,
       date: reversedDate,
@@ -1087,10 +1107,13 @@ class DrawerComp extends Component {
           meanvalue: res[1].count,
         });
       } else {
-        message.error("Failed to connect to the server");
+        // message.error("Failed to connect to the server");
       }
     } catch (error) {
-      message.error("Failed to connect to the server");
+      // message.error("Failed to connect to the server");
+      this.setState({
+        meanvalue: '0',
+      });
     }
   }
   async getlayerperc(e) {
@@ -1124,6 +1147,79 @@ class DrawerComp extends Component {
               this.generatechart(this.state.croptrend[1]);
               this.setState({
                 Datanull: false,
+                options: {
+                  tooltip: {
+                    x: {
+                      format: "dd MMM yyyy",
+                    },
+                  },
+                  grid: {
+                    show: true,
+                    borderColor: "#90A4AE",
+                    strokeDashArray: 0,
+                    position: "back",
+                    xaxis: {
+                      lines: {
+                        show: false,
+                      },
+                    },
+                    yaxis: {
+                      lines: {
+                        show: false,
+                      },
+                    },
+                  },
+                  yaxis: {
+                    show: true,
+                    tickAmount: 3,
+                    labels: {
+                      show: true,
+                      style: {
+                        colors: "#90989b",
+                        fontSize: "12px",
+                        fontFamily: "Helvetica, Arial, sans-serif",
+                        fontWeight: 400,
+                        cssClass: "apexcharts-yaxis-label",
+                      },
+                    },
+                    title: {
+                      text: "COUNT",
+                      rotate: -90,
+                      offsetX: 0,
+                      offsetY: 0,
+                      style: {
+                        color: "#90989b",
+                        fontSize: "12px",
+                        fontFamily: "Helvetica, Arial, sans-serif",
+                        fontWeight: 400,
+                        cssClass: "apexcharts-yaxis-title",
+                      },
+                    },
+                  },
+                  xaxis: {
+                    type: "datetime",
+                    labels: {
+                      format: "MMM yyyy",
+                      style: {
+                        colors: "#90989b",
+                        cssClass: "apexcharts-xaxis-label",
+                      },
+                    },
+                    title: {
+                      text: "Date/Time",
+                      rotate: -90,
+                      offsetX: 0,
+                      offsetY: 0,
+                      style: {
+                        color: "#90989b",
+                        fontSize: "12px",
+                        fontFamily: "Helvetica, Arial, sans-serif",
+                        fontWeight: 400,
+                        cssClass: "apexcharts-yaxis-title",
+                      },
+                    },
+                  },
+                },
               });
             }
           );
@@ -1209,10 +1305,30 @@ class DrawerComp extends Component {
               loader: false,
               Datanull: true,
               options: {
+                tooltip: {
+                  x: {
+                    format: "dd MMM yyyy",
+                  },
+                },
+                grid: {
+                  show: true,
+                  borderColor: "#90A4AE",
+                  strokeDashArray: 0,
+                  position: "back",
+                  xaxis: {
+                    lines: {
+                      show: false,
+                    },
+                  },
+                  yaxis: {
+                    lines: {
+                      show: false,
+                    },
+                  },
+                },
                 yaxis: {
                   show: true,
                   tickAmount: 3,
-                  min: 0,
                   labels: {
                     show: true,
                     style: {
@@ -1224,7 +1340,30 @@ class DrawerComp extends Component {
                     },
                   },
                   title: {
-                    text: " ",
+                    text: "COUNT",
+                    rotate: -90,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                      color: "#90989b",
+                      fontSize: "12px",
+                      fontFamily: "Helvetica, Arial, sans-serif",
+                      fontWeight: 400,
+                      cssClass: "apexcharts-yaxis-title",
+                    },
+                  },
+                },
+                xaxis: {
+                  type: "datetime",
+                  labels: {
+                    format: "MMM yyyy",
+                    style: {
+                      colors: "#90989b",
+                      cssClass: "apexcharts-xaxis-label",
+                    },
+                  },
+                  title: {
+                    text: "Date/Time",
                     rotate: -90,
                     offsetX: 0,
                     offsetY: 0,
@@ -1243,11 +1382,85 @@ class DrawerComp extends Component {
             this.generatechart(res.data.trend);
             this.setState({
               Datanull: false,
+              options: {
+                tooltip: {
+                  x: {
+                    format: "dd MMM yyyy",
+                  },
+                },
+                grid: {
+                  show: true,
+                  borderColor: "#90A4AE",
+                  strokeDashArray: 0,
+                  position: "back",
+                  xaxis: {
+                    lines: {
+                      show: false,
+                    },
+                  },
+                  yaxis: {
+                    lines: {
+                      show: false,
+                    },
+                  },
+                },
+                yaxis: {
+                  show: true,
+                  tickAmount: 3,
+                  labels: {
+                    show: true,
+                    style: {
+                      colors: "#90989b",
+                      fontSize: "12px",
+                      fontFamily: "Helvetica, Arial, sans-serif",
+                      fontWeight: 400,
+                      cssClass: "apexcharts-yaxis-label",
+                    },
+                  },
+                  title: {
+                    text: "COUNT",
+                    rotate: -90,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                      color: "#90989b",
+                      fontSize: "12px",
+                      fontFamily: "Helvetica, Arial, sans-serif",
+                      fontWeight: 400,
+                      cssClass: "apexcharts-yaxis-title",
+                    },
+                  },
+                },
+                xaxis: {
+                  type: "datetime",
+                  labels: {
+                    format: "MMM yyyy",
+                    style: {
+                      colors: "#90989b",
+                      cssClass: "apexcharts-xaxis-label",
+                    },
+                  },
+                  title: {
+                    text: "Date/Time",
+                    rotate: -90,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                      color: "#90989b",
+                      fontSize: "12px",
+                      fontFamily: "Helvetica, Arial, sans-serif",
+                      fontWeight: 400,
+                      cssClass: "apexcharts-yaxis-title",
+                    },
+                  },
+                },
+              },
             });
           }
         })
         .catch((err) => {
-          message.error("Failed to connect to server");
+          // message.error("Failed to connect to server");
+          console.log()
         });
     } else {
       var shapeparams = e.geometry;
@@ -1805,10 +2018,22 @@ class DrawerComp extends Component {
                       <Row>
                         <p className="drawer-distdisc">{this.state.distname}</p>
                       </Row>
-                      <Row style ={this.props.CurrentRegion === "DISTRICT" ? {} : {display:"none"}}>
+                      <Row
+                        style={
+                          this.props.CurrentRegion === "DISTRICT"
+                            ? {}
+                            : { display: "none" }
+                        }
+                      >
                         <p className="drawer-distheader">DISTRICT</p>
                       </Row>
-                      <Row style ={this.props.CurrentRegion === "MANDAL" ? {} : {display:"none"}}>
+                      <Row
+                        style={
+                          this.props.CurrentRegion === "MANDAL"
+                            ? {}
+                            : { display: "none" }
+                        }
+                      >
                         <p className="drawer-distheader">SUB DISTRICT</p>
                       </Row>
                       <Row>
@@ -2180,6 +2405,17 @@ class DrawerComp extends Component {
                   accordionId="2"
                   style={{ border: "none", backgroundColor: "#091B33" }}
                 >
+                  <Row style={this.state.Datanull ? {} : { display: "none" }}>
+                    <p
+                      style={{
+                        color: "#cf2e2e",
+                        textAlign: "center",
+                      }}
+                    >
+                      {" "}
+                      Trend not available !
+                    </p>
+                  </Row>
                   <Row style={{ marginBottom: "50px" }}>
                     <div
                       className="btn-group-sm"
@@ -2198,27 +2434,13 @@ class DrawerComp extends Component {
                           : { display: "none" }
                       }
                     >
-                      <Row
-                        style={this.state.Datanull ? {} : { display: "none" }}
-                      >
-                        <p
-                          style={{
-                            color: "#cf2e2e",
-                            textAlign: "center",
-                          }}
-                        >
-                          {" "}
-                          Trend not available !
-                        </p>
-                      </Row>
                       <input
                         type="radio"
                         className="btn-check"
                         name="btnradio"
                         id="btnradio3"
                         autoComplete="off"
-                        onChange={(e) => {
-                        }}
+                        onChange={(e) => {}}
                         checked={
                           this.state.currentCharttime === "1year" ? true : false
                         }
@@ -2239,8 +2461,7 @@ class DrawerComp extends Component {
                         name="btnradio"
                         id="btnradio4"
                         autoComplete="off"
-                        onChange={(e) => {
-                        }}
+                        onChange={(e) => {}}
                         checked={
                           this.state.currentCharttime === "3year" ? true : false
                         }
@@ -2260,8 +2481,7 @@ class DrawerComp extends Component {
                         className="btn-check"
                         name="btnradio"
                         id="btnradio5"
-                        onChange={(e) => {
-                        }}
+                        onChange={(e) => {}}
                         autoComplete="off"
                         checked={
                           this.state.currentCharttime === "5year" ? true : false

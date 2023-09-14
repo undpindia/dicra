@@ -23,7 +23,7 @@ with DAG(
     )
 
     # [START howto_operator_bash]
-    download_path = "/opt/airflow/dags/scripts/telangana/precanomaly-telangana-download.py"
+    download_path = "/opt/airflow/dags/scripts/telangana/precanomaly/precanomaly-telangana-download.py"
     download_command = "python3 " + download_path
     if os.path.exists(download_path):
         download_data = BashOperator(
@@ -36,11 +36,25 @@ with DAG(
     # [END howto_operator_bash]
 
        # [START howto_operator_bash]
-    process_path = "/opt/airflow/dags/scripts/telangana/precanomaly-telangana-preprocess.py"
+    process_path = "/opt/airflow/dags/scripts/telangana/precanomaly/precanomaly-telangana-preprocess.py"
     process_command = "python3 " + process_path
     if os.path.exists(process_path):
-        process_data = BashOperator(
-            task_id="process_data",
+        pre_process_data = BashOperator(
+            task_id="pre_process_data",
+            bash_command=process_command,
+            dag=dag
+        )
+    else:
+        raise Exception("Cannot locate {}".format(process_command))
+
+    # [END howto_operator_bash]
+    
+    # [START howto_operator_bash]
+    process_path = "/opt/airflow/dags/scripts/telangana/precanomaly/precanomaly-telangana-dppd.py"
+    process_command = "python3 " + process_path
+    if os.path.exists(process_path):
+        process_data_dppd = BashOperator(
+            task_id="process_data_dppd",
             bash_command=process_command,
             dag=dag
         )
@@ -49,22 +63,7 @@ with DAG(
 
     # [END howto_operator_bash]
 
-           # [START howto_operator_bash]
-    deviance_path = "/opt/airflow/dags/scripts/telangana/precanomaly-telangana-deviance.py"
-    deviance_command = "python3 " + deviance_path
-    if os.path.exists(deviance_path):
-        deviance_analysis = BashOperator(
-            task_id="deviance_analysis",
-            bash_command=deviance_command,
-            dag=dag
-        )
-    else:
-        raise Exception("Cannot locate {}".format(deviance_command))
-
-    # [END howto_operator_bash]
-
-
-    download_data >> process_data >> deviance_analysis >> run_this_last
+    download_data >> pre_process_data >> process_data_dppd >> run_this_last
 
 if __name__ == "__main__":
     dag.test()

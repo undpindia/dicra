@@ -982,6 +982,21 @@ input.nosubmit {
     bottom: 63.5px;
     position: fixed;
   }
+  .leaflet-draw-edit-remove {
+    position: absolute;
+    top: -302px;
+    right: 10px;
+  }
+  .leaflet-draw-draw-polygon {
+    position: absolute;
+    top: -252px;
+    right: 10px;
+  }
+  .leaflet-draw-draw-rectangle {
+    position: absolute;
+    top: -210px;
+    right: 10px;
+  }
 }
 
 .btn-toggleBaseMap-theme {

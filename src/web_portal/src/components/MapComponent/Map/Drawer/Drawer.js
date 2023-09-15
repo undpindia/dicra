@@ -1040,7 +1040,7 @@ class DrawerComp extends Component {
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "3year",
+            currentCharttime: "5year",
           },
           () => {
             this.gettrendchart(this.state.current_Details.layer.feature);
@@ -1742,7 +1742,7 @@ class DrawerComp extends Component {
             this.props.currentLayer === "POPULATION"
               ? item[1]
               : isNaN(parseFloat(item[1]))
-              ? 0
+              ? null
               : parseFloat(item[1]).toFixed(2),
         })
       );

@@ -2371,7 +2371,9 @@ class DrawerComp extends Component {
               (this.props.CurrentLayer === "LULC" ||
                 this.props.CurrentLayer === "crop_stress") &&
               (this.props.CurrentRegion === "DISTRICT" ||
-                this.props.CurrentRegion === "MANDAL")
+                this.props.CurrentRegion === "MANDAL") ||
+                this.props.CurrentLayer === "NO2"
+                
                 ? { display: "none" }
                 : {}
             }
@@ -2385,8 +2387,8 @@ class DrawerComp extends Component {
                 this.props.CurrentLayer === "LST_DPPD" ||
                 this.props.CurrentLayer === "PM25_DPPD" ||
                 this.props.CurrentLayer === "NDVI_DPPD" ||
-                this.props.CurrentLayer === "NDWI_DPPD" ||
-                this.props.CurrentLayer === "NO2_DPPD"
+                this.props.CurrentLayer === "NDWI_DPPD"
+                // this.props.CurrentLayer === "NO2_DPPD"
                   ? {}
                   : { display: "none" }
               }

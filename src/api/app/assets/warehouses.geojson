@@ -1,0 +1,2638 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.075036, 19.025617] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIRMAL",
+        "latitude": "19.025617",
+        "longitude": "78.075036",
+        "occupancy": "2283.99",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2716.01",
+        "warehouse": "AMC LOKESHWARAM",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.797487, 18.917258] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JAGTIAL",
+        "latitude": "18.917258",
+        "longitude": "78.797487",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "MALLAPUR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.289097, 18.78821] },
+      "properties": {
+        "capacity": "15000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.78821",
+        "longitude": "78.289097",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "15000.0",
+        "warehouse": "ARMOOR",
+        "wh_type": "HIRED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.061984, 17.648892] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NALGONDA",
+        "latitude": "17.648892",
+        "longitude": "79.061984",
+        "occupancy": "1833.06",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "3166.94",
+        "warehouse": "ALER AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.9116959, 18.7833326] },
+      "properties": {
+        "capacity": "11340.0",
+        "district": "JAGTIAL",
+        "latitude": "18.7833326",
+        "longitude": "78.9116959",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "11340.0",
+        "warehouse": "JAGTIAL OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.4706887, 18.3023718] },
+      "properties": {
+        "capacity": "17500.0",
+        "district": "KARIMNAGAR",
+        "latitude": "18.3023718",
+        "longitude": "79.4706887",
+        "occupancy": "22351.92",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-4851.92",
+        "warehouse": "JAMMIKUNTA OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.31664479999999, 18.3377718]
+      },
+      "properties": {
+        "capacity": "15000.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.3377718",
+        "longitude": "78.31664479999999",
+        "occupancy": "14705.32",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "294.68",
+        "warehouse": "KAMAREDDY OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.1564403, 18.444290600000002]
+      },
+      "properties": {
+        "capacity": "15500.0",
+        "district": "KARIMNAGAR",
+        "latitude": "18.444290600000002",
+        "longitude": "79.1564403",
+        "occupancy": "21481.74",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-5981.74",
+        "warehouse": "KARIMNAGAR OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.6998645, 18.82807] },
+      "properties": {
+        "capacity": "3200.0",
+        "district": "JAGTIAL",
+        "latitude": "18.82807",
+        "longitude": "78.6998645",
+        "occupancy": "3397.73",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-197.73",
+        "warehouse": "KORUTLA OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.6344616, 18.8459999] },
+      "properties": {
+        "capacity": "10700.0",
+        "district": "JAGTIAL",
+        "latitude": "18.8459999",
+        "longitude": "78.6344616",
+        "occupancy": "11147.56",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-447.56",
+        "warehouse": "METPALLI OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.3907814, 18.6262617] },
+      "properties": {
+        "capacity": "8300.0",
+        "district": "PEDDAPALLY",
+        "latitude": "18.6262617",
+        "longitude": "79.3907814",
+        "occupancy": "2516.03",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5783.97",
+        "warehouse": "PEDDAPALLY OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.0546033, 18.6853362] },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.6853362",
+        "longitude": "78.0546033",
+        "occupancy": "10566.59",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-566.59",
+        "warehouse": "SARANGAPUR OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.641701, 19.044948] },
+      "properties": {
+        "capacity": "13850.0",
+        "district": "NIRMAL",
+        "latitude": "19.044948",
+        "longitude": "78.641701",
+        "occupancy": "18591.7",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-4741.7",
+        "warehouse": "KHANAPUR IG",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.289097, 18.78821] },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.78821",
+        "longitude": "78.289097",
+        "occupancy": "2755.16",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-255.16",
+        "warehouse": "ARMOOR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.266953, 19.359937] },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "KOMARAM BHEEM ASIFABAD",
+        "latitude": "19.359937",
+        "longitude": "79.266953",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "10000.0",
+        "warehouse": "AMC ASIFABAD",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.34742, 18.876767] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.876767",
+        "longitude": "78.34742",
+        "occupancy": "602.62",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "4397.38",
+        "warehouse": "BALKONDA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.477047, 19.086889000000003]
+      },
+      "properties": {
+        "capacity": "7500.0",
+        "district": "MANCHERIAL",
+        "latitude": "19.086889000000003",
+        "longitude": "79.477047",
+        "occupancy": "7086.72",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "413.28",
+        "warehouse": "BELLAMPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.83935100000001, 19.014419]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "NIRMAL",
+        "latitude": "19.014419",
+        "longitude": "77.83935100000001",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2500.0",
+        "warehouse": "AMC BHAINSA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.48745, 18.722294] },
+      "properties": {
+        "capacity": "3650.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.722294",
+        "longitude": "78.48745",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "3650.0",
+        "warehouse": "AMC BHEEMGAL",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.804448, 18.469626] },
+      "properties": {
+        "capacity": "7500.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.469626",
+        "longitude": "77.804448",
+        "occupancy": "4927.16",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2572.84",
+        "warehouse": "BIRKUR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.927961, 18.506035] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "RAJANNA SIRCILLA",
+        "latitude": "18.506035",
+        "longitude": "78.927961",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC BOINPALLY",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.63081, 18.371101] },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "RAJANNA SIRCILLA",
+        "latitude": "18.371101",
+        "longitude": "78.63081",
+        "occupancy": "1550.68",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "8449.32",
+        "warehouse": "BOPPAPUR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.80325500000001, 18.535589]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "RAJANNA SIRCILLA",
+        "latitude": "18.535589",
+        "longitude": "78.80325500000001",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC CHANDURTHY",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.631138, 18.847078] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JAGTIAL",
+        "latitude": "18.847078",
+        "longitude": "78.631138",
+        "occupancy": "3184.19",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "1815.81",
+        "warehouse": "AMC CHELGAL",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.930255, 18.625535] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JAGTIAL",
+        "latitude": "18.625535",
+        "longitude": "78.930255",
+        "occupancy": "134.51",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "4865.49",
+        "warehouse": "AMC CHEPYAL",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.16905200000001, 18.850208]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "JAGTIAL",
+        "latitude": "18.850208",
+        "longitude": "79.16905200000001",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2500.0",
+        "warehouse": "AMC DHARMAPURI",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.455853, 19.440163000000002]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "ADILABAD",
+        "latitude": "19.440163000000002",
+        "longitude": "78.455853",
+        "occupancy": "1863.45",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "636.55",
+        "warehouse": "ECHODA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.926058, 18.320439] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "RAJANNA SIRCILLA",
+        "latitude": "18.320439",
+        "longitude": "78.926058",
+        "occupancy": "1761.52",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "3238.48",
+        "warehouse": "ILLANTHAKUNTA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.06170999999999, 18.694221]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KARIMNAGAR",
+        "latitude": "18.694221",
+        "longitude": "79.06170999999999",
+        "occupancy": "1314.1",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "3685.9",
+        "warehouse": "GANGADHARA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.246967, 18.496962] },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "PEDDAPALLY",
+        "latitude": "18.496962",
+        "longitude": "79.246967",
+        "occupancy": "15902.13",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-5902.13",
+        "warehouse": "GARREPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.261032, 18.216462] },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "KARIMNAGAR",
+        "latitude": "18.216462",
+        "longitude": "79.261032",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2500.0",
+        "warehouse": "AMC HUZURABAD",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.646914, 17.188829000000002]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "RANGA REDDY",
+        "latitude": "17.188829000000002",
+        "longitude": "78.646914",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2500.0",
+        "warehouse": "AMC IBRAHIMPATNAM",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.905007, 19.37511] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KOMARAM BHEEM ASIFABAD",
+        "latitude": "19.37511",
+        "longitude": "78.905007",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC JAINOOR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.9926, 19.114601999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MANCHERIAL",
+        "latitude": "19.114601999999998",
+        "longitude": "78.9926",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC JANNARAM",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.30545699999999, 18.293354]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KARIMNAGAR",
+        "latitude": "18.293354",
+        "longitude": "79.30545699999999",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC KESHAVAPATNAM",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.69218000000001, 18.481007]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "RAJANNA SIRCILLA",
+        "latitude": "18.481007",
+        "longitude": "78.69218000000001",
+        "occupancy": "5571.1",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "-571.1",
+        "warehouse": "AMC KONARAOPET",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.840023, 19.23795] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "ADILABAD",
+        "latitude": "19.23795",
+        "longitude": "77.840023",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC KUNTALA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.126723, 19.025272] },
+      "properties": {
+        "capacity": "7500.0",
+        "district": "MANCHERIAL",
+        "latitude": "19.025272",
+        "longitude": "79.126723",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "7500.0",
+        "warehouse": "AMC LUXETTIPET",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.128967, 18.758172000000002]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.758172000000002",
+        "longitude": "78.128967",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC MAKLOOR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.491351, 18.972732] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MANCHERIAL",
+        "latitude": "18.972732",
+        "longitude": "79.491351",
+        "occupancy": "4346.16",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "653.84",
+        "warehouse": "MANDAMARRI AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.630788, 18.848076000000002]
+      },
+      "properties": {
+        "capacity": "4000.0",
+        "district": "JAGTIAL",
+        "latitude": "18.848076000000002",
+        "longitude": "78.630788",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "4000.0",
+        "warehouse": "AMC METPALLY",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.13833299999999, 18.840854999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.840854999999998",
+        "longitude": "78.13833299999999",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC NANDIPET",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.344084, 19.141303] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIRMAL",
+        "latitude": "19.141303",
+        "longitude": "78.344084",
+        "occupancy": "4447.17",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "552.83",
+        "warehouse": "AMC NIRMAL",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.050802, 18.631435] },
+      "properties": {
+        "capacity": "12500.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.631435",
+        "longitude": "78.050802",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "12500.0",
+        "warehouse": "NIZAMABAD AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.82356, 18.228386999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.228386999999998",
+        "longitude": "77.82356",
+        "occupancy": "835.26",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "4164.74",
+        "warehouse": "PITLAM AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.894577, 19.228489] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "ADILABAD",
+        "latitude": "19.228489",
+        "longitude": "77.894577",
+        "occupancy": "2120.75",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2879.25",
+        "warehouse": "AMC PULSI",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.798278, 18.917089999999998]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "JAGTIAL",
+        "latitude": "18.917089999999998",
+        "longitude": "78.798278",
+        "occupancy": "1138.41",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "1361.59",
+        "warehouse": "AMC RAIKAL",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.935496, 18.754770999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.754770999999998",
+        "longitude": "77.935496",
+        "occupancy": "4197.22",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "802.78",
+        "warehouse": "RENJAL AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.344109, 19.141299] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIRMAL",
+        "latitude": "19.141299",
+        "longitude": "78.344109",
+        "occupancy": "4379.92",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "620.08",
+        "warehouse": "AMC SARANGAPUR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.363907, 18.800387] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.800387",
+        "longitude": "78.363907",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC VELPUR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.193333, 18.76599] },
+      "properties": {
+        "capacity": "3300.0",
+        "district": "JAGTIAL",
+        "latitude": "18.76599",
+        "longitude": "79.193333",
+        "occupancy": "2994.35",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "305.65",
+        "warehouse": "AMC VELGATUR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.842822, 17.836021] },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.836021",
+        "longitude": "80.842822",
+        "occupancy": "3523.32",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-1023.32",
+        "warehouse": "ASWAPURAM AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.82865799999999, 17.499008]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KHAMMAM",
+        "latitude": "17.499008",
+        "longitude": "80.82865799999999",
+        "occupancy": "9846.27",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-4846.27",
+        "warehouse": "ASWARAOPETA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.8953954, 17.6716533] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.6716533",
+        "longitude": "80.8953954",
+        "occupancy": "2502.2",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "2497.8",
+        "warehouse": "BHADRACHALAM AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.82996700000001, 17.86572]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.86572",
+        "longitude": "80.82996700000001",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "BHURGUMPADU AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.65609, 17.383760000000002]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.383760000000002",
+        "longitude": "80.65609",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC CHANDRUGONDA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.123465, 17.233005] },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "NALGONDA",
+        "latitude": "17.233005",
+        "longitude": "79.123465",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "2500.0",
+        "warehouse": "AMC CHITYAL",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.092939, 17.283618] },
+      "properties": {
+        "capacity": "2000.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.283618",
+        "longitude": "80.092939",
+        "occupancy": "1674.1",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "325.9",
+        "warehouse": "AMC DAMMAPETA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.27799399999999, 17.395055]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KHAMMAM",
+        "latitude": "17.395055",
+        "longitude": "80.27799399999999",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC KAMEPALLY",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.46725699999999, 16.812122]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KHAMMAM",
+        "latitude": "16.812122",
+        "longitude": "80.46725699999999",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC MADHIRA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.46257299999999, 17.165518]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.165518",
+        "longitude": "80.46257299999999",
+        "occupancy": "7312.82",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-2312.82",
+        "warehouse": "TEKULAPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.420086, 17.012057000000002]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NALGONDA",
+        "latitude": "17.012057000000002",
+        "longitude": "79.420086",
+        "occupancy": "5500.28",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-500.28",
+        "warehouse": "THIPPARTHY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.291854, 17.211038000000002]
+      },
+      "properties": {
+        "capacity": "6100.0",
+        "district": "KHAMMAM",
+        "latitude": "17.211038000000002",
+        "longitude": "80.291854",
+        "occupancy": "4271.35",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "1828.65",
+        "warehouse": "WYRA-AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.89102609999999, 17.521638199999998]
+      },
+      "properties": {
+        "capacity": "3700.0",
+        "district": "YADADHRI",
+        "latitude": "17.521638199999998",
+        "longitude": "78.89102609999999",
+        "occupancy": "4128.76",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-428.76",
+        "warehouse": "BHONGIR OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.13312979999999, 17.237901899999997]
+      },
+      "properties": {
+        "capacity": "7300.0",
+        "district": "KHAMMAM",
+        "latitude": "17.237901899999997",
+        "longitude": "80.13312979999999",
+        "occupancy": "3249.05",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "4050.95",
+        "warehouse": "KHAMMAM-I OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.092939, 17.283618] },
+      "properties": {
+        "capacity": "0.0",
+        "district": "KHAMMAM",
+        "latitude": "17.283618",
+        "longitude": "80.092939",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "0.0",
+        "warehouse": "KHAMMAM(IG) / PONNEKAL",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.1145317, 17.2438029] },
+      "properties": {
+        "capacity": "16500.0",
+        "district": "KHAMMAM",
+        "latitude": "17.2438029",
+        "longitude": "80.1145317",
+        "occupancy": "14186.46",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "2313.54",
+        "warehouse": "KHAMMAM-II OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.9457505, 16.9830439] },
+      "properties": {
+        "capacity": "26500.0",
+        "district": "SURYAPET",
+        "latitude": "16.9830439",
+        "longitude": "79.9457505",
+        "occupancy": "56544.41",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-30044.41",
+        "warehouse": "KODAD OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.6268715, 17.568000199999997]
+      },
+      "properties": {
+        "capacity": "8300.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.568000199999997",
+        "longitude": "80.6268715",
+        "occupancy": "7040.51",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "1259.49",
+        "warehouse": "KOTHAGUDEM OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.13324200000001, 18.113212]
+      },
+      "properties": {
+        "capacity": "70000.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.113212",
+        "longitude": "78.13324200000001",
+        "occupancy": "9058.32",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "60941.68",
+        "warehouse": "NAGIREDDYPALLY IG",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.26370899999999, 17.083461]
+      },
+      "properties": {
+        "capacity": "16000.0",
+        "district": "NALGONDA",
+        "latitude": "17.083461",
+        "longitude": "79.26370899999999",
+        "occupancy": "23193.13",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-7193.13",
+        "warehouse": "NALGONDA OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.4039925, 18.1820487] },
+      "properties": {
+        "capacity": "12500.0",
+        "district": "SURYAPET",
+        "latitude": "18.1820487",
+        "longitude": "79.4039925",
+        "occupancy": "18721.58",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-6221.58",
+        "warehouse": "NEREDUCHERLA OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.7074637, 17.577259100000003]
+      },
+      "properties": {
+        "capacity": "750.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.577259100000003",
+        "longitude": "80.7074637",
+        "occupancy": "3781.84",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-3031.84",
+        "warehouse": "PALVANCHA OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.5364287, 16.8486107] },
+      "properties": {
+        "capacity": "20500.0",
+        "district": "NALGONDA",
+        "latitude": "16.8486107",
+        "longitude": "79.5364287",
+        "occupancy": "28255.97",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-7755.97",
+        "warehouse": "V.T.PALEM OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.184161, 16.936219] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "No Data",
+        "latitude": "16.936219",
+        "longitude": "78.184161",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC BALNAGAR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.19254000000001, 17.676299]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "MEDAK",
+        "latitude": "17.676299",
+        "longitude": "78.19254000000001",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "2500.0",
+        "warehouse": "AMC CHANDAPUR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.45525699999999, 17.979648]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "MEDAK",
+        "latitude": "17.979648",
+        "longitude": "78.45525699999999",
+        "occupancy": "2887.3",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-387.3",
+        "warehouse": "CHEGUNTA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.31978000000001, 17.310470000000002]
+      },
+      "properties": {
+        "capacity": "3000.0",
+        "district": "RANGA REDDY",
+        "latitude": "17.310470000000002",
+        "longitude": "78.31978000000001",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "3000.0",
+        "warehouse": "AMC CHEVELLA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.41449899999999, 17.984237]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "MEDAK",
+        "latitude": "17.984237",
+        "longitude": "78.41449899999999",
+        "occupancy": "2525.13",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-25.13",
+        "warehouse": "CHINNASHANKARAMPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.56270500000001, 17.989275]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "SIDDIPET",
+        "latitude": "17.989275",
+        "longitude": "78.56270500000001",
+        "occupancy": "1724.59",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "775.41",
+        "warehouse": "DOULTHABAD AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.674162, 18.180827999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SIDDIPET",
+        "latitude": "18.180827999999998",
+        "longitude": "78.674162",
+        "occupancy": "5013.17",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-13.17",
+        "warehouse": "DUBBAK AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.13388499999999, 18.194315]
+      },
+      "properties": {
+        "capacity": "24000.0",
+        "district": "JAYASHANKAR BHUPALPALLY",
+        "latitude": "18.194315",
+        "longitude": "80.13388499999999",
+        "occupancy": "6648.59",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "17351.41",
+        "warehouse": "GOVINDARAOPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.604752, 17.635023] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "17.635023",
+        "longitude": "77.604752",
+        "occupancy": "4203.52",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "796.48",
+        "warehouse": "HOTHI (K) AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.216492, 18.128251000000002]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SIDDIPET",
+        "latitude": "18.128251000000002",
+        "longitude": "79.216492",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC HUSNABAD",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.822092, 17.796245000000003]
+      },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "SIDDIPET",
+        "latitude": "17.796245000000003",
+        "longitude": "78.822092",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "10000.0",
+        "warehouse": "AMC JAGDEVPUR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.205066, 17.898006] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "17.898006",
+        "longitude": "78.205066",
+        "occupancy": "2751.06",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "2248.94",
+        "warehouse": "KOWDIPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.469725, 17.899604999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "17.899604999999998",
+        "longitude": "78.469725",
+        "occupancy": "4439.48",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "560.52",
+        "warehouse": "MASAIPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.257074, 18.039018] },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "MEDAK",
+        "latitude": "18.039018",
+        "longitude": "78.257074",
+        "occupancy": "3974.0",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-1474.0",
+        "warehouse": "MEDAK AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.249443, 17.826379] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "17.826379",
+        "longitude": "78.249443",
+        "occupancy": "10912.11",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-5912.11",
+        "warehouse": "MUTRAJPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.288362, 17.47495] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "17.47495",
+        "longitude": "78.288362",
+        "occupancy": "393.3",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "4606.7",
+        "warehouse": "NARSAPUR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.072989, 18.026798] },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "MEDAK",
+        "latitude": "18.026798",
+        "longitude": "78.072989",
+        "occupancy": "5338.48",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-2838.48",
+        "warehouse": "PAPANNAPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.684267, 18.32695] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "WARANGAL(R)",
+        "latitude": "18.32695",
+        "longitude": "79.684267",
+        "occupancy": "4802.69",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "197.31",
+        "warehouse": "PARKAL AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.918786, 18.0444] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "18.0444",
+        "longitude": "77.918786",
+        "occupancy": "3670.04",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1329.96",
+        "warehouse": "PEDDASHANKARAMPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.433336, 18.10531] },
+      "properties": {
+        "capacity": "7500.0",
+        "district": "MEDAK",
+        "latitude": "18.10531",
+        "longitude": "78.433336",
+        "occupancy": "10302.76",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-2802.76",
+        "warehouse": "RAMAYAMPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.77414499999999, 18.223585999999997]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JAYASHANKAR BHUPALPALLY",
+        "latitude": "18.223585999999997",
+        "longitude": "79.77414499999999",
+        "occupancy": "3174.62",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1825.38",
+        "warehouse": "REGONDA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.954412, 17.626319] },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "SANGAREDDY",
+        "latitude": "17.626319",
+        "longitude": "77.954412",
+        "occupancy": "2052.8",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "7947.2",
+        "warehouse": "SADASHIVPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.200179, 17.041282] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "RANGA REDDY",
+        "latitude": "17.041282",
+        "longitude": "78.200179",
+        "occupancy": "3387.11",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1612.89",
+        "warehouse": "SHADNAGAR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.359234, 17.772694] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "17.772694",
+        "longitude": "78.359234",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC SHIVAMPET",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.870602, 18.122784] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SIDDIPET",
+        "latitude": "18.122784",
+        "longitude": "78.870602",
+        "occupancy": "5247.33",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-247.33",
+        "warehouse": "SIDDIPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.62565, 17.265004] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "VIKARABAD",
+        "latitude": "17.265004",
+        "longitude": "77.62565",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC TANDUR",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.468593, 17.783410999999997]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "17.783410999999997",
+        "longitude": "78.468593",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC TOOPRAN",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.831546, 17.96876] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SANGAREDDY",
+        "latitude": "17.96876",
+        "longitude": "77.831546",
+        "occupancy": "4410.27",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "589.73",
+        "warehouse": "VATTPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.491304, 17.797545] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JANGAON",
+        "latitude": "17.797545",
+        "longitude": "79.491304",
+        "occupancy": "3707.22",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1292.78",
+        "warehouse": "ZAFFARGADH AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.82323740000001, 18.211443799999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SIDDIPET",
+        "latitude": "18.211443799999998",
+        "longitude": "78.82323740000001",
+        "occupancy": "5596.59",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-596.59",
+        "warehouse": "GURRALAGONDI OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.143928527832, 16.74635124206543]
+      },
+      "properties": {
+        "capacity": "11500.0",
+        "district": "MAHABOOBNAGAR",
+        "latitude": "16.74635124206543",
+        "longitude": "78.143928527832",
+        "occupancy": "10067.99",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1432.01",
+        "warehouse": "JADCHERLA OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.4183459, 17.4356884] },
+      "properties": {
+        "capacity": "4000.0",
+        "district": "HYDERABAD",
+        "latitude": "17.4356884",
+        "longitude": "78.4183459",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "4000.0",
+        "warehouse": "MUSHEERABAD OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.11955999999999, 17.546176000000003]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SANGAREDDY",
+        "latitude": "17.546176000000003",
+        "longitude": "78.11955999999999",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "SANGAREDDY",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.2070571, 17.080584899999998]
+      },
+      "properties": {
+        "capacity": "1000.0",
+        "district": "RANGA REDDY",
+        "latitude": "17.080584899999998",
+        "longitude": "78.2070571",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1000.0",
+        "warehouse": "SHADNAGAR OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.6321473, 17.9960472] },
+      "properties": {
+        "capacity": "12500.0",
+        "district": "WARANGAL(U)",
+        "latitude": "17.9960472",
+        "longitude": "79.6321473",
+        "occupancy": "11557.93",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "942.07",
+        "warehouse": "WARANGAL OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.70736600000001, 17.785857999999998]
+      },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "SANGAREDDY",
+        "latitude": "17.785857999999998",
+        "longitude": "77.70736600000001",
+        "occupancy": "6113.84",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "3886.16",
+        "warehouse": "ZAHEERABAD IG",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.725039, 18.410409] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.410409",
+        "longitude": "77.725039",
+        "occupancy": "916.16",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "4083.84",
+        "warehouse": "BICHKUNDA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.597875, 18.351347] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.351347",
+        "longitude": "77.597875",
+        "occupancy": "1700.4",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "3299.6",
+        "warehouse": "JUKKAL AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.000489, 18.761763000000002]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.761763000000002",
+        "longitude": "78.000489",
+        "occupancy": "2775.78",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "2224.22",
+        "warehouse": "NAVIPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.945073, 18.228899] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.228899",
+        "longitude": "78.945073",
+        "occupancy": "4512.17",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "487.83",
+        "warehouse": "NIZAMSAGAR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.772981, 19.71702] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "ADILABAD",
+        "latitude": "19.71702",
+        "longitude": "78.772981",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC BELA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.64269499999999, 19.727541]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "ADILABAD",
+        "latitude": "19.727541",
+        "longitude": "78.64269499999999",
+        "occupancy": "1707.97",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "792.03",
+        "warehouse": "JAINATH AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.826036, 18.202884] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SIDDIPET",
+        "latitude": "18.202884",
+        "longitude": "78.826036",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC GURRALAGONDI",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.028195, 18.074354999999997]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SIDDIPET",
+        "latitude": "18.074354999999997",
+        "longitude": "79.028195",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "SIDDANNAPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.627862, 17.998847] },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "WARANGAL(U)",
+        "latitude": "17.998847",
+        "longitude": "79.627862",
+        "occupancy": "5921.73",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "4078.27",
+        "warehouse": "WARANGAL AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.63766899999999, 17.963781]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "WARANGAL(R)",
+        "latitude": "17.963781",
+        "longitude": "79.63766899999999",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC GORREKUNTA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.608618, 17.979754] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "WARANGAL(U)",
+        "latitude": "17.979754",
+        "longitude": "79.608618",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC HANMAKONDA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.402173, 19.804323] },
+      "properties": {
+        "capacity": "30000.0",
+        "district": "ADILABAD",
+        "latitude": "19.804323",
+        "longitude": "78.402173",
+        "occupancy": "5208.16",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "24791.84",
+        "warehouse": "DHANORA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.146106, 16.753598] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MAHABOOBNAGAR",
+        "latitude": "16.753598",
+        "longitude": "78.146106",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC JADCHERLA",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.917614, 16.377182] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "WANAPARTHY",
+        "latitude": "16.377182",
+        "longitude": "77.917614",
+        "occupancy": "3532.39",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1467.61",
+        "warehouse": "KOTHAKOTA AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.158108, 16.841273] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "16.841273",
+        "longitude": "78.158108",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC MUDIREDDYPALLI",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.13388499999999, 18.194315]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JAYASHANKAR BHUPALPALLY",
+        "latitude": "18.194315",
+        "longitude": "80.13388499999999",
+        "occupancy": "3916.97",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "1083.03",
+        "warehouse": "MULUGU AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.13355899999999, 18.113275]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KAMAREDDY",
+        "latitude": "18.113275",
+        "longitude": "78.13355899999999",
+        "occupancy": "5039.27",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-39.27",
+        "warehouse": "NAGIREDDYPET AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.727779, 17.738134] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "WARANGAL(R)",
+        "latitude": "17.738134",
+        "longitude": "79.727779",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC PARVATHAGIRI",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.90910600000001, 18.050625]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "MEDAK",
+        "latitude": "18.050625",
+        "longitude": "77.90910600000001",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC SHANKARAMPET",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.730427, 18.117729999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "WARANGAL(U)",
+        "latitude": "18.117729999999998",
+        "longitude": "79.730427",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC SHYAMAPET",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.313586, 19.445498999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KOMARAM BHEEM ASIFABAD",
+        "latitude": "19.445498999999998",
+        "longitude": "79.313586",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "AMC WANKIDI",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.975306, 16.311308] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "WANAPARTHY",
+        "latitude": "16.311308",
+        "longitude": "77.975306",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "KADUKUNTLA (IG)",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.19941999999999, 17.734146]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JANGAON",
+        "latitude": "17.734146",
+        "longitude": "79.19941999999999",
+        "occupancy": "11646.08",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-6646.08",
+        "warehouse": "YESHWANTHAPUR - IG",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.46346700000001, 18.428345999999998]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "PEDDAPALLY",
+        "latitude": "18.428345999999998",
+        "longitude": "79.46346700000001",
+        "occupancy": "4838.83",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "161.17",
+        "warehouse": "POTHKAPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.14695, 18.444867000000002]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "KARIMNAGAR",
+        "latitude": "18.444867000000002",
+        "longitude": "79.14695",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "KARIMNAGAR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.390509, 18.208669] },
+      "properties": {
+        "capacity": "15000.0",
+        "district": "KARIMNAGAR",
+        "latitude": "18.208669",
+        "longitude": "79.390509",
+        "occupancy": "",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "15000.0",
+        "warehouse": "HUZURABAD OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.265835, 17.06457] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "NALGONDA",
+        "latitude": "17.06457",
+        "longitude": "79.265835",
+        "occupancy": "34067.43",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-29067.43",
+        "warehouse": "THIPPARTHY IG",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.74433, 17.111735] },
+      "properties": {
+        "capacity": "7500.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.111735",
+        "longitude": "80.74433",
+        "occupancy": "7487.2",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "12.8",
+        "warehouse": "SATHUPALLY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.337372, 17.145143] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.145143",
+        "longitude": "80.337372",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "TATIPUDI (IG)",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [80.74465, 17.112048] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "BHADRADRI KOTHAGUDEM",
+        "latitude": "17.112048",
+        "longitude": "80.74465",
+        "occupancy": "5825.46",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-825.46",
+        "warehouse": "KALLURUGUDEM AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.5698626, 16.8755897] },
+      "properties": {
+        "capacity": "2150.0",
+        "district": "NALGONDA",
+        "latitude": "16.8755897",
+        "longitude": "79.5698626",
+        "occupancy": "2238.8",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-88.8",
+        "warehouse": "MIRYALAGUDA OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.375237, 17.84469] },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "JANGAON",
+        "latitude": "17.84469",
+        "longitude": "79.375237",
+        "occupancy": "",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "5000.0",
+        "warehouse": "STATIONGHANPUR AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.0286888, 18.074641699999997]
+      },
+      "properties": {
+        "capacity": "5000.0",
+        "district": "SIDDIPET",
+        "latitude": "18.074641699999997",
+        "longitude": "79.0286888",
+        "occupancy": "5307.31",
+        "region": "No Data",
+        "status": "Inactive",
+        "vacancy": "-307.31",
+        "warehouse": "SIDDANNAPET OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.4055233, 18.182296700000002]
+      },
+      "properties": {
+        "capacity": "17300.0",
+        "district": "SURYAPET",
+        "latitude": "18.182296700000002",
+        "longitude": "79.4055233",
+        "occupancy": "22028.48",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "-4728.48",
+        "warehouse": "HUZURNAGAR OWN",
+        "wh_type": "OWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.39672900000001, 18.186318]
+      },
+      "properties": {
+        "capacity": "1500.0",
+        "district": "NIZAMABAD",
+        "latitude": "18.186318",
+        "longitude": "78.39672900000001",
+        "occupancy": "1420.35",
+        "region": "KARIMNAGAR",
+        "status": "Active",
+        "vacancy": "79.65",
+        "warehouse": "Bhiknoor AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.022571, 17.981945899999996]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "MEDAK",
+        "latitude": "17.981945899999996",
+        "longitude": "78.022571",
+        "occupancy": "2615.2",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-115.2",
+        "warehouse": "TEKMAL AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [77.6108, 18.2121] },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "SANGAREDDY",
+        "latitude": "18.2121",
+        "longitude": "77.6108",
+        "occupancy": "2177.8",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "322.2",
+        "warehouse": "KANGTI AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.5151466, 17.589938] },
+      "properties": {
+        "capacity": "18000.0",
+        "district": "MEDCHAL",
+        "latitude": "17.589938",
+        "longitude": "78.5151466",
+        "occupancy": "21902.79",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-3902.79",
+        "warehouse": "MEDCHAL IG-I",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.517179, 17.574422] },
+      "properties": {
+        "capacity": "15000.0",
+        "district": "MEDCHAL",
+        "latitude": "17.574422",
+        "longitude": "78.517179",
+        "occupancy": "4601.72",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "10398.28",
+        "warehouse": "MEDCHAL IG-II",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.1220162, 16.900216600000004]
+      },
+      "properties": {
+        "capacity": "10000.0",
+        "district": "SURYAPET",
+        "latitude": "16.900216600000004",
+        "longitude": "80.1220162",
+        "occupancy": "",
+        "region": "NALGONDA",
+        "status": "Active",
+        "vacancy": "10000.0",
+        "warehouse": "JAGGAYAPETA IG",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.85549300000001, 18.144612]
+      },
+      "properties": {
+        "capacity": "2500.0",
+        "district": "SANGAREDDY",
+        "latitude": "18.144612",
+        "longitude": "77.85549300000001",
+        "occupancy": "2442.84",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "57.16",
+        "warehouse": "RAPARTHY AMC",
+        "wh_type": "AMC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [79.6128834, 18.0372935] },
+      "properties": {
+        "capacity": "2000.0",
+        "district": "WARANGAL(U)",
+        "latitude": "18.0372935",
+        "longitude": "79.6128834",
+        "occupancy": "2000.89",
+        "region": "HYDERABAD",
+        "status": "Active",
+        "vacancy": "-0.8900000000000999",
+        "warehouse": "VANGAPAHAD IG",
+        "wh_type": "INVESTOR GODOWN"
+      }
+    }
+  ]
+}

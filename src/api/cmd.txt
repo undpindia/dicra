@@ -1,0 +1,12 @@
+docker build -t "gdal:Dockerfile" .
+docker run -p 8000:8000 "gdal:Dockerfile"  
+
+
+docker-compose exec db psql --username=root --dbname=dicra
+
+INSERT INTO regions (name) VALUES ('TELENGANA')
+
+
+INSERT INTO layers (unit, xaxislabel, isavailable, layer_name, citation, last_updated, standards, short_description, raster_status, timerangefilter, long_description, vector_status, showcustom, source, multiple_files, datafromvector, url, display_name, yaxislabel, region_id, category_id) VALUES ('unit', 'Date/Time', true, 'NDVI', 'Citation', '2023-04-11 00:00:00', 'All data distributed by the LP DAAC contain no restrictions on the data reus', 'Normalized difference vegetation index', true, true, 'NDVI quantifies vegetation by measuring the difference between near-infrared (which vegetation strongly reflects) and red light (which vegetation absorbs)', true, true, 'GLAM NDVIDB', true, false, 'https://pekko.geog.umd.edu/usda/beta/', 'Normalized Difference Vegetation Index (NDVI)', 'NDVI', 1, 1);
+
+INSERT INTO parameters (available_date, layer_id) VALUES ('2019-02-01', 1);

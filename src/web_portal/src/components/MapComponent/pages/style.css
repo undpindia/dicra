@@ -257,7 +257,7 @@
 }
 
 .site-analytics-wrapper {
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 .site-analytics-top-header {
@@ -268,7 +268,7 @@
   .help-section-wrapper {
     position: relative;
     top: 7%;
-    margin: 100px 25px 50px;
+    margin: 30px 25px 50px;
     text-align: left;
   }
 
@@ -281,8 +281,8 @@
   }
 
   .site-analytics-wrapper {
-    margin-top: 31%;
-  }
+    margin-top: 69px;
+}
 
   .site-analytics-top-header {
     display: flex;

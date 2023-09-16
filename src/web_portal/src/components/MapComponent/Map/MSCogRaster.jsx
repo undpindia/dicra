@@ -289,7 +289,7 @@ export default function GeoRaster({ url }) {
                   } else if (currentLayer === 'crop_type' && layerDesc.id === 134) {
                     const scale = chroma
                       .scale([
-                        '#80FF00',
+                        '#00FF01',
                         '#80FF00',
                         '#FFFF01',
                         '#006401',
@@ -297,7 +297,7 @@ export default function GeoRaster({ url }) {
                         '#FED700',
                         '#D1B48C',
                         '#FEA500',
-                        '#EE82EF',
+                        '#E0697B',
                         '#A020EF',
                         '#FF00FE',
                         '#FFC0CB',
@@ -325,7 +325,8 @@ export default function GeoRaster({ url }) {
                         '#FFFF01',
                         '#EE82EF',
                         '#A020EF',
-                        '#FFB6C1',
+                        // '#FFB6C1',
+                        '#e0697b',
                         '#D1B48C',
                         '#A52B2A',
                         '#FFC0CB',

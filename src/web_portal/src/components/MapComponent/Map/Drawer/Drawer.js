@@ -1040,7 +1040,7 @@ class DrawerComp extends Component {
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "3year",
+            currentCharttime: "5year",
           },
           () => {
             this.gettrendchart(this.state.current_Details.layer.feature);
@@ -1742,7 +1742,7 @@ class DrawerComp extends Component {
             this.props.currentLayer === "POPULATION"
               ? item[1]
               : isNaN(parseFloat(item[1]))
-              ? 0
+              ? null
               : parseFloat(item[1]).toFixed(2),
         })
       );
@@ -2371,7 +2371,9 @@ class DrawerComp extends Component {
               (this.props.CurrentLayer === "LULC" ||
                 this.props.CurrentLayer === "crop_stress") &&
               (this.props.CurrentRegion === "DISTRICT" ||
-                this.props.CurrentRegion === "MANDAL")
+                this.props.CurrentRegion === "MANDAL") ||
+                this.props.CurrentLayer === "NO2"
+                
                 ? { display: "none" }
                 : {}
             }
@@ -2385,8 +2387,8 @@ class DrawerComp extends Component {
                 this.props.CurrentLayer === "LST_DPPD" ||
                 this.props.CurrentLayer === "PM25_DPPD" ||
                 this.props.CurrentLayer === "NDVI_DPPD" ||
-                this.props.CurrentLayer === "NDWI_DPPD" ||
-                this.props.CurrentLayer === "NO2_DPPD"
+                this.props.CurrentLayer === "NDWI_DPPD"
+                // this.props.CurrentLayer === "NO2_DPPD"
                   ? {}
                   : { display: "none" }
               }

@@ -23,7 +23,7 @@ with DAG(
     )
 
     # [START howto_operator_bash]
-    download_path = "/opt/airflow/dags/scripts/odisha/rwi-odisha-download.py"
+    download_path = "/opt/airflow/dags/scripts/odisha/rwi/rwi-odisha-download.py"
     download_command = "python3 " + download_path
     if os.path.exists(download_path):
         download_data = BashOperator(
@@ -36,11 +36,25 @@ with DAG(
     # [END howto_operator_bash]
 
        # [START howto_operator_bash]
-    process_path = "/opt/airflow/dags/scripts/odisha/rwi-odisha-preprocess.py"
+    process_path = "/opt/airflow/dags/scripts/odisha/rwi/rwi-odisha-preprocess.py"
     process_command = "python3 " + process_path
     if os.path.exists(process_path):
-        process_data = BashOperator(
-            task_id="process_data",
+        pre_process_data = BashOperator(
+            task_id="pre_process_data",
+            bash_command=process_command,
+            dag=dag
+        )
+    else:
+        raise Exception("Cannot locate {}".format(process_command))
+
+    # [END howto_operator_bash]
+    
+    # [START howto_operator_bash]
+    process_path = "/opt/airflow/dags/scripts/odisha/rwi/rwi-odisha-dppd.py"
+    process_command = "python3 " + process_path
+    if os.path.exists(process_path):
+        process_data_dppd = BashOperator(
+            task_id="process_data_dppd",
             bash_command=process_command,
             dag=dag
         )
@@ -49,8 +63,7 @@ with DAG(
 
     # [END howto_operator_bash]
 
-
-    download_data >> process_data >> run_this_last
+    download_data >> pre_process_data >> process_data_dppd >> run_this_last
 
 if __name__ == "__main__":
     dag.test()

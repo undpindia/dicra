@@ -1,21 +1,13 @@
-import os
-import configparser
 import multiprocessing
-
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
-config = configparser.ConfigParser()
-config.read('config/config.ini')
-ACCESS_LOG_PATH = config['gunicorn']['Accesslogpath']
-ERROR_LOG_PATH = config['gunicorn']['Errorlogpath']
+name = "gunicorn config for api v2 running on fastapi"
+accesslog = "/home/azureuser/api-v2-logs/gunicorn-access.log"
+errorlog = "/home/azureuser/api-v2-logs/gunicorn-error.log"
 
-
-name = "gunicorn config for FastAPI"
-accesslog = ACCESS_LOG_PATH
-errorlog = ERROR_LOG_PATH
-
-bind = "0.0.0.0:8000"
+bind = "0.0.0.0:8002"
 
 worker_class = "uvicorn.workers.UvicornWorker"
 workers = multiprocessing.cpu_count () * 2 + 1

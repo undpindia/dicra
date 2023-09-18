@@ -1742,7 +1742,7 @@ class DrawerComp extends Component {
             this.props.currentLayer === "POPULATION"
               ? item[1]
               : isNaN(parseFloat(item[1]))
-              ? null
+              ? 0
               : parseFloat(item[1]).toFixed(2),
         })
       );

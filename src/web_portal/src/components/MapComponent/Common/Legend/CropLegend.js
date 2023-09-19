@@ -285,7 +285,7 @@ const LayerDesc = useSelector((state) => state.LayerDescription);
                 style={{
                   height: '12px',
                   width: '12px',
-                  backgroundColor: '#80FF00',
+                  backgroundColor: '#00FF01',
                   display: 'inline-block',
                 }}
               ></span>{' '}
@@ -381,7 +381,7 @@ const LayerDesc = useSelector((state) => state.LayerDescription);
                 style={{
                   height: '12px',
                   width: '12px',
-                  backgroundColor: '#EE82EF',
+                  backgroundColor: '#E0697B',
                   display: 'inline-block',
                 }}
               ></span>{' '}
@@ -537,7 +537,7 @@ const LayerDesc = useSelector((state) => state.LayerDescription);
                 style={{
                   height: '12px',
                   width: '12px',
-                  backgroundColor: '#FFB6C1',
+                  backgroundColor: '#E0697B',
                   display: 'inline-block',
                 }}
               ></span>{' '}

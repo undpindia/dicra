@@ -997,6 +997,18 @@ input.nosubmit {
     top: -210px;
     right: 10px;
   }
+  .leaflet-draw-actions.leaflet-draw-actions-top{
+    top: 35px !important;
+    display: block;
+  }
+  .leaflet-draw-actions.leaflet-draw-actions-bottom {
+    top: 70px !important;
+    display: block;
+  }
+  .leaflet-draw-actions.leaflet-draw-actions-top.leaflet-draw-actions-bottom{
+    top: -15px !important;
+    display: block;
+  }
 }
 
 .btn-toggleBaseMap-theme {

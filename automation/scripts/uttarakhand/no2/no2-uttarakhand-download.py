@@ -7,7 +7,7 @@ from datetime import date, datetime, timedelta
 #Every file type and state base folder should be set in the beginning of the program
 statebase = '/nfsdata/no2/uttarakhand'
 scriptbase= statebase + '/download'
-basepath= statebase + '/base'
+basepath=  '/nfsdata/base_shapefiles'
 tifspath = scriptbase + '/GEE_NO2tifs'
 
 today = date.today() 
@@ -28,7 +28,7 @@ ee.Initialize() # Initialize
 #Append state's boundary data address
 #f=  open('../../../../../src/data_preprocessing/base_geojson/TL_state_shapefile_for_clip.geojson')
 #Enter path of the config files, always prefix the scriptbase path to avoid referring wrong folders
-f=  open(basepath+'/uttarakhand_state_shapefile_for_clip.geojson')
+f=  open(basepath+'/uk_state_boundary.geojson')
 data =json.load(f)
 
 data = data['features'][0]['geometry']['coordinates'][0]
@@ -41,16 +41,16 @@ image = collection_subset.first().select('NO2_column_number_density')  # Pick th
 geemap.image_props(image).getInfo() # Finds basic info of this image
 
 
-if tifspath not in os.listdir():
-    os.mkdir(tifspath)
-else:
-    print('GEE_NO2tifs directory exists')
+#if tifspath not in os.listdir():
+#    os.mkdir(tifspath)
+#else:
+#    print('GEE_NO2tifs directory exists')
 
-#out = os.path.join('GEE_NDVItifs') # Set path to where we want to save the GeoTIF
+#out = os.path.join('GEE_NO2tifs') # Set path to where we want to save the GeoTIF
 out = os.path.join(tifspath) # Set path to where we want to save the GeoTIF
 # Now export each image within the collection to a GeoTIF
 geemap.ee_export_image_collection(collection_subset, out_dir = out, scale=image.select('NO2_column_number_density').projection().nominalScale(), region=roi, file_per_band=True, crs='EPSG:4326')
 
-# image.select('NDVI').projection().nominalScale() sets the scale equal to the resolution of the images within the collection
+# image.select('NO2').projection().nominalScale() sets the scale equal to the resolution of the images within the collection
 # file_per_band=False: all bands are downloaded and put as one file
 # file_per_band=True: each band is downloaded in a single image

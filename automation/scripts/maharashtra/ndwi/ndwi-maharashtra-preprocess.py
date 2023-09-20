@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 #Every file type and state base folder should be set in the beginning of the program
 statebase = '/nfsdata/ndwi/maharashtra'
 scriptbase= statebase + '/process'
-boundryfile = statebase + "/tsdm/District_Boundary.shp"
+boundryfile = '/nfsdata/mh_district_boundary.geojson'
 tifspath = statebase + '/download/GEE_NDWItifs'
 
 #Enter path of downloaded files, always prefix the scriptbase path to avoid files getting generated in wrong folders
@@ -34,7 +34,7 @@ if projfname not in os.listdir(scriptbase):
 else:
     print('projected directory exists')
 
-#arr = os.listdir('GEE_NDVItifs_scaled') #Don't hardcode the path string in multiple lines, use a variable
+#arr = os.listdir('GEE_NDWItifs_scaled') #Don't hardcode the path string in multiple lines, use a variable
 arr = os.listdir(basepath)
 for i in arr:
     #cmd="gdalwarp -of GTIFF  -r cubic -t_srs '+proj=longlat +datum=WGS84 +no_defs'"+" "+basepath+str(i)+" projected/"+str(i)
@@ -68,7 +68,7 @@ for i in arr:
     arr_q = b1.ReadAsArray()
    # ndv = 1
     # apply scale factor
-    data = arr_q*(0.0001)			#RECALCULATION FORMULA WILL DIFFER FOR EACH DATASET
+    data = arr_q*(1)			#RECALCULATION FORMULA WILL DIFFER FOR EACH DATASET
     #data = np.where(data > 1,-9999, data)
     #data=np.where(data<0,-9999,data)
     print(str(i))
@@ -114,8 +114,8 @@ arr = os.listdir(clippath)
 
 ###Below code was commented due to hardcoded path string, I have re-written the lines below
 
-#if 'cog_ndvi' not in os.listdir():
-#    os.mkdir('cog_ndvi')
+#if 'cog_ndwi' not in os.listdir():
+#    os.mkdir('cog_ndwi')
 #else:
 #    print('directory exists')
 
@@ -126,7 +126,7 @@ else:
 
 
 for i in arr:
-    #cmd="gdal_translate clipped/"+str(i)+" cog_ndvi/"+str(i)+" -co COMPRESS=LZW -co TILED=YES"
+    #cmd="gdal_translate clipped/"+str(i)+" cog_ndwi/"+str(i)+" -co COMPRESS=LZW -co TILED=YES"
     cmd="gdal_translate " + clippath + "/"+str(i)+ " " + cogpath + "/"+str(i)+" -co COMPRESS=LZW -co TILED=YES"
     print(cmd)
     try:
@@ -136,7 +136,7 @@ for i in arr:
     time.sleep(1)
 
 ##Commented the remove action below
-#cmd="rm -r GEE_NDVItifs_scaled clipped projected recalculated"
+#cmd="rm -r GEE_NDWItifs_scaled clipped projected recalculated"
 #print(cmd)
 #try:
 #    subp.check_call(str(cmd), shell=True)

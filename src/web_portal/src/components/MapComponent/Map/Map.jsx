@@ -45,7 +45,7 @@ import BottomNav from "../Common/BottomNav/BottomNav";
 import { AiFillCloseCircle } from "react-icons/ai";
 import MK from "../../../assets/images/locationMK.png";
 import Nabard from "../../../assets/images/partners/nabard.png"
-
+import India from "./Shapes/India_State.json"
 
 let ltype = "Raster";
 const label_options = [
@@ -208,6 +208,7 @@ class LeafletMap extends React.Component {
       LULCclasses: [],
       currentLatlon: [0, 0],
       pixelloader: true,
+      india_boundary: India,
       customShape: {
         type: "FeatureCollection",
         features: [
@@ -274,6 +275,7 @@ class LeafletMap extends React.Component {
     this.onChangeLayertype = this.onChangeLayertype.bind(this);
     this.Customlayer = this.Customlayer.bind(this);
     this.style = this.style.bind(this);
+    this.boundaryStyle = this.boundaryStyle.bind(this);
     this.resetmapzoommobile = this.resetmapzoommobile.bind(this);
     this.closeSearchRegion = this.closeSearchRegion.bind(this);
     this.getPixelValue = this.getPixelValue.bind(this);
@@ -1008,6 +1010,15 @@ class LeafletMap extends React.Component {
   handleFeatureClick = (event) => {
     // console.log("VectorGrid feature clicked!", event.layer.properties);
   };
+
+  boundaryStyle(feature){
+    return {
+      opacity: 1,
+      color: "#454545",
+      fillOpacity: 0,
+      weight: 0.5,
+    };
+  }
 
   style(feature) {
     var scale;
@@ -1751,6 +1762,10 @@ class LeafletMap extends React.Component {
               {this.state.showMarker && (
                 <Marker position={this.props.LatLon} icon={LocIcon}></Marker>
               )}
+               <GeoJSON
+                style={this.boundaryStyle}
+                data={this.state.india_boundary.features}
+              />
               <GeoJSON
                 style={this.style}
                 data={this.props.CurrentVector.features}

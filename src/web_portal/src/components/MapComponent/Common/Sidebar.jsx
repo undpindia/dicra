@@ -940,7 +940,6 @@ const Sidebar = (props) => {
                   LayerDesc.layer_name === "crop_land" ||
                   LayerDesc.layer_name === "WH" ||
                   LayerDesc.layer_name === "FIREEV" ||
-                  layertype === "Raster" ||
                   currentregion === "CUSTOM"
                     ? { display: "none" }
                     : {}

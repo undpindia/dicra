@@ -163,7 +163,7 @@ class DrawerComp extends Component {
         xaxis: {
           type: "datetime",
           labels: {
-            format: "yyyy",
+            format: "MMM yyyy",
             style: {
               colors: "#90989b",
               cssClass: "apexcharts-xaxis-label",
@@ -1806,7 +1806,7 @@ class DrawerComp extends Component {
           type: "datetime",
           labels: {
             datetimeFormatter: {
-              year: "yyyy",
+              year: "MMM yyyy",
               month: "dd MMM",
               day: "dd MMM",
               hour: "HH:mm",

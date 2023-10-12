@@ -438,11 +438,11 @@ class LeafletMap extends React.Component {
   }
   onMouseOver(e) {
     this.props.setlatlon(e.latlng.lat, e.latlng.lng);
-    if(this.props.CurrentRegion === "MANDAL"  && this.props.currentLayerType === "Vector"){
+    if(this.props.CurrentRegion === "MANDAL" ){
       var mandal_name = e.layer.feature.properties.mandal_name;
       this.props.setplace(mandal_name);
 
-    }else if (this.props.CurrentRegion === "DISTRICT"  && this.props.currentLayerType === "Vector"){
+    }else if (this.props.CurrentRegion === "DISTRICT" ){
       var district_name = e.layer.feature.properties.district_name;
       this.props.setplace(district_name);
     }

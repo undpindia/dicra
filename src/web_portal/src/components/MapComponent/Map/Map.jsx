@@ -171,6 +171,7 @@ class LeafletMap extends React.Component {
       loaderlatraster: Config.loaderlatraster,
       loaderlngraster: Config.loaderlngraster,
       mapZoom: 7.5,
+      currentZoom: 7.5,
       attribution: "",
       visible: false,
       currentbounds: "DISTRICT",
@@ -289,6 +290,10 @@ class LeafletMap extends React.Component {
     const map = this.mapInstance.leafletElement;
     map.flyTo([Config.latnew, Config.longnew], 6.5);
   }
+  handleZoomEnd = () => {
+    // Update the state with the current zoom level when the user manually zooms
+    this.setState({ mapZoom: this.mapInstance.leafletElement.getZoom() });
+  };
   toggleClass() {
     if (window.innerWidth <= 768) {
       this.resetmapzoommobile();
@@ -826,6 +831,21 @@ class LeafletMap extends React.Component {
   };
 
   async getvector() {
+    if (window.innerWidth <= 480) {
+      this.setState({
+        mapZoom: 6.5,
+        mobile: true,
+        latnew: Config.latnew,
+        longnew: Config.longnew,
+      });
+    } else {
+      this.setState({
+        mapZoom: 7.5,
+        mobile: false,
+        latnew: Config.latnew,
+        longnew: Config.longnew,
+      });
+    }
     try {
       this.changeVectorLoader(Config.loaderlatvector, Config.loaderlngvector);
       getlatestdate(this.props.LayerDescription.id).then(async (json) => {
@@ -876,7 +896,6 @@ class LeafletMap extends React.Component {
             }
           }
         });
-
         this.setState({
           minMean: min.toFixed(6),
           maxMean: max.toFixed(6),
@@ -987,7 +1006,16 @@ class LeafletMap extends React.Component {
       });
     }
   };
+  handleZoomEnd = () => {
+    if (this.mapInstance) {
+    this.setState({ mapZoom: this.mapInstance.leafletElement.getZoom(),
+      latnew:  this.mapInstance.leafletElement.getCenter().lat,
+      longnew:  this.mapInstance.leafletElement.getCenter().lng
+    });
+  }
+  };
   componentDidMount() {
+    this.mapInstance.leafletElement.on('zoomend', this.handleZoomEnd);
     this.updateDimensions();
     this.map = this.mapInstance.leafletElement;
     getlayers(Config.regionID).then((json) => {
@@ -1659,6 +1687,7 @@ class LeafletMap extends React.Component {
               }}
               zoomControl={false}
               onClick={this.handleMapClick}
+              onZoomend={this.handleZoomEnd}
             >
               <ZoomControl position="bottomright" className="btn-zoomcontrol" />
               <TileLayer

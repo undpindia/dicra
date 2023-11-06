@@ -460,7 +460,16 @@ class LeafletMap extends React.Component {
             e.layer.feature.properties.zonalstat.mean
           ).toFixed(6);
           this.props.setvalue(valuenow);
-        }
+        }else  if (this.props.CurrentLayer === "Total Precipitation - Monthly") {
+          localStorage.setItem(
+            "valnow",
+            parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(6)
+          );
+          var valuenow = parseFloat(
+            e.layer.feature.properties.zonalstat.mean
+          ).toFixed(6);
+          this.props.setvalue(valuenow);
+        }else
         if (this.props.CurrentLayer === 'POPULATION') {
           localStorage.setItem(
             'valnow',

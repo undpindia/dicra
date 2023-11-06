@@ -417,6 +417,7 @@ class DrawerComp extends Component {
           },
         });
       } else if (
+        this.props.CurrentLayer === "Total Precipitation - Monthly" ||
         this.props.CurrentLayer === "NO2" &&
         this.props.currentLayerType === "Vector"
       ) {
@@ -692,6 +693,7 @@ class DrawerComp extends Component {
           },
         });
       } else if (
+        this.props.CurrentLayer === "Total Precipitation - Monthly" ||
         this.props.CurrentLayer === "NO2" &&
         this.props.currentLayerType === "Vector"
       ) {
@@ -2163,7 +2165,8 @@ class DrawerComp extends Component {
                       this.props.CurrentLayer === "LAI_DPPD" ||
                       this.props.CurrentLayer === "LST_DPPD" ||
                       this.props.CurrentLayer === "NDWI_DPPD" ||
-                      this.props.CurrentLayer === "SOIL_M_DEV"
+                      this.props.CurrentLayer === "SOIL_M_DEV" ||
+                      this.props.CurrentLayer === "Total Precipitation - Monthly"
                         ? parseFloat(this.props.pixelvalue).toFixed(6)
                         : parseFloat(this.props.pixelvalue).toFixed(2)}
                     </div>

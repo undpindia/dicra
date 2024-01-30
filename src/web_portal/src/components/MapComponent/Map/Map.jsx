@@ -939,10 +939,12 @@ class LeafletMap extends React.Component {
         pointData: true,
       });
       try {
-        const res = await axios.get(process.env.REACT_APP_APIEND + `cropfire`);
+        const response = await axios.get(
+          process.env.REACT_APP_APIEND + `cropfire?layer_id=` + this.props.LayerDescription.id
+        );
         this.setState(
           {
-            pointVector: res.data.data,
+            pointVector: response.data.data,
           },
           () => {}
         );

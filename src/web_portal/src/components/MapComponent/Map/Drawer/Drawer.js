@@ -1049,7 +1049,56 @@ class DrawerComp extends Component {
           }
         );
       }
-    }
+    }else if (daterange === "10Year") {
+      let current_date;
+      let from_date;
+      current_date = new Date();
+      from_date = new Date();
+      from_date = from_date.setFullYear(from_date.getFullYear() - 10);
+      from_date = new Date(from_date);
+      let from_dd = String(from_date.getDate()).padStart(2, "0");
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_yyyy = from_date.getFullYear();
+      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, "0");
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let to_yyyy = current_date.getFullYear();
+      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      if (this.props.CurrentRegion === "CUSTOM") {
+        this.setState(
+          {
+            from_date: start_date,
+            to_date: to_date,
+            currentCharttime: "10year",
+          },
+          () => {
+            this.gettrendchart(this.state.current_Details.features[0]);
+          }
+        );
+      } else if (this.props.currentLayerType === "Raster") {
+        this.setState(
+          {
+            from_date: start_date,
+            to_date: to_date,
+            currentCharttime: "10year",
+          },
+          () => {
+            this.getpointtrendchart();
+          }
+        );
+      } else {
+        this.setState(
+          {
+            from_date: start_date,
+            to_date: to_date,
+            currentCharttime: "10year",
+          },
+          () => {
+            this.gettrendchart(this.state.current_Details.layer.feature);
+          }
+        );
+      }
+    } 
   }
   timeConverter(UNIX_timestamp) {
     var a = new Date(UNIX_timestamp);
@@ -1099,7 +1148,8 @@ class DrawerComp extends Component {
     var bodyParams = {
       geojson: shapeparams,
       startdate: "2021-01-01",
-      enddate: "2021-12-12",
+      enddate: "2023-12-12",
+      layer_id: this.props.LayerDescription.id
     };
     try {
       const response = await getcfpoint(bodyParams);
@@ -1295,7 +1345,8 @@ class DrawerComp extends Component {
       var bodyParams = {
         geojson: shapeparams,
         startdate: "2021-01-01",
-        enddate: "2021-12-12",
+        enddate: "2023-12-12",
+        layer_id: this.props.CurrentLayer === "DPPD" ? 140 : this.props.LayerDescription.id 
       };
 
       getcftrend(bodyParams)
@@ -2501,6 +2552,28 @@ class DrawerComp extends Component {
                         htmlFor="btnradio5"
                       >
                         5 year
+                      </label>
+                      <input
+                        type="radio"
+                        className="btn-check"
+                        name="btnradio"
+                        id="btnradio6"
+                        onChange={(e) => {}}
+                        autoComplete="off"
+                        checked={
+                          this.state.currentCharttime === "10year" ? true : false
+                        }
+                        onClick={(e) => {
+                          this.settimerange("10Year");
+                        }}
+                        disabled={this.state.loader === true}
+                      />
+                      <label
+                        className="btn btn-primary btn-chart"
+                        htmlFor="btnradio6"
+                        style={this.props.CurrentLayer === "Total Precipitation - Monthly" || this.props.CurrentLayer === "Temp - Monthly Avg." ? {} : {display:"none"} }
+                      >
+                        10 year
                       </label>
                     </div>
 

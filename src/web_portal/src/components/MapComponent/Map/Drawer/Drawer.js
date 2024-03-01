@@ -1148,7 +1148,7 @@ class DrawerComp extends Component {
     var bodyParams = {
       geojson: shapeparams,
       startdate: "2021-01-01",
-      enddate: "2023-12-12",
+      enddate: "2023-12-31",
       layer_id: this.props.LayerDescription.id
     };
     try {
@@ -1345,7 +1345,7 @@ class DrawerComp extends Component {
       var bodyParams = {
         geojson: shapeparams,
         startdate: "2021-01-01",
-        enddate: "2023-12-12",
+        enddate: "2023-12-31",
         layer_id: this.props.CurrentLayer === "DPPD" ? 140 : this.props.LayerDescription.id 
       };
 

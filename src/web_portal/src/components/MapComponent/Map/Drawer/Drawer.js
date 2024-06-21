@@ -2571,7 +2571,7 @@ class DrawerComp extends Component {
                       <label
                         className="btn btn-primary btn-chart"
                         htmlFor="btnradio6"
-                        style={this.props.CurrentLayer === "Total Precipitation - Monthly" || this.props.CurrentLayer === "Temp - Monthly Avg." ? {} : {display:"none"} }
+                        
                       >
                         10 year
                       </label>

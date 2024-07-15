@@ -45,7 +45,7 @@ import BottomNav from "../Common/BottomNav/BottomNav";
 import { AiFillCloseCircle } from "react-icons/ai";
 import MK from "../../../assets/images/locationMK.png";
 import Nabard from "../../../assets/images/partners/nabard.png"
-
+import India from "./Shapes/India_State.json"
 
 let ltype = "Raster";
 const label_options = [
@@ -171,6 +171,7 @@ class LeafletMap extends React.Component {
       loaderlatraster: Config.loaderlatraster,
       loaderlngraster: Config.loaderlngraster,
       mapZoom: 7.5,
+      currentZoom: 7.5,
       attribution: "",
       visible: false,
       currentbounds: "DISTRICT",
@@ -208,6 +209,7 @@ class LeafletMap extends React.Component {
       LULCclasses: [],
       currentLatlon: [0, 0],
       pixelloader: true,
+      india_boundary: India,
       customShape: {
         type: "FeatureCollection",
         features: [
@@ -274,6 +276,7 @@ class LeafletMap extends React.Component {
     this.onChangeLayertype = this.onChangeLayertype.bind(this);
     this.Customlayer = this.Customlayer.bind(this);
     this.style = this.style.bind(this);
+    this.boundaryStyle = this.boundaryStyle.bind(this);
     this.resetmapzoommobile = this.resetmapzoommobile.bind(this);
     this.closeSearchRegion = this.closeSearchRegion.bind(this);
     this.getPixelValue = this.getPixelValue.bind(this);
@@ -287,6 +290,10 @@ class LeafletMap extends React.Component {
     const map = this.mapInstance.leafletElement;
     map.flyTo([Config.latnew, Config.longnew], 6.5);
   }
+  handleZoomEnd = () => {
+    // Update the state with the current zoom level when the user manually zooms
+    this.setState({ mapZoom: this.mapInstance.leafletElement.getZoom() });
+  };
   toggleClass() {
     if (window.innerWidth <= 768) {
       this.resetmapzoommobile();
@@ -431,11 +438,11 @@ class LeafletMap extends React.Component {
   }
   onMouseOver(e) {
     this.props.setlatlon(e.latlng.lat, e.latlng.lng);
-    if(this.props.CurrentRegion === "MANDAL" && this.props.currentLayerType === "Vector"){
+    if(this.props.CurrentRegion === "MANDAL" ){
       var mandal_name = e.layer.feature.properties.mandal_name;
       this.props.setplace(mandal_name);
 
-    }else if (this.props.CurrentRegion === "DISTRICT" && this.props.currentLayerType === "Vector"){
+    }else if (this.props.CurrentRegion === "DISTRICT" ){
       var district_name = e.layer.feature.properties.district_name;
       this.props.setplace(district_name);
     }
@@ -453,7 +460,16 @@ class LeafletMap extends React.Component {
             e.layer.feature.properties.zonalstat.mean
           ).toFixed(6);
           this.props.setvalue(valuenow);
-        }
+        }else  if (this.props.CurrentLayer === "Total Precipitation - Monthly") {
+          localStorage.setItem(
+            "valnow",
+            parseFloat(e.layer.feature.properties.zonalstat.mean).toFixed(6)
+          );
+          var valuenow = parseFloat(
+            e.layer.feature.properties.zonalstat.mean
+          ).toFixed(6);
+          this.props.setvalue(valuenow);
+        }else
         if (this.props.CurrentLayer === 'POPULATION') {
           localStorage.setItem(
             'valnow',
@@ -824,6 +840,21 @@ class LeafletMap extends React.Component {
   };
 
   async getvector() {
+    if (window.innerWidth <= 480) {
+      this.setState({
+        mapZoom: 6.5,
+        mobile: true,
+        latnew: Config.latnew,
+        longnew: Config.longnew,
+      });
+    } else {
+      this.setState({
+        mapZoom: 7.5,
+        mobile: false,
+        latnew: Config.latnew,
+        longnew: Config.longnew,
+      });
+    }
     try {
       this.changeVectorLoader(Config.loaderlatvector, Config.loaderlngvector);
       getlatestdate(this.props.LayerDescription.id).then(async (json) => {
@@ -874,7 +905,6 @@ class LeafletMap extends React.Component {
             }
           }
         });
-
         this.setState({
           minMean: min.toFixed(6),
           maxMean: max.toFixed(6),
@@ -909,10 +939,12 @@ class LeafletMap extends React.Component {
         pointData: true,
       });
       try {
-        const res = await axios.get(process.env.REACT_APP_APIEND + `cropfire`);
+        const response = await axios.get(
+          process.env.REACT_APP_APIEND + `cropfire?layer_id=` + this.props.LayerDescription.id
+        );
         this.setState(
           {
-            pointVector: res.data.data,
+            pointVector: response.data.data,
           },
           () => {}
         );
@@ -985,7 +1017,16 @@ class LeafletMap extends React.Component {
       });
     }
   };
+  handleZoomEnd = () => {
+    if (this.mapInstance) {
+    this.setState({ mapZoom: this.mapInstance.leafletElement.getZoom(),
+      latnew:  this.mapInstance.leafletElement.getCenter().lat,
+      longnew:  this.mapInstance.leafletElement.getCenter().lng
+    });
+  }
+  };
   componentDidMount() {
+    this.mapInstance.leafletElement.on('zoomend', this.handleZoomEnd);
     this.updateDimensions();
     this.map = this.mapInstance.leafletElement;
     getlayers(Config.regionID).then((json) => {
@@ -1008,6 +1049,15 @@ class LeafletMap extends React.Component {
   handleFeatureClick = (event) => {
     // console.log("VectorGrid feature clicked!", event.layer.properties);
   };
+
+  boundaryStyle(feature){
+    return {
+      opacity: 1,
+      color: "#454545",
+      fillOpacity: 0,
+      weight: 0.5,
+    };
+  }
 
   style(feature) {
     var scale;
@@ -1648,6 +1698,7 @@ class LeafletMap extends React.Component {
               }}
               zoomControl={false}
               onClick={this.handleMapClick}
+              onZoomend={this.handleZoomEnd}
             >
               <ZoomControl position="bottomright" className="btn-zoomcontrol" />
               <TileLayer
@@ -1751,6 +1802,10 @@ class LeafletMap extends React.Component {
               {this.state.showMarker && (
                 <Marker position={this.props.LatLon} icon={LocIcon}></Marker>
               )}
+               <GeoJSON
+                style={this.boundaryStyle}
+                data={this.state.india_boundary.features}
+              />
               <GeoJSON
                 style={this.style}
                 data={this.props.CurrentVector.features}

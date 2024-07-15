@@ -259,7 +259,7 @@ main {
   margin-left: 20px;
   position: absolute;
   z-index: 900;
-  width: 269px;
+  min-width: 269px;
   /* height: 257px; */
   background: rgba(103, 103, 103, 0.3);
   backdrop-filter: blur(112px);

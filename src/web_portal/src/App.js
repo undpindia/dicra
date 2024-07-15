@@ -6,7 +6,6 @@ import Map from './components/MapComponent/Map/Map';
 import Analytics from './components/MapComponent/pages/Analytics.jsx';
 // import Usecase from './components/MapComponent/pages/Usecase.jsx';
 import Help from './components/MapComponent/pages/Help';
-import LandingPage from './components/Landing/Landing';
 
 function App() {
   const baseUrl = process.env.PUBLIC_URL;
@@ -15,7 +14,7 @@ function App() {
   return (
     <div>
       <Routes basename={baseUrl} forceRefresh={true}>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/" element={<Map />} />
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Map />} />
         <Route path={`${process.env.PUBLIC_URL}/map`} element={<Map />} />
         {/* <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} /> */}

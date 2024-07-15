@@ -70,6 +70,12 @@ export const getlayerpercentage = (data) => {
     return ApiHelper.post(`${process.env.REACT_APP_APIEND}getlayerpercentage`, data);
 };
 
+//Get Crop Fire
+
+export const getcropfire = (data) => {
+    return ApiHelper.get(`${process.env.REACT_APP_APIEND}cropfire?layer_id=`, data);
+};
+
 //Get Crop Fire Point
 
 export const getcfpoint = (data) => {

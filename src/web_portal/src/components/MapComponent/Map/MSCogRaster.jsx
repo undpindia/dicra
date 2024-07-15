@@ -387,7 +387,8 @@ export default function GeoRaster({ url }) {
           currentLayer === 'PM25_DPPD' ||
           currentLayer === 'SOC_DPPD' ||
           currentLayer === 'NDWI_DPPD' ||
-          currentLayer === 'NDVI_DPPD'
+          currentLayer === 'NDVI_DPPD' ||
+          currentLayer === "Total Precipitation - Monthly"
         ) {
           if (layertype === 'Raster') {
             const latlng = [evt.latlng.lng, evt.latlng.lat];

@@ -57,7 +57,7 @@ const Usecase = () => {
 
   async function getUsecase() {
     try {
-      const res = await axios.get(`https://dicra-api-v2-dev.eastus.cloudapp.azure.com/api/v2/usecases/1`);
+      const res = await axios.get(`https://dicra-api.centralindia.cloudapp.azure.com/api/v2/usecases/1`);
       //   const parseData = JSON.parse(JSON.stringify(res.data.items));
       // const img = res.data.items[1].image;
       setuseCaseData(res.data.items);
@@ -119,7 +119,7 @@ const Usecase = () => {
       formData.append("username", username);
       formData.append("email_id", emailid);
       formData.append("region_id", regionId);
-    const res = await axios.post("https://dicra-api-v2-dev.eastus.cloudapp.azure.com/api/v2/createusecase", formData );
+    const res = await axios.post("https://dicra-api.centralindia.cloudapp.azure.com/api/v2/createusecase", formData );
       if (res.status === 201) {
         message.success("UseCase Added");
       } else {
@@ -296,7 +296,7 @@ const Usecase = () => {
                   <CardImg
                     width="100px"
                     height="250px"
-                    src={"https://dicra-api-v2-dev.eastus.cloudapp.azure.com/static/" + items.image}
+                    src={"https://dicra-api.centralindia.cloudapp.azure.com/static/" + items.image}
                     alt="GFG Logo"
                   />
                   <CardBody style={{ color: "white" }}>
@@ -346,7 +346,7 @@ const Usecase = () => {
             <div>
               <img
                 src={
-                  "https://dicra-api-v2-dev.eastus.cloudapp.azure.com/static/" + currentUsecase.image
+                  "https://dicra-api.centralindia.cloudapp.azure.com/static/" + currentUsecase.image
                 }
                 alt="..."
                 className="cover"

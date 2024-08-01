@@ -100,6 +100,11 @@ const Sidebar = (props) => {
       dispatch({ type: "CHANGELAYERDESC", payload: result[1][0] });
     });
   };
+  
+  const handleDocClick = () => {
+    window.open("https://dicra.nabard.org/dicra-documents");
+  };
+
   const handleClick = () => {
     window.open("https://github.com/UNDP-India/Data4Policy/");
   };
@@ -299,15 +304,22 @@ const Sidebar = (props) => {
             {"Download"}
           </div>
         </NavLink>
-        <NavLink
-          to={`${process.env.PUBLIC_URL}/help`}
-          key={5}
+        <div
+          // to={`${process.env.PUBLIC_URL}/help`}
+          // key={5}
+          // className="link"
+          // activeclassName="active"
+          // onClick={() => {
+          //   setShowlayer(false);
+          //   setShowdownload(false);
+          //   setIsLegendshow(false);
+          // }}
           className="link"
-          activeclassName="active"
           onClick={() => {
             setShowlayer(false);
             setShowdownload(false);
-            setIsLegendshow(false);
+            // setIsLegendshow(true);
+            handleDocClick();
           }}
         >
           <div className="icon">
@@ -329,7 +341,7 @@ const Sidebar = (props) => {
           >
             {"Help"}
           </div>
-        </NavLink>
+        </div>
         <NavLink
           to={`${process.env.PUBLIC_URL}/analytics`}
           key={6}

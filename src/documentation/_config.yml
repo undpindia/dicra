@@ -1,0 +1,78 @@
+# ----
+# Site
+
+title: DiCRA Documents
+url: 
+baseurl: /dicra-documents
+google_analytics_key:
+show_full_navigation: true
+
+logo: 
+description: 
+author:
+  name:
+  email:
+  twitter: # twitter username without the @ symbol
+social:
+  name: DiCRA Documents
+  links:
+    
+
+# -----
+# Build
+
+timezone: Etc/UTC
+
+permalink: pretty
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENCE
+
+collections:
+  docs:
+    title: Documentation
+    permalink: /:path/
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      seo:
+        type: Article
+      _comments:
+        category: Group navigation links with this field
+        order: Used to sort links in the navigation
+      _options:
+        content:
+          width: 800
+          height: 2000
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      _comments:
+        type: Marks the impact of this release
+
+# -----------
+# CloudCannon
+
+types:
+  - minor
+  - major

@@ -922,7 +922,7 @@ class LeafletMap extends React.Component {
       });
       try {
         const res = await axios.get(
-          process.env.REACT_APP_APIEND + `warehouses`
+          process.env.REACT_APP_APIEND + `warehouses?layer_id=` + this.props.LayerDescription.id
         );
         this.setState(
           {

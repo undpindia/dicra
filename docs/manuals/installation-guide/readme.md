@@ -10,9 +10,30 @@ Steps:
 1.	Clone the github repo containing the frontend app ```git clone https://github.com/undpindia/dicra.git```
 2.	Navigate to **web_portal** folder ```cd dicra/src/web_portal```
 3.	Unzip **package-lock.zip** ```unzip package-lock.zip```
-4.	Create .env file and add REACT_APP_API_KEY=google_map_api_key
-5.	Run the command ```npm install``` then it will install the required packages for running the application
-6.	After the installation we can able to run the Web application in Development server using the command ```npm start```
+4.	Create .env file and add
+   
+        ```
+  		REACT_APP_APIEND= api_key
+            // hosted_url= replace dicra api backend url
+        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif)
+	   
+        REACT_APP_APIEND_VECTOR= https://{hosted_url}/LAYER_DESC_ID/VECTOR/CURRENT_BOUNDS/LTDATE.geojson
+	
+ 		REACT_APP_APIEND_DOWNLOADS= {api_key}/downloadfile?layerId=LAYER_ID&filename=FILE_NAME&name=USER_NAME&email=EMAIL_ID&usage_type=USAGE_TYPE&purpose=PURPOSE
+	
+		REACT_APP_API_KEY = google_map_api_key
+	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odish
+ 		PUBLIC_URL=/state_name
+  	
+        ```
+  	
+6.  a) The state config information were added in  ````cd dicra/src/web_porta/src/components/MapComponent/ExampleConfig/{configstatename}.js````
+
+    b) Copy the config of the state of your choice and paste it in config.js file located in ````cd dicra/src/web_porta/src/components/MapComponent/Config/config.js````
+  
+    c) Now change in **PUBLIC_URL** key in the env file with the state_name
+8.	Run the command ```npm install``` then it will install the required packages for running the application
+9.	After the installation we can able to run the Web application in Development server using the command ```npm start```
 
 ### Running Web App Production Build In a web Server(Nginx)
 
@@ -20,11 +41,31 @@ Steps:
 1.	Clone the github repo containing the frontend app ```git clone https://github.com/undpindia/dicra.git```
 2.	Navigate to **web_portal** folder ```cd dicra/src/web_portal```
 3.	Unzip **package-lock.zip** ```unzip package-lock.zip```
-4.	Create .env file and add REACT_APP_API_KEY=google_map_api_key
+4.	Create .env file and add
+   
+        ```
+  		REACT_APP_APIEND= api_key
+            // hosted_url= replace dicra api backend url
+        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif)
+	   
+        REACT_APP_APIEND_VECTOR= https://{hosted_url}/LAYER_DESC_ID/VECTOR/CURRENT_BOUNDS/LTDATE.geojson
+	
+ 		REACT_APP_APIEND_DOWNLOADS= {api_key}/downloadfile?layerId=LAYER_ID&filename=FILE_NAME&name=USER_NAME&email=EMAIL_ID&usage_type=USAGE_TYPE&purpose=PURPOSE
+	
+		REACT_APP_API_KEY = google_map_api_key
+	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odish
+ 		PUBLIC_URL=/state_name
+  	
+        ```
 5.	Run the command ```npm install``` then it will install the required packages for running the application.
-6.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files
-7.	Upload all the build files to nginx website deployment location
-8.	Make changes to the web server configuration
+6.	 a) The state config information were added in  ````cd dicra/src/web_porta/src/components/MapComponent/ExampleConfig/{configstatename}.js````
+
+     b) Copy the config of the state of your choice and paste it in config.js file located in ````cd dicra/src/web_porta/src/components/MapComponent/Config/config.js````
+  
+     c) Now change in **PUBLIC_URL** key in the env file with the state name
+7.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files (this build corresponds to particular state_name that you have provided above, like wise if you want for other states change the env and repeat the build process again)
+8.	Upload all the build files to nginx website deployment location
+9.	Make changes to the web server configuration
 
 ### Running Web App Production Build in Azure Blob
 
@@ -32,11 +73,32 @@ Steps:
 1.	Clone the github repo containing the frontend app ```git clone https://github.com/undpindia/dicra.git```
 2.	Navigate to **web_portal** folder ```cd dicra/src/web_portal```
 3.	Unzip **package-lock.zip** ```unzip package-lock.zip```
-4.	Create .env file and add REACT_APP_API_KEY=google_map_api_key
-5.	Run the command ```npm install``` then it will install the required packages for running the application
-6.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files
-7.	To deploy react production build in Azure we need to create a storage account in Azure
-8.	After the successful Deployment of the storage account Goto static website menu and enable static website option and fill index document name as ```index.html``` and leave error document path as empty (its optional). After saving this it will provide us a primary endpoint.
+4.	Create .env file and add
+   
+        ```
+  		REACT_APP_APIEND= api_key
+            // hosted_url= replace dicra api backend url
+        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif)
+	   
+        REACT_APP_APIEND_VECTOR= https://{hosted_url}/LAYER_DESC_ID/VECTOR/CURRENT_BOUNDS/LTDATE.geojson
+	
+ 		REACT_APP_APIEND_DOWNLOADS= {api_key}/downloadfile?layerId=LAYER_ID&filename=FILE_NAME&name=USER_NAME&email=EMAIL_ID&usage_type=USAGE_TYPE&purpose=PURPOSE
+	
+		REACT_APP_API_KEY = google_map_api_key
+	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odish
+ 		PUBLIC_URL=/state name
+  	
+        ```
+  	
+6.	Run the command ```npm install``` then it will install the required packages for running the application
+7.	 a) The state config information were added in  ````cd dicra/src/web_porta/src/components/MapComponent/ExampleConfig/{configstatename}.js````
+
+     b) Copy the config of the state of your choice and paste it in config.js file located in ````cd dicra/src/web_porta/src/components/MapComponent/Config/config.js````
+  
+     c) Now change in **PUBLIC_URL** key in the env file with the state name
+8.	To create the production build we need to run the command ```npm run build```. After the successful execution of the command it will create a folder called ```build```, it contain all the build files (this build corresponds to particular state_name that you have provided above, like wise if you want for other states change the env and repeat the build process again)
+9.	To deploy react production build in Azure we need to create a storage account in Azure
+10.	After the successful Deployment of the storage account Goto static website menu and enable static website option and fill index document name as ```index.html``` and leave error document path as empty (its optional). After saving this it will provide us a primary endpoint.
 
 Screenshot of the same is given below. We can use the primary endpoint to test our react production build, deployed in the storage account and same can be done after the completion of step 6.
 

@@ -15,14 +15,14 @@ Steps:
         ```
   		REACT_APP_APIEND= api_key
             // hosted_url= replace dicra api backend url
-        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif)
+        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif
 	   
         REACT_APP_APIEND_VECTOR= https://{hosted_url}/LAYER_DESC_ID/VECTOR/CURRENT_BOUNDS/LTDATE.geojson
 	
  		REACT_APP_APIEND_DOWNLOADS= {api_key}/downloadfile?layerId=LAYER_ID&filename=FILE_NAME&name=USER_NAME&email=EMAIL_ID&usage_type=USAGE_TYPE&purpose=PURPOSE
 	
 		REACT_APP_API_KEY = google_map_api_key
-	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odish
+	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odisha
  		PUBLIC_URL=/state_name
   	
         ```
@@ -46,14 +46,14 @@ Steps:
         ```
   		REACT_APP_APIEND= api_key
             // hosted_url= replace dicra api backend url
-        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif)
+        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif
 	   
         REACT_APP_APIEND_VECTOR= https://{hosted_url}/LAYER_DESC_ID/VECTOR/CURRENT_BOUNDS/LTDATE.geojson
 	
  		REACT_APP_APIEND_DOWNLOADS= {api_key}/downloadfile?layerId=LAYER_ID&filename=FILE_NAME&name=USER_NAME&email=EMAIL_ID&usage_type=USAGE_TYPE&purpose=PURPOSE
 	
 		REACT_APP_API_KEY = google_map_api_key
-	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odish
+	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odisha
  		PUBLIC_URL=/state_name
   	
         ```
@@ -78,14 +78,14 @@ Steps:
         ```
   		REACT_APP_APIEND= api_key
             // hosted_url= replace dicra api backend url
-        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif)
+        REACT_APP_APIEND_RASTER= https://{hosted_url}/LAYER_DETAILS_ID/RASTER_TILE/raster_tile.tif
 	   
         REACT_APP_APIEND_VECTOR= https://{hosted_url}/LAYER_DESC_ID/VECTOR/CURRENT_BOUNDS/LTDATE.geojson
 	
  		REACT_APP_APIEND_DOWNLOADS= {api_key}/downloadfile?layerId=LAYER_ID&filename=FILE_NAME&name=USER_NAME&email=EMAIL_ID&usage_type=USAGE_TYPE&purpose=PURPOSE
 	
 		REACT_APP_API_KEY = google_map_api_key
-	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odish
+	        // state_name= replace with telangana , uttarakhand , gujarat , jharkhand , kerala , maharashtra , odisha
  		PUBLIC_URL=/state name
   	
         ```

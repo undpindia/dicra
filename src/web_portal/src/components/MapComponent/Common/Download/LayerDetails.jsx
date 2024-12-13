@@ -502,7 +502,7 @@ class LayerDetails extends Component {
                     lineHeight: '28px',
                   }}
                   target="_blank"
-                  href={'https://api-dicra.undp.org.in/docs#'}
+                  href={'https://dicra-api.centralindia.cloudapp.azure.com/docs#'}
                   rel="noreferrer"
                 >
                   know more

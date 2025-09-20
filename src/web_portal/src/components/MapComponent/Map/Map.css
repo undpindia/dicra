@@ -134,13 +134,13 @@
 .ant-radio-button-wrapper:first-child {
   border: none;
   border-radius: 5px 5px 5px 5px !important;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .ant-radio-button-wrapper:last-child {
   border: none;
   border-radius: 5px 5px 5px 5px !important;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .ant-radio-button-wrapper:not(:first-child)::before {
@@ -163,7 +163,36 @@
 :where(.css-19gw05y).ant-radio-button-wrapper {
   padding-inline: 11px !important;
 }
-
+:where(.css-dev-only-do-not-override-7baty3).ant-radio-button-wrapper {
+    position: relative;
+    display: inline-block;
+    /* height: 32px; */
+    margin: 0;
+    padding-inline: 13px;
+    padding-block: 0;
+    font-size: 13px;
+    line-height: 30px;
+    border-block-start-width: 1.02px;
+    border-inline-start-width: 0;
+    border-inline-end-width: 1px;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+:where(.css-7baty3).ant-radio-button-wrapper {
+     position: relative;
+    display: inline-block;
+    /* height: 32px; */
+    margin: 0;
+    padding-inline: 13px;
+    padding-block: 0;
+    font-size: 13px;
+    line-height: 30px;
+    border-block-start-width: 1.02px;
+    border-inline-start-width: 0;
+    border-inline-end-width: 1px;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
 .selection {
   width: 227px;
   position: absolute;
@@ -337,7 +366,26 @@ input.nosubmit {
   padding-bottom: 24px;
   overflow: auto;
 }
-
+:where(.css-dev-only-do-not-override-7baty3).ant-drawer .ant-drawer-body {
+     flex: 1;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    overflow: auto;
+}
+:where(.css-7baty3).ant-drawer .ant-drawer-body {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    overflow: auto;
+}
 :where(.css-19gw05y).ant-drawer .ant-drawer-body {
   flex: 1;
   min-width: 0;
@@ -656,6 +704,7 @@ input.nosubmit {
 .leaflet-draw-section {
   position: relative;
   top: 316px;
+  z-index: 999999;
 }
 
 .leaflet-touch
@@ -728,8 +777,8 @@ input.nosubmit {
 
 .btn-toggle-radio-grp {
   position: relative;
-  top: -12px;
-  left: 35%;
+  top: -13px;
+  left: 36%;
 }
 
 .selection-select {
@@ -849,7 +898,7 @@ input.nosubmit {
     pointer-events: none;
     position: fixed;
     z-index: 10000;
-}
+  }
   #clear-button-1 {
     position: absolute;
     right: 10px;
@@ -997,7 +1046,7 @@ input.nosubmit {
     top: -210px;
     right: 10px;
   }
-  .leaflet-draw-actions.leaflet-draw-actions-top{
+  .leaflet-draw-actions.leaflet-draw-actions-top {
     top: 35px !important;
     display: block;
   }
@@ -1005,7 +1054,7 @@ input.nosubmit {
     top: 70px !important;
     display: block;
   }
-  .leaflet-draw-actions.leaflet-draw-actions-top.leaflet-draw-actions-bottom{
+  .leaflet-draw-actions.leaflet-draw-actions-top.leaflet-draw-actions-bottom {
     top: -15px !important;
     display: block;
   }
@@ -1095,4 +1144,136 @@ input.nosubmit {
   :where(.css-dev-only-do-not-override-19gw05y).ant-drawer {
     z-index: 10000;
   }
+}
+
+/* MAPBOX Zoom Control Container */
+.maplibregl-ctrl.maplibregl-ctrl-group {
+  background: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0px 2.4px 6.5px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(45px) !important;
+  -webkit-backdrop-filter: blur(45px) !important;
+  border-radius: 5px !important;
+  overflow: hidden;
+  width: auto !important; /* fixed width */
+  height: auto !important; /* let height auto-adjust */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 900 !important;
+  position: absolute;
+  bottom: 40px;
+  right: 15px;
+}
+
+/* Individual Zoom Buttons */
+.maplibregl-ctrl-zoom-in,
+.maplibregl-ctrl-zoom-out {
+  width: 40px !important;
+  height: 42px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  outline: none;
+}
+
+/* Zoom Icons */
+.maplibregl-ctrl-icon {
+  width: 40px !important;
+  height: 40px !important;
+  color: white !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+@media screen and (max-width: 425px) {
+  .maplibregl-ctrl.maplibregl-ctrl-group {
+    position: absolute;
+    bottom: 65px;
+    right: 15px;
+  }
+}
+
+/* MAPBOX DRAW BUTTON */
+/* Vertically center ONLY the draw control group */
+.mapboxgl-ctrl-group.mapboxgl-ctrl {
+  position: absolute !important;
+  bottom: 240% !important;
+  right: 24% !important;
+  transform: translateY(-50%);
+
+  background: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0px 2.4px 6.5px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(45px) !important;
+  -webkit-backdrop-filter: blur(45px) !important;
+  border-radius: 5px !important;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: auto !important;
+  height: auto !important;
+
+  pointer-events: all !important;
+}
+
+.mapbox-gl-draw_ctrl-draw-btn {
+  width: 40px !important;
+  height: 42px !important;
+
+  background-color: rgba(255, 255, 255, 0.1) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+
+  display: inline-block !important;
+
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: 20px 20px !important;
+}
+
+.mapbox-gl-draw_ctrl-draw-btn {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Mobile responsive fallback */
+@media screen and (max-width: 425px) {
+  .mapboxgl-ctrl-group.mapboxgl-ctrl {
+    top: auto !important;
+    bottom: 65px !important;
+    transform: none !important;
+  }
+}
+.point-container {
+  font-size: 12px;
+  padding-top: 10px;
+  float: left;
+}
+
+.layer-section {
+  padding-left: 8px;
+}
+
+.point-row {
+  margin: 4px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.point-label {
+  margin-right: 5px;
+  color: white;
+  font-size: 15px;
+  font-family: proxima-nova, sans-serif;
+}
+
+.point-value {
+  color: #bdbaba;
+  font-size: 14px;
+  font-family: monospace;
 }

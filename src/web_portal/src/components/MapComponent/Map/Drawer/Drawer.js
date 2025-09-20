@@ -1,7 +1,7 @@
-import React, { useEffect, useState, Component } from "react";
-import { Radio, Drawer, message, Menu, Dropdown } from "antd";
-import { geoMercator } from "d3-geo";
-import { BiX } from "react-icons/bi";
+import React, { useEffect, useState, Component } from 'react';
+import { Radio, Drawer, message, Menu, Dropdown } from 'antd';
+import { geoMercator } from 'd3-geo';
+import { BiX } from 'react-icons/bi';
 import {
   FormGroup,
   Input,
@@ -13,7 +13,7 @@ import {
   AccordionHeader,
   AccordionItem,
   UncontrolledAccordion,
-} from "reactstrap";
+} from 'reactstrap';
 import {
   gettrend,
   getzstat,
@@ -23,17 +23,18 @@ import {
   getcfpoint,
   getcftrend,
   getpixel,
-} from "../../../../assets/api/apiService";
-import Config from "../../Config/config";
-import Loader from "../../../../assets/images/loader.gif";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { DownOutlined } from "@ant-design/icons";
-import { connect } from "react-redux";
-import Chart from "react-apexcharts";
-import ValueTable from "../../ValueTable";
-import CategoryName from "../../CategoryName";
+} from '../../../../assets/api/apiService';
+import Config from '../../Config/config';
+import Loader from '../../../../assets/images/loader.gif';
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import { DownOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
+import Chart from 'react-apexcharts';
+import ValueTable from '../../ValueTable';
+import CategoryName from '../../CategoryName';
+import PointFeature from '../../PointFeatureTable.jsx';
 
-const geojsonArea = require("@mapbox/geojson-area");
+const geojsonArea = require('@mapbox/geojson-area');
 const mapStateToProps = (ReduxProps) => {
   return {
     place: ReduxProps.setplace,
@@ -62,17 +63,22 @@ const mapStateToProps = (ReduxProps) => {
     removeMarker: ReduxProps.markerLatLon,
     currentdate: ReduxProps.setCurrentDate,
     showdrawer: ReduxProps.ShowDrawer,
+    showLoader: ReduxProps.showLoader,
+    getshapeid: ReduxProps.setShapeId,
+    pointfeature: ReduxProps.pointfeature
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    showDrawer: (val) => dispatch({ type: "SHOWDRAWER", payload: val }),
+    showDrawer: (val) => dispatch({ type: 'SHOWDRAWER', payload: val }),
     removeMarker: (marker) =>
-      dispatch({ type: "REMOVE_MARKER", payload: marker }),
+      dispatch({ type: 'REMOVE_MARKER', payload: marker }),
     setLulcPerc: (lulc) =>
-      dispatch({ type: "SETLULCPERCENTAGE", payload: lulc }),
+      dispatch({ type: 'SETLULCPERCENTAGE', payload: lulc }),
     setCropPerc: (crop) =>
-      dispatch({ type: "SETCROPPERCENTAGE", payload: crop }),
+      dispatch({ type: 'SETCROPPERCENTAGE', payload: crop }),
+    pointFeature: (val) =>
+       dispatch({ type: 'CHANGEPOINTFEATURES', payload: val }),
   };
 };
 
@@ -80,19 +86,20 @@ class DrawerComp extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      locationName: '',
       visible: false,
       current_Details: [],
       customShape: [],
-      updatedDate: "",
+      updatedDate: '',
       loaderpercentage: true,
       renderComponent: false,
       cfpoint: null,
       meanvalue: '',
       options: {
-        colors: ["#d65522"],
+        colors: ['#d65522'],
         chart: {
-          id: "trendChart",
-          type: "area",
+          id: 'trendChart',
+          type: 'area',
           height: 140,
           width: 316,
           zoom: {
@@ -102,7 +109,7 @@ class DrawerComp extends Component {
             show: false,
             export: {
               csv: {
-                headerCategory: "Datetime",
+                headerCategory: 'Datetime',
               },
               svg: {
                 show: false,
@@ -127,13 +134,13 @@ class DrawerComp extends Component {
         },
         markers: {
           size: 0,
-          style: "hollow",
+          style: 'hollow',
         },
         grid: {
           show: false,
-          borderColor: "#90A4AE",
+          borderColor: '#90A4AE',
           strokeDashArray: 0,
-          position: "back",
+          position: 'back',
           xaxis: {
             lines: {
               show: false,
@@ -152,36 +159,36 @@ class DrawerComp extends Component {
           labels: {
             show: true,
             style: {
-              colors: "#90989b",
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
+              colors: '#90989b',
+              fontSize: '12px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
               fontWeight: 400,
-              cssClass: "apexcharts-yaxis-label",
+              cssClass: 'apexcharts-yaxis-label',
             },
           },
         },
         xaxis: {
-          type: "datetime",
+          type: 'datetime',
           labels: {
-            format: "MMM yyyy",
+            format: 'MMM yyyy',
             style: {
-              colors: "#90989b",
-              cssClass: "apexcharts-xaxis-label",
+              colors: '#90989b',
+              cssClass: 'apexcharts-xaxis-label',
             },
           },
         },
         tooltip: {
           x: {
-            format: "dd MMM yyyy",
+            format: 'dd MMM yyyy',
           },
         },
         fill: {
-          colors: ["#1A73E8"],
+          colors: ['#1A73E8'],
         },
         stroke: {
           show: true,
-          curve: "straight",
-          lineCap: "butt",
+          curve: 'straight',
+          lineCap: 'butt',
           colors: undefined,
           width: 1,
           dashArray: 0,
@@ -189,7 +196,7 @@ class DrawerComp extends Component {
       },
       series: [
         {
-          name: "Trend",
+          name: 'Trend',
           data: [
             { x: 1615362718000, y: 77.95 },
             { x: 1615363619000, y: 90.34 },
@@ -203,62 +210,67 @@ class DrawerComp extends Component {
       loader: false,
       percentage: [],
       loaderpercentage: true,
-      selectedLULCcategory: "Water",
-      selectedCropIntcategory: "Single Crop",
-      selectedCropLandcategory: "Cropland",
-      selectedCropTypecategory: "Irrigated-DC-rice-rice",
-      selectedCropStresscategory: "No crop stress",
+      selectedLULCcategory: 'Water',
+      selectedCropIntcategory: 'Single Crop',
+      selectedCropLandcategory: 'Cropland',
+      selectedCropTypecategory: 'Irrigated-DC-rice-rice',
+      selectedCropStresscategory: 'No crop stress',
       LULCtrend: [],
       croptrend: [],
       customStatus: false,
-      currentCharttime: "6mon",
+      currentCharttime: '6mon',
       customLULC: [],
       LULCclasses: [],
       cropclasses: [],
       currentLatlon: [0, 0],
       pixelloader: false,
       pointVector: {
-        type: "FeatureCollection",
+        type: 'FeatureCollection',
         features: [
           {
-            type: "Feature",
+            type: 'Feature',
             geometry: {
-              type: "Point",
+              type: 'Point',
               coordinates: [55.6761, 12.5683],
             },
             properties: {
               brightness: 330.5,
               scan: 1.16,
               track: 1.07,
-              acq_date: "2021-11-02",
+              acq_date: '2021-11-02',
               acq_time: 801,
-              satellite: "Aqua",
-              instrument: "MODIS",
+              satellite: 'Aqua',
+              instrument: 'MODIS',
               confidence: 83,
-              version: "6.1NRT",
+              version: '6.1NRT',
               bright_t31: 296.07,
               frp: 25.58,
-              daynight: "D",
+              daynight: 'D',
               latitude: 12.5683,
               longitude: 55.6761,
             },
           },
         ],
       },
+      pointFeature: null
     };
     this.handleDrawerClick = this.handleDrawerClick.bind(this);
     this.onClickCategory = this.onClickCategory.bind(this);
     this.onClickCropCategory = this.onClickCropCategory.bind(this);
   }
   handleDrawerClick(data) {
+    // console.log('data', data);
+   
     this.setState({
       visible: true,
-      current_Details: data,
+      current_Details: this.props.CurrentRegion == 'CUSTOM' ? data : data.values,
+      locationName: data.address,
+      pointFeature: this.props.pointfeature
     });
-    if (this.props.CurrentRegion == "CUSTOM") {
+    if (this.props.CurrentRegion == 'CUSTOM') {
       if (data === undefined) {
         console.log();
-      } else if (this.props.CurrentLayer === "LULC") {
+      } else if (this.props.CurrentLayer === 'LULC') {
         var area = geojsonArea.geometry(data.features[0].geometry) / 1000000;
         this.setState(
           {
@@ -272,7 +284,7 @@ class DrawerComp extends Component {
             this.getlulcperc(data.features[0]);
           }
         );
-      } else if (this.props.CurrentLayer === "FIREEV") {
+      } else if (this.props.CurrentLayer === 'FIREEV') {
         var area = geojsonArea.geometry(data.features[0].geometry) / 1000000;
         this.setState(
           {
@@ -288,10 +300,10 @@ class DrawerComp extends Component {
           }
         );
       } else if (
-        this.props.CurrentLayer === "crop_intensity" ||
-        this.props.CurrentLayer === "crop_land" ||
-        this.props.CurrentLayer === "crop_type" ||
-        this.props.CurrentLayer === "crop_stress"
+        this.props.CurrentLayer === 'crop_intensity' ||
+        this.props.CurrentLayer === 'crop_land' ||
+        this.props.CurrentLayer === 'crop_type' ||
+        this.props.CurrentLayer === 'crop_stress'
       ) {
         var area = geojsonArea.geometry(data.features[0].geometry) / 1000000;
         this.setState(
@@ -312,7 +324,18 @@ class DrawerComp extends Component {
           visible: true,
           area: area.toFixed(2),
           centroid: data.features[0].properties.centroid,
-          customShape: data,
+          customShape: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {
+                  centroid: data.features[0].properties.centroid,
+                },
+                geometry: data.features[0].geometry,
+              },
+            ],
+          },
         });
         let current_date;
         let from_date;
@@ -320,171 +343,171 @@ class DrawerComp extends Component {
         from_date = new Date();
         from_date = from_date.setFullYear(from_date.getFullYear() - 1);
         from_date = new Date(from_date);
-        let from_dd = String(from_date.getDate()).padStart(2, "0");
-        let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+        let from_dd = String(from_date.getDate()).padStart(2, '0');
+        let from_mm = String(from_date.getMonth() + 1).padStart(2, '0'); //January is 0!
         let from_yyyy = from_date.getFullYear();
-        let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-        let to_dd = String(current_date.getDate()).padStart(2, "0");
-        let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+        let start_date = from_yyyy + '-' + from_mm + '-' + from_dd;
+        let to_dd = String(current_date.getDate()).padStart(2, '0');
+        let to_mm = String(current_date.getMonth() + 1).padStart(2, '0'); //January is 0!
         let to_yyyy = current_date.getFullYear();
-        let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+        let to_date = to_yyyy + '-' + to_mm + '-' + to_dd;
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
-            this.gettrendchart(data.features[0]);
+            this.gettrendchart(data.features[0].geometry);
           }
         );
         this.getCustomlayerDetails(data);
       }
-    } else if (this.props.CurrentRegion == "MANDAL") {
+    } else if (this.props.CurrentRegion == 'MANDAL') {
       if (
-        (this.props.CurrentLayer === "NDVI_DPPD" ||
-          this.props.CurrentLayer === "SOIL_M_DEV" ||
-          this.props.CurrentLayer === "NO2_DPPD" ||
-          this.props.CurrentLayer === "LAI_DPPD" ||
-          this.props.CurrentLayer === "PM25_DPPD" ||
-          this.props.CurrentLayer === "LST_DPPD" ||
-          this.props.CurrentLayer === "NDWI_DPPD" ||
-          this.props.CurrentLayer === "DPPD") &&
-        this.props.currentLayerType === "Vector"
+        (this.props.CurrentLayer === 'NDVI_DPPD' ||
+          this.props.CurrentLayer === 'SOIL_M_DEV' ||
+          this.props.CurrentLayer === 'NO2_DPPD' ||
+          this.props.CurrentLayer === 'LAI_DPPD' ||
+          this.props.CurrentLayer === 'PM25_DPPD' ||
+          this.props.CurrentLayer === 'LST_DPPD' ||
+          this.props.CurrentLayer === 'NDWI_DPPD' ||
+          this.props.CurrentLayer === 'DPPD') &&
+        this.props.currentLayerType === 'Vector'
       ) {
         if (
-          (this.props.CurrentLayer === "NDVI_DPPD" ||
-            this.props.CurrentLayer === "LAI_DPPD" ||
-            this.props.CurrentLayer === "LST_DPPD" ||
-            this.props.CurrentLayer === "NDWI_DPPD") &&
-          this.props.currentLayerType === "Vector"
+          (this.props.CurrentLayer === 'NDVI_DPPD' ||
+            this.props.CurrentLayer === 'LAI_DPPD' ||
+            this.props.CurrentLayer === 'LST_DPPD' ||
+            this.props.CurrentLayer === 'NDWI_DPPD') &&
+          this.props.currentLayerType === 'Vector'
         ) {
           this.setState({
             meanvalue:
-              data.sourceTarget.feature.properties["DPPD score"].toFixed(5),
+              data.properties["DPPD score"].toFixed(5),
           });
         } else if (
-          this.props.CurrentLayer === "SOIL_M_DEV" &&
-          this.props.currentLayerType === "Vector"
+          this.props.CurrentLayer === 'SOIL_M_DEV' &&
+          this.props.currentLayerType === 'Vector'
         ) {
           this.setState({
-            meanvalue: data.sourceTarget.feature.properties.zonalstat.mean,
-            centroid: data.sourceTarget.feature.centroid,
-            zonalstat: data.sourceTarget.feature.properties.zonalstat,
-            minvalue: data.sourceTarget.feature.properties.zonalstat.min,
-            maxvalue: data.sourceTarget.feature.properties.zonalstat.max,
+            meanvalue: data.properties.mean,
+            centroid: data.properties.centroid,
+            // zonalstat: data.properties.zonalstat,
+            minvalue: data.properties.min,
+            maxvalue: data.properties.max,
           });
           this.setState({
             meanvalue: this.state.meanvalue.toFixed(5),
           });
         } else if (
-          (this.props.CurrentLayer === "NO2_DPPD" ||
-            this.props.CurrentLayer === "PM25_DPPD" ||
-            this.props.CurrentLayer === "DPPD") &&
-          this.props.currentLayerType === "Vector"
+          (this.props.CurrentLayer === 'NO2_DPPD' ||
+            this.props.CurrentLayer === 'PM25_DPPD' ||
+            this.props.CurrentLayer === 'DPPD') &&
+          this.props.currentLayerType === 'Vector'
         ) {
           if (
-            this.props.CurrentLayer === "NO2_DPPD" ||
-            this.props.CurrentLayer === "PM25_DPPD"
+            this.props.CurrentLayer === 'NO2_DPPD' ||
+            this.props.CurrentLayer === 'PM25_DPPD'
           ) {
             this.setState({
               meanvalue:
-                data.sourceTarget.feature.properties["Slope Score"].toFixed(2),
+                data.properties["Slope Score"].toFixed(2),
             });
           } else {
             this.setState({
               meanvalue:
-                data.sourceTarget.feature.properties["Slope Score"].toFixed(5),
+                data.properties["Slope Score"].toFixed(5),
             });
           }
         }
         this.setState({
           visible: true,
-          area: data.sourceTarget.feature.properties.area,
-          distname: data.sourceTarget.feature.properties.mandal_name,
-          centroid: data.sourceTarget.feature.properties.centroid,
-          customShape: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  centroid: data.layer.feature.properties.centroid,
-                },
-                geometry: data.layer.feature.geometry,
-              },
-            ],
-          },
-        });
-      } else if (
-        this.props.CurrentLayer === "Total Precipitation - Monthly" ||
-        this.props.CurrentLayer === "NO2" &&
-        this.props.currentLayerType === "Vector"
-      ) {
-        this.setState({
-          visible: true,
-          area: data.layer.feature.properties.area,
-          distname: data.layer.feature.properties.district_name,
-          zonalstat: data.layer.feature.properties.zonalstat,
-          minvalue: data.layer.feature.properties.zonalstat.min.toFixed(6),
-          maxvalue: data.layer.feature.properties.zonalstat.max.toFixed(6),
-          meanvalue: data.layer.feature.properties.zonalstat.mean.toFixed(6),
-          centroid: data.layer.feature.properties.centroid,
-          customShape: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  centroid: data.layer.feature.properties.centroid,
-                },
-                geometry: data.layer.feature.geometry,
-              },
-            ],
-          },
-        });
-      } else if (
-        this.props.CurrentLayer === "POPULATION" &&
-        this.props.currentLayerType === "Vector"
-      ) {
-        this.setState({
-          visible: true,
-          area: data.layer.feature.properties.area,
-          distname: data.layer.feature.properties.district_name,
-          zonalstat: data.layer.feature.properties.zonalstat,
-          minvalue: data.layer.feature.properties.zonalstat.min.toFixed(2),
-          maxvalue: data.layer.feature.properties.zonalstat.max.toFixed(2),
-          meanvalue: parseInt(data.layer.feature.properties.zonalstat.sum),
-          centroid: data.layer.feature.properties.centroid,
-          customShape: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  centroid: data.layer.feature.properties.centroid,
-                },
-                geometry: data.layer.feature.geometry,
-              },
-            ],
-          },
-        });
-      } else if (
-        this.props.CurrentLayer === "LULC" &&
-        (this.props.currentLayerType === "Vector" ||
-          this.props.currentLayerType === "Raster")
-      ) {
-        this.setState(
-          {
-            visible: true,
-            area: data.layer.feature.properties.area.toFixed(2),
-            distname: data.layer.feature.properties.district_name,
-            centroid: data.layer.feature.properties.centroid,
-            customShape: {
+          area: data.properties.area,
+          distname: data.properties.mandal_name,
+          centroid: JSON.parse(data.properties.centroid),
+         customShape: {
               type: "FeatureCollection",
               features: [
                 {
                   type: "Feature",
+                  properties: {
+                    centroid: JSON.parse(data.properties.centroid),
+                  },
+                  geometry: data._geometry,
+                },
+              ],
+            },
+        });
+      } else if (
+        this.props.CurrentLayer === 'Total Precipitation - Monthly' ||
+        (this.props.CurrentLayer === 'NO2' &&
+          this.props.currentLayerType === 'Vector')
+      ) {
+        this.setState({
+          visible: true,
+          area: data.properties.area,
+          distname: data.properties.district_name,
+          // zonalstat: data.layer.feature.properties.zonalstat,
+          minvalue: data.properties.min.toFixed(6),
+          maxvalue: data.properties.max.toFixed(6),
+          meanvalue: data.properties.mean.toFixed(6),
+          centroid: data.properties.centroid,
+          customShape: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {
+                  centroid: JSON.parse(data.properties.centroid),
+                },
+                geometry: data._geometry,
+              },
+            ],
+          },
+        });
+      } else if (
+        this.props.CurrentLayer === 'POPULATION' &&
+        this.props.currentLayerType === 'Vector'
+      ) {
+        this.setState({
+          visible: true,
+          area: data.properties.area,
+          distname: data.properties.district_name,
+          // zonalstat: data.layer.feature.properties.zonalstat,
+          minvalue: data.properties.min.toFixed(2),
+          maxvalue: data.properties.max.toFixed(2),
+          meanvalue: parseInt(data.properties.sum),
+          entroid: data.properties.centroid,
+          customShape: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {
+                  centroid: JSON.parse(data.properties.centroid),
+                },
+                geometry: data._geometry,
+              },
+            ],
+          },
+        });
+      } else if (
+        this.props.CurrentLayer === 'LULC' &&
+        (this.props.currentLayerType === 'Vector' ||
+          this.props.currentLayerType === 'Raster')
+      ) {
+        this.setState(
+          {
+            visible: true,
+            area: data.properties.area.toFixed(2),
+            distname: data.layer.feature.properties.district_name,
+            centroid: data.layer.feature.properties.centroid,
+            customShape: {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
                   properties: {
                     centroid: data.layer.feature.properties.centroid,
                   },
@@ -498,8 +521,8 @@ class DrawerComp extends Component {
           }
         );
       } else if (
-        this.props.CurrentLayer === "FIREEV" &&
-        this.props.currentLayerType === "Vector"
+        this.props.CurrentLayer === 'FIREEV' &&
+        this.props.currentLayerType === 'Vector'
       ) {
         this.setState(
           {
@@ -508,10 +531,10 @@ class DrawerComp extends Component {
             distname: data.layer.feature.properties.district_name,
             centroid: data.layer.feature.properties.centroid,
             customShape: {
-              type: "FeatureCollection",
+              type: 'FeatureCollection',
               features: [
                 {
-                  type: "Feature",
+                  type: 'Feature',
                   properties: {
                     centroid: data.layer.feature.properties.centroid,
                   },
@@ -525,11 +548,11 @@ class DrawerComp extends Component {
           }
         );
       } else if (
-        (this.props.CurrentLayer === "crop_intensity" ||
-          this.props.CurrentLayer === "crop_land" ||
-          this.props.CurrentLayer === "crop_type" ||
-          this.props.CurrentLayer === "crop_stress") &&
-        this.props.currentLayerType === "Vector"
+        (this.props.CurrentLayer === 'crop_intensity' ||
+          this.props.CurrentLayer === 'crop_land' ||
+          this.props.CurrentLayer === 'crop_type' ||
+          this.props.CurrentLayer === 'crop_stress') &&
+        this.props.currentLayerType === 'Vector'
       ) {
         this.setState(
           {
@@ -538,10 +561,10 @@ class DrawerComp extends Component {
             distname: data.layer.feature.properties.district_name,
             centroid: data.layer.feature.properties.centroid,
             customShape: {
-              type: "FeatureCollection",
+              type: 'FeatureCollection',
               features: [
                 {
-                  type: "Feature",
+                  type: 'Feature',
                   properties: {
                     centroid: data.layer.feature.properties.centroid,
                   },
@@ -555,27 +578,27 @@ class DrawerComp extends Component {
           }
         );
       } else {
-        if (this.props.currentLayerType === "Raster") {
-        } else if (this.props.currentLayerType === "Vector") {
+        if (this.props.currentLayerType === 'Raster') {
+        } else if (this.props.currentLayerType === 'Vector') {
           this.setState({
             visible: true,
-            area: data.layer.feature.properties.area.toFixed(2),
-            distname: data.layer.feature.properties.mandal_name,
-            zonalstat: data.layer.feature.properties.zonalstat,
-            minvalue: data.layer.feature.properties.zonalstat.min.toFixed(2),
-            maxvalue: data.layer.feature.properties.zonalstat.max.toFixed(2),
-            meanvalue: data.layer.feature.properties.zonalstat.mean.toFixed(2),
-            centroid: data.layer.feature.properties.centroid,
-            popsum: parseInt(data.layer.feature.properties.zonalstat.sum),
+            area: data.properties.area,
+            distname: data.properties.mandal_name,
+            // zonalstat: data.layer.feature.properties.zonalstat,
+            minvalue: data.properties.min.toFixed(2),
+            maxvalue: data.properties.max.toFixed(2),
+            meanvalue: data.properties.mean.toFixed(2),
+            centroid: JSON.parse(data.properties.centroid),
+            popsum: parseInt(data.properties.sum),
             customShape: {
-              type: "FeatureCollection",
+              type: 'FeatureCollection',
               features: [
                 {
-                  type: "Feature",
+                  type: 'Feature',
                   properties: {
-                    centroid: data.layer.feature.properties.centroid,
+                    centroid: JSON.parse(data.properties.centroid),
                   },
-                  geometry: data.layer.feature.geometry,
+                  geometry: data._geometry,
                 },
               ],
             },
@@ -588,178 +611,178 @@ class DrawerComp extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 1);
       from_date = new Date(from_date);
-      let from_dd = String(from_date.getDate()).padStart(2, "0");
-      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_dd = String(from_date.getDate()).padStart(2, '0');
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let from_yyyy = from_date.getFullYear();
-      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      let to_dd = String(current_date.getDate()).padStart(2, "0");
-      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let start_date = from_yyyy + '-' + from_mm + '-' + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, '0');
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let to_yyyy = current_date.getFullYear();
-      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.currentLayerType === "Raster") {
+      let to_date = to_yyyy + '-' + to_mm + '-' + to_dd;
+      if (this.props.currentLayerType === 'Raster') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
             this.getpointtrendchart();
           }
         );
-      } else if (this.props.currentLayerType === "Vector") {
+      } else if (this.props.currentLayerType === 'Vector') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
-            this.gettrendchart(data.sourceTarget.feature);
+            this.gettrendchart(data);
           }
         );
       }
-    } else if (this.props.CurrentRegion == "DISTRICT") {
+    } else if (this.props.CurrentRegion == 'DISTRICT') {
       if (
-        (this.props.CurrentLayer === "NDVI_DPPD" ||
-          this.props.CurrentLayer === "SOIL_M_DEV" ||
-          this.props.CurrentLayer === "NO2_DPPD" ||
-          this.props.CurrentLayer === "LAI_DPPD" ||
-          this.props.CurrentLayer === "PM25_DPPD" ||
-          this.props.CurrentLayer === "LST_DPPD" ||
-          this.props.CurrentLayer === "NDWI_DPPD" ||
-          this.props.CurrentLayer === "DPPD") &&
-        this.props.currentLayerType === "Vector"
+        (this.props.CurrentLayer === 'NDVI_DPPD' ||
+          this.props.CurrentLayer === 'SOIL_M_DEV' ||
+          this.props.CurrentLayer === 'NO2_DPPD' ||
+          this.props.CurrentLayer === 'LAI_DPPD' ||
+          this.props.CurrentLayer === 'PM25_DPPD' ||
+          this.props.CurrentLayer === 'LST_DPPD' ||
+          this.props.CurrentLayer === 'NDWI_DPPD' ||
+          this.props.CurrentLayer === 'DPPD') &&
+        this.props.currentLayerType === 'Vector'
       ) {
         if (
-          (this.props.CurrentLayer === "NDVI_DPPD" ||
-            this.props.CurrentLayer === "LAI_DPPD" ||
-            this.props.CurrentLayer === "LST_DPPD" ||
-            this.props.CurrentLayer === "NDWI_DPPD") &&
-          this.props.currentLayerType === "Vector"
+          (this.props.CurrentLayer === 'NDVI_DPPD' ||
+            this.props.CurrentLayer === 'LAI_DPPD' ||
+            this.props.CurrentLayer === 'LST_DPPD' ||
+            this.props.CurrentLayer === 'NDWI_DPPD') &&
+          this.props.currentLayerType === 'Vector'
         ) {
           this.setState({
             meanvalue:
-              data.sourceTarget.feature.properties["DPPD score"].toFixed(5),
+              data.properties["DPPD score"].toFixed(5),
           });
-        } else if (this.props.CurrentLayer === "SOIL_M_DEV") {
+        } else if (this.props.CurrentLayer === 'SOIL_M_DEV') {
           this.setState({
-            meanvalue: data.sourceTarget.feature.properties.zonalstat.mean,
-            centroid: data.sourceTarget.feature.centroid,
-            zonalstat: data.sourceTarget.feature.properties.zonalstat,
-            minvalue: data.sourceTarget.feature.properties.zonalstat.min,
-            maxvalue: data.sourceTarget.feature.properties.zonalstat.max,
+            meanvalue: data.properties.mean,
+            centroid: data.properties.centroid,
+            // zonalstat: data.sourceTarget.feature.properties.zonalstat,
+            minvalue: data.properties.min,
+            maxvalue: data.properties.max,
           });
           this.setState({
             meanvalue: parseFloat(this.state.meanvalue).toFixed(5),
           });
         } else if (
-          (this.props.CurrentLayer === "NO2_DPPD" ||
-            this.props.CurrentLayer === "PM25_DPPD" ||
-            this.props.CurrentLayer === "DPPD") &&
-          this.props.currentLayerType === "Vector"
+          (this.props.CurrentLayer === 'NO2_DPPD' ||
+            this.props.CurrentLayer === 'PM25_DPPD' ||
+            this.props.CurrentLayer === 'DPPD') &&
+          this.props.currentLayerType === 'Vector'
         ) {
           if (
-            this.props.CurrentLayer === "NO2_DPPD" ||
-            this.props.CurrentLayer === "PM25_DPPD"
+            this.props.CurrentLayer === 'NO2_DPPD' ||
+            this.props.CurrentLayer === 'PM25_DPPD'
           ) {
             this.setState({
               meanvalue:
-                data.sourceTarget.feature.properties["Slope Score"].toFixed(2),
+                data.properties["Slope Score"].toFixed(2),
             });
           } else {
             this.setState({
               meanvalue:
-                data.sourceTarget.feature.properties["Slope Score"].toFixed(5),
+                data.properties["Slope Score"].toFixed(5),
             });
           }
         }
         this.setState({
           visible: true,
-          area: data.sourceTarget.feature.properties.area,
-          distname: data.sourceTarget.feature.properties.district_name,
-          centroid: data.sourceTarget.feature.properties.centroid,
+          area: data.properties.area,
+          distname: data.properties.district_name,
+           centroid: JSON.parse(data.properties.centroid),
           customShape: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  centroid: data.layer.feature.properties.centroid,
-                },
-                geometry: data.layer.feature.geometry,
-              },
-            ],
-          },
-        });
-      } else if (
-        this.props.CurrentLayer === "Total Precipitation - Monthly" ||
-        this.props.CurrentLayer === "NO2" &&
-        this.props.currentLayerType === "Vector"
-      ) {
-        this.setState({
-          visible: true,
-          area: data.layer.feature.properties.area,
-          distname: data.layer.feature.properties.district_name,
-          zonalstat: data.layer.feature.properties.zonalstat,
-          minvalue: data.layer.feature.properties.zonalstat.min.toFixed(6),
-          maxvalue: data.layer.feature.properties.zonalstat.max.toFixed(6),
-          meanvalue: data.layer.feature.properties.zonalstat.mean.toFixed(6),
-          centroid: data.layer.feature.properties.centroid,
-          customShape: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  centroid: data.layer.feature.properties.centroid,
-                },
-                geometry: data.layer.feature.geometry,
-              },
-            ],
-          },
-        });
-      } else if (
-        this.props.CurrentLayer === "POPULATION" &&
-        this.props.currentLayerType === "Vector"
-      ) {
-        this.setState({
-          visible: true,
-          area: data.layer.feature.properties.area,
-          distname: data.layer.feature.properties.district_name,
-          zonalstat: data.layer.feature.properties.zonalstat,
-          minvalue: data.layer.feature.properties.zonalstat.min.toFixed(2),
-          maxvalue: data.layer.feature.properties.zonalstat.max.toFixed(2),
-          meanvalue: parseInt(data.layer.feature.properties.zonalstat.sum),
-          centroid: data.layer.feature.properties.centroid,
-          customShape: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  centroid: data.layer.feature.properties.centroid,
-                },
-                geometry: data.layer.feature.geometry,
-              },
-            ],
-          },
-        });
-      } else if (
-        this.props.CurrentLayer === "LULC" &&
-        this.props.currentLayerType === "Vector"
-      ) {
-        this.setState(
-          {
-            visible: true,
-            area: data.layer.feature.properties.area.toFixed(2),
-            distname: data.layer.feature.properties.district_name,
-            centroid: data.layer.feature.properties.centroid,
-            customShape: {
               type: "FeatureCollection",
               features: [
                 {
                   type: "Feature",
+                  properties: {
+                    centroid: JSON.parse(data.properties.centroid),
+                  },
+                  geometry: data._geometry,
+                },
+              ],
+            },
+        });
+      } else if (
+        (this.props.CurrentLayer === 'Total Precipitation - Monthly' && this.props.currentLayerType === 'Vector') ||
+        (this.props.CurrentLayer === 'NO2' &&
+          this.props.currentLayerType === 'Vector')
+      ) {
+        this.setState({
+          visible: true,
+          area: data.properties?.area,
+          distname: data.properties.district_name,
+          zonalstat: data.properties.zonalstat,
+          minvalue: data.properties.min.toFixed(6),
+          maxvalue: data.properties.max.toFixed(6),
+          meanvalue: data.properties.mean.toFixed(6),
+          centroid: JSON.parse(data.properties.centroid),
+          customShape: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {
+                  centroid: JSON.parse(data.properties.centroid),
+                },
+                 geometry: data._geometry,
+              },
+            ],
+          },
+        });
+      } else if (
+        this.props.CurrentLayer === 'POPULATION' &&
+        this.props.currentLayerType === 'Vector'
+      ) {
+        this.setState({
+          visible: true,
+          area: data.properties.area,
+          distname: data.properties.district_name,
+          // zonalstat: data.layer.feature.properties.zonalstat,
+          minvalue: data.properties.min.toFixed(2),
+          maxvalue: data.properties.max.toFixed(2),
+          meanvalue: parseInt(data.properties.sum),
+          centroid: data.properties.centroid,
+          customShape: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {
+                  centroid: JSON.parse(data.properties.centroid),
+                },
+                geometry: data._geometry,
+              },
+            ],
+          },
+        });
+      } else if (
+        this.props.CurrentLayer === 'LULC' &&
+        this.props.currentLayerType === 'Vector'
+      ) {
+        this.setState(
+          {
+            visible: true,
+            area: data.properties.area.toFixed(2),
+            distname: data.layer.feature.properties.district_name,
+            centroid: data.layer.feature.properties.centroid,
+            customShape: {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
                   properties: {
                     centroid: data.layer.feature.properties.centroid,
                   },
@@ -773,8 +796,8 @@ class DrawerComp extends Component {
           }
         );
       } else if (
-        this.props.CurrentLayer === "FIREEV" &&
-        this.props.currentLayerType === "Vector"
+        this.props.CurrentLayer === 'FIREEV' &&
+        this.props.currentLayerType === 'Vector'
       ) {
         this.setState(
           {
@@ -783,10 +806,10 @@ class DrawerComp extends Component {
             distname: data.layer.feature.properties.district_name,
             centroid: data.layer.feature.properties.centroid,
             customShape: {
-              type: "FeatureCollection",
+              type: 'FeatureCollection',
               features: [
                 {
-                  type: "Feature",
+                  type: 'Feature',
                   properties: {
                     centroid: data.layer.feature.properties.centroid,
                   },
@@ -800,11 +823,11 @@ class DrawerComp extends Component {
           }
         );
       } else if (
-        (this.props.CurrentLayer === "crop_intensity" ||
-          this.props.CurrentLayer === "crop_land" ||
-          this.props.CurrentLayer === "crop_type" ||
-          this.props.CurrentLayer === "crop_stress") &&
-        this.props.currentLayerType === "Vector"
+        (this.props.CurrentLayer === 'crop_intensity' ||
+          this.props.CurrentLayer === 'crop_land' ||
+          this.props.CurrentLayer === 'crop_type' ||
+          this.props.CurrentLayer === 'crop_stress') &&
+        this.props.currentLayerType === 'Vector'
       ) {
         this.setState(
           {
@@ -813,10 +836,10 @@ class DrawerComp extends Component {
             distname: data.layer.feature.properties.district_name,
             centroid: data.layer.feature.properties.centroid,
             customShape: {
-              type: "FeatureCollection",
+              type: 'FeatureCollection',
               features: [
                 {
-                  type: "Feature",
+                  type: 'Feature',
                   properties: {
                     centroid: data.layer.feature.properties.centroid,
                   },
@@ -830,27 +853,27 @@ class DrawerComp extends Component {
           }
         );
       } else {
-        if (this.props.currentLayerType === "Raster") {
-        } else if (this.props.currentLayerType === "Vector") {
+        if (this.props.currentLayerType === 'Raster') {
+        } else if (this.props.currentLayerType === 'Vector') {
           this.setState({
             visible: true,
-            area: data.layer.feature.properties.area,
-            distname: data.layer.feature.properties.district_name,
-            zonalstat: data.layer.feature.properties.zonalstat,
-            minvalue: data.layer.feature.properties.zonalstat.min.toFixed(2),
-            maxvalue: data.layer.feature.properties.zonalstat.max.toFixed(2),
-            meanvalue: data.layer.feature.properties.zonalstat.mean.toFixed(2),
-            popsum: parseInt(data.layer.feature.properties.zonalstat.sum),
-            centroid: data.layer.feature.properties.centroid,
+            area: data.properties.area,
+            distname: data.properties.district_name,
+            // // zonalstat: data.layer.feature.properties.zonalstat,
+            minvalue: data.properties.min.toFixed(2),
+            maxvalue: data.properties.max.toFixed(2),
+            meanvalue: data.properties.mean.toFixed(2),
+            // // popsum: parseInt(data.layer.feature.properties.zonalstat.sum),
+            centroid: JSON.parse(data.properties.centroid),
             customShape: {
-              type: "FeatureCollection",
+              type: 'FeatureCollection',
               features: [
                 {
-                  type: "Feature",
+                  type: 'Feature',
                   properties: {
-                    centroid: data.layer.feature.properties.centroid,
+                    centroid: JSON.parse(data.properties.centroid),
                   },
-                  geometry: data.layer.feature.geometry,
+                  geometry: data._geometry,
                 },
               ],
             },
@@ -864,76 +887,76 @@ class DrawerComp extends Component {
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 1);
       from_date = new Date(from_date);
-      let from_dd = String(from_date.getDate()).padStart(2, "0");
-      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_dd = String(from_date.getDate()).padStart(2, '0');
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let from_yyyy = from_date.getFullYear();
-      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      let to_dd = String(current_date.getDate()).padStart(2, "0");
-      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let start_date = from_yyyy + '-' + from_mm + '-' + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, '0');
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let to_yyyy = current_date.getFullYear();
-      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let to_date = to_yyyy + '-' + to_mm + '-' + to_dd;
       // console.log("currentregion", this.props.CurrentRegion)
-      if (this.props.currentLayerType === "Raster") {
+      if (this.props.currentLayerType === 'Raster') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
-            this.getpointtrendchart();
+            this.getpointtrendchart(data);
           }
         );
-      } else if (this.props.currentLayerType === "Vector") {
+      } else if (this.props.currentLayerType === 'Vector') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
-            this.gettrendchart(data.sourceTarget.feature);
+            this.gettrendchart(data);
           }
         );
       }
     }
   }
   settimerange(daterange) {
-    if (daterange === "1Year") {
+    if (daterange === '1Year') {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 1);
       from_date = new Date(from_date);
-      let from_dd = String(from_date.getDate()).padStart(2, "0");
-      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_dd = String(from_date.getDate()).padStart(2, '0');
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let from_yyyy = from_date.getFullYear();
-      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      let to_dd = String(current_date.getDate()).padStart(2, "0");
-      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let start_date = from_yyyy + '-' + from_mm + '-' + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, '0');
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let to_yyyy = current_date.getFullYear();
-      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentRegion === "CUSTOM") {
+      let to_date = to_yyyy + '-' + to_mm + '-' + to_dd;
+      if (this.props.CurrentRegion === 'CUSTOM') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
             this.gettrendchart(this.state.current_Details.features[0]);
           }
         );
-      } else if (this.props.currentLayerType === "Raster") {
+      } else if (this.props.currentLayerType === 'Raster') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
-            this.getpointtrendchart();
+            this.getpointtrendchart(this.state.current_Details);
           }
         );
       } else {
@@ -941,48 +964,48 @@ class DrawerComp extends Component {
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "1year",
+            currentCharttime: '1year',
           },
           () => {
-            this.gettrendchart(this.state.current_Details.layer.feature);
+            this.gettrendchart(this.state.current_Details);
           }
         );
       }
-    } else if (daterange === "3Year") {
+    } else if (daterange === '3Year') {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 3);
       from_date = new Date(from_date);
-      let from_dd = String(from_date.getDate()).padStart(2, "0");
-      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_dd = String(from_date.getDate()).padStart(2, '0');
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let from_yyyy = from_date.getFullYear();
-      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      let to_dd = String(current_date.getDate()).padStart(2, "0");
-      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let start_date = from_yyyy + '-' + from_mm + '-' + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, '0');
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let to_yyyy = current_date.getFullYear();
-      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentRegion === "CUSTOM") {
+      let to_date = to_yyyy + '-' + to_mm + '-' + to_dd;
+      if (this.props.CurrentRegion === 'CUSTOM') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "3year",
+            currentCharttime: '3year',
           },
           () => {
             this.gettrendchart(this.state.current_Details.features[0]);
           }
         );
-      } else if (this.props.currentLayerType === "Raster") {
+      } else if (this.props.currentLayerType === 'Raster') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "3year",
+            currentCharttime: '3year',
           },
           () => {
-            this.getpointtrendchart();
+            this.getpointtrendchart(this.state.current_Details);
           }
         );
       } else {
@@ -990,35 +1013,35 @@ class DrawerComp extends Component {
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "3year",
+            currentCharttime: '3year',
           },
           () => {
-            this.gettrendchart(this.state.current_Details.layer.feature);
+            this.gettrendchart(this.state.current_Details);
           }
         );
       }
-    } else if (daterange === "5Year") {
+    } else if (daterange === '5Year') {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 5);
       from_date = new Date(from_date);
-      let from_dd = String(from_date.getDate()).padStart(2, "0");
-      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_dd = String(from_date.getDate()).padStart(2, '0');
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let from_yyyy = from_date.getFullYear();
-      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      let to_dd = String(current_date.getDate()).padStart(2, "0");
-      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let start_date = from_yyyy + '-' + from_mm + '-' + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, '0');
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let to_yyyy = current_date.getFullYear();
-      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
+      let to_date = to_yyyy + '-' + to_mm + '-' + to_dd;
 
-      if (this.props.CurrentRegion === "CUSTOM") {
+      if (this.props.CurrentRegion === 'CUSTOM') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "5year",
+            currentCharttime: '5year',
           },
           () => {
             // console.log("CURRENT DETAILS", this.state.current_Details)
@@ -1026,15 +1049,15 @@ class DrawerComp extends Component {
             this.gettrendchart(this.state.current_Details.features[0]);
           }
         );
-      } else if (this.props.currentLayerType === "Raster") {
+      } else if (this.props.currentLayerType === 'Raster') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "5year",
+            currentCharttime: '5year',
           },
           () => {
-            this.getpointtrendchart();
+            this.getpointtrendchart(this.state.current_Details);
           }
         );
       } else {
@@ -1042,48 +1065,48 @@ class DrawerComp extends Component {
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "5year",
+            currentCharttime: '5year',
           },
           () => {
-            this.gettrendchart(this.state.current_Details.layer.feature);
+            this.gettrendchart(this.state.current_Details);
           }
         );
       }
-    }else if (daterange === "10Year") {
+    } else if (daterange === '10Year') {
       let current_date;
       let from_date;
       current_date = new Date();
       from_date = new Date();
       from_date = from_date.setFullYear(from_date.getFullYear() - 10);
       from_date = new Date(from_date);
-      let from_dd = String(from_date.getDate()).padStart(2, "0");
-      let from_mm = String(from_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let from_dd = String(from_date.getDate()).padStart(2, '0');
+      let from_mm = String(from_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let from_yyyy = from_date.getFullYear();
-      let start_date = from_yyyy + "-" + from_mm + "-" + from_dd;
-      let to_dd = String(current_date.getDate()).padStart(2, "0");
-      let to_mm = String(current_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+      let start_date = from_yyyy + '-' + from_mm + '-' + from_dd;
+      let to_dd = String(current_date.getDate()).padStart(2, '0');
+      let to_mm = String(current_date.getMonth() + 1).padStart(2, '0'); //January is 0!
       let to_yyyy = current_date.getFullYear();
-      let to_date = to_yyyy + "-" + to_mm + "-" + to_dd;
-      if (this.props.CurrentRegion === "CUSTOM") {
+      let to_date = to_yyyy + '-' + to_mm + '-' + to_dd;
+      if (this.props.CurrentRegion === 'CUSTOM') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "10year",
+            currentCharttime: '10year',
           },
           () => {
             this.gettrendchart(this.state.current_Details.features[0]);
           }
         );
-      } else if (this.props.currentLayerType === "Raster") {
+      } else if (this.props.currentLayerType === 'Raster') {
         this.setState(
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "10year",
+            currentCharttime: '10year',
           },
           () => {
-            this.getpointtrendchart();
+            this.getpointtrendchart(this.state.current_Details);
           }
         );
       } else {
@@ -1091,21 +1114,21 @@ class DrawerComp extends Component {
           {
             from_date: start_date,
             to_date: to_date,
-            currentCharttime: "10year",
+            currentCharttime: '10year',
           },
           () => {
-            this.gettrendchart(this.state.current_Details.layer.feature);
+            this.gettrendchart(this.state.current_Details);
           }
         );
       }
-    } 
+    }
   }
   timeConverter(UNIX_timestamp) {
     var a = new Date(UNIX_timestamp);
-    let dd = String(a.getDate()).padStart(2, "0");
-    let mm = String(a.getMonth() + 1).padStart(2, "0"); //January is 0!
+    let dd = String(a.getDate()).padStart(2, '0');
+    let mm = String(a.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = a.getFullYear();
-    let date = yyyy + "-" + mm + "-" + dd;
+    let date = yyyy + '-' + mm + '-' + dd;
     // return time;
     this.setState({
       last_updated: date,
@@ -1115,13 +1138,13 @@ class DrawerComp extends Component {
     // console.log("getcustomlayerdetails", geojson);
 
     var last_updated_date = new Date(this.props.currentdate);
-    var from_dd = String(last_updated_date.getDate()).padStart(2, "0");
-    var from_mm = String(last_updated_date.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var from_dd = String(last_updated_date.getDate()).padStart(2, '0');
+    var from_mm = String(last_updated_date.getMonth() + 1).padStart(2, '0'); //January is 0!
     var from_yyyy = last_updated_date.getFullYear();
-    var from_date = from_yyyy + "-" + from_mm + "-" + from_dd;
+    var from_date = from_yyyy + '-' + from_mm + '-' + from_dd;
     var currentdate = this.props.currentdate;
-    var parts = currentdate.split("-");
-    var reversedDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+    var parts = currentdate.split('-');
+    var reversedDate = parts[2] + '-' + parts[1] + '-' + parts[0];
     var bodyParams = {
       geojson: geojson.features[0].geometry,
       date: reversedDate,
@@ -1140,16 +1163,16 @@ class DrawerComp extends Component {
         });
       })
       .catch((err) => {
-        message.error("Failed to connect to server");
+        // message.error('Failed to connect to server');
       });
   }
   async getcropfirepoint(e) {
     var shapeparams = e.geometry;
     var bodyParams = {
       geojson: shapeparams,
-      startdate: "2021-01-01",
-      enddate: "2023-12-31",
-      layer_id: this.props.LayerDescription.id
+      startdate: '2021-01-01',
+      enddate: '2023-12-31',
+      layer_id: this.props.LayerDescription.id,
     };
     try {
       const response = await getcfpoint(bodyParams);
@@ -1202,14 +1225,14 @@ class DrawerComp extends Component {
                 options: {
                   tooltip: {
                     x: {
-                      format: "dd MMM yyyy",
+                      format: 'dd MMM yyyy',
                     },
                   },
                   grid: {
                     show: true,
-                    borderColor: "#90A4AE",
+                    borderColor: '#90A4AE',
                     strokeDashArray: 0,
-                    position: "back",
+                    position: 'back',
                     xaxis: {
                       lines: {
                         show: false,
@@ -1227,47 +1250,47 @@ class DrawerComp extends Component {
                     labels: {
                       show: true,
                       style: {
-                        colors: "#90989b",
-                        fontSize: "12px",
-                        fontFamily: "Helvetica, Arial, sans-serif",
+                        colors: '#90989b',
+                        fontSize: '12px',
+                        fontFamily: 'Helvetica, Arial, sans-serif',
                         fontWeight: 400,
-                        cssClass: "apexcharts-yaxis-label",
+                        cssClass: 'apexcharts-yaxis-label',
                       },
                     },
                     title: {
-                      text: "COUNT",
+                      text: 'COUNT',
                       rotate: -90,
                       offsetX: 0,
                       offsetY: 0,
                       style: {
-                        color: "#90989b",
-                        fontSize: "12px",
-                        fontFamily: "Helvetica, Arial, sans-serif",
+                        color: '#90989b',
+                        fontSize: '12px',
+                        fontFamily: 'Helvetica, Arial, sans-serif',
                         fontWeight: 400,
-                        cssClass: "apexcharts-yaxis-title",
+                        cssClass: 'apexcharts-yaxis-title',
                       },
                     },
                   },
                   xaxis: {
-                    type: "datetime",
+                    type: 'datetime',
                     labels: {
-                      format: "MMM yyyy",
+                      format: 'MMM yyyy',
                       style: {
-                        colors: "#90989b",
-                        cssClass: "apexcharts-xaxis-label",
+                        colors: '#90989b',
+                        cssClass: 'apexcharts-xaxis-label',
                       },
                     },
                     title: {
-                      text: "Date/Time",
+                      text: 'Date/Time',
                       rotate: -90,
                       offsetX: 0,
                       offsetY: 0,
                       style: {
-                        color: "#90989b",
-                        fontSize: "12px",
-                        fontFamily: "Helvetica, Arial, sans-serif",
+                        color: '#90989b',
+                        fontSize: '12px',
+                        fontFamily: 'Helvetica, Arial, sans-serif',
                         fontWeight: 400,
-                        cssClass: "apexcharts-yaxis-title",
+                        cssClass: 'apexcharts-yaxis-title',
                       },
                     },
                   },
@@ -1276,7 +1299,7 @@ class DrawerComp extends Component {
             }
           );
         } else {
-          message.error("Failed to connect to server");
+          message.error('Failed to connect to server');
         }
       })
       .catch((err) => {
@@ -1317,7 +1340,7 @@ class DrawerComp extends Component {
             }
           );
         } else {
-          message.error("Failed to connect to server");
+          message.error('Failed to connect to server');
         }
       })
       .catch((err) => {
@@ -1326,27 +1349,30 @@ class DrawerComp extends Component {
   }
   async gettrendchart(e) {
     if (
-      this.props.CurrentLayer === "LULC" ||
-      this.props.CurrentLayer === "crop_intensity" ||
-      this.props.CurrentLayer === "crop_land" ||
-      this.props.CurrentLayer === "crop_type" ||
-      this.props.CurrentLayer === "crop_stress"
+      this.props.CurrentLayer === 'LULC' ||
+      this.props.CurrentLayer === 'crop_intensity' ||
+      this.props.CurrentLayer === 'crop_land' ||
+      this.props.CurrentLayer === 'crop_type' ||
+      this.props.CurrentLayer === 'crop_stress'
     ) {
     }
     this.setState({
       loader: true,
     });
     if (
-      this.props.CurrentLayer === "FIREEV" ||
-      this.props.CurrentLayer === "DPPD"
+      this.props.CurrentLayer === 'FIREEV' ||
+      this.props.CurrentLayer === 'DPPD'
     ) {
       var shapeparams = e.geometry;
 
       var bodyParams = {
         geojson: shapeparams,
-        startdate: "2021-01-01",
-        enddate: "2023-12-31",
-        layer_id: this.props.CurrentLayer === "DPPD" ? 140 : this.props.LayerDescription.id 
+        startdate: '2021-01-01',
+        enddate: '2023-12-31',
+        layer_id:
+          this.props.CurrentLayer === 'DPPD'
+            ? 140
+            : this.props.LayerDescription.id,
       };
 
       getcftrend(bodyParams)
@@ -1360,14 +1386,14 @@ class DrawerComp extends Component {
               options: {
                 tooltip: {
                   x: {
-                    format: "dd MMM yyyy",
+                    format: 'dd MMM yyyy',
                   },
                 },
                 grid: {
                   show: true,
-                  borderColor: "#90A4AE",
+                  borderColor: '#90A4AE',
                   strokeDashArray: 0,
-                  position: "back",
+                  position: 'back',
                   xaxis: {
                     lines: {
                       show: false,
@@ -1385,47 +1411,47 @@ class DrawerComp extends Component {
                   labels: {
                     show: true,
                     style: {
-                      colors: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      colors: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-label",
+                      cssClass: 'apexcharts-yaxis-label',
                     },
                   },
                   title: {
-                    text: "COUNT",
+                    text: 'COUNT',
                     rotate: -90,
                     offsetX: 0,
                     offsetY: 0,
                     style: {
-                      color: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      color: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-title",
+                      cssClass: 'apexcharts-yaxis-title',
                     },
                   },
                 },
                 xaxis: {
-                  type: "datetime",
+                  type: 'datetime',
                   labels: {
-                    format: "MMM yyyy",
+                    format: 'MMM yyyy',
                     style: {
-                      colors: "#90989b",
-                      cssClass: "apexcharts-xaxis-label",
+                      colors: '#90989b',
+                      cssClass: 'apexcharts-xaxis-label',
                     },
                   },
                   title: {
-                    text: "Date/Time",
+                    text: 'Date/Time',
                     rotate: -90,
                     offsetX: 0,
                     offsetY: 0,
                     style: {
-                      color: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      color: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-title",
+                      cssClass: 'apexcharts-yaxis-title',
                     },
                   },
                 },
@@ -1438,14 +1464,14 @@ class DrawerComp extends Component {
               options: {
                 tooltip: {
                   x: {
-                    format: "dd MMM yyyy",
+                    format: 'dd MMM yyyy',
                   },
                 },
                 grid: {
                   show: true,
-                  borderColor: "#90A4AE",
+                  borderColor: '#90A4AE',
                   strokeDashArray: 0,
-                  position: "back",
+                  position: 'back',
                   xaxis: {
                     lines: {
                       show: false,
@@ -1463,47 +1489,47 @@ class DrawerComp extends Component {
                   labels: {
                     show: true,
                     style: {
-                      colors: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      colors: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-label",
+                      cssClass: 'apexcharts-yaxis-label',
                     },
                   },
                   title: {
-                    text: "COUNT",
+                    text: 'COUNT',
                     rotate: -90,
                     offsetX: 0,
                     offsetY: 0,
                     style: {
-                      color: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      color: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-title",
+                      cssClass: 'apexcharts-yaxis-title',
                     },
                   },
                 },
                 xaxis: {
-                  type: "datetime",
+                  type: 'datetime',
                   labels: {
-                    format: "MMM yyyy",
+                    format: 'MMM yyyy',
                     style: {
-                      colors: "#90989b",
-                      cssClass: "apexcharts-xaxis-label",
+                      colors: '#90989b',
+                      cssClass: 'apexcharts-xaxis-label',
                     },
                   },
                   title: {
-                    text: "Date/Time",
+                    text: 'Date/Time',
                     rotate: -90,
                     offsetX: 0,
                     offsetY: 0,
                     style: {
-                      color: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      color: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-title",
+                      cssClass: 'apexcharts-yaxis-title',
                     },
                   },
                 },
@@ -1513,64 +1539,64 @@ class DrawerComp extends Component {
         })
         .catch((err) => {
           // message.error("Failed to connect to server");
-          console.log()
+          console.log();
         });
     } else {
-      var shapeparams = e.geometry;
-      if (this.props.CurrentLayer === "NDVI_DPPD") {
+      var shapeparams = this.props.CurrentRegion === 'CUSTOM' ? e : e.geometry;
+      if (this.props.CurrentLayer === 'NDVI_DPPD') {
         var bodyParams = {
           geojson: shapeparams,
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.ndvi_dppd,
         };
-      } else if (this.props.CurrentLayer === "SOIL_M_DEV") {
+      } else if (this.props.CurrentLayer === 'SOIL_M_DEV') {
         var bodyParams = {
           geojson: shapeparams,
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.ssm_dppd,
         };
-      } else if (this.props.CurrentLayer === "NO2_DPPD") {
+      } else if (this.props.CurrentLayer === 'NO2_DPPD') {
         var bodyParams = {
           geojson: shapeparams,
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.no2_dppd,
         };
-      } else if (this.props.CurrentLayer === "LAI_DPPD") {
+      } else if (this.props.CurrentLayer === 'LAI_DPPD') {
         var bodyParams = {
           geojson: shapeparams,
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.lai_dppd,
         };
-      } else if (this.props.CurrentLayer === "LST_DPPD") {
+      } else if (this.props.CurrentLayer === 'LST_DPPD') {
         var bodyParams = {
           geojson: shapeparams,
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.lst_dppd,
         };
-      } else if (this.props.CurrentLayer === "NDWI_DPPD") {
+      } else if (this.props.CurrentLayer === 'NDWI_DPPD') {
         var bodyParams = {
           geojson: shapeparams,
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.ndwi_dppd,
         };
-      } else if (this.props.CurrentLayer === "PM25_DPPD") {
+      } else if (this.props.CurrentLayer === 'PM25_DPPD') {
         var bodyParams = {
           geojson: shapeparams,
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.pm25_dppd,
         };
-      } else if (this.props.CurrentLayer === "POPULATION") {
+      } else if (this.props.CurrentLayer === 'POPULATION') {
         var bodyParams = {
           geojson: shapeparams,
-          startdate: "2000-01-01",
-          enddate: "2022-04-05",
+          startdate: '2000-01-01',
+          enddate: '2022-04-05',
           layer_id: this.props.LayerDescription.id,
         };
       } else {
@@ -1597,24 +1623,24 @@ class DrawerComp extends Component {
                   labels: {
                     show: true,
                     style: {
-                      colors: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      colors: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-label",
+                      cssClass: 'apexcharts-yaxis-label',
                     },
                   },
                   title: {
-                    text: " ",
+                    text: ' ',
                     rotate: -90,
                     offsetX: 0,
                     offsetY: 0,
                     style: {
-                      color: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      color: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-title",
+                      cssClass: 'apexcharts-yaxis-title',
                     },
                   },
                 },
@@ -1628,17 +1654,18 @@ class DrawerComp extends Component {
           }
         })
         .catch((err) => {
-          message.error("Failed to connect to server");
+          // message.error('Failed to connect to server');
         });
     }
   }
 
   async getpointtrendchart(e) {
+    // console.log("getpointtrend",e)
     if (
-      this.props.CurrentLayer === "LULC" ||
-      this.props.CurrentLayer === "crop_intensity" ||
-      this.props.CurrentLayer === "crop_land" ||
-      this.props.CurrentLayer === "crop_type"
+      this.props.CurrentLayer === 'LULC' ||
+      this.props.CurrentLayer === 'crop_intensity' ||
+      this.props.CurrentLayer === 'crop_land' ||
+      this.props.CurrentLayer === 'crop_type'
     ) {
     }
     this.setState({
@@ -1646,82 +1673,82 @@ class DrawerComp extends Component {
       loaderpercentage: true,
     });
     setTimeout(() => {
-      if (this.props.CurrentLayer === "NDVI_DPPD") {
+      if (this.props.CurrentLayer === 'NDVI_DPPD') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.ndvi_dppd,
         };
-      } else if (this.props.CurrentLayer === "SOIL_M_DEV") {
+      } else if (this.props.CurrentLayer === 'SOIL_M_DEV') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.ssm_dppd,
         };
-      } else if (this.props.CurrentLayer === "NO2_DPPD") {
+      } else if (this.props.CurrentLayer === 'NO2_DPPD') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.no2_dppd,
         };
-      } else if (this.props.CurrentLayer === "LAI_DPPD") {
+      } else if (this.props.CurrentLayer === 'LAI_DPPD') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.lai_dppd,
         };
-      } else if (this.props.CurrentLayer === "LST_DPPD") {
+      } else if (this.props.CurrentLayer === 'LST_DPPD') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.lst_dppd,
         };
-      } else if (this.props.CurrentLayer === "NDWI_DPPD") {
+      } else if (this.props.CurrentLayer === 'NDWI_DPPD') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.ndwi_dppd,
         };
-      } else if (this.props.CurrentLayer === "PM25_DPPD") {
+      } else if (this.props.CurrentLayer === 'PM25_DPPD') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: Config.pm25_dppd,
         };
-      } else if (this.props.CurrentLayer === "POPULATION") {
+      } else if (this.props.CurrentLayer === 'POPULATION') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
-          startdate: "2000-01-01",
-          enddate: "2022-04-05",
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
+          startdate: '2000-01-01',
+          enddate: '2022-04-05',
           layer_id: this.props.LayerDescription.id,
         };
-      } else if (this.props.CurrentLayer === "crop_stress") {
+      } else if (this.props.CurrentLayer === 'crop_stress') {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
-          startdate: "2022-01-01",
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
+          startdate: '2022-01-01',
           enddate: this.state.to_date,
           layer_id: this.props.LayerDescription.id,
         };
       } else {
         var bodyParams = {
-          latitude: this.props.latlong[0],
-          longitude: this.props.latlong[1],
+          latitude: this.props.LatLon[0],
+          longitude: this.props.LatLon[1],
           startdate: this.state.from_date,
           enddate: this.state.to_date,
           layer_id: this.props.LayerDescription.id,
@@ -1743,24 +1770,24 @@ class DrawerComp extends Component {
                   labels: {
                     show: true,
                     style: {
-                      colors: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      colors: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-label",
+                      cssClass: 'apexcharts-yaxis-label',
                     },
                   },
                   title: {
-                    text: " ",
+                    text: ' ',
                     rotate: -90,
                     offsetX: 0,
                     offsetY: 0,
                     style: {
-                      color: "#90989b",
-                      fontSize: "12px",
-                      fontFamily: "Helvetica, Arial, sans-serif",
+                      color: '#90989b',
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
                       fontWeight: 400,
-                      cssClass: "apexcharts-yaxis-title",
+                      cssClass: 'apexcharts-yaxis-title',
                     },
                   },
                 },
@@ -1774,15 +1801,15 @@ class DrawerComp extends Component {
           }
         })
         .catch((err) => {
-          message.error("Failed to connect to server");
+          // message.error('Failed to connect to server');
         });
     }, 500);
   }
   generatechart(data) {
     var trendData = {
       name:
-        this.props.CurrentLayer === "crop_stress"
-          ? "CROP STRESS"
+        this.props.CurrentLayer === 'crop_stress'
+          ? 'CROP STRESS'
           : this.props.CurrentLayer,
       data: [],
     };
@@ -1792,7 +1819,7 @@ class DrawerComp extends Component {
         trendData.data.push({
           x: item[0],
           y:
-            this.props.currentLayer === "POPULATION"
+            this.props.currentLayer === 'POPULATION'
               ? item[1]
               : isNaN(parseFloat(item[1]))
               ? 0
@@ -1808,14 +1835,14 @@ class DrawerComp extends Component {
       options: {
         tooltip: {
           x: {
-            format: "dd MMM yyyy",
+            format: 'dd MMM yyyy',
           },
         },
         grid: {
           show: false,
-          borderColor: "#90A4AE",
+          borderColor: '#90A4AE',
           strokeDashArray: 0,
-          position: "back",
+          position: 'back',
           xaxis: {
             lines: {
               show: false,
@@ -1830,15 +1857,15 @@ class DrawerComp extends Component {
         yaxis: {
           show: true,
           tickAmount: 3,
-          format: "dd MMM yyyy",
+          format: 'dd MMM yyyy',
           labels: {
             show: true,
             style: {
-              colors: "#90989b",
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
+              colors: '#90989b',
+              fontSize: '12px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
               fontWeight: 400,
-              cssClass: "apexcharts-yaxis-label",
+              cssClass: 'apexcharts-yaxis-label',
             },
           },
           title: {
@@ -1847,26 +1874,26 @@ class DrawerComp extends Component {
             offsetX: 0,
             offsetY: 0,
             style: {
-              color: "#90989b",
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
+              color: '#90989b',
+              fontSize: '12px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
               fontWeight: 400,
-              cssClass: "apexcharts-yaxis-title",
+              cssClass: 'apexcharts-yaxis-title',
             },
           },
         },
         xaxis: {
-          type: "datetime",
+          type: 'datetime',
           labels: {
             datetimeFormatter: {
-              year: "MMM yyyy",
-              month: "dd MMM",
-              day: "dd MMM",
-              hour: "HH:mm",
+              year: 'MMM yyyy',
+              month: 'dd MMM',
+              day: 'dd MMM',
+              hour: 'HH:mm',
             },
             style: {
-              colors: "#90989b",
-              cssClass: "apexcharts-xaxis-label",
+              colors: '#90989b',
+              cssClass: 'apexcharts-xaxis-label',
             },
           },
           title: {
@@ -1875,11 +1902,11 @@ class DrawerComp extends Component {
             offsetX: 0,
             offsetY: 5,
             style: {
-              color: "#90989b",
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
+              color: '#90989b',
+              fontSize: '12px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
               fontWeight: 400,
-              cssClass: "apexcharts-yaxis-title",
+              cssClass: 'apexcharts-yaxis-title',
             },
           },
         },
@@ -1887,40 +1914,40 @@ class DrawerComp extends Component {
     });
   }
   getyaxistext() {
-    if (this.props.CurrentLayer === "LAI_DPPD") {
-      return "LAI";
-    } else if (this.props.CurrentLayer === "NDVI_DPPD") {
-      return "NDVI";
-    } else if (this.props.CurrentLayer === "NDVI_DPPD") {
-      return "NDWI";
-    } else if (this.props.CurrentLayer === "SOIL_M_DEV") {
-      return "SOILM";
-    } else if (this.props.CurrentLayer === "LST_DPPD") {
-      return "LST";
-    } else if (this.props.CurrentLayer === "PM25_DPPD") {
-      return "PM25";
-    } else if (this.props.CurrentLayer === "NO2_DPPD") {
-      return "NO2";
+    if (this.props.CurrentLayer === 'LAI_DPPD') {
+      return 'LAI';
+    } else if (this.props.CurrentLayer === 'NDVI_DPPD') {
+      return 'NDVI';
+    } else if (this.props.CurrentLayer === 'NDVI_DPPD') {
+      return 'NDWI';
+    } else if (this.props.CurrentLayer === 'SOIL_M_DEV') {
+      return 'SOILM';
+    } else if (this.props.CurrentLayer === 'LST_DPPD') {
+      return 'LST';
+    } else if (this.props.CurrentLayer === 'PM25_DPPD') {
+      return 'PM25';
+    } else if (this.props.CurrentLayer === 'NO2_DPPD') {
+      return 'NO2';
     } else {
       return this.props.LayerDescription.yaxislabel;
     }
   }
 
   getxaxistext() {
-    if (this.props.CurrentLayer === "LAI_DPPD") {
-      return "Date/Time";
-    } else if (this.props.CurrentLayer === "NDVI_DPPD") {
-      return "Date/Time";
-    } else if (this.props.CurrentLayer === "NDWI_DPPD") {
-      return "Date/Time";
-    } else if (this.props.CurrentLayer === "SOIL_M_DEV") {
-      return "Date/Time";
-    } else if (this.props.CurrentLayer === "LST_DPPD") {
-      return "Date/Time";
-    } else if (this.props.CurrentLayer === "PM25_DPPD") {
-      return "Date/Time";
-    } else if (this.props.CurrentLayer === "NO2_DPPD") {
-      return "Date/Time";
+    if (this.props.CurrentLayer === 'LAI_DPPD') {
+      return 'Date/Time';
+    } else if (this.props.CurrentLayer === 'NDVI_DPPD') {
+      return 'Date/Time';
+    } else if (this.props.CurrentLayer === 'NDWI_DPPD') {
+      return 'Date/Time';
+    } else if (this.props.CurrentLayer === 'SOIL_M_DEV') {
+      return 'Date/Time';
+    } else if (this.props.CurrentLayer === 'LST_DPPD') {
+      return 'Date/Time';
+    } else if (this.props.CurrentLayer === 'PM25_DPPD') {
+      return 'Date/Time';
+    } else if (this.props.CurrentLayer === 'NO2_DPPD') {
+      return 'Date/Time';
     } else {
       return this.props.LayerDescription.xaxislabel;
     }
@@ -1928,6 +1955,7 @@ class DrawerComp extends Component {
   onClose = () => {
     this.props.showDrawer(false);
     this.props.removeMarker([0, 0]);
+    this.props.pointFeature(null)
   };
   onClickCategory({ key }) {
     this.setState(
@@ -1964,7 +1992,7 @@ class DrawerComp extends Component {
       this.state.customShape
     );
     var scaleValue;
-    if (this.state.area < 0.001) {
+    if (this.state.area < 0.01) {
       scaleValue = 20000000;
     } else if (this.state.area >= 0.001 && this.state.area <= 0.1) {
       scaleValue = 15000000;
@@ -2042,26 +2070,26 @@ class DrawerComp extends Component {
         closable={false}
         width={427}
         style={{
-          overflowX: "hidden",
-          bottom: "0",
-          background: "#091B33",
-          color: "#FFFFFF",
-          top: "65px",
+          overflowX: 'hidden',
+          bottom: '0',
+          background: '#091B33',
+          color: '#FFFFFF',
+          top: '65px',
         }}
       >
-        <div class="col" style={{ textAlign: "right" }}>
+        <div class="col" style={{ textAlign: 'right' }}>
           <BiX className="drawer-close" onClick={this.onClose} />
         </div>
-        <Card className="drawer-card">
+        <Card className="drawer-card" style={this.props.CurrentLayer==="WH" || this.props.CurrentLayer === "FIREEV" ? {display : "none"} : {}}>
           <CardBody>
             <Row>
-              {this.props.CurrentRegion === "DISTRICT" ||
-              this.props.CurrentRegion === "MANDAL" ? (
-                this.props.currentLayerType === "Raster" ? (
-                  <Col className="col-12">
+              {this.props.CurrentRegion === 'DISTRICT' ||
+              this.props.CurrentRegion === 'MANDAL' ? (
+                this.props.currentLayerType === 'Raster'? (
+                  <Col className="col-12" >
                     <Row>
                       <p className="drawer-distdisc">
-                        {this.props.reverseGeocode}
+                        {this.props.reverseGeocode || this.state.locationName}
                       </p>
                     </Row>
                   </Col>
@@ -2069,28 +2097,32 @@ class DrawerComp extends Component {
                   <>
                     <Col className="col-8">
                       <Row>
-                        <p className="drawer-distdisc">{this.state.distname}</p>
+                        <p className="drawer-distdisc">
+                          {this.state.distname || this.state.locationName}
+                        </p>
                       </Row>
                       <Row
                         style={
-                          this.props.CurrentRegion === "DISTRICT"
+                          this.props.CurrentRegion === 'DISTRICT'
                             ? {}
-                            : { display: "none" }
+                            : { display: 'none' }
                         }
                       >
                         <p className="drawer-distheader">DISTRICT</p>
                       </Row>
                       <Row
                         style={
-                          this.props.CurrentRegion === "MANDAL"
+                          this.props.CurrentRegion === 'MANDAL'
                             ? {}
-                            : { display: "none" }
+                            : { display: 'none' }
                         }
                       >
                         <p className="drawer-distheader">SUB DISTRICT</p>
                       </Row>
                       <Row>
-                        <p className="drawer-distdisc">{this.state.area}</p>
+                        <p className="drawer-distdisc">
+                          {this.state.area || this.state.locationName}
+                        </p>
                       </Row>
                       <Row>
                         <p className="drawer-distheader">AREA </p>
@@ -2108,7 +2140,9 @@ class DrawerComp extends Component {
                       <p className="drawer-distheader">CUSTOM</p>
                     </Row>
                     <Row>
-                      <p className="drawer-distdisc">{this.state.area}</p>
+                      <p className="drawer-distdisc">
+                        {this.state.area || this.state.locationName}
+                      </p>
                     </Row>
                     <Row>
                       <p className="drawer-distheader">AREA </p>
@@ -2119,10 +2153,10 @@ class DrawerComp extends Component {
               <Col
                 className="col-4"
                 style={
-                  this.props.currentLayerType === "Vector" ||
-                  this.props.CurrentRegion === "CUSTOM"
+                  this.props.currentLayerType === 'Vector' ||
+                  this.props.CurrentRegion === 'CUSTOM'
                     ? {}
-                    : { display: "none" }
+                    : { display: 'none' }
                 }
               >
                 <div>
@@ -2151,23 +2185,41 @@ class DrawerComp extends Component {
             </Row>
           </CardBody>
         </Card>
-        <Row style={{ marginBottom: "10px" }}>
+        <Row style={{ marginBottom: '10px' }}>
           <Col>
             <span
               style={{
-                fontFamily: "proxima-nova, sans-serif",
-                fontSize: "22px",
+                fontFamily: 'proxima-nova, sans-serif',
+                fontSize: '22px',
               }}
             >
               {this.props.LayerDescription.display_name}
             </span>
           </Col>
         </Row>
+        <Row style={
+                this.props.CurrentRegion === 'CUSTOM' ? {display: 'none'} : {  }
+              }> 
+          <Col
+            style={
+              this.props.CurrentLayer === 'WH' ||
+              this.props.CurrentLayer === 'FIREEV' &&
+              this.props.currentLayerType === 'Vector'
+                ? {}
+                : { display: 'none' }
+            }
+          >
+              <div>
+                <PointFeature />
+              </div>
+       
+          </Col>
+        </Row>
         <Row
           style={
-            this.props.currentLayerType === "Raster"
-              ? { marginBottom: "0px" }
-              : { marginBottom: "5px" }
+            this.props.currentLayerType === 'Raster'
+              ? { marginBottom: '0px' }
+              : { marginBottom: '5px' }
           }
         >
           <Col
@@ -2175,49 +2227,58 @@ class DrawerComp extends Component {
               this.props.CurrentLayer === "LULC" ||
               this.props.CurrentLayer === "crop_intensity" ||
               this.props.CurrentLayer === "crop_land" ||
-              this.props.CurrentLayer === "crop_type" ||
+              this.props.CurrentLayer === "crop_type"||
               this.props.CurrentLayer === "crop_stress"
                 ? { display: "none" }
                 : {}
             }
           >
-            <span className="drawer-value">
+            <span className="drawer-value" style={
+              this.props.CurrentLayer === 'WH' ||
+              (this.props.CurrentLayer === 'FIREEV' &&
+              this.props.CurrentRegion === 'MANDAL') ||
+              this.props.CurrentLayer === 'FIREEV' &&
+              this.props.CurrentRegion === 'DISTRICT'
+                ? { display: 'none'}
+                : { }
+            }>
               <span
                 style={
-                  this.props.CurrentRegion === "CUSTOM" ||
-                  this.props.currentLayerType === "Vector"
-                    ? { display: "none" }
+                  this.props.CurrentRegion === 'CUSTOM' ||
+                  this.props.currentLayerType === 'Vector'
+                    ? { display: 'none' }
                     : {}
                 }
               >
-                {this.props.currentLayerType === "Raster" ? (
+                {this.props.currentLayerType === 'Raster' ? (
                   <span>
                     <div
-                      style={this.props.pixelloader ? {} : { display: "none" }}
+                      style={this.props.showLoader ? {} : { display: 'none' }}
                     >
                       <center>
                         <img
                           src={Loader}
                           alt="Logo"
                           style={{
-                            height: "100px",
-                            backgroundColor: "transparent",
+                            height: '100px',
+                            backgroundColor: 'transparent',
                           }}
                         />
                       </center>
                     </div>
                     <div
-                      style={this.props.pixelloader ? { display: "none" } : {}}
+                      style={this.props.showLoader ? { display: 'none' } : {}}
                     >
-                      {this.props.CurrentLayer === "NO2" ||
-                      this.props.CurrentLayer === "NDVI_DPPD" ||
-                      this.props.CurrentLayer === "PM25_DPPD" ||
-                      this.props.CurrentLayer === "NO2_DPPD" ||
-                      this.props.CurrentLayer === "LAI_DPPD" ||
-                      this.props.CurrentLayer === "LST_DPPD" ||
-                      this.props.CurrentLayer === "NDWI_DPPD" ||
-                      this.props.CurrentLayer === "SOIL_M_DEV" ||
-                      this.props.CurrentLayer === "Total Precipitation - Monthly"
+                      {this.props.CurrentLayer === 'NO2' ||
+                      this.props.CurrentLayer === 'NDVI_DPPD' ||
+                      this.props.CurrentLayer === 'PM25_DPPD' ||
+                      this.props.CurrentLayer === 'NO2_DPPD' ||
+                      this.props.CurrentLayer === 'LAI_DPPD' ||
+                      this.props.CurrentLayer === 'LST_DPPD' ||
+                      this.props.CurrentLayer === 'NDWI_DPPD' ||
+                      this.props.CurrentLayer === 'SOIL_M_DEV' ||
+                      this.props.CurrentLayer ===
+                        'Total Precipitation - Monthly'
                         ? parseFloat(this.props.pixelvalue).toFixed(6)
                         : parseFloat(this.props.pixelvalue).toFixed(2)}
                     </div>
@@ -2226,9 +2287,9 @@ class DrawerComp extends Component {
               </span>
               <span
                 style={
-                  this.props.CurrentRegion === "CUSTOM" ||
-                  this.props.currentLayerType === "Raster"
-                    ? { display: "none" }
+                  this.props.CurrentRegion === 'CUSTOM' ||
+                  this.props.currentLayerType === 'Raster'
+                    ? { display: 'none' }
                     : {}
                 }
               >
@@ -2236,63 +2297,63 @@ class DrawerComp extends Component {
               </span>
               <span
                 style={
-                  this.props.CurrentRegion === "CUSTOM"
+                  this.props.CurrentRegion === 'CUSTOM'|| this.props.CurrentLayer === 'FIREEV'
                     ? {}
-                    : { display: "none" }
+                    : { display: 'none' }
                 }
               >
                 {this.state.meanvalue}
               </span>
               <p className="drawer-unit">
-                {this.props.LayerDescription.unit === "unit" ||
-                this.props.LayerDescription.unit === "string"
-                  ? " "
+                {this.props.LayerDescription.unit === 'unit' ||
+                this.props.LayerDescription.unit === 'string'
+                  ? ' '
                   : this.props.LayerDescription.unit}
               </p>
             </span>
           </Col>
           <Col
             style={
-              this.props.CurrentLayer === "LULC" ||
-              this.props.CurrentLayer === "crop_intensity" ||
-              this.props.CurrentLayer === "crop_land" ||
-              this.props.CurrentLayer === "crop_type" ||
-              this.props.CurrentLayer === "crop_stress"
+              this.props.CurrentLayer === 'LULC' ||
+              this.props.CurrentLayer === 'crop_intensity' ||
+              this.props.CurrentLayer === 'crop_land' ||
+              this.props.CurrentLayer === 'crop_type' ||
+              this.props.CurrentLayer === 'crop_stress'
                 ? {}
-                : { display: "none" }
+                : { display: 'none' }
             }
           >
             <div
               style={
-                this.props.CurrentRegion === "CUSTOM" ? {} : { display: "none" }
+                this.props.CurrentRegion === 'CUSTOM' ? {} : { display: 'none' }
               }
             >
               <div
-                style={this.state.loaderpercentage ? {} : { display: "none" }}
+                style={this.state.loaderpercentage ? {} : { display: 'none' }}
               >
                 <center>
                   <img
                     src={Loader}
                     alt="Logo"
                     style={{
-                      height: "100px",
-                      backgroundColor: "transparent",
+                      height: '100px',
+                      backgroundColor: 'transparent',
                     }}
                   />
                 </center>
               </div>
               <div
-                style={this.state.loaderpercentage ? { display: "none" } : {}}
+                style={this.state.loaderpercentage ? { display: 'none' } : {}}
               >
                 <ValueTable />
               </div>
             </div>
             <div
               style={
-                this.props.CurrentRegion === "DISTRICT" ||
-                this.props.CurrentRegion === "MANDAL"
+                this.props.CurrentRegion === 'DISTRICT' ||
+                this.props.CurrentRegion === 'MANDAL'
                   ? {}
-                  : { display: "none" }
+                  : { display: 'none' }
               }
             >
               <CategoryName />
@@ -2300,13 +2361,15 @@ class DrawerComp extends Component {
           </Col>
           <Col
             style={
-              this.props.CurrentLayer === "LULC" ||
-              this.props.CurrentLayer === "crop_intensity" ||
-              this.props.CurrentLayer === "crop_land" ||
-              this.props.CurrentLayer === "crop_type" ||
-              this.props.CurrentLayer === "crop_stress"
-                ? { display: "none" }
-                : { textAlign: "right" }
+              this.props.CurrentLayer === 'LULC' ||
+              this.props.CurrentLayer === 'crop_intensity' ||
+              this.props.CurrentLayer === 'crop_land' ||
+              this.props.CurrentLayer === 'crop_type' ||
+              this.props.CurrentLayer === 'crop_stress' ||
+              this.props.CurrentLayer === 'WH' ||
+              (this.props.CurrentLayer === 'FIREEV' && this.props.currentLayerType === 'Vector')
+                ? { display: 'none' }
+                : { textAlign: 'right' }
             }
           >
             <Row>
@@ -2321,42 +2384,43 @@ class DrawerComp extends Component {
         </Row>
         <div
           style={
-            this.props.CurrentLayer === "SOIL" ||
-            this.props.CurrentLayer === "LST_DPPD" ||
-            this.props.CurrentLayer === "NO2_DPPD" ||
-            this.props.CurrentLayer === "PM25_DPPD" ||
-            this.props.CurrentLayer === "SOC_DPPD" ||
-            this.props.CurrentLayer === "LAI_DPPD" ||
-            this.props.CurrentLayer === "NDVI_DPPD" ||
-            this.props.CurrentLayer === "POPULATION" ||
-            this.props.CurrentLayer === "NDWI_DPPD" ||
-            this.props.CurrentLayer === "SOIL_M_DEV" ||
-            this.props.CurrentLayer === "LULC" ||
-            this.props.CurrentLayer === "DPPD" ||
-            this.props.CurrentLayer === "FIREEV" ||
-            (this.props.currentLayerType === "Raster" &&
-              this.props.CurrentRegion === "DISTRICT") ||
-            (this.props.currentLayerType === "Raster" &&
-              this.props.CurrentRegion === "MANDAL")
-              ? { display: "none", marginTop: "5px" }
-              : this.props.CurrentRegion === "CUSTOM" ||
-                this.props.currentLayerType === "Vector"
+            this.props.CurrentLayer === 'SOIL' ||
+            this.props.CurrentLayer === 'LST_DPPD' ||
+            this.props.CurrentLayer === 'NO2_DPPD' ||
+            this.props.CurrentLayer === 'PM25_DPPD' ||
+            this.props.CurrentLayer === 'SOC_DPPD' ||
+            this.props.CurrentLayer === 'LAI_DPPD' ||
+            this.props.CurrentLayer === 'NDVI_DPPD' ||
+            this.props.CurrentLayer === 'POPULATION' ||
+            this.props.CurrentLayer === 'NDWI_DPPD' ||
+            this.props.CurrentLayer === 'SOIL_M_DEV' ||
+            this.props.CurrentLayer === 'LULC' ||
+            this.props.CurrentLayer === 'DPPD' ||
+            this.props.CurrentLayer === 'FIREEV' ||
+            (this.props.currentLayerType === 'Raster' &&
+              this.props.CurrentRegion === 'DISTRICT') ||
+            (this.props.currentLayerType === 'Raster' &&
+              this.props.CurrentRegion === 'MANDAL')
+              ? { display: 'none', marginTop: '5px' }
+              : this.props.CurrentRegion === 'CUSTOM' ||
+                this.props.currentLayerType === 'Vector'
               ? {}
-              : { display: "none" }
+              : { display: 'none' }
           }
           className="progressbar-container"
         >
           <span
             style={
-              this.props.CurrentLayer === "LULC" ||
-              this.props.CurrentLayer === "crop_intensity" ||
-              this.props.CurrentLayer === "crop_land" ||
-              this.props.CurrentLayer === "crop_type" ||
-              this.props.CurrentLayer === "FIREEV" ||
-              (this.props.CurrentLayer === "crop_stress" &&
-                this.props.CurrentRegion === "CUSTOM")
-                ? { display: "none" }
-                : { marginTop: "25px" }
+              this.props.CurrentLayer === 'LULC' ||
+              this.props.CurrentLayer === 'crop_intensity' ||
+              this.props.CurrentLayer === 'crop_land' ||
+              this.props.CurrentLayer === 'crop_type' ||
+              this.props.CurrentLayer === 'FIREEV' ||
+              this.props.CurrentLayer==="WH" ||
+              (this.props.CurrentLayer === 'crop_stress' &&
+                this.props.CurrentRegion === 'CUSTOM')
+                ? { display: 'none' }
+                : { marginTop: '25px' }
             }
           >
             <ol className="progress-indicator mb-2">
@@ -2375,24 +2439,26 @@ class DrawerComp extends Component {
             </ol>
           </span>
         </div>
-        <UncontrolledAccordion defaultOpen={["1", "2"]} stayOpen>
+        <UncontrolledAccordion defaultOpen={['1', '2']} stayOpen >
           <AccordionItem
             targetId="1"
-            style={{
-              border: "none",
-              backgroundColor: "#091B33",
-              paddingTop: "20px",
-            }}
+            style={this.props.CurrentLayer === 'WH' ||
+              (this.props.CurrentLayer === 'FIREEV' && this.props.currentLayerType === 'Vector') ?
+               {paddingTop:"0",border: 'none',
+              backgroundColor: '#091B33',
+              } : {border: 'none',
+              backgroundColor: '#091B33',
+              paddingTop: '20px'}}
           >
             <AccordionHeader
               targetId="1"
-              style={{ border: "none", backgroundColor: "#091B33" }}
+              style={{ border: 'none', backgroundColor: '#091B33' }}
             >
               <span className="drawer-content-details">DETAILS</span>
             </AccordionHeader>
             <AccordionBody
               accordionId="1"
-              style={{ border: "none", backgroundColor: "#091B33" }}
+              style={{ border: 'none', backgroundColor: '#091B33' }}
             >
               <Row>
                 <span className="drawer-content-long-desc">
@@ -2422,72 +2488,72 @@ class DrawerComp extends Component {
           </AccordionItem>
           <span
             style={
-              (this.props.CurrentLayer === "LULC" ||
-                this.props.CurrentLayer === "crop_stress") &&
-              (this.props.CurrentRegion === "DISTRICT" ||
-                this.props.CurrentRegion === "MANDAL") ||
-                this.props.CurrentLayer === "NO2"
-                
-                ? { display: "none" }
+              ((this.props.CurrentLayer === 'LULC' ||
+                this.props.CurrentLayer === 'crop_stress') &&
+                (this.props.CurrentRegion === 'DISTRICT' ||
+                  this.props.CurrentRegion === 'MANDAL')) ||
+              this.props.CurrentLayer === 'NO2' ||
+              (this.props.CurrentLayer === 'FIREEV' && this.props.CurrentRegion !== 'CUSTOM')
+                ? { display: 'none' }
                 : {}
             }
           >
             <span
               style={
                 this.props.LayerDescription.multiple_files ||
-                this.props.CurrentLayer === "DPPD" ||
-                this.props.CurrentLayer === "SOIL_M_DEV" ||
-                this.props.CurrentLayer === "LAI_DPPD" ||
-                this.props.CurrentLayer === "LST_DPPD" ||
-                this.props.CurrentLayer === "PM25_DPPD" ||
-                this.props.CurrentLayer === "NDVI_DPPD" ||
-                this.props.CurrentLayer === "NDWI_DPPD"
-                // this.props.CurrentLayer === "NO2_DPPD"
-                  ? {}
-                  : { display: "none" }
+                this.props.CurrentLayer === 'DPPD' ||
+                this.props.CurrentLayer === 'SOIL_M_DEV' ||
+                this.props.CurrentLayer === 'LAI_DPPD' ||
+                this.props.CurrentLayer === 'LST_DPPD' ||
+                this.props.CurrentLayer === 'PM25_DPPD' ||
+                this.props.CurrentLayer === 'NDVI_DPPD' ||
+                this.props.CurrentLayer === 'NDWI_DPPD'
+                  ? // this.props.CurrentLayer === "NO2_DPPD"
+                    {}
+                  : { display: 'none' }
               }
             >
               <AccordionItem
                 targetId="2"
-                style={{ border: "none", backgroundColor: "#091B33" }}
+                style={{ border: 'none', backgroundColor: '#091B33' }}
               >
                 <AccordionHeader
                   targetId="2"
-                  style={{ border: "none", backgroundColor: "#091B33" }}
+                  style={{ border: 'none', backgroundColor: '#091B33' }}
                 >
                   <span className="drawer-content-trend">TREND</span>
                 </AccordionHeader>
                 <AccordionBody
                   accordionId="2"
-                  style={{ border: "none", backgroundColor: "#091B33" }}
+                  style={{ border: 'none', backgroundColor: '#091B33' }}
                 >
-                  <Row style={this.state.Datanull ? {} : { display: "none" }}>
+                  <Row style={this.state.Datanull ? {} : { display: 'none' }}>
                     <p
                       style={{
-                        color: "#cf2e2e",
-                        textAlign: "center",
+                        color: '#cf2e2e',
+                        textAlign: 'center',
                       }}
                     >
-                      {" "}
+                      {' '}
                       Trend not available !
                     </p>
                   </Row>
-                  <Row style={{ marginBottom: "50px" }}>
+                  <Row style={{ marginBottom: '50px' }}>
                     <div
                       className="btn-group-sm"
                       role="group"
                       aria-label="Basic radio toggle button group"
                       style={
                         this.props.LayerDescription.timerangefilter ||
-                        this.props.CurrentLayer === "SOIL_M_DEV" ||
-                        this.props.CurrentLayer === "LAI_DPPD" ||
-                        this.props.CurrentLayer === "NDVI_DPPD" ||
-                        this.props.CurrentLayer === "NO2_DPPD" ||
-                        this.props.CurrentLayer === "LST_DPPD" ||
-                        this.props.CurrentLayer === "PM25_DPPD" ||
-                        this.props.CurrentLayer === "NDWI_DPPD"
-                          ? { fontSize: "10px", marginTop: "10px" }
-                          : { display: "none" }
+                        this.props.CurrentLayer === 'SOIL_M_DEV' ||
+                        this.props.CurrentLayer === 'LAI_DPPD' ||
+                        this.props.CurrentLayer === 'NDVI_DPPD' ||
+                        this.props.CurrentLayer === 'NO2_DPPD' ||
+                        this.props.CurrentLayer === 'LST_DPPD' ||
+                        this.props.CurrentLayer === 'PM25_DPPD' ||
+                        this.props.CurrentLayer === 'NDWI_DPPD'
+                          ? { fontSize: '10px', marginTop: '10px' }
+                          : { display: 'none' }
                       }
                     >
                       <input
@@ -2498,10 +2564,10 @@ class DrawerComp extends Component {
                         autoComplete="off"
                         onChange={(e) => {}}
                         checked={
-                          this.state.currentCharttime === "1year" ? true : false
+                          this.state.currentCharttime === '1year' ? true : false
                         }
                         onClick={(e) => {
-                          this.settimerange("1Year");
+                          this.settimerange('1Year');
                         }}
                         disabled={this.state.loader === true}
                       />
@@ -2519,10 +2585,10 @@ class DrawerComp extends Component {
                         autoComplete="off"
                         onChange={(e) => {}}
                         checked={
-                          this.state.currentCharttime === "3year" ? true : false
+                          this.state.currentCharttime === '3year' ? true : false
                         }
                         onClick={(e) => {
-                          this.settimerange("3Year");
+                          this.settimerange('3Year');
                         }}
                         disabled={this.state.loader === true}
                       />
@@ -2540,10 +2606,10 @@ class DrawerComp extends Component {
                         onChange={(e) => {}}
                         autoComplete="off"
                         checked={
-                          this.state.currentCharttime === "5year" ? true : false
+                          this.state.currentCharttime === '5year' ? true : false
                         }
                         onClick={(e) => {
-                          this.settimerange("5Year");
+                          this.settimerange('5Year');
                         }}
                         disabled={this.state.loader === true}
                       />
@@ -2561,17 +2627,18 @@ class DrawerComp extends Component {
                         onChange={(e) => {}}
                         autoComplete="off"
                         checked={
-                          this.state.currentCharttime === "10year" ? true : false
+                          this.state.currentCharttime === '10year'
+                            ? true
+                            : false
                         }
                         onClick={(e) => {
-                          this.settimerange("10Year");
+                          this.settimerange('10Year');
                         }}
                         disabled={this.state.loader === true}
                       />
                       <label
                         className="btn btn-primary btn-chart"
                         htmlFor="btnradio6"
-                        
                       >
                         10 year
                       </label>
@@ -2582,12 +2649,12 @@ class DrawerComp extends Component {
                         <Col>
                           <span
                             style={
-                              this.props.CurrentLayer === "LULC"
+                              this.props.CurrentLayer === 'LULC'
                                 ? {
-                                    display: "inline",
-                                    "margin-left": "10px",
+                                    display: 'inline',
+                                    'margin-left': '10px',
                                   }
-                                : { display: "none" }
+                                : { display: 'none' }
                             }
                           >
                             <Dropdown overlay={LULCmenu}>
@@ -2595,34 +2662,34 @@ class DrawerComp extends Component {
                                 className="ant-dropdown-link"
                                 onClick={(e) => e.preventDefault()}
                               >
-                                Select Category <DownOutlined /> |{" "}
+                                Select Category <DownOutlined /> |{' '}
                                 {this.state.selectedLULCcategory}
                               </span>
                             </Dropdown>
                           </span>
                           <span
                             style={
-                              this.props.CurrentLayer === "crop_stress"
+                              this.props.CurrentLayer === 'crop_stress'
                                 ? {
-                                    display: "inline",
-                                    "margin-left": "10px",
+                                    display: 'inline',
+                                    'margin-left': '10px',
                                   }
-                                : { display: "none" }
+                                : { display: 'none' }
                             }
                           >
-                            {this.props.CurrentLayer === "crop_stress" &&
-                            this.props.CurrentRegion === "CUSTOM" ? (
+                            {this.props.CurrentLayer === 'crop_stress' &&
+                            this.props.CurrentRegion === 'CUSTOM' ? (
                               <Dropdown overlay={CropStressmenu}>
                                 <span
                                   className="ant-dropdown-link"
                                   onClick={(e) => e.preventDefault()}
                                 >
-                                  Select Category <DownOutlined /> |{" "}
+                                  Select Category <DownOutlined /> |{' '}
                                   {this.state.selectedCropStresscategory}
                                 </span>
                               </Dropdown>
                             ) : (
-                              ""
+                              ''
                             )}
                           </span>
                         </Col>
@@ -2630,25 +2697,25 @@ class DrawerComp extends Component {
                     </div>
                     <div
                       style={
-                        this.props.CurrentLayer === "LULC" ||
-                        this.props.CurrentLayer === "crop_stress"
-                          ? { display: "none" }
+                        this.props.CurrentLayer === 'LULC' ||
+                        this.props.CurrentLayer === 'crop_stress'
+                          ? { display: 'none' }
                           : {}
                       }
                     >
-                      <div style={this.state.loader ? {} : { display: "none" }}>
+                      <div style={this.state.loader ? {} : { display: 'none' }}>
                         <center>
                           <img
                             src={Loader}
                             alt="Logo"
                             style={{
-                              height: "100px",
-                              backgroundColor: "transparent",
+                              height: '100px',
+                              backgroundColor: 'transparent',
                             }}
                           />
                         </center>
                       </div>
-                      <div style={this.state.loader ? { display: "none" } : {}}>
+                      <div style={this.state.loader ? { display: 'none' } : {}}>
                         <Chart
                           series={this.state.series}
                           options={this.state.options}
@@ -2659,15 +2726,15 @@ class DrawerComp extends Component {
                     </div>
                     <div
                       style={
-                        this.props.CurrentLayer === "LULC" ||
-                        this.props.CurrentLayer === "crop_stress"
+                        this.props.CurrentLayer === 'LULC' ||
+                        this.props.CurrentLayer === 'crop_stress'
                           ? {}
-                          : { display: "none" }
+                          : { display: 'none' }
                       }
                     >
                       <div
                         style={
-                          this.state.loaderpercentage ? {} : { display: "none" }
+                          this.state.loaderpercentage ? {} : { display: 'none' }
                         }
                       >
                         <center>
@@ -2675,15 +2742,15 @@ class DrawerComp extends Component {
                             src={Loader}
                             alt="Logo"
                             style={{
-                              height: "100px",
-                              backgroundColor: "transparent",
+                              height: '100px',
+                              backgroundColor: 'transparent',
                             }}
                           />
                         </center>
                       </div>
                       <div
                         style={
-                          this.state.loaderpercentage ? { display: "none" } : {}
+                          this.state.loaderpercentage ? { display: 'none' } : {}
                         }
                       >
                         <Chart

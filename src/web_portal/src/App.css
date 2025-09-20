@@ -25,4 +25,9 @@
 }
 body {
   font-family: proxima-nova, sans-serif;
+
+
 }
+.map canvas {
+        cursor:pointer;
+    }

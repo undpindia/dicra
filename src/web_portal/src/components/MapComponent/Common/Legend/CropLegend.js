@@ -95,14 +95,14 @@ const LayerDesc = useSelector((state) => state.LayerDescription);
                   display: 'inline-block',
                 }}
               ></span>{' '}
-              NonCropland
+              Non-Cropland
             </div>
           </div>
         </div>
         <div className="mb-2"></div>
       </div>
     </div>
-    <div className="container" style={LayerDesc.layer_name === 'crop_type' && LayerDesc.id === 129 ? {} : {display:"none"}}>
+    <div className="container" style={LayerDesc.layer_name === 'crop_type' && LayerDesc.id === 129 || LayerDesc.id === 207 ? {} : {display:"none"}}>
       <div
         className="row"
         style={{

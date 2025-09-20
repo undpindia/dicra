@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Map from './components/MapComponent/Map/Map';
+import MaplibreComponent from './components/MapComponent/Map/MaplibreGl.jsx'
 // import About from './components/MapComponent/pages/About.jsx';
 import Analytics from './components/MapComponent/pages/Analytics.jsx';
 // import Usecase from './components/MapComponent/pages/Usecase.jsx';
@@ -14,9 +14,9 @@ function App() {
   return (
     <div>
       <Routes basename={baseUrl} forceRefresh={true}>
-        <Route exact path="/" element={<Map />} />
-        <Route path={`${process.env.PUBLIC_URL}/`} element={<Map />} />
-        <Route path={`${process.env.PUBLIC_URL}/map`} element={<Map />} />
+        <Route exact path="/" element={<MaplibreComponent />} />
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<MaplibreComponent />} />
+        <Route path={`${process.env.PUBLIC_URL}/map`} element={<MaplibreComponent />} />
         {/* <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} /> */}
         <Route
           path={`${process.env.PUBLIC_URL}/analytics`}

@@ -157,7 +157,10 @@ const Sidebar = (props) => {
         dispatch({
           type: "SETCURRRENTBASEMAP",
           payload:
-            "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+            ["https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://b.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://c.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://d.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"]
         });
         dispatch({ type: "SETCURRRENTBASEMAPTYPE", payload: "Dark" });
       } else if (layerdetails.raster_status === true) {
@@ -172,7 +175,10 @@ const Sidebar = (props) => {
         dispatch({
           type: "SETCURRRENTBASEMAP",
           payload:
-            "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+            ["https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://b.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://c.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://d.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"]
         });
         dispatch({ type: "SETCURRRENTBASEMAPTYPE", payload: "Dark" });
         dispatch({ type: "SHOWRASTER" });
@@ -190,7 +196,10 @@ const Sidebar = (props) => {
       dispatch({
         type: "SETCURRRENTBASEMAP",
         payload:
-          "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+          ["https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+          "https://b.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+          "https://c.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+          "https://d.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"]
       });
       dispatch({ type: "SETCURRRENTBASEMAPTYPE", payload: "Dark" });
       dispatch({ type: "SHOWRASTER" });
@@ -882,7 +891,16 @@ const Sidebar = (props) => {
                   ) : LayerDesc.layer_name === "WH" ? (
                     <span>
                       <span>
-                        <img src={marker} width={15} />{" "}
+                        {/* <img src={marker} width={15} />{" "} */}
+                       <div style={{
+                          width: '13px',
+                          height: '13px',
+                          backgroundColor: '#ff0000',
+                          borderRadius: '50%',
+                          border: '1px solid white', 
+                          display: 'inline-block',
+                          marginRight: '8px' 
+                        }}></div> 
                       </span>
                       <span style={{ marginLeft: "20px" }}>
                         Warehouses&nbsp;&nbsp;

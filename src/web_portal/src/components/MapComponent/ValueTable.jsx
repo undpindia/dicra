@@ -101,7 +101,7 @@ class ValueTable extends Component {
               </div>
             </div>
             <div style={this.props.CurrentLayer === 'crop_type' ? {} : {display:"none"}}>
-            <div className="row" style={this.props.LayerDescription.id === 129 ? {} : {display:"none"}}>
+            <div className="row" style={this.props.LayerDescription.id === 129 || this.props.LayerDescription.id === 207 ? {} : {display:"none"}}>
               <div className="col lulc-header">Irrigated-DC-rice-rice</div>
               <div className="col">
                 {parseFloat(this.props.croppercentage[1]).toFixed(2)} %

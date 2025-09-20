@@ -42,7 +42,7 @@ class CategoryName extends Component {
               parseInt(this.props.pixelvalue)  === 2 ? "NonCropland" : null}</span>
             </div>
             <div style={this.props.CurrentLayer === 'crop_type' ? {} : {display:"none"}}>
-            <div className="row" style={this.props.LayerDescription.id === 129 ? {} : {display:"none"}}>
+            <div className="row" style={this.props.LayerDescription.id === 129 ||  this.props.LayerDescription.id === 207 ? {} : {display:"none"}}>
             <span>{parseInt(this.props.pixelvalue) === 1 ? "Irrigated-DC-rice-rice" :
               parseInt(this.props.pixelvalue)  === 2 ? "Irrigated-DC-rice-pulses" :
               parseInt(this.props.pixelvalue)  === 3 ? "Irrigated-DC-pulses/maize-maize" :

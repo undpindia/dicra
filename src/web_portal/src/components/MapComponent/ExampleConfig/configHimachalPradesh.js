@@ -1,13 +1,13 @@
-import img from "../../../assets/images/partners/up-gov.png";
-import districtList from "../Map/Regions/Shapefiles/up_district_boundary.json";
-import mandalList from "../Map/Regions/Shapefiles/up_sdistrict_boundary.json";
+import img from "../../../assets/images/himachal-logo.png";
+import districtList from "../Map/Regions/Shapefiles/hp_district_boundary.json";
+import mandalList from "../Map/Regions/Shapefiles/hp_sdistrict_boundary.json";
 
 const config = {
-    state: "Uttar Pradesh",
-    regionID: 8,
+    state: "Himachal Pradesh",
+    regionID: 18,
     stateImage: img,
-    latnew: 27.5706,
-    longnew: 80.0982,
+    latnew: 32.1024,
+    longnew: 77.5619,
     locpointerltlng: [60.732421875, 80.67555881973475],
     loaderlatvector: 17.754639747121828,
     loaderlngvector: 79.05833831966801,
@@ -15,13 +15,13 @@ const config = {
     loaderlngraster: 79.05833831966801,
     districtList: districtList,
     mandalList: mandalList,
-    ndvi_dppd: 25,
-    ssm_dppd: 189,
-    no2_dppd: 192,
-    lai_dppd: 198,
-    lst_dppd: 187,
-    pm25_dppd: 188,
-    ndwi_dppd: 190,
+    ndvi_dppd: 212,
+    ssm_dppd: 266,
+    no2_dppd: 248,
+    lai_dppd: 218,
+    lst_dppd: 230,
+    pm25_dppd: 242,
+    ndwi_dppd: 224,
     DPPD: [-0.1,0.2],
     SOIL_M_DEV: [-0.001, 0.0005],
     NDWI_DPPD: [-0.00001, 0.00001],

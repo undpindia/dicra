@@ -38,6 +38,12 @@ import checkIsShapeSelectedReducer from './checkIsShapeSelected';
 import setlulcpercentageReducer from './LulcPercentage';
 import setreversedgeocodeReducer from './setreversedgeocodeReducer';
 import setcroppercentageReducer from './CropPercentage';
+import showLoaderReducer from './loaderReducer';
+import ShapeIdReducer from './ShapeIdReducer';
+import setPmtileLayerUrlReducer from './PmtileLayerUrl';
+import setHoverFeature from './hoverFeature';
+import PointFeature from './pointFeatures';
+import setPointVectorUrlReducer from './PointVectorUrl';
 
 const allReducers = combineReducers({
   setval: setvalueReducer,
@@ -79,5 +85,11 @@ const allReducers = combineReducers({
   setLulcPercentage: setlulcpercentageReducer,
   setReversedGeocode: setreversedgeocodeReducer,
   setCropPercentage: setcroppercentageReducer,
+  showLoader: showLoaderReducer,
+  setshapeId: ShapeIdReducer,
+  pmtileUrl: setPmtileLayerUrlReducer,
+  hoverfeature: setHoverFeature,
+  pointfeature: PointFeature,
+  pointvectorurl: setPointVectorUrlReducer
 });
 export default allReducers;

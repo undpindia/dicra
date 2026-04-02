@@ -1,0 +1,5002 @@
+[
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2015",
+        "fireCount": "182"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2015",
+        "fireCount": "98"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2015",
+        "fireCount": "60"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2015",
+        "fireCount": "210"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2015",
+        "fireCount": "46"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2015",
+        "fireCount": "40"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2015",
+        "fireCount": "38"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2015",
+        "fireCount": "95"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2015",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2015",
+        "fireCount": "138"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2015",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2015",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2015",
+        "fireCount": "135"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2015",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2015",
+        "fireCount": "218"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2015",
+        "fireCount": "30"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2015",
+        "fireCount": "104"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2015",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2015",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2015",
+        "fireCount": "21"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2015",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2015",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2015",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2015",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2015",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2015",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2015",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2015",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2015",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2015",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2015",
+        "fireCount": "110"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2015",
+        "fireCount": "49"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2015",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2015",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2015",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2015",
+        "fireCount": "43"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2015",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2015",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2015",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2015",
+        "fireCount": "21"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2015",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2015",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2015",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2015",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2015",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2015",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2015",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2015",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2015",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2015",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2015",
+        "fireCount": "25"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2015",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2015",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2015",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2015",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2015",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2015",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2015",
+        "fireCount": "20"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2015",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2015",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2015",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2015",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2015",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2015",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2015",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2015",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2015",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2015",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2015",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2015",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2016",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2016",
+        "fireCount": "204"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2016",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2016",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2016",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2016",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2016",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2016",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2016",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2016",
+        "fireCount": "97"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2016",
+        "fireCount": "100"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2016",
+        "fireCount": "265"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2016",
+        "fireCount": "132"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2016",
+        "fireCount": "215"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2016",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2016",
+        "fireCount": "84"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2016",
+        "fireCount": "20"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2016",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2016",
+        "fireCount": "29"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2016",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2016",
+        "fireCount": "25"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2016",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2016",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2016",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2016",
+        "fireCount": "50"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2016",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2016",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2016",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2016",
+        "fireCount": "175"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2016",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2016",
+        "fireCount": "31"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2016",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2016",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2016",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2016",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2016",
+        "fireCount": "31"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2016",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2016",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2016",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2016",
+        "fireCount": "31"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2016",
+        "fireCount": "40"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2016",
+        "fireCount": "48"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2016",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2016",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2016",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2016",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2016",
+        "fireCount": "42"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2016",
+        "fireCount": "29"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2016",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2016",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2016",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2016",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2016",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2016",
+        "fireCount": "46"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2016",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2016",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2016",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2016",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2016",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2016",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2016",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2016",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2016",
+        "fireCount": "51"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2016",
+        "fireCount": "38"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2016",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2016",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2016",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2016",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2016",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2016",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2016",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2017",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2017",
+        "fireCount": "38"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2017",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2017",
+        "fireCount": "332"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2017",
+        "fireCount": "196"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2017",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2017",
+        "fireCount": "39"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2017",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2017",
+        "fireCount": "72"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2017",
+        "fireCount": "219"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2017",
+        "fireCount": "64"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2017",
+        "fireCount": "65"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2017",
+        "fireCount": "234"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2017",
+        "fireCount": "40"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2017",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2017",
+        "fireCount": "258"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2017",
+        "fireCount": "37"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2017",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2017",
+        "fireCount": "32"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2017",
+        "fireCount": "40"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2017",
+        "fireCount": "60"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2017",
+        "fireCount": "42"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2017",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2017",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2017",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2017",
+        "fireCount": "83"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2017",
+        "fireCount": "23"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2017",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2017",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2017",
+        "fireCount": "70"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2017",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2017",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2017",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2017",
+        "fireCount": "155"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2017",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2017",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2017",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2017",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2017",
+        "fireCount": "23"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2017",
+        "fireCount": "58"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2017",
+        "fireCount": "37"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2017",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2017",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2017",
+        "fireCount": "43"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2017",
+        "fireCount": "156"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2017",
+        "fireCount": "28"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2017",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2017",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2017",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2017",
+        "fireCount": "32"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2017",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2017",
+        "fireCount": "69"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2017",
+        "fireCount": "20"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2017",
+        "fireCount": "42"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2017",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2017",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2017",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2017",
+        "fireCount": "48"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2017",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2017",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2017",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2017",
+        "fireCount": "32"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2017",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2017",
+        "fireCount": "61"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2017",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2017",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2017",
+        "fireCount": "88"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2017",
+        "fireCount": "40"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2017",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2017",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2017",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2018",
+        "fireCount": "136"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2018",
+        "fireCount": "271"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2018",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2018",
+        "fireCount": "25"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2018",
+        "fireCount": "333"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2018",
+        "fireCount": "99"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2018",
+        "fireCount": "42"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2018",
+        "fireCount": "44"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2018",
+        "fireCount": "38"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2018",
+        "fireCount": "46"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2018",
+        "fireCount": "38"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2018",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2018",
+        "fireCount": "150"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2018",
+        "fireCount": "37"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2018",
+        "fireCount": "84"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2018",
+        "fireCount": "104"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2018",
+        "fireCount": "158"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2018",
+        "fireCount": "86"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2018",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2018",
+        "fireCount": "33"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2018",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2018",
+        "fireCount": "23"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2018",
+        "fireCount": "147"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2018",
+        "fireCount": "60"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2018",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2018",
+        "fireCount": "41"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2018",
+        "fireCount": "41"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2018",
+        "fireCount": "41"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2018",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2018",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2018",
+        "fireCount": "60"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2018",
+        "fireCount": "219"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2018",
+        "fireCount": "33"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2018",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2018",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2018",
+        "fireCount": "50"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2018",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2018",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2018",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2018",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2018",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2018",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2018",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2018",
+        "fireCount": "21"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2018",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2018",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2018",
+        "fireCount": "256"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2018",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2018",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2018",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2018",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2018",
+        "fireCount": "44"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2018",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2018",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2018",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2018",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2018",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2018",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2018",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2018",
+        "fireCount": "71"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2018",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2018",
+        "fireCount": "34"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2018",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2018",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2018",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2018",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2018",
+        "fireCount": "117"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2018",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2018",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2018",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2018",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2019",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2019",
+        "fireCount": "45"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2019",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2019",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2019",
+        "fireCount": "127"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2019",
+        "fireCount": "179"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2019",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2019",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2019",
+        "fireCount": "23"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2019",
+        "fireCount": "51"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2019",
+        "fireCount": "120"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2019",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2019",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2019",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2019",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2019",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2019",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2019",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2019",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2019",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2019",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2019",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2019",
+        "fireCount": "29"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2019",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2019",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2019",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2019",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2019",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2019",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2019",
+        "fireCount": "23"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2019",
+        "fireCount": "51"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2019",
+        "fireCount": "79"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2019",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2019",
+        "fireCount": "156"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2019",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2019",
+        "fireCount": "45"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2019",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2019",
+        "fireCount": "51"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2019",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2019",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2019",
+        "fireCount": "99"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2019",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2019",
+        "fireCount": "31"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2019",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2019",
+        "fireCount": "23"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2019",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2019",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2019",
+        "fireCount": "124"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2019",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2019",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2019",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2019",
+        "fireCount": "28"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2019",
+        "fireCount": "25"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2019",
+        "fireCount": "123"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2019",
+        "fireCount": "25"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2019",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2019",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2019",
+        "fireCount": "77"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2019",
+        "fireCount": "49"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2019",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2019",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2019",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2019",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2019",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2019",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2019",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2019",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2019",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2019",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2019",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2020",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2020",
+        "fireCount": "173"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2020",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2020",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2020",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2020",
+        "fireCount": "62"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2020",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2020",
+        "fireCount": "76"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2020",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2020",
+        "fireCount": "141"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2020",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2020",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2020",
+        "fireCount": "58"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2020",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2020",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2020",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2020",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2020",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2020",
+        "fireCount": "42"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2020",
+        "fireCount": "61"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2020",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2020",
+        "fireCount": "33"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2020",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2020",
+        "fireCount": "64"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2020",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2020",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2020",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2020",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2020",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2020",
+        "fireCount": "78"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2020",
+        "fireCount": "158"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2020",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2020",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2020",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2020",
+        "fireCount": "28"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2020",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2020",
+        "fireCount": "25"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2020",
+        "fireCount": "111"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2020",
+        "fireCount": "21"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2020",
+        "fireCount": "74"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2020",
+        "fireCount": "123"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2020",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2020",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2020",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2020",
+        "fireCount": "25"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2020",
+        "fireCount": "12"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2020",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2020",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2020",
+        "fireCount": "49"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2020",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2020",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2020",
+        "fireCount": "39"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2020",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2020",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2020",
+        "fireCount": "89"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2020",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2020",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2020",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2020",
+        "fireCount": "24"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2020",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2020",
+        "fireCount": "57"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2020",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2020",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2020",
+        "fireCount": "9"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2020",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2020",
+        "fireCount": "31"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2020",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2020",
+        "fireCount": "20"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2020",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2020",
+        "fireCount": "6"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2020",
+        "fireCount": "84"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2020",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2021",
+        "fireCount": "258"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2021",
+        "fireCount": "118"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2021",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2021",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2021",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2021",
+        "fireCount": "20"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2021",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2021",
+        "fireCount": "29"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2021",
+        "fireCount": "14"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2021",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2021",
+        "fireCount": "15"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2021",
+        "fireCount": "99"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2021",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2021",
+        "fireCount": "23"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2021",
+        "fireCount": "18"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2021",
+        "fireCount": "239"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2021",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2021",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2021",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2021",
+        "fireCount": "20"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2021",
+        "fireCount": "42"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2021",
+        "fireCount": "237"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2021",
+        "fireCount": "42"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2021",
+        "fireCount": "243"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2021",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2021",
+        "fireCount": "54"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2021",
+        "fireCount": "31"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2021",
+        "fireCount": "60"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2021",
+        "fireCount": "43"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2021",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2021",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2021",
+        "fireCount": "111"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2021",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2021",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2021",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2021",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2021",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2021",
+        "fireCount": "45"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2021",
+        "fireCount": "10"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2021",
+        "fireCount": "29"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2021",
+        "fireCount": "27"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2021",
+        "fireCount": "13"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2021",
+        "fireCount": "173"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2021",
+        "fireCount": "135"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2021",
+        "fireCount": "126"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2021",
+        "fireCount": "133"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2021",
+        "fireCount": "72"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2021",
+        "fireCount": "180"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2021",
+        "fireCount": "33"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2021",
+        "fireCount": "16"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2021",
+        "fireCount": "7"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2021",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2021",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2021",
+        "fireCount": "43"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2021",
+        "fireCount": "21"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2021",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2021",
+        "fireCount": "71"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2021",
+        "fireCount": "11"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2021",
+        "fireCount": "50"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2021",
+        "fireCount": "17"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2021",
+        "fireCount": "5"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2021",
+        "fireCount": "22"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2021",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2021",
+        "fireCount": "4"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2021",
+        "fireCount": "19"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2021",
+        "fireCount": "26"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2021",
+        "fireCount": "67"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2021",
+        "fireCount": "8"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2021",
+        "fireCount": "2"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2021",
+        "fireCount": "3"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2021",
+        "fireCount": "1"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Adilabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Asifabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Boath",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chinnur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khanapur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Laxettipet",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mudhol",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nirmal",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirpur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Utnur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hyderabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jagtial",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Karimnagar",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Manthani",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Metpalli",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sirsilla",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sultanabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhadrachalam",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Borgampad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Khammam",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kottagudem",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madhira",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Venkatapuram",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellandu",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Achampet",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Alampur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Atamkur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Farooq Nagar",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gadwal",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kalwakurti",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kolhapur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Korangal",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mahbubnagar",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Makhtal",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nagar Karnul",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Wanparthy",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Gajwel",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jogipet",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medak",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narayankher",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsapur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Sangareddi",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Siddipet",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Zahirabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bhongir",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Devarkonda",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Huzurnagar",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mirialguda",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nalgonda",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ramannapet",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Suriapet",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Armur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Banswada",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Bodhan",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Kamareddy",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Madnur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Nizamabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Yellareddi",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Chevella",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Ibrahimpatan",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Medchal",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1728)",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Pargi",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Tandur",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Vikarabad",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Hanmakonda",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Jangaon",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Mulug",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "n.a. ( 1711)",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Narsampet",
+        "year": "2021",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2015",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2016",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2017",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2018",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2019",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2020",
+        "fireCount": "0"
+    },
+    {
+        "adm_name": "Parkal",
+        "year": "2021",
+        "fireCount": "0"
+    }
+]

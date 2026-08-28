@@ -1,0 +1,1 @@
+my system is not capable of performing data processing on hole data so i perform it on subset of data which i cut down from given data.

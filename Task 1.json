@@ -1,0 +1,136 @@
+{
+  "Sheet1": [
+    {
+      "adm_name": "Bhadradri Kothagudem",
+      "fireCount": 2585
+    },
+    {
+      "adm_name": "Jagtial",
+      "fireCount": 539
+    },
+    {
+      "adm_name": "Jangoan",
+      "fireCount": 55
+    },
+    {
+      "adm_name": "Mulugu",
+      "fireCount": 2893
+    },
+    {
+      "adm_name": "Kamareddy",
+      "fireCount": 527
+    },
+    {
+      "adm_name": "Karimnagar",
+      "fireCount": 261
+    },
+    {
+      "adm_name": "Khammam",
+      "fireCount": 528
+    },
+    {
+      "adm_name": "Mahabubabad",
+      "fireCount": 1336
+    },
+    {
+      "adm_name": "Mancherial",
+      "fireCount": 626
+    },
+    {
+      "adm_name": "Medak",
+      "fireCount": 360
+    },
+    {
+      "adm_name": "Nagarkurnool",
+      "fireCount": 1045
+    },
+    {
+      "adm_name": "Nalgonda",
+      "fireCount": 170
+    },
+    {
+      "adm_name": "Nirmal",
+      "fireCount": 1141
+    },
+    {
+      "adm_name": "Nizamabad",
+      "fireCount": 1258
+    },
+    {
+      "adm_name": "Peddapalli",
+      "fireCount": 464
+    },
+    {
+      "adm_name": "Rajanna Sircilla",
+      "fireCount": 201
+    },
+    {
+      "adm_name": "Sangareddy",
+      "fireCount": 419
+    },
+    {
+      "adm_name": "Siddipet",
+      "fireCount": 199
+    },
+    {
+      "adm_name": "Vikarabad",
+      "fireCount": 323
+    },
+    {
+      "adm_name": "Wanaparthy",
+      "fireCount": 112
+    },
+    {
+      "adm_name": "Warangal Rural",
+      "fireCount": 184
+    },
+    {
+      "adm_name": "Warangal Urban",
+      "fireCount": 99
+    },
+    {
+      "adm_name": "Yadadri Bhuvanagiri",
+      "fireCount": 127
+    },
+    {
+      "adm_name": "Narayanpet",
+      "fireCount": 116
+    },
+    {
+      "adm_name": "Jogulamba Gadwal",
+      "fireCount": 63
+    },
+    {
+      "adm_name": "Rangareddy",
+      "fireCount": 213
+    },
+    {
+      "adm_name": "Suryapet",
+      "fireCount": 98
+    },
+    {
+      "adm_name": "Medchal Malkajgiri",
+      "fireCount": 62
+    },
+    {
+      "adm_name": "Adilabad",
+      "fireCount": 438
+    },
+    {
+      "adm_name": "Hyderabad",
+      "fireCount": 4
+    },
+    {
+      "adm_name": "Kumurambheem Asifabad",
+      "fireCount": 762
+    },
+    {
+      "adm_name": "Jayashankar Bhupalpally",
+      "fireCount": 896
+    },
+    {
+      "adm_name": "Mahabubnagar",
+      "fireCount": 166
+    }
+  ]
+}
